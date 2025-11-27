@@ -1,0 +1,42 @@
+%=========================================================
+%=========================================================
+\chapter{Canonical Quantization}
+%========================================================
+%=========================================================
+
+
+%=========================================================
+\section{Canonical Quantization in flat spacetime}
+%=========================================================
+
+A real scalar field $\phi(x)$ obeys the Klein-Gordon equation
+\begin{equation}
+    (\partial_{\mu} \partial^{\mu} + m^2) \phi(x) = 0.
+\end{equation}
+The canonical quantization procedure promotes the classical field $\phi(x)$ and its conjugate momentum $\pi(x) = \frac{\delta \mathcal{L}}{\delta \partial_0 \phi(x)}$ to operators $\hat{\phi}(x)$ and $\hat{\pi}(x)$ acting on a Hilbert space $\mathcal{H}$, satisfying the equal-time commutation relations
+\begin{align}
+    [\hat{\phi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= i \delta^{(3)}(\mathbf{x} - \mathbf{y}), \\
+    [\hat{\phi}(t, \mathbf{x}), \hat{\phi}(t, \mathbf{y})] &= 0, \\
+    [\hat{\pi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= 0.
+\end{align}
+
+The Fourier transform of the fields are defined as
+\begin{equation}
+    \phi_k(t) :=\int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \phi(t, \mathbf{x}).
+\end{equation}
+The commutation relations in momentum space become
+\begin{align}
+    [\hat{\phi}_k(t), \hat{\pi}_{k'}(t)] &= i (2\pi)^3 \delta^{(3)}(\mathbf{k} + \mathbf{k}'), \\
+    [\hat{\phi}_k(t), \hat{\phi}_{k'}(t)] &= 0, \\
+    [\hat{\pi}_k(t), \hat{\pi}_{k'}(t)] &= 0.
+\end{align}
+The harmonic oscillator are now decoupled in momentum space, but something seems to be off track.
+Indeed
+\begin{itemize}
+    \item the field $\phi_k$ is no more self-adjoint, since $\phi_k^{\dagger} = \phi_{-k}$; whereas we would like our DoFs to be observables;
+    \item the delta functions have argument $\mathbf{k} + \mathbf{k}'$ instead of $\mathbf{k} - \mathbf{k}'$.
+\end{itemize}
+In fact, the two issues are essentially related.
+We can fix them by explicitly rewriting $\phi_k$ as linear combinations of \emph{physical} self-adjoint harmonic oscillators.
+Alternatively, we can directly pass to creation and annihilation operators.
+\todotag{Write the two approaches in detail.}

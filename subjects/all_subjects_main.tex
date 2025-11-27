@@ -1,0 +1,21 @@
+\documentclass[a4paper,11pt]{book}
+
+% Shared preamble lives one level up from this subjects/ folder
+\input{../shared/other/preamble} % loads subfiles etc.
+
+\begin{document}
+
+\frontmatter
+\input{../shared/front_back/front}  % if you want a global frontpage
+\tableofcontents
+\mainmatter
+
+\input{../shared/other/conventions}
+
+% All subjects as subfiles
+\subfile{_geometry/geometry_main}
+\subfile{_QFT/QFT_main}
+% add more as needed:
+% \subfile{__gr/gr_main}
+
+\end{document}

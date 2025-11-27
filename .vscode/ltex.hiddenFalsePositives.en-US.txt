@@ -1,0 +1,1 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qsubjects/_geometry/geometry_main subjects/_QFT/QFT_main\\E$"}

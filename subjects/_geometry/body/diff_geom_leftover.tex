@@ -1,0 +1,288 @@
+%==========================================================
+%=========================================================
+\chapter{Differential geometry leftovers}
+%=========================================================
+%=========================================================
+
+
+In this long chapter, we collect various random topics in differential geometry that I feel like writing down.
+
+%-----------------------------------------------------------------------
+%======================================================================
+\section{Curvature}\todotag{To be written}
+%========================================================================
+%---------------------------------------------------------------------------
+
+What is curvature? How do we even measure it? Intuitively, curvature is how much a space deviates from being flat.
+Here are some ways to quantify this. 
+\begin{enumerate}
+\item \textbf{Violation of angle sum laws.}  For a triangle with angles \(\alpha,\beta,\gamma\) one has
+\[
+\alpha + \beta + \gamma \neq 180^\circ.
+\]
+Such a \emph{deficit angle} can be used to encode the shape.  (This idea is used in some approaches to quantum gravity.)
+\item \textbf{Violation of Pythagoras' law.}  For a triangle with side lengths \(a,b,c\) one has
+\[
+a^2 + b^2 \neq c^2.
+\]
+Thus one can encode the shape through metric distances, i.e. via a Riemannian metric \(g\) on \(M\).
+\item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\).
+\end{enumerate}
+
+%-----------------------------------------------------------------------
+%========================================================
+\section{Derivatives on tensors}
+%=========================================================
+%-----------------------------------------------------------------------
+
+There are infinitely many notions of derivatives on tensors.
+In general, a (anti)-derivative of degree $(h,k)$ on tensors is a map from a suitable subset of the tensor bundle 
+\begin{equation}
+    \delta: T^{\bullet}_{\bullet} (M) \to T^{\bullet + h}_{\bullet + k} (M)
+\end{equation}
+that is linear and satisfies a Leibniz rule, up to a sign.
+That is 
+\begin{equation}
+    \delta (S \otimes T) = (\delta S) \otimes T + (\pm)^{pq} S \otimes (\delta T),
+\end{equation}
+We call it \emph{anti}derivative if it changes sign when acting on the two factors of a tensor product.
+For example, the exterior derivative $d$ is an antiderivative of degree $(0,1)$ on  differential forms, and the inner derivative $i_X$ along a vector field $X$ is an antiderivative of degree $(0,-1)$ on differential forms. 
+\medskip
+
+\noindent
+\textbf{Uniqueness theorem for derivatives on tensors.}\\
+An (anti)-derivative $\delta$ on tensors--i.e. a linear map and obeying Leibniz rule up to a possible minus sign-- is completely determined by its action on functions and vector fields, or equivalently on functions and 1-forms.
+\medskip
+
+\noindent
+\textbf{Definition of Lie derivative via flows.}\\
+The usual definition of Lie derivative is via flows\dots
+\medskip
+
+\noindent
+\textbf{The Cartan formula.}\\
+A fundamental result linking the Lie derivative $\mathcal{L}_X$, the exterior derivative $d$ and the inner derivative $i_X$.
+Namely, for any differential form $\omega$, we have
+\begin{equation}
+    \mathcal{L}_X \omega = i_X d \omega + d (i_X \omega).
+\end{equation}
+
+The right-hand side is defined only for differential forms, but the left-hand side makes sense for any tensor.
+Since differential forms include functions (0-forms) and differentials (1-forms), we can use this formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
+\medskip
+
+
+
+
+
+%-----------------------------------------------------------------------
+%========================================================
+\section{Differential forms \& integration} \todotag{To be written}
+%=========================================================
+%-----------------------------------------------------------------------
+
+
+%========================================================
+\subsection{Integration} \todotag{To be written}
+%=========================================================
+
+
+%-----------------------------------------------------------------------------
+\subsubsection{Rediscovering familiar operations}
+%-----------------------------------------------------------------------------
+
+\textbf{Divergence \& Gauss theorem.}
+\\
+Given a volume form $\Omega$ and a vector field $X$ on a manifold $M^{(n)}$, define the divergence as the $n$-form
+\begin{equation}
+    \mathrm{div} (X) := \mathcal{L}_X \Omega.
+\end{equation}
+In a generic frame, we have $\Omega = a(x) dx^1 \wedge \cdots \wedge dx^n$, so that
+\begin{align}
+    \mathrm{div} (X) 
+    &= X(a)\, dx^1 \wedge \cdots \wedge dx^n + \sum_{\mu=1}^n dx^1 \wedge \cdots \wedge dX^{\mu} \wedge \cdots \wedge dx^n
+    \\&= \left( X(a) + a(x) \sum_{\mu=1}^n \partial_{\mu} X^{\mu} \right) dx^1 \wedge \cdots \wedge dx^n 
+    \\&= \left( \frac{1}{a(x)} \partial_{\mu} (a(x) X^{\mu}) \right) \Omega.
+\end{align}
+Note that we recover the usual formula for divergence in $\mathbb{R}^n$ when $a(x) = 1$.
+\smallskip
+
+Gauss theorem is immediately proved using Cartan formula and Stokes theorem.
+Let $M$ be an oriented manifold with boundary $\partial M$, and let $X$ be a vector field on $M$.
+Then
+\begin{equation}
+    \int_M \mathrm{div} (X) = \int_M \mathcal{L}_X \Omega = \int_M d (i_X \Omega) + i_X \graycancel{d\Omega} = \int_{\partial M} i_X \Omega.
+\end{equation}
+In the case $\Omega$ is the volume form induced by a metric $g$, we can rewrite the right-hand side and get
+\begin{equation}
+    \int_M \mathrm{div}_g (X) = \int_{\partial M} i_X \Omega_g = \int_{\partial M} g(X, N)\,\, \tilde{\Omega}_g,
+\end{equation}
+where $N$ is the outward-pointing unit normal vector field on $\partial M$ and $\tilde{\Omega}$ is the volume form induced by the metric on $\partial M$.
+It is indeed immediate to check that $i_X \Omega_g = g(X,N) \tilde{\Omega}_g$.
+\medskip
+
+\noindent
+\textbf{Curl \& 3D Stokes theorem.}
+\\
+Given a \emph{Riemannian} manifold $(M,g)$ of dimension $3$ and a vector field $X$, define the 1-from $g(X,\cdot)$, that is lower an index $X_\mu=g_{\mu \nu} X^{\nu}$.
+Define the curl as the 2-from obained by taking the exterior derivative
+\begin{equation}
+    \mathrm{curl} (X) := d (g(X,\cdot)) = d \Big(X_{\mu} \wedge dx^{\mu}\Big).
+\end{equation}
+Note that in $\mathbb{R}^3$ with the standard Euclidean metric, this definition coincides with the usual notion of curl.
+\smallskip
+
+The general Stokes theorem immediately gives the familiar version in $\mathbb{R}^3$:
+\begin{equation}
+    \int_S \mathrm{curl} (X) =\int_S d (g(X,\cdot)) = \int_{\partial S} g(X,\cdot),
+\end{equation}
+for any oriented surface $S$ with boundary $\partial S$.
+\medskip
+
+\noindent
+\textbf{Complex integration \& Gauss-Green Theorem}.
+\\
+Consider the complex plane as a Riemannian manifold $(\mathbb{R}^2, g)$ with the standard Euclidean metric.
+Given a complex homolorphic function $f: \mathbb{C} \to \mathbb{C}$, both the real and imaginary parts \todotag{Finish this}
+
+
+
+%========================================================
+\subsection{Hodge dual \& consequences} \todotag{To be written}
+%=========================================================
+
+\noindent
+\textbf{The Hodge dual.} \todotag{Finish this}
+\\
+The Hodge dual is \emph{only} defined once we have a pseudoriemannian  metric g on a manifold \(M^{(n)}\). 
+Write the induced volume form \(\Omega\) as
+\begin{equation}
+    \Omega = \Omega_{1\dots n}dx^1 \wedge \cdots \wedge dx^n 
+    = \Omega_{\mu_1 \dots \mu_n} dx^{\mu_1} \otimes \cdots \otimes dx^{\mu_n}
+    = \frac{1}{n!} \Omega_{\mu_1 \dots \mu_n} dx^{\mu_1} \wedge \cdots \wedge dx^{\mu_n},
+\end{equation}
+where it is understood that the first expression is \emph{not} summed over indices, while the latter two are and  \(\Omega_{\mu_1 \dots \mu_n}\) is totally antisymmetric.
+Then, the Hodge dual of a \(k\)-form \(\alpha\) is the \((n-k)\)-form defined as 
+\begin{equation}
+    \star \alpha := \frac{1}{k!(n-k)!} \alpha_{\mu_1 \dots \mu_k} \Omega^{\mu_1 \dots \mu_k}_{\quad \quad \nu_{k+1} \dots \nu_n} dx^{\nu_{k+1}} \wedge \cdots \wedge dx^{\nu_n},
+\end{equation}
+where we raised the indices of \(\Omega\) using the inverse of the volume form, i.e.
+\begin{equation}
+    \Omega^{\mu_1 \dots \mu_n} := \frac{1}{\Omega_{1\dots n}} \varepsilon^{\mu_1 \dots \mu_n},
+\end{equation}
+with \(\varepsilon^{\mu_1 \dots \mu_n}\) the Levi-Civita symbol \questiontag{Check signs \& conventions}
+\smallskip
+
+One verifies the following important property of the Hodge dual:
+\begin{equation}
+    \star \star \alpha = (-1)^{k(n-k) + s} \alpha,
+\end{equation}
+where \(s\) is the signature of the metric \(g\) (i.e. the number of minus signs in the diagonalized form of \(g\)).
+\medskip
+
+
+\noindent
+\textbf{The Hodge scalar product on differential forms.} \todotag{Finish this}
+\\
+Given two \(k\)-forms \(\alpha, \beta\) on a pseudoriemannian manifold \((M,g)\), we define their Hodge product as the scalar product
+\begin{equation}
+    \langle \alpha, \beta \rangle_{\mathrm{Hodge}} := \int_M \alpha \wedge \star \beta.
+\end{equation}
+In particular, when \(\alpha = \beta\), we have
+\begin{equation}
+    \langle \alpha, \alpha \rangle_{\mathrm{Hodge}} = \int_M \alpha \wedge \star \alpha = \int_M ||\alpha||^2 \Omega,
+\end{equation}
+where \(||\alpha||^2\) is the pointwise norm of \(\alpha\) induced by the metric \(g\).
+Note that the signature of this scalar product depends on both the degree \(k\) of the forms and the signature of the metric \(g\).
+For example, on the subspace of 1-froms $\Lambda^1 (M)$, the Hodge product has the same signature as the metric \(g\) itself.
+\bigskip
+
+\noindent
+\textbf{The codifferential.}\todotag{Finish this}
+\\
+The codifferential \(\delta\) is defined on $k$-forms as
+\begin{equation}
+    \delta := (-1)^{n(k-1)+1} \star d \star.
+\end{equation}
+It is an anti-derivative of degree \((0,-1)\) on differential forms i.e. it lowers the degree of a form by one and satisfies the Leibniz rule up to a minus sign.
+\smallskip
+
+It obeys the fundamental nilpotency property
+\begin{equation}
+    \delta^2 = 0,
+\end{equation}
+just like the exterior derivative \(d\).
+\smallskip
+
+Equivalently, the codifferential is defined as (minus) the adjoint of the exterior derivative with respect to the Hodge scalar product, i.e. for any \(k\)-form \(\alpha\) and \((k-1)\)-form \(\beta\), we have
+\begin{equation}
+    \langle d \beta, \alpha \rangle_{\mathrm{Hodge}} = \langle \beta, -\delta \alpha \rangle_{\mathrm{Hodge}}.
+\end{equation}
+\medskip
+The minus sign is a convention to accomodate the expression below for the Laplace-de Rham operator.
+\bigskip
+
+\noindent
+\textbf{Laplace-de Rham-D'Alambert operator.}\todotag{Finish this}
+\\
+The Laplace-de Rham-D'Alambert operator \(\Delta\) is defined on differential forms as
+\begin{equation}
+    \Delta := d \delta + \delta d.
+\end{equation}
+It is a derivative of degree \((0,0)\) on differential forms i.e. it preserves the degree of a form and satisfies the usual Leibniz rule.
+\smallskip
+
+Depending on the signature of the pseudoriemannian metric \(g\), it generalizes either the Laplacian (Riemannian case) or the D'Alambert operator (Lorentzian case) or anything in between (general pseudoriemannian case). 
+In the Lorentzian case it is often denote by \(\Box\).
+In the Riemannian case, it is positive semidefinite.
+In the Lorentzian case, it is hyperbolic.
+This can be easily seen in flat Riemannian or Minkowski space, passing to Fourier space.
+\begin{equation}
+    p_E^2 = p_1^2 + p_2^2 + p_3^2 + \cdots \geq 0,\quad p_M^2 = p_0^2 - p_1^2 - p_2^2 - \cdots.
+\end{equation}
+
+It satisfies the following properties:
+\begin{itemize}
+    \item $d \,\Box = \Box\, d$,
+    \item $\delta \,\Box = \Box\, \delta$,
+    \item $\Box$ is self-adjoint with respect to the Hodge scalar product.
+\end{itemize}
+\medskip
+
+In cohordinate form, on a \(k\)-form \(\alpha\), it reads
+\begin{equation}
+    (\Delta \alpha)_{\mu_1 \dots \mu_k} = - \nabla^{\nu} \nabla_{\nu} \alpha_{\mu_1 \dots \mu_k} + \sum_{i=1}^k (-1)^i R^{\nu}_{\quad \mu_i} \alpha_{\nu \mu_1 \dots \hat{\mu}_i \dots \mu_k} - 2 \sum_{1 \leq < p \le k} (-1)^{p+q} R^{\nu}_{\quad \mu_i \mu_j \mu_p} \alpha_{\nu \mu_1 \dots \hat{\mu}_i \dots \hat{\mu}_j \dots \mu_k},
+\end{equation}
+where hats denote omitted indices and \(R^{\rho}_{\quad \sigma \mu \nu}\) is the Riemann curvature tensor.
+In particular, on functions (0-forms) it reduces to the usual Laplacian/D'Alambert operator
+\begin{equation}
+    \Delta f = - \nabla^{\nu} \nabla_{\nu} f.
+\end{equation}
+\medskip
+
+The Laplace-D'Alambert operator can equivalently be understood as the square of the Dirac operator acting on differential forms, defined as
+\begin{equation}
+    \slashed{D} := d + \delta.
+\end{equation}
+Indeed, one has
+\begin{equation}
+    \slashed{D}^2 = (d + \delta)^2 = d^2 + d \delta + \delta d + \delta^2 = d \delta + \delta d = \Delta,
+\end{equation}
+where we used the nilpotency of both \(d\) and \(\delta\).
+\medskip
+
+Alternatively, the Laplace-D'Alambert operator can equivalently be defined as the unique derivative of degree \((0,0)\) on differential forms that reduces to the usual Laplacian/D'Alambert operator on functions and commutes with both \(d\) and \(\delta\).
+
+Finally, its action on 0-forms can be understood as the operator featuring in the Euler-Lagrange equations for the action functional
+\begin{equation}
+    S[\phi] = \frac{1}{2} \int_M d\phi \wedge \star d\phi = \frac{1}{2} \int_M ||d\phi||^2 \Omega = \frac{1}{2}\int_M \sqrt{|g|}\,\partial_\mu \phi \partial^\mu \phi\, d^n x,
+\end{equation}
+where \(\phi\) is a scalar field (0-form).
+Varying with respect to \(\phi\), one finds
+\begin{equation}
+    \delta S[\phi] = \int_M \delta \phi \, \star \Delta \phi,
+\end{equation}
+so that the Euler-Lagrange equations read
+\begin{equation}
+    \Delta \phi = 0.
+\end{equation}
