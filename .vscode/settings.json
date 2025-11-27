@@ -54,7 +54,11 @@
 
   // Make the green build button use latexmk and pick the correct root (subfiles aware)
   "latex-workshop.latex.rootFile.useSubFile": true,
-  "latex-workshop.latex.recipe.default": "latexmk ➜ pdf"
+  "latex-workshop.latex.rootFile.doNotPrompt": true,
+  "latex-workshop.latex.recipe.default": "latexmk ➜ pdf",
+
+  // Keep LaTeX Workshop's expected PDF location in sync with latexmk (-outdir=%DIR%/out)
+  "latex-workshop.latex.outDir": "%DIR%/out"
 
   // ────────────────────────────────────────────────
   // END OF CONFIGURATION

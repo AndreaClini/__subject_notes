@@ -20,8 +20,17 @@ Many discoveries in the early 20th century showed that Quantum Mechanics (QM) al
 %=========================================================
 
 \begin{theorem}[\textbf{Heisenberg canonical quantization procedure.}]
-Take the classical phase space variables \(q_i, p_i\) satisfying the Poisson bracket relations
+Take the classical phase space variables \(q_i, p_i\) i.e. the classical DoFs, satisfying the relevant Equations of Motions and  Poisson bracket relations
 \[\{q_i, p_j\} = \delta_{ij}, \quad \{q_i, q_j\} = 0, \quad \{p_i, p_j\} = 0.\]
 Then, in the quantum theory, promote these variables to operators \(\hat{q}_i, \hat{p}_i\) acting on a Hilbert space \(\mathcal{H}\), satisfying the canonical commutation relations
 \[[\hat{q}_i, \hat{p}_j] = i\hbar \delta_{ij}, \quad [\hat{q}_i, \hat{q}_j] = 0, \quad [\hat{p}_i, \hat{p}_j] = 0.\]
+These operators are self-adjoint and obey the same equations of motion as their classical counterparts, but now in the operator formalism.
+Namely, they are obtained as
+\begin{equation}
+    \frac{d\hat{O}}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{O}] + \left(\frac{\partial \hat{O}}{\partial t}\right)_{\text{explicit}}.
+\end{equation}
+In particular, for the fundamental DoFs, we have
+\begin{align}
+    \frac{d\hat{q}_i}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{q}_i] \quad \frac{d\hat{p}_i}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{p}_i].
+\end{align}
 \end{theorem}
