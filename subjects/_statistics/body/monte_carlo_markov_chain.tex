@@ -1,8 +1,10 @@
+% !TeX root = ../statistics_main.tex
 %==========================================================
 %=========================================================
-\chapter{Monte Carlo Markov chains}
+\chapter{Monte Carlo Methods}
 %=========================================================
 %=========================================================
+
 
 Monte Carlo methods approximate expectations
 \begin{equation}
@@ -12,19 +14,94 @@ by averaging samples from a target distribution $\pi$.
 When drawing independent samples is hard, we build a Markov chain whose stationary distribution is $\pi$.
 If the chain is ergodic, long runs approximate the desired expectation.
 
-%-----------------------------------------------------------------------
-\section{Metropolis--Hastings in one glance}
-%-----------------------------------------------------------------------
-Given a current state $x_t$ and a proposal density $q(\cdot \mid x_t)$:
+
+%------------------------------------------------------------------
+%=========================================================
+\section{Monte Carlo Markov Chains}
+%=========================================================
+%----------------------------------------------------------
+
+
+
+
+%=========================================================================
+\subsection{Metropolis--Hastings algorithm}
+%=========================================================================
+
+
+Suppose our target distribution has pdf $\propto \, \pi(x)$ with unknown normalization.
+The Metropolis--Hastings algorithm constructs a Markov chain with stationary distribution $\pi$, that will eventually converge and sample from it.
+Given a current state $x_t$ and a proposal pdf $q(\cdot \mid x_t)$ of your choice, which obeys
+\begin{itemize}
+    \item it is centered around the current state $x_t$;
+    \item it is NOT required to be symmetric around $x_t$ (the symmetric case is called just Metropolis);
+    \item further properties of $q(\cdot \mid x_t)$ might depend on $x_t$ e.g. the variance;
+    \item it is easy to sample from.
+\end{itemize}
+The algorithm proceeds as follows:
 \begin{enumerate}
-    \item Propose $x' \sim q(\cdot \mid x_t)$.
-    \item Accept with probability $\alpha = \min\!\left(1, \frac{\pi(x')\, q(x_t \mid x')}{\pi(x_t)\, q(x' \mid x_t)} \right)$; otherwise stay at $x_t$.
-    \item Record the new state and iterate.
+    \item Draw $x' \sim q(\cdot \mid x_t)$ and propose it as the new state.
+    \item Accept with probability $A(x_t\to x_{t+1}) = \min\!\left(1, \frac{\pi(x')\, q(x_t \mid x')}{\pi(x_t)\, q(x' \mid x_t)} \right)$; otherwise stay at $x_t$.
+    The transition probability is then
+    \begin{equation}
+        T(x_{t+1} \mid x_t) = q(x_{t+1} \mid x_t)\, A(x_t \to x_{t+1}).
+    \end{equation}
+    \item Set $x_{t+1} = x'$ if accepted, else $x_{t+1} = x_t$ and iterate.
 \end{enumerate}
-The acceptance step enforces detailed balance and leaves $\pi$ invariant.
+The acceptance step enforces detailed balance, so that it leaves a stationary distribution $\pi$ invariant.
+Indeed we have
+\begin{equation}
+     \frac{A(x\to y)}{A(y\to x)} = \frac{\pi(y)\, q(x \mid y)}{\pi(x)\, q(y \mid x)} \Rightarrow \pi(x)\, T(y \mid x) = \pi(y)\, T(x \mid y).
+\end{equation}
+Then, by definition of transition probability if $q(\cdot|x_i)=:\pi_i\sim \pi$ at step $i$, we have
+\begin{equation}
+    \pi_{i+1}(x) = \sum_y \pi_i(y)\, T(x \mid y) = \sum_y \pi(y)\, T(x \mid y) = \sum_y \pi(x)\, T(y \mid x)  = \pi(x)\, \underbrace{\sum_y  T(y \mid x)}_{=1} = \pi(x).
+\end{equation}
+
+
 
 %-----------------------------------------------------------------------
-\section{Practical remarks}
+\subsubsection*{Practical remarks}
 %-----------------------------------------------------------------------
+
 Choose proposals that mix well, discard early burn-in, and thin only if storage is a concern.
 Autocorrelation reveals whether the chain is exploring the space or getting stuck.
+\smallskip
+
+Why does Metropolis--Hastings work?
+It is easier to understand in the symmetric case (Metropolis).
+Then, we have $q(x|y)=q(y|x)$ and the acceptance ratio simplifies to
+\begin{equation}
+    A(x\to y) = \min\left(1, \frac{\pi(y)}{\pi(x)}\right).
+\end{equation}
+This means that we always accept moves to higher probability states, and accept moves to lower probability states with a probability proportional to how much lower the probability is.
+This allows the chain to explore the state space while still favoring high-probability regions, leading to convergence to the target distribution $\pi$ over time.
+
+
+%------------------------------------------------------------------
+\subsubsection{Metropolis-Hastings for bayesian statistics}
+%------------------------------------------------------------------
+
+Suppose we have a prior distribution $p(\theta)$ over parameters $\theta$ and a likelihood $p(x \mid \theta)$ for data $x$.
+The posterior distribution is given by Bayes' theorem
+\begin{equation}
+    p(\theta \mid x) = \frac{p(x \mid \theta)\, p(\theta)}{p(x)} \propto p(x \mid \theta)\, p(\theta).
+\end{equation}
+The issue is that we do not know the normalization constant $p(x)$.
+We might just want to integrate over all the paramater space and divide by the volume, but this is often intractable.
+Indeed, Monte Carlo methods are precisely designed to approximate such integrals, ofetn intractable otherwise because of high dimensionality.
+
+Then we define $\pi(\theta):= p(\theta \mid x) = \frac{1}{N} p(x \mid \theta)\, p(\theta)$ for some unknown normalization constant $N$ and use Metropolis-Hastings to sample from the posterior.
+Note that in the acceptance ratio, the normalization constant cancels out
+\begin{equation}
+    A(\theta \to \theta') = \min\left(1, \frac{\pi(\theta')\, q(\theta \mid \theta')}{\pi(\theta)\, q(\theta' \mid \theta)}\right) = \min\left(1, \frac{p(x \mid \theta')\, p(\theta')\, q(\theta \mid \theta')}{p(x \mid \theta)\, p(\theta)\, q(\theta' \mid \theta)}\right).
+\end{equation}
+This allows us to sample from the posterior distribution without knowing the normalization constant, enabling Bayesian inference through MCMC methods.
+
+Once we have the normalization, we can draw level lines and use again Monte Carlo and Metropolis-Hastings to compute confidence regions.
+Namely, we take the maximum of the posterior, and then draw level lines at decreasing values until we enclose the desired probability mass.
+The probability mass inside a region $R$, e.g. $R=\{p(\theta \mid x) \geq L\}$ for some level $L$, is
+\begin{equation}
+    P(R) = \int_R p(\theta \mid x)\, d\theta.
+\end{equation}
+This is approximately computed by Monte Carlo using again e.g. Metropolis-Hastings to sample from the posterior and counting the fraction of samples that fall inside $R$.

@@ -57,6 +57,11 @@
   "latex-workshop.latex.rootFile.doNotPrompt": true,
   "latex-workshop.latex.recipe.default": "latexmk ➜ pdf",
 
+  // Prefer subject-level roots for SyncTeX instead of the omnibus book
+  "latex-workshop.latex.search.rootFiles.exclude": [
+    "subjects/all_subjects_main.tex"
+  ],
+
   // Keep LaTeX Workshop's expected PDF location in sync with latexmk (-outdir=%DIR%/out)
   "latex-workshop.latex.outDir": "%DIR%/out"
 
