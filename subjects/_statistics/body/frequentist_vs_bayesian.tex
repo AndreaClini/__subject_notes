@@ -1,0 +1,24 @@
+%==========================================================
+%=========================================================
+\chapter{Frequentist vs Bayesian perspectives}
+%=========================================================
+%=========================================================
+
+A frequentist treats parameters as fixed and uncertainty as arising from hypothetical repetitions of the data.
+Estimators are random variables, and properties such as unbiasedness or coverage are assessed over repeated samples.
+
+A Bayesian treats parameters as random, encoding prior beliefs through a distribution and updating them via Bayes' rule,
+\begin{equation}
+    p(\theta \mid x) \propto p(x \mid \theta)\, p(\theta).
+\end{equation}
+The posterior combines prior information with the likelihood and turns point estimates into full distributions.
+
+%-----------------------------------------------------------------------
+\section{A quick coin example}
+%-----------------------------------------------------------------------
+Consider flips of a biased coin with heads count $k$ out of $n$.
+\begin{itemize}
+    \item Frequentist: the maximum-likelihood estimate is $\hat{p}=k/n$ and a $95\%$ Wald interval is $\hat{p} \pm 1.96 \sqrt{\hat{p}(1-\hat{p})/n}$.
+    \item Bayesian: with a $\mathrm{Beta}(a,b)$ prior, the posterior is $\mathrm{Beta}(a+k, b+n-k)$, summarised by its mean or credible interval.
+\end{itemize}
+Both views often agree for large $n$, but diverge when data are scarce or priors encode substantial structure.

@@ -1,0 +1,31 @@
+% phys_notes/subjects/_statistics/statistics_main.tex
+\documentclass[../all_subjects_main.tex]{subfiles}
+
+\begin{document}
+
+% Only do these when compiling statistics alone, not inside the big book
+\IfSubfilesClassLoaded{%
+    \frontmatter
+    % You can have a statistics-only title page here if you want
+    \input{other/front.tex}
+    \input{other/originality_and_collaborating.tex}
+    \newpage
+    \input{../../shared/other/conventions}
+    \newpage
+    \input{other/introduction.tex}
+    \newpage
+    \tableofcontents
+    \mainmatter
+}{}
+
+%----------------------------------------------------------
+\part{Foundations of Statistics}
+
+\input{body/frequentist_vs_bayesian.tex}
+
+%----------------------------------------------------
+\part{Monte Carlo Methods}
+
+\input{body/monte_carlo_markov_chain.tex}
+
+\end{document}

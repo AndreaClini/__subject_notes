@@ -1,0 +1,30 @@
+%==========================================================
+%=========================================================
+\chapter{Monte Carlo Markov chains}
+%=========================================================
+%=========================================================
+
+Monte Carlo methods approximate expectations
+\begin{equation}
+    \mathbb{E}_{\pi}[f(X)] = \int f(x)\, \pi(x)\, dx
+\end{equation}
+by averaging samples from a target distribution $\pi$.
+When drawing independent samples is hard, we build a Markov chain whose stationary distribution is $\pi$.
+If the chain is ergodic, long runs approximate the desired expectation.
+
+%-----------------------------------------------------------------------
+\section{Metropolis--Hastings in one glance}
+%-----------------------------------------------------------------------
+Given a current state $x_t$ and a proposal density $q(\cdot \mid x_t)$:
+\begin{enumerate}
+    \item Propose $x' \sim q(\cdot \mid x_t)$.
+    \item Accept with probability $\alpha = \min\!\left(1, \frac{\pi(x')\, q(x_t \mid x')}{\pi(x_t)\, q(x' \mid x_t)} \right)$; otherwise stay at $x_t$.
+    \item Record the new state and iterate.
+\end{enumerate}
+The acceptance step enforces detailed balance and leaves $\pi$ invariant.
+
+%-----------------------------------------------------------------------
+\section{Practical remarks}
+%-----------------------------------------------------------------------
+Choose proposals that mix well, discard early burn-in, and thin only if storage is a concern.
+Autocorrelation reveals whether the chain is exploring the space or getting stuck.
