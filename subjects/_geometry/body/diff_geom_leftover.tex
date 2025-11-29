@@ -8,27 +8,6 @@
 
 In this long chapter, we collect various random topics in differential geometry that I feel like writing down.
 
-%-----------------------------------------------------------------------
-%======================================================================
-\section{Curvature}\todotag{To be written}
-%========================================================================
-%---------------------------------------------------------------------------
-
-What is curvature? How do we even measure it? Intuitively, curvature is how much a space deviates from being flat.
-Here are some ways to quantify this. 
-\begin{enumerate}
-\item \textbf{Violation of angle sum laws.}  For a triangle with angles \(\alpha,\beta,\gamma\) one has
-\[
-\alpha + \beta + \gamma \neq 180^\circ.
-\]
-Such a \emph{deficit angle} can be used to encode the shape.  (This idea is used in some approaches to quantum gravity.)
-\item \textbf{Violation of Pythagoras' law.}  For a triangle with side lengths \(a,b,c\) one has
-\[
-a^2 + b^2 \neq c^2.
-\]
-Thus one can encode the shape through metric distances, i.e. via a Riemannian metric \(g\) on \(M\).
-\item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\).
-\end{enumerate}
 
 %-----------------------------------------------------------------------
 %========================================================
@@ -287,3 +266,250 @@ so that the Euler-Lagrange equations read
 \begin{equation}
     \Delta \phi = 0.
 \end{equation}
+
+
+
+%-----------------------------------------------------------------------
+%======================================================================
+\section{Torsion}\todotag{To be written}
+%========================================================================
+%-------------------------------------------------------------------------
+
+
+\begin{mytheorem}[Torsion measure the nonclosure of parallelograms]
+Consider a manifold \(M\) with an affine connection \(\nabla\).
+Let \(X,Y\) be two vector fields on \(M\).
+Construct the parallelogram starting from a point \(p \in M\) by first following the flow of \(X\) for a parameter distance \(\epsilon\), then the flow of \(Y\) for a parameter distance \(\epsilon\), then the flow of \(-X\) for a parameter distance \(\epsilon\), and finally the flow of \(-Y\) for a parameter distance \(\epsilon\).
+Then, the endpoint of this parallelogram differs from the starting point \(p\) by a vector given, at leading order in \(\epsilon\), by
+\begin{equation}
+    \Delta p = \epsilon^2 T(X,Y) + \mathcal{O}(\epsilon^3),
+\end{equation}
+where \(T(X,Y)\) is the torsion tensor evaluated on \(X\) and \(Y\).
+\end{mytheorem}
+
+
+\begin{mytheorem}[Why torsion is a tensor?]
+The fact that torsion is a tensor, even though the Christoffel symbols are not, follows directly from its geometric definition as measuring the nonclosure of parallelograms.
+Alternatively, we could view it from the `physicitsts definition of tensors' and its antisymmetric nature.
+Under a change of frame the Christoffel symbols transform as
+\begin{equation}
+    \Gamma^{\rho}_{\mu \nu} = \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial x^{\prime \alpha}}{\partial x^{\mu}} \frac{\partial x^{\prime \beta}}{\partial x^{\nu}} \Gamma^{\prime \sigma}_{\alpha \beta} + \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial^2 x^{\prime \sigma}}{\partial x^{\mu} \partial x^{\nu}}.
+\end{equation}
+The nontensorial part of the transformation is symmetric in the lower indices \(\mu, \nu\).
+Therefore by splitting
+\begin{equation}
+    \Gamma^{\rho}_{\mu \nu} = \Gamma^{\rho}_{(\mu \nu)} + \Gamma^{\rho}_{[\mu \nu]},
+\end{equation}
+we see that indeed $T_{\mu,\nu}^{\quad \rho} = 2 \Gamma^{\rho}_{[\mu \nu]}$ transforms as a tensor.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Torsion \& the equivalence principle]
+The equivalence principle demands torsion to vanish.
+Indeed, if we require that at any point there exists a local freely falling frame where the connection coefficients vanish, then the torsion must vanish as well.
+Since torsion is a tensor, if it vanishes in one cohordinate system, it must vanish in all.
+In fact, the vanishing ot torsion not only is needed, but is equivalent to the existence of such local freely falling frames as we next show.
+\end{mytheorem}
+
+
+\begin{theorem}
+Let \(M\) be a manifold with an affine connection \(\nabla\).
+Then, the torsion of \(\nabla\) vanishes if and only if for any point \(p \in M\) there exists a local coordinate system \(\{x^{\mu}\}\) around \(p\) such that the connection coefficients vanish at \(p\), i.e. \(\Gamma^{\rho}_{\mu \nu} (p) = 0\).
+\end{theorem}
+\begin{proof}
+Very simple exercise.
+\end{proof}
+
+
+\begin{mytheorem}[Quantum gravity \& allowing for nonzero torsion]
+If we want to quantize gravity, it is wise and natural to allow for some nonzero torsion.
+Indeed, in quantum mechanics all quantities are subject to quantum fluctuations.
+Therefore, if the metric is quantum fluctuating, it might well be the case that it explores also configurations with nonzero torsion.
+
+Indeed, we have several examples where quantum fuctuations violate classical constraints.
+An example is quantum tunnelling, particles can cross classically forbidden regions.
+
+Another one is the nonvanishing of correlators between spacelike separated operators in quantum field theory, violating classical causality.
+In this second case, the `rules' of classical general relativity are restored by the fact that these acausal correlators are exponentially suppressed at scales larger than the Compton wavelength of the particles involved.
+Furthermore, the analogous contributions from particles and antiparticles cancel each other in the actually observable correlator.
+\end{mytheorem}
+
+
+%-----------------------------------------------------------------------
+%======================================================================
+\section{Curvature}\todotag{To be written}
+%========================================================================
+%---------------------------------------------------------------------------
+
+What is curvature? How do we even measure it? Intuitively, curvature is how much a space deviates from being flat.
+Here are some ways to quantify this. 
+\begin{enumerate}
+\item \textbf{Violation of angle sum laws.}  For a triangle with angles \(\alpha,\beta,\gamma\) one has
+\[
+\alpha + \beta + \gamma \neq 180^\circ.
+\]
+Such a \emph{deficit angle} can be used to encode the shape.  (This idea is used in some approaches to quantum gravity.)
+\item \textbf{Violation of Pythagoras' law.}  For a triangle with side lengths \(a,b,c\) one has
+\[
+a^2 + b^2 \neq c^2.
+\]
+Thus one can encode the shape through metric distances, i.e. via a Riemannian metric \(g\) on \(M\).
+\item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\).
+\end{enumerate}
+
+\begin{mytheorem}[Measuring distances \& curvature with Green functions]
+The n-point correlators do know about the geometry of the underlying manifold.
+Indeed, the 2-point correlator (Green function) of a free scalar field theory on a curved manifold \((M,g)\) satisfies
+\begin{equation}
+    (\Box_x + m^2) G(x,y) = - \frac{1}{\sqrt{|g|}} \delta^{(n)} (x-y),
+\end{equation}
+where \(\Box\) is the D'Alambert operator associated to the metric \(g\).
+From the knowledge of the Green function \(G(x,y)\) for all pairs of points \((x,y) \in M \times M\), one can reconstruct the metric \(g\) and therefore the curvature of the manifold.    
+\end{mytheorem}
+
+
+%=======================================================
+\subsection{The Riemann curvature tensor}
+%=======================================================
+
+The Riemann curvature tensor is defined as the operator measuring the noncommutativity of covariant derivatives.
+
+\begin{mytheorem}[The Riemann tensor measures the noncommutativity of parallel transport in two directions]
+If we neglect torsion the path obtained by first following the flow of a vector field \(X\) for infinitesimal distance \(\epsilon\), then the flow of a vector field \(Y\) for infinitesimal distance \(\epsilon\), then the flow of \(-X\) for infinitesimal distance \(\epsilon\), and finally the flow of \(-Y\) for infinitesimal distance \(\epsilon\), closes to leading order in \(\epsilon\).
+In presence of torsion, the parallelogram does not close, but the Riemann tensor retains its meaning as measuring the noncommutativity of covariant derivatives.
+\end{mytheorem}
+
+\begin{mytheorem}[The Riemann tensor is just a rotation matrix in disguise]
+     Indeed...
+
+\end{mytheorem}
+
+
+
+%-----------------------------------------------------------
+%=======================================================
+\section{Tetrad formalism \& tensor-valued forms}\todotag{To be written}
+%=======================================================
+%------------------------------------------------------------
+
+The tetrad formalism amount to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
+The only typical requirement is that the two frame are dual to each other, i.e. $\theta^i (e_j) = \delta^i_j$.
+In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimensions or more generally \emph{vielbeins} (n-legs) in n dimensions.
+
+
+\begin{mytheorem}[Avantages \& disadvantages of the tetrad formalism]
+The main advantage of the tetrad formalism is that coefficients of tensors in arbitrary frames transform as scalars under coordinate transformations.
+That is, their coordinates with respect to the tetrad bases do not change under change of coordinates, simply because we change the cohordinates $x^\mu\to \tilde{x}^\mu$ but the tetrad bases $\{e_i(x)\}_i$, $\{\theta^i(x)\}_i$ remain the same.
+The main disadvantage is that expressions might get longer or more cumbersome, since we cannot use the simplifications coming from coordinate bases e.g. the fact that $d (dx^\mu) = 0$ or $[\partial_\mu, \partial_\nu] = 0$.
+
+In any case, this has several advtanges.
+For example, we can choose a tetrad that is orthonormal with respect to a given metric $g$ i.e.
+\begin{equation}
+    g = \eta_{ij} \theta^i \otimes \theta^j,
+\end{equation}
+where $\eta_{ij}=\text{diag}(\pm1\dots \pm1)$ is the Minkowski (or Euclidean) metric.
+This is particularly useful for spinors.
+By definition, in any chosen frame, the $\gamma$ matrices are required to respect the Clifford algebra
+\begin{equation}
+    \{\gamma^\mu, \gamma^\nu\} = 2 g_{\mu\nu} \mathbb{I}.
+\end{equation}
+In the such a orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2 \eta_{\mu\nu} \mathbb{I}$ and we can take the $\gamma^\mu$ as in the usual Clifford algebra in flat space all over the manifold.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Fiber valued differential forms]
+Fiber valued differential forms are just usual $p$-forms taking values in a fiber space $F$.
+That is, given a fibre bundle $E_F\to M$ with fibre $F$, a fiber valued $p$-form is a section of the product bundle
+\begin{equation}
+    \Lambda^p (M) \otimes E_F \to M.
+\end{equation}
+For example when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms.
+This notion generalizes all the structures we have seen so far.
+\begin{itemize}
+    \item A usual differential $p$-form is just a fiber valued $p$-form with trivial fiber $F = \mathbb{R}$.
+    \item An $(h,k)$-tensor field is just a fiber valued $0$-form with fiber $F = T^h_k M$.
+\end{itemize}
+
+In fact, since $\Lambda*(M)\subset T^*_*(M)$ the splitting in `differntial form part' and `tensor valued image' is somewhat arbitrary.
+The most natural convention is to take all the antisymmetric part as the differential form part and the rest as the tensor valued image.
+For example
+\begin{itemize}
+    \item The torsion $T_{\mu\nu}^{\quad \rho}$, antisymmetric in the $\mu\nu$ indices, is a $(1,0)$-tensor valued 2-form, i.e. a fiber valued 2-form with fiber $F = T^1_0 M$.
+    \item The Riemann curvature $R_{\rho, \mu \nu}^{\quad \sigma}$, antisymmetric in the $\mu\nu$ indices, is a $(1,1)$-tensor valued 2-form, i.e. a fiber valued 2-form with fiber $F = T^1_1 M$.
+\end{itemize}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Exterior covariant derivative]
+Given a fiber bundle $E_F \to M$ with fiber $F$ and an affine connection $\nabla$ on $M$, we can define the exterior covariant derivative $D$ acting on fiber valued $p$-forms as the unique map
+\begin{equation}
+    D: \Lambda^p (M) \otimes E_F \to \Lambda^{p+1} (M) \otimes E_F
+\end{equation}
+that is linear, satisfies the Leibniz rule
+\begin{equation}
+    D(\alpha \wedge \beta) = (D\alpha) \wedge \beta + (-1)^p \alpha \wedge (D\beta),
+\end{equation}
+for any fiber valued $p$-form $\alpha$ and fiber valued $q$-form $\beta$, and reduces to the usual covariant derivative $\nabla$ when acting on fiber valued $0$-forms.
+\end{mytheorem}
+
+
+%===============================================================================
+\subsection{Curvature forms \& Cartan structure equations}\todotag{To be written}
+%================================================================================
+
+
+\begin{mytheorem}[Structure constants of a tetrad frame]
+Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we can define its structure constants $C^i_{\quad jk}$ as the coefficients in the expansion
+\begin{equation}
+    d \theta^i = - \frac{1}{2} C^i_{\quad jk} \theta^j \wedge \theta^k.
+\end{equation}
+These structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
+Indeed, one can show that
+\begin{equation}
+    [e_j, e_k] = C^i_{\quad jk} e_i.
+\end{equation}
+If the tetrad is induced by a coordinate system, then the structure constants vanish identically.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Connection 1-forms]
+Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we can define the connection 1-forms $\omega^i_{~j}$ as the set of 1-forms satisfying
+\begin{equation}
+    \nabla e_j = \omega^i_{~ j} \otimes e_i.
+\end{equation}
+In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
+\begin{equation}
+    \nabla X = (dX^i + \omega^i_{~ j}\,\, X^j) \otimes e_i.
+\end{equation}
+Under a change of tetrad frame $\{\theta^i\}_i \to \{\tilde{\theta}^i = A^i_{\quad j} \theta^j\}_i$, the connection 1-forms transform as
+\begin{equation}
+    \tilde{\omega}^i_{~ j} = (A^{-1})^i_{\quad k} \omega^k_{~ l} A^l_{\quad j} + (A^{-1})^i_{\quad k} d A^k_{\quad j}.
+\end{equation}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Curvature 2-forms]
+Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we can define the curvature 2-forms $\Omega^i_{j}$ as the set of 2-forms satisfying
+\begin{equation}
+    R(e_j) = \Omega^i_{j} \otimes e_i\,,
+\end{equation}
+where $R$ is the Riemann curvature operator.
+In particular, the Riemann curvature operator acting on a vector field $X = X^i e_i$ reads
+\begin{equation}
+    R(X) =  X^j\,\, \Omega^i_{~j}\otimes e_i.
+\end{equation}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Cartan structure equations]
+The torsion and curvature 2-forms satisfy the Cartan structure equations
+\begin{align}
+    T^i &= d \theta^i + \omega^i_{~ j} \wedge \theta^j,
+    \\
+    \Omega^i_{~ j} &= d \omega^i_{~ j} + \omega^i_{~ k} \wedge \omega^k_{~ j}.
+\end{align}
+In particular, in absence of torsion the first Cartan structure equation reduces to
+\begin{equation}
+    d \theta^i + \omega^i_{~ j} \wedge \theta^j = 0.
+\end{equation}
+\end{mytheorem}

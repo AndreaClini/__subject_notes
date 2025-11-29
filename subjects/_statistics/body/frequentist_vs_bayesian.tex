@@ -12,14 +12,17 @@
 %========================================================================
 %--------------------------------------------------------
 
+
 A frequentist treats parameters as fixed and uncertainty as arising from hypothetical repetitions of the data.
 Estimators are random variables, and properties such as unbiasedness or coverage are assessed over repeated samples.
+
 
 A Bayesian treats parameters as random, encoding prior beliefs through a distribution and updating them via Bayes' rule
 \begin{equation}
     \underbrace{p(\theta \mid x)}_{\text{posterior}} =\frac{p(x \mid \theta)\, p(\theta)}{p(x)}\,\propto\, p(x \mid \theta)\, \underbrace{p(\theta)}_{\text{prior}}.
 \end{equation}
 The posterior combines prior information with the likelihood and turns point estimates into full distributions.
+
 
 \begin{example}
 Consider flips of a biased coin with heads count $k$ out of $n$.
@@ -29,3 +32,20 @@ Consider flips of a biased coin with heads count $k$ out of $n$.
 \end{itemize}
 Both views often agree for large $n$, but diverge when data are scarce or priors encode substantial structure.
 \end{example}
+
+
+\begin{mytheorem}[Why cosmologists use Bayesian \& CERN people use frequentist statistics?]
+The answer is simple.
+Collider and other high-energy experiments can be repeated many times under controlled conditions, allowing frequentist methods to shine through repeated sampling properties.
+Cosmological observations are unique and non-repeatable, making Bayesian methods more suitable for incorporating prior knowledge and handling uncertainties in a coherent way.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Profiled vs marginalized likelihoods]
+Frequentist analyses often use profiled likelihood: nuisance parameters, and parameters of interest that we temporarily want to be inclusive for, are simply set to their best-fit values i.e. to their maximum-likelihood estimates.
+This is computationally simpler but can underestimate uncertainties by ignoring the full distribution of nuisance parameters.
+
+Bayesian analyses marginalize over nuisance parameters and PoI to be `ignored' by actually integrating over all their possible values weighted by their posterior distributions.
+This captures the full uncertainty but can be computationally intensive, especially in high-dimensional parameter spaces.
+Alternatively, we could also integrate them over the prior only, but this is less common and accurate.
+\end{mytheorem}
