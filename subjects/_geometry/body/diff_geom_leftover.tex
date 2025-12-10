@@ -104,10 +104,11 @@ A connection is a \emph{derivative} of degree $(0,1)$ on tensors, i.e. obeys lin
 \end{equation}
 that reduces to the usual directional derivative when acting on function.
 It is completely determined by its action on functions and vector fields, or equivalently on functions and 1-forms.
-In particular, one defines the Christoffel symbols $\Gamma^{\rho}_{\mu \nu}$ with respect to a coordinate basis as
+In particular, one defines the \textbf{Christoffel symbols} $\Gamma^{\rho}_{\mu \nu}$ with respect to a coordinate basis as
 \begin{equation}
     \nabla_{\partial_\mu} \partial_\nu = \Gamma^{\rho}_{\mu \nu} \partial_\rho.
 \end{equation}
+For the interpretation of the Christoffel symbols, see the discussion in \todotag{add ref to section}
 By the Leibniz rule, the general action on a $(h,k)$-tensor field $T$ reads
 \begin{equation}\label{eq:connection_on_tensor}
     \nabla_{\partial_\mu} T^{\nu_1 \dots \nu_h}_{ \rho_1 \dots \rho_k} 
@@ -139,6 +140,16 @@ As expected, we obtain back the covariant derivative gives back the original exp
 \end{equation}
 where we use that \eqref{eq:connection_on_tensor} depends only on the values of $S$ along the curve whose tangent at $p$ is $\dot{\gamma}(t)$.
 \end{mytheorem}
+
+
+
+%========================================================
+\subsection{The total covariant exterior derivative}
+%=========================================================
+
+See the sec
+
+
 
 
 
@@ -505,7 +516,7 @@ This theorem has extensions to more general \emph{homotopically trivial} subsets
 %-------------------------------------------------------------------------
 
 
-\begin{mytheorem}[Torsion measure the nonclosure of parallelograms]
+\begin{mytheorem}[Torsion measures the nonclosure of parallelograms]\todotag{Insert pic.}
 Consider a manifold \(M\) with an affine connection \(\nabla\).
 Let \(X,Y\) be two vector fields on \(M\).
 Construct the parallelogram starting from a point \(p \in M\) by first following the flow of \(X\) for a parameter distance \(\epsilon\), then the flow of \(Y\) for a parameter distance \(\epsilon\), then the flow of \(-X\) for a parameter distance \(\epsilon\), and finally the flow of \(-Y\) for a parameter distance \(\epsilon\).
@@ -534,19 +545,43 @@ we see that indeed $T_{\mu,\nu}^{\quad \rho} = 2 \Gamma^{\rho}_{[\mu \nu]}$ tran
 
 
 \begin{mytheorem}[Torsion \& the equivalence principle]
-The equivalence principle demands torsion to vanish.
-Indeed, if we require that at any point there exists a local freely falling frame where the connection coefficients vanish, then the torsion must vanish as well.
-Since torsion is a tensor, if it vanishes in one cohordinate system, it must vanish in all.
-In fact, the vanishing ot torsion not only is needed, but is equivalent to the existence of such local freely falling frames as we next show.
+The equivalence principle is \emph{completely equivalent} to the vanishing of torsion.
+Indeed, the equivalence principle states that at any point there exists a \emph{local freely falling frame}, i.e. a frame where the Christoffel symbols vanish at that point.
+Physically, we demand the geodesic equation reduce to a straight line
+\begin{align}
+    \nabla_{\dot{x}}\dot{x} = \frac{d^2 x^{\sigma}}{d \lambda^2} + \Gamma^{\sigma}_{\mu \nu} \frac{d x^{\mu}}{d \lambda} \frac{d x^{\nu}}{d \lambda} = 0
+    \quad \xrightarrow[\text{local free fall at $p$}]{} \quad
+    \frac{d^2 x^{\sigma}}{d \lambda^2}_{\mid p} = 0.
+\end{align} 
+Imposing this holds for any choice of initial velocity \(\frac{d x^{\mu}}{d \lambda}_{\mid p}\) implies the symmetric part $\Gamma_{(\mu\nu)}^\sigma=0$ at \(p\).
+
+Note that this seems to leave room for torsion--i.e. for nonvanishing antisymmetric part $\Gamma_{[\mu\nu]}^\sigma$.
+However, the equivalence principle actually demands \emph{any} mechanical experiment reduce to the special relativistic one in such local freely falling frames.
+In particular, it requires that in absence of forces the angular momentum $L$ of spinning bodies stays constant, i.e. it is parallely transported via the connection.
+That is 
+\begin{align}
+    \nabla_{\dot{x}}L = \frac{d L^\sigma}{d \lambda} + \Gamma^{\sigma}_{\mu \nu} \frac{d x^\mu}{d \lambda} L^\nu = 0
+    \quad \xrightarrow[\text{local free fall at $p$}]{} \quad
+    \frac{d L^\sigma}{d \lambda}_{\mid p} = 0.
+\end{align}
+Since both vectors $L=L^\sigma \partial_\sigma$ and $x=x^\sigma \partial_\sigma$ are arbitrary at \(p\), all of $\Gamma_{\mu\nu}^\sigma$ must vanish at \(p\).
+
+In fact, as we mentioned, the vanishing ot torsion not only is needed, but is completely \emph{equivalent} to the existence of such local freely falling frames as we next show.
 \end{mytheorem}
 
 
 \begin{theorem}
 Let \(M\) be a manifold with an affine connection \(\nabla\).
-Then, the torsion of \(\nabla\) vanishes if and only if for any point \(p \in M\) there exists a local coordinate system \(\{x^{\mu}\}\) around \(p\) such that the connection coefficients vanish at \(p\), i.e. \(\Gamma^{\rho}_{\mu \nu} (p) = 0\).
+Then, the torsion of \(\nabla\) vanishes if and only if for any point \(p \in M\) there exists a local coordinate system \(\{x^{\mu}\}\) around \(p\) such that the connection coefficients vanish \(\Gamma^{\rho}_{\mu \nu} (p) = 0\) at $p$.
 \end{theorem}
 \begin{proof}
-Very simple exercise.
+The torsion is a tensor, so if it vanishes in one frame it vanishes in all frames and is thus zero.
+Conversely, Riemann normal coordinates--i.e. coordinates obtained via the exponential map at \(p\)--always exist and by construction they are such that the symmetric part $\Gamma^{\rho}_{(\mu \nu)}(p)=0$ vanishes at this point.
+Indeed, in such cohordinates stratight lines $\lambda\mapsto \exp(\lambda v)$ are mapped to geodesics through $p$ in $M$ 
+\begin{equation}
+    \graycancel{\frac{d^2}{d \lambda^2} (\lambda v^\sigma)}+ \Gamma^{\sigma}_{\mu \nu} v^\mu v^\nu = 0.
+\end{equation}
+Since $v\in T_pM$ is arbitrary, this implies $\Gamma^{\sigma}_{(\mu \nu)}(p)=0$.
 \end{proof}
 
 
@@ -555,34 +590,34 @@ If we want to quantize gravity, it is wise and natural to allow for some nonzero
 Indeed, in quantum mechanics all quantities are subject to quantum fluctuations.
 Therefore, if the metric is quantum fluctuating, it might well be the case that it explores also configurations with nonzero torsion.
 
-Indeed, we have several examples where quantum fuctuations violate classical constraints.
-An example is quantum tunnelling, particles can cross classically forbidden regions.
-
+In fact, we have several examples where quantum fuctuations violate classical constraints.
+An example is quantum tunnelling, where  particles can cross classically forbidden regions.
 Another one is the nonvanishing of correlators between spacelike separated operators in quantum field theory, violating classical causality.
 In this second case, the `rules' of classical general relativity are restored by the fact that these acausal correlators are exponentially suppressed at scales larger than the Compton wavelength of the particles involved.
 Furthermore, the analogous contributions from particles and antiparticles cancel each other in the actually observable correlator.
 \end{mytheorem}
 
 
-\begin{mytheorem}[The Levi-Civita metric connection.]
-Given a pseudoriemannian manifold \((M,g)\), there exists a unique connection \(\nabla\) that is both torsion-free and metric-compatible, i.e. 
+\begin{mytheorem}[The Levi-Civita torsion-fixed metric connection.]
+Given a pseudoriemannian manifold \((M,g)\) and a $(1,2)$-tensor $T$ antisymmetric in the lower indices, there exists a unique connection \(\nabla\) that is metric-compatible and has torsion \(T\), i.e. 
 \begin{equation}
-    \nabla g = 0, \quad T_\nabla = 0.
+    \nabla g = 0,  \qquad T_\nabla(X,Y):=\nabla_XY-\nabla_YX-[X,Y]\equiv T(X,Y).
 \end{equation}
-The Christoffel symbols are uniquely determined by the metric as
+The (anti)-symmetric parts $\Gamma_{\mu\nu}^\rho=\Gamma^\rho_{(\mu\nu)}+\Gamma^\rho_{[\mu\nu]}$ of the Christoffel symbols are uniquely determined by 
 \begin{equation}\label{eq:levi_civita_christoffel_symbols}
-    \Gamma^{\rho}_{\mu \nu} = \frac{1}{2} g^{\rho \sigma} \left( \partial_{\mu} g_{\nu \sigma} + \partial_{\nu} g_{\mu \sigma} - \partial_{\sigma} g_{\mu \nu} \right).
+    \Gamma^\rho_{(\mu\nu)}= \frac{1}{2} g^{\rho \sigma} \left( \partial_{\mu} g_{\nu \sigma} + \partial_{\nu} g_{\mu \sigma} - \partial_{\sigma} g_{\mu \nu} \right), \qquad 
+    \Gamma^\rho_{[\mu\nu]}= T_{\mu \nu}^{\rho}.
 \end{equation}
 %
-The \textbf{contraction of the Christoffel symbols} of the Levi-Civita connection satisfy the identity
+The \textbf{contraction of the (symmetrized) Christoffel symbols} of the Levi-Civita connection satisfy the identity
 \begin{equation}\label{eq:metric_christoffel_contraction_identity}
-    \Gamma^{\mu}_{\mu \nu} = \frac{1}{\sqrt{|g|}} \partial_{\nu} \sqrt{|g|}.
+    \Gamma^{\mu}_{(\mu \nu)} = \frac{1}{\sqrt{|g|}} \partial_{\nu} \sqrt{|g|}.
 \end{equation}   
 \end{mytheorem}
 \begin{proof}
 From the Levi-Civita formula \eqref{eq:levi_civita_christoffel_symbols} we have
 \begin{equation}
-    \Gamma^{\mu}_{\mu \nu} = \frac{1}{2} g^{\mu \sigma} \left( \partial_{\mu} g_{\nu \sigma} + \partial_{\nu} g_{\mu \sigma} - \partial_{\sigma} g_{\mu \nu} \right) = \frac{1}{2} g^{\mu \sigma} \partial_{\nu} g_{\mu \sigma},
+    \Gamma^{\mu}_{(\mu \nu)} = \frac{1}{2} g^{\mu \sigma} \left( \partial_{\mu} g_{\nu \sigma} + \partial_{\nu} g_{\mu \sigma} - \partial_{\sigma} g_{\mu \nu} \right) = \frac{1}{2} g^{\mu \sigma} \partial_{\nu} g_{\mu \sigma},
 \end{equation}
 where two terms cancel due to the symmetry of \(g_{\mu \nu}\).
 Differentiating the determinant of the metric, 
@@ -590,10 +625,33 @@ Differentiating the determinant of the metric,
 \begin{aligned}
     \partial_{\nu} \sqrt{|g|} &= \frac{1}{2 \sqrt{|g|}} \text{sign}(g) \det(g_{\mu \nu}) \, \text{Tr}\big(g^{\alpha \beta} \partial_{\nu} g_{\beta \gamma}\big)
     = \frac{1}{2} \sqrt{|g|}\,\, g^{\alpha \beta} \partial_{\nu} g_{\beta \alpha}
-    = \sqrt{|g|} \,\,\Gamma^{\mu}_{\mu \nu}.
+    = \sqrt{|g|} \,\,\Gamma^{\mu}_{(\mu \nu)}.
 \end{aligned}
 \end{align}
 \end{proof}
+
+
+\begin{mytheorem}[Interpretation of the Christoffel symbols]
+In view of what discssed above, we can interpret the Christoffel symbols and their derivatives as follows.
+\begin{itemize}
+    \item The antisymmetric part of the Christoffel symbols-- the torsion--measures the presence of fifth forces fields that violate the equivalence principle i.e. beyond standard gravity.
+    Indeed, we showed that nonzero torsion is equivalent to the impossibility of finding a local freely falling frame.
+    This antisymmetric part can \emph{not} be absorbed into (the symmetric part of) the energy-momentum tensor, since this must indeed match the \emph{symmetric} Einstein tensor.
+    The presence of torsion thus genuinely corresponds to `extra forces' beyond standard gravity.
+    %
+    \item The symmetric part of the Christoffel symbols corresponds to `standard pseudoforces', like Coriolis force, that can be eliminated by going to a freely falling frame.
+    Notably, the choice of what to attribute to gravity and what to inertial forces is \emph{conventional} and depends on the choice of connection.
+    Indeed, the difference of two connections $\nablda,\tilde{\nablda}$ is indeed a $(1,2)$-tensor since Christoffel symbols transform as
+    \begin{align}
+        \Gamma^{\rho}_{\mu \nu}- \tilde{\Gamma}^{\rho}_{\mu \nu} = \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial x^{\prime \alpha}}{\partial x^{\mu}} \frac{\partial x^{\prime \beta}}{\partial x^{\nu}} \left(\Gamma^{\prime \sigma}_{\alpha \beta}-\tilde{\Gamma}^{\prime \sigma}_{\alpha \beta}\right) + \graycancel{ \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial^2 x^{\prime \sigma}}{\partial x^{\mu} \partial x^{\nu}}}.
+    \end{align}
+    If both of them are symmetric in the lower indices, their difference is also symmetric and can thus be interpreted as a field contributing to the energy-momentum tensor at the right
+    %
+    \item Finally, the derivatives of the Christoffel symbols measure curvature, that is tidal forces that cannot be eliminated even when going to a freely falling frame.
+    Indeed, a freely falling frame is `exactly freely falling' only at a single point, but as soon as we depart from it infinitesimal tidal forces start to act.
+    Curvature--i.e. essentially the Riemann tensor $R\sim \partial \Gamma$--therefore measures how much nearby freely falling frames deviate from each other.
+\end{itemize}
+\end{mytheorem}
 
 
 %-----------------------------------------------------------------------
@@ -602,31 +660,69 @@ Differentiating the determinant of the metric,
 %========================================================================
 %---------------------------------------------------------------------------
 
+
+%======================================================================
+\subsection{What even is curvature?}\todotag{To be written}
+%========================================================================
+
+
+\begin{mytheorem}[How to measure curvature? How to quantize garvity?]
 What is curvature? How do we even measure it? Intuitively, curvature is how much a space deviates from being flat.
 Here are some ways to quantify this. 
+In order to quantize gravity--i.e. curvature--it will be useful to have several notions of curvature at hand, since we do not know yet which one will be the most useful in a quantum theory of gravity and what object will have to be quantized.
 \begin{enumerate}
 \item \textbf{Violation of angle sum laws.}  For a triangle with angles \(\alpha,\beta,\gamma\) one has
 \[
 \alpha + \beta + \gamma \neq 180^\circ.
 \]
-Such a \emph{deficit angle} can be used to encode the shape.  (This idea is used in some approaches to quantum gravity.)
+Such a deficit angle can be used to encode the shape. This notion of curvature thus ultimately boils down to \emph{measuring angles and possibly quantize them}. (This idea is ideed used in some approaches to quantum gravity.)
+%
 \item \textbf{Violation of Pythagoras' law.}  For a triangle with side lengths \(a,b,c\) one has
 \[
 a^2 + b^2 \neq c^2.
 \]
-Thus one can encode the shape through metric distances, i.e. via a Riemannian metric \(g\) on \(M\).
-\item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\).
-\end{enumerate}
-
-\begin{mytheorem}[Measuring distances \& curvature with Green functions]
-The n-point correlators do know about the geometry of the underlying manifold.
-Indeed, the 2-point correlator (Green function) of a free scalar field theory on a curved manifold \((M,g)\) satisfies
+In this case we \emph{encode the shape through metric distances}--i.e. via a Riemannian metric \(g\) on \(M\)--and we might \emph{quantize the metric} $g$ itself (as in canonical quantum gravity) or some functionals of it (as in loop quantum gravity).
+%
+\item \textbf{Tensorial definiton: Riemann curvature tensor or Gaussian curvature.} This is an umbrella term for the most common notion of curvature, where this is encoded in suitable tensors.
+The most common is the Riemann tensor $R$, but we might equivalently define it via other \emph{equivalent} tensorial means like the sectional curvature.
+We would then quantize a suitable expression of these?
+%
+\item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\), which we might then quantize somehow.
+%
+\item \textbf{Green functions of quantum fields.} Namely, n-point correlators of quantum fields do know about the geometry of the underlying manifold.
+For example, the 2-point function of a free scalar field theory on a curved manifold \((M,g)\) satisfies
 \begin{equation}
     (\Box_x + m^2) G(x,y) = - \frac{1}{\sqrt{|g|}} \delta^{(n)} (x-y),
 \end{equation}
 where \(\Box\) is the D'Alambert operator associated to the metric \(g\).
-From the knowledge of the Green function \(G(x,y)\) for all pairs of points \((x,y) \in M \times M\), one can reconstruct the metric \(g\) and therefore the curvature of the manifold.    
+From the knowledge of the Green function \(G(x,y)\) for all pairs of points \((x,y) \in M \times M\), one might try to reconstruct the metric \(g\) and thus the curvature of the manifold. 
+In doing so, quantization conditions on $g$ might emerge naturally from the quantum nature of the field theory itself.
+%
+\item \textbf{Spectral geometry.} The idea is that the spectrum of differential operators defined on a manifold \((M,g)\) encodes the geometry of the manifold itself.
+For example, the eigenvalues of the Laplace-D'Alambert operator \(\Box\) depend on the metric \(g\) and thus on the curvature of \((M,g)\).
+One might then try to quantize gravity by quantizing the spectrum of such operators. (cf. relevant section) 
+\end{enumerate}
 \end{mytheorem}
+
+
+\begin{mytheorem}[Sectional curvature]\todotag{Finish.}
+Sectional curvature is the simplest and most familiar notion of curvature one can define on a Riemannian manifold \((M,g)\).
+Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\) of the tangent space at \(p\), the sectional curvature \(K(\sigma)\) is defined in various equivalent ways.
+\begin{itemize}
+    \item \textbf{Gauss curvature.}  It is defined as the Gaussian curvature of the surface obtained by exponentiating \(\sigma\) via the exponential map at \(p\).
+    Namely, given the surface $S = \{\exp_p (v) \,|\, v \in \sigma \}$, we set
+    \begin{equation}
+        K(\sigma) := K_{Gauss} (S).
+    \end{equation}
+    \item \textbf{Riemann tensor.}  We define
+    \begin{equation}
+        K(\sigma) := \frac{R(u,v,v,u)}{||u||^2 ||v||^2 - (g(u,v))^2},
+    \end{equation}
+    where \(\{u,v\}\) is any basis of \(\sigma\).
+\end{itemize}
+\end{mytheorem}
+
+
 
 
 %=======================================================
@@ -684,10 +780,17 @@ That is, given a fibre bundle $E_F\to M$ with fibre $F$, a fiber valued $p$-form
 \begin{equation}
     \Lambda^p (M) \otimes E_F \to M.
 \end{equation}
-For example when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms.
+Given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
+\begin{equation}
+    \alpha = \alpha^a \otimes f_a,
+\end{equation}
+where $\alpha^a \in \Lambda^p (M)$ are ordinary differential $p$-forms.
+\smallskip
+
+For example, when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms.
 This notion generalizes all the structures we have seen so far.
 \begin{itemize}
-    \item A usual differential $p$-form is just a fiber valued $p$-form with trivial fiber $F = \mathbb{R}$.
+    \item Ordinary differential $p$-form are just fiber valued $p$-form with trivial fiber $F = \mathbb{R}$.
     \item An $(h,k)$-tensor field is just a fiber valued $0$-form with fiber $F = T^h_k M$.
 \end{itemize}
 
@@ -702,15 +805,25 @@ For example
 
 
 \begin{mytheorem}[Exterior covariant derivative]
-Given a fiber bundle $E_F \to M$ with fiber $F$ and an affine connection $\nabla$ on $M$, we can define the exterior covariant derivative $D$ acting on fiber valued $p$-forms as the unique map
+Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle $E_F\to M$, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
 \begin{equation}
-    D: \Lambda^p (M) \otimes E_F \to \Lambda^{p+1} (M) \otimes E_F
+    d_\nabla: \Lambda^\bullet (M) \otimes E_F \to \Lambda^{\bullet+1} (M) \otimes E_F
 \end{equation}
 that is linear, satisfies the Leibniz rule
 \begin{equation}
-    D(\alpha \wedge \beta) = (D\alpha) \wedge \beta + (-1)^p \alpha \wedge (D\beta),
+    d_\nabla(\alpha \wedge \beta) = (d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta),\qquad \alpha \in \Lambda^p (M) \otimes E_F, \beta \in \Lambda^q (M) \otimes E_F,
 \end{equation}
-for any fiber valued $p$-form $\alpha$ and fiber valued $q$-form $\beta$, and reduces to the usual covariant derivative $\nabla$ when acting on fiber valued $0$-forms.
+and reduces to the usual covariant derivative $\nabla$ when acting on fiber valued $0$-forms and the usual exterior derivative $d$ when acting on ordinary differential forms i.e. fiber valued forms with trivial fiber $F = \mathbb{R}$.
+
+Concretely, given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
+\begin{equation}
+    \alpha = \alpha^a \otimes f_a.
+\end{equation}
+The condition that $d_\nabla$ reduces to $\nabla$ on fiber valued $0$-forms implies and to the usual exterior derivative on forms with trivial fiber $F = \mathbb{R}$ then implies that the exterior covariant derivative acts as
+\begin{equation}
+    d_\nabla \alpha = d \alpha^a \otimes f_a + (-1)^p \alpha^a \wedge \nabla f_a,
+\end{equation}
+where note that $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$.
 \end{mytheorem}
 
 
