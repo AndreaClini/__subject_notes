@@ -6,32 +6,119 @@
 %=========================================================
 
 
+%---------------------------------------------------------
 %=========================================================
-\section{The rise of Quantum Mechanics} \todotag{To be written}
+\section{The rise and fall of Quantum Mechanics} \todotag{To be written}
 %=========================================================
+%----------------------------------------------------------
 
-%=========================================================
-\section{The fall of Quantum Mechanics \& the rise of QFT} \todotag{To be written}
-%=========================================================
 
-Many discoveries in the early 20th century showed that Quantum Mechanics (QM) alone was not sufficient to describe all physical phenomena.
+\begin{mytheorem}[The rise of Quantume Mechanics.] \todotag{Modify.}
+At the turn of the 20th century, several experimental observations challenged the classical understanding of physics and led to the development of Quantum Mechanics.
+Some of the key discoveries include:
+\begin{itemize}
+    \item \textbf{Blackbody Radiation.} Max Planck's solution to the ultraviolet catastrophe by introducing the concept of quantized energy levels.
+    \item \textbf{Photoelectric Effect.} Albert Einstein's explanation of the photoelectric effect, proposing that light consists of discrete packets of energy called photons.
+    \item \textbf{Atomic Spectra \& stability of matter.} Niels Bohr's model of the hydrogen atom, introducing quantized orbits for electrons, solved the problem of radiation by accelerated charges that would predict electrons to spiral down into the nucleus.
+    Ultimately, the solution was found in the uncertainty principle: as $\Delta x \Delta p \gtrsim \hbar$, as the electron gets closer to the nucleus, its momentum uncertainty increases, preventing it from collapsing into the nucleus.
+    \item \textbf{Wave-Particle Duality \& double-slit experiment.} Louis de Broglie's hypothesis that particles exhibit wave-like properties, leading to the development of wave mechanics by Erwin Schrödinger.
+    \item \textbf{Uncertainty Principle.} Heisenberg's formulation of the uncertainty principle, which states that certain pairs of physical properties cannot be simultaneously known to arbitrary precision.
+\end{itemize}
+\end{mytheorem}
 
+
+\begin{mytheorem}[The fall of Quantum Mechanics.] \todotag{Modify}
+Despite its successes, Quantum Mechanics soon after faced several challenges that highlighted its limitations and paved the way for the development of Quantum Field Theory.
+Some of the key issues include:
+\begin{itemize}
+    \item \textbf{Relativistic Incompatibility \& negative energies.} Quantum Mechanics, as originally formulated, was not compatible with the principles of special relativity.
+    Attempts to create a relativistic version of Quantum Mechanics, such as the Klein-Gordon and Dirac equations, led to difficulties in interpreting negative energy solutions and the need for a new framework.
+    \item \textbf{Particle Creation and Annihilation.} Quantum Mechanics treated particles as fixed entities, unable to account for processes where particles are created or destroyed, which are common in high-energy physics.
+    This limitation necessitated a theory that could handle variable particle numbers.
+    \item \textbf{Infinities and Renormalization.} Early attempts to apply Quantum Mechanics to electromagnetic interactions resulted in infinities in calculated quantities, such as the electron's self-energy.
+    The development of renormalization techniques was required to make sense of these infinities, but it indicated that a more fundamental theory was needed.
+    \item \textbf{Gauge Invariance and Interactions.} Quantum Mechanics struggled to incorporate gauge invariance, a fundamental symmetry underlying the interactions of fundamental forces.
+    The need for a framework that could naturally include gauge fields and their interactions led to the development of Quantum Field Theory.
+\end{itemize}
+\end{mytheorem}
+
+
+\begin{mytheorem}[The price of noncommutativity.]
+As we demand that observables are represented by noncommuting operators, we have to pay a price: such observable must be operators acting on some vector space $\mathcal{H}$--i.e. matrices--since standard numbers commute.
+Furthermore, taking the trace of the canonical commutation relations we have
+\begin{align}
+    [\hat{q}_i, \hat{p}_j] = i\hbar\delta_{ij} \Longrightarrow 0=\text{Tr}([\hat{q}_i, \hat{p}_j]) = i\hbar \text{Tr}(\delta_{ij}) = i \hbar \cdot \dim(\mathcal{H}).
+\end{align}
+The only way to resolve this absurdity is to have $\dim(\mathcal{H}) = \infty$ so that the trace is not well-defined and the above equality is meaningless.
+The take home is that such operators must act on an infinite-dimensional Hilbert space.
+Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\delta(x-y)$ which is even more ill-defined and infinite.
+
+Incidentally, note that this is not necessarily the case for all quantum systems: for instance, spin systems have a finite number of DoFs and can be described by finite-dimensional Hilbert spaces.
+The primary example is just the spin-$\frac{1}{2}$ system, whose Hilbert space is just $\mathbb{C}^2$ with Pauli matrices as operators obeying $[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k$.
+\end{mytheorem}
+
+
+\begin{mytheorem}[The idea of second quantization.]\todotag{finish}
+At some point people started wondering: in quantum meahcnics everything is subject to fluctuations, so why not the very number of particles themselves? That is to say, why not to promote the wave function to an opertor itself?
+\end{mytheorem}
+
+
+
+%-------------------------------------------------------------
 %=========================================================
 \section{The guiding theorems} \todotag{To be written}
 %=========================================================
+%--------------------------------------------------------------
 
-\begin{theorem}[\textbf{Heisenberg canonical quantization procedure.}]
-Take the classical phase space variables \(q_i, p_i\) i.e. the classical DoFs, satisfying the relevant Equations of Motions and  Poisson bracket relations
+
+\begin{mytheorem}[Heisenberg canonical quantization procedure.]
+Take the classical phase space variables \(q_i, p_i\) i.e. the classical DoFs, satisfying the relevant Equations of Motions and  Poisson bracket relations (possibly passing to the continuum limit $\delta_{ij} \to \delta(x-y)$)
 \[\{q_i, p_j\} = \delta_{ij}, \quad \{q_i, q_j\} = 0, \quad \{p_i, p_j\} = 0.\]
-Then, in the quantum theory, promote these variables to operators \(\hat{q}_i, \hat{p}_i\) acting on a Hilbert space \(\mathcal{H}\), satisfying the canonical commutation relations
+Then, in the quantum theory, promote these variables to operators \(\hat{q}_i, \hat{p}_i\) acting on a Hilbert space \(\mathcal{H}\), satisfying the canonical commutation relations (again possibly in the continuum limit)
 \[[\hat{q}_i, \hat{p}_j] = i\hbar \delta_{ij}, \quad [\hat{q}_i, \hat{q}_j] = 0, \quad [\hat{p}_i, \hat{p}_j] = 0.\]
-These operators are self-adjoint and obey the same equations of motion as their classical counterparts, but now in the operator formalism.
+These \em[h{operators are self-adjoint} and \emph{obey the same equations of motion as the classical counterparts}, but now in the operator formalism.
 Namely, they are obtained as
 \begin{equation}
-    \frac{d\hat{O}}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{O}] + \left(\frac{\partial \hat{O}}{\partial t}\right)_{\text{explicit}}.
+    \frac{d\hat{O}}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{O}] + \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}}.
 \end{equation}
 In particular, for the fundamental DoFs, we have
 \begin{align}
-    \frac{d\hat{q}_i}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{q}_i] \quad \frac{d\hat{p}_i}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{p}_i].
+    -i\hbar\frac{d\hat{q}_i}{dt} = [\hat{H}, \hat{q}_i] \quad -i\hbar\frac{d\hat{p}_i}{dt} = [\hat{H}, \hat{p}_i].
 \end{align}
-\end{theorem}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Heisenberg vs Schr\"odinger picture.]
+In Quantum Mechanics, there are two equivalent ways to describe the time evolution of a system.
+They are completely equivalent and related by a unitary transformation.
+\begin{itemize}
+    \item In the \emph{Heisenberg picture}, the operators evolve in time according to the Heisenberg equation of motion, while the state vectors remain constant.
+    \item In the \emph{Schr\"odinger picture}, the state vectors evolve in time according to the Schr\"odinger equation, while the operators remain constant.
+\end{itemize}
+In the Schr\"odinger picture states evolves in time as
+\begin{equation}
+    i\hbar \frac{d}{dt} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle.
+\end{equation}
+The Schr\"odinger picture is often more convenient for practical calculations, especially in time-dependent problems.
+
+On the other hand, the Heisenberg picture is particularly useful in Quantum Field Theory and in the study of symmetries and conservation laws.
+More importantly, it makes the connection with classical mechanics transparent via the canonical quantization procedure: the EoM are left unchanged, classical DoFs are promoted to operators, and Poisson brackets become commutators.
+In particular, it makes it easier to see how classical observables correspond to quantum operators and to recover the classical limit of quantum systems when $\hbar \to 0$.
+\end{mytheorem}
+
+
+
+%-------------------------------------------------------------
+%=========================================================
+\section{Further principles and general ideas (miscellaneous)} \todotag{To be written}
+%=========================================================
+%-------------------------------------------------------------
+
+
+\begin{mytheorem}[Spontaneous symmetry breaking \& anomalies.]
+In a nutshell, spontaneous symmetry breaking occurs when the underlying laws (Lagrangian or Hamiltonian) of a system possess a certain symmetry, but the ground state (vacuum state) of the system does not exhibit that symmetry.
+This phenomenon has profound implications in various areas of physics, including condensed matter physics and particle physics.
+
+Anomalies, on the other hand, refer to situations where a symmetry that is present at the classical level of a theory is broken when the theory is quantized--i.e. it is not even a symmetry of the quantized lagrangian/hamiltonian.
+Anomalies can have significant consequences, such as the violation of conservation laws associated with the broken symmetry.
+\end{mytheorem}
