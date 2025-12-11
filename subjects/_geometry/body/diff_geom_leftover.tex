@@ -188,8 +188,9 @@ In the third expression we explicitate the wedge product in terms of antisymmetr
 
 For differential forms (anti)-derivatives of degree $k\in \mathbb{Z}$ obeys the Leibniz rule in the form
 \begin{equation}
-    \delta: \Lambda^\bullet (M) \to \Lambda^{\bullet+k} (M), \qquad \delta (\alpha \wedge \beta) = (\delta \alpha) \wedge \beta + (\pm1)^{|\alpha||\beta|} \alpha \wedge (\delta \beta).
+    \delta: \Lambda^\bullet (M) \to \Lambda^{\bullet+k} (M), \qquad \delta (\alpha \wedge \beta) = (\delta \alpha) \wedge \beta + (\pm1)^{|\alpha|} \alpha \wedge (\delta \beta).
 \end{equation}
+Note the sign is well-defined since differential forms are graded-commutative, i.e. $\alpha \wedge \beta = (-1)^{|\alpha||\beta|} \beta \wedge \alpha$.
 
 \begin{mytheorem}[Lie derivative on differential forms]
 The Lie derivative is a well-behaved derivative of degree $(0,0)$ on differential forms, defined as the restriction of the usual Lie derivative on tensors.
@@ -641,7 +642,7 @@ In view of what discssed above, we can interpret the Christoffel symbols and the
     %
     \item The symmetric part of the Christoffel symbols corresponds to `standard pseudoforces', like Coriolis force, that can be eliminated by going to a freely falling frame.
     Notably, the choice of what to attribute to gravity and what to inertial forces is \emph{conventional} and depends on the choice of connection.
-    Indeed, the difference of two connections $\nablda,\tilde{\nablda}$ is indeed a $(1,2)$-tensor since Christoffel symbols transform as
+    Indeed, the difference of two connections $\nabla,\tilde{\nabla}$ is indeed a $(1,2)$-tensor since Christoffel symbols transform as
     \begin{align}
         \Gamma^{\rho}_{\mu \nu}- \tilde{\Gamma}^{\rho}_{\mu \nu} = \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial x^{\prime \alpha}}{\partial x^{\mu}} \frac{\partial x^{\prime \beta}}{\partial x^{\nu}} \left(\Gamma^{\prime \sigma}_{\alpha \beta}-\tilde{\Gamma}^{\prime \sigma}_{\alpha \beta}\right) + \graycancel{ \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial^2 x^{\prime \sigma}}{\partial x^{\mu} \partial x^{\nu}}}.
     \end{align}
@@ -805,7 +806,7 @@ For example
 
 
 \begin{mytheorem}[Exterior covariant derivative]
-Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle $E_F\to M$, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
+Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle with connection 1-forms $\omega^b_a$, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
 \begin{equation}
     d_\nabla: \Lambda^\bullet (M) \otimes E_F \to \Lambda^{\bullet+1} (M) \otimes E_F
 \end{equation}
@@ -817,13 +818,14 @@ and reduces to the usual covariant derivative $\nabla$ when acting on fiber valu
 
 Concretely, given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
 \begin{equation}
-    \alpha = \alpha^a \otimes f_a.
+    \alpha = f_a\otimes \alpha^a,
 \end{equation}
 The condition that $d_\nabla$ reduces to $\nabla$ on fiber valued $0$-forms implies and to the usual exterior derivative on forms with trivial fiber $F = \mathbb{R}$ then implies that the exterior covariant derivative acts as
 \begin{equation}
-    d_\nabla \alpha = d \alpha^a \otimes f_a + (-1)^p \alpha^a \wedge \nabla f_a,
+    d_\nabla \alpha = \nabla f_a \wedge \alpha^a + f_a \otimes d \alpha^a  
+    = f_a\otimes\left( \omega^a_{b} \wedge \alpha^b + d \alpha^a \right),
 \end{equation}
-where note that $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$.
+where note that $f_a$ is a fiber valued $0$-form and $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$.
 \end{mytheorem}
 
 
@@ -833,57 +835,108 @@ where note that $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto
 
 
 \begin{mytheorem}[Structure constants of a tetrad frame]
-Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we can define its structure constants $C^i_{\quad jk}$ as the coefficients in the expansion
+Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we can define its structure constants $C^i_{\, jk}$ as the coefficients in the expansion
 \begin{equation}
-    d \theta^i = - \frac{1}{2} C^i_{\quad jk} \theta^j \wedge \theta^k.
+    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k.
 \end{equation}
-These structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
-Indeed, one can show that
+The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
+Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
 \begin{equation}
-    [e_j, e_k] = C^i_{\quad jk} e_i.
+    [e_j, e_k] = C^i_{jk} e_i.
 \end{equation}
-If the tetrad is induced by a coordinate system, then the structure constants vanish identically.
+By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
+If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
 \end{mytheorem}
 
 
 \begin{mytheorem}[Connection 1-forms]
-Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we can define the connection 1-forms $\omega^i_{~j}$ as the set of 1-forms satisfying
+Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we define the $(1,0)$-tensor-valued connection 1-forms $\omega_j$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
 \begin{equation}
-    \nabla e_j = \omega^i_{~ j} \otimes e_i.
+     \nabla e_j=:\omega_j =:\omega^i_{\,j} \otimes e_i\,.
 \end{equation}
 In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
 \begin{equation}
-    \nabla X = (dX^i + \omega^i_{~ j}\,\, X^j) \otimes e_i.
+    \nabla X = (dX^i + \omega^i_{\, j}\,\, X^j) \otimes e_i.
 \end{equation}
-Under a change of tetrad frame $\{\theta^i\}_i \to \{\tilde{\theta}^i = A^i_{\quad j} \theta^j\}_i$, the connection 1-forms transform as
+Under a change of tetrad frame $\{\theta^i,\, e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
 \begin{equation}
-    \tilde{\omega}^i_{~ j} = (A^{-1})^i_{\quad k} \omega^k_{~ l} A^l_{\quad j} + (A^{-1})^i_{\quad k} d A^k_{\quad j}.
+    \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
 \end{equation}
 \end{mytheorem}
 
 
 \begin{mytheorem}[Curvature 2-forms]
-Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we can define the curvature 2-forms $\Omega^i_{j}$ as the set of 2-forms satisfying
+Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we define the $(1,0)$-tensor-valued curvature 2-forms $\Omega_j$ and $\R$-valued curvature 2-forms $\Omega^i_{\,j}$ as the set of 1-forms satisfying
 \begin{equation}
-    R(e_j) = \Omega^i_{j} \otimes e_i\,,
+    R(e_j) :=\Omega_j=: \Omega^i_{j} \otimes e_i\,,
 \end{equation}
 where $R$ is the Riemann curvature operator.
-In particular, the Riemann curvature operator acting on a vector field $X = X^i e_i$ reads
+In particular, the Riemann curvature operator acting on a vector field $X = X^j e_j$ reads
 \begin{equation}
-    R(X) =  X^j\,\, \Omega^i_{~j}\otimes e_i.
+    R(X) =  X^j\,\, \Omega^i_{\,j}\otimes e_i.
 \end{equation}
 \end{mytheorem}
 
 
-\begin{mytheorem}[Cartan structure equations]
-The torsion and curvature 2-forms satisfy the Cartan structure equations
+\begin{mytheorem}[Cartan structure equations]\todotag{finish}
+Given a tetrad frame $\{\theta^i,\, e_i\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta := \theta^i \otimes e_i.$
+The connection 1-forms, and the torsion and curvature 2-forms satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
 \begin{align}
-    T^i &= d \theta^i + \omega^i_{~ j} \wedge \theta^j,
+    T &= d_\nabla \theta = e_i \otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right) 
+    \quad \text{i.e.} \quad T^i = d \theta^i + \omega^i_{\, j} \wedge \theta^j,
     \\
-    \Omega^i_{~ j} &= d \omega^i_{~ j} + \omega^i_{~ k} \wedge \omega^k_{~ j}.
+    \Omega_{\, j} &= d_\nabla \omega_{\, j} = e_i \otimes \left(d \omega^i_{\, j} + \omega^i_{\,k} \wedge \omega^k_{\, j}\right) 
+    \quad\text{i.e.} \quad \Omega^i_{\, j} = d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}.
 \end{align}
 In particular, in absence of torsion the first Cartan structure equation reduces to
 \begin{equation}
-    d \theta^i + \omega^i_{~ j} \wedge \theta^j = 0.
+    d \theta^i + \omega^i_{\, j} \wedge \theta^j = 0.
 \end{equation}
 \end{mytheorem}
+\begin{proof}
+The second equalities follows since the exterior covariant derivative indeed acts as
+\begin{align}
+    d_\nabla \theta &= d_\nabla (e_i \otimes \theta^i) = e_i\otimes d \theta^i  +  \nabla e_i \wedge \theta^i = e_i\otimes (d \theta^i + \omega^i_{\, j} \wedge \theta^j) ,
+    \\
+    d_\nabla \omega_{\, j} &= d_\nabla (e_i\otimes \omega^i_{\, j} ) = e_i\otimes d \omega^i_{\, j}  + \nabla e_i \wedge \omega^i_{\, j} = e_i\otimes (d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}).
+\end{align}
+In turn, the first equalities are easily verified by direct computation using a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$, using the known expressions $T\sim \Gamma - \Gamma^T$ and $R\sim \partial \Gamma + \Gamma \Gamma$ for the torsion and Riemann tensor and the relations
+\begin{align}
+    \theta^\rho = dx^\rho,\quad d\theta^\rho = 0,\quad
+    \omega^\rho_{\, \nu} = \Gamma^\rho_{\mu \nu} dx^\mu,
+    \quad
+    d \omega^\rho_{\, \nu} = \partial_\sigma \Gamma^\rho_{\mu \nu} dx^\sigma \wedge dx^\mu,
+    \quad
+    \omega^\rho_{\, \sigma} \wedge \omega^\sigma_{\, \nu} = \Gamma^\rho_{\mu \sigma} \Gamma^\sigma_{\lambda \nu} dx^\mu \wedge dx^\lambda.
+\end{align}
+%
+\end{proof}
+
+
+\begin{mytheorem}[Bianchi identities revisited]\todotag{finish}
+The Bianchi identities can be concisely expressed in terms of the exterior covariant derivative $d_\nabla$ as
+\begin{align}
+    d_\nabla T &= \Omega_{\, j} \wedge \theta^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \theta^j,
+    \\
+    d_\nabla \Omega_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega^i_{\, j} = 0.
+\end{align}
+In particular, in absence of torsion the first Bianchi identity reduces to
+\begin{equation}
+    \Omega^i_{\, j} \wedge \theta^j = 0.
+\end{equation}
+\end{mytheorem}
+\begin{proof}
+The first identity follows from direct computation of the exterior covariant derivative of the torsion 2-form and the second Cartan equation above
+\begin{align}
+    d_\nabla T &= d_\nabla (d_\nabla \theta) = d_\nabla \left[e_i\otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right)\right]
+    \\
+    &=
+    e_i\otimes \left(\graycancel{d^2 \theta^i} + d\omega^i_{\, j} \wedge \theta^j \bluecancel{- \omega^i_{\, j} \wedge d\theta^j}  \right)
+    + e_i \omega^i_k\wedge \left(\bluecancel{d \theta^k} + \omega^k_{\, j} \wedge \theta^j \right) 
+    \\
+    &=
+    e_i \otimes \left( d\omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) \wedge \theta^j
+    \equiv \Omega_{\, j} \wedge \theta^j.
+\end{align}
+
+\end{proof}
