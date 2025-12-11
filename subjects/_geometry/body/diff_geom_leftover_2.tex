@@ -1,0 +1,110 @@
+% !TeX root = ../geometry_main.tex
+%==========================================================
+%=========================================================
+\chapter{Towards General Relativity}
+%=========================================================
+%=========================================================
+
+
+
+%-----------------------------------------------------------
+%=======================================================
+\section{Conservation laws}\todotag{To be written}
+%=======================================================
+%------------------------------------------------------------
+
+
+\begin{mytheorem}[What even are energy and mometum?]
+In flat spacetime physics we are used to notions like energy and momentum.
+To make sense of similar notions in curved spacetime, we first need to investigate what these quantities really are.
+Energy and momentum are the associated to symmetries of spacetime. 
+Rigorously, they are the Noether charges corresponding to time-translation and space-translation invariance of the laws of physics.
+In flat spacetime, the equations we write down typically respect these symmetries, and hence we have conservation of energy and momentum.
+
+In curved spacetime, even if we write down equations that do not explicitly depend on spacetime position, the curvature of spacetime itself can break these symmetries i.e. practically the metric $g_{\mu\nu}$ may depend on spacetime position.
+This means that in general curved spacetimes, we may not have global conservation of energy and momentum and in fact we may not even be able to define them properly.
+
+In any case, we will \emph{ientify} energy and momentum with the Noether charges associated to time-translation and space-translation invariance respectively, whenever these symmetries exist.
+In practice, whenever we have a timelike Killing vector field, we can define a conserved energy, and whenever we have spacelike Killing vector fields, we can define conserved momentum in that direction.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Killing vector field]\todotag{Finish}
+A Killing vector field $K$ is a vector field that generates an isometry of the metric, i.e. the Lie derivative of the metric along $K$ vanishes:
+\begin{align}
+    \mathcal{L}_K g = 0.
+\end{align}
+In components, this is equivalent to
+\begin{align}
+    \nabla_\mu K_\nu + \nabla_\nu K_\mu = 0.
+\end{align}
+
+How many Killing vector fields a spacetime has is a measure of its symmetries.
+The maximum number of linearly independent Killing vector fields in a $n$-dimensional spacetime is $n(n+1)/2$, which is achieved by maximally symmetric spacetimes like Minkowski, de Sitter and anti-de Sitter spacetimes.
+This number is intuitively clear: first, locally--i.e. in the tangent space--we have $n$ directions of translation symmetry and $n(n-1)/2$ directions of rotation symmetry; second, $n(n+1)/2$ is precisely the number of independent components of the metric tensor $g_{\mu\nu}$, so that exceeding this number would overconstrain the metric.
+\end{mytheorem}
+
+
+\begin{mytheorem}[The variation of a tensor is a tensor.]\todotag{move it}
+Indeed the vairation of a tensor $A^\bullet_\bullet$ is simply defined as 
+\begin{equation}
+    \delta A^\bullet_\bullet(x):= \frac{d A^\bullet_\bullet(x,\epsilon)}{d\epsilon}_{\mid \epsilon=0} \cdot \epsilon =\lim_{h\to0} \frac{A^\bullet_\bullet(x,h)-A^\bullet_\bullet(x,0)}{h} \cdot \epsilon,
+\end{equation}
+where $\epsilon\to A^\bullet_\bullet(x,\epsilon)$ parametrizes a family of tensors at the same point $x\in M$, so that we can take the usual Newton derivative.
+At each $|h|>0$ the ratio at the right-hand side is a tensor, being the difference and multiple of tensors, so that also the limit transforms as a tensor.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Energy-momentum tensor \& conservation laws] \todotag{Finish}
+The energy-momentum tensor $T^{\mu\nu}$ is a symmetric rank-2 tensor that encodes the density and flux of energy and momentum in spacetime.
+In flat spacetime we can define directly as the Noether current associated to invariance of the action under spacetime translations 
+\begin{align}
+    x^\mu &\to x^\mu + \epsilon^\mu,\qquad \phi_a(x) \to \phi_a(x) + S^a_b \phi_b(x)- \epsilon^\mu \partial_\mu \phi_a(x).
+\end{align}
+%
+In curved spacetime we do not have such symmetries in general, precisely because the nontrivial spacetime curvature $g_{\mu\nu}(x)$ might obstruct these symmetries.
+It is then intuitive that \emph{whatever we might identify with energy and momentum} should be very \emph{sensitive to variations of the metric} $g_{\mu\nu}$ since indeed a trivial metric $g_{\mu\nu}=\eta_{\mu\nu}$ would immediately furnish such conserved quantities.
+Namely we define the energy-momentum as the tensorial quantity identified in the variation of the matter action $S_\text{matter}$ for $g_{\mu\nu}\mapsto g_{\mu\nu} + \delta g_{\mu\nu}$\todotag{Fix}
+\begin{align}
+    \delta S_\text{matter} = \int \mathrm{d}^dx\,\sqrt{-g} \delta g^{\mu\nu} \bigg[\frac{\delta\mathcal{L}_{\text{matter}}}{\delta g^{\mu\nu}}-\bigg] =: -\frac{1}{2} \int \mathrm{d}^4 x \sqrt{-g}\,\ \delta g^{\mu\nu} T_{\mu\nu}.
+\end{align}
+This quantity is indeed a tensor since $\sqrt{|g|}\, \mathrm{d}^4 x $ is the volume form, $\delta g^{\mu\nu}$ is a tensor and the action is a scalar.
+The quantity $T_{\mu\nu}$ must then transform as tensor in order to keep $T_{\mu\nu} \delta g^{\mu\nu}$ a scalar.
+\smallskip
+
+The energy-momentum tensor obey the conservation equation
+\begin{align}
+    \nabla_\mu T^{\mu\nu} = 0,\qquad \nu=0,\ldots, n-1,
+\end{align}
+which is a consequence of diffeomorphism invariance of the matter action.
+It is crucial to stress this should \emph{not} be interpreted as a global conservation law for energy and momentum, since in general curved spacetimes we do not have global energy and momentum definitions.
+These $n$ equations are indeed just unavoidabe geometric consistency constraints that follows from demanding the action of the matter field be diffeomorphism invariant.
+Note that we have precisely $n$ equations, since all diffeomorphisms are generated by $n$ vector fields in $n$ dimensions.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Conserved quantities along Killing vector fields: point \& continuum distributions]\todotag{Finish}
+Consider a particle moving along a geodesic $x^\mu(\lambda)$ with $4$-momentum $p^\mu = m\,\mathrm{d}x^\mu/\mathrm{d}\lambda$.
+Note that $\lambda$ has energy-dimension $[E]^{-2}$.
+For massive particles (time-like geodesics)we simply take $\lambda=\tau/m$ where $\tau$ is the proper time along the worldline  $\partial_\tau x^\mu \partial_\tau x_\mu=-1$, while for massless particles-i.e. null geodesics $\partial_\lambda x^\mu \partial_\lambda x_\mu=0$--the parameter $\lambda$ is \emph{defined} so that the geodesic equation is obeyed.
+If $K^\mu$ is a Killing vector field, the following quantity is conserved along the geodesic
+\begin{align}
+    Q = K_\mu p^\mu, \qquad \frac{\mathrm{d}Q}{\mathrm{d}\lambda} = 0.
+\end{align}
+Similarly, for a continuum distribution of matter with stress-energy tensor $T^{\mu\nu}$, the following current is conserved
+\begin{align}
+    J^\mu = T^{\mu\nu} K_\nu,\qquad \nabla_\mu J^\mu = 0.
+\end{align}
+\end{mytheorem}
+\begin{proof}
+For the point like particle
+\begin{align}
+    \frac{\mathrm{d}}{\mathrm{d}\lambda}(K_\mu p^\mu) &= p^\nu \nabla_\nu (K_\mu p^\mu) = p^\nu (\nabla_\nu K_\mu) p^\mu + K_\mu\, p^\nu (\nabla_\nu p^\mu)
+     =\tfrac{1}{2}p^\mu p^\nu \underbrace{(\nabla_\nu K_\mu + \nabla_\mu K_\nu)}_{=0} + K_\mu\, \underbrace{p^\nu \nabla_\nu p^\mu}_{=0}= 0.
+\end{align}
+For the continuum distribution
+\begin{align}
+    \nabla_\mu J^\mu &= \nabla_\mu (T^{\mu\nu} K_\nu) = (\nabla_\mu T^{\mu\nu}) K_\nu + T^{\mu\nu} (\nabla_\mu K_\nu) = \underbrace{(\nabla_\mu T^{\mu\nu})}_{=0} K_\nu + \tfrac{1}{2} T^{\mu\nu} \underbrace{(\nabla_\mu K_\nu + \nabla_\nu K_\mu)}_{=0} = 0.
+\end{align}
+\end{proof}
+

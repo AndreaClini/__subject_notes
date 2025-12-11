@@ -383,6 +383,36 @@ where \(s\) is the signature of the metric \(g\) (i.e. the number of minus signs
 \medskip
 
 
+\begin{mytheorem}[The Maxwell equations in terms of differential forms \& Hodge dual]\todotag{Finish}
+Define the electromagnetic field strength 2-form \(F\) as
+\begin{equation}
+    F := \frac{1}{2} F_{\mu \nu} dx^{\mu} \wedge dx^{\nu}.
+\end{equation}
+Components of $F$ are related to the electric and magnetic fields as
+\begin{equation}
+    F_{\mu\nu} = \begin{pmatrix}
+    0 & -E_1 & -E_2 & -E_3 \\
+    E_1 & 0 & B_3 & -B_2 \\
+    E_2 & -B_3 & 0 & B_1 \\
+    E_3 & B_2 & -B_1 & 0
+    \end{pmatrix}.
+\end{equation}
+Given a current 1-form \(J\)
+\begin{equation}
+    J := J_{\mu} dx^{\mu},
+\end{equation}
+the Maxwell equations read
+\begin{equation}
+    dF = 0, \qquad \delta F = J \quad \text{or equivalently} \quad d \star F = \star J.
+\end{equation}
+The first equation encodes the homogeneous Maxwell equations (Faraday law \& no magnetic monopoles), while the second encodes the inhomogeneous ones (Gauss law \& Ampere-Maxwell law).
+Indeed the first equation \(dF=0\) implies the 2-form is closed and thus locally exact, i.e. there exists a 1-form $A$ identified with the electromagnetic potential such that
+\begin{equation}
+    F = dA,\qquad A = A_{\mu} dx^{\mu}.
+\end{equation}
+
+\end{mytheorem}
+
 \noindent
 \textbf{The Hodge scalar product on differential forms.} \todotag{Finish this}
 \\
@@ -398,6 +428,7 @@ where \(||\alpha||^2\) is the pointwise norm of \(\alpha\) induced by the metric
 Note that the signature of this scalar product depends on both the degree \(k\) of the forms and the signature of the metric \(g\).
 For example, on the subspace of 1-froms $\Lambda^1 (M)$, the Hodge product has the same signature as the metric \(g\) itself.
 \bigskip
+
 
 \noindent
 \textbf{The codifferential.}\todotag{Finish this}
