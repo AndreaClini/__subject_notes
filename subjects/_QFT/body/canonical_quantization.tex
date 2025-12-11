@@ -10,6 +10,71 @@
 \section{Canonical Quantization in flat spacetime}
 %=========================================================
 
+
+
+\begin{mytheorem}[Review of classical \& quantum harmonic oscillator]\todotag{Finish}
+The classical harmonic oscillator with mass $m$ and frequency $\omega$ is described by the Hamiltonian
+\begin{equation}
+    H = \frac{p^2}{2m} + \frac{1}{2} m \omega^2 q^2,
+\end{equation}
+where $q$ and $p$ are the canonical position and momentum variables, satisfying the Poisson bracket relation
+\begin{equation}
+    \{q, p\} = 1.
+\end{equation}
+Upon quantization, the canonical variables are promoted to operators $\hat{q}$ and $\hat{p}$ acting on a Hilbert space $\mathcal{H}$, satisfying the commutation relation
+\begin{equation}
+    [\hat{q}, \hat{p}] = i \hbar.
+\end{equation}
+The Hamiltonian operator is given by
+\begin{equation}
+    \hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} m \omega^2 \hat{q}^2.
+\end{equation}
+The energy eigenvalues of the quantum harmonic oscillator are
+\begin{equation}
+    E_n = \hbar \omega \left( n + \frac{1}{2} \right), \quad n = 0, 1, 2, \ldots
+\end{equation}
+It is crucial to understand how the frequency of the oscillators determines the likelyhood of finding the system at a give elongation--i.e. amplitude--from equilibrium.
+Indeed, all wave functions are proportional to a Gaussian factor, multiplied by suitable Hermite polynomials,
+\begin{align}
+    \psi_n(q) &\propto e^{-\frac{m \omega}{2 \hbar} q^2}.
+\end{align}
+The crucial point is that the smaller the frequency $\omega$, the wider the Gaussian, and thus the larger the likelyhood of finding the oscillator at large elongations from equilibrium.
+This is something already familiar from Electrodynamics: it is very unlikely to find high-frequency electromagnetic waves with large amplitudes, whereas low-frequency waves can easily have large amplitudes.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Free Klein-Gordon field as waves on a lake \& Fourier modes as decoupled harmonic oscillators]
+\todotag{insert image of lake \& fourier modes}
+Under any point of view, we should see the classical Klein-Gordon field as a collection of decoupled harmonic oscillators, one per each Fourier mode.
+In this sense, it is completely analogous to the waves on a lake, which can be decomposed into independent Fourier modes, each oscillating with its own frequency.
+\end{mytheorem}
+
+\begin{mytheorem}[Probing the Klein-Gordon field with a cork] \todotag{write}
+\todotag{Insert image}
+How would you probe the waves on a lake? A good idea is to use a cork floating on the water surface.
+The cork moves up and down following the local height of the water surface, thus providing a direct measurement of the wave amplitude at that point.
+Analogously, to probe the Klein-Gordon field, we can use a point-like detector that measures the field value at a specific spacetime point.
+This detector interacts with the field, allowing us to extract information about the field's behavior and dynamics.
+The cork would now be an atom or another suitable quantum system that can be acted upon by the field.
+\end{mytheorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{mytheorem}[Canonical quantization of the Klein-Gordon field]
 A real scalar field $\phi(x)$ obeys the Klein-Gordon equation
 \begin{equation}
     (\partial_{\mu} \partial^{\mu} + m^2) \phi(x) = 0.
@@ -41,3 +106,5 @@ In fact, the two issues are essentially related.
 We can fix them by explicitly rewriting $\phi_k$ as linear combinations of \emph{physical} self-adjoint harmonic oscillators.
 Alternatively, we can directly pass to creation and annihilation operators.
 \todotag{Write the two approaches in detail.}
+    
+\end{mytheorem}

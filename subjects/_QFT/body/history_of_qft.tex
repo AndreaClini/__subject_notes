@@ -64,6 +64,50 @@ At some point people started wondering: in quantum meahcnics everything is subje
 
 
 
+\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is always the answer.] \todotag{Modify}
+Several attempts were made to formulate a relativistic version of the Schr\"odinger equation.
+The Schr\"odinger equation is first-order in time and second-order in space derivatives, and enforces a non-relativistic energy-momentum relation
+\begin{equation}
+    -i\partial_t\psi = -\frac{\hbar^2}{2m} \nabla^2 \psi \Longrightarrow E = \frac{p^2}{2m}.
+\end{equation}
+It was clear that in order to be relativistic, the equation must treat space and time on an equal footing.
+Several approaches were attempted, ultimately depending on the spin of the particle considered.
+\begin{itemize}
+    \item \textbf{Klein-Gordon Equation.} For spin-0 particles, the Klein-Gordon equation was proposed:
+    \begin{equation}
+        (\partial_{\mu} \partial^{\mu} + m^2) \phi(x) = 0,
+    \end{equation}
+    which is second-order in both time and space derivatives and respects the relativistic energy-momentum relation \(E^2 = p^2 + m^2\).
+    However, it faced challenges in interpreting negative energy solutions and the associated probability density.
+    \item \textbf{Dirac Equation.} For spin-$\frac{1}{2}$ particles, Dirac proposed a 'square root' of the Klein-Gordon equation that would be first-order in both time and space derivatives:
+    \begin{equation}
+        (i\gamma^{\mu} \partial_{\mu} - m) \psi(x) = 0.
+    \end{equation}
+    In doing so, it was necessary to introduce $\gamma$-matrices to yield a Lorentz vector to be contracted with $\partial_{\mu}\psi$ to make the equation Lorentz invariant.
+    The Dirac equation can indeed be derived by seeking a first-order equation whose square reproduces the Klein-Gordon equation
+    \begin{align}
+        ia^\mu\partial_\mu\psi + b \psi = 0 &\Longrightarrow (ia^\mu\partial_\mu + b)^*(ia^\nu\partial_\nu + b)\psi = 0 \\
+        &\Longrightarrow (a^\mu a^\nu \partial_\mu \partial_\nu + i(b a^\mu-a^\mu b)\partial_\mu + b^2)\psi = 0.
+    \end{align}
+    Imposing that this equals the Klein-Gordon equation requires
+    \begin{align}
+        \{a^\mu, a^\nu\} = 2\eta^{\mu\nu}, \quad
+        a^\mu b - b a^\mu = 0, \quad
+        b^2= -m^2.
+    \end{align}
+    These relations cannot be satisfied by ordinary numbers, leading to the introduction of the $\gamma$-matrices.
+    The Dirac equation successfully incorporated spin and predicted the existence of antimatter, but similarly introduced complexities related to negative energy states.
+    \item For spin-1 particles, the Proca and Maxwell equation was developed--or better borrowed from classical electrodynamics--to describe massive and massless vector bosons respectively:
+    \begin{equation}
+        \partial_{\mu} F^{\mu\nu} + m^2 A^{\nu} = 0.
+    \end{equation}
+\end{itemize}
+All these equations ultimately obey the Klein-Gordon equation, as it should be since it encodes the relativistic energy-momentum relation \(E^2 = p^2 + m^2\) that all particles must satisfy.
+\end{mytheorem}
+
+
+
+
 %-------------------------------------------------------------
 %=========================================================
 \section{The guiding theorems} \todotag{To be written}
