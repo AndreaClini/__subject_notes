@@ -15,7 +15,7 @@ In this long chapter, we collect various random topics in differential geometry 
 %=========================================================
 %-----------------------------------------------------------------------
 
-There are infinitely many notions of derivatives on tensors.
+There are very many notions of derivatives on tensors.
 In general, a (anti)-derivative of degree $(h,k)$ on tensors is a map from a suitable subset $\mathcal{D}$ of the tensor bundle 
 \begin{equation}
     \delta: T^{\bullet}_{\bullet} (M)\subseteq \mathcal{D} \to T^{\bullet + h}_{\bullet + k} (M)
@@ -29,10 +29,20 @@ We call it \emph{anti}derivative if it changes sign when acting on the two facto
 For example, the exterior derivative $d$ is an antiderivative of degree $(0,1)$ on  differential forms, and the inner derivative $i_X$ along a vector field $X$ is an antiderivative of degree $(0,-1)$ on differential forms. 
 
 
-\noindent
-\textbf{Uniqueness theorem for derivatives on tensors.}\\
+\begin{mytheorem}[Uniqueness theorem for derivatives on tensors]
 An (anti)-derivative $\delta$ on tensors--i.e. a linear map and obeying Leibniz rule up to a possible minus sign-- is completely determined by its action on functions and vector fields, or equivalently on functions and 1-forms.
-\medskip
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[The variation of a tensor is a tensor.]\todotag{move it}
+Indeed the vairation of a tensor $A^\bullet_\bullet$ is simply defined as 
+\begin{equation}
+    \delta A^\bullet_\bullet(x):= \frac{d A^\bullet_\bullet(x,\epsilon)}{d\epsilon}_{\mid \epsilon=0} \cdot \epsilon =\lim_{h\to0} \frac{A^\bullet_\bullet(x,h)-A^\bullet_\bullet(x,0)}{h} \cdot \epsilon,
+\end{equation}
+where $\epsilon\to A^\bullet_\bullet(x,\epsilon)$ parametrizes a family of tensors at the same point $x\in M$, so that we can take the usual Newton derivative.
+At each $|h|>0$ the ratio at the right-hand side is a tensor, being the difference and multiple of tensors, so that also the limit transforms as a tensor.
+\end{mytheorem}
 
 
 %========================================================
@@ -350,76 +360,121 @@ Given a complex homolorphic function $f: \mathbb{C} \to \mathbb{C}$, both the re
 
 
 %========================================================
-\subsection{Hodge dual \& consequences} \todotag{To be written}
+\subsection{Hodge dual \& consequences} 
 %=========================================================
 
+\begin{mytheorem}[Hodge dual]
+%
+Given a pseudoriemannian manifold \((M^{(n)}, g)\), write the metric volume form as
+\begin{equation}
+    \Omega = \sqrt{|g|}dx^1 \wedge \cdots \wedge dx^n 
+    = \sqrt{|g|} \epsilon_{\alpha_1 \dots \alpha_n} dx^{\alpha_1} \otimes \cdots \otimes dx^{\alpha_n}
+    = \frac{1}{n!} \sqrt{|g|} \epsilon_{\mu_1 \dots \mu_n} dx^{\mu_1} \wedge \cdots \wedge dx^{\mu_n},
+\end{equation}
+where the first expression is \emph{not} summed over indices, while the latter two are, and $\epsilon_{\alpha_1 \dots \alpha_n}$ is the Levi-Civita totally antisymmetric \emph{symbol} $\epsilon_{1 2 \dots n} = +1$, not the tensor.
+
+The Hodge dual is the map
+\begin{align}
+    \star: \Lambda^\bullet (M) &\to \Lambda^{n-\bullet} (M) \quad \mid \quad \theta \mapsto \Omega_g(\theta^{\#}, \cdots),
+\end{align}
+where \(\theta^{\#}\) is the tensor of rank $(\bullet,0)$ obtained by raising all indices of $\theta$ with the metric.
+That is, transform a $k$-form into a $(k,0)$-tensor and then feed it to the first $k$ slots of the volume form to get a $(n-k)$ form.
+%
+Explicitly, using the indices bookkeeping \eqref{eq:indices_bookkeeping_differential_forms} the $\theta$ form reads
+{\small
+\begin{align}
+    \theta &= \theta_{j_1 \dots j_k} dx^{j_1} \wedge \cdots \wedge dx^{j_k} = \theta_{\mu_1 \dots \mu_k} dx^{\mu_1} \otimes \cdots \otimes dx^{\mu_k}\quad \Rightarrow \quad \theta^{\#} = g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} \partial_{\alpha_1}\otimes \cdots \otimes \partial_{\alpha_k}.
+\end{align}
+}
+The Hodge dual of the \(k\)-form \(\theta\) is then 
+\begin{align}
+    \star \theta &:= \Omega_g(\theta^{\#}, \cdots)
+    = \sqrt{|g|}\epsilon_{\beta_1\dots \beta_n} dx^{\beta_1} \otimes \cdots \otimes dx^{\beta_n} \left( g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} \partial_{\alpha_1}\otimes \partial_{\alpha_k}, \cdots \right)
+    \\
+    &= \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \otimes \cdots \otimes dx^{\beta_n}
+    \\
+    &= \frac{1}{(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} \theta^{\alpha_1 \dots \alpha_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}.
+\end{align}
+
 \noindent
-\textbf{The Hodge dual.} \todotag{Finish this}
-\\
-The Hodge dual is \emph{only} defined once we have a pseudoriemannian  metric g on a manifold \(M^{(n)}\). 
-Write the induced volume form \(\Omega\) as
-\begin{equation}
-    \Omega = \Omega_{1\dots n}dx^1 \wedge \cdots \wedge dx^n 
-    = \Omega_{\mu_1 \dots \mu_n} dx^{\mu_1} \otimes \cdots \otimes dx^{\mu_n}
-    = \frac{1}{n!} \Omega_{\mu_1 \dots \mu_n} dx^{\mu_1} \wedge \cdots \wedge dx^{\mu_n},
-\end{equation}
-where it is understood that the first expression is \emph{not} summed over indices, while the latter two are and  \(\Omega_{\mu_1 \dots \mu_n}\) is totally antisymmetric.
-Then, the Hodge dual of a \(k\)-form \(\alpha\) is the \((n-k)\)-form defined as 
-\begin{equation}
-    \star \alpha := \frac{1}{k!(n-k)!} \alpha_{\mu_1 \dots \mu_k} \Omega^{\mu_1 \dots \mu_k}_{\quad \quad \nu_{k+1} \dots \nu_n} dx^{\nu_{k+1}} \wedge \cdots \wedge dx^{\nu_n},
-\end{equation}
-where we raised the indices of \(\Omega\) using the inverse of the volume form, i.e.
-\begin{equation}
-    \Omega^{\mu_1 \dots \mu_n} := \frac{1}{\Omega_{1\dots n}} \varepsilon^{\mu_1 \dots \mu_n},
-\end{equation}
-with \(\varepsilon^{\mu_1 \dots \mu_n}\) the Levi-Civita symbol \questiontag{Check signs \& conventions}
-\smallskip
+The Hodge dual obeys the following important properties.\todotag{Check signs etc}
+\begin{itemize}
+    \item \textbf{Idempotent up to a sign.} For a metric \(g=(+1,\cdots,+1,-1,\cdots,-1)\) of signature \((n-s,s)\), and a $k$-form \(\alpha\)
+    \begin{align}
+        \star \star \alpha = (-1)^{k(n-k) + s} \alpha
+    \end{align}
+    % 
+    \item \textbf{Star of a wedge (degree additivity).}
+    For $\alpha\in\Omega^p$, $\beta\in\Omega^q$ with $p+q\le n$,
+    \begin{align}
+        \star(\alpha\wedge\beta)
+        =\iota_{\beta^\sharp}(\star\alpha)
+        =(-1)^{pq}\,\iota_{\alpha^\sharp}(\star\beta).
+    \end{align}
+    where it is understood that feeding a $q$-form with an $(\ell,0)$-tensor $\beta^\sharp$ means contracting the first $q$ slots of the form with the tensor and gives zero if $q<\ell$.
+    %
+    \item \textbf{Symmetry wrt $\wedge$ product.} For any two \(k\)-forms \(\alpha, \beta\) of the same degree
+    \begin{equation}
+        \alpha \wedge \star \beta = \beta \wedge \star \alpha = \langle \alpha, \beta \rangle_g \, \Omega_g,
+    \end{equation}
+    where \(\langle \alpha, \beta \rangle_g = g^{\mu_1 \nu_1} \cdots g^{\mu_k \nu_k} \alpha_{\mu_1 \dots \mu_k} \beta_{\nu_1 \dots \nu_k}\) is the pointwise scalar product induced by the metric \(g\) on \(k\)-forms.
+\end{itemize}
 
-One verifies the following important property of the Hodge dual:
-\begin{equation}
-    \star \star \alpha = (-1)^{k(n-k) + s} \alpha,
-\end{equation}
-where \(s\) is the signature of the metric \(g\) (i.e. the number of minus signs in the diagonalized form of \(g\)).
-\medskip
+\end{mytheorem}
 
 
-\begin{mytheorem}[The Maxwell equations in terms of differential forms \& Hodge dual]\todotag{Finish}
-Define the electromagnetic field strength 2-form \(F\) as
+
+
+
+\begin{mytheorem}[Example: Maxwell equations in terms of differential forms \& Hodge dual]
+In any dimension $n$, define the electromagnetic field strength 2-form \(F\) as
 \begin{equation}
     F := \frac{1}{2} F_{\mu \nu} dx^{\mu} \wedge dx^{\nu}.
 \end{equation}
-Components of $F$ are related to the electric and magnetic fields as
+In $4$-dimension the electric and magnetic fields are encoded in the components of $F$ as
 \begin{equation}
-    F_{\mu\nu} = \begin{pmatrix}
+    F_{\mu \nu} = \qquad F_{\mu\nu} = \begin{pmatrix}
     0 & -E_1 & -E_2 & -E_3 \\
     E_1 & 0 & B_3 & -B_2 \\
     E_2 & -B_3 & 0 & B_1 \\
     E_3 & B_2 & -B_1 & 0
     \end{pmatrix}.
 \end{equation}
-Given a current 1-form \(J\)
+%
+Given a current $n$-vector $J^\mu$, define the current $1$-form lowering the indices with the metric
 \begin{equation}
-    J := J_{\mu} dx^{\mu},
+    J := J_{\mu} dx^{\mu}.
 \end{equation}
-the Maxwell equations read
+One also defines the current $(n-1)$--form as its Hodge dual
+{\small
+\begin{align}
+    \star J &:= \Omega_g(J^\mu \partial_\mu,\cdots)= \sqrt{|g|}dx^0\wedge \cdots \wedge dx^{n-1} (J^\mu \partial_\mu,\cdots) 
+    = \sqrt{|g|}\,\epsilon_{\alpha_0\dots \alpha_{n-1}} dx^{\alpha_0} \otimes \cdots \otimes dx^{\alpha_{n-1}} (J^\mu \partial_\mu,\cdots)
+    \\
+    &=  \sqrt{|g|}\,\epsilon_{\alpha_0\dots \alpha_{n-1}} J^{\alpha_0}\, dx^{\alpha_1} \otimes \cdots \otimes dx^{\alpha_{n-1}} 
+    = \sqrt{|g|}\,\frac{1}{(n-1)!}\epsilon_{\alpha_0\dots \alpha_{n-1}} J^{\alpha_0}\, dx^{\alpha_1} \wedge \cdots \wedge dx^{\alpha_{n-1}}.
+\end{align}
+}
+%
+The Maxwell equations read
 \begin{equation}
     dF = 0, \qquad \delta F = J \quad \text{or equivalently} \quad d \star F = \star J.
 \end{equation}
 The first equation encodes the homogeneous Maxwell equations (Faraday law \& no magnetic monopoles), while the second encodes the inhomogeneous ones (Gauss law \& Ampere-Maxwell law).
-Indeed the first equation \(dF=0\) implies the 2-form is closed and thus locally exact, i.e. there exists a 1-form $A$ identified with the electromagnetic potential such that
+The first equation \(dF=0\) implies the 2-form is closed and thus locally exact, i.e. there exists a 1-form $A$ identified with the electromagnetic potential such that
 \begin{equation}
     F = dA,\qquad A = A_{\mu} dx^{\mu}.
 \end{equation}
-
+Moreover, it automatically implies invariance under gauge transformations $A_\mu\mapsto A_\mu + \partial_\mu a$.
 \end{mytheorem}
 
-\noindent
-\textbf{The Hodge scalar product on differential forms.} \todotag{Finish this}
-\\
-Given two \(k\)-forms \(\alpha, \beta\) on a pseudoriemannian manifold \((M,g)\), we define their Hodge product as the scalar product
+
+\begin{mytheorem}[The Hodge scalar product on differential forms.]\todotag{Finish this}
+Given two \(k\)-forms \(\alpha, \beta\) on a pseudoriemannian manifold \((M,g)\), their Hodge product scalar product is
 \begin{equation}
     \langle \alpha, \beta \rangle_{\mathrm{Hodge}} := \int_M \alpha \wedge \star \beta.
 \end{equation}
+It is indeed symmetric thanks to the Hodge dual property \(\star \star \beta = (-1)^{k(n-k)+s} \beta\) and the antisymmetry of the wedge product.
 In particular, when \(\alpha = \beta\), we have
 \begin{equation}
     \langle \alpha, \alpha \rangle_{\mathrm{Hodge}} = \int_M \alpha \wedge \star \alpha = \int_M ||\alpha||^2 \Omega,
@@ -427,7 +482,7 @@ In particular, when \(\alpha = \beta\), we have
 where \(||\alpha||^2\) is the pointwise norm of \(\alpha\) induced by the metric \(g\).
 Note that the signature of this scalar product depends on both the degree \(k\) of the forms and the signature of the metric \(g\).
 For example, on the subspace of 1-froms $\Lambda^1 (M)$, the Hodge product has the same signature as the metric \(g\) itself.
-\bigskip
+\end{mytheorem}
 
 
 \noindent
