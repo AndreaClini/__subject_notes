@@ -360,7 +360,7 @@ Given a complex homolorphic function $f: \mathbb{C} \to \mathbb{C}$, both the re
 
 
 %========================================================
-\subsection{Hodge dual \& consequences} 
+\subsection{Hodge dual \& friends} 
 %=========================================================
 
 \begin{mytheorem}[Hodge dual]
@@ -369,7 +369,7 @@ Given a pseudoriemannian manifold \((M^{(n)}, g)\), write the metric volume form
 \begin{equation}
     \Omega = \sqrt{|g|}dx^1 \wedge \cdots \wedge dx^n 
     = \sqrt{|g|} \epsilon_{\alpha_1 \dots \alpha_n} dx^{\alpha_1} \otimes \cdots \otimes dx^{\alpha_n}
-    = \frac{1}{n!} \sqrt{|g|} \epsilon_{\mu_1 \dots \mu_n} dx^{\mu_1} \wedge \cdots \wedge dx^{\mu_n},
+    = \frac{1}{n!} \sqrt{|g|} \epsilon_{\alpha_1 \dots \alpha_n} dx^{\alpha_1} \wedge \cdots \wedge dx^{\alpha_n},
 \end{equation}
 where the first expression is \emph{not} summed over indices, while the latter two are, and $\epsilon_{\alpha_1 \dots \alpha_n}$ is the Levi-Civita totally antisymmetric \emph{symbol} $\epsilon_{1 2 \dots n} = +1$, not the tensor.
 
@@ -380,7 +380,7 @@ The Hodge dual is the map
 where \(\theta^{\#}\) is the tensor of rank $(\bullet,0)$ obtained by raising all indices of $\theta$ with the metric.
 That is, transform a $k$-form into a $(k,0)$-tensor and then feed it to the first $k$ slots of the volume form to get a $(n-k)$ form.
 %
-Explicitly, using the indices bookkeeping \eqref{eq:indices_bookkeeping_differential_forms} the $\theta$ form reads
+Explicitly, with the index convention \eqref{eq:indices_bookkeeping_differential_forms} for {\small $j_1<\cdots<j_k$} ordered and {\small $\mu_1\cdots\mu_k$} arbitrary, the form $\theta$ is
 {\small
 \begin{align}
     \theta &= \theta_{j_1 \dots j_k} dx^{j_1} \wedge \cdots \wedge dx^{j_k} = \theta_{\mu_1 \dots \mu_k} dx^{\mu_1} \otimes \cdots \otimes dx^{\mu_k}\quad \Rightarrow \quad \theta^{\#} = g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} \partial_{\alpha_1}\otimes \cdots \otimes \partial_{\alpha_k}.
@@ -397,33 +397,98 @@ The Hodge dual of the \(k\)-form \(\theta\) is then
 \end{align}
 
 \noindent
-The Hodge dual obeys the following important properties.\todotag{Check signs etc}
+\todotag{Check signs etc}
+The Hodge dual obeys the following important properties.
 \begin{itemize}
-    \item \textbf{Idempotent up to a sign.} For a metric \(g=(+1,\cdots,+1,-1,\cdots,-1)\) of signature \((n-s,s)\), and a $k$-form \(\alpha\)
+    %
+    \item \textbf{Idempotent up to a sign.} For a metric {\small \(g=(+1\dots+1,-1\dots-1)\)} of signature {\small \((n-s,s)\)}, and any form \(\alpha\) we have
     \begin{align}
-        \star \star \alpha = (-1)^{k(n-k) + s} \alpha
+        \star \star \alpha = (-1)^{|\alpha|(n-|\alpha|) + s} \alpha
     \end{align}
+    %
+    \item \textbf{Symmetry wrt $\wedge$ product.} For any two \(k\)-forms \(\alpha, \beta\) of the same degree
+    \begin{equation}
+        \alpha \wedge \star \beta = \beta \wedge \star \alpha = \langle \alpha, \beta \rangle_g \, \cdot \Omega_g,\quad \text{where}\quad \langle \alpha, \beta \rangle_g = g^{\mu_1 \nu_1} \cdots g^{\mu_k \nu_k} \alpha_{\mu_1 \dots \mu_k} \beta_{\nu_1 \dots \nu_k}
+    \end{equation}
+    is the pointwise scalar product induced by the metric \(g\) on $(0,k)$-tensors, times the volume form.
     % 
     \item \textbf{Star of a wedge (degree additivity).}
-    For $\alpha\in\Omega^p$, $\beta\in\Omega^q$ with $p+q\le n$,
+    For any two form $\alpha\in\Omega^p$ and $\beta\in\Omega^q$
     \begin{align}
         \star(\alpha\wedge\beta)
         =\iota_{\beta^\sharp}(\star\alpha)
         =(-1)^{pq}\,\iota_{\alpha^\sharp}(\star\beta).
     \end{align}
-    where it is understood that feeding a $q$-form with an $(\ell,0)$-tensor $\beta^\sharp$ means contracting the first $q$ slots of the form with the tensor and gives zero if $q<\ell$.
+    The inner derivative $i_{\beta^{\#}}$ of a $j$-form with respect to the  $(\ell,0)$-tensor $\beta^\sharp$ means contracting the first $\ell$ slots of the form with the tensor, and gives zero if $\ell>j$. That is when $p+q>n$.
     %
-    \item \textbf{Symmetry wrt $\wedge$ product.} For any two \(k\)-forms \(\alpha, \beta\) of the same degree
-    \begin{equation}
-        \alpha \wedge \star \beta = \beta \wedge \star \alpha = \langle \alpha, \beta \rangle_g \, \Omega_g,
-    \end{equation}
-    where \(\langle \alpha, \beta \rangle_g = g^{\mu_1 \nu_1} \cdots g^{\mu_k \nu_k} \alpha_{\mu_1 \dots \mu_k} \beta_{\nu_1 \dots \nu_k}\) is the pointwise scalar product induced by the metric \(g\) on \(k\)-forms.
 \end{itemize}
 
 \end{mytheorem}
 
 
+\begin{mytheorem}[The Hodge scalar product on differential forms.\todotag{Finish this}]
+Given two \(k\)-forms \(\alpha, \beta\) on a pseudoriemannian manifold \((M,g)\), the Hodge scalar product is
+\begin{equation}
+    \langle \alpha, \beta \rangle_{\,\mathrm{Hodge}} := \int_M \alpha \wedge \star \beta
+    = \int_M \beta \wedge \star \alpha 
+    = \int_M \underbrace{\alpha_{\mu_1 \dots \mu_k}\, \beta_{\nu_1 \dots \nu_k} \,g^{\mu_1\nu_1} \dots g^{\mu_k \nu_k}}_{=\langle \alpha, \beta \rangle_g} \,\,\, \Omega_g\,.
+\end{equation}
+It is indeed \emph{real} and \emph{symmetric} thanks to the Hodge dual properties, and coincides with the metric contraction of the two forms integrated over the manifold via the volume form.
+In particular, when \(\alpha = \beta\)
+\begin{equation}
+    \langle \alpha, \alpha \rangle_{\mathrm{Hodge}} = \int_M \alpha \wedge \star \alpha = \int_M ||\alpha||^2 \,\Omega,
+\end{equation}
+where \(||\alpha||^2\) is the pointwise norm of \(\alpha\) induced by the metric \(g\).
+Note that the signature of this scalar product on $\Lambda^k(M)$ depends on both the degree \(k\) of the forms and the signature of the metric \(g\).
+For example, on the subspace of 1-froms $\Lambda^1 (M)$, the Hodge product has the same signature $(n-s,s)$ as the metric \(g\) itself.
+\end{mytheorem}
 
+
+\begin{mytheorem}[The codifferential. \todotag{Finish}]
+%
+The codifferential \(\delta\) is defined as the adjoint of the exterior derivative \(d\) with respect to the Hodge scalar product\footnote{Beware that $\delta$ is sometimes defined as \emph{minus} the adjoint of $d$ to make the D'Alambertian $\Box =\delta d+d\delta$ positive definite rather than negative in the Riemannian case. It is just a convention.}
+\begin{align}
+    \langle \delta \alpha, \beta \rangle_{\mathrm{Hodge}} &:= \langle \alpha, d \beta \rangle_{\mathrm{Hodge}} \quad \Rightarrow \quad \delta := (-1)^{\bullet} \star^{-1}d\,\star = (-1)^{n(\bullet-1)+s+1} \star d \,\star\,\,.
+\end{align}
+Indeed for any  $k$-form \(\alpha\) and $k\!-\!1$ form \(\beta\)
+\begin{align}
+    \langle \alpha, d\beta \rangle_{\mathrm{H}} 
+    &= \langle d \beta, \alpha \rangle_{\mathrm{H}}
+    = \int_M d \beta \wedge \star \alpha
+    = \graycancel{\int_M d(\beta \wedge \star \alpha)} - \int_M (-1)^{|\beta|} \beta \wedge d\star \alpha
+    \\
+    &=
+    \underbrace{(-1)^{|\beta|+1+(|\alpha|-1)(n-|\alpha|+1)+s}}_{=(-1)^{n(|\alpha|-1)+s}} \int_M  \beta \wedge (\star\star d\star \alpha)
+    \equiv
+    (-1)^{n(|\alpha|-1)+s+1} \big\langle\, \star d\,\star \alpha\,, \beta \big\rangle_{\mathrm{H}}.  
+\end{align}
+In a chart we have\todotag{Check formula}
+\begin{align}
+    (\delta \alpha)_{\mu_1 \dots \mu_{k-1}} 
+    &= - \nabla^{\nu} \alpha_{\nu \mu_1 \dots \mu_{k-1}} 
+    = - \frac{1}{\sqrt{|g|}} \partial_{\nu} \Big(\sqrt{|g|} g^{\nu \rho} \alpha_{\rho \mu_1 \dots \mu_{k-1}}\Big).
+\end{align}
+The codifferential is a linear map of degree \((0,-1)\)
+\begin{equation}
+    \delta: \Lambda^\bullet (M) \to \Lambda^{\bullet-1} (M),
+\end{equation}
+but it fails the Leibniz rule i.e. it does not respect the wedge product, so it is not an (anti)-derivative.
+
+
+\smallskip
+
+\noindent
+It obeys the fundamental properties.
+\begin{itemize}
+    \item \textbf{Nilpotency} \(\delta^2 = 0\), from nilpotency of $d$ and indempotency of $\star$ $\Rightarrow$ homology!
+    \item \textbf{Poincaré lemma.} Co-closed implies locally co-exact: \(\delta \alpha = 0 \Rightarrow \alpha = \delta \beta\).
+    \item \textbf{Adjointness} \(\langle \delta \alpha, \beta \rangle_{\mathrm{Hodge}} = \langle \alpha, d \beta \rangle_{\mathrm{Hodge}}\).
+    \item \textbf{Integration by parts} $\displaystyle \int_M d\alpha \wedge \star \beta = \int_M \alpha \wedge \star \delta \beta \quad $ for any \(k\) and $k\!-\!1$ form \(\alpha,\beta\).
+
+    \item \textbf{Relations with star} {$\quad \displaystyle\star \delta = (-1)^{\bullet} d \star \quad \text{and} \quad \delta \star = (-1)^{\bullet +1} \star d.$}
+\end{itemize}
+
+\end{mytheorem}
 
 
 \begin{mytheorem}[Example: Maxwell equations in terms of differential forms \& Hodge dual]
@@ -469,111 +534,81 @@ Moreover, it automatically implies invariance under gauge transformations $A_\mu
 \end{mytheorem}
 
 
-\begin{mytheorem}[The Hodge scalar product on differential forms.]\todotag{Finish this}
-Given two \(k\)-forms \(\alpha, \beta\) on a pseudoriemannian manifold \((M,g)\), their Hodge product scalar product is
-\begin{equation}
-    \langle \alpha, \beta \rangle_{\mathrm{Hodge}} := \int_M \alpha \wedge \star \beta.
-\end{equation}
-It is indeed symmetric thanks to the Hodge dual property \(\star \star \beta = (-1)^{k(n-k)+s} \beta\) and the antisymmetry of the wedge product.
-In particular, when \(\alpha = \beta\), we have
-\begin{equation}
-    \langle \alpha, \alpha \rangle_{\mathrm{Hodge}} = \int_M \alpha \wedge \star \alpha = \int_M ||\alpha||^2 \Omega,
-\end{equation}
-where \(||\alpha||^2\) is the pointwise norm of \(\alpha\) induced by the metric \(g\).
-Note that the signature of this scalar product depends on both the degree \(k\) of the forms and the signature of the metric \(g\).
-For example, on the subspace of 1-froms $\Lambda^1 (M)$, the Hodge product has the same signature as the metric \(g\) itself.
-\end{mytheorem}
 
 
-\noindent
-\textbf{The codifferential.}\todotag{Finish this}
-\\
-The codifferential \(\delta\) is defined on $k$-forms as
+\begin{mytheorem}[Laplace-de Rham-Hodge-D'Alambert operator\todotag{Finish}]
+%
+The Hodge--de Rham operator \(\Box\) is defined on all, possibly fiber valued, differential forms as
 \begin{equation}
-    \delta := (-1)^{n(k-1)+1} \star d \star.
+    \Box: \Lambda^\bullet(M) \otimes E_F \to \Lambda^\bullet(M) \otimes E_F, \qquad \Box := d \delta + \delta d \equiv (d + \delta)^2.
 \end{equation}
-It is an anti-derivative of degree \((0,-1)\) on differential forms i.e. it lowers the degree of a form by one and satisfies the Leibniz rule up to a minus sign.
+It preserves the degree of forms, but it does \emph{not} satisfy the Leibniz rule in any easy sense.
 \smallskip
 
-It obeys the fundamental nilpotency property
-\begin{equation}
-    \delta^2 = 0,
-\end{equation}
-just like the exterior derivative \(d\).
+It satisfies the following properties.
+\begin{itemize}
+    \item \textbf{Commutations.} $d \,\Box = \Box\, d,\quad \delta\, \Box = \Box\, \delta,\quad \star\, \Box = \Box\, \star$.
+    \item \textbf{Self-adjoint wrt Hodge product.} \(\langle \Box \alpha, \beta \rangle_{\mathrm{Hodge}} = \langle \alpha, \Box \beta \rangle_{\mathrm{Hodge}}\).
+    In the Riemannian case the Hodge product is positive definite, and $\Box$ is thus diagonalizable by the spectral theorem.
+    It has nonpositive spectrum $\text{Spec}(\Box)\subseteq (-\infty,0]$ (cf. below).
+\end{itemize}
 \smallskip
 
-Equivalently, the codifferential is defined as (minus) the adjoint of the exterior derivative with respect to the Hodge scalar product, i.e. for any \(k\)-form \(\alpha\) and \((k-1)\)-form \(\beta\), we have
-\begin{equation}
-    \langle d \beta, \alpha \rangle_{\mathrm{Hodge}} = \langle \beta, -\delta \alpha \rangle_{\mathrm{Hodge}}.
-\end{equation}
-\medskip
-The minus sign is a convention to accomodate the expression below for the Laplace-de Rham operator.
-\bigskip
-
-\noindent
-\textbf{Laplace-de Rham-D'Alambert operator.}\todotag{Finish this}
-\\
-The Laplace-de Rham-D'Alambert operator \(\Delta\) is defined on differential forms as
-\begin{equation}
-    \Delta := d \delta + \delta d.
-\end{equation}
-It is a derivative of degree \((0,0)\) on differential forms i.e. it preserves the degree of a form and satisfies the usual Leibniz rule.
-\smallskip
-
-Depending on the signature of the pseudoriemannian metric \(g\), it generalizes either the Laplacian (Riemannian case) or the D'Alambert operator (Lorentzian case) or anything in between (general pseudoriemannian case). 
-In the Lorentzian case it is often denote by \(\Box\).
-In the Riemannian case, it is positive semidefinite.
-In the Lorentzian case, it is hyperbolic.
-This can be easily seen in flat Riemannian or Minkowski space, passing to Fourier space.
+Depending on the signature of the metric \(g\), it generalizes either the Laplacian (Riemannian case), the D'Alambertian (Lorentzian case) or anything in between (general pseudoriemannian case). 
+In the Riemannian case it is an elliptic operator (positive semidefinite), while in the Lorentzian case it is hyperbolic.
+This is easily seen in flat Euclidean or Minkowski space, passing to Fourier space
 \begin{equation}
     p_E^2 = p_1^2 + p_2^2 + p_3^2 + \cdots \geq 0,\quad p_M^2 = p_0^2 - p_1^2 - p_2^2 - \cdots.
 \end{equation}
+\smallskip
 
-It satisfies the following properties:
-\begin{itemize}
-    \item $d \,\Box = \Box\, d$,
-    \item $\delta \,\Box = \Box\, \delta$,
-    \item $\Box$ is self-adjoint with respect to the Hodge scalar product.
-\end{itemize}
+In\todotag{Check formula} a chart, it acts on a $k$-form $\alpha$ as
+\begin{align}
+    (\Box \alpha)_{\mu_1 \dots \mu_k} 
+    =& - \nabla^{\nu} \nabla_{\nu} \alpha_{\mu_1 \dots \mu_k} + \sum_{i=1}^k (-1)^i R^{\rho}_{\ \mu_i} \alpha_{\mu_1 \dots \mu_{i-1} \rho \mu_{i+1} \dots \mu_k} 
+    \\
+    &  - 2 \sum_{1\leq i < j \leq k} (-1)^{i+j} R^{\rho}_{\,\mu_i \mu_j}{}^{\sigma} \alpha_{\mu_1 \dots \mu_{i-1} \rho \mu_{i+1} \dots \mu_{j-1} \sigma \mu_{j+1} \dots \mu_k},
+\end{align}
+
+In particular, on 0-forms i.e. functions it reduces to the usual Laplace-D'Alambert operator
+\begin{equation}
+    \Box f =  \nabla^{\nu} \nabla_{\nu} f.
+\end{equation}
+In fact, the Hodge operator could also  be defined as the \textbf{unique operator of degree $0$ on differential forms that reduces to the usual Laplacian/D'Alambert operator on functions and commutes with both \(d\) and \(\delta\).}
 \medskip
 
-In cohordinate form, on a \(k\)-form \(\alpha\), it reads
-\begin{equation}
-    (\Delta \alpha)_{\mu_1 \dots \mu_k} = - \nabla^{\nu} \nabla_{\nu} \alpha_{\mu_1 \dots \mu_k} + \sum_{i=1}^k (-1)^i R^{\nu}_{\quad \mu_i} \alpha_{\nu \mu_1 \dots \hat{\mu}_i \dots \mu_k} - 2 \sum_{1 \leq < p \le k} (-1)^{p+q} R^{\nu}_{\quad \mu_i \mu_j \mu_p} \alpha_{\nu \mu_1 \dots \hat{\mu}_i \dots \hat{\mu}_j \dots \mu_k},
-\end{equation}
-where hats denote omitted indices and \(R^{\rho}_{\quad \sigma \mu \nu}\) is the Riemann curvature tensor.
-In particular, on functions (0-forms) it reduces to the usual Laplacian/D'Alambert operator
-\begin{equation}
-    \Delta f = - \nabla^{\nu} \nabla_{\nu} f.
-\end{equation}
-\medskip
-
-The Laplace-D'Alambert operator can equivalently be understood as the square of the Dirac operator acting on differential forms, defined as
+The Hodge operator $\Box$ can also be understood as the \textbf{square of the Dirac operator} acting on differential forms, defined as
 \begin{equation}
     \slashed{D} := d + \delta.
 \end{equation}
-Indeed, one has
-\begin{equation}
-    \slashed{D}^2 = (d + \delta)^2 = d^2 + d \delta + \delta d + \delta^2 = d \delta + \delta d = \Delta,
-\end{equation}
-where we used the nilpotency of both \(d\) and \(\delta\).
-\medskip
+Indeed, from nilpotency of $\delta$ and $d$ we have $\slashed{D}^2 = (d + \delta)^2 = d^2 + d \delta + \delta d + \delta^2 = d \delta + \delta d = \Box$.
 
-Alternatively, the Laplace-D'Alambert operator can equivalently be defined as the unique derivative of degree \((0,0)\) on differential forms that reduces to the usual Laplacian/D'Alambert operator on functions and commutes with both \(d\) and \(\delta\).
+Finally, its action on 0-forms can be understood as the operator yielding the Euler-Lagrange equations for the action of a free scalar field \(\phi\).
+Indeed we have 
+\begin{equation}
+    S[\phi] =  \int_M\!\! \mathrm{d}^n x\, \sqrt{|g|}\,\tfrac{1}{2} \partial_\mu \phi \partial^\mu \phi\
+    = \int_M \tfrac{1}{2}  ||d\phi||^2 \Omega_g = \int_M \tfrac{1}{2} d\phi \wedge \star d\phi 
+    = \tfrac{1}{2}\langle d\phi, d\phi \rangle_{\mathrm{Hodge}}.
+\end{equation}
+Varying with respect to \(\phi\mapsto \phi +\varepsilon\), one finds
+\begin{equation}
+    \delta S[\phi] = \int_M d \varepsilon \wedge \star d\phi = \int_M \graycancel{d\left(\varepsilon \star d\phi\right)} - \varepsilon\,\, d \star d\phi \quad \Rightarrow \quad d \star d\,\,\phi  = 0.
+\end{equation}
+Equivalently, more abstractly,
+\begin{equation}
+    \delta S[\phi] = \delta \left(\tfrac{1}{2}\langle d\phi, d\phi \rangle_{\mathrm{Hodge}}\right)
+    = \langle d \phi, d \varepsilon \rangle_{\mathrm{Hodge}}
+    = \langle \delta d \phi, \varepsilon \rangle_{\mathrm{Hodge}} \quad \Rightarrow \quad \delta\, d\, \phi = 0.
+\end{equation}
+Since $\delta \simeq \star d\,\star$ and $\delta \phi=0$ for 0-forms, both expressions ultimately gives equation of motion  $\Box\, \phi = 0$.
+%
+\end{mytheorem}
 
-Finally, its action on 0-forms can be understood as the operator featuring in the Euler-Lagrange equations for the action functional
-\begin{equation}
-    S[\phi] = \frac{1}{2} \int_M d\phi \wedge \star d\phi = \frac{1}{2} \int_M ||d\phi||^2 \Omega = \frac{1}{2}\int_M \sqrt{|g|}\,\partial_\mu \phi \partial^\mu \phi\, d^n x,
-\end{equation}
-where \(\phi\) is a scalar field (0-form).
-Varying with respect to \(\phi\), one finds
-\begin{equation}
-    \delta S[\phi] = \int_M \delta \phi \, \star \Delta \phi,
-\end{equation}
-so that the Euler-Lagrange equations read
-\begin{equation}
-    \Delta \phi = 0.
-\end{equation}
+
+%========================================================
+\subsection{Spectral geometry} \todotag{To be written}
+%=========================================================
+
 
 
 %========================================================
@@ -704,9 +739,10 @@ The \textbf{contraction of the (symmetrized) Christoffel symbols} of the Levi-Ci
 \begin{proof}
 From the Levi-Civita formula \eqref{eq:levi_civita_christoffel_symbols} we have
 \begin{equation}
-    \Gamma^{\mu}_{(\mu \nu)} = \frac{1}{2} g^{\mu \sigma} \left( \partial_{\mu} g_{\nu \sigma} + \partial_{\nu} g_{\mu \sigma} - \partial_{\sigma} g_{\mu \nu} \right) = \frac{1}{2} g^{\mu \sigma} \partial_{\nu} g_{\mu \sigma},
+    \Gamma^{\mu}_{(\mu \nu)} = \frac{1}{2} g^{\mu \sigma} \left( \partial_{\mu} g_{\nu \sigma} + \partial_{\nu} g_{\mu \sigma} - \partial_{\sigma} g_{\mu \nu} \right)
+    = \frac{1}{2} g^{\mu \sigma} \partial_{\nu} g_{\mu \sigma} + \underbrace{\frac{1}{2} g^{\mu \sigma} \left( \partial_{\mu} g_{\nu \sigma} - \partial_{\sigma} g_{\mu \nu} \right)}_{=0},
 \end{equation}
-where two terms cancel due to the symmetry of \(g_{\mu \nu}\).
+where two terms cancel due to the symmetry of \(g^{\mu \sigma}\) and dummy indices.
 Differentiating the determinant of the metric, 
 \begin{align}
 \begin{aligned}
