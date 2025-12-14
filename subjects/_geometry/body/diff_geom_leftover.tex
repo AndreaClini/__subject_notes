@@ -854,15 +854,93 @@ Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\
 
 The Riemann curvature tensor is defined as the operator measuring the noncommutativity of covariant derivatives.
 
-\begin{mytheorem}[The Riemann tensor measures the noncommutativity of parallel transport in two directions]
+\begin{mytheorem}[Ricci identity: the Riemann tensor measures noncommutativity of parallel transport in two directions]\todotag{finish}
 If we neglect torsion the path obtained by first following the flow of a vector field \(X\) for infinitesimal distance \(\epsilon\), then the flow of a vector field \(Y\) for infinitesimal distance \(\epsilon\), then the flow of \(-X\) for infinitesimal distance \(\epsilon\), and finally the flow of \(-Y\) for infinitesimal distance \(\epsilon\), closes to leading order in \(\epsilon\).
 In presence of torsion, the parallelogram does not close, but the Riemann tensor retains its meaning as measuring the noncommutativity of covariant derivatives.
 \end{mytheorem}
 
-\begin{mytheorem}[The Riemann tensor is just a rotation matrix in disguise]
-     Indeed...
-
+\begin{mytheorem}[The Riemann tensor is just a rotation matrix in disguise\todotag{Finish}]
+For the sake of the interpretation, assume torsion vanishes, everything holds even if not.
+For fixed $X,Y\in \mathfrak{X}(M)$, the Riemann curvature tensor \(R(X,Y)\) is a linear map
+\begin{equation}
+    R(X,Y): T_p M \to T_p M \quad \mid Z\mapsto R(X,Y)Z,
+\end{equation}
+that returns the vector obtained by parallel transporting \(Z\) infinitesimally first in the $X$ direction and then in the $Y$ direction, and subtracting the vector obtained by doing the same but first in the $Y$ direction and then in the $X$ direction.
+This is nothing but an infinitesimal rotation of the vector \(Z\) around the infinitesimal parallelogram spanned by \(X\) and \(Y\).
+The same interpretation holds in presence of torsion, but the parallelogram does not close anymore and we have to correct for that.
+In this sense, at fixed $X$ and $Y$ the Riemann tensor is just a rotation matrix in disguise.
+%
 \end{mytheorem}
+
+
+
+
+\begin{mytheorem}[Symmetries of the Riemann tensor\todotag{Finish}]
+The Riemann curvature tensor \(R\) has the following symmetries.
+\begin{itemize}
+    \item \textbf{Antisymmetry in last two indices} (no need metric, even if torsion is present):
+    \begin{equation}
+        R(X,Y)(\cdot) = - R(Y,X)(\cdot) \quad \Longrightarrow \quad
+        R^\alpha_{\,\beta,\, \mu\nu} = - R^\alpha_{\,\beta,\, \nu\mu}.
+    \end{equation}
+    \item \textbf{Antisymmetry in first two lowered indices} (if metric compatible, \emph{even} if torsion is present):
+    \begin{equation}
+        g(R(X,Y)Z,W) = - g(R(X,Y)W,Z) \quad \Longrightarrow \quad
+        R_{\alpha \beta,\, \mu\nu} = - R_{\beta \alpha,\, \mu\nu}.
+    \end{equation}
+    \item \textbf{Symmetry under exchange of pairs of indices} (if metric compatible) \todotag{not sure if torsion is present}
+    \begin{equation}
+        R_{\alpha \beta,\, \mu\nu} = R_{\mu \nu,\, \alpha \beta}.
+    \end{equation}
+    \item \textbf{First Bianchi identity}
+    \begin{align}
+        R(X,Y)Z& + R(Y,Z)X + R(Z,X)Y = \nabla_X T(Y,Z) + \nabla_Y T(Z,X) + \nabla_Z T(X,Y) \\
+        & + T(T(X,Y),Z) + T(T(Y,Z),X) + T(T(Z,X),Y).
+    \end{align}
+    In components, this reads
+    \begin{equation}       
+        R^\alpha_{\,\beta,\, \mu\nu} + R^\alpha_{\,\mu,\, \nu\beta} + R^\alpha_{\,\nu,\, \beta\mu} = \dots
+    \end{equation}
+    \item \textbf{Second Bianchi identity}
+    \begin{equation}
+        \nabla_X R(Y,Z) + \nabla_Y R(Z,X) + \nabla_Z R(X,Y) = \dots
+    \end{equation}
+    In components, this reads
+    \begin{equation}
+        \nabla_\lambda R^\alpha_{\,\beta,\, \mu\nu} + \nabla_\mu R^\alpha_{\,\beta,\, \nu\lambda} + \nabla_\nu R^\alpha_{\,\beta,\, \lambda\mu} = \dots
+    \end{equation}
+\end{itemize}
+    
+\end{mytheorem}
+\begin{proof}
+The first identity just follows from the definition of the Riemann tensor 
+\begin{align}
+    R(X,Y) &= \nabla_X \nabla_Y - \nabla_Y \nabla_X - \nabla_{[X,Y]} \\
+    & = - \left( \nabla_Y \nabla_X - \nabla_X \nabla_Y - \nabla_{[Y,X]} \right) = - R(Y,X).
+\end{align}
+The second follow from metric compatibility
+\begin{align}
+    \nabla g=0 &\Rightarrow X \big( g(Z,W) \big) = \graycancel{(\nabla_X g)(Z,W)}+ g(\nabla_X Z, W) + g(Z, \nabla_X W).
+\end{align}
+Then 
+\begin{align}
+    g(R(X,Y)Z,W) &= g(\nabla_X \nabla_Y Z, W) - g(\nabla_Y \nabla_X Z, W) - g(\nabla_{[X,Y]} Z, W)
+    \\
+    & = X \big( g(\nabla_Y Z, W) \big) - Y \big( g(\nabla_X Z, W) \big) - [X,Y]( g(Z, W)) \\
+    & - g(\nabla_Y Z, \nabla_X W) + g(\nabla_X Z, \nabla_Y W) + g(Z, \nabla_{[X,Y]} W) \\
+    & = \dots
+\end{align}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
 
 
 
