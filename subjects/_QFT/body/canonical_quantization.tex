@@ -96,9 +96,10 @@ As long as gravity is ignored, constant energy shifts do not affect the dynamics
 In general relativity, all forms of energy will instead source the energy-momentum tensors and thus the gravitational field, and we cannot simply ignore the zero-point energy anymore.
 
 It is fundamental to understand how the \emph{fixed} frequency $\omega$ of the oscillators determines the likelyhood of finding the system at a given elongation from equilibrium i.e. the amplitude of oscillation.
-Indeed, all wave functions are proportional to a Gaussian factor, multiplied by suitable Hermite polynomials,
+Indeed, all wave functions are proportional to a Gaussian factor, multiplied by suitable Hermite polynomials and normalization constants
 \begin{align}
-    \psi_n(q) = H_n(\xi)\, e^{-\tfrac{\xi^2}{2}} &\propto e^{-\frac{m \omega}{2 \hbar} q^2}.
+    \psi_n(q) = C_n\,H_n(\xi)\, e^{-\tfrac{\xi^2}{2}} = C_n \,\, H_n\Big(\sqrt{\tfrac{m\omega}{\hbar}} q\Big) \,\, e^{-\frac{m \omega}{2 \hbar} q^2}
+     \,\propto\, e^{-\frac{m \omega}{2 \hbar} q^2}.
 \end{align}
 The crucial point is that the smaller the frequency $\omega$, the wider the Gaussian and in turn the higher the probability of finding the oscillator at large elongations from equilibrium i.e. of observing large amplitudes of oscillation.
 This is already familiar from Electrodynamics: it is very unlikely to find high-frequency electromagnetic waves with large amplitudes, whereas low-frequency waves are easily found with large amplitudes.
@@ -249,13 +250,18 @@ The two approached are completely equivalent and forces us to understand what to
 
 
 
-\begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime]
+\begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime\todotag{Do it}]
 
 \end{mytheorem}
 
 
-\begin{mytheorem}[Fluctuations of the Kelin-Gordon field in momentum \& position space]
+\begin{mytheorem}[Fluctuations of the Kelin-Gordon field in momentum \& position space\todotag{Huge fix needed}]
 %
+{\color{red}
+Here there is a mistake $\phi_k$ is a complex oscillator. The states $n_k$ you are referring to are not eigenstates of $\phi_k$ but of the real and imaginary parts separately. You need to rewrite everything in terms of real oscillators $q_k, p_k$ or creation-annihilation operators $a_k, a_k^\dagger$.
+Then in turn you will find the wave functional in momentum space $\Psi[\{\phi_k\}_k]$ and in position space $\Psi[\{\phi(x)\}_x]$ and the associated probabilities expanding $\phi_k$ in terms of its \emph{real} oscillator constitutents.
+}
+
 Having decomposed the Klein-Gordon field into its constitutent uncoupled harmonic oscillators, we can postulate a certain state for each oscillator and then immediatelycompute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
 We could consider the vacuum state $|0\rangle$ where all oscillators are in their ground state, excited states $|n_{k_1}\dots n_{k_m}\dots \rangle$ with $n_k$ quanta in the mode $k$, coherent states $|\{\alpha_k\}\rangle$ or arbitrary entangled states.
 %
@@ -372,11 +378,13 @@ For example, for the free Klein-Gordon field
 \end{align}
 
 
-\begin{mytheorem}[Spectral bases \& maximal set of commuting observables.]
+\begin{mytheorem}[Spectral basis \& maximal set of commuting observables.]
 %
-In ordinary QM, we can expand the state $|\Psi\rangle$ in terms of the eigenstates of suitable (collections of commuting) self-adjoint operators.
-Common choices are the position operator $X$, the momentum $P$, the angular momentum $L^2$ and $L_z$, the intrisinc spin $S^2$ and $S_z$ or suitable combinations like $L+S$, helicity, the Hamiltonian etc
+In ordinary QM, we can expand the state $|\Psi\rangle$ in terms of the common eigenstates of suitable sets of commuting self-adjoint operators.
+Common choices are the position operator $X$, the momentum $P$, the angular momentum $L^2$ and $L_z$, the Hamiltonian, the intrisinc spin $S^2$ and $S_z$ or suitable combinations like $L+S$, helicity, other instrinsic DoF operators  etc
 
+Given a set of commuting observables $\{A_i\}$, the spectral theorem indeed ensures the existence of a common spectral basis.
+This basis might however have degeneracies i.e. independent eigenstates sharing the same collection of eigenvalues for all observables in the set.
 A \emph{maximal set of commuting observables} is a collection of self-adjoint operators $\{A_i\}$ such that
 \begin{itemize}
     \item $[A_i, A_j] = 0$ for all $i, j$;
@@ -390,30 +398,81 @@ Then $S=\text{Span}\{|\psi\rangle, |\phi\rangle\}$ is a two-dimensional subspace
 \end{proof}
 
 
-\begin{mytheorem}[Position \& momentum bases in QFT]
+\begin{mytheorem}[Position \& momentum basis in QFT i.e. eigenstates of field operators $\hat{\phi},\,\hat{\pi}$]
 %
-The same can be done in QFT for suitable self-adjoint operators.
-At fixed time commutation relations for the real Klein-Gordon field $\hat{\phi}$ and its conjugate momentum $\hat{\pi}=\delta \mathcal{L}/\delta \partial_0 \phi$ are
+In a finite-dimensional QM system we have a finite number of DoFs, labelled by $i=1\dots n$, with generalized coordinates $q_i$ and conjugate momenta $p_i$ satisfying equal-time canonical commutation relations
 \begin{align}
-    [\hat{\phi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= i \delta^{(3)}(\mathbf{x} - \mathbf{y}), \\
-    [\hat{\phi}(t, \mathbf{x}), \hat{\phi}(t, \mathbf{y})] &= 0, \\
-    [\hat{\pi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= 0.
+    [\hat{q}_i, \hat{p}_j] = i \hbar \delta_{ij}, \quad
+    [\hat{q}_i, \hat{q}_j] = 0, \quad
+    [\hat{p}_i, \hat{p}_j] = 0.
 \end{align}
-At any fixed time $t$, the collections of operators $\{\hat{\phi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ and $\{\hat{\pi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ are thus maximal sets of commuting observable, and we can find corresponding spectral bases $\{|f\rangle\}_{f}$ and $\{|g\rangle\}_{g}$ of the Fock space with eigenvalue collection $\{f(\mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ and $\{g(\mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ respectively for suitable functions $f, g:\mathbb{R}^3 \to \mathbb{R}$.
+By the spectral theorem, we find common spectral bases for the position operators $q_1\dots q_n$ or momentum operators $p_1\dots p_n$, typically denoted $|q\rangle$ and $|p\rangle$ respectively.
+%
+The same can be done in Quantum Field Theory.
+Here we have an infinite number of DoFs, often labelled by the spatial position $\mathbf{x} \in \mathbb{R}^3$, with generalized coordinates $\phi(\mathbf{x})$ and conjugate momenta $\pi(\mathbf{x})=\frac{\delta \mathcal{L}}{\delta \partial_t \phi(\mathbf{x})}$ satisfying analogous equal-time commutation relations 
+\begin{align}
+    [\hat{\phi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] = i \hbar \,\delta^{(3)}(\mathbf{x} - \mathbf{y}), \quad
+    [\hat{\phi}(t, \mathbf{x}), \hat{\phi}(t, \mathbf{y})] = 0, \quad
+    [\hat{\pi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] = 0.
+\end{align}
+%
+At any fixed time $t$, the collections of operators $\{\hat{\phi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ and $\{\hat{\pi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ form two maximal\footnote{Ignoring further internal DoFs and considering $R^3$ for simplicity.} sets of commuting observables, and we can find corresponding spectral bases $\{|f\rangle\}_{f}$ and $\{|g\rangle\}_{g}$ of the Fock space.
+%
 These bases obey
 \begin{align}
-    \hat{\phi}(t, \mathbf{x}) |f\rangle &= f(\mathbf{x}) |f\rangle, \\
-    \hat{\pi}(t, \mathbf{x}) |g\rangle &= g(\mathbf{x}) |g\rangle.
+    \hat{\phi}(t, \mathbf{x}) |f\rangle &= f(\mathbf{x}) |f\rangle, \qquad
+    \hat{\pi}(t, \mathbf{x}) |g\rangle = g(\mathbf{x}) |g\rangle.
 \end{align}
-It has to be noted that nobody really knows how to rigorously construct these bases, nor where they actually live--i.e. what kind of mathematical objects these functions $f$ and $g$ are..
-To fix ideas, a very naive guess would be that the set of eigenvalue collections $\{f(\mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ is the set of all square-integrable functions $f \in L^2(\mathbb{R}^3)$, but this cannot be true since $L^2(\mathbb{R}^3)$ is a set of equivalence classes of functions.
+That is, the state $|f\rangle$ has eigenvalue collections $\{f(x)\}_{x}$ for the commuting operators $\{\hat{\phi}(x)\}_x$, resp. $|g\rangle$ has $\{g(x)\}_x$ for $\{\hat{\pi}(x)\}_x$, for suitable functions $f,g:\mathbb{R}^3 \to \mathbb{R}$.
+%
+These bases are the field-theoretic analogue of the position $\{|x\rangle\}_{x\in \mathbb{R}^n}$ and momentum $\{|p\rangle\}_{p\in \mathbb{R}^n}$ bases in ordinary QM, since $\hat{\phi}(x)$ and $\hat{\pi}(x)$ are the counterpart of position $\hat{X}$ and momentum $\hat{P}$ operators.
 
-In any case, these spectral bases must be understood as the field-theoretic analogoues of the position $\{|x\rangle\}_{x\in \mathbb{R}^n}$ and momentum $\{|p\rangle\}_{p\in \mathbb{R}^n}$ bases in ordinary Quantum Mechanics, since $\hat{\phi}(x)$ and $\hat{\pi}(x)$ are the field-theoretic counterpart of the position $\hat{X}$ and momentum $\hat{P}$ operators. 
-Indeed, in an ordinary QM system we have a finite number of DoFs, labelled by $i=1, \ldots, n$, with generalized coordinates $x_i$ and conjugate momenta $p_i$ satisfying equal time canonical commutation relations
+We remark nobody really knows what is the \emph{space of field configurations.}
+That is the function space the functions $f$ and $g$, i.e. the possible collections $\{f(x)\}_x$ or $\{g(x)\}_x$ of $\hat{\phi}$ or $\hat{\pi}$ eigenvalues, belong to.
+A naive guess is to consider the space of square-integrable functions $f(x) \in L^2(\mathbb{R}^3)$, but this is definitely not correct, since the typical field configurations are actually distributions rather than functions.
+This is already evident from the vacuum fluctuations of the field, which diverge at every point in space.
+Rigorous treatments of constructive QFT manage to define suitable function spaces and measures, but they are quite technical and beyond the scope of these notes.
+%
+
+
+The $\hat{\phi}$ eigenstates, i.e. states $|f\rangle$ for some field configurations $f:\mathbb{R}^3\to\mathbb{R}$, can equivalently be expressed in terms of their Fourier modes.
+That is, the expressions $|\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle$ denote the \emph{same} state $|f\rangle$ i.e. the same field configuration, simply explicitated in terms of position space values or Fourier modes.
+This confirms the state $|f\rangle$ is also an eigenstate of the Fourier transformed field operators $\hat{\phi}_k(t)$ with its Fourier modes $f_k$ as eigenvalues.
+Indeed, for fixed $k$ the operator $\hat{\phi}_k(t)$ is a linear combination of the $\{\hat{\phi}(t,x)\}_x$ operators and returns the corresponding linear combination $f_k$ of eigenvalues when acting on the state $|f\rangle$.
+%
+In formulas
 \begin{align}
-    [\hat{X}_i, \hat{P}_j] &= i \hbar \delta_{ij}, \quad
-    [\hat{X}_i, \hat{X}_j] &= 0, \quad
-    [\hat{P}_i, \hat{P}_j] &= 0.
+    \hat{\phi}(x)&\,|f\rangle = f(x)\, |f\rangle \,\,\, \forall x\quad \Rightarrow\quad 
+    \hat{\phi}_k(t)|f\rangle = \int d^3 x\, e^{-i \mathbf{k}\mathbf{x}} \hat{\phi}(t, \mathbf{x}) |f\rangle = \int d^3 x\, e^{-i \mathbf{k}\mathbf{x}} f(x) |f\rangle =
+    f_k\,|f\rangle \quad \forall k.
 \end{align}
-In QFT we have an infinite number of DoFs, labelled by the spatial position $\mathbf{x} \in \mathbb{R}^3$, with generalized coordinates $\phi(\mathbf{x})$ and conjugate momenta $\pi(\mathbf{x})$ satisfying the analogous canonical commutation relations above.
+%
+
+The states $|f\rangle$, as $f$ varies in the (unknown ill-defined) function space $W_{\phi}$ of field configurations, form an improper orthonormal basis of the Fock space $\mathcal{F}$.
+We use them to get a resolution of the identity
+\begin{align}
+    \mathbb{I}_{\mathcal{F}}= \int_{W_{\phi}} \!\!\!Df\, \, |f \rangle \langle f |
+     = \int_{W_{\phi}} Df_x \,\, |\{f(x)\}_x \rangle \langle \{f(x)\}_x | 
+     = \int_{W_{\phi}} Df_k\, \, |\{f_k\}_k \rangle \langle \{f_k\}_k |.
+\end{align}
+Here $Df$ denotes the functional measure on the function space $W_{\phi}$, formally explicitated in terms of position values or Fourier modes as
+\begin{align}
+    Df = \prod_x df(x) \overset{!}{=}  \prod_k df_k.
+\end{align}
+The two expressions should coincide since the Foruier transform is expected be a measure-preserving bijection between the two expression of the function space $W_{\phi}$.
+%
+The above expressions are made rigorous by introducing suitable infrared regularization, making the Foruier modes countable discrete, and ultraviolet cutoff, discarding Foruier mode above some scale $\Lambda$ and making the function space finite-dimensional.
+%
+In any case, concatenating the two possible expressions for the identity resolution gives the expected result
+\begin{align}
+    \mathbb{I}_{\mathcal{F}}&= \int_{W_{\phi}} Df \,\, |\{f(x)\}_x \rangle \langle \{f(x)\}_x | 
+     = \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df' \,\, |\{f(x)\}_x \rangle \langle \{f(x)\}_x |\{f'_k\}_k \rangle \langle \{f'_k\}_k |
+     \\
+     &= \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df'\,\, \delta\left(f_k-f'_k\right) \,\, |\{f(x)\}_x \rangle \langle \{f'_k\}_k |
+     =
+     \int_{W_{\phi}}  Df' \,\, |\{f'_k\}_k \rangle\langle \{f'_k\}_k |
+    =\mathbb{I}_{\mathcal{F}}.
+\end{align}
+%
+Completely analogous results hold for the $\hat{\pi}$ operators and their eigenstates $|g\rangle$, where $g$ varies over the \emph{conjugate} field configuration space $W_{\pi}$ i.e. the space of possible collections $\{g(x)\}_x$ of $\hat{\pi}$ eigenvalues.
 \end{mytheorem}
