@@ -46,7 +46,7 @@ At each $|h|>0$ the ratio at the right-hand side is a tensor, being the differen
 
 
 %========================================================
-\subsection{Lie derivative}
+\subsection{Lie derivative}\todotag{Merge various definitions into bullet list}
 %=========================================================
 
 \begin{mytheorem}[Lie derivative as commutator of vector fields]
@@ -83,6 +83,42 @@ As evident from any of its definitions, the Lie derivative does not depend on an
 It only depends on the smooth-- i.e. differential-- structure of the manifold, being defined in terms of commutators, or flows or exterior and inner derivatives.
 It thus cannot give any information on the curvature of the manifold beyond the constrained already encoded in the smooth structure itself.
 \end{mytheorem}
+
+
+\begin{mytheorem}[Lie derivative and pullback commute]
+Given a diffeomorphism $\phi: M \to N$ between two manifolds and a vector field $X\in \mathfrak{X}(M)$, the Lie derivative along $X$ and the pullback $\phi^*$ commute, i.e.
+\begin{equation}
+    \phi^* (\mathcal{L}_X T) = \mathcal{L}_{\phi^* X} (\phi^* T),
+\end{equation}
+for any tensor field $T$ on $N$.
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Lie derivative in coordinate basis \& replacing partial with covariant derivatives]
+In a coordinate basis $\{\partial_\mu\}$, the Lie derivative along a vector field $X = X^{\mu} \partial_\mu$ acts on a $(h,k)$-tensor field $T$ as
+\begin{align}
+\begin{aligned}
+    \mathcal{L}_X T^{\nu_1 \dots \nu_h}_{ \rho_1 \dots \rho_k} 
+    &= X^{\mu} \partial_\mu\left( T^{\nu_1 \dots \nu_h}_{ \rho_1 \dots \rho_k} \right)
+    - \sum_{i=1}^h \left(\partial_\mu X^{\nu_i}\right) T^{\nu_1 \dots \mu \dots \nu_h}_{ \rho_1 \dots \rho_k} 
+    + \sum_{j=1}^k \left(\partial_{\rho_j} X^{\mu}\right) T^{\nu_1 \dots \nu_h}_{\rho_1 \dots \mu \dots \rho_k}.
+\end{aligned}  
+\end{align}
+Note that the above expression is a tensor, even if it contains ordinary partial derivatives.
+If we are given a metric $g$ \footnote{or equivalently whenever we have a torsion-less connection for which we can then find normal coordinates where the Christoffel symbols vanish} we can replace partial derivatives with covariant derivatives in normal coordinates, obtaining
+\begin{align}
+\begin{aligned}
+    \mathcal{L}_X T^{\nu_1 \dots \nu_h}_{ \rho_1 \dots \rho_k} 
+    &= X^{\mu} \nabla_\mu\left( T^{\nu_1 \dots \nu_h}_{ \rho_1 \dots \rho_k} \right)
+    - \sum_{i=1}^h \left(\nabla_\mu X^{\nu_i}\right) T^{\nu_1 \dots \mu \dots \nu_h}_{ \rho_1 \dots \rho_k} 
+    + \sum_{j=1}^k \left(\nabla_{\rho_j} X^{\mu}\right) T^{\nu_1 \dots \nu_h}_{\rho_1 \dots \mu \dots \rho_k}.
+\end{aligned}
+\end{align}
+The last expression is tensorial by construction.
+Since it matches the previous one in normal coordinates, it is indeed equivalent to it in any coordinate system.
+\end{mytheorem}
+
 
 
 %========================================================
@@ -246,6 +282,18 @@ Under this conditions, one proves the usual formula in a coordinate basis
 \end{equation}
 \end{mytheorem}
 
+
+\begin{mytheorem}[Replacing partial with covariant derivatives]
+The exterior derivative on a form $\omega=\omega_{i_1 \dots i_k} dx^{i_1} \wedge \cdots \wedge dx^{i_k}$ can equivalently be written in terms of covariant derivatives associated to a torsion-less connection,
+\begin{align}
+    d\omega &= \partial_\mu \omega_{i_1 \dots i_k} \, dx^{\mu} \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_k}
+    \equiv
+    \nabla_\mu \omega_{i_1 \dots i_k} \, dx^{\mu} \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_k}.
+\end{align}
+Indeed both expressions define tensors, the latter by definition of covariant derivative and the former by construction.
+Since they coincide in normal coordinates where the Christoffel symbols vanish, they coincide in any coordinate system.
+%
+\end{mytheorem}
 
 
 %========================================================

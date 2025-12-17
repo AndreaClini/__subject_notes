@@ -178,3 +178,46 @@ For the continuum distribution
 }
 \end{proof}
 
+
+
+
+
+%-----------------------------------------------------------
+%=======================================================
+\section{Equations of motion: Einstein \& Euler--Lagrange equations}\todotag{To be written}
+%=======================================================
+%------------------------------------------------------------
+
+
+{\color{red}
+\begin{mytheorem}[Euler-Lagrange equations in curved spacetime]\todotag{Finish}
+Consider a field theory in curved spacetime with action, where $\phi_a$ denotes any multiplet of arbitrary-spin fields,
+\begin{align}
+    S[\phi] = \int \mathrm{d}^d x \sqrt{|g|} \, \mathcal{L}(\phi_a, \partial_\mu \phi_a, g_{\mu\nu}).
+\end{align}
+The equations of motion for the field $\phi$ are given by the Euler-Lagrange equations
+\begin{align}
+    \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial \phi_a} - \partial_\mu \left( \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial (\partial_\mu \phi_a)} \right) = 0.
+\end{align}
+Indeed, varyin with respect to $\phi_a$ gives
+{\small
+\begin{align}
+    \delta S &= \int \mathrm{d}^d x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi_a} \delta \phi_a + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta (\partial_\mu \phi_a) \right)
+    \\
+    &= \int \mathrm{d}^d x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi_a} \delta \phi_a - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \right) \delta \phi_a \right) + \text{bdy. terms}
+    \\
+    &= \int \mathrm{d}^d x \left( \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial \phi_a} - \partial_\mu \left( \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial (\partial_\mu \phi_a)} \right) \right) \delta \phi_a + \text{bdy. terms}.
+\end{align}
+}
+Using 
+\begin{equation}
+    \delta (\partial_\mu \phi_a) = \partial_\mu (\delta \phi_a),
+\end{equation}
+and the integration by parts formula in curved spacetime
+\begin{equation}
+    \int \mathrm{d}^d x \sqrt{|g|} \nabla_\mu V^\mu = \text{bdy. terms},
+\end{equation}
+we arrive at the desired result.
+%
+\end{mytheorem}
+}
