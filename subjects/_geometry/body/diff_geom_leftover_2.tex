@@ -220,4 +220,34 @@ and the integration by parts formula in curved spacetime
 we arrive at the desired result.
 %
 \end{mytheorem}
+
+
+\begin{mytheorem}[The Dirac equation in curved spacetime]\todotag{Finish}
+The Dirac equation for a spin-$\tfrac{1}{2}$ field $\psi$ in curved spacetime is given by
+\begin{align}
+    (i \gamma^\mu \nabla_\mu - m) \psi = 0,
+\end{align}
+where $\gamma^\mu$ are the curved spacetime gamma matrices satisfying the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu}$ and $\nabla_\mu$ is the spinor covariant derivative.
+The action for the Dirac field in curved spacetime is then simply
+\begin{align}
+    S_\text{Dirac} = \int \mathrm{d}^d x \sqrt{|g|} \, \bar{\psi} (i \gamma^\mu \nabla_\mu - m) \psi,
+\end{align}
+where $\bar{\psi} = \psi^\dagger \gamma^0$ is the Dirac adjoint.
+Varying this action with respect to $\bar{\psi}$ yields the Dirac equation in curved spacetime.
+
+We need to undesratnd how to define the gamma matrices $\gamma^\mu$ and the covariant derivative $\nabla_\mu$ acting on spinors in curved spacetime.
+For this, it is easier to introduce a local orthonormal frame (vielbein) $e_a^\mu$ such that $g_{\mu\nu} = e_\mu^a e_\nu^b \eta_{ab}$, where $\eta_{ab}$ is the Minkowski metric.
+The curved spacetime gamma matrices are then related to the flat spacetime gamma matrices $\gamma^a$ by
+\begin{align}
+    \gamma^\mu = e_a^\mu \gamma^a,
+\end{align}
+where the flat spacetime gamma matrices satisfy $\{\gamma^a, \gamma^b\} = 2 \eta^{ab}$.
+The covariant derivative acting on spinors is defined as
+\begin{align}
+    \nabla_\mu \psi = \partial_\mu \psi + \frac{1}{4} \omega_{\mu}^{ab} \gamma_{ab} \psi,
+\end{align}
+where $\omega_{\mu}^{ab}$ is the spin connection and $\gamma_{ab} = \frac{1}{2} [\gamma_a, \gamma_b]$.
+As regards $\gamma^\mu$, we introduce a local orthonormal frame (vielbein) $e_a^\mu$ such that $g_{\mu\nu} = e_\mu^a e_\nu^b \eta_{ab}$, where $\eta_{ab}$ is the Minkowski metric.
+%
+\end{mytheorem}
 }

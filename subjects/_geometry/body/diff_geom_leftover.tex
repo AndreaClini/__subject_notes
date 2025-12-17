@@ -1097,7 +1097,7 @@ If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac
 \end{mytheorem}
 
 
-\begin{mytheorem}[Connection 1-forms]
+\begin{mytheorem}[Connection 1-form]
 Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we define the $(1,0)$-tensor-valued connection 1-forms $\omega_j$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
 \begin{equation}
      \nabla e_j=:\omega_j =:\omega^i_{\,j} \otimes e_i\,.
@@ -1110,10 +1110,60 @@ Under a change of tetrad frame $\{\theta^i,\, e_i\}_i \to \{\tilde{\theta}^i = A
 \begin{equation}
     \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
 \end{equation}
+
+
+Just like the other forms, the connection 1-form can be seen as a fiber valued differential form.
+The fiber is the Lie algebra of the structure group of the frame bundle, i.e. $\mathfrak{gl}(n,\R)$ for a general connectin, and $\mathfrak{so}(p,q)$ for an orthonormal frame of metric connection with signature $(p,q)$.
+Indeed, for an orthonormal tetrad $\{e_\mu\}_\mu$, metric compatibility $\nabla g=0$ implies
+\begin{align}
+    0 = \nabla_\bullet \eta_{\mu\nu} &= \nabla_\bullet g(e_\mu, e_\nu) = g(\nabla_\bullet e_\mu, e_\nu) + g(e_\mu, \nabla_\bullet e_\nu) = g(\omega_\mu^\rho e_\rho, e_\nu) + g(e_\mu, \omega_\nu^\sigma e_\sigma) = \omega_{\mu \nu} + \omega_{\nu \mu}.
+\end{align}
+Lowering the indices of the connection form with the metric we thus get an antisymmetric form $\omega_{\mu\nu} = - \omega_{\nu\mu}$, which is the hallmark of the Lie algebra $\mathfrak{so}(p,q)$.
+If $G\subseteq GL(T_pM) \equiv GL(n,\R)$ is the subgroup preserving the metric $g_p$ at point $p\in M$, the connection 1-form then takes values in the Lie algebra $\mathfrak{g}$ of $G$.
+Namely, for any curve $t\mapsto A(t)\sim\mathbb{I}+t\omega \in G\subseteq GL(T_pM)$
+\begin{align}
+    g_{\rho\sigma}A^\rho_\mu A^\sigma_\nu = g_{\mu\nu}
+    &\Rightarrow 0 = \frac{d}{dt} \Big|_{t=0} \left( g_{\rho\sigma}A^\rho_\mu(t) A^\sigma_\nu(t) \right) = g_{\rho\sigma} \left( \frac{d}{dt} \Big|_{t=0} A^\rho_\mu(t) \right) \delta^\sigma_\nu + g_{\rho\sigma} \delta^\rho_\mu \left( \frac{d}{dt} \Big|_{t=0} A^\sigma_\nu(t) \right) \\
+    &\Rightarrow g_{\rho\nu} \omega^\rho_\mu + g_{\mu\sigma} \omega^\sigma_\nu = 0.
+\end{align}
+%
+This was indeed expected: the connection ultimately yields the infinitesimal change of a vector under parallel transport, which preserves angles and lengths by definition.
+The change of a vector can thus only be an infinitesimal `generalized rotation' in the tangent space, i.e. an element of the Lie algebra of the orthogonal group of $g_p$, which is $SO(p,q)$ in a suitable basis.
+That is, for $\epsilon \mapsto X(\epsilon)$ a parallelly transported vector along a curve $\epsilon \mapsto \gamma(\epsilon)$,
+\begin{align}
+    X(\epsilon) &= X(0) + \epsilon\, \nabla_{\dot{\gamma}(0)}\, X + O(\epsilon^2) \\
+    &= X(0) + \epsilon\,\, \omega(\dot{\gamma}(0))\, X(0) + O(\epsilon^2) \\
+    & = \left( \mathbb{I} + \epsilon \omega(\dot{\gamma}(0)) \right) X(0) + O(\epsilon^2).
+\end{align}
+
+This tells us how the connection $\nabla$ should act on a general fiber bundle $E_F\to M$ with structure group $G$: via the representation of the Lie algebra $\mathfrak{g}$ on the fiber $F$.
+Namely, if $E_F \to M$ is associated to the frame bundle via a representation $\rho: G \to GL(F)$, the connection 1-form on $E_F \to M$ will be given by
+\begin{equation}
+    \omega^a_{\, b} = \rho_*(\omega^i_{\, j}),
+\end{equation}
+where $\rho_*: \mathfrak{g} \to \mathfrak{gl}(F)$ is the induced Lie algebra representation.
+For example, for the tensor bundle $T^h_kM \to M$ the representation is the tensor product of $h$ copies of the given representation on $T_pM$ and $k$ copies of the dual representation of $G$.
+%
+For spinors, it is the spin representation of the spin group $\text{Spin}(p,q)$, that is the double cover of $SO(p,q)$.
+If $\omega_{\mu\nu}$ is are the connection 1-forms of the connection on $TM$ in a given tetrad frame, and 
+$\{\gamma^a\}_a$ are the gamma matrices in a given representation with basis $s_1\dots s_m$ of the spinor space, the spin representation $\rho_{spin}: \mathfrak{so}(p,q) \to \mathfrak{gl}(\C^m)$ is given by
+\begin{equation}
+    \omega^{\text{sp.}\, b}_{~a}:=\rho_{spin}(\omega_{\mu\nu})^b_{\,a} := \frac{1}{4} \omega_{\mu\nu} \,\{\gamma^\mu, \gamma^\nu\}^b_{\,a}.
+\end{equation}
+The connection 1-form act on basis spinors as 
+\begin{equation}
+    \nabla s_a = \omega^{\text{sp.}\, b}_{~ a}{} s_b = \tfrac{1}{4}\omega_{\mu\nu}\,[\gamma^\mu, \gamma^\nu]^b_{\,a} s_b,
+\end{equation}
+and on general spinor fields $\psi = \psi^a s_a$ as
+\begin{equation}
+    \nabla \psi = d \psi^a \otimes s_a + \psi^a \, \nabla s_a = \left( d \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a \right) \otimes s_b,\,\,\quad \text{i.e.} \quad
+    \nabla_\mu \psi^b = \partial_\mu \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a.
+\end{equation}
+%
 \end{mytheorem}
 
 
-\begin{mytheorem}[Curvature 2-forms]
+\begin{mytheorem}[Curvature 2-form]
 Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we define the $(1,0)$-tensor-valued curvature 2-forms $\Omega_j$ and $\R$-valued curvature 2-forms $\Omega^i_{\,j}$ as the set of 1-forms satisfying
 \begin{equation}
     R(e_j) :=\Omega_j=: \Omega^i_{j} \otimes e_i\,,
