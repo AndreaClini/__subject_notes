@@ -189,38 +189,83 @@ For the continuum distribution
 %------------------------------------------------------------
 
 
-{\color{red}
-\begin{mytheorem}[Euler-Lagrange equations in curved spacetime]\todotag{Finish}
-Consider a field theory in curved spacetime with action, where $\phi_a$ denotes any multiplet of arbitrary-spin fields,
+
+\begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields]
+Consider a field theory in curved spacetime with action, where $\{\phi_a\}_a$ denotes any multiplet of fields with arbitrary spin
 \begin{align}
     S[\phi] = \int \mathrm{d}^d x \sqrt{|g|} \, \mathcal{L}(\phi_a, \partial_\mu \phi_a, g_{\mu\nu}).
 \end{align}
-The equations of motion for the field $\phi$ are given by the Euler-Lagrange equations
-\begin{align}
-    \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial \phi_a} - \partial_\mu \left( \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial (\partial_\mu \phi_a)} \right) = 0.
-\end{align}
-Indeed, varyin with respect to $\phi_a$ gives
+The equations of motion for the fields are obtained varying with respect to $\phi_a$,
 {\small
 \begin{align}
-    \delta S &= \int \mathrm{d}^d x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi_a} \delta \phi_a + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta (\partial_\mu \phi_a) \right)
+    \delta S &= \int_M \mathrm{d}^d x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi_a} \delta \phi_a + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta (\partial_\mu \phi_a) \right)
     \\
-    &= \int \mathrm{d}^d x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi_a} \delta \phi_a - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \right) \delta \phi_a \right) + \text{bdy. terms}
-    \\
-    &= \int \mathrm{d}^d x \left( \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial \phi_a} - \partial_\mu \left( \frac{\partial (\sqrt{|g|} \mathcal{L})}{\partial (\partial_\mu \phi_a)} \right) \right) \delta \phi_a + \text{bdy. terms}.
+    &= \int_M \mathrm{d}^d x \sqrt{|g|} \left[ \frac{\partial \mathcal{L}}{\partial \phi_a} - \frac{1}{\sqrt{|g|}}\, \partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \right) \right] \delta \phi_a + \underbrace{\frac{1}{\sqrt{|g|}}\, \partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta\phi_a\right)}_{\displaystyle = \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta\phi_a\right)}.
 \end{align}
 }
-Using 
-\begin{equation}
-    \delta (\partial_\mu \phi_a) = \partial_\mu (\delta \phi_a),
-\end{equation}
-and the integration by parts formula in curved spacetime
-\begin{equation}
-    \int \mathrm{d}^d x \sqrt{|g|} \nabla_\mu V^\mu = \text{bdy. terms},
-\end{equation}
-we arrive at the desired result.
+The last term is a total derivative since $\text{div}_{\Omega_g}X=\nabla_\mu X^\mu\,\Omega_g$ for any vector field\footnote{Indeed the variation of $\mathcal{L}$ wrt $\partial_\mu \phi_a$ returns a vector $X^\mu:=\frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)}$. } $X$ and the metric volume form $\Omega_g=\sqrt{|g|}dx^1 \wedge \cdots \wedge dx^n$, and hence vanishes by Gauss theorem assuming the variations $\delta \phi_a$ vanish at the boundary of $M$ (or fall off sufficiently fast at infinity).
+%
+The Euler-Lagrange equations for the field $\phi_a$ are then
+\begin{align}
+    0=\frac{\partial\mathcal{L}}{\partial \phi_a}-\frac{1}{\sqrt{|g|}} \partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \right)
+    = \frac{\partial\mathcal{L}}{\partial \phi_a}-\nabla_\mu\left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)}\right).
+\end{align}
+Beware the \textbf{above formulas hold for arbitrary-spin fields} $\phi_a$, including scalars, vectors, tensors and spinors, \textbf{arranged in any multiplet} $\{\phi_a\}_a$, provided the Lagrangian density $\mathcal{L}$ is a scalar, as it should.
+\end{mytheorem}
+
+
+
+
+
+
+
+
+
+
+\begin{mytheorem}[Lagrangian and Klein-Gordon equation for scalar fields]\todotag{Finish}
+The action for a real scalar field $\phi$ of mass $m$ in curved spacetime is given by
+\begin{align}
+    S_\text{KG} = -\frac{1}{2} \int \mathrm{d}^d x \sqrt{|g|} \left( g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi + m^2 \phi^2 \right).
+\end{align}
+Varying this action with respect to $\phi$ yields the curved spacetime Klein-Gordon equation
+\begin{align}
+    (\nabla^\mu \nabla_\mu - m^2) \phi = 0.
+\end{align}
+%   
+\end{mytheorem}
+
+
+\begin{mytheorem}[Lagrangian and Maxwell equations for vector fields]\todotag{Finish}
+The action for a vector field $A_\mu dx^\mu$ (electromagnetic potential) in curved spacetime is given by
+\begin{align}
+    S_\text{Maxwell} = -\frac{1}{4} \int_M \mathrm{d}^d x \sqrt{|g|} \, F_{\mu\nu} F^{\mu\nu}
+    = -\frac{1}{4}\int_M\, F \wedge \star F = -\frac{1}{4}\langle dA, dA\rangle_{\mathrm{Hodge}},
+\end{align}
+where $F=dA$ is the field strength 2-form, with coordinates $F_{\mu\nu} = \nabla_\mu A_\nu - \nabla_\nu A_\mu$.
+Varying this action with respect to $A\mapsto A+\epsilon $ yields 
+\begin{align}
+    \delta S = -\frac{1}{2}\langle dA, d\epsilon \rangle_{\mathrm{Hodge}} = -\frac{1}{2} \langle \delta dA, \epsilon \rangle_{\mathrm{Hodge}} = -\frac{1}{2} \int_M \delta d A\wedge \star \epsilon,
+\end{align}
+where we integrated by parts using the exterior co-derivative $\delta$, which is the adjoint of $d$ wrt the Hodge inner product.
+The Maxwell equations in curved spacetime are then
+\begin{align}
+    \delta d A = \delta F = 0, \quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = 0.
+\end{align}
+%
+These are \emph{not} to be confused with the Bianchi identity\footnote{Note we can exchange partial with covariant derivatives since both expressions are tensorial and coincide in normal coordinates at a point, as we already discussed in general for the exterior derivative of any $p$-form.}
+\begin{align}
+    dF=0\quad \text{or in a chart} \quad  0=\partial_{[\alpha} F_{\beta\gamma]}\equiv \nabla_{[\alpha} F_{\beta\gamma]}.
+\end{align}
+
+If we couple the vector field to a conserved current $J^\mu$ (i.e. $\nabla_\mu J^\mu=0$), we can add an interaction term $S_\text{int} = \int \mathrm{d}^d x \sqrt{|g|} A_\mu J^\mu$ to the action, yielding the inhomogeneous Maxwell equations \todotag{Do better this part, writing lagrangian for scalar QDE}
+\begin{align}
+    \delta F = J \quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = J^\nu.
+\end{align}
 %
 \end{mytheorem}
 
+
+{\color{red}
 
 \begin{mytheorem}[The Dirac equation in curved spacetime]\todotag{Finish}
 The Dirac equation for a spin-$\tfrac{1}{2}$ field $\psi$ in curved spacetime is given by
