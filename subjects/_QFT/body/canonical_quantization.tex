@@ -14,6 +14,36 @@
 
 
 
+\begin{mytheorem}[Towards the Klein-Gordon Lagrangian\todotag{Finish}]
+%
+Consider the Lagrangian for a discrete set of classical harmonic oscillator in $d$ dimensions with some potential $V(q_n)$,
+\begin{align}
+    \mathcal{L}= \sum_{n\in \Z^d}\frac{1}{2} m \dot{q}_n^2 - \frac{1}{2} m \omega_n^2 \sum_{j=1}^d (q_n - q_{n +\hat{e}_j})^2 - V(q_n).
+\end{align}
+The density of oscillators is $\rho = m / a^d$ and the speed of sound is $c_s = a \omega_n$, where $a$ is the lattice spacing, are kept constant as we take the continuum limit $a \to 0$.
+The Lagrangian then becomes
+\begin{align}
+    \mathcal{L} &= \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \rho \dot{q}_n^2 - \frac{1}{2} \rho (a\omega_n)^2 \sum_{j=1}^d \left(\frac{q_n - q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(q_n) \right]
+    \\
+    & 
+    \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \big(\rho^{1/2} \dot{q}_n\big)^2 - \frac{1}{2} (a\omega_n)^2 \sum_{j=1}^d \left(\frac{\rho^{1/2}q_n - \rho^{1/2}q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(\rho{-1/2}\rho^{1/2}q_n) \right]
+    \\
+    &\xrightarrow[a\to 0]{} \int d^d x\, \tfrac{1}{2} \left(\partial_t\phi(t,\mathbf{x})\right)^2 - \tfrac{1}{2} c_s^2 \,\left(\nabla_x\phi(t,\mathbf{x})\right)^2 - \mathcal{V}(\phi(t,\mathbf{x})),
+\end{align}
+where we redefined the field as $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= m^{1/2}a^{-d/2} q_n(t)$ and the potential density as $\mathcal{V}(\phi) := \lim_{a\to 0} a^{-d} V(\rho^{-1/2} \phi)$.
+Choosing a quadratic potential $V(q_n) = \tfrac{1}{2} m^2 q_n^2$ yields the Klein-Gordon Lagrangian density for a free scalar field of mass $m$.
+%
+The field $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= m^{1/2}a^{-d/2} q_n(t)$ has mass dimension $[\phi] = \frac{d-1}{2}$ in $d+1$ spacetime dimensions.
+Also note that we absorbed a factor $m^{1/2}$ in the rescaling of the field.
+When we define \emph{adimensional} density variables for the field-constitutent harmonic oscillators below, the rescaling will thus be
+\begin{equation}
+    \tilde{q}_k = \sqrt{\frac{\omega_k}{\hbar}} q_k, \quad \tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{\omega_k}} p_k,
+\end{equation}
+rather than the usual $\tilde{q}_k = \sqrt{\frac{m\omega_k}{\hbar}} q_k$ and $\tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{m\omega_k}} p_k$, since the mass $m$ has already been absorbed and the \emph{dimensional} density variables $q_k,\,p_k$ will have corresponding dimensions.
+%
+\end{mytheorem}
+
+
 \begin{mytheorem}[Review of classical \& quantum harmonic oscillator]\todotag{Finish}
 %
 The classical harmonic oscillator with mass $m$ and frequency $\omega$ is described by the Hamiltonian
@@ -250,8 +280,54 @@ The two approached are completely equivalent and forces us to understand what to
 
 
 
-\begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime\todotag{Do it}]
+\begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime\todotag{Finish}]
+%
+For a free theory in flat spacetime, we naively decompose the field operators at an arbitrary reference \emph{fixed} time $t_0$ in terms of creation and annihilation operators as
+\begin{align}
+    \hat{\phi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\phi}_k(t_0)
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \bar{k}\cdot\bar{x}} + a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right),
+    \\
+    \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right).
+\end{align}
+In terms of creation and annihilation operators the canonical commutation relations become \footnote{Note that to get relativistically normalized commutation relations, we should use covariant creation and annihilation operators $a(\bar{k}) = \sqrt{2\omega_k} a_k$ and $a^\dagger(\bar{k}) = \sqrt{2\omega_k} a_k^\dagger$. This are indeed the operators creating relativistically normalized states in Minkowski spacetime, see later.}
+\begin{align}
+    [a_{\bar{k}}, a_{\bar{k}'}] = 0, \quad
+    [a_{\bar{k}}^{\dagger}, a_{\bar{k}'}^{\dagger}] = 0, \quad
+    [a_{\bar{k}}, a_{\bar{k}'}^{\dagger}] = (2\pi)^3 \delta^{(3)}(\bar{k} - \bar{k}').
+\end{align}
+%
+The associated Hamiltonian, before normal ordering, is 
+\begin{equation}
+    \hat{H} = \int \frac{d^3 k}{(2\pi)^3} \, \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \right).
+\end{equation}
+%
+The associated self-adjoint harmonic oscillators \emph{dimensional} $\{q_k, p_k\}_k$ and \emph{adimensional} $\{\tilde{q}_k, \tilde{p}_k\}_k$ $k$-space-density variables\footnote{In the sense of (a)-dimensional densities in Foruier space, that is $\propto\, k^{-3}$.} are identified as
+\begin{align}
+    q_k(t_0) &= \frac{1}{\sqrt{\omega_k}} \tilde{q}_k(t_0)=\frac{1}{\sqrt{2\omega_k}} (a_k + a_k^{\dagger}), \quad
+    p_k(t_0) = \sqrt{\omega_k}\, \tilde{p}_k(t_0)=-i \sqrt{\frac{\omega_k}{2}} (a_k - a_k^{\dagger}).
+\end{align}
+The fields are thus expressed as
+\begin{align}
+    \phi_k(t_0) &= \frac{1}{\sqrt{2\omega_k}} (a_k + a_{-k}^{\dagger}) 
+    = \frac{1}{\sqrt{2\omega_k}}\Big[ \big(\tilde{q}_k+\tilde{q}_{-k}\big) + i \big(\tilde{p}_k - \tilde{p}_{-k}\big) \Big]
+    = \tfrac{1}{\sqrt{2}}\Big[ \big({q}_k+{q}_{-k}\big) + \tfrac{i}{\omega_k}\big({p}_k - {p}_{-k}\big) \Big]
+    \\
+    \pi_k(t_0) &= -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger}) 
+    = \sqrt{\frac{\omega_k}{2}} \Big(\tilde{p}_k + \tilde{p}_{-k}\Big) - i \sqrt{\frac{\omega_k}{2}} \Big( \tilde{q}_k- \tilde{q}_{-k} \Big)
+    = \tfrac{1}{\sqrt{2}}\Big[ \big({p}_k - {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big].
+\end{align}
+Note that we could have equivalently started from self-adjoint oscillators $\{q_k, p_k\}_k$, imposing field operators are related to these oscillators as above in order to obey the CCR, and then defined creation and annihilation operators as above.
 
+In any case, this decomposition highlights that the true observable DoFs of the Klein-Gordon field are given by the self-adjoint harmonic oscillators $\{q_k, p_k\}_k$, or equivalently by the creation and annihilation operators $\{a_k, a_k^{\dagger}\}_k$, which indeed destroy or create quanta of the field with momentum $\bar{k}$ i.e. particles under suitable conditions.
+
+
+Is the above decomposition unique?
+We could choose a different reference time $t_0$, but as long as we are in a free theory in flat spacetime this simply corresponds to a phase shift in the definition of creation and annihilation operators, leaving the vacuum invariant.
+On the other hand, there are indeed inequivalent choices of creation and annihilation operators, for instance mixing $a_k$ and $a_{-k}^\dagger$.
+This change the vacuum of the theory i.e. the state $|0\rangle$ annihilated by all $a_k$ operators.
+This is not a problem in flat spacetime, where Poincaré invariance selects a preferred vacuum, also coinciding with the ground state of the Hamiltonian, but it becomes a serious issue in curved spacetime, where no preferred vacuum exists in general.
+%
 \end{mytheorem}
 
 
@@ -380,17 +456,17 @@ For example, for the free Klein-Gordon field
 
 \begin{mytheorem}[Spectral basis \& maximal set of commuting observables.]
 %
-In ordinary QM, we can expand the state $|\Psi\rangle$ in terms of the common eigenstates of suitable sets of commuting self-adjoint operators.
-Common choices are the position operator $X$, the momentum $P$, the angular momentum $L^2$ and $L_z$, the Hamiltonian, the intrisinc spin $S^2$ and $S_z$ or suitable combinations like $L+S$, helicity, other instrinsic DoF operators  etc
+In ordinary QM, we can expand the state $|\Psi\rangle$ in terms of common eigenstates of suitable sets of commuting self-adjoint operators.
+Common choices are the position operator $X$, the momentum $P$, the angular momentum $L^2$ and $L_z$, the Hamiltonian, the intrisinc spin $S^2$ and $S_z$ or suitable combinations like $L+S$, helicity, other instrinsic DoF operators, etc.
 
 Given a set of commuting observables $\{A_i\}$, the spectral theorem indeed ensures the existence of a common spectral basis.
 This basis might however have degeneracies i.e. independent eigenstates sharing the same collection of eigenvalues for all observables in the set.
 A \emph{maximal set of commuting observables} is a collection of self-adjoint operators $\{A_i\}$ such that
 \begin{itemize}
     \item $[A_i, A_j] = 0$ for all $i, j$;
-    \item there is no other self-adjoint operator $B$ commuting with all $A_i$.
+    \item any other self-adjoint operator $B$ commuting with all $A_i$ is a function\footnote{e.g. $H\sim p^2/m$ in ordinary QM.} of the $A_i$.
 \end{itemize}
-The common eigenstates of a maximal set of commuting observables form a basis for the Hilbert space with the property that no two distinct basis states share the same eigenvalues for all observables in the set.
+The common eigenstates of a maximal set of commuting observables form a basis for the Hilbert space with no degeneracies i.e. two distinct eigenstates have different eigenvalues for at least one of the observables in the set.
 \end{mytheorem}
 \begin{proof}
 Suppose there is a collection of eigenvalues $\{\lambda_i\}$ shared by two linearly independent eigenstates $|\psi\rangle$ and $|\phi\rangle$.
@@ -398,7 +474,7 @@ Then $S=\text{Span}\{|\psi\rangle, |\phi\rangle\}$ is a two-dimensional subspace
 \end{proof}
 
 
-\begin{mytheorem}[Position \& momentum basis in QFT i.e. eigenstates of field operators $\hat{\phi},\,\hat{\pi}$]
+\begin{mytheorem}[Position \& momentum basis in QFT i.e. eigenstates of the field operators $\hat{\phi},\,\hat{\pi}$]
 %
 In a finite-dimensional QM system we have a finite number of DoFs, labelled by $i=1\dots n$, with generalized coordinates $q_i$ and conjugate momenta $p_i$ satisfying equal-time canonical commutation relations
 \begin{align}
@@ -416,19 +492,19 @@ Here we have an infinite number of DoFs, often labelled by the spatial position 
     [\hat{\pi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] = 0.
 \end{align}
 %
-At any fixed time $t$, the collections of operators $\{\hat{\phi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ and $\{\hat{\pi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ form two maximal\footnote{Ignoring further internal DoFs and considering $R^3$ for simplicity.} sets of commuting observables, and we can find corresponding spectral bases $\{|f\rangle\}_{f}$ and $\{|g\rangle\}_{g}$ of the Fock space.
+At any fixed time $t$ the collections of operators $\{\hat{\phi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ and $\{\hat{\pi}(t, \mathbf{x})\}_{\mathbf{x}\in \mathbb{R}^3}$ form two maximal\footnote{Ignoring further internal DoFs and considering $R^3$ for simplicity.} sets of commuting observables, and we can find corresponding spectral bases $\{|f\rangle\}_{f}$ and $\{|g\rangle\}_{g}$ of the Fock space.
 %
 These bases obey
 \begin{align}
     \hat{\phi}(t, \mathbf{x}) |f\rangle &= f(\mathbf{x}) |f\rangle, \qquad
     \hat{\pi}(t, \mathbf{x}) |g\rangle = g(\mathbf{x}) |g\rangle.
 \end{align}
-That is, the state $|f\rangle$ has eigenvalue collections $\{f(x)\}_{x}$ for the commuting operators $\{\hat{\phi}(x)\}_x$, resp. $|g\rangle$ has $\{g(x)\}_x$ for $\{\hat{\pi}(x)\}_x$, for suitable functions $f,g:\mathbb{R}^3 \to \mathbb{R}$.
+That is, the states $|f\rangle$ have eigenvalue collections $\{f(x)\}_{x}$ for the commuting operators $\{\hat{\phi}(x)\}_x$, resp. $|g\rangle$ have $\{g(x)\}_x$ for $\{\hat{\pi}(x)\}_x$, for suitable functions $f,g:\mathbb{R}^3 \to \mathbb{R}$.
 %
 These bases are the field-theoretic analogue of the position $\{|x\rangle\}_{x\in \mathbb{R}^n}$ and momentum $\{|p\rangle\}_{p\in \mathbb{R}^n}$ bases in ordinary QM, since $\hat{\phi}(x)$ and $\hat{\pi}(x)$ are the counterpart of position $\hat{X}$ and momentum $\hat{P}$ operators.
 
 We remark nobody really knows what is the \emph{space of field configurations.}
-That is the function space the functions $f$ and $g$, i.e. the possible collections $\{f(x)\}_x$ or $\{g(x)\}_x$ of $\hat{\phi}$ or $\hat{\pi}$ eigenvalues, belong to.
+That is the function spaces the functions $f$ and $g$ belong to, i.e. the possible collections $\{f(x)\}_x$ or $\{g(x)\}_x$ of $\hat{\phi}$ or $\hat{\pi}$ eigenvalues.
 A naive guess is to consider the space of square-integrable functions $f(x) \in L^2(\mathbb{R}^3)$, but this is definitely not correct, since the typical field configurations are actually distributions rather than functions.
 This is already evident from the vacuum fluctuations of the field, which diverge at every point in space.
 Rigorous treatments of constructive QFT manage to define suitable function spaces and measures, but they are quite technical and beyond the scope of these notes.
@@ -436,11 +512,10 @@ Rigorous treatments of constructive QFT manage to define suitable function space
 
 
 The $\hat{\phi}$ eigenstates, i.e. states $|f\rangle$ for some field configurations $f:\mathbb{R}^3\to\mathbb{R}$, can equivalently be expressed in terms of their Fourier modes.
-That is, the expressions $|\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle$ denote the \emph{same} state $|f\rangle$ i.e. the same field configuration, simply explicitated in terms of position space values or Fourier modes.
+Indeed the expressions $|\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle$ denote the \emph{same} state $|f\rangle$ i.e. the same field configuration, simply explicitated in terms of position space values or Fourier modes.
 This confirms the state $|f\rangle$ is also an eigenstate of the Fourier transformed field operators $\hat{\phi}_k(t)$ with its Fourier modes $f_k$ as eigenvalues.
-Indeed, for fixed $k$ the operator $\hat{\phi}_k(t)$ is a linear combination of the $\{\hat{\phi}(t,x)\}_x$ operators and returns the corresponding linear combination $f_k$ of eigenvalues when acting on the state $|f\rangle$.
+Indeed, for fixed $k$ the operator $\hat{\phi}_k(t)$ is a linear combination of the $\{\hat{\phi}(t,x)\}_x$ operators and returns the corresponding linear combination $f_k$ of eigenvalues when acting on the state $|f\rangle$, namely
 %
-In formulas
 \begin{align}
     \hat{\phi}(x)&\,|f\rangle = f(x)\, |f\rangle \,\,\, \forall x\quad \Rightarrow\quad 
     \hat{\phi}_k(t)|f\rangle = \int d^3 x\, e^{-i \mathbf{k}\mathbf{x}} \hat{\phi}(t, \mathbf{x}) |f\rangle = \int d^3 x\, e^{-i \mathbf{k}\mathbf{x}} f(x) |f\rangle =
@@ -448,31 +523,57 @@ In formulas
 \end{align}
 %
 
-The states $|f\rangle$, as $f$ varies in the (unknown ill-defined) function space $W_{\phi}$ of field configurations, form an improper orthonormal basis of the Fock space $\mathcal{F}$.
+The states $|f\rangle$, as $f$ varies in the (unknown, ill-defined) function space $W_{\phi}$ of field configurations, form an improper orthonormal basis of the Fock space $\mathcal{F}$.
 We use them to get a resolution of the identity
 \begin{align}
-    \mathbb{I}_{\mathcal{F}}= \int_{W_{\phi}} \!\!\!Df\, \, |f \rangle \langle f |
-     = \int_{W_{\phi}} Df_x \,\, |\{f(x)\}_x \rangle \langle \{f(x)\}_x | 
-     = \int_{W_{\phi}} Df_k\, \, |\{f_k\}_k \rangle \langle \{f_k\}_k |.
+    \mathbb{I}_{\mathcal{F}}= \int_{W_{\phi}} \!\!\!Df\, \, |f \rangle \,\langle f |
+     = \int_{W_{\phi}} Df_x \,\, |\{f(x)\}_x \rangle\, \langle \{f(x)\}_x | 
+     = \int_{W_{\phi}} Df_k\, \, |\{f_k\}_k \rangle \,\langle \{f_k\}_k |.
 \end{align}
 Here $Df$ denotes the functional measure on the function space $W_{\phi}$, formally explicitated in terms of position values or Fourier modes as
 \begin{align}
     Df = \prod_x df(x) \overset{!}{=}  \prod_k df_k.
 \end{align}
-The two expressions should coincide since the Foruier transform is expected be a measure-preserving bijection between the two expression of the function space $W_{\phi}$.
+The two expressions should coincide since the Fourier transform is expected to be a measure-preserving bijection between the two expression of the function space $W_{\phi}$.
 %
-The above expressions are made rigorous by introducing suitable infrared regularization, making the Foruier modes countable discrete, and ultraviolet cutoff, discarding Foruier mode above some scale $\Lambda$ and making the function space finite-dimensional.
+The above expressions are made rigorous by introducing suitable infrared regularization, making the Fourier modes countable discrete, and ultraviolet cutoff, discarding Fourier modes above some scale $\Lambda$ and making the function space finite-dimensional.
 %
 In any case, concatenating the two possible expressions for the identity resolution gives the expected result
 \begin{align}
-    \mathbb{I}_{\mathcal{F}}&= \int_{W_{\phi}} Df \,\, |\{f(x)\}_x \rangle \langle \{f(x)\}_x | 
-     = \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df' \,\, |\{f(x)\}_x \rangle \langle \{f(x)\}_x |\{f'_k\}_k \rangle \langle \{f'_k\}_k |
+    \mathbb{I}_{\mathcal{F}}&= \int_{W_{\phi}} Df \,\, |\{f(x)\}_x \rangle \,\langle \{f(x)\}_x | 
+     = \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df' \,\, |\{f(x)\}_x \rangle \,\langle \{f(x)\}_x |\{f'_k\}_k \rangle \langle \{f'_k\}_k |
      \\
-     &= \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df'\,\, \delta\left(f_k-f'_k\right) \,\, |\{f(x)\}_x \rangle \langle \{f'_k\}_k |
+     &= \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df'\,\, \delta\left(f_k-f'_k\right) \,\, |\{f(x)\}_x \rangle \,\langle \{f'_k\}_k |
      =
-     \int_{W_{\phi}}  Df' \,\, |\{f'_k\}_k \rangle\langle \{f'_k\}_k |
+     \int_{W_{\phi}}  Df' \,\, |\{f'_k\}_k \rangle\,\langle \{f'_k\}_k |
     =\mathbb{I}_{\mathcal{F}}.
 \end{align}
 %
+
 Completely analogous results hold for the $\hat{\pi}$ operators and their eigenstates $|g\rangle$, where $g$ varies over the \emph{conjugate} field configuration space $W_{\pi}$ i.e. the space of possible collections $\{g(x)\}_x$ of $\hat{\pi}$ eigenvalues.
-\end{mytheorem}
+%
+We pass from one basis to the other via a resolution of the identity\todotag{The overlap $\langle g|f\rangle$ is different in general!}
+\begin{align}
+    |g\rangle &= \int_{W_{\phi}} Df\,\, |f\rangle\, \langle f | g \rangle, \quad \text{with}\quad
+    \langle f | g \rangle = \mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)},
+\end{align}
+
+Finally, just like in ordinary QM, the field operators act as functional multiplication and functional differentiation operators on their respective eigenstates, 
+\begin{align}
+    \hat{\phi}(x) &\to f(x)\, \cdot, \quad
+    \hat{\pi}(x) \to -i \hbar \,\frac{\delta}{\delta f(x)}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
+    \hat{\pi}(x) &\to g(x)\, \cdot, \quad
+    \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
+\end{align}
+That is, for any functional $\Psi[\phi] = \langle \phi | \Psi \rangle$ we have
+\begin{align}
+    \langle f | \hat{\phi}(x) | \Psi \rangle &= f(x) \Psi[f], \quad
+    \langle f | \hat{\pi}(x) | \Psi \rangle = -i \hbar \frac{\delta}{\delta f(x)} \Psi[f], \\
+    \langle g | \hat{\pi}(x) | \Psi \rangle &= g(x) \Psi[g], \quad
+    \langle g | \hat{\phi}(x) | \Psi \rangle = i \hbar \frac{\delta}{\delta g(x)} \Psi[g].
+\end{align}
+%
+Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations (easy check) and thus provides two (unitaryly equivalent) representations of the operator algebra on the Fock space $\mathcal{F}$.
+%
+
+\end{mytheorem} 
