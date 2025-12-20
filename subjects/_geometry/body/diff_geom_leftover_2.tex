@@ -222,31 +222,31 @@ Beware the \textbf{above formulas hold for arbitrary-spin fields} $\phi_a$, incl
 
 
 
-\begin{mytheorem}[Lagrangian and Klein-Gordon equation for scalar fields]\todotag{Finish}
+\begin{mytheorem}[Lagrangian and Klein-Gordon equation for scalar fields]
 The action for a real scalar field $\phi$ of mass $m$ in curved spacetime is given by
 \begin{align}
     S_\text{KG} = -\frac{1}{2} \int \mathrm{d}^d x \sqrt{|g|} \left( g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi + m^2 \phi^2 \right).
 \end{align}
 Varying this action with respect to $\phi$ yields the curved spacetime Klein-Gordon equation
 \begin{align}
-    (\nabla^\mu \nabla_\mu - m^2) \phi = 0.
+    (\nabla^\mu \nabla_\mu - m^2) \phi = \frac{1}{\sqrt{|g|}} \partial_\mu \left( \sqrt{|g|}\,\, g^{\mu\nu} \partial_\nu \phi \right) - m^2 \phi = 0.
 \end{align}
 %   
 \end{mytheorem}
 
 
 \begin{mytheorem}[Lagrangian and Maxwell equations for vector fields]\todotag{Finish}
-The action for a vector field $A_\mu dx^\mu$ (electromagnetic potential) in curved spacetime is given by
+The action for a vector field $A_\mu \,dx^\mu$ (electromagnetic potential) in curved spacetime is given by
 \begin{align}
     S_\text{Maxwell} = -\frac{1}{4} \int_M \mathrm{d}^d x \sqrt{|g|} \, F_{\mu\nu} F^{\mu\nu}
-    = -\frac{1}{4}\int_M\, F \wedge \star F = -\frac{1}{4}\langle dA, dA\rangle_{\mathrm{Hodge}},
+    = -\frac{1}{4}\int_M\!\! F \wedge \star F = -\frac{1}{4}\,\langle dA, dA\rangle_{\mathrm{Hodge}}\,,
 \end{align}
-where $F=dA$ is the field strength 2-form, with coordinates $F_{\mu\nu} = \nabla_\mu A_\nu - \nabla_\nu A_\mu$.
+where $F=dA$ is the field strength 2-form, with coordinates\footnote{Recall the exterior derivative can be written exchanging partial with covariant derivatives.} $F_{\mu\nu} = \nabla_\mu A_\nu - \nabla_\nu A_\mu=\partial_\mu A_\nu - \partial_\nu A_\mu$.
 Varying this action with respect to $A\mapsto A+\epsilon $ yields 
 \begin{align}
     \delta S = -\frac{1}{2}\langle dA, d\epsilon \rangle_{\mathrm{Hodge}} = -\frac{1}{2} \langle \delta dA, \epsilon \rangle_{\mathrm{Hodge}} = -\frac{1}{2} \int_M \delta d A\wedge \star \epsilon,
 \end{align}
-where we integrated by parts using the exterior co-derivative $\delta$, which is the adjoint of $d$ wrt the Hodge inner product.
+where we integrated by parts using the exterior co-derivative $\delta$ i.e. the adjoint of $d$ wrt the Hodge inner product.
 The Maxwell equations in curved spacetime are then
 \begin{align}
     \delta d A = \delta F = 0, \quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = 0.
