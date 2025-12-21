@@ -189,6 +189,16 @@ For the continuum distribution
 %------------------------------------------------------------
 
 
+\begin{mytheorem}[The intrinsic difficulty of QFT in curved spacetime]\todotag{To be written}
+Several issues, more physical or technical, make the formulation of QFT in curved spacetime hard: the absence of a preferred vacuum state, the lack of global symmetries, the presence of horizons and singularities, the difficulty in defining particle states and observables etc.
+One intrinsic difficulty can however be grasped quite immediately from Einstein equation and the simple Heinsenberg uncertainty principle.
+The necessity of UV renormalization is already manifest in flat spacetime QFT.
+Allowing for arbitrarily high momenta $p$ is equivalent to exploring arbitrarily small length scales $\Delta x \Delta p \sim \hbar$.
+On the other hand, by Einstein equation $G_{\mu\nu} = 8\pi G T_{\mu\nu}$, energy-momentum sources curvature.
+High momenta $p$ will then inevitably modify the spacetime geometry itself, which in turn affect the measure of distances $\Delta x$ (as well as momenta themselves!).
+This backreaction loop between geometry and quantum fields makes the formulation of QFT in curved spacetime intrinsically difficult.
+\end{mytheorem}
+
 
 \begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields]
 Consider a field theory in curved spacetime with action, where $\{\phi_a\}_a$ denotes any multiplet of fields with arbitrary spin
@@ -236,31 +246,47 @@ Varying this action with respect to $\phi$ yields the curved spacetime Klein-Gor
 
 
 \begin{mytheorem}[Lagrangian and Maxwell equations for vector fields]\todotag{Finish}
-The action for a vector field $A_\mu \,dx^\mu$ (electromagnetic potential) in curved spacetime is given by
+%
+The action for a vector field $A=A_\mu \,dx^\mu$ (electromagnetic potential) coupled to a current $J=J_\mu d x^\mu$ is given by $S=S_{\mathrm{Maxwell}}+S_{\mathrm{int}}$, where
 \begin{align}
-    S_\text{Maxwell} = -\frac{1}{4} \int_M \mathrm{d}^d x \sqrt{|g|} \, F_{\mu\nu} F^{\mu\nu}
-    = -\frac{1}{4}\int_M\!\! F \wedge \star F = -\frac{1}{4}\,\langle dA, dA\rangle_{\mathrm{Hodge}}\,,
+    S_{\mathrm{Maxwell}}&= -\int_M \!\!\mathrm{d}^n x \sqrt{|g|}\, \tfrac{1}{4} F_{\mu\nu} F^{\mu\nu} 
+    = \int_M\!\! -\tfrac{1}{2} F \wedge \star F  = -\tfrac{1}{2}\,\langle dA, dA\rangle_{\mathrm{Hodge}},
+    \\
+    S_{\mathrm{int}}&= -\int_M \!\!\mathrm{d}^n x \sqrt{|g|}\, A_\mu J^\mu = \int_M -A \wedge \star J = -\langle A, J \rangle_{\mathrm{Hodge}}.
 \end{align}
-where $F=dA$ is the field strength 2-form, with coordinates\footnote{Recall the exterior derivative can be written exchanging partial with covariant derivatives.} $F_{\mu\nu} = \nabla_\mu A_\nu - \nabla_\nu A_\mu=\partial_\mu A_\nu - \partial_\nu A_\mu$.
-Varying this action with respect to $A\mapsto A+\epsilon $ yields 
+We defined the (abelian) field strength 2-form as\footnote{\label{fn:covariant_vs_partial_dif_forms}Note we can exchange partial with covariant derivatives since both expressions are tensorial and coincide in normal coordinates at a point i.e. where Christoffel symbols vanish, as we already discussed in general for the exterior derivative of any $p$-form.}
 \begin{align}
-    \delta S = -\frac{1}{2}\langle dA, d\epsilon \rangle_{\mathrm{Hodge}} = -\frac{1}{2} \langle \delta dA, \epsilon \rangle_{\mathrm{Hodge}} = -\frac{1}{2} \int_M \delta d A\wedge \star \epsilon,
-\end{align}
-where we integrated by parts using the exterior co-derivative $\delta$ i.e. the adjoint of $d$ wrt the Hodge inner product.
-The Maxwell equations in curved spacetime are then
-\begin{align}
-    \delta d A = \delta F = 0, \quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = 0.
+    F:=dA, \quad \text{in a chart}\quad F_{\mu\nu} \,dx^\mu\wedge dx^\nu = \Big(\partial_\mu A_\nu - \partial_\nu A_\mu\Big)\, dx^\mu\wedge dx^\nu =\Big(\nabla_\mu A_\nu - \nabla_\nu A_\mu\Big)\, dx^\mu\wedge dx^\nu.
 \end{align}
 %
-These are \emph{not} to be confused with the Bianchi identity\footnote{Note we can exchange partial with covariant derivatives since both expressions are tensorial and coincide in normal coordinates at a point, as we already discussed in general for the exterior derivative of any $p$-form.}
+
+The current $J$ is assumed to be conserved $\nabla_\mu J^\mu=0$ in order to ensure gauge invariance of the action under $A\mapsto A + d f$ for any scalar field $f$.
+%
+It is typically obtained via minimal coupling $\nabla_\mu \mapsto D_\mu^A\equiv\nabla_\mu - i q A_\mu$ to charged matter fields, like a complex scalar or a spinor,
+\begin{align}
+    \mathcal{L}&\supset |(\nabla_\mu - i q A_\mu)\phi|^2 = \nabla^\mu\phi^\dagger \nabla_\mu \phi + \underbrace{i q (\phi^\dagger \nabla_\mu \phi - \phi \nabla_\mu \phi^\dagger)}_{=J_\mu}A^\mu + q^2 A_\mu A^\mu |\phi|^2 \quad \text{(complex scalar),}
+    \\[7pt]
+    \mathcal{L}&\supset \bar{\psi} i \gamma^\mu (\nabla_\mu - i q A_\mu)\psi = \bar{\psi} i \gamma^\mu \nabla_\mu \psi +  \underbrace{q\bar{\psi} \gamma^\mu \psi}_{=J^\mu} A_\mu \quad \text{(Dirac spinor).}
+\end{align}
+
+%
+Varying the action wrt $A\mapsto A+\epsilon $ and integrating by parts, using the exterior co-derivative $\delta$ i.e. the adjoint of $d$ wrt the Hodge product, gives
+\begin{align}
+    \delta S_{\mathrm{Maxwell}} &= -\langle dA, d\epsilon \rangle_{\mathrm{Hodge}} = - \langle \delta dA, \epsilon \rangle_{\mathrm{Hodge}} = -\int_M \delta d A\wedge \star \epsilon,
+    \\
+    \delta S_{\mathrm{int}} &= -\langle J,\epsilon\rangle_{\mathrm{Hodge}}=\int_M - J \wedge \star \epsilon= -\int_M\!\!\mathrm{d}^n x\sqrt{|g|}\, \epsilon_\mu J^\mu.
+\end{align}
+The Maxwell equations in curved spacetime $\delta S_{\mathrm{Maxwell}} + \delta S_{\mathrm{int}}=0$ are then
+\begin{align}
+    \delta d A +J= \delta F +J= 0, \quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = -J^\nu.
+\end{align}
+%
+These are \emph{not} to be confused with the Bianchi identity\footnotemark[\getrefnumber{fn:covariant_vs_partial_dif_forms}] for the field strength $F=dA$, which reads
 \begin{align}
     dF=0\quad \text{or in a chart} \quad  0=\partial_{[\alpha} F_{\beta\gamma]}\equiv \nabla_{[\alpha} F_{\beta\gamma]}.
 \end{align}
 
-If we couple the vector field to a conserved current $J^\mu$ (i.e. $\nabla_\mu J^\mu=0$), we can add an interaction term $S_\text{int} = \int \mathrm{d}^d x \sqrt{|g|} A_\mu J^\mu$ to the action, yielding the inhomogeneous Maxwell equations \todotag{Do better this part, writing lagrangian for scalar QDE}
-\begin{align}
-    \delta F = J\,,\quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = J^\nu.
-\end{align}
+
 %
 \end{mytheorem}
 
