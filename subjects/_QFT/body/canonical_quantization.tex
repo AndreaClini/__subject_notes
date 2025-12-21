@@ -138,9 +138,18 @@ This is already familiar from Electrodynamics: it is very unlikely to find high-
 
 
 \begin{mytheorem}[Free Klein-Gordon field as waves on a lake \& Fourier modes as decoupled harmonic oscillators]
-\todotag{insert image of lake \& fourier modes}
-Under any point of view, we should see the classical Klein-Gordon field as a collection of decoupled harmonic oscillators, one per each Fourier mode.
-In this sense, it is completely analogous to the waves on a lake, which can be decomposed into independent Fourier modes, each oscillating with its own frequency.
+\todotag{Finish \& insert image of lake \& fourier modes (cf. kempf)}
+The classical (free) Klein-Gordon field is completely analogous to the surface of a lake.
+It should be seen as a collection of \emph{coupled} harmonic oscillators, one at each point of space, or equivalently of \emph{decoupled} harmonic oscillators in momentum space i.e. independent Fourier modes, each oscillating with its own frequency.
+Both for the field and the lake surface, a perturbation in space will spread and deform overtime, propagating as a superposition of waves with various frequencies and exciting neighbouring points.
+On the other hand, a wave with fixed frequency will oscillate but maintain its shape--amplitude and frequency--overtime, freely travelling across the lake surface without deforming.
+
+In the absence of excitations (say `no rocks thrown into the lake') the surface of the lake i.e. the classical field, will stay flat or retain its initial excitation, if any.
+In the quantum case, there will be fluctuations on top of these classical profiles due to zero-point energy of each Fourier mode, even in the absence of external perturbations.
+
+In order to probe the lake profile at a given point, we can use a cork floating on the water surface.
+The analogous procedure for the field would be to use an atom or another suitable (quantum) system that can be acted upon by the field, both in the classical and quantum case.
+We discuss this in more detail below.
 \end{mytheorem}
 
 \begin{mytheorem}[Probing the Klein-Gordon field with a cork] \todotag{write}
@@ -558,14 +567,30 @@ We pass from one basis to the other via a resolution of the identity\todotag{The
     \langle f | g \rangle = \mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)},
 \end{align}
 
-Finally, just like in ordinary QM, the field operators act as functional multiplication and functional differentiation operators on their respective eigenstates, 
+
+Given any state $|\Psi\rangle \in \mathcal{F}$, we can express it in either basis as
+\begin{align}
+    |\Psi\rangle &= \int_{W_{\phi}} Df\,\, |f\rangle \, \langle f | \Psi \rangle 
+    = \int_{W_{\pi}} Dg\,\, |g\rangle \, \langle g | \Psi \rangle.
+\end{align}
+The functionals $\Psi[f] = \langle f | \Psi \rangle$ and $\Psi[g] = \langle g | \Psi \rangle$ are the \emph{wave functionals} of the state $|\Psi\rangle$ in the $\hat{\phi}$ and $\hat{\pi}$ representations respectively.
+%
+The value $\Psi[f]$ is the probability amplitude density of finding the field with configuration $\{f(x)\}_x$ when the system is in the state $|\Psi\rangle$.
+That is, the probability density of finding the field with configuration between $\{f(x)\}_x$ and $\{f(x)+df(x)\}_x$ is
+\begin{align}
+    P_{\Psi}(\{f(x)\}_x) \,Df &= |\langle f | \Psi \rangle|^2 \,Df = |\Psi[f]|^2 \,Df.
+\end{align}
+Analogous considerations hold for $\Psi[g]$ and $P_{\Psi}(\{g(x)\}_x) \,Dg$ in the $\hat{\pi}$ representation.
+%
+
+Finally, just like in ordinary QM, the field operators act on functionals of the field configurations $f$ (or $g$) as functional multiplication and functional differentiation operators on their respective eigenstates, 
 \begin{align}
     \hat{\phi}(x) &\to f(x)\, \cdot, \quad
     \hat{\pi}(x) \to -i \hbar \,\frac{\delta}{\delta f(x)}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
     \hat{\pi}(x) &\to g(x)\, \cdot, \quad
     \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
 \end{align}
-That is, for any functional $\Psi[\phi] = \langle \phi | \Psi \rangle$ we have
+That is, for any functional $\Psi[f] = \langle f | \Psi \rangle$ of the field consifgurations $f$, respectively of $g$, we have
 \begin{align}
     \langle f | \hat{\phi}(x) | \Psi \rangle &= f(x) \Psi[f], \quad
     \langle f | \hat{\pi}(x) | \Psi \rangle = -i \hbar \frac{\delta}{\delta f(x)} \Psi[f], \\
@@ -576,4 +601,35 @@ That is, for any functional $\Psi[\phi] = \langle \phi | \Psi \rangle$ we have
 Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations (easy check) and thus provides two (unitaryly equivalent) representations of the operator algebra on the Fock space $\mathcal{F}$.
 %
 
+In particular, the fields act like this on the \emph{wave functional} $\Psi$ of the system i.e. the one obeying the Schrödinger equation in QFT discussed above.
+For example, if the system is in one of the field configuration eigenstates $|f_0\rangle$, its wave functional is simply
+\begin{align}
+    \Psi[f] = \langle f | f_0 \rangle = \delta(f - f_0),
+\end{align}
+and the action of the operators is (again, analogous results hold for the $\hat{\pi}$ representation)
+\begin{align}
+    \langle f | \hat{\phi}(x) | f_0 \rangle &= f(x) \delta(f - f_0), \quad
+    \langle f | \hat{\pi}(x) | f_0 \rangle = -i \hbar \frac{\delta}{\delta f(x)} \delta(f - f_0).
+\end{align}
 \end{mytheorem} 
+
+
+\begin{mytheorem}[Collapse of the wave functional \& measuring the $\phi$-field configuration at all space points at once]
+%
+The postulates of QM state that after measuring an observable $A$ on a system in state $|\Psi\rangle$ obtaining the eigenvalue $\lambda$ as outcome, the system collapses to the corresponding eigenspace of $A$.
+For example, if we measure the field $\hat{\phi}$ at some points $x_1\dots x_n$ in space obtaining values $f(x_1)\dots f(x_n)$, the system will then collapse onto the eigenspace of states $|\tilde{\Psi}\rangle$ satisfying
+\begin{align}
+    \hat{\phi}(x_i) |\tilde{\Psi}\rangle = f(x_i) |\tilde{\Psi}\rangle, \quad i=1\dots n.
+\end{align}
+
+In fact, since the entire collection of field operators $\{\hat{\phi}(x)\}_{x\in \mathbb{R}^3}$ commutes (it is actually a maximal set of commuting observables), we could in principle measure the field values $\langle|\hat{\phi}(t_0,x)\rangle$ at each point in space at the same time $t_0$.
+In this case, the system will collapse onto a unique field eigenstate $|f\rangle$ for a fixed configuration $f:\mathbb{R}^3 \to \mathbb{R}$.
+Repeating the measurement immediately afterwards will yield the same configuration $f(x)$ with probability one, i.e. the probability density of finding the field with configuration between $\{f'(x)\}_x$ and $\{f'(x)+df'(x)\}_x$ after the measurement is
+\begin{align}
+    P_{\text{after}}(\{f'(x)\}_x) \,Df &= |\langle f' | f \rangle|^2 \,Df = \delta(f' - f)^2 \,Df,
+\end{align}
+with the obvious caveat on the ill-defined square of the delta functional.
+
+Such an infinite measurement is of course purely theoretical and practically almost impossible.
+However, it is worth noticing that such a measurement has in fact been performed by gravity and matter at the end of inflation, collapsing the quantum fluctuations of the inflaton field into classical inhomogeneities and seeding structure formation. \todotag{Expand on this (cf. kemps qft L4)}
+\end{mytheorem}
