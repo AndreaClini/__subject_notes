@@ -563,8 +563,8 @@ Completely analogous results hold for the $\hat{\pi}$ operators and their eigens
 %
 We pass from one basis to the other via a resolution of the identity\todotag{The overlap $\langle g|f\rangle$ is different in general!}
 \begin{align}
-    |g\rangle &= \int_{W_{\phi}} Df\,\, |f\rangle\, \langle f | g \rangle, \quad \text{with}\quad
-    \langle f | g \rangle = \mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)},
+    |g\rangle &= \int_{W_{\phi}} Df\,\, |f\rangle\, \langle f | g \rangle, {\color{red}\quad \text{with}\quad
+    \langle f | g \rangle = \mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)}},
 \end{align}
 
 
@@ -575,43 +575,14 @@ Given any state $|\Psi\rangle \in \mathcal{F}$, we can express it in either basi
 \end{align}
 The functionals $\Psi[f] = \langle f | \Psi \rangle$ and $\Psi[g] = \langle g | \Psi \rangle$ are the \emph{wave functionals} of the state $|\Psi\rangle$ in the $\hat{\phi}$ and $\hat{\pi}$ representations respectively.
 %
-The value $\Psi[f]$ is the probability amplitude density of finding the field with configuration $\{f(x)\}_x$ when the system is in the state $|\Psi\rangle$.
-That is, the probability density of finding the field with configuration between $\{f(x)\}_x$ and $\{f(x)+df(x)\}_x$ is
+The value $\Psi[f]$ is the probability amplitude density of finding the field with configuration $f=\{f(x)\}_x\equiv\{f_k\}_k$ when the system is in the state $|\Psi\rangle$.
+That is, with the above considerations on the functional measure $Df$, the probability density of finding the field with configuration between $f$ and $f+Df$ is
 \begin{align}
-    P_{\Psi}(\{f(x)\}_x) \,Df &= |\langle f | \Psi \rangle|^2 \,Df = |\Psi[f]|^2 \,Df.
+    P_{\Psi}(f) \,Df &= |\langle f | \Psi \rangle|^2 \,Df = |\Psi[f]|^2 \,Df.
 \end{align}
 Analogous considerations hold for $\Psi[g]$ and $P_{\Psi}(\{g(x)\}_x) \,Dg$ in the $\hat{\pi}$ representation.
 %
-
-Finally, just like in ordinary QM, the field operators act on functionals of the field configurations $f$ (or $g$) as functional multiplication and functional differentiation operators on their respective eigenstates, 
-\begin{align}
-    \hat{\phi}(x) &\to f(x)\, \cdot, \quad
-    \hat{\pi}(x) \to -i \hbar \,\frac{\delta}{\delta f(x)}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
-    \hat{\pi}(x) &\to g(x)\, \cdot, \quad
-    \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
-\end{align}
-That is, for any functional $\Psi[f] = \langle f | \Psi \rangle$ of the field consifgurations $f$, respectively of $g$, we have
-\begin{align}
-    \langle f | \hat{\phi}(x) | \Psi \rangle &= f(x) \Psi[f], \quad
-    \langle f | \hat{\pi}(x) | \Psi \rangle = -i \hbar \frac{\delta}{\delta f(x)} \Psi[f], \\
-    \langle g | \hat{\pi}(x) | \Psi \rangle &= g(x) \Psi[g], \quad
-    \langle g | \hat{\phi}(x) | \Psi \rangle = i \hbar \frac{\delta}{\delta g(x)} \Psi[g].
-\end{align}
-%
-Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations (easy check) and thus provides two (unitaryly equivalent) representations of the operator algebra on the Fock space $\mathcal{F}$.
-%
-
-In particular, the fields act like this on the \emph{wave functional} $\Psi$ of the system i.e. the one obeying the Schrödinger equation in QFT discussed above.
-For example, if the system is in one of the field configuration eigenstates $|f_0\rangle$, its wave functional is simply
-\begin{align}
-    \Psi[f] = \langle f | f_0 \rangle = \delta(f - f_0),
-\end{align}
-and the action of the operators is (again, analogous results hold for the $\hat{\pi}$ representation)
-\begin{align}
-    \langle f | \hat{\phi}(x) | f_0 \rangle &= f(x) \delta(f - f_0), \quad
-    \langle f | \hat{\pi}(x) | f_0 \rangle = -i \hbar \frac{\delta}{\delta f(x)} \delta(f - f_0).
-\end{align}
-\end{mytheorem} 
+\end{mytheorem}
 
 
 \begin{mytheorem}[Collapse of the wave functional \& measuring the $\phi$-field configuration at all space points at once]
@@ -633,3 +604,132 @@ with the obvious caveat on the ill-defined square of the delta functional.
 Such an infinite measurement is of course purely theoretical and practically almost impossible.
 However, it is worth noticing that such a measurement has in fact been performed by gravity and matter at the end of inflation, collapsing the quantum fluctuations of the inflaton field into classical inhomogeneities and seeding structure formation. \todotag{Expand on this (cf. kemps qft L4)}
 \end{mytheorem}
+
+
+\begin{mytheorem}[Operators in the field representations\todotag{fix \& finish}]
+%
+Just like in ordinary QM, the field operators act on functionals of the $\phi$-field configurations as functional multiplication and functional differentiation operators, and viceversa in the $\hat{\pi}$ representation, 
+\begin{align}
+    \hat{\phi}(x) &\to f(x)\, \cdot, \quad
+    \hat{\pi}(x) \to -i \hbar \,\frac{\delta}{\delta f(x)}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
+    \hat{\pi}(x) &\to g(x)\, \cdot, \quad
+    \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
+\end{align}
+The same is true for the Fourier transformed $\hat{\phi}_k(t)$ and $\hat{\pi}_k(t)$, since they are just linear combinations of the $\hat{\phi}(x)$ and $\hat{\pi}(x)$ operators, with multplication and functional derivatives $f_k$ and $g_k$ respectively.
+That is, for any functional $\Psi[f] = \langle f | \Psi \rangle$ of the field consifgurations $f$, respectively of $g$, we have
+{\small 
+\begin{align}
+    \langle f | \hat{\phi}(x) | \Psi \rangle &= f(x) \Psi[f], \quad \langle f | \hat{\phi}_k | \Psi \rangle = f_k \Psi[f], \quad
+    \langle f | \hat{\pi}(x) | \Psi \rangle = -i \hbar \frac{\delta}{\delta f(x)} \Psi[f], \quad 
+    \langle f | \hat{\pi}_k | \Psi \rangle = -i \hbar \frac{\delta}{\delta f_k} \Psi[f],\\
+    \langle g | \hat{\pi}(x) | \Psi \rangle &= g(x) \Psi[g], \quad \langle g | \hat{\pi}_k | \Psi \rangle = g_k \Psi[g], \quad
+    \langle g | \hat{\phi}(x) | \Psi \rangle = i \hbar \frac{\delta}{\delta g(x)} \Psi[g],\quad \langle g | \hat{\phi}_k | \Psi \rangle = i \hbar \frac{\delta}{\delta g_k} \Psi[g].
+\end{align}
+}
+%
+In particular, the fields act like this on the \emph{wave functional} $\Psi$ of the system i.e. the one obeying the Schrödinger equation in QFT discussed above.
+For example, if the system is in one of the field eigenstates $|f_0\rangle$, its wave functional is simply
+\begin{align}
+    \Psi[f] = \langle f | f_0 \rangle = \delta(f - f_0),
+\end{align}
+and the action of the operators is (again, analogous results hold for the $\hat{\pi}$ representation)
+\begin{align}
+    \langle f | \hat{\phi}(x) | f_0 \rangle &= f(x) \delta(f - f_0), \quad
+    \langle f | \hat{\pi}(x) | f_0 \rangle = -i \hbar \frac{\delta}{\delta f(x)} \delta(f - f_0).
+\end{align}
+Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations (easy check) and thus provides two \emph{unitaryly equivalent} representations of the operator algebra on the Fock space $\mathcal{F}$.
+
+%
+In fact, we can represent \emph{any} operator $\hat{O}$ acting on the Fock space in either the $\hat{\phi}$ or $\hat{\pi}$ representation by inserting suitable resolutions of the identity
+\begin{align}
+    \hat{O}= \int_{W_{\phi}} \int_{W_{\phi}} Df\, Df' \, |f\rangle\, \langle f | \hat{O} | f' \rangle \langle f' |= \int_{W_{\pi}} \int_{W_{\pi}} Dg\, Dg' \, |g\rangle\, \langle g | \hat{O} | g' \rangle \, \langle g' |.
+\end{align}
+In particular, in the two representations, in position and momentum space respectively, the Hamiltonian reads\footnote{Recall that self-adjointness/reality implies $\hat{\phi}^\dagger_k=-\hat{\phi}_k$, $\hat{\pi}^\dagger_k=-\hat{\pi}_k$ and $f_k^* = f_{-k}$, $g_k^* = g_{-k}$, and each element commutes with its adjoint.}
+\todotag{fix}
+{\small
+\begin{align}
+    &\hat{H} = \int d^3 x\,\tfrac{1}{2}\left( \hat{\pi}^2 +  (\nabla \hat{\phi})^2 + m^2 \hat{\phi}^2 \right)
+    = \int \frac{d^3k}{(2\pi)^3}\,\tfrac{1}{2}\left(\hat{\pi}_k \hat{\pi}_{-k} + (|\mathbf{k}|^2 + m^2) \hat{\phi}_k \hat{\phi}_{-k}\right)
+    \\
+    &\to \int d^3 x\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f(x)^2} + (\nabla_x f(x))^2 + m^2 f(x)^2 \right) 
+    = \int\frac{d^3k}{(2\pi)^3}\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right)
+    \quad \text{on $\hat{\phi}$ eigenstates }|f\rangle, \\
+    &\to \int d^3 x\, \tfrac{1}{2} \left( g(x)^2 - \hbar^2 \Big(\nabla_x \frac{\delta}{\delta g(x)}\Big)^2 - m^2 \hbar^2 \frac{\delta^2}{\delta g(x)^2} \right)
+    = \int \frac{d^3k}{(2\pi)^3}\,\tfrac{1}{2} \left( g_{-k} g_{k} - \hbar^2 (|\mathbf{k}|^2 + m^2) \frac{\delta^2}{\delta g_k^* \,\delta g_k} \right)
+    \quad \text{on $\hat{\pi}$ eigenstates }|g\rangle.
+\end{align}
+}
+Crucially, had we used some infrared regularization considering the theory in a \emph{finite} volume, the Fourier modes\footnote{We would have modes $e^{\pm ikx}$ or $\sin(kx)$ for suitable $k=\2\pi(n_1/L_1,n_2/L_2,n_3/L_3)$ in a finite boxe with PBC or DBC resp. and modes $\propto R_n(r) Y_{\ell,m}(\theta,\phi)$ in a finite sphere etc} would be countabble discrete, integrals $d^3k$ would become (possibly infinite) sums and functional derivatives $\frac{\delta}{\delta f_k}$ would become ordinary derivatives $\frac{\partial}{\partial f_k}$, making the above expressions mathematically well-defined.
+\end{mytheorem} 
+
+
+\begin{mytheorem}[Solving the Schrödinger equations in the $\hat{\phi}$ representation\todotag{Fix \& finish}]
+We can explicitly solve the Schrödinger equation in QFT for the free Klein-Gordon field in the $\hat{\phi}$ representation.
+The Hamiltonian operator is reported above.
+The time-dependent Schrödinger equation reads
+\begin{align}
+    i \hbar \frac{\partial}{\partial t} \Psi[t; f] &= \int \frac{d^3k}{(2\pi)^3}\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \Psi[t; f].
+\end{align}
+We can solve it by separation of variables, writing the wave functional as a product over Fourier modes
+\begin{align}
+    \Psi[t; f] = \prod_k \psi_k(t; f_k, f_k^*).
+\end{align}
+Plugging this into the Schrödinger equation, we obtain a separate equation for each Fourier mode
+\begin{align}
+    i \hbar \frac{\partial}{\partial t} \psi_k(t; f_k, f_k^*) &= \tfrac{1}{2} \left( -\hbar^2 \frac{\partial^2}{\partial f_k \,\partial f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \psi_k(t; f_k, f_k^*).
+\end{align}
+Each of these equations is formally identical to the Schrödinger equation of a single quantum harmonic oscillator with mass $m=1$ and frequency $\omega_k = \sqrt{|\mathbf{k}|^2 + m^2}$, with $f_k$ and $f_k^*$ playing the role of position and momentum variables.
+The solutions are thus well-known energy eigenstates
+\begin{align}
+    \psi_{n_k}(t; f_k, f_k^*) &= \left( \frac{\omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{\omega_k}{\hbar}} f_{k} \right) e^{-\frac{\omega_k}{2\hbar} f_{k}^2} e^{-i E_{n_k} t/\hbar}, \quad
+    E_{n_k} = \hbar \omega_k \left( n_k + \tfrac{1}{2} \right), \quad n_k = 0, 1, 2, \dots
+\end{align}
+The general solution of the Schrödinger equation is thus
+\begin{align}
+    \Psi[t; f] &= \prod_k \psi_{n_k}(t; f_k, f_k^* ) 
+    = \prod_k \left( \frac{\omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{\omega_k}{\hbar}} f_{k} \right) e^{-\frac{\omega_k}{2\hbar} f_{k}^2} e^{-i E_{n_k} t/\hbar}.
+\end{align}
+This solution corresponds to the Fock space state
+\begin{align}
+    |\Psi\rangle = \bigotimes_k |n_k\rangle,
+\end{align}
+i.e. the state with $n_k$ particles in the mode $k$ for all $k$.
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[Solving the Heisenberg equations in the $\hat{\phi}$ representation\todotag{Fix \& finish}]
+%
+Alternatively, we can solve the Heisenberg equations of motion for the free Klein-Gordon field in the $\hat{\phi}$ representation.
+The Heisenberg equation for the field operator reads
+\begin{align}
+    \frac{\partial}{\partial t} \hat{\phi}(t, x) &= \frac{1}{i \hbar} [\hat{\phi}(t, x), \hat{H}] = \hat{\pi}(t, x), \\
+    \frac{\partial}{\partial t} \hat{\pi}(t, x) &= \frac{1}{i \hbar} [\hat{\pi}(t, x), \hat{H}] = (\nabla^2 - m^2) \hat{\phi}(t, x).
+\end{align}
+Combining these two equations, we obtain the Klein-Gordon equation for the field operator
+\begin{align}
+    (\partial_t^2 - \nabla^2 + m^2) \hat{\phi}(t, x) = 0.
+\end{align}
+We can solve this equation by expanding the field operator in Fourier modes
+\begin{align}
+    \hat{\phi}(t, x) = \int \frac{d^3k}{(2\pi)^3} e^{i \mathbf{k} \cdot \mathbf{x}} \hat{\phi}_k(t).
+\end{align}
+Plugging this into the Klein-Gordon equation, we obtain a separate equation for each Fourier mode
+\begin{align}
+    \frac{d^2}{dt^2} \hat{\phi}_k(t) + \omega_k^2 \hat{\phi}_k(t) = 0, \quad \omega_k = \sqrt{|\mathbf{k}|^2 + m^2}.
+\end{align}
+Each of these equations is formally identical to the equation of motion of a single quantum harmonic oscillator with frequency $\omega_k$.
+The solutions are thus well-known
+\begin{align}
+    \hat{\phi}_k(t) &= \hat{a}_k e^{-i \omega_k t} + \hat{a}_k^\dagger e^{i \omega_k t}, \\
+    \hat{\pi}_k(t) &= -i \hbar \omega_k \left( \hat{a}_k e^{-i \omega_k t} - \hat{a}_k^\dagger e^{i \omega_k t} \right).
+\end{align}
+The operators $\hat{a}_k$ and $\hat{a}_k^\dagger$ are the annihilation and creation operators for the mode $k$, satisfying the commutation relations
+\begin{align}
+    [\hat{a}_k, \hat{a}_{k'}^\dagger] = (2\pi)^3 \delta^{(3)}(k - k'), \quad [\hat{a}_k, \hat{a}_{k'}] = 0, \quad [\hat{a}_k^\dagger, \hat{a}_{k'}^\dagger] = 0.
+\end{align}
+%
+    
+\end{mytheorem}
+
+
