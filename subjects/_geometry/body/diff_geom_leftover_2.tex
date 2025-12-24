@@ -259,48 +259,75 @@ This backreaction loop between geometry and quantum fields makes the formulation
 \end{mytheorem}
 
 
-\begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields]
-The action for a field theory in curved spacetime with a multiplet $\{\phi_a\}_a$ of fields with \emph{arbitrary spin} is 
-\begin{align}
-    S[\phi] =  \int_M \omega_g\,\,\mathcal{L}\,=\int \mathrm{d}^d x \sqrt{|g|} \,\,\, \mathcal{L}(\phi_a, \nabla_\mu \phi_a, g_{\mu\nu}).
-\end{align}
-The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensor\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi_a$, possibly with spin, their covariant derivatives $\nabla_\mu \phi_a$ and the metric $g_{\mu\nu}$.
-That is, it is a total contraction of all indices, including spinorial ones.
-In turn the integrand is simply the contraction of the metric volume form $\omega_g = \sqrt{|g|} d^d x$ with a scalar $\mathcal{L}$ i.e. a (0,0)-tensor, or equivalently the wedge product with of a 0-form.
-
-Note that we could equivalently write $\mathcal{L}=\mathcal{L}(\phi_a, \partial_\mu \phi_a, g_{\mu\nu},\partial_\rho g_{\mu\nu})$, since the difference between partial and covariant derivatives is given by Christoffel symbols $\Gamma_{\mu\nu}^\rho$ that are functions of the metric and its first derivatives only.
-However, the resulting expression would be unnecessarily cumbersome:\footnote{Of course, if $\phi_a$ are scalar fields then $\partial_\mu\phi_a=\nabla_\mu\phi_a$.} the lagrangian must be a scalar--i.e. a contraction of tensors--whereas partial derivatives of tensors are not even tensors, so that in order to obtain a sensible expression we would need to introduce Christoffel symbols `implictly' everywhere needed anyway.
-
-Finally, note that derivatives of $\mathcal{L}$ with respect to $\nabla_\mu \phi$ are tensors, while derivatives with respect to $\partial_\mu \phi$ are not.
-Indeed, since $\mathcal{L}$ is a scalar, if we have parametrizations $\epsilon_1 \mapsto \phi(\epsilon_1)$, $\epsilon_2 \mapsto \nabla_\mu \phi(\epsilon_2)$ and $\epsilon_3\mapsto g_{\mu\nu}(\epsilon_3)$, we have
-{\small
-\begin{align}
-    \frac{\mathrm{d}}{\mathrm{d}\epsilon} \mathcal{L}(\phi(\epsilon), \nabla_\mu \phi(\epsilon), g_{\mu\nu}(\epsilon)) 
-    = \frac{\partial \mathcal{L}}{\partial \phi} \underbrace{\frac{\mathrm{d}\phi}{\mathrm{d}\epsilon}}_{tensor}
-    + \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)} \underbrace{\frac{\mathrm{d}(\nabla_\mu \phi)}{\mathrm{d}\epsilon}}_{tensor}
-    + \frac{\partial \mathcal{L}}{\partial g_{\mu\nu}} \underbrace{\frac{\mathrm{d}g_{\mu\nu}}{\mathrm{d}\epsilon}}_{tensor}.
-\end{align}
-}
-Since variations of tensors $\frac{d T}{d\epsilon}$ are tensors and the left-hand side is a scalar, we conclude that $\frac{\partial \mathcal{L}}{\partial \phi}$ is a tensor of the same type as $\phi$, $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)}$ is a tensor with one upper index more than $\phi$ and $\frac{\partial \mathcal{L}}{\partial g_{\mu\nu}}$ is a (2,0) tensor.
-On the other hand, if we considered a parametrization $\epsilon \mapsto \partial_\mu \phi(\epsilon)$ instead, the term $\frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} \frac{\mathrm{d}(\partial_\mu \phi)}{\mathrm{d}\epsilon}$ would still be a scalar, but we could not conclude that $\frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)}$ is a tensor of suitable rank since $\frac{\mathrm{d}(\partial_\mu \phi)}{\mathrm{d}\epsilon}$ is not a tensor.
-
-
-The equations of motion for the fields are obtained varying with respect to $\phi_a$, \todotag{Fix all derivatives $\partial\mapsto \nabla$}
-{\small
-\begin{align}
-    \delta S &= \int_M \mathrm{d}^d x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi_a} \delta \phi_a + \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta (\partial_\mu \phi_a) \right)
-    \\
-    &= \int_M \mathrm{d}^d x \sqrt{|g|} \left[ \frac{\partial \mathcal{L}}{\partial \phi_a} - \frac{1}{\sqrt{|g|}}\, \partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \right) \right] \delta \phi_a + \underbrace{\frac{1}{\sqrt{|g|}}\, \partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta\phi_a\right)}_{\displaystyle = \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \delta\phi_a\right)}.
-\end{align}
-}
-The last term is a total derivative since $\text{div}_{\Omega_g}X=\nabla_\mu X^\mu\,\Omega_g$ for any vector field\footnote{Indeed the variation of $\mathcal{L}$ wrt $\partial_\mu \phi_a$ returns a vector $X^\mu:=\frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)}$. } $X$ and the metric volume form $\Omega_g=\sqrt{|g|}dx^1 \wedge \cdots \wedge dx^n$, and hence vanishes by Gauss theorem assuming the variations $\delta \phi_a$ vanish at the boundary of $M$ (or fall off sufficiently fast at infinity).
+\begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields \todotag{check}]
 %
-The Euler-Lagrange equations for the field $\phi_a$ are then
+The \textbf{action} for a field theory in curved spacetime with a multiplet $\{\phi^\star_{a,\bullet}\}_a$ of fields with \emph{arbitrary spin} is 
 \begin{align}
-    0=\frac{\partial\mathcal{L}}{\partial \phi_a}-\frac{1}{\sqrt{|g|}} \partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)} \right)
-    = \frac{\partial\mathcal{L}}{\partial \phi_a}-\nabla_\mu\left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_a)}\right).
+    S[\phi] =  \int_M \Omega_g\,\,\mathcal{L}\,=\int \mathrm{d}^n x \sqrt{|g|} \,\,\, \mathcal{L}(\phi_a, \nabla_\mu \phi_a, g_{\mu\nu}).
 \end{align}
-Beware the \textbf{above formulas hold for arbitrary-spin fields} $\phi_a$, including scalars, vectors, tensors and spinors, \textbf{arranged in any multiplet} $\{\phi_a\}_a$, provided the Lagrangian density $\mathcal{L}$ is a scalar, as it should.
+The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensors\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi^\star_{a,\bullet}$, possibly with spin, their covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}$ and the metric $g_{\mu\nu}$.
+That is, it is a total contraction of all indices, including spinorial ones.
+In turn the integrand is simply the contraction of the metric volume form $\Omega_g = \sqrt{|g|} d^n x$ with the scalar $\mathcal{L}$ i.e. a (0,0)-tensor, or equivalently the wedge product of $\Omega_g$ with a 0-form.
+
+Note that we could equivalently write $\mathcal{L}=\mathcal{L}(\phi_a, \partial_\mu \phi_a, g_{\mu\nu},\partial_\rho g_{\mu\nu})$, since the difference between partial and covariant derivatives is given by Christoffel symbols $\Gamma_{\mu\nu}^\rho$ that in turn are functions of the metric and its first derivatives only.
+However, the resulting expression would be unnecessarily cumbersome.\footnote{Of course, when $\phi_a$ are scalar fields then $\partial_\mu\phi_a=\nabla_\mu\phi_a$.} Indeed, the lagrangian must be a scalar--i.e. a contraction of tensors--whereas partial derivatives of tensors are not even tensors, so that in order to obtain a correct expression we would need to introduce Christoffel symbols `implictly' everywhere needed anyway to make covariant derivatives appear.
+
+Finally note that derivatives of $\mathcal{L}$ with respect to $\nabla_\mu \phi^\star_{a,\bullet}$ are tensors, while derivatives with respect to $\partial_\mu \phi^\star_{a,\bullet}$ are not.
+Indeed, since $\mathcal{L}$ is a scalar, if we have parametrizations $\epsilon_1 \mapsto \phi(\epsilon_1)$, $\epsilon_2 \mapsto \nabla_\mu \phi(\epsilon_2)$ and $\epsilon_3\mapsto g_{\mu\nu}(\epsilon_3)$, then
+{\small   
+\begin{align}
+    \underbrace{\frac{\mathrm{d}}{\mathrm{d}\epsilon_1} \mathcal{L}(\phi(\epsilon_1), \nabla_\mu \phi(\epsilon_2), g_{\mu\nu}(\epsilon_3))}_{\mathrm{scalar}}
+    = \frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}} \underbrace{\frac{\mathrm{d}\phi^\star_{a,\bullet}}{\mathrm{d}\epsilon_1}}_{\mathrm{tensor}},
+    \quad
+    \underbrace{\frac{\mathrm{d}\mathcal{L}}{\mathrm{d}\epsilon_2}}_{\mathrm{scalar}}=\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})} \underbrace{\frac{\mathrm{d}(\nabla_\mu \phi^\star_{a,\bullet})}{\mathrm{d}\epsilon_2}}_{\mathrm{tensor}},
+    \quad 
+    \underbrace{\frac{\mathrm{d}\mathcal{L}}{\mathrm{d}\epsilon_3}}_{\mathrm{scalar}} =\frac{\partial \mathcal{L}}{\partial g_{\mu\nu}} \underbrace{\frac{\mathrm{d}g_{\mu\nu}}{\mathrm{d}\epsilon_3}}_{\mathrm{tensor}}.
+\end{align}
+}
+Since variations of tensors\footnote{More generally, variations of \emph{sections} of any fiber bundle $E_F\to M$ wrt some internal parameter $\epsilon$.} $\frac{d T}{d\epsilon}$ are tensors of he same kind and the left-hand side is a scalar, we conclude that $\frac{\partial \mathcal{L}}{\partial \phi^\bullet_{a,\bullet}}$ is a $(\bullet,\star)$-tensor with opposite raised (resp. lowered) indices as $\phi^\star_{a,\bullet}$, $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}$ is a tensor with one upper index more, and $\frac{\partial \mathcal{L}}{\partial g_{\mu\nu}}$ is a (2,0)-tensor.
+On the other hand, if instead we considered a parametrization $\epsilon_4 \mapsto \partial_\mu \phi(\epsilon_4)$ its variation would not be a tensor, simply beacuse $\partial_\mu \phi^\star_{a,\bullet}$ is not a tensor from the start.
+The corresponding variation of the lagrangian
+{\small
+\begin{align}
+    \underbrace{\frac{\mathrm{d}\mathcal{L}}{\mathrm{d}\epsilon_4}}_{\mathrm{scalar}}=
+    \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi^\star_{a,\bullet})} \frac{\mathrm{d}(\partial_\mu \phi^\star_{a,\bullet})}{\mathrm{d}\epsilon_4}
+\end{align}
+}
+would still be a scalar, but we could not conclude that $\frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi^\star_{a,\bullet})}$ is a tensor of suitable rank since $\frac{\mathrm{d}(\partial_\mu \phi^\star_{a,\bullet})}{\mathrm{d}\epsilon_4}$ is not a tensor!
+%%%%
+
+The \textbf{equations of motion} for the fields are \textbf{obtained varying with respect to $\phi^\star_{a,\bullet}$} \todotag{Fix all derivatives $\partial_\mu \to \nabla_\mu$} 
+{\small
+\begin{align}
+    \delta S &= \int_M \mathrm{d}^n x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}} \delta \phi^\star_{a,\bullet} + \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})} \delta (\nabla_\mu \phi^\star_{a,\bullet}) \right)
+    \\
+    &= \int_M \mathrm{d}^n x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}} \delta \phi^\star_{a,\bullet} + \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})} \nabla_\mu \delta \phi^\star_{a,\bullet} \right)
+    \\
+    &= \int_M \mathrm{d}^n x \sqrt{|g|} \left[ \bigg(\frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}} -  \nabla_\mu \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}\bigg) \delta \phi^\star_{a,\bullet} +  \graycancel{\nabla_\mu \bigg( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})} \delta\phi^\star_{a,\bullet}\bigg)}\right].
+\end{align}
+}
+The last term is a total derivative since $\text{div}_{\Omega_g}X=\nabla_\mu X^\mu\,\Omega_g$ for any vector field  and hence vanishes by Gauss theorem assuming the variations $\delta \phi_a$ vanish at the boundary of $M$ (or fall off sufficiently fast at infinity).
+Ineed, the derivative $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}$ returns a tensor whose indices are all contracted except for one giving the vectr $X^\mu:=\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}\phi^\star_{a,\bullet}$. 
+%
+
+In the second passage we used that \textbf{covariant derivatives and variations commute} $\delta (\nabla_\mu \phi^\star_{a,\bullet}) = \nabla_\mu \delta \phi^\star_{a,\bullet}$.
+This follows from commutation of \emph{ordinary} partial derivatives with variations $\delta$, which are just derivatives wrt an internal parameter, and the definition of covariant derivative for general sections of fiber bundles.
+For example, for a section of $T^\star_\bullet M$ we have
+\begin{align}
+    \delta (\nabla_\mu \phi^\star_{a,\bullet})
+    &\simeq \delta \left( \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\phi^\star_{a,\#}\right)
+    \\
+    &= \partial_\mu \delta \phi^\star_{a,\bullet} - \Gamma_{\mu \#}^\star \delta \phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\delta \phi^\star_{a,\#}
+    = \nabla_\mu \delta \phi^\star_{a,\bullet}.
+\end{align}
+For general fiber bundles a similar reasoning applies, using the definition of covariant derivative in terms of a suitable representation of the connection one-form. For example for spinor fields one uses the spin connection as we defined above.
+
+In conclusion, the \textbf{Euler-Lagrange equations for the field} $\phi_a$ are\footnote{Using the formula $\nabla_\mu X^\mu = \frac{1}{\sqrt{|g|}}\partial_\mu (\sqrt{|g|} X^\mu)$ for the divergence of a vector field $X^\mu$.}
+\begin{align}
+    0= \frac{\partial\mathcal{L}}{\partial\phi^\star_{a,\bullet}}-\nabla_\mu \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi_{a,\bullet}^\star)}
+    =\frac{\partial\mathcal{L}}{\partial\phi^\star_{a,\bullet}}-\frac{1}{\sqrt{|g|}} \,\partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi_{a,\bullet}^\star)} \right).
+\end{align}
+We remark the \textbf{above formulas hold for arbitrary-spin fields} $\phi^{\star}_{a,\bullet}$, including scalars, vectors, tensors and spinors, \textbf{arranged in any multiplet} $\{\phi_a\}_a$, provided the Lagrangian density $\mathcal{L}$ is a scalar, as it should.
 \end{mytheorem}
 
 
