@@ -176,13 +176,13 @@ The parallel transport map is well-defined thanks to standard theorems on existe
 
 If we are given a tensor field $S(t)$ along the curve $\gamma$, we can define the covariant derivative along $\gamma$ as
 \begin{equation}
-    \frac{D}{dt}S(t) := \lim_{\epsilon \to 0} \frac{\tau_{\gamma|_{[t+\epsilon,t]}}^{-1} (S(t+\epsilon)) - S(t)}.{\epsilon} 
+    \frac{D}{dt}S(t) := \lim_{\epsilon \to 0} \frac{\tau_{\gamma|_{[t+\epsilon,t]}}^{-1} (S(t+\epsilon)) - S(t)}{\epsilon} 
 \end{equation}
 That is we use parallel transport induced by $\nabla$ to compare tensors at different points along the curve.
 This is indeed way $\nabla$ is called \emph{connection}: it gives a way to connect and compare `generalied tangent planes' i.e. tensors at different points.
 As expected, we obtain back the covariant derivative gives back the original expression in terms of the connection
 \begin{equation}
-    \frac{D}{dt}S(t) := \lim_{\epsilon \to 0} \frac{\tau_{\gamma|_{[t+\epsilon,t]}}^{-1} (S(t+\epsilon)) - S(t)}
+    \frac{D}{dt}S(t) := \lim_{\epsilon \to 0} \frac{\tau_{\gamma|_{[t+\epsilon,t]}}^{-1} (S(t+\epsilon)) - S(t)}{\epsilon}
     \equiv \nabla_{\dot{\gamma}(t)} S(t),
 \end{equation}
 where we use that \eqref{eq:connection_on_tensor} depends only on the values of $S$ along the curve whose tangent at $p$ is $\dot{\gamma}(t)$.
