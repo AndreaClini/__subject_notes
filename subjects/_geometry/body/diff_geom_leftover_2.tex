@@ -14,6 +14,11 @@
 %------------------------------------------------------------
 
 
+%=======================================================
+\subsection{Symmetries and conserved quantities}
+%=======================================================
+
+
 \begin{mytheorem}[What even are energy and mometum?]
 In flat spacetime physics we are used to notions like energy and momentum.
 To make sense of similar notions in curved spacetime, we first need to investigate what these quantities really are.
@@ -103,7 +108,7 @@ which is a consequence of diffeomorphism invariance of the matter action.
 In particular, this is not a `law of physics', but rather a `law of math'.
 It is indeed an \emph{unavoidable geometric constraint} that follows from demanding the matter action be invariant under diffeomorphisms $x\mapsto \tilde{x}(x)$.
 
-We also stress this should \emph{not} be interpreted as global conservation law, since in curved spacetimes we generally do not even have global energy and momentum definitions.
+We also stress this should \emph{not} be interpreted as a global conservation law, since in curved spacetimes we generally do not even have global energy and momentum definitions.
 In fact $\nabla_\mu T^{\mu\nu}$ is not even a true divergence i.e. it is not of the form $\nabla_\mu V^\mu$ for some vector field $V^\mu$, so that Gauss theorem does not apply and in general we cannot define a vector whose flux through a closed surface vanishes.
 
 Finally note that we have precisely $n$ consraints, as expected since we have $n$ DoFs for the general diffeomorphism in $n$-dimensions.
@@ -239,6 +244,20 @@ For the continuum distribution
 
 
 
+%=======================================================
+\subsection{Energy conditions}\todotag{To be written}
+%=======================================================
+
+
+
+In many cases, for example in cosmology, we do not have a precise model for the matter content of the universe.
+However, we can still make some general assumptions on the energy-momentum tensor $T_{\mu\nu}$ based on physical considerations.
+These assumptions are called \textbf{energy conditions} and they are used to derive general results in General Relativity, such as singularity theorems and black hole thermodynamics.
+There are several types of energy conditions, each with different implications and applications.
+Some of the most common energy conditions are\dots
+
+
+
 
 
 %-----------------------------------------------------------
@@ -259,18 +278,24 @@ This backreaction loop between geometry and quantum fields makes the formulation
 \end{mytheorem}
 
 
-\begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields \todotag{check}]
+
+%=======================================================
+\subsection{The Euler-Lagrange equations for matter}\todotag{TBC}
+%=======================================================
+
+
+\begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields.]
 %
 The \textbf{action} for a field theory in curved spacetime with a multiplet $\{\phi^\star_{a,\bullet}\}_a$ of fields with \emph{arbitrary spin} is 
 \begin{align}
     S[\phi] =  \int_M \Omega_g\,\,\mathcal{L}\,=\int \mathrm{d}^n x \sqrt{|g|} \,\,\, \mathcal{L}(\phi_a, \nabla_\mu \phi_a, g_{\mu\nu}).
 \end{align}
-The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensors\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi^\star_{a,\bullet}$, possibly with spin, their covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}$ and the metric $g_{\mu\nu}$.
+The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensors\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi^\star_{a,\bullet}$, possibly carrying spin, their covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}$ and the metric $g_{\mu\nu}$.
 That is, it is a total contraction of all indices, including spinorial ones.
 In turn the integrand is simply the contraction of the metric volume form $\Omega_g = \sqrt{|g|} d^n x$ with the scalar $\mathcal{L}$ i.e. a (0,0)-tensor, or equivalently the wedge product of $\Omega_g$ with a 0-form.
 
-Note that we could equivalently write $\mathcal{L}=\mathcal{L}(\phi_a, \partial_\mu \phi_a, g_{\mu\nu},\partial_\rho g_{\mu\nu})$, since the difference between partial and covariant derivatives is given by Christoffel symbols $\Gamma_{\mu\nu}^\rho$ that in turn are functions of the metric and its first derivatives only.
-However, the resulting expression would be unnecessarily cumbersome.\footnote{Of course, when $\phi_a$ are scalar fields then $\partial_\mu\phi_a=\nabla_\mu\phi_a$.} Indeed, the lagrangian must be a scalar--i.e. a contraction of tensors--whereas partial derivatives of tensors are not even tensors, so that in order to obtain a correct expression we would need to introduce Christoffel symbols `implictly' everywhere needed anyway to make covariant derivatives appear.
+Note that we could equivalently write $\mathcal{L}=\mathcal{L}(\phi_a, \partial_\mu \phi_a, g_{\mu\nu},\partial_\rho g_{\mu\nu})$, since the difference between partial and covariant derivatives is given by Christoffel symbols $\Gamma_{\mu\nu}^\rho$, that in turn are functions of the metric and its first derivatives only.
+However, the resulting expression would be unnecessarily cumbersome.\footnote{Of course, when $\phi_a$ are scalar fields then $\partial_\mu\phi_a=\nabla_\mu\phi_a$.} Indeed, the lagrangian must be a scalar--i.e. a contraction of tensors--whereas partial derivatives of tensors are not even tensors, so that in order to obtain a correct expression we would need to introduce Christoffel symbols `implictly' via $g_{\mu\nu}$ and $\partial_\rho g_{\mu\nu}$ everywhere needed anyway to make covariant derivatives appear.
 
 Finally note that derivatives of $\mathcal{L}$ with respect to $\nabla_\mu \phi^\star_{a,\bullet}$ are tensors, while derivatives with respect to $\partial_\mu \phi^\star_{a,\bullet}$ are not.
 Indeed, since $\mathcal{L}$ is a scalar, if we have parametrizations $\epsilon_1 \mapsto \phi(\epsilon_1)$, $\epsilon_2 \mapsto \nabla_\mu \phi(\epsilon_2)$ and $\epsilon_3\mapsto g_{\mu\nu}(\epsilon_3)$, then
@@ -284,19 +309,19 @@ Indeed, since $\mathcal{L}$ is a scalar, if we have parametrizations $\epsilon_1
     \underbrace{\frac{\mathrm{d}\mathcal{L}}{\mathrm{d}\epsilon_3}}_{\mathrm{scalar}} =\frac{\partial \mathcal{L}}{\partial g_{\mu\nu}} \underbrace{\frac{\mathrm{d}g_{\mu\nu}}{\mathrm{d}\epsilon_3}}_{\mathrm{tensor}}.
 \end{align}
 }
-Since variations of tensors\footnote{More generally, variations of \emph{sections} of any fiber bundle $E_F\to M$ wrt some internal parameter $\epsilon$.} $\frac{d T}{d\epsilon}$ are tensors of he same kind and the left-hand side is a scalar, we conclude that $\frac{\partial \mathcal{L}}{\partial \phi^\bullet_{a,\bullet}}$ is a $(\bullet,\star)$-tensor with opposite raised (resp. lowered) indices as $\phi^\star_{a,\bullet}$, $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}$ is a tensor with one upper index more, and $\frac{\partial \mathcal{L}}{\partial g_{\mu\nu}}$ is a (2,0)-tensor.
-On the other hand, if instead we considered a parametrization $\epsilon_4 \mapsto \partial_\mu \phi(\epsilon_4)$ its variation would not be a tensor, simply beacuse $\partial_\mu \phi^\star_{a,\bullet}$ is not a tensor from the start.
+Since variations of tensors\footnote{More precisely, variations of \emph{sections} of any given fiber bundle $E_F\to M$ wrt some internal parameter $\epsilon$.} $\frac{d T}{d\epsilon}$ are tensors of the same kind and the left-hand side is a scalar, we conclude that $\frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}}$ is a $(\bullet,\star)$-tensor with opposite raised (resp. lowered) indices as $\phi^\star_{a,\bullet}$, $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}$ is a tensor with one upper index more, and $\frac{\partial \mathcal{L}}{\partial g_{\mu\nu}}$ is a (2,0)-tensor.
+On the other hand, if we considered instead  a parametrization $\epsilon_4 \mapsto \partial_\mu \phi(\epsilon_4)$, its variation would not be a tensor since $\partial_\mu \phi^\star_{a,\bullet}$ is not a tensor to begin with.
 The corresponding variation of the lagrangian
 {\small
 \begin{align}
     \underbrace{\frac{\mathrm{d}\mathcal{L}}{\mathrm{d}\epsilon_4}}_{\mathrm{scalar}}=
-    \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi^\star_{a,\bullet})} \frac{\mathrm{d}(\partial_\mu \phi^\star_{a,\bullet})}{\mathrm{d}\epsilon_4}
+    \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi^\star_{a,\bullet})} \underbrace{\frac{\mathrm{d}(\partial_\mu \phi^\star_{a,\bullet})}{\mathrm{d}\epsilon_4}}_{\text{not a tensor}}
 \end{align}
 }
 would still be a scalar, but we could not conclude that $\frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi^\star_{a,\bullet})}$ is a tensor of suitable rank since $\frac{\mathrm{d}(\partial_\mu \phi^\star_{a,\bullet})}{\mathrm{d}\epsilon_4}$ is not a tensor!
 %%%%
 
-The \textbf{equations of motion} for the fields are \textbf{obtained varying with respect to $\phi^\star_{a,\bullet}$} \todotag{Fix all derivatives $\partial_\mu \to \nabla_\mu$} 
+The \textbf{equations of motion} for the fields are \textbf{obtained varying the action wrt} $\phi^\star_{a,\bullet}\mapsto \phi_{a,\bullet}^\star + \delta \phi_{a,\bullet}^\star$ 
 {\small
 \begin{align}
     \delta S &= \int_M \mathrm{d}^n x \sqrt{|g|} \left( \frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}} \delta \phi^\star_{a,\bullet} + \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})} \delta (\nabla_\mu \phi^\star_{a,\bullet}) \right)
@@ -306,36 +331,44 @@ The \textbf{equations of motion} for the fields are \textbf{obtained varying wit
     &= \int_M \mathrm{d}^n x \sqrt{|g|} \left[ \bigg(\frac{\partial \mathcal{L}}{\partial \phi^\star_{a,\bullet}} -  \nabla_\mu \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}\bigg) \delta \phi^\star_{a,\bullet} +  \graycancel{\nabla_\mu \bigg( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})} \delta\phi^\star_{a,\bullet}\bigg)}\right].
 \end{align}
 }
-The last term is a total derivative since $\text{div}_{\Omega_g}X=\nabla_\mu X^\mu\,\Omega_g$ for any vector field  and hence vanishes by Gauss theorem assuming the variations $\delta \phi_a$ vanish at the boundary of $M$ (or fall off sufficiently fast at infinity).
-Ineed, the derivative $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}$ returns a tensor whose indices are all contracted except for one giving the vectr $X^\mu:=\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}\phi^\star_{a,\bullet}$. 
+The last term is a total derivative since $\text{div}_{\Omega_g}X=\nabla_\mu X^\mu\,\Omega_g$ for any vector field, and hence vanishes by Gauss theorem assuming the variations $\delta \phi_a$ vanish at the boundary of $M$ (or fall off sufficiently fast at infinity).
+Ineed, the derivative $\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}$ returns a $(\bullet,\star)$-tensor whose indices are all contracted with those of $\delta \phi_{a,\bullet}^\star$ except for one giving the vector $X^\mu:=\frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi^\star_{a,\bullet})}\phi^\star_{a,\bullet}$. 
 %
 
-In the second passage we used that \textbf{covariant derivatives and variations commute} $\delta (\nabla_\mu \phi^\star_{a,\bullet}) = \nabla_\mu \delta \phi^\star_{a,\bullet}$.
-This follows from commutation of \emph{ordinary} partial derivatives with variations $\delta$, which are just derivatives wrt an internal parameter, and the definition of covariant derivative for general sections of fiber bundles.
+The first passage uses that \textbf{covariant derivatives and variations commute} { $\delta \nabla_\mu \phi^\star_{a,\bullet} = \nabla_\mu \delta \phi^\star_{a,\bullet}$.}
+This follows from \textbf{commutation of \emph{ordinary} partial derivatives with variations} $\partial_\mu \delta=\delta\partial_\mu$, since the latter are just derivatives wrt an internal parameter $\delta\,\cdot \equiv \epsilon\, \frac{d\,\cdot}{d\epsilon}\,$, and the definition of covariant derivative for sections of general fiber bundles.
 For example, for a section of $T^\star_\bullet M$ we have
 \begin{align}
     \delta (\nabla_\mu \phi^\star_{a,\bullet})
-    &\simeq \delta \left( \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\phi^\star_{a,\#}\right)
+    &= \delta \left( \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \,\phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\,\phi^\star_{a,\#}\right)
     \\
-    &= \partial_\mu \delta \phi^\star_{a,\bullet} - \Gamma_{\mu \#}^\star \delta \phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\delta \phi^\star_{a,\#}
+    &= \partial_\mu \delta \phi^\star_{a,\bullet} - \Gamma_{\mu \#}^\star \,\delta \phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\,\delta \phi^\star_{a,\#}
     = \nabla_\mu \delta \phi^\star_{a,\bullet}.
 \end{align}
-For general fiber bundles a similar reasoning applies, using the definition of covariant derivative in terms of a suitable representation of the connection one-form. For example for spinor fields one uses the spin connection as we defined above.
+%
+Similarly for Dirac spinors, given a tetrad $\{e_\rho\}_\rho$, a representation of $\gamma$-matrices in a spin basis $\{s^b\}$, and the associated generators $S^{\mu\nu}:=\frac{1}{4}[\gamma^\mu,\gamma^\nu]$ of the spin representation of the Lorentz group, the spin connection 1-form $\omega^{\mathrm{sp.\,}a}_{\,~b}$ is defined by
+\begin{align}
+    \nabla_{\cdot}\, s_b &=  \underbrace{\tfrac{1}{2}\omega_{\mu\nu}(\cdot) \left(S^{\mu\nu}\right)^a_{~b}}_{\equiv \,\omega^{\mathrm{sp.\,}a}_{\,~b}(\cdot)}\,  s_a =: \omega^{\mathrm{sp.\,}a}_{\,~b}(\cdot)\, s_a,
+\end{align}
+Therefore, for a general spinor field $\psi=\psi^a s_a$ and any vector field $X$, we have
+\begin{align}
+    \delta \nabla_{X} \psi 
+    &= \delta \Big[ X^\rho \left(\partial_{e_\rho} \psi^a\right) s_a + \omega^{\mathrm{sp.\,}a}_{\,~b}(X)\, \psi^b\, s_a\Big]
+    \\
+    &= X^\rho \left(\partial_{e_\rho} \delta \psi^a\right) s_a + \omega^{\mathrm{sp.\,}a}_{\,~b}(X)\, \delta \psi^b\, s_a
+    = \nabla_X \delta \psi.
+\end{align}
+%
+Completely analogous arguments hold for general fiber bundles, using the definition of covariant derivative in terms of suitable representations of the connection one-form.
+ 
 
 In conclusion, the \textbf{Euler-Lagrange equations for the field} $\phi_a$ are\footnote{Using the formula $\nabla_\mu X^\mu = \frac{1}{\sqrt{|g|}}\partial_\mu (\sqrt{|g|} X^\mu)$ for the divergence of a vector field $X^\mu$.}
 \begin{align}
     0= \frac{\partial\mathcal{L}}{\partial\phi^\star_{a,\bullet}}-\nabla_\mu \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi_{a,\bullet}^\star)}
     =\frac{\partial\mathcal{L}}{\partial\phi^\star_{a,\bullet}}-\frac{1}{\sqrt{|g|}} \,\partial_\mu \left( \sqrt{|g|} \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi_{a,\bullet}^\star)} \right).
 \end{align}
-We remark the \textbf{above formulas hold for arbitrary-spin fields} $\phi^{\star}_{a,\bullet}$, including scalars, vectors, tensors and spinors, \textbf{arranged in any multiplet} $\{\phi_a\}_a$, provided the Lagrangian density $\mathcal{L}$ is a scalar, as it should.
+We remark the \textbf{above formulas hold for arbitrary-spin fields} $\phi^{\star}_{a,\bullet}$, including scalars, vectors, tensors and spinors, \textbf{arranged in any multiplet} $\{\phi_a\}_a$, provided the Lagrangian density $\mathcal{L}$ is a scalar--i.e. a total contraction of tensors--as it should.
 \end{mytheorem}
-
-
-
-
-
-
-
 
 
 
@@ -352,7 +385,7 @@ Varying this action with respect to $\phi$ yields the curved spacetime Klein-Gor
 \end{mytheorem}
 
 
-\begin{mytheorem}[Lagrangian and Maxwell equations for vector fields]\todotag{Finish}
+\begin{mytheorem}[Lagrangian and Maxwell equations for vector fields\todotag{Check \& finish}]
 %
 The action for a vector field $A=A_\mu \,dx^\mu$ (electromagnetic potential) coupled to a current $J=J_\mu d x^\mu$ is given by $S=S_{\mathrm{Maxwell}}+S_{\mathrm{int}}$, where
 \begin{align}
@@ -383,17 +416,35 @@ Varying the action wrt $A\mapsto A+\epsilon $ and integrating by parts, using th
     \\
     \delta S_{\mathrm{int}} &= -\langle J,\epsilon\rangle_{\mathrm{Hodge}}=\int_M - J \wedge \star \epsilon= -\int_M\!\!\mathrm{d}^n x\sqrt{|g|}\, \epsilon_\mu J^\mu.
 \end{align}
-The Maxwell equations in curved spacetime $\delta S_{\mathrm{Maxwell}} + \delta S_{\mathrm{int}}=0$ are then
+%
+More explicitly, we can compute the variation integrating by parts and dropping boundary terms
+\begin{align}
+    \delta S_{\mathrm{Max.}+\mathrm{int}} &= \delta \int_M \Omega_g \left[-\tfrac{1}{4} \big(\nabla_\mu A_\nu - \nabla_\nu A_\mu\big)\big(\nabla^\mu A^\nu - \nabla^\nu A^\mu\big)- A_\nu J^\nu\right]
+    \\
+    &= \int_M \Omega_g  \Big[-\nabla_\mu \delta A_\nu \underbrace{\big(\nabla^\mu A^\nu - \nabla^\nu A^\mu\big)}_{=F^{\mu\nu}} - \delta A_\nu J^\nu \Big]
+    \\
+    &= \int_M \Omega_g\, \Big[\delta A_\nu \big(\nabla_\mu F^{\mu\nu} - J^\nu \big) + \graycancel{\nabla_\mu\big(\delta A_\nu F^{\mu\nu}\big)}\Big].
+\end{align}
+In conclusion, the \textbf{Maxwell equations} in curved spacetime $\delta S_{\mathrm{Maxwell}} + \delta S_{\mathrm{int}}=0$ are then
 \begin{align}
     \delta d A +J= \delta F +J= 0, \quad \text{or in a chart} \quad \nabla_\mu F^{\mu\nu} = -J^\nu.
 \end{align}
-%
-These are \emph{not} to be confused with the Bianchi identity\footnotemark[\getrefnumber{fn:covariant_vs_partial_dif_forms}] for the field strength $F=dA$, which reads
+
+These are \emph{not} to be confused with the \textbf{Bianchi identity}\footnotemark[\getrefnumber{fn:covariant_vs_partial_dif_forms}] for the field strength $F=dA$, which reads
 \begin{align}
     dF=0\quad \text{or in a chart} \quad  0=\partial_{[\alpha} F_{\beta\gamma]}\equiv \nabla_{[\alpha} F_{\beta\gamma]}.
 \end{align}
+This is an unavoidable geometric identity following from the definition of $F$ as exterior derivative of $A$.
 
-
+Finally, the interaction modify the equation of motion for the charged matter fields as well.
+For example, for a complex scalar field $\phi$ we have
+\begin{align}
+    0 = \delta S_{\mathrm{KG}+ \mathrm{int}} &= \int_M \mathrm{d}^n x \sqrt{|g|} \big|\left(\nabla_\mu -iq A_\mu\right)\phi\big|^2 + m^2 |\phi|^2
+    \\
+    &= \int_M \mathrm{d}^n x \sqrt{|g|} \left[ -\left(\nabla^\mu - i q A^\mu\right)\left(\nabla_\mu - i q A_\mu\right) \phi + m^2 \phi \right] \delta \phi^\dagger + \text{c.c.}
+    \\
+    &\Rightarrow \quad 0 = \left[ -\left(\nabla^\mu - i q A^\mu\right)\left(\nabla_\mu - i q A_\mu\right) + m^2 \right] \phi\, .
+\end{align}
 %
 \end{mytheorem}
 
@@ -429,3 +480,32 @@ As regards $\gamma^\mu$, we introduce a local orthonormal frame (vielbein) $e_a^
 %
 \end{mytheorem}
 }
+
+
+
+%=======================================================
+\subsection{The Einstein equations for spacetime}
+%=======================================================
+
+
+\begin{mytheorem}[The Einstein-Hilbert action\todotag{To be written}]
+The action for the gravitational field in $n$-dimensional curved spacetime is given by
+\begin{align}
+    S_{\mathrm{EH}} = \frac{1}{16\pi G} \int_M \mathrm{d}^n x \sqrt{|g|} (R - 2\Lambda),
+\end{align}
+where $R$ is the Ricci scalar, $\Lambda$ is the cosmological constant, and $G$ is Newton's gravitational constant.
+Varying this action with respect to the metric $g_{\mu\nu}$ yields the Einstein field equations
+\begin{align}
+    R_{\mu\nu} - \tfrac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pi G T_{\mu\nu},
+\end{align}
+where $T_{\mu\nu}$ is the energy-momentum tensor of matter fields, obtained by varying the matter action with respect to the metric.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Sakarov derivation of Einstein equations\todotag{To be written}]
+Sakharov proposed an alternative derivation of the Einstein field equations by considering the quantum fluctuations of matter fields in curved spacetime.
+He argued that the vacuum energy of quantum fields contributes to the effective action for gravity, leading to a modification of the Einstein-Hilbert action.
+By requiring that the effective action be stationary with respect to variations of the metric, one can derive the Einstein field equations with an additional term corresponding to the vacuum energy.
+This approach highlights the deep connection between quantum field theory and gravity, suggesting that gravity may emerge as an effective theory from the underlying quantum dynamics of matter fields.
+    
+\end{mytheorem}
