@@ -245,17 +245,46 @@ For the continuum distribution
 
 
 %=======================================================
-\subsection{Energy conditions}\todotag{To be written}
+\subsection{Energy conditions}
 %=======================================================
 
-
-
-In many cases, for example in cosmology, we do not have a precise model for the matter content of the universe.
+In many cases, notably in cosmology, we do not have a precise model for the matter content of the universe.
 However, we can still make some general assumptions on the energy-momentum tensor $T_{\mu\nu}$ based on physical considerations.
-These assumptions are called \textbf{energy conditions} and they are used to derive general results in General Relativity, such as singularity theorems and black hole thermodynamics.
+These minimal model-independent assumptions are called \textbf{energy conditions}, and are often enough to rule out unphysical stress tensors and prove general results in GR, such as singularity theorems, geodesics behavior and black hole thermodynamics.
 There are several types of energy conditions, each with different implications and applications.
-Some of the most common energy conditions are\dots
-
+Some of the most common energy conditions are the following.
+\begin{itemize}
+    \item \textbf{Weak energy condition (WEC)}. For every timelike vector $v^\mu$,
+    \begin{equation}
+        T_{\mu\nu} v^\mu v^\nu \ge 0.
+    \end{equation}
+    Since $v^\mu$ is timelike, we can always choose a frame where $v^\mu = (1,0,0,0)$, so that $0\leq T_{\mu\nu} v^\mu v^\nu = T_{00} =:\rho$.
+    Physically, every timelike observer with 4-velocity $v^\mu$ measures a non-negative local energy density.
+    %
+    \item \textbf{Null energy condition (NEC)}. For every null vector $k^\mu$,\todotag{check}
+    \begin{equation}
+        T_{\mu\nu} k^\mu k^\nu \ge 0.
+    \end{equation}
+    Physically, every null observer with 4-velocity $k^\mu$ measures a non-negative local energy density.
+    The NEC is the weakest of the energy conditions, as it only applies to null vectors.
+    %
+    \item \textbf{Dominant energy condition (DEC)}. For any timelike vector $v^\mu$, impose the WEC and further demand
+    \begin{equation}
+        T_{\mu\nu} v^\mu v^\nu \ge 0\,\,(\mathrm{WEC})\,,\quad \text{and}\quad K^\mu := T^{\mu}_{~~\nu} v^\nu \quad \text{obeys} \quad K_\mu K^\mu \le 0\,.
+    \end{equation}
+    In an orthonormal basis $|T^{00}| \ge |T^{ij}|$, so `energy dominates over momentum transfer'.
+    %
+    Physically, the energy-momentum flux $K^\mu := T^{\mu}_{~~\nu} v^\nu$ measured by an observer with $4$-velocity $v^\mu$ is \emph{causal} i.e. non-spacelike and future-directed.
+    This flow of energy-momentum need not be conserved if $v^\mu$ is not a Killing vector field, but we still demand it be \emph{causal} i.e. not to exceed the speed of light.
+    %
+    \item \textbf{Strong energy condition (SEC)}. For every timelike vector $v^\mu$,\todotag{check}
+    \begin{equation}
+        \left(T_{\mu\nu} - \frac{1}{2} T g_{\mu\nu}\right) v^\mu v^\nu \ge 0,
+    \end{equation}
+    where $T = T^\mu_{~\mu}$ is the trace of the energy-momentum tensor.
+    Physically, the SEC ensures that gravity is always attractive.
+\end{itemize}
+%
 
 
 
@@ -508,4 +537,57 @@ He argued that the vacuum energy of quantum fields contributes to the effective 
 By requiring that the effective action be stationary with respect to variations of the metric, one can derive the Einstein field equations with an additional term corresponding to the vacuum energy.
 This approach highlights the deep connection between quantum field theory and gravity, suggesting that gravity may emerge as an effective theory from the underlying quantum dynamics of matter fields.
     
+\end{mytheorem}
+
+
+
+
+
+%-----------------------------------------------------------
+%=======================================================
+\section{Classifying spacetimes}\todotag{To be written}
+%=======================================================
+%------------------------------------------------------------
+
+\begin{mytheorem}[Stationary and static spacetimes\todotag{finish}]
+%
+A spacetime $(M,g)$ is \textbf{stationary} if it admits a timelike Killing vector field $\xi$, i.e.
+\begin{align}
+    g(\xi,\xi) < 0, \quad 0= \mathcal{L}_\xi g.
+\end{align}
+%
+Since $\xi$ is timelike we can always choose a frame where $\xi=\partial_t$ locally (and globally if the spacetime is time-orientable).
+Writing the Killing equation explicitly, we see that `stationarity means the metric is time-independent in suitable coordinates'
+\begin{align}
+    0=\left(\mathcal{L}_\xi g\right)_{\mu\nu} = \xi^\rho \partial_\rho g_{\mu\nu} + g_{\rho\nu} \partial_\mu \xi^\rho + g_{\mu\rho} \partial_\nu \xi^\rho \quad \Rightarrow \quad \partial_t g_{\mu\nu} = 0.
+\end{align}
+%
+Physically, observers following the integral curves of $\xi$ can choose comoving coordinates where $\xi=\partial_t$ and the metric is time-independent: $\partial_t g_{\mu\nu}=0$.
+
+A stationary spacetime is \textbf{static} if the space-like hyperplanes $\subset T M$ orthogonal to the above timelike Killing field are integrale i.e. define a foliation of $M$ by spacelike hypersurfaces.
+Choosing coordinates adapted to such a foliation the metric reads with no time-space cross terms
+\begin{align}\label{eq:static_metric_no_cross_terms}
+    g = \begin{pmatrix}
+    g_{00}(\mathbf{x}) & 0 \\
+    0 & g_{ij}(\mathbf{x})
+    \end{pmatrix}.
+\end{align}
+%
+Equivalently, it $x^0=t$ is a coordinate adapted to the above timelike Killing field $\xi=\partial_t$, then staticity is equivalent to invariance of the metric under time reversal $t\mapsto -t$.
+Indeed, time reversal changes $dx^0 \mapsto -dx^0$ while leaving $dx^i$ unchanged, so that the metric is invariant only if no cross terms $g_{0i}$ are present as in \eqref{eq:static_metric_no_cross_terms}.
+
+By Frobenius theorem staticity is then equivalent to $(\xi)^\perp$ being involutive, i.e.
+\begin{align}
+   [X,Y]\in \left(\xi\right)^\perp, \quad \forall X,Y \in \left(\xi\right)^\perp.
+\end{align}
+Viewing $\xi=\xi^\nu g_{\mu\nu}\, dx^\mu$ as a 1-form, the Frobenius condition reads              
+\begin{equation}
+    \xi \wedge d\xi = 0, \quad \text{in coordinates} \quad \xi_{[\mu} \partial_\nu \xi_{\rho]} = 0.
+\end{equation}
+In a chart where $\xi=\partial_t$, this is equivalent to $\partial_{[i} g_{j]0}=0$.
+
+Finally, \textbf{every static spacetime is stationary, but not vice versa}.
+Rotating solutions (e.g. Kerr) are stationary yet not static because no global slice exists that is orthogonal to the timelike Killing field.
+More physically, rotating spacetimes are not invariant under time reversal $t\mapsto -t$ since the direction of rotation is reversed and angular momentum flips sign.
+%
 \end{mytheorem}

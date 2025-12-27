@@ -11,6 +11,112 @@ In this long chapter, we collect various random topics in differential geometry 
 
 %-----------------------------------------------------------------------
 %========================================================
+\section{Sub-bundles, flows \& Frobenius theorem} \todotag{To be written}
+%=========================================================
+%-----------------------------------------------------------------------
+
+
+\begin{mytheorem}[Commutation of vector fields, flows \& straightening coordinates]
+The offset of the flow of two vector fields $X,Y \in \mathfrak{X}(M)$ reads in a chart
+\begin{align}
+\begin{aligned}
+    \phi_{X}^{\epsilon} \circ \phi_{Y}^{\delta} - \phi_{Y}^{\delta} \circ \phi_{X}^{\epsilon}= \epsilon \delta [X,Y] + \mathcal{O}(\epsilon^2, \delta^2).
+\end{aligned}
+\end{align}
+The following conditions are equivalent for the commutation of flows
+\begin{itemize}
+    \item The flows commute
+        \begin{align}
+            \phi_{X_1}^{\epsilon_1}\circ\dots\circ \phi_{X_k}^{\epsilon_k} = \phi_{X_{\sigma_1}}^{\epsilon_{\sigma_1}}\circ\dots\circ \phi_{X_{\sigma_k}}^{\epsilon_{\sigma_k}} \quad \forall \epsilon_i \in \mathbb{R},\,\, \forall \sigma \in \mathcal{S}_k.
+        \end{align}
+    \item The vector fields commute, i.e. all Lie brackets vanish
+        \begin{align}
+            [X_i, X_j] = 0 \quad \forall i,j=1\dots k.
+        \end{align} 
+    \item There exist local coordinates $\{x^1, \dots, x^n\}$ such that
+        \begin{align}
+            X_i = \partial_{x^i} \quad \forall i=1\dots k.
+        \end{align}
+\end{itemize}
+\end{mytheorem}
+\begin{proof}
+The first equation is follows from Taylor expanding the flows.
+Point 3 $\Rightarrow$ 1, 2 trivially follows from the definitions.
+Point 1 $\Rightarrow$ 2 follows from the first equation by taking the limit $\epsilon, \delta \to 0$.
+For point 2 $\Rightarrow$ 1 take a chart where $X_1 = \partial_{x^1}$, then $\phi_{X_1}^{\epsilon_1}(p)=p+\hat{e}_1\epsilon_1$ and $[X_1,X_j]=-\partial_{x^1} X_j =0$ implies that the components of $X_j$ do not depend on $x^1$.
+Then we verify
+\begin{equation}
+    \phi_{X_1}^{\epsilon_1}\circ \phi_{X_j}^{\epsilon_j}(p) = \phi_{X_j}^{\epsilon_j}(p) + \epsilon_1\, \hat{e}_1= \phi_{X_j}^{\epsilon_j}(p+ \epsilon_1\, \hat{e}_1) = \phi_{X_j}^{\epsilon_j}\circ \phi_{X_1}^{\epsilon_1}(p).
+\end{equation}
+The rest follows by induction.
+Finally for point 1 $\Rightarrow$ 3 consider the map $ \R^k\times \underbrace{M^{(n)}}_{\simeq \R^n}$ to $ \underbrace{M^{(n)}}_{\simeq \R^n}$ defined as
+\begin{equation}
+    F(\epsilon_1, \dots, \epsilon_k, p) := \phi_{X_1}^{\epsilon_1}\circ\dots\circ \phi_{X_k}^{\epsilon_k} (p).
+\end{equation}
+By point 1 the $(k+n)\times n$ jacobian matric of $F$ at any $\bar{\epsilon}\in \R^k$ and any $p\in M$ reads
+\begin{equation}
+    J_{F}(\bar{\epsilon}=0, p) = \begin{pmatrix}
+    X_1(p) & X_2(p) & \cdots & X_k(p) & \mid &\mathbb{I}_n
+    \end{pmatrix}.
+\end{equation}
+By the open mapping theorem, we can locally restrict $F$ to a diffeomorphism $\R^k\times \R^{n-k} \to M^(n)$ which furnishes the desired coordinates.
+%
+\end{proof}
+
+
+\begin{mytheorem}[Flows \& Lie brackets of $f$-related vector fields]
+%
+For any given map $f:M\to N$ between two manifolds and vector fields $X_1,X_2\in \mathfrak{X}(M)$ and $Y_1,Y_2 \in \mathfrak{X}(N)$ that are $f$-related, i.e. such that
+\begin{equation}
+    f_* X_p = Y_{f(p)} \quad \forall p\in M,
+\end{equation}
+the flows and Lie brackets are also $f$-related, i.e.
+\begin{align}
+    f_* &(\phi_{X_i,\epsilon} (p)) = \phi_{Y_i,\epsilon} (f(p)) \quad \forall p\in M,
+    \\[6pt]
+    f_*& [X_1, X_2]_p = [Y_1, Y_2]_{f(p)} \quad \forall p\in M.
+\end{align}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Foliations, distributions \& Frobenius theorem]
+%
+A disribution is a sub-bundle $S \subseteq TM$ of the tangent bundle, that is a smooth assignment of a vector subspace $S_p \subseteq T_p M$ at each point $p\in M$.
+A foliation is a decomposition of the manifold $M$ into a union of disjoint isomorphic connected submanifolds (the leaves) of the same dimension, so that locally the manifold looks like a product $M \simeq L^{(k)} \times N^{(n-k)}$ of a leaf $L^{(k)}$ and a `trunk' manifold $N^{(n-k)}$.
+In particular for each point $p\in M$ there is a unique leaf $L_p$ passing through it, and the tangent space to the leaf at $p$ defines a subspace $T_p L_p \subseteq T_p M$.
+Simple examples of foliations are
+\begin{itemize}
+    \item The foliation of $\mathbb{R}^3$ into planes of constant $z$ coordinate, with leaves $L^{(2)} = \{(x,y,z_0) \mid x,y\in \mathbb{R}\}$ for each $z_0\in \mathbb{R}$;
+    \item The foliation of $\mathbb{R}^3\setminus \{0\}$ into spheres of constant radius, with leaves $L^{(2)} = \{(x,y,z) \mid x^2+y^2+z^2 = r_0^2\}$ for each $r_0>0$.
+\end{itemize}
+
+\textbf{Frobenius theorem}: a distribution $S \subseteq TM$ is integrable-- i.e. arises as the tangent bundle of a foliation-- if and only if it is involutive-- i.e. closed under Lie brackets.
+In formulas
+\begin{align}
+\begin{aligned}
+    &S \text{ integrable} \quad \Leftrightarrow \quad S_p = T_pL_p \,\, \forall p\in M\text{ for a foliation } M = \bigsqcup L^{(k)} 
+    \quad \Leftrightarrow \quad [X,Y] \in \Gamma(S) \quad \forall X,Y \in \Gamma(S).  
+\end{aligned}
+\end{align}
+%
+\end{mytheorem}
+\begin{proof}
+The proof is constructive and quite long, so we just sketch the main ideas.
+\begin{itemize}
+    \item[$\Rightarrow$] If $S$ is integrable, then for any two vector fields $X,Y \in \Gamma(S)$-- i.e. tangent to the leaves-- their Lie bracket $[X,Y]$ is also tangent to the leaves, so that $[X,Y] \in \Gamma(S)$.
+    \item[$\Leftarrow$] If $S$ is involutive, then for any point $p\in M$ we can find a local basis of vector fields $\{X_1, \dots, X_k\} \subseteq \Gamma(S)$ spanning $S$ in a neighborhood of $p$.
+    By involutivity, their Lie brackets vanish $[X_i,X_j]=0$, so that by the previous theorem we can find local coordinates $\{x^1, \dots, x^n\}$ such that $X_i = \partial_{x^i}$ for $i=1\dots k$.
+    Then the submanifolds defined by constant values of the last $n-k$ coordinates
+    \begin{equation}
+        L^{(k)}_{c_{k+1}, \dots, c_n} := \{ (x^1, \dots, x^n) \mid x^{k+1} = c_{k+1}, \dots, x^n = c_n\}
+    \end{equation}
+    define a foliation whose tangent spaces coincide with $S$.
+\end{itemize}
+\end{proof}
+
+
+%-----------------------------------------------------------------------
+%========================================================
 \section{Derivatives on tensors}
 %=========================================================
 %-----------------------------------------------------------------------
@@ -63,7 +169,7 @@ It is then extended to all tensors using linearity and the Leibniz rule
 The Lie derivative is equivalently defined as the infinitesimal generator of the flow induced by a vector field \(X\).
 Namely, given a tensor field \(T\in T^{\bullet}_{\bullet} (M)\), we define the Lie derivative along \(X\) as
 \begin{equation}
-    \mathcal{L}_X T := \lim_{\epsilon \to 0} \frac{\phi_{X,\epsilon}^* (T) - T}.{ \epsilon},
+    \mathcal{L}_X T := \lim_{\epsilon \to 0} \frac{\phi_{X,\epsilon}^* (T) - T}{ \epsilon},
 \end{equation}
 where \(\phi_{X,\epsilon}: M \to M\) is the flow generated by the vector field \(X\) for parameter distance \(\epsilon\) and \(\phi_{X,\epsilon}^*\) is the pullback map induced by \(\phi_{X,\epsilon}\) on tensors.
 \end{mytheorem}
@@ -87,11 +193,15 @@ It thus cannot give any information on the curvature of the manifold beyond the 
 
 
 \begin{mytheorem}[Lie derivative and pullback commute]
-Given a diffeomorphism $\phi: M \to N$ between two manifolds and a vector field $X\in \mathfrak{X}(M)$, the Lie derivative along $X$ and the pullback $\phi^*$ commute, i.e.
+Given a diffeomorphism $\phi: M \to N$ between two manifolds and a vector field $Y\in \mathfrak{X}(N)$, the Lie derivative along $Y$ of any tensor field $T$ on $N$ and the pullback $\phi^*$ commute, i.e.
 \begin{equation}
-    \phi^* (\mathcal{L}_X T) = \mathcal{L}_{\phi^* X} (\phi^* T),
+    \phi^* (\mathcal{L}_Y T) = \mathcal{L}_{\phi^* Y} (\phi^* T).
 \end{equation}
-for any tensor field $T$ on $N$.
+%
+More generally, if $X\in \mathfrak{X}(M)$, $Y\in \mathfrak{X}(N)$, and $S\in T^h_kM$, $T\in T^h_kN$ are $f$-related vector and tensor fields for a map $f:M\to N$, then the Lie derivatives along $X$ and $Y$ are also $f$-related, i.e.
+\begin{equation}
+    f_*\mathcal{L}_XS_{|p}= \mathcal{L}_Y T_{|f(p)} \quad \forall p\in M.
+\end{equation}
 \end{mytheorem}
 
 
