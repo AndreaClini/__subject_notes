@@ -517,26 +517,77 @@ As regards $\gamma^\mu$, we introduce a local orthonormal frame (vielbein) $e_a^
 %=======================================================
 
 
-\begin{mytheorem}[The Einstein-Hilbert action\todotag{To be written}]
-The action for the gravitational field in $n$-dimensional curved spacetime is given by
-\begin{align}
+\begin{mytheorem}[The Einstein-Hilbert action]
+The lowest order action for the gravitational field in $n$-dimensional curved spacetime is given by
+\begin{align}\label{eq:einstein_hilbert_action}
     S_{\mathrm{EH}} = \frac{1}{16\pi G} \int_M \mathrm{d}^n x \sqrt{|g|} (R - 2\Lambda),
 \end{align}
-where $R$ is the Ricci scalar, $\Lambda$ is the cosmological constant, and $G$ is Newton's gravitational constant.
-Varying this action with respect to the metric $g_{\mu\nu}$ yields the Einstein field equations
+where $R$ is the Ricci scalar, $\Lambda$ is the cosmological constant, and $G$ is Newton gravitational constant.
+The total action, including matter fields, is then
 \begin{align}
-    R_{\mu\nu} - \tfrac{1}{2} R g_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pi G T_{\mu\nu},
+    S = S_{\mathrm{EH}} + S_{\mathrm{matter}} = \frac{1}{16\pi G} \int_M \mathrm{d}^n x \sqrt{|g|} (R - 2\Lambda) + \int_M \mathrm{d}^n x \sqrt{|g|} \, \mathcal{L}_{\mathrm{matter}}.
 \end{align}
-where $T_{\mu\nu}$ is the energy-momentum tensor of matter fields, obtained by varying the matter action with respect to the metric.
+
+Varying this action with respect to the metric $g^{\mu\nu} \to g^{\mu\nu} + \delta g^{\mu\nu}$ yields 
+\begin{align}
+    \delta S =& \frac{1}{16\pi G} \int_M \mathrm{d}^n x \sqrt{|g|} \Big[-\tfrac{1}{2}g_{\mu\nu}(R-2\Lambda) \delta g^{\mu\nu}+ \mathrm{R}_{\mu\nu} \delta g^{\mu\nu} +  \graycancel{\delta\mathrm{R}_{\mu\nu}\, g^{\mu\nu}}\Big] 
+    \\
+    &+ \int_M \mathrm{d}^n x \sqrt{|g|}\,\bigg(\underbrace{-\tfrac{1}{2} g_{\mu\nu}\mathcal{L}_{\mathrm{matter}}+ \frac{\delta \mathcal{L}_{\mathrm{mat}}}{\delta g^{\mu\nu}}}_{= -\tfrac{1}{2}\, T_{\mu\nu}}\bigg)\, \delta g^{\mu\nu}.
+\end{align}
+The term $\delta R_{\mu\nu} g^{\mu\nu}$ is a total derivative and vanishes by Gauss theorem assuming suitable BCs on $\delta g_{\mu\nu}$.
+Crucially note that $\delta R^{\mu\nu} g_{\mu\nu}$ would \emph{not} be a total derivative, since raising indices with the metric does not commute with variations of the metric itself.
+
+In conclusion, recalling the \emph{definition} of Einstein and energy-momentum tensors, the \textbf{Einstein equations} are
+\begin{align}
+    \underbrace{R_{\mu\nu} - \tfrac{1}{2} R g_{\mu\nu}}_{\equiv G_{\mu\nu}} + \Lambda g_{\mu\nu} = 8\pi G\, T_{\mu\nu}.
+\end{align}
+%
 \end{mytheorem}
 
 
-\begin{mytheorem}[Sakarov derivation of Einstein equations\todotag{To be written}]
-Sakharov proposed an alternative derivation of the Einstein field equations by considering the quantum fluctuations of matter fields in curved spacetime.
-He argued that the vacuum energy of quantum fields contributes to the effective action for gravity, leading to a modification of the Einstein-Hilbert action.
-By requiring that the effective action be stationary with respect to variations of the metric, one can derive the Einstein field equations with an additional term corresponding to the vacuum energy.
-This approach highlights the deep connection between quantum field theory and gravity, suggesting that gravity may emerge as an effective theory from the underlying quantum dynamics of matter fields.
-    
+\begin{mytheorem}[Sakarov derivation of Einstein equations from Wilsonian effective action]
+%
+Einstein essentially guessed the form of his equations by symmetry, consistency arguments, and trial and error.
+Later Sakharov showed that Einstein equations naturally follows by considering the quantum fluctuations of matter fields in curved spacetime.
+%
+Indeed, after integrating high-energy degrees of freedom of matter fields in the Wilsonian sense, the \emph{effective} action for matter naturally contains all terms compatible with the symmetries of the theory (diffeomorphism invariance and possible other symmetries related to the matter content), including terms depending on the curvature of spacetime, such as suitable contractions of the Riemann tensor and its derivatives.
+Namely,
+{\small
+\begin{align}
+    S_{\mathrm{mat}}^{\mathrm{cl}}= \int_M\!\!d^nx&\sqrt{|g|}\,\mathcal{L}_{\mathrm{mat}}^{\mathrm{cl}}
+    \\
+        \overset{\text{Wilsonian flow}}{\Longrightarrow}
+    S_{\mathrm{mat}}^{\mathrm{eff}}&= \int_M\!\!d^nx\sqrt{|g|}\,\mathcal{L}_{\mathrm{mat}}^{\mathrm{eff}}
+    \\
+    &= \int_M\!\!d^nx\sqrt{|g|}\,\bigg[\mathcal{L}_{\mathrm{mat}}^{\mathrm{cl}} + \Big( c_1 + c_2 R + c_3 R^2 + c_4 R_{\mu\nu}R^{\mu\nu} + c_5 R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma} + \ldots \Big) + \text{others}\bigg],
+\end{align}
+}
+where `others' include effective terms involving matter fields and their couplings to curvature.
+%
+The two lowest order Wilsonian terms in the metric are precisely a cosmological constant and the Ricci scalar, that is the Einstein-Hilbert action.
+This shows the inclusion of a cosmological constant term is unavoidable from the QFT point of view, since it accounts for zero-point energy of quantum fields.
+More generally it highlights the deep connection between QFT and gravity, suggesting that gravity may emerge as an effective theory from the underlying quantum dynamics of matter fields.
+
+The Wilsonian coefficients $c_i$ scale with the UV cutoff $\ell_{\mathrm{UV}}$ of the effective theory as
+\begin{align}
+    c_1  \sim \ell_{\mathrm{UV}}^{-n}, \quad c_2 \sim \ell_{\mathrm{UV}}^{-(n-2)}, \quad c_3, c_4, c_5 \sim \ell_{\mathrm{UV}}^{-(n-4)}, \quad \ldots
+\end{align}
+Since no factor $10^{-9}$ is present in the original lagrangian, by naturalness arguments we expect $c_i\simeq \lambda_i \ell_{\mathrm{UV}}^{\mathrm{dim}\, c_i}$ with $\lambda_i\sim O(10^{\pm2})$ dimensionless constants.
+%
+Matching to the \emph{experimentally confirmed} Einstein-Hilbert action \eqref{eq:einstein_hilbert_action} gives an estimate for the UV cutoff $\ell_{\mathrm{UV}}$, naturally identified with the Planck scale,
+\begin{align}
+    c_2 = \frac{1}{16\pi G} \simeq \ell_{\mathrm{UV}}^{-2} \Rightarrow \ell_{\mathrm{UV}} \sim G^{1/2} =:  \ell_{\mathrm{Pl}} \simeq 1.6 \times 10^{-35} \text{ m}.
+\end{align}
+In turn we predict the size of the cosmological constant induced by quantum fluctuations of matter fields as
+\begin{align}
+    \Lambda = -8\pi G \, c_1 \sim G \, \ell_{\mathrm{UV}}^{-4} \sim \ell_{\mathrm{Pl}}^{-2} \simeq 10^{70} \text{ m}^{-2}.
+\end{align}
+This is about 120 orders of magnitude larger than the observed value $\Lambda_{\mathrm{obs.}}\simeq 10^{-52} \text{ m}^{-2}$, leading to the well-known \textbf{cosmological constant problem}.
+%
+It is worth noticing that even if we allowed matter fields to support fluctuations only up to the much longer electroweak scale $\ell_{\mathrm{EW}}\sim 1/(100\mathrm{GeV}) \sim 10^{-18} \text{ m}$, as experimentally confirmed e.g. by the Casimir effect\footnote{See the discussion on the Casimir effect somewhere else.}, we would still overestimate the cosmological constant by about 60 orders of magnitude.
+
+Finally we remark that the above effective treatment considering only the relevant (and possibly marginal) operators in the gravitational sector is fully consistent as long as we work at energy scales $E\ll \ell_{\mathrm{UV}}^{-1}$, where higher-order curvature terms are negligible.
+When the curvature $R$ becomes comparable to $\ell_{\mathrm{UV}}^{-2}$, such as close to black holes, higher-order terms in the effective action become important and the Einstein-Hilbert action is no longer a good approximation.
 \end{mytheorem}
 
 
@@ -590,4 +641,35 @@ Finally, \textbf{every static spacetime is stationary, but not vice versa}.
 Rotating solutions (e.g. Kerr) are stationary yet not static because no global slice exists that is orthogonal to the timelike Killing field.
 More physically, rotating spacetimes are not invariant under time reversal $t\mapsto -t$ since the direction of rotation is reversed and angular momentum flips sign.
 %
+\end{mytheorem}
+
+
+\begin{mytheorem}[Birkhoff's theorem\todotag{To be written}]
+Birkhoff's theorem states that any spherically symmetric solution of the vacuum Einstein equations must be static and asymptotically flat.
+
+In four-dimensional General Relativity, any \emph{spherically symmetric} solution of the \emph{vacuum} Einstein equations
+\begin{align}
+    G_{\mu\nu} = 0
+\end{align}
+is locally isometric to the Schwarzschild spacetime. Equivalently, in a vacuum region the most general spherically symmetric metric can be written (after a suitable coordinate choice) as
+\begin{align}
+    ds^2
+    = -\left(1-\frac{2GM}{r}\right)dt^2
+      +\left(1-\frac{2GM}{r}\right)^{-1}dr^2
+      +r^2 d\Omega^2 ,
+\end{align}
+with a constant parameter \(M\) (the Misner--Sharp/Schwarzschild mass). In particular, spherical symmetry in vacuum implies an additional Killing vector beyond the rotational ones, so the spacetime is \emph{necessarily static} (in the region where that Killing field is timelike). As a consequence, the exterior gravitational field of any spherically symmetric, possibly time-dependent, matter distribution is Schwarzschild as long as the exterior is vacuum, and there is no spherically symmetric (monopole) gravitational radiation.
+
+
+For
+\begin{align}
+    G_{\mu\nu} + \Lambda g_{\mu\nu} = 0 ,
+\end{align}
+the unique spherically symmetric vacuum solution is Schwarzschild--(A)dS:
+\begin{align}
+    ds^2
+    = -f(r)\,dt^2 + f(r)^{-1}dr^2 + r^2 d\Omega^2,
+    \qquad
+    f(r)=1-\frac{2GM}{r}-\frac{\Lambda r^2}{3}.
+\end{align}
 \end{mytheorem}
