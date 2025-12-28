@@ -1,59 +1,127 @@
 % !TeX root = ../geometry_main.tex
+\section*{Page 1}
 
+\textbf{GR for Cosmology, Achim Kempf \hfill Lecture~11}
 
+\subsection*{Nontrivial shape of a manifold}
 
-\begin{mytheorem}[Introduction: can you hear the shape of a drum?]
-%
-Can we detect and describe (pseudo-)Riemannian structures \(\mathcal{E}\) directly, without reference to a particular metric \(g\)?
-Possibly yes, using \textbf{spectral geometry}.
-The idea is that the vibration spectrum \(\{\lambda_n\}\) of a manifold (the eigenvalues of a Laplace-type operator) depends only on \(\mathcal{E}\) and not on the choice of coordinates.
-The classical question of spectral geometry, posed by Hermann Weyl in 1911, is:
-%
+\textbf{Recall.}  The nontrivial shape of a manifold reveals itself in several ways:
+
+\begin{enumerate}
+\item \textbf{Violation of angle sum laws.}  For a triangle with angles \(\alpha,\beta,\gamma\) one has
+\[
+\alpha + \beta + \gamma \neq 180^\circ.
+\]
+Such a \emph{deficit angle} can be used to encode the shape.  (This idea is used in some approaches to quantum gravity.)
+\item \textbf{Violation of Pythagoras' law.}  For a triangle with side lengths \(a,b,c\) one has
+\[
+a^2 + b^2 \neq c^2.
+\]
+Thus one can encode the shape through metric distances, i.e. via a Riemannian metric \(g\) on \(M\).
+\item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\).
+\end{enumerate}
+
+\subsection*{Redundancy of local descriptions}
+
+\textbf{Observation.}  Such local descriptions carry redundant information.  Why?  Two (pseudo-)Riemannian manifolds \((M,g)\) and \((M,g')\) should be considered equivalent— they describe the same space–time— if there exists an isometric (metric preserving) diffeomorphism
+\[
+e:(M,g)\longrightarrow (M,g').
+\]
+Here ``metric preserving'' means that under the pull–back map \(T_e^*:T_p(M_2)\to T_p(M_1)\) the metric obeys \(T_e^*(g')=g\).  In other words, \(e\) is merely a change of chart.  A small note in the original handwritten page comments that this redundancy makes it hard to identify the true degrees of freedom so that they can be quantized.
+
+\section*{Page 2}
+
+\subsection*{Intuition and definitions}
+
+\textbf{Intuition.}  If \((M,g)\) and \((M,g')\) are related by an isometric diffeomorphism then they are merely different coordinate descriptions of the same manifold and hence have the same ``shape.''
+
+\textbf{Definition.}  A \emph{(pseudo-)Riemannian structure}, say \(\mathcal{E}\), is an equivalence class of (pseudo-)Riemannian manifolds which can be mapped into each other via metric–preserving diffeomorphisms (i.e. coordinate changes).  Hence space(time) ought to be modelled as a (pseudo-)Riemannian structure \(\mathcal{E}\), that is, as an equivalence class of pairs \((M,g)\).
+
+\textbf{Problem.}  These equivalence classes are hard to handle because the absence or existence of an isometry relating two metrics \(g\) and \(g'\) is difficult to check.
+
+\subsection*{Gauge fixing}
+
+One would like to identify exactly one representative \((M,g)\) for each class \(\mathcal{E}\).  Choosing such a representative is called \emph{fixing the gauge}.  Gauge fixing is useful in many contexts.  A key example occurs in quantum gravity.
+
+The previous page discussed how to detect and describe shape through
+\begin{itemize}
+\item deficit angles,
+\item nontrivial metric distances \((M,g)\), and
+\item nontrivial parallel transport \((M,\Gamma)\),
+\end{itemize}
+which were illustrated by a simple triangle diagram in the original notes.
+
+\section*{Page 3}
+
+\subsection*{Path integral formulation}
+
+\textbf{Recall.}  Quantum theory can be formulated in path integral form.
+
+\textbf{Applied to gravity.}  One might expect to have to handle path integrals of the type
+\[
+\int e^{i S[\mathcal{E}]} \;D\mathcal{E},
+\]
+where the integration is over all Riemannian structures \(\mathcal{E}\).  However, what one initially has is, schematically,
+\[
+\int e^{iS[g]}\,\delta(\mathcal{E})\,Dg
+\quad\text{or}\quad
+\int e^{iS[\Gamma]}\,\delta(\mathcal{E})\,D\Gamma.
+\]
+Here the gauge–fixing functional \(\delta(\mathcal{E})\) must be chosen so that from each equivalence class of metrics \(g\) (or connections \(\Gamma\)) only one representative contributes to the path integral.  A large part of quantum gravity research is concerned with constructing suitable gauge fixings \(\delta(\mathcal{E})\) for metrics \(g\) or connections \(\Gamma\) or other variables derived from them (for example the frame fields; see ``loop quantum gravity'').
+
+\subsection*{Spectral geometry}
+
+\textbf{Question.}  Can one detect and describe a (pseudo-)Riemannian structure \(\mathcal{E}\) directly, without reference to a particular metric \(g\)?
+
+\textbf{Answer.}  Possibly yes, using \emph{spectral geometry}.  The idea is that a manifold's vibration spectrum \(\{\lambda_n\}\) (the eigenvalues of a Laplace–type operator) depends only on \(\mathcal{E}\) and not on the choice of coordinates.  The classical question of spectral geometry, posed by Hermann Weyl in 1911, is:
+
 \begin{center}
 \emph{Does the spectrum \(\{\lambda_n\}\) encode all information about the shape, i.e. the structure \(\mathcal{E}\)?}
 \end{center}
-%
-The expectation is that the spectra \(\mathrm{spec}(\Delta_p)\) of the laplacian on fiber valued p-forms for different $p$ and fibers contain different information about $M$, possibly enough to reconstruct its shape completely.
 
-For example, it is known that scalar (pressure) waves and vector (`shear') seismic waves travel and reflect off materials differently, e.g. shear waves propagate slower and do not travel through liquids since liquids do not support shear stresses by definition.
-Their spectra thus contain different information about the Earth's interior structure.
-This is indeed how seismologists study the Earth's structure and discovered, for example, that its core is liquid in the outer part and solid in the inner part.
-%
-\end{mytheorem}
+\section*{Page 4}
 
+\textbf{Remarks.}
+\begin{itemize}
+\item If the manifold \(M\) has infinite volume then the spectrum of \(\Delta\) becomes (almost) completely continuous, so one cannot hope to recover discrete information from it.
+\item The spectral geometry of pseudo–Riemannian manifolds (with Lorentzian signature) is still very little developed.
+\end{itemize}
 
+\textbf{Theorem.}  Assume \((M,g)\) is a compact Riemannian manifold without boundary (so that \(M\) has finite volume).  Then, for each degree \(p\), the spectrum \(\mathrm{spec}(\Delta_p)\) of the Laplace–de Rham operator acting on \(p\)–forms is discrete, with finite degeneracies and without accumulation points.
 
-\begin{mytheorem}[Types of waves on \(M\)]
-%
-On a given manifold we can consider fiber valued p-forms \(w(t)\) with time evolution governed by various differential equations.
-%
+\textbf{In practice.}  One can model an arbitrarily large part of the universe by a compact Riemannian manifold \((M,g)\).  This allows us to describe, for example, 3–dimensional space at a fixed time (or even 4–dimensional spacetimes after a so–called \emph{Wick rotation}).
+
+\subsection*{Types of waves on \(M\)}
+
+On such a manifold (assumed compact and without boundary) one can consider \(p\)–form fields \(w(t)\) with time evolution governed by various differential equations:
+
 \begin{enumerate}
-\item \textbf{Schrödinger equation }
-\(
+\item \textbf{Schrödinger equation}
+\[
  i\hbar\,\partial_t w(x,t)
  \;=\; -\frac{\hbar^2}{2m}\,\Delta_p\,w(x,t).
-\)
-\item \textbf{Heat equation }
-\(
+\]
+\item \textbf{Heat equation}
+\[
  \partial_t w(x,t)
- \;=\; \,\Delta_p\,w(x,t).
-\)
-\item \textbf{Klein-Gordon/wave equation}
-\(
- \,\partial_t^2 w(x,t)
- \;=\; \beta^2\,\Delta_p\,w(x,t),\,
-\)
-where \(\beta\) is the propagation speed of the given type of wave, e.g. the speed of sound $\beta=c_s$ for pressure waves or the speed of shear waves $ \beta=c_{sh}$.
-%
+ \;=\; -\,\Delta_p\,w(x,t).
+\]
+\item \textbf{Klein–Gordon (and acoustic) equation}
+\[
+ -\,\partial_t^2 w(x,t)
+ \;=\; \beta\,\Delta_p\,w(x,t),
+\]
+ where \(\beta\) is a constant (for acoustic waves \(\beta\) is related to the speed of sound).  These equations model different types of waves (including ``sounds'') on \(M\).
 \end{enumerate}
-%
-Suppose we find an eigenform \(\tilde{\omega}(x)\) of \(\Delta_p\) with eigenvalue \(\lambda\):
+
+\section*{Page 5}
+
+Each of the evolution equations above can be solved by separation of variables.  Suppose we find an eigenform \(\tilde{\omega}(x)\) of \(\Delta_p\) with eigenvalue \(\lambda\):
 \[
  \Delta_p\,\tilde{\omega}(x) \;=\; \lambda\,\tilde{\omega}(x).
 \]
-Since \(\Delta_p\) is self-adjoint wrt the Hodge inner product \((w,v)=\int_M w\wedge *v\), such eigenforms exist and form an orthonormal basis if $M$ is Riemannian, compact and without boundary (for simplicity).
-%
-Each evolution equations above is then solved by separation of variables as 
+Because \(\Delta_p\) is self–adjoint with respect to the inner product \((w,v)=\int_M w\wedge *v\), such eigenforms exist and form an orthonormal basis.  Then the evolution equations are solved by
+
 \begin{align*}
  \text{Schrödinger:}&\quad
  w(x,t) \;=\; e^{\tfrac{i\hbar\lambda}{2m}\,t}\,\tilde{\omega}(x),\\[0.3em]
@@ -62,52 +130,8 @@ Each evolution equations above is then solved by separation of variables as
  \text{Klein–Gordon:}&\quad
  w(x,t) \;=\; e^{i\beta\lambda\,t}\,\tilde{\omega}(x).
 \end{align*}
-%
-It follows that the spectrum \(\mathrm{spec}(\Delta_p)\) is the \emph{overtone spectrum} of p-form type waves on the manifold \(M\).
-%
-\end{mytheorem}
 
-
-\begin{mytheorem}[Practical mathematical aspects of spectral geometry]
-%
-Several practical aspects must be considered regarding the rigorous mathematical formulation of spectral geometry.
-%
-\begin{itemize}
-\item \textbf{(Non)-compact riemannian manifolds} (theorem).
-If \((M,g)\) is a compact Riemannian manifold without boundary (it has then finite volume), for each degree $p$ the spectrum \(\mathrm{spec}(\Delta_p)\) of the Laplace-de Rham operator acting on $T^\star_\bullet M$-valued $p$-forms is discrete, with finite degeneracies and without accumulation points.
-On the other hand, if the manifold \(M\) has infinite volume (non-compact) then the spectrum of \(\Delta\) must develop a continuous part\footnote{Besides a possible still discrete point-spectrum.}, and we cannot hope to recover information from it since it is the same for all such manifolds, i.e. `all infinite volume drums sound the same'.
-\item  \textbf{In practice} one models an arbitrarily large part of the universe by a compact Riemannian manifold \((M,g)\).  This allows us to describe, for example, 3-dimensional space at a fixed time.
-%
-\item \textbf{Pseudo-Riemannian manifolds}(open problem).
-The spectral geometry of \emph{pseudo}-Riemannian manifolds is still very little developed.
-The main difficulty is that the Hodge inner product has indefinite signature, so that Laplace-type operators on such manifolds are typically not elliptic and the spectral theorem does not apply.
-%
-\item \textbf{In practice} one typically models spacetime as a compact Riemannian manifold \((M,g)\) after Wick rotation and then tries to recover the Lorentzian structure by analytic continuation.
-%
-\item \textbf{Boundaries.} The spectral geometry of manifolds is indeed studied.
-One needs to impose suitable boundary conditions on the eigenforms of \(\Delta_p\) at \(\partial M\), for example Dirichlet or Neumann conditions.
-%
-\item \textbf{In practice} one typically models space(time) as a compact Riemannian manifold without boundary, or with boundary conditions that effectively make the boundary invisible to the waves considered like periodic BCs.
-%
-\end{itemize}
-
-In general, even in the simplest case of compact Riemannian manifolds without boundary, the spectra of $\Delta$ on \textbf{standard real-valued} $p$-forms do \textbf{not contain enough information to uniquely identify the geometric structure}.
-Indeed we shall see below that there is relatively little independent information contained in the spectra of $p$-forms because of the many symmetries of $\Delta$ relating the spectra for different $p$.
-%
-There are indeed counterexamples of pairs \((M,g)\) and \((M',g')\) isospectral for \(\Delta\) on all degrees \(p\), but not isometric.
-Nevertheless, all known examples have limited significance for the physics.
-They involve manifolds that are locally, but not globally, isometric (e.g.  one is a $k$-fold covering of the other); manifolds that are $\Delta_p$ isospectral only for some $p$; or manifolds occurring in discrete copies (e.g. mirror images).
-%
-
-The situation is different if one considers the spectra of Laplacians acting on more general tensor fields.
-For example, rank 2 tensor fields (in particular, metric perturbations) contain new information about the Riemannian structure wrt the sole $p$-forms.
-Indeed, a rank-2 tensor can be decomposed into scalar, vector and tensor parts, each with its own spectrum.
-While the spectra of scalar and vector parts are related to those of 0- and 1-forms, the tensor part contains genuinely new information not present in the spectra of any $\R$-valued $p$-form.
-%
-\end{mytheorem}
-
-
----------------------------------------------------------------------------------------
+It follows that the spectrum \(\mathrm{spec}(\Delta_p)\) is the \emph{overtone spectrum} of \(p\)–form type waves on the manifold \(M\).
 
 \subsection*{Properties of \(\mathrm{spec}(\Delta_p)\)}
 

@@ -974,11 +974,12 @@ In view of what discssed above, we can interpret the Christoffel symbols and the
 
 
 %======================================================================
-\subsection{What even is curvature? How to quantize it?}\todotag{To be written}
+\subsection{What is curvature \& how to quantize it?}\todotag{To be written}
 %========================================================================
 
 
-\begin{mytheorem}[How to measure curvature? How to quantize garvity?]
+\begin{mytheorem}[How to measure curvature? How to quantize gravity?]
+%
 What is curvature? How do we even measure it? Intuitively, curvature is how much a space deviates from being flat.
 Here are some ways to quantify this. 
 In order to quantize gravity--i.e. curvature--it will be useful to have several notions of curvature at hand, since we do not know yet which one will be the most useful in a quantum theory of gravity and what object will have to be quantized.
@@ -996,7 +997,7 @@ a^2 + b^2 \neq c^2.
 In this case we \emph{encode the shape through metric distances}--i.e. via a Riemannian metric \(g\) on \(M\)--and we might \emph{quantize the metric} $g$ itself (as in canonical quantum gravity) or some functionals of it (as in loop quantum gravity).
 %
 \item \textbf{Tensorial definiton: Riemann curvature tensor or Gaussian curvature.} This is an umbrella term for the most common notion of curvature, where this is encoded in suitable tensors.
-The most common is the Riemann tensor $R$, but we might equivalently define it via other \emph{equivalent} tensorial means like the sectional curvature.
+The most common is the Riemann tensor $R$, but we might equivalently define it via other \emph{equivalent} tensorial means like the \textbf{sectional curvature}.
 We would then quantize a suitable expression of these?
 %
 \item \textbf{Nontrivial parallel transport around loops.}  A vector transported around a closed loop generally does not return to itself.  One can therefore encode the shape through an affine connection \(\Gamma\) on \(M\), which we might then quantize somehow.
@@ -1014,26 +1015,54 @@ In doing so, quantization conditions on $g$ might emerge naturally from the quan
 For example, the eigenvalues of the Laplace-D'Alambert operator \(\Box\) depend on the metric \(g\) and thus on the curvature of \((M,g)\).
 One might then try to quantize gravity by quantizing the spectrum of such operators. (cf. relevant section) 
 \end{enumerate}
+%
+Crucially, the above \textbf{local descriptions carry redundant information}  (excluding Green functions and spectral geometry).
+Indeed two pseudo-Riemannian manifolds \((M,g)\) and \((M,g')\) should be considered equivalent— they describe the same spacetime— if there exists an isometric diffeomorphism
+\[
+e:(M,g)\longrightarrow (M,g'), \quad \text{s.t.}\quad g = e^*(g').
+\]
+In other words \(e\) is merely a change of chart, the two manifolds are just different coordinate descriptions of the \emph{same} manifold and hence have the same \emph{shape}.
+This redundancy makes it hard to identify the true degrees of freedom that should be quantized.
+This is the gauge-fixing problem already well-known from other gauge theories like QED.
+%
 \end{mytheorem}
 
 
 
-\begin{mytheorem}[Sectional curvature]\todotag{Finish.}
-Sectional curvature is the simplest and most familiar notion of curvature one can define on a Riemannian manifold \((M,g)\).
-Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\) of the tangent space at \(p\), the sectional curvature \(K(\sigma)\) is defined in various equivalent ways.
-\begin{itemize}
-    \item \textbf{Gauss curvature.}  It is defined as the Gaussian curvature of the surface obtained by exponentiating \(\sigma\) via the exponential map at \(p\).
-    Namely, given the surface $S = \{\exp_p (v) \,|\, v \in \sigma \}$, we set
-    \begin{equation}
-        K(\sigma) := K_{Gauss} (S).
-    \end{equation}
-    \item \textbf{Riemann tensor.}  We define
-    \begin{equation}
-        K(\sigma) := \frac{R(u,v,v,u)}{||u||^2 ||v||^2 - (g(u,v))^2},
-    \end{equation}
-    where \(\{u,v\}\) is any basis of \(\sigma\).
-\end{itemize}
+\begin{mytheorem}[Pseudo-Riemannian structures \& fixing the gauge.]
+%
+If \((M,g)\) and \((M,g')\) are related by an isometry then they are merely different coordinate descriptions of the same manifold and hence have the same `shape'
+%
+A \textbf{pseudo-Riemannian structure} \(\mathcal{E}\) is an equivalence class of pseudo-Riemannian manifolds which can be mapped into each other via metric-preserving diffeomorphisms i.e. coordinate changes.
+Hence space(time) should be modelled as a (pseudo-)Riemannian structure \(\mathcal{E}\), i.e. an equivalence class of pairs \((M,g)\).
+
+One would like to \textbf{fix the gauge}, i.e. identify exactly one representative \((M,g)\) for each class \(\mathcal{E}\).
+%
+\textbf{Problem.}  These equivalence classes are hard to handle because the absence or existence of an isometry relating two metrics \(g\) and \(g'\) is difficult to check.
+There is no known general algorithm to decide whether two metrics are isometric or not.
+Instead one typically relies on (incomplete) sets of invariants, like curvature scalars, holonomies, spectra of differential operators, K-theory classes, etc.
+
+This issue is particularly evident in the \textbf{path integral formulation of gravity}.
+Indeed we would like to integrate over all possible \emph{inequivalent} structures \(\mathcal{E}\)
+\begin{equation}
+    \int_{\mathrm{geom. structs.}} e^{i S[\mathcal{E}]} \;D\mathcal{E},
+\end{equation}
+for a suitable isometry-invariant action $S[M,g]\equiv S[\mathcal{E}]$, like the Einstein-Hilbert action.
+%
+What we initially have is however an integral over all metrics or connections or other objects uniquely identifying a riemannian structure, i.e.
+\begin{equation}
+    \int_{\mathrm{metrics}} \!\!Dg\, e^{i S[g]} 
+    \quad \text{or} \quad
+    \int_{\mathrm{connections}}\!\!D\Gamma\,  e^{i S[\Gamma]}\quad \text{etc.}
+\end{equation}
+%
+We must then introduce a gauge-fixing functional \(\delta(\mathcal{E})\) so that from each equivalence class of metrics, or other objects uniquely identifying a pseudo-Riemannian structure, only one representative contributes to the path integral.
+%
+A viable option is to perform the integration directly over \textbf{non-redundant invariants} that uniquely identify a pseudo-Riemannian structure, like spectra of suitable differential operators on tensor valued forms or K-theory classes, so that no gauge-fixing is needed.
+%
 \end{mytheorem}
+
+
 
 
 
@@ -1127,7 +1156,22 @@ Then
 
 
 
-
+\begin{mytheorem}[Sectional curvature]\todotag{Finish.}
+Sectional curvature is the simplest and most familiar notion of curvature one can define on a Riemannian manifold \((M,g)\).
+Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\) of the tangent space at \(p\), the sectional curvature \(K(\sigma)\) is defined in various equivalent ways.
+\begin{itemize}
+    \item \textbf{Gauss curvature.}  It is defined as the Gaussian curvature of the surface obtained by exponentiating \(\sigma\) via the exponential map at \(p\).
+    Namely, given the surface $S = \{\exp_p (v) \,|\, v \in \sigma \}$, we set
+    \begin{equation}
+        K(\sigma) := K_{Gauss} (S).
+    \end{equation}
+    \item \textbf{Riemann tensor.}  We define
+    \begin{equation}
+        K(\sigma) := \frac{R(u,v,v,u)}{||u||^2 ||v||^2 - (g(u,v))^2},
+    \end{equation}
+    where \(\{u,v\}\) is any basis of \(\sigma\).
+\end{itemize}
+\end{mytheorem}
 
 
 
