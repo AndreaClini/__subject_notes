@@ -75,23 +75,29 @@ Several practical aspects must be considered regarding the rigorous mathematical
 \begin{itemize}
 \item \textbf{(Non)-compact riemannian manifolds} (theorem).
 If \((M,g)\) is a compact Riemannian manifold without boundary (it has then finite volume), for each degree $p$ the spectrum \(\mathrm{spec}(\Delta_p)\) of the Laplace-de Rham operator acting on $T^\star_\bullet M$-valued $p$-forms is discrete, with finite degeneracies and without accumulation points.
+
 On the other hand, if the manifold \(M\) has infinite volume (non-compact) then the spectrum of \(\Delta\) must develop a continuous part\footnote{Besides a possible still discrete point-spectrum.}, and we cannot hope to recover information from it since it is the same for all such manifolds, i.e. `all infinite volume drums sound the same'.
-\item  \textbf{In practice} one models an arbitrarily large part of the universe by a compact Riemannian manifold \((M,g)\).  This allows us to describe, for example, 3-dimensional space at a fixed time.
+
+\textbf{In practice} one models an arbitrarily large part of the universe by a compact Riemannian manifold \((M,g)\).  This allows us to describe, for example, 3-dimensional space at a fixed time.
 %
 \item \textbf{Pseudo-Riemannian manifolds}(open problem).
 The spectral geometry of \emph{pseudo}-Riemannian manifolds is still very little developed.
 The main difficulty is that the Hodge inner product has indefinite signature, so that Laplace-type operators on such manifolds are typically not elliptic and the spectral theorem does not apply.
-%
-\item \textbf{In practice} one typically models spacetime as a compact Riemannian manifold \((M,g)\) after Wick rotation and then tries to recover the Lorentzian structure by analytic continuation.
+
+\textbf{In practice} one typically models spacetime as a compact Riemannian manifold \((M,g)\) after Wick rotation and then tries to recover the Lorentzian structure by analytic continuation.
 %
 \item \textbf{Boundaries.} The spectral geometry of manifolds is indeed studied.
 One needs to impose suitable boundary conditions on the eigenforms of \(\Delta_p\) at \(\partial M\), for example Dirichlet or Neumann conditions.
-%
-\item \textbf{In practice} one typically models space(time) as a compact Riemannian manifold without boundary, or with boundary conditions that effectively make the boundary invisible to the waves considered like periodic BCs.
+
+\textbf{In practice} one typically models space(time) as a compact Riemannian manifold without boundary, or with boundary conditions that effectively make the boundary invisible to the waves considered like periodic BCs.
 %
 \end{itemize}
 
-In general, even in the simplest case of compact Riemannian manifolds without boundary, the spectra of $\Delta$ on \textbf{standard real-valued} $p$-forms do \textbf{not contain enough information to uniquely identify the geometric structure}.
+\end{mytheorem}
+
+\begin{mytheorem}[Can you hear the shape of a drum? In general no, but often yes.]
+%
+In general, even in the simplest case of compact Riemannian manifolds without boundary, the spectra of $\Delta$ on \textbf{standard} $\R$\textbf{valued} $p$-forms do \textbf{not contain enough information to uniquely identify the geometric structure}.
 Indeed we shall see below that there is relatively little independent information contained in the spectra of $p$-forms because of the many symmetries of $\Delta$ relating the spectra for different $p$.
 %
 There are indeed examples of pairs \((M,g)\) and \((M',g')\) isospectral for \(\Delta\) on all degrees \(p\), but not isometric.
@@ -100,11 +106,134 @@ They involve manifolds that are locally, but not globally, isometric (e.g.  one 
 %
 
 The situation is different if one considers the spectra of Laplacians acting on more general tensor fields.
-For example, rank 2 tensor fields (in particular, metric perturbations) contain new information about the Riemannian structure wrt the sole $p$-forms.
+For example, rank 2 \textbf{tensor fields} (in particular, metric perturbations) \textbf{contain new information} about the Riemannian structure wrt the sole $p$-forms.
 Indeed, a rank-2 tensor can be decomposed into scalar, vector and tensor parts, each with its own spectrum.
 While the spectra of scalar and vector parts are related to those of 0- and 1-forms, the tensor part contains genuinely new information not present in the spectra of any $\R$-valued $p$-form.
 %
 \end{mytheorem}
+
+
+
+\begin{mytheorem}[Hodge decomposition: exact, closed and harmonic forms \& spectra of $\Delta$]
+%
+For simplicity we consider a compact Riemannian manifold $(M,g)$ without boundary or with suitable boundary conditions like DBc or PBc.
+\emph{Partial} extensions to pseudo-riemannian manifolds or noncompact ones are possible.
+
+The spaces of differential p-forms admit the \textbf{Hodge decomposition} into subspaces orthogonal wrt the Hodge inner product
+\begin{align}
+    \Lambda_p \;=\;d\Lambda_{p-1}\;\oplus\;\delta\Lambda_{p+1}\;\oplus\;\Lambda_p^0.
+\end{align}
+The decomposition holds for arbitrary fiber-valued form since the operators \(d\), \(\delta\) and \(\Delta\) act only on the base manifold, so that 
+ \begin{equation}
+    \Lambda_p \otimes E_F = \left(d\Lambda_{p-1}\;\oplus\;\delta\Lambda_{p+1}\;\oplus\;\Lambda_p^0\right)\otimes E_F = \left(d\Lambda_{p-1}\otimes E_F\right)\;\oplus\;\left(\delta\Lambda_{p+1}\otimes E_F\right)\;\oplus\;\left(\Lambda_p^0\otimes E_F\right).
+\end{equation}
+Each subspace is invariant under the action of the Laplace-de Rham operator \(\Delta_p\) because $\Lambda_p^0:=\ker(\Delta_p)$ and the commutation relations \([\Delta,d]=0\) and \([\Delta,\delta]=0\) and $\Lambda_p^0:=\ker(\Delta_p)$.
+In particular $\Delta_p$ is invertible on the subspaces of exact and co-exact forms.
+Any eigenform of $\Delta$ lies entirely in one of these subspaces and its spectrum decomposes into
+\begin{equation}
+    \mathrm{spec}(\Delta_p) \;=\; \Big(\,\mathrm{spec}(\Delta_p|_{d\Lambda_{p-1}}) \;\cup\; \mathrm{spec}(\Delta_p|_{\delta\Lambda_{p+1}})\,\Big) \sqcup\; \underbrace{\mathrm{spec}(\Delta_p|_{\Lambda_p^0})}_{\equiv\{0\}}.
+\end{equation}
+The decomposition is \textbf{irredubile} i.e. there are no further invariant subspaces of \(\Delta_p\).
+\end{mytheorem}
+
+\begin{mytheorem}[Hodge decomposition \& de Rham cohomology]
+Each deRham cohomology class contains exactly one harmonic representative, because of the following.
+\begin{itemize}
+    \item Each harmonic form is closed and co-closed, but neither exact nor co-exact
+    \begin{align}
+        \Delta \omega = 0 \quad \Longrightarrow \quad d\omega = 0, \quad \delta \omega = 0.
+    \end{align}
+    \item Every exact (resp. co-exact) form is \emph{not} co-closed (resp. closed)
+    \begin{align}
+        \alpha = d\beta\,\Rightarrow\, \delta \alpha \neq 0, \quad \eta = \delta \theta\,\Rightarrow\, d\eta \neq 0.
+    \end{align}
+\end{itemize} 
+The vector space of harmonic p-forms is thus linearly isomorphic to the p-th deRham cohomology group of the manifold
+\begin{align}
+    \Lambda_p^0 \cong H^p_{dR}(M) := \frac{\ker(d:\Lambda_p\to\Lambda_{p+1})}{\mathrm{im}(d:\Lambda_{p-1}\to\Lambda_p)}\,,\qquad B_p=\dim(H^p_{dR}(M)) = \dim(\Lambda_p^0).
+\end{align}
+The space $\Lambda_p^0$ is thus a topological invariant of the manifold, independent of the metric \(g\).
+This is non-trivial: even though $d$ depends only on the differentiable structure of $M$, the codifferential $\delta$ and hence the Laplacian $\Delta$ does depend on the metric $g$.
+\end{mytheorem}
+
+\begin{mytheorem}[Symmetries of $\Delta$ spectra]
+%
+The above `(co-)exatcness vs (co-)closedness' properties and the commutations relations $[\Delta,*]=[\Delta,d]=[\Delta,\delta]=0$ of the Laplace operator imply the following isomorphisms and symmetries of $\Delta$ spectra.
+\begin{itemize}
+    \item \textbf{Hodge duality.} The Hodge map
+    \begin{align}
+        \star:\underbrace{d\Lambda_{p-1}\oplus \delta\Lambda_{p+1} \oplus \Lambda_p^0}_{\Lambda_p} \longrightarrow \underbrace{d\Lambda_{n-p-1}\oplus \delta\Lambda_{n-p+1} \oplus \Lambda_{n-p}^0}_{\Lambda_{n-p}}
+    \end{align}
+    is an isomorphism interchaning the decomposition and preserving the spectra of $\Delta$ as 
+    \begin{align}
+        &\star: d\Lambda_{p-1} \;\longrightarrow\; \delta\Lambda_{n-p+1},\quad \mathrm{spec}(\Delta_{p}|_{d\Lambda_{p-1}}) = \mathrm{spec}(\Delta_{n-p}|_{\delta\Lambda_{n-p+1}}),\\[6pt]
+        &\star: \delta\Lambda_{p+1} \;\longrightarrow\; d\Lambda_{n-p-1},\quad \mathrm{spec}(\Delta_{p}|_{\delta\Lambda_{p+1}}) = \mathrm{spec}(\Delta_{n-p}|_{d\Lambda_{n-p-1}}),\\[6pt]
+        &\star: \Lambda_p^0 \;\longrightarrow\; \Lambda_{n-p}^0, \qquad \qquad\mathrm{spec}(\Delta_p|_{\Lambda_p^0}) = \mathrm{spec}(\Delta_{n-p}|_{\Lambda_{n-p}^0})\equiv \{0\}.
+    \end{align}
+    %
+    \item \textbf{(Co-)Exact duality.} The following maps are isomorphisms, respect spectra of $\Delta$ 
+    \begin{align}
+        &d: \delta\Lambda_{p+1} \;\longrightarrow\; d\Lambda_{p},\quad
+        \delta: d\Lambda_{p} \;\longrightarrow\; \delta\Lambda_{p+1}, \quad \mathrm{spec}(\Delta_{p+1}|_{d\Lambda_{p}}) = \mathrm{spec}(\Delta_p|_{\delta\Lambda_{p+1}})\\[7pt]
+        &\delta\circ d_{|\delta\Lambda_{p+1}} = \Delta_{p|\delta\Lambda_{p+1}},\qquad d\circ \delta_{|d\Lambda_p} = \Delta_{p+1|d\Lambda_p},
+    \end{align}
+    and the compositions are the restrictions of $\Delta$ to the respective subspaces. 
+\end{itemize}
+%
+This is suggestively shown in the following diagram, where equal colors indicate isomorphic subspaces with identical spectra of $\Delta$,
+%
+\begin{align}
+  \begin{array}{l}
+    {\vdots}\\[0pt]
+    \Lambda_{p-1} = {\color{lightblue}d\Lambda_{p-2}}\;\oplus\;{\tikzmarknode{delp}{\color{blue}\delta\Lambda_p}}\;\oplus\;{\color{forestgreen}\Lambda_{p-1}^0}\\[12pt]
+    \Lambda_p     = {\tikzmarknode{dp}{\color{blue}d\Lambda_{p-1}}}\;\oplus\;{\tikzmarknode{delp1}{\color{violet}\delta\Lambda_{p+1}}}\;\oplus\;{\tikzmarknode{hp}{\color{yellow}\Lambda_p^0}}\\[8pt]
+    \Lambda_{p+1} = {\color{violet}d\Lambda_p}\;\oplus\;{\color{red}\delta\Lambda_{p+2}}\;\oplus\;\Lambda_{p+1}^0\\[0pt]
+    {\vdots} \\[0pt]
+    \Lambda_{n-p} = {\tikzmarknode{dnp}{\color{violet}d\Lambda_{n-p-1}}}\;\oplus\;{\tikzmarknode{delnp}{\color{blue}\delta\Lambda_{n-p+1}}}\;\oplus\;{\tikzmarknode{hnp}{\color{yellow}\Lambda_{n-p}^0}}\\[6pt]
+    \Lambda_{n-p+1} = {\color{blue}d\Lambda_{n-p}}\;\oplus\;{\color{lightblue}\delta\Lambda_{n-p+2}}\;\oplus\;{\color{forestgreen}\Lambda_{n-p+1}^0}\\[0pt]
+    {\vdots}
+  \end{array}.
+\end{align}
+
+\begin{tikzpicture}[remember picture,overlay,>=Stealth,shorten >=2pt,shorten <=2pt]
+  %\draw[blue,<->] (delp.south) to[bend left=15] node[left=2pt] {\scriptsize $d\!-\!\delta$} (dp.north);
+  \draw[blue,<->] (delp.south) to[bend left=13]node[left=2pt,yshift=4pt] {\scriptsize $d$ - $\delta$}(dp.north);
+  %\draw[yellow,<->]      (hp.south east) -- node[right=2pt] {$\star$} (hnp.north east);
+  %\draw[yellow,<->] (hp.south east) to[bend left=15] node[right=2pt] {$\star$} (hnp.north east);
+  \draw[yellow,<->] (hp.south east) to[bend left=15] node[right=2pt] {$\star$} ($(hnp.north east)+(-1.6em,0)$);
+  %\draw[violet,<->]      (delp1.south east) to[bend left=15] node[right=2pt] {$\star$} (dnp.north east);
+  %\draw[blue,<->]        (dp.south east) to[bend left=15] node[right=2pt] {$\star$} (delnp.north east);
+  \draw[violet,<->] (delp1.south west) to[bend right=19] node[near end,right=2pt] {$\star$} ($(dnp.north east)+(-2.5em,0)$);
+\draw[blue,<->]   ($(dp.south east)+(-1.9em,0)$)    to[bend left=19] node[near end,right=2pt] {$\star$} ($(delnp.north west)+(0,0)$);
+\end{tikzpicture}
+%
+This pattern reveals there is relatively little independent information contained in the spectra of $p$-forms because of the many symmetries of $\Delta$.
+%
+For example, when \(\dim(M)=3\) 
+\begin{align}
+\begin{aligned}
+  \Lambda_0 \;=\; 0\;\;&\oplus\;{\color{blue}\delta\Lambda_1}\;\oplus\;{\color{forestgreen}\Lambda_0^0}\\
+  \Lambda_1 \;=\; {\color{blue}d\Lambda_0}\;&\oplus\;{\color{red}\delta\Lambda_2}\;\oplus\;{\color{green}\Lambda_1^0}\\
+  \Lambda_2 \;=\; {\color{red}d\Lambda_1}\;&\oplus\;{\color{blue}\delta\Lambda_3}\;\oplus\;{\color{green}\Lambda_2^0}\\
+  \Lambda_3 \;=\; {\color{blue}d\Lambda_2}\;&\oplus\; 0\; \oplus\;{\color{forestgreen}\Lambda_3^0}\,,\\
+  .
+\end{aligned}
+\qquad \text{and}\qquad
+\begin{aligned}
+  \Lambda_0 \;=\; 0\;\;&\oplus\;{\color{blue}\delta\Lambda_1}\;\oplus\;{\color{forestgreen}\Lambda_0^0}\\
+  \Lambda_1 \;=\; {\color{blue}d\Lambda_0}\;&\oplus\;{\color{red}\delta\Lambda_2}\;\oplus\;{\color{green}\Lambda_1^0}\\
+  \Lambda_2 \;=\; {\color{red}d\Lambda_1}\;&\oplus\;{\color{red}\delta\Lambda_3}\;\oplus\;{\color{yellow}\Lambda_2^0}\\
+  \Lambda_3 \;=\; {\color{red}d\Lambda_2}\;&\oplus\;{\color{blue}\delta\Lambda_4}\;\oplus\;{\color{green}\Lambda_3^0}\\
+  \Lambda_4 \;=\; {\color{blue}d\Lambda_3}\;&\oplus\; 0\; \oplus\;{\color{forestgreen}\Lambda_4^0}\,.
+\end{aligned}
+\end{align}
+%
+In 3D all the information is contained in the spectra of 0-forms and 1-forms, that is scalar and vector waves.
+The same is essentially true in 4D, since harmonic forms are homotopy invariants independent of the metric.
+All the information about the curvature of $(M,g)$ is contained in the spectra of $\Lambda_0$ and $\Lambda_1$, while the genuinely new piece of information $\Lambda_2^0$ is only topological and insensitive to the metric $g$.
+%
+\end{mytheorem}
+
 
 
 ---------------------------------------------------------------------------------------
