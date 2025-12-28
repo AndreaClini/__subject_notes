@@ -113,6 +113,34 @@ The proof is constructive and quite long, so we just sketch the main ideas.
     define a foliation whose tangent spaces coincide with $S$.
 \end{itemize}
 \end{proof}
+\todotag{Modify pic}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.0]
+        \def\R{2.1}
+        \def\r{0.55}
+        \pgfmathdeclarefunction{torusX}{2}{\pgfmathparse{(\R + \r*cos(#2)) * cos(#1) + 0.35*\r*sin(#2)}}
+        \pgfmathdeclarefunction{torusY}{2}{\pgfmathparse{0.6*(\R + \r*cos(#2)) * sin(#1) + 0.45*\r*sin(#2)}}
+
+        % Silhouette of the torus
+        \shade[ball color=gray!25, opacity=0.8] (0,0) ellipse (2.9 and 1.8);
+        \fill[white] (0,0) ellipse (1.15 and 0.6);
+        \draw[line width=1.1pt, black!65] (0,0) ellipse (2.9 and 1.8);
+        \draw[line width=1.1pt, black!45] (0,0) ellipse (1.15 and 0.6);
+
+        % Leaves wrapping around the torus with an irrational slope
+        \def\alpha{1.45}
+        \foreach \shift/\col in {0/forestgreen!80!black, 70/forestgreen!60!black, 140/forestgreen!60!black}{
+            \draw[\col, line width=1pt, samples=240, smooth, domain=0:360, variable=\u]
+                plot ({torusX(\u,\alpha*\u+\shift)}, {torusY(\u,\alpha*\u+\shift)});
+        }
+        % A meridional leaf for contrast
+        \draw[blue!70!black, line width=0.9pt, samples=200, smooth, domain=0:360, variable=\u]
+            plot ({torusX(\u,\u)}, {torusY(\u,\u)});
+    \end{tikzpicture}
+    \caption{Sample foliation of a $2$-torus embedded in $\mathbb{R}^3$, with leaves wrapping around both directions.}
+    \label{fig:torus-foliation}
+\end{figure}
 
 
 %-----------------------------------------------------------------------

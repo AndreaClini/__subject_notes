@@ -106,6 +106,50 @@ All these equations ultimately obey the Klein-Gordon equation, as it should be s
 \end{mytheorem}
 
 
+\begin{mytheorem}[The Casimir effect. \todotag{TBC}]
+%
+The Casimir effect is a physical force which arises e.g. from the zero-point energy of the\emph{quantized} electromagnetic field in the presence of conducting boundaries and pushes them closer together.
+It arises since the zero-point energy of vacuum is reduced as the plates get closer and reduce the allowed modes of the electromagnetic field between them.
+There is an extermely close analogy with the attractive force exerted between to ships travelling parallel to each other in the sea.
+Namely, waves with arbitrary wavelength can exist outside the ships and hit the rightmost ship from the right (resp. the leftmost one from the left) pushing them closer together.
+On the other hand, only waves with countable discrete wavelengths $\sim L/n$ can fit between the ships and push them further apart, where $L$ is the distance between them.
+There is thus a net attractive force between the ships since the pressure from outside is larger than the one from inside.
+
+In the context of QFT, consider the electromagnetic field confined between two perfectly conducting, parallel plates separated by a distance $a$.
+Boundary conditions discretize the momentum perpendicular to the plates,
+\begin{align}
+    k_z = \frac{n\pi}{a},\qquad n\in\Z
+    \omega_{n,\mathbf{k}_\perp} = c\sqrt{|\mathbf{k}_\perp|^2 + \Big(\tfrac{n\pi}{a}\Big)^2}.
+\end{align}
+The zero-point energy per unit area is formally divergent and given by
+\begin{equation}
+    \frac{E_0(a)}{A} = \sum_{n\in\Z}\int \frac{d^2 k_\perp}{(2\pi)^2}\, \tfrac{1}{2}\hbar\omega_{n,\mathbf{k}_\perp},
+\end{equation}
+The physically meaningful quantity is the \emph{difference} with empty space (no plates):
+\begin{equation}
+    \frac{E_{\text{Cas}}(a)}{A} := \frac{E_0(a)}{A} - \frac{E_0(\infty)}{A}.
+\end{equation}
+Using analytic (e.g. zeta-function) regularization, relying on $\zeta(-3)=\tfrac{1}{120}$, one obtains the finite result
+\begin{equation}
+    \frac{E_{\text{Cas}}(a)}{A} = -\,\frac{\pi^2\,\hbar c}{720\,a^3},
+\end{equation}
+which yields an attractive pressure
+\begin{equation}
+    \frac{F}{A} = -\,\frac{d}{da}\!\left(\frac{E_{\text{Cas}}}{A}\right) = -\,\frac{\pi^2\,\hbar c}{240\,a^4} < 0.
+\end{equation}
+In natural units ($\hbar=c=1$), $E_{\text{Cas}}/A = -\pi^2/(720\,a^3)$ and $F/A = -\pi^2/(240\,a^4)$. This force has been measured with high precision and exemplifies how vacuum fluctuations plus boundary conditions produce macroscopic effects.
+%
+\end{mytheorem}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../images/casimir_effect.jpeg}
+    \caption{Illustration of the Casimir effect between two parallel conducting plates.}
+    \label{fig:casimir_effect}
+\end{figure}
+
+
+
 
 
 %-------------------------------------------------------------

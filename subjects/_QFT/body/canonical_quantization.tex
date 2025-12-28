@@ -18,9 +18,9 @@
 %
 Consider the Lagrangian for a discrete set of classical harmonic oscillator in $d$ dimensions with some potential $V(q_n)$,
 \begin{align}
-    \mathcal{L}= \sum_{n\in \Z^d}\frac{1}{2} m \dot{q}_n^2 - \frac{1}{2} m \omega_n^2 \sum_{j=1}^d (q_n - q_{n +\hat{e}_j})^2 - V(q_n).
+    \mathcal{L}= \sum_{n\in \Z^d}\frac{1}{2} \mu \dot{q}_n^2 - \frac{1}{2} \mu \omega_n^2 \sum_{j=1}^d (q_n - q_{n +\hat{e}_j})^2 - V(q_n).
 \end{align}
-The density of oscillators is $\rho = m / a^d$ and the speed of sound is $c_s = a \omega_n$, where $a$ is the lattice spacing, are kept constant as we take the continuum limit $a \to 0$.
+The density of oscillators is $\rho = \mu / a^d$ and the speed of sound is $c_s = a \omega_n$, where $a$ is the lattice spacing, are kept constant as we take the continuum limit $a \to 0$.
 The Lagrangian then becomes
 \begin{align}
     \mathcal{L} &= \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \rho \dot{q}_n^2 - \frac{1}{2} \rho (a\omega_n)^2 \sum_{j=1}^d \left(\frac{q_n - q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(q_n) \right]
@@ -30,16 +30,18 @@ The Lagrangian then becomes
     \\
     &\xrightarrow[a\to 0]{} \int d^d\!x\,\,\, \tfrac{1}{2} \left(\partial_t\phi(t,\mathbf{x})\right)^2 - \tfrac{1}{2} c_s^2 \,\left(\nabla_x\phi(t,\mathbf{x})\right)^2 - \mathcal{V}(\phi(t,\mathbf{x})),
 \end{align}
-where we redefined the field as $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= m^{1/2}a^{-d/2} q_n(t)$ and the potential density as $\mathcal{V}(\phi) := \lim_{a\to 0} a^{-d} V(\rho^{-1/2} \phi)$.
+where we redefined the field as $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= \mu^{1/2}a^{-d/2} q_n(t)$ and the potential density as $\mathcal{V}(\phi) := \lim_{a\to 0} a^{-d} V(\rho^{-1/2} \phi)$.
 Choosing a quadratic potential $V(q_n) = \tfrac{1}{2} \mu^2 q_n^2$ yields the Klein-Gordon lagrangian density for a free scalar field of mass $\mu$.
-%
-The field $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= m^{1/2}a^{-d/2} q_n(t)$ has mass dimension $[\phi] = \frac{d-1}{2}$ in spacetime dimension d+1.
-Also note that we absorbed a factor $m^{1/2}$ in the rescaling of the field.
-Therefore, when defining \emph{adimensional} variables for the densities of harmonic oscillators constituing the field down below, the rescaling will be
+
+
+Note that we absorbed a factor $\mu^{1/2}$ in the rescaling of the field.
+Therefore in d+1 spacetime the field $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= \mu^{1/2}a^{-d/2} q_n(t)$ has energy dimension $[\phi] = E^{-1/2} E^{d/2} = E^{(d-1)/2}$, and its Fourier transform $\phi_k= \int d^dx \phi_x e^{ixk}$ has dimension $[\phi_k] = E^{-1/2} E^{-d/2}$.
+Below we will identify harmonic oscillator variables constituting the field as $\phi_k\sim q_k+\tfrac{1}{\omega_k} p_k$, so that $[q_k] = E^{-1/2} E^{-d/2}$ and $[p_k] = E^{1/2} E^{-d/2}$.
+Since the mass $\mu$ has already been absorbed, \emph{adimensional} density\footnote{In the sense they are 'square-root densities' in $k$-space i.e. $[\tilde{q}_k]=[\tilde{p}_k]=E^{-d/2}$} variables will then be obtained rescaling as
 \begin{equation}
-    \tilde{q}_k = \sqrt{\frac{\omega_k}{\hbar}} q_k, \quad \tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{\omega_k}} p_k,
+    \tilde{q}_k = \sqrt{\frac{\omega_k}{\hbar}} q_k, \quad \tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{\omega_k}} p_k,\quad
+    \text{instead of the usual}\quad \tilde{q}_k = \sqrt{\frac{m\omega_k}{\hbar}} q_k,\quad \tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{m\omega_k}} p_k.
 \end{equation}
-rather than the usual $\tilde{q}_k = \sqrt{\frac{m\omega_k}{\hbar}} q_k$ and $\tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{m\omega_k}} p_k$, since the mass $m$ has already been absorbed and the \emph{dimensional} density variables $q_k,\,p_k$ will have corresponding dimensions.
 %
 \end{mytheorem}
 
@@ -79,7 +81,7 @@ Following Heisenberg canonical quantization procedure, promote the classical the
 %
 The Hamiltonian operator is given by
 \begin{equation}
-    \hat{H} = \tfrac{1}{2m}{p}^2 + \tfrac{m\omega^2}{2} {q}^2= \hbar \omega \tfrac{1}{2}\left( {\tilde{p}}^2 + {\tilde{q}}^2 \right).
+    \hat{H} = \tfrac{1}{2m}{p}^2 + \tfrac{m\omega^2}{2} {q}^2= \tfrac{1}{2}\hbar \omega \left( {\tilde{p}}^2 + {\tilde{q}}^2 \right).
 \end{equation}
 The Poisson brackets turn into the canonical commutation relations
 \begin{align}
@@ -90,18 +92,22 @@ The Poisson brackets turn into the canonical commutation relations
 We cannot use the previous factorization since now $\tilde{p}$ and $\tilde{q}$ do not commute anymore.
 We have instead
 \begin{align}
-    \hat{H} &= \hbar \omega \bigg[
+    \hat{H} &=     
+    \hbar \omega \bigg[
         \underbrace{\tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right)}_{a}
         \cdot
         \underbrace{\tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right)}_{a^{\dagger}}
         + \underbrace{\tfrac{1}{2}[\tilde{p}, i\tilde{q}]}_{=\frac{1}{2} i \hbar}
-    \Big] = \hbar \omega \left( a^{\dagger} a + \tfrac{1}{2} \right),
+    \Big] = \tfrac{1}{2}\hbar\omega \left(a^\dagger a+ a a^\dagger\right)
+    = \hbar \omega \left( a^{\dagger} a + \tfrac{1}{2} \right),
 \end{align}
-for the creation and annihilationoperators
-\begin{align}
-    a^\dagger &= \tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left(\sqrt{m\omega} \,q - \tfrac{i}{\sqrt{m\omega}} p \right), \qquad
-    a = \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left( \sqrt{m\omega}\, q + \tfrac{i}{\sqrt{m\omega}} p \right).
+for the creation and annihilation operators
+{
+\begin{align}\label{eq:ordinary_QM_harmonic_oscillator}
+    a^\dagger &= \tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left(\sqrt{m\omega} \,q - \tfrac{i}{\sqrt{m\omega}} p \right), \,\,
+    a = \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left( \sqrt{m\omega}\, q + \tfrac{i}{\sqrt{m\omega}} p \right),\,\, [a, a^\dagger] = 1.
 \end{align}
+}
 %
 The energy eigenvalues of the quantum harmonic oscillator are
 \begin{equation}
@@ -191,7 +197,7 @@ More generally, the equation of motions for any functional $\mathcal{O}[\phi, \p
 \begin{equation}
     \frac{d\mathcal{O}}{dt} = \{\mathcal{O}, H\} + \frac{\partial \mathcal{O}}{\partial t},
     \quad \text{for}\quad
-    \{\mathcal{O},H\} = \int d^3 x\, \left( \frac{\delta \mathcal{O}}{\delta \phi(x)} \frac{\delta H}{\delta \pi(x)} - \frac{\delta \mathcal{O}}{\delta \pi(x)} \frac{\delta H}{\delta \phi(x)} \right),
+    \{\mathcal{O}_1,\mathcal{O}_2\} = \int d^3 x\, \left( \frac{\delta \mathcal{O}_1}{\delta \phi(x)} \frac{\delta \mathcal{O}_2}{\delta \pi(x)} - \frac{\delta \mathcal{O}_1}{\delta \pi(x)} \frac{\delta \mathcal{O}_2}{\delta \phi(x)} \right),
 \end{equation}
 where the Hamiltonian is $H = \int d^3 x\, \mathcal{H}$. 
 In particular, the fundamental fields obey the equations of motion, which equivalently combine into the Klein-Gordon equation,
@@ -216,7 +222,7 @@ Following Heisenberg canonical quantization procedure, we promote the classical 
 %
 The equal-time Poisson backe of the field become the equal-time caonical commutation relations 
 \begin{align}
-    [\hat{\phi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= i \delta^{(3)}(\mathbf{x} - \mathbf{y}), \quad
+    [\hat{\phi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= i\hbar\, \delta^{(3)}(\mathbf{x} - \mathbf{y}), \quad
     [\hat{\phi}(t, \mathbf{x}), \hat{\phi}(t, \mathbf{y})] = 0, \quad
     [\hat{\pi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] = 0.
 \end{align}
@@ -234,7 +240,7 @@ In particular, the fundamental fields obey the Heisenberg equations of motion
     \displaystyle
     \frac{d\hat{\pi}(t, \mathbf{x})}{dt} = \tfrac{1}{i \hbar} [\hat{\pi}(t, \mathbf{x}), \hat{H}] = (\nabla^2 - m^2) \hat{\phi}(t, \mathbf{x}),
     \end{cases}
-    \quad \Longrightarrow\quad  (\partial_{\mu} \partial^{\mu} + m^2) \hat{\phi}(x) = 0.
+    \,\Longrightarrow\quad  (\partial_{\mu} \partial^{\mu} + m^2) \hat{\phi}(x) = 0.
 \end{align}
 which together again imply the field operator $\hat{\phi}(x)$ satisfies the Klein-Gordon equation.
 %
@@ -245,13 +251,13 @@ which together again imply the field operator $\hat{\phi}(x)$ satisfies the Klei
 %  
 The Fourier transform of the fields are defined as
 \begin{equation}
-    \phi_k(t) :=\int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \phi(t, \mathbf{x}), \qquad \pi_k(t) := \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \pi(t, \mathbf{x}) = \frac{d \phi_k(t)}{dt}.
+    \phi_k(t) :=\int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \phi(t, \mathbf{x}), \qquad \pi_k(t) := \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \pi(t, \mathbf{x}) = \frac{d }{dt}\phi_k(t).
 \end{equation}
 Note that self-adjointness in position space implies $\phi_k^{\dagger}(t) = \phi_{-k}(t), \,\pi_k^{\dagger}(t) = \pi_{-k}(t)$ in momentum space.
 %
-The Klein-Gordon equation simply becomes the equation for uoncoupled harmonic oscillators
+The Klein-Gordon equation simply becomes the equation for uncoupled harmonic oscillators
 \begin{equation}
-    \frac{d^2 \phi_k(t)}{dt^2} + (|\mathbf{k}|^2 + m^2) \phi_k(t) = 0, \quad \text{with frequency}\quad \omega_k = \sqrt{|\mathbf{k}|^2 + m^2}.
+    \frac{d^2 }{dt^2}\phi_k(t) + (|\mathbf{k}|^2 + m^2) \phi_k(t) = 0, \quad \text{with frequency}\quad \omega_k = \sqrt{|\mathbf{k}|^2 + m^2}.
 \end{equation}
 Coherently, the Hamiltonian is just a sum of independent harmonic oscillator Hamiltonians
 \begin{equation}
@@ -259,7 +265,7 @@ Coherently, the Hamiltonian is just a sum of independent harmonic oscillator Ham
 \end{equation}
 Finally, the equal time commutation relations in momentum space become
 \begin{align}
-    [\hat{\phi}_k(t), \hat{\pi}_{k'}(t)] = i (2\pi)^3 \delta^{(3)}(\mathbf{k} + \mathbf{k}'), \quad
+    [\hat{\phi}_k(t), \hat{\pi}_{k'}(t)] = i\hbar\, (2\pi)^3 \delta^{(3)}(\mathbf{k} + \mathbf{k}'), \quad
     [\hat{\phi}_k(t), \hat{\phi}_{k'}(t)] = 0, \quad
     [\hat{\pi}_k(t), \hat{\pi}_{k'}(t)] = 0.
 \end{align}
@@ -267,76 +273,125 @@ Finally, the equal time commutation relations in momentum space become
 It seems we managed to diagonalize the Hamiltonian and identify its uncoupled degrees of freedom of the theory, behaving as independent harmonic oscillators labelled by the momentum $\mathbf{k}$.
 However something is off track.
 \begin{itemize}
-    \item The field $\phi_k$ is no more self-adjoint, since $\phi_k^{\dagger} = \phi_{-k}$; whereas we would rather our DoFs be observables.
-    \item The delta functions of the CAR is $\delta^{(3)}(\mathbf{k} + \mathbf{k}')$ instead of the expected $\delta^{(3)}(\mathbf{k} - \mathbf{k}')$, suggesting that the conjugate momentum of the mode $\phi_k$ is actually $\pi_{-k}$ instead of $\pi_k$.
-    \item We have a continuum of Foruier modes $k$ and Dirac $\delta$ instead of Kronecker ones for the DoFs.
+    \item The field $\phi_k$ is no more self-adjoint, since $\phi_k^{\dagger} = \phi_{-k}$, whereas we would rather our DoFs be observables.
+    \item The delta functions of the CCR is $\delta^{(3)}(\mathbf{k} + \mathbf{k}')$ instead of the expected $\delta^{(3)}(\mathbf{k} - \mathbf{k}')$, suggesting that the conjugate momentum of the mode $\phi_k$ is actually $\pi_{-k}$ instead of $\pi_k$.
+    \item We have a continuum of Fourier modes $k$, and Dirac $\delta$ instead of Kronecker $\delta$ for the DoFs.
 \end{itemize}
 These problems are all related.
 The last one was expected, since we are considering infinite volume and thus a continuum of modes $k$.
-Infrared regularization, like placing the theory in a finite box or sphere, would immediately restore the discrete Fourier modes and Kronecker deltas.
-In fact, considering a \emph{finite} box with Dirichlet or Neumann boundary conditions instead of periodic ones would yield a Fourier expansion in real sine and cosine modes and solving also the first issue:
+Infrared regularization, like placing the theory in a finite box or ball, would immediately restore countable \emph{discrete} Fourier modes and Kronecker deltas.
+In fact, considering a \emph{finite} box with Dirichlet or Neumann boundary conditions instead of periodic ones, would yield a Fourier expansion in \emph{real} sine and cosine modes, thereby solving also the first issue:
 \begin{align}
-    \hat{\phi}^{\mathrm{DBC}}_k(t) \simeq  \int_{\text{box}} \!\!d^3 x\, \sin(\mathbf{k} \mathbf{x}) \hat{\phi}(t, \mathbf{x}), \quad
-    \hat{\phi}^{\mathrm{NBC}}_k(t) \simeq \int_{\text{box}} \!\!d^3 x\, \cos(\mathbf{k} \mathbf{x}) \hat{\phi}(t, \mathbf{x}).
-\end{align} 
+    \hat{\phi}^{\mathrm{DBC}}_k(t) \simeq  \int_{\text{box}} \!\!d^3 x\, \sin(\mathbf{k} \mathbf{x}) \hat{\phi}(t, \mathbf{x})\,\in\R\,, \quad
+    \hat{\phi}^{\mathrm{NBC}}_k(t) \simeq \int_{\text{box}} \!\!d^3 x\, \cos(\mathbf{k} \mathbf{x}) \hat{\phi}(t, \mathbf{x})\,\in\R.
+\end{align}
 
-In any case, the first two issues have more physical relevance and still related.
+In any case, the first two issues have more physical relevance and are still related.
 We can fix them by explicitly rewriting $\phi_k$ as linear combination of \emph{physical} self-adjoint harmonic oscillators $\{q_k,p_k\}_k$ to highlight the true DoFs of the theory.
 Alternatively, we can directly write $\phi_k$ in terms of creation and annihilation operators $a_k$, and then in turn identify the corresponding self-adjoint oscillators.
-The two approached are completely equivalent and forces us to understand what to consider \emph{the vacuum} of the theory.
-\todotag{Write the two approaches in detail.}
+The two approaches are completely equivalent and force us to understand what to consider as \emph{the vacuum} of the theory.
 %
 \end{mytheorem}
 
 
 
-\begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime\todotag{Finish}]
+\begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime.]
 %
 For a free theory in flat spacetime, we naively decompose the field operators at an arbitrary reference \emph{fixed} time $t_0$ in terms of creation and annihilation operators as
 \begin{align}
     \hat{\phi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\phi}_k(t_0)
-    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \bar{k}\cdot\bar{x}} + a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right),
+    =: \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \bar{k}\cdot\bar{x}} + a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right),
     \\
     \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
-    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right).
+    = : \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right).
 \end{align}
-In terms of creation and annihilation operators the canonical commutation relations become \footnote{Note that to get relativistically normalized commutation relations, we should use covariant creation and annihilation operators $a(\bar{k}) = \sqrt{2\omega_k} a_k$ and $a^\dagger(\bar{k}) = \sqrt{2\omega_k} a_k^\dagger$. This are indeed the operators creating relativistically normalized states in Minkowski spacetime, see later.}
+In terms of creation and annihilation operators the canonical commutation relations become\footnote{In order to get \emph{relativistically normalized} commutation relations $\propto 2E_k\delta^{(3)}(k-k')$, we should use covariant creation/annihilation operators $\sqrt{2\omega_k} a_k$ and $\sqrt{2\omega_k} a_k^\dagger$, that indeed correspond to relativistically normalized states in Minkowski spacetime.}
 \begin{align}
+    [a_{\bar{k}}, a_{\bar{k}'}^{\dagger}] = (2\pi)^3 \delta^{(3)}(\bar{k} - \bar{k}'),\quad
     [a_{\bar{k}}, a_{\bar{k}'}] = 0, \quad
-    [a_{\bar{k}}^{\dagger}, a_{\bar{k}'}^{\dagger}] = 0, \quad
-    [a_{\bar{k}}, a_{\bar{k}'}^{\dagger}] = (2\pi)^3 \delta^{(3)}(\bar{k} - \bar{k}').
+    [a_{\bar{k}}^{\dagger}, a_{\bar{k}'}^{\dagger}] = 0.
 \end{align}
 %
-The associated Hamiltonian, before normal ordering, is 
+The associated Hamiltonian, before normal ordering and using the CCR, reads
 \begin{equation}
-    \hat{H} = \int \frac{d^3 k}{(2\pi)^3} \, \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \right).
+    \hat{H} =  \int \frac{d^3 k}{(2\pi)^3} \, \tfrac{1}{2}\hbar \omega_k \Big( a_k^{\dagger} a_k + a_k a_k^{\dagger} \Big)
+    =\int \frac{d^3 k}{(2\pi)^3} \, \hbar \omega_k \Big( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \Big).
 \end{equation}
 %
-The associated self-adjoint harmonic oscillators \emph{dimensional} $\{q_k, p_k\}_k$ and \emph{adimensional} $\{\tilde{q}_k, \tilde{p}_k\}_k$ $k$-space-density variables\footnote{In the sense of (a)-dimensional densities in Foruier space, that is $\propto\, k^{-3}$.} are identified as
+Following the treatment \eqref{eq:ordinary_QM_harmonic_oscillator} of the ordinary QM harmonic oscillator above, we identify the associated self-adjoint harmonic oscillators \emph{dimensional} $\{q_k, p_k\}_k$ and \emph{adimensional} $\{\tilde{q}_k, \tilde{p}_k\}_k$ $k$-space-density variables\footnote{In the sense that they are (a)-dimensional square-root densities in Fourier space, that is $\propto\, k^{-3/2}$.} as
 \begin{align}
     q_k(t_0) &= \frac{1}{\sqrt{\omega_k}} \tilde{q}_k(t_0)=\frac{1}{\sqrt{2\omega_k}} (a_k + a_k^{\dagger}), \quad
     p_k(t_0) = \sqrt{\omega_k}\, \tilde{p}_k(t_0)=-i \sqrt{\frac{\omega_k}{2}} (a_k - a_k^{\dagger}).
 \end{align}
 The fields are thus expressed as
-\begin{align}
+\begin{align}\label{eq:relations_fields_creation_operators_harmonic_oscillator_var}
     \phi_k(t_0) &= \frac{1}{\sqrt{2\omega_k}} (a_k + a_{-k}^{\dagger}) 
-    = \frac{1}{\sqrt{2\omega_k}}\Big[ \big(\tilde{q}_k+\tilde{q}_{-k}\big) + i \big(\tilde{p}_k - \tilde{p}_{-k}\big) \Big]
+    \\
+    &= \frac{1}{\sqrt{2\omega_k}}\Big[ \big(\tilde{q}_k+\tilde{q}_{-k}\big) + i \big(\tilde{p}_k - \tilde{p}_{-k}\big) \Big]
     = \tfrac{1}{\sqrt{2}}\Big[ \big({q}_k+{q}_{-k}\big) + \tfrac{i}{\omega_k}\big({p}_k - {p}_{-k}\big) \Big]
     \\
-    \pi_k(t_0) &= -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger}) 
-    = \sqrt{\frac{\omega_k}{2}} \Big(\tilde{p}_k + \tilde{p}_{-k}\Big) - i \sqrt{\frac{\omega_k}{2}} \Big( \tilde{q}_k- \tilde{q}_{-k} \Big)
+    \pi_k(t_0) &= -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger}) \\
+    &= \sqrt{\frac{\omega_k}{2}} \Big(\tilde{p}_k + \tilde{p}_{-k}\Big) - i \sqrt{\frac{\omega_k}{2}} \Big( \tilde{q}_k- \tilde{q}_{-k} \Big)
     = \tfrac{1}{\sqrt{2}}\Big[ \big({p}_k - {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big].
 \end{align}
-Note that we could have equivalently started from self-adjoint oscillators $\{q_k, p_k\}_k$, imposing field operators are related to these oscillators as above in order to obey the CCR, and then defined creation and annihilation operators as above.
+Note that we could have \emph{completely equivalently} started from self-adjoint oscillators $\{q_k, p_k\}_k$, imposed the field operators are related to these oscillators as above in order to obey the CCR, and then defined creation and annihilation operators accordingly.
 
-In any case, this decomposition highlights that the true observable DoFs of the Klein-Gordon field are given by the self-adjoint harmonic oscillators $\{q_k, p_k\}_k$, or equivalently by the creation and annihilation operators $\{a_k, a_k^{\dagger}\}_k$, which indeed destroy or create quanta of the field with momentum $\bar{k}$ i.e. particles under suitable conditions.
+In any case, this decomposition highlights that the \textbf{truly observable DoFs of the Klein-Gordon field} are given by the self-adjoint harmonic oscillators $\{q_k, p_k\}_k$, or equivalently by the creation and annihilation operators $\{a_k, a_k^{\dagger}\}_k$, which indeed destroy or create quanta of the field with momentum $\bar{k}$ i.e. particles under suitable conditions, whereas the field Fourier modes $\phi_k$ and $\pi_k$ are \emph{complex} harmonic oscillators.
 
-
-Is the above decomposition unique?
-We could choose a different reference time $t_0$, but as long as we are in a free theory in flat spacetime this simply corresponds to a phase shift in the definition of creation and annihilation operators, leaving the vacuum invariant.
+Is the above \textbf{decomposition unique}?
+We could choose a different reference time $t_0$, but, as long as we are in a free theory in flat spacetime, this simply corresponds to a phase shift in the definition of creation and annihilation operators, leaving the vacuum invariant.
 On the other hand, there are indeed inequivalent choices of creation and annihilation operators, for instance mixing $a_k$ and $a_{-k}^\dagger$.
-This change the vacuum of the theory i.e. the state $|0\rangle$ annihilated by all $a_k$ operators.
-This is not a problem in flat spacetime, where Poincaré invariance selects a preferred vacuum, also coinciding with the ground state of the Hamiltonian, but it becomes a serious issue in curved spacetime, where no preferred vacuum exists in general.
+This indeed changes the vacuum of the theory i.e. the state $|0\rangle$ annihilated by all $a_k$ operators.
+This is not a problem in flat spacetime, where Poincaré invariance selects a preferred vacuum which happily also coincides with the ground state of the Hamiltonian, but it becomes a serious issue in curved spacetime, where no preferred vacuum exists in general. \todotag{Discuss issue in detail below}
+%
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Infrared regularization and DoFs of the Klein-Gordon field]
+%
+To fix our conventions, we consider infrared regularization by placing the theory in a finite cubic box of volume $V=L^3$ with periodic boundary conditions.
+Fourier modes become countable discrete $\mathbf{k} = \frac{2\pi}{L} \mathbf{n}$ with $\mathbf{n}\in\mathbb{Z}^3$, and we have usual correspondence
+\begin{align}\label{eq:IR_reg_replacements}
+    \int_V \frac{d^3 k}{(2\pi)^3} &\,\,\Longrightarrow \,\,\frac{1}{V} \sum_k\,, \qquad
+    (2\pi)^3 \delta^{(3)}(\mathbf{k} - \mathbf{k}') \equiv \int_V d^dx e^{i\mathbf{x}\cdot(\mathbf{k} - \mathbf{k}')} \,\,\Longrightarrow \,\,V \delta_{k,k'} \,.
+\end{align}
+The Fourier transforms of fields and of the Hamiltonian become
+\begin{align}
+    \phi(t_0,\mathbf{x})&= \frac{1}{V} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \phi_k(t_0) = \frac{1}{V} \sum_k \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \mathbf{k}\cdot\mathbf{x}} + a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),
+    \\
+    \pi(t_0,\mathbf{x})&= \frac{1}{V} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \pi_k(t_0) = \frac{1}{V} \sum_k \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \mathbf{k}\cdot\mathbf{x}} + i \omega_k a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),
+    \\
+    H&= \frac{1}{V} \sum_k \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} V \right).
+\end{align}
+%
+With the above conventions, all the previous formulas are unchanged upon the replacements \eqref{eq:IR_reg_replacements}.
+The nonzero commutation relations become
+\begin{align}
+    [\phi_k(t), \pi_{k'}(t)] = i\hbar\, V \delta_{k,k'}, \quad
+    [a_{k}, a_{k'}^{\dagger}] = V \delta_{k,k'}.
+\end{align}
+The energy dimensions of creation/annihilation operators $\{a_k,a_k^\dagger\}_k$, dimensional $\{q_k, p_k\}_k$ and adimensional $\{\tilde{q}_k, \tilde{p}_k\}_k$ harmonic oscillators variables, and their mutual relations \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} remain unchanged.
+
+%
+Beware that in the literature it is common to rescale operators by $\sqrt{V}$ after IR regularization as
+\begin{align}
+    a_k &\mapsto \sqrt{V} a_k, \quad a_k^{\dagger} \mapsto \sqrt{V} a_k^{\dagger}, \quad
+    q_k \mapsto \sqrt{V} q_k, \quad p_k \mapsto \sqrt{V} p_k, \quad
+    \tilde{q}_k \mapsto \sqrt{V} \tilde{q}_k, \quad \tilde{p}_k \mapsto \sqrt{V} \tilde{p}_k,
+\end{align}
+so that indeed $a_k$ and $a_k^{\dagger}$ become dimensionless operators obeying $[a_k, a_{k'}^{\dagger}] = \delta_{k,k'}$.
+The fields and Hamiltonian would then read
+\begin{align}
+    \phi(t_0,\mathbf{x})&= \frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \mathbf{k}\cdot\mathbf{x}} + a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),
+    \\
+    \pi(t_0,\mathbf{x})&= \frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \mathbf{k}\cdot\mathbf{x}} + i \omega_k a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),
+    \\
+    H&= \sum_k \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} \right).
+\end{align}
+%
+This is just a matter of conventions, but it is important to keep track of factors of $V$ when considering fluctuations and zero-point energies.
+We will \textbf{not adopt this convention}, which make the passage to the continuum somewhat less straightforward.
 %
 \end{mytheorem}
 
@@ -348,23 +403,34 @@ Here there is a mistake $\phi_k$ is a complex oscillator. The states $n_k$ you a
 Then in turn you will find the wave functional in momentum space $\Psi[\{\phi_k\}_k]$ and in position space $\Psi[\{\phi(x)\}_x]$ and the associated probabilities expanding $\phi_k$ in terms of its \emph{real} oscillator constitutents.
 }
 
-Having decomposed the Klein-Gordon field into its constitutent uncoupled harmonic oscillators, we can postulate a certain state for each oscillator and then immediatelycompute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
+Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators, we can assume each oscillator is in a state with a given number of quanta and then immediately compute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
 We could consider the vacuum state $|0\rangle$ where all oscillators are in their ground state, excited states $|n_{k_1}\dots n_{k_m}\dots \rangle$ with $n_k$ quanta in the mode $k$, coherent states $|\{\alpha_k\}\rangle$ or arbitrary entangled states.
+
+Impose some IR regularization, so that Fourier modes are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
 %
-Consider some infrared regularization, so that the Fourier modes are discrete and labelled by some countable index $i$.
-Consider the pure tensor state with $n_k$ quanta in the mode $k$, that is where the harmonic oscillator labelled by $k$ is in the $n_k$-th excited state,
+Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$, i.e. the harmonic oscillator labelled by $k$ is in the $n_k$-th excited state,
 \begin{equation}
-    |\Psi\rangle = |n_{k_1}\dots n_{k_m}\dots \rangle.
+    |\Psi\rangle \equiv |n_{k_1}\dots n_{k_m}\dots \rangle.
 \end{equation}
-The wave function of $n_k$-th excited state of the oscillator with mode $\vec{k}$ is
+%
+Consider the position space represenation of each Foruier mode $k$, so that the corresponding operators act as multplication and differentiation wrt a truly \emph{adimensional} variable $\xi_k$,
 \begin{align}
-    \psi_{n_k}(\phi_{k}) &= \langle \phi_{k} | n_k \rangle = \left( \frac{m \omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) e^{-\frac{m \omega_k}{2\hbar} \phi_{k}^2}.
+    \tilde{q}_k &= V^{-1/2}\xi_k\,\cdot\,,\quad
+    \tilde{p}_k = -i V^{-1/2} \frac{d}{d\xi_k}\,\cdot, \quad
+\end{align}
+%
+In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is\todotag{wrong from here}
+{\color{red}
+\begin{align}
+    \langle q_{k} | n_k \rangle =:
+     \psi_{n_k}(q_{k}) &=  = \left( \frac{m \omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) e^{-\frac{m \omega_k}{2\hbar} \phi_{k}^2}.
 \end{align}
 That is, the probability density of finding the Fourier mode $\vec{k}$ of the field with value between $\phi_k$ and $\phi_k + d\phi_k$ is
 \begin{align}
     P_{n_k}(\phi_k) d\phi_k &= |\psi_{n_k}(\phi_k)|^2 d\phi_k \\
     &= \left( \frac{m \omega_k}{\pi \hbar} \right)^{1/2} \frac{1}{2^{n_k} n_k!} \left[ H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) \right]^2 e^{-\frac{m \omega_k}{\hbar} \phi_{k}^2} \,d\phi_k.
 \end{align}
+}
 %
 The wave \emph{functional} $\Psi$ in momentum space is simply the product of all wave functions,
 \begin{equation}
