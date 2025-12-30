@@ -348,10 +348,10 @@ This is not a problem in flat spacetime, where Poincaré invariance selects a pr
 
 
 
-\begin{mytheorem}[Infrared regularization and DoFs of the Klein-Gordon field]
+\begin{mytheorem}[Infrared regularization \& DoFs of Klein-Gordon field]
 %
-To fix our conventions, we consider infrared regularization by placing the theory in a finite cubic box of volume $V=L^3$ with periodic boundary conditions.
-Fourier modes become countable discrete $\mathbf{k} = \frac{2\pi}{L} \mathbf{n}$ with $\mathbf{n}\in\mathbb{Z}^3$, and we have usual correspondence
+To fix the conventions, we consider infrared regularization by placing the theory in a finite cubic box of volume $V=L^3$ with periodic boundary conditions.
+Fourier modes become countable discrete $\mathbf{k} = \frac{2\pi}{L} \mathbf{n}$ with $\mathbf{n}\in\mathbb{Z}^3$, and we have the correspondences
 \begin{align}\label{eq:IR_reg_replacements}
     \int_V \frac{d^3 k}{(2\pi)^3} &\,\,\Longrightarrow \,\,\frac{1}{V} \sum_k\,, \qquad
     (2\pi)^3 \delta^{(3)}(\mathbf{k} - \mathbf{k}') \equiv \int_V d^dx e^{i\mathbf{x}\cdot(\mathbf{k} - \mathbf{k}')} \,\,\Longrightarrow \,\,V \delta_{k,k'} \,.
@@ -365,16 +365,16 @@ The Fourier transforms of fields and of the Hamiltonian become
     H&= \frac{1}{V} \sum_k \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} V \right).
 \end{align}
 %
-With the above conventions, all the previous formulas are unchanged upon the replacements \eqref{eq:IR_reg_replacements}.
+With the above conventions, \textbf{all the previous formulas are unchanged upon the replacements} \eqref{eq:IR_reg_replacements}.
 The nonzero commutation relations become
 \begin{align}
     [\phi_k(t), \pi_{k'}(t)] = i\hbar\, V \delta_{k,k'}, \quad
     [a_{k}, a_{k'}^{\dagger}] = V \delta_{k,k'}.
 \end{align}
-The energy dimensions of creation/annihilation operators $\{a_k,a_k^\dagger\}_k$, dimensional $\{q_k, p_k\}_k$ and adimensional $\{\tilde{q}_k, \tilde{p}_k\}_k$ harmonic oscillators variables, and their mutual relations \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} remain unchanged.
+The \textbf{energy dimensions of} creation/annihilation \textbf{operators} $\{a_k,a_k^\dagger\}_k$, dimensional $\{q_k, p_k\}_k$ and adimensional $\{\tilde{q}_k, \tilde{p}_k\}_k$ harmonic oscillators variables, \textbf{and their mutual relations} \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} \textbf{remain unchanged}.
 
 %
-Beware that in the literature it is common to rescale operators by $\sqrt{V}$ after IR regularization as
+\textbf{Beware that in the literature it is common to rescale operators by $\sqrt{V}$ after IR regularization} as
 \begin{align}
     a_k &\mapsto \sqrt{V} a_k, \quad a_k^{\dagger} \mapsto \sqrt{V} a_k^{\dagger}, \quad
     q_k \mapsto \sqrt{V} q_k, \quad p_k \mapsto \sqrt{V} p_k, \quad
@@ -403,27 +403,37 @@ Here there is a mistake $\phi_k$ is a complex oscillator. The states $n_k$ you a
 Then in turn you will find the wave functional in momentum space $\Psi[\{\phi_k\}_k]$ and in position space $\Psi[\{\phi(x)\}_x]$ and the associated probabilities expanding $\phi_k$ in terms of its \emph{real} oscillator constitutents.
 }
 
-Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators, we can assume each oscillator is in a state with a given number of quanta and then immediately compute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
+Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators, we can assume each oscillator is in a state with a given number of quanta, and then immediately compute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
 We could consider the vacuum state $|0\rangle$ where all oscillators are in their ground state, excited states $|n_{k_1}\dots n_{k_m}\dots \rangle$ with $n_k$ quanta in the mode $k$, coherent states $|\{\alpha_k\}\rangle$ or arbitrary entangled states.
 
 Impose some IR regularization, so that Fourier modes are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
 %
-Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$, i.e. the harmonic oscillator labelled by $k$ is in the $n_k$-th excited state,
+Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$ i.e. the harmonic oscillator labelled by $k$ is in the $n_k$-th excited state,
 \begin{equation}
     |\Psi\rangle \equiv |n_{k_1}\dots n_{k_m}\dots \rangle.
 \end{equation}
 %
-Consider the position space represenation of each Foruier mode $k$, so that the corresponding operators act as multplication and differentiation wrt a truly \emph{adimensional} variable $\xi_k$,
+Consider the position space represenation of each Foruier mode $k$, so that the corresponding operators act as multplication and differentiation wrt a variable $\xi_k$, that is \emph{truly adimensional} $[\xi_k]=E^0$ variables,
 \begin{align}
-    \tilde{q}_k &= V^{-1/2}\xi_k\,\cdot\,,\quad
-    \tilde{p}_k = -i V^{-1/2} \frac{d}{d\xi_k}\,\cdot, \quad
+    \tilde{q}_k &= V^{-1/2}\xi_k\,\,,\quad
+    \tilde{p}_k = -i V^{-1/2} \partial_{\xi_k}\,. \quad
 \end{align}
 %
-In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is\todotag{wrong from here}
+In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is\todotag{parts wrong from here}
 {\color{red}
 \begin{align}
     \langle q_{k} | n_k \rangle =:
-     \psi_{n_k}(q_{k}) &=  = \left( \frac{m \omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) e^{-\frac{m \omega_k}{2\hbar} \phi_{k}^2}.
+     \psi_{n_k}(q_{k}) 
+     &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2} 
+     \\
+     &=  \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}
+     \\
+     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{1/2}\omega_k^{1/2}q_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V \omega_k q_k^2}
+\end{align}
+We could equivalently compute the wave function in terms of the momentum represenation $p_k$.
+We find \todotag{Insert}
+\begin{align}
+    boh
 \end{align}
 That is, the probability density of finding the Fourier mode $\vec{k}$ of the field with value between $\phi_k$ and $\phi_k + d\phi_k$ is
 \begin{align}
