@@ -376,9 +376,9 @@ The \textbf{energy dimensions of} creation/annihilation \textbf{operators} $\{a_
 %
 \textbf{Beware that in the literature it is common to rescale operators by $\sqrt{V}$ after IR regularization} as
 \begin{align}
-    a_k &\mapsto \sqrt{V} a_k, \quad a_k^{\dagger} \mapsto \sqrt{V} a_k^{\dagger}, \quad
-    q_k \mapsto \sqrt{V} q_k, \quad p_k \mapsto \sqrt{V} p_k, \quad
-    \tilde{q}_k \mapsto \sqrt{V} \tilde{q}_k, \quad \tilde{p}_k \mapsto \sqrt{V} \tilde{p}_k,
+    a_k &\mapsto V^{-\frac{1}{2}} a_k, \quad a_k^{\dagger} \mapsto V^{-\frac{1}{2}} a_k^{\dagger}, \quad
+    q_k \mapsto V^{-\frac{1}{2}} q_k, \quad p_k \mapsto V^{-\frac{1}{2}} p_k, \quad
+    \tilde{q}_k \mapsto V^{-\frac{1}{2}} \tilde{q}_k, \quad \tilde{p}_k \mapsto V^{-\frac{1}{2}} \tilde{p}_k,
 \end{align}
 so that indeed $a_k$ and $a_k^{\dagger}$ become dimensionless operators obeying $[a_k, a_{k'}^{\dagger}] = \delta_{k,k'}$.
 The fields and Hamiltonian would then read
@@ -413,34 +413,71 @@ Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$ i
     |\Psi\rangle \equiv |n_{k_1}\dots n_{k_m}\dots \rangle.
 \end{equation}
 %
-Consider the position space represenation of each Foruier mode $k$, so that the corresponding operators act as multplication and differentiation wrt a variable $\xi_k$, that is \emph{truly adimensional} $[\xi_k]=E^0$ variables,
+Consider the space representation of each Fourier mode $k$, i.e. using a basis of eigenvalues of the $q_k$ operator\footnote{or equivalently of the truly adimensional operator $\hat{\xi}_k:=V^{-1/2}\tilde{q}_k=V^{-1/2}\omega_k^{1/2}q_k$.}, so that the corresponding operators act as multplication and differentiation wrt a variable $\xi_k\in\R$, that is \emph{truly adimensional} $[\xi_k]=E^0$,
 \begin{align}
-    \tilde{q}_k &= V^{-1/2}\xi_k\,\,,\quad
-    \tilde{p}_k = -i V^{-1/2} \partial_{\xi_k}\,. \quad
+    q_k=\omega_k^{-1/2}\,\tilde{q}_k &=\omega_k^{-1/2}\, V^{1/2}\xi_k\,\,,\quad
+    p_k=\omega_k^{1/2}\,\tilde{p}_k = -i \omega_k^{1/2}\, V^{1/2} \partial_{\xi_k}\,. \quad
 \end{align}
 %
 In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is\todotag{parts wrong from here}
-{\color{red}
+{\color{blue}
 \begin{align}
     \langle q_{k} | n_k \rangle =:
      \psi_{n_k}(q_{k}) 
      &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2} 
      \\
-     &=  \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}
+     &=:  \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}
      \\
-     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{1/2}\omega_k^{1/2}q_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V \omega_k q_k^2}
+     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{-1/2}\omega_k^{1/2}q_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V^{-1} \omega_k q_k^2}
 \end{align}
-We could equivalently compute the wave function in terms of the momentum represenation $p_k$.
-We find \todotag{Insert}
+We could equivalently compute the wave function the momentum represenation of the Fourier mode $k$, i.e. using a basis of eigenvalues of the $p_k$ operator\footnote{or equivalently of the truly adimensional operator $\hat{\eta}_k:=V^{-1/2}\tilde{p}_k=V^{-1/2}\omega_k^{-1/2}p_k$.}, so that the corresponding operators act as multplication and differentiation wrt a variable $\eta_k\in\R$, that is \emph{truly adimensional} $[\eta_k]=E^0$ variables,
 \begin{align}
-    boh
+    q_k=\omega_k^{-1/2}\,\tilde{q}_k &= i \omega_k^{-1/2}\, V^{-1/2}\partial_{\eta_k}\,\,,\quad
+    p_k=\omega_k^{1/2}\,\tilde{p}_k = \omega_k^{1/2}\, V^{-1/2} \eta_k\,. \quad
 \end{align}
-That is, the probability density of finding the Fourier mode $\vec{k}$ of the field with value between $\phi_k$ and $\phi_k + d\phi_k$ is
+In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is
+\begin{align}
+    \langle p_{k} | n_k \rangle =:
+     \tilde{\psi}_{n_k}(p_{k}) 
+     &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{(-i)}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\eta_k^2} 
+     \\
+     &=: \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\eta_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\eta_k^2}
+     \\
+     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{-1/2}\omega_k^{-1/2}p_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V^{-1} \omega_k^{-1} p_k^2}
+\end{align}
+
+Equivalently, the eigenvectors of the $p_k$ operator have overlap with those of the $q_k$ operator given by 
+\begin{align}
+    \langle q_k | p_k \rangle &= \frac{1}{2\pi}e^{i \xi_k\eta_k}= \frac{1}{2\pi}e^{i V q_k p_k}.
+\end{align}
+%
+In turn he wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ in the $p_k$ representation is obtained inserting a resolution of the identity, using $\xi_k\mapsto i \partial_{\eta_k}$ and $\partial_{\xi_k} \mapsto i \eta_k$ under Fourier transform, we find
+\begin{align}
+    \langle p_{k} | n_k \rangle = 
+     &= \int d q_k \, \langle p_k | q_k \rangle \langle q_k | n_k \rangle
+     \\
+     &= \int_\R d\xi_k\, \frac{1}{2\pi}e^{-i \xi_k\eta_k} \underbrace{\frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}}_{= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}}
+     \\
+     &= \int_\R d\xi_k\, \frac{1}{2\pi}e^{-i \xi_k\eta_k} \frac{1}{\sqrt{n_k!}}\Big[(-i)\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}
+     \\
+     &= \frac{(-i)^{n_k}}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} \int_\R d\xi_k\, \frac{1}{2\pi}e^{-i \xi_k\eta_k}  e^{-\frac{1}{2}\xi_k^2}
+     \\
+     \\
+     &= \frac{(-i)^{n_k}}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4}e^{-\frac{1}{2}\eta_k^2}
+     \\
+     &=: \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\eta_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\eta_k^2}
+     \\
+     &= \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{-1/2}\omega_k^{-1/2}p_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V^{-1} \omega_k^{-1} p_k^2}
+\end{align}
+}
+
+{\color{red}
+Finally, we can compute the probability density of finding the Fourier mode $\vec{k}$ of the field with modulus  value between $\phi_k$ and $\phi_k + d\phi_k$ is
 \begin{align}
     P_{n_k}(\phi_k) d\phi_k &= |\psi_{n_k}(\phi_k)|^2 d\phi_k \\
     &= \left( \frac{m \omega_k}{\pi \hbar} \right)^{1/2} \frac{1}{2^{n_k} n_k!} \left[ H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) \right]^2 e^{-\frac{m \omega_k}{\hbar} \phi_{k}^2} \,d\phi_k.
 \end{align}
-}
+
 %
 The wave \emph{functional} $\Psi$ in momentum space is simply the product of all wave functions,
 \begin{equation}
@@ -499,6 +536,7 @@ A naive guess is to consider the space of square-integrable functions $f(x) \in 
 This is already evident from the vacuum fluctuations of the field, which diverge at every point in space.
 Rigorous treatments of constructive QFT manage to define suitable function spaces and measures, but they are quite technical and beyond the scope of these notes.
 %
+}
 \end{mytheorem}
 
 
