@@ -374,7 +374,7 @@ The nonzero commutation relations become
 The \textbf{energy dimensions of} creation/annihilation \textbf{operators} $\{a_k,a_k^\dagger\}_k$, dimensional $\{q_k, p_k\}_k$ and adimensional $\{\tilde{q}_k, \tilde{p}_k\}_k$ harmonic oscillators variables, \textbf{and their mutual relations} \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} \textbf{remain unchanged}.
 
 %
-\textbf{Beware that in the literature it is common to rescale operators by $\sqrt{V}$ after IR regularization} as
+\textbf{Beware} in the \textbf{literature} it is \textbf{common to rescale} operators by $\sqrt{V}$ after IR regularization as
 \begin{align}
     a_k &\mapsto V^{-\frac{1}{2}} a_k, \quad a_k^{\dagger} \mapsto V^{-\frac{1}{2}} a_k^{\dagger}, \quad
     q_k \mapsto V^{-\frac{1}{2}} q_k, \quad p_k \mapsto V^{-\frac{1}{2}} p_k, \quad
@@ -395,81 +395,223 @@ We will \textbf{not adopt this convention}, which make the passage to the contin
 %
 \end{mytheorem}
 
+%-------------------------------------------------------------------
 
-\begin{mytheorem}[Fluctuations of the Kelin-Gordon field in momentum \& position space\todotag{Huge fix needed}]
+\begin{mytheorem}[Hilbert spaces for mode $k$ harmonic oscillators of the Klein-Gordon field]
+%
+Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
+%
+When the field $\phi(t,\mathbf{x})$ is expressed in the space variable $\mathbf{x}$ we can identify\footnote{provided the conditions indeed are such that it actually makes sense to talk about particles} a single-particle Hilbert space of the form $\mathcal{H}_1\simeq L^2_{\mathbf{x}}(\R^3)$ and corresponding $n$-particle Hilbert spaces $\mathcal{H}_1^{\otimes^n}$ for excitations with \emph{definite position} $\mathbf{x}$ i.e. particles.
+%
+On the other hand, decomposing the Klein-Gordon field into its constituting uncoupled harmonic oscillators $\phi(t,\mathbf{x})\sim \int d^dk\, \phi_k(t)$, we can identify Hilberts spaces $\mathcal{M}_k$ for excitations with \emph{definite momentum} $k$ which allows for a varying number of quanta (particles) i.e. the Hilberts spaces of each harmonic oscillator.
+%
+The Fock space is equivalently decomposed as direct sum
+\begin{align}
+    \mathcal{F}=\bigoplus_{n=0}^\infty \mathcal{H}_1^{\otimes^n}=\bigoplus_{k\,\in\mathrm{modes}}\mathcal{M}_k\,.
+\end{align}
+%
+
+For each mode $k$ we can consider the representations of the Hilbert space $\mathcal{M}_k$ in real or Fourier space\footnote{We would naively call them position and momentum representations, but this is somewhat a misnomer since `position' rather means the elongation of the oscillator with momentum $k$ and 'momentum' means the conjugate variable.} i.e. use a basis of eigenvectors of the operators $q_k$ or $p_k$ respectively.
+%
+For the sake of clarity, since operators have dimensions $[q_k]=E^{-1/2} E^{-d/2}$ and $[p_k]=E^{1/2} E^{-d/2}$ different from ordinary 1D oscillators due to our conventions, we label the two Hilbert bases with truly adimensional variables $\xi_k, \eta_k\in\R$, that is $[\xi_k]=E[\eta_k]=E^0$ related to the operators respectively as
+\begin{align}
+    \begin{cases}
+    q_k=\omega_k^{-1/2}\,\tilde{q}_k =\omega_k^{-1/2}\, V^{1/2}\xi_k\,,\\[6pt]
+    p_k=\omega_k^{1/2}\,\tilde{p}_k = -i \omega_k^{1/2}\, V^{1/2} \partial_{\xi_k}\,,
+    \end{cases}
+    \qquad\text{and}\qquad
+    \begin{cases}
+    q_k=\omega_k^{-1/2}\,\tilde{q}_k = i \omega_k^{-1/2}\, V^{-1/2}\partial_{\eta_k}\,,\\[6pt]
+    p_k=\omega_k^{1/2}\,\tilde{p}_k = \omega_k^{1/2}\, V^{-1/2} \eta_k\,.
+    \end{cases}
+\end{align}
+%
+In the two bases $|\xi_k\rangle\equiv |q_k\rangle$  and $|\eta_k\rangle\equiv |p_k\rangle$ the operators act as multiplication and differentiation, and viceversa, respectively
+\begin{align}
+\begin{aligned}
+    \hat{q}_k | \xi_k \rangle &= \omega_k^{-1/2} V^{1/2} \xi_k | \xi_k \rangle, \qquad\qquad
+    \hat{p}_k | \xi_k \rangle = -i \omega_k^{1/2} V^{1/2} \frac{\partial}{\partial \xi_k} | \xi_k \rangle,
+    \\
+    \hat{q}_k | \eta_k \rangle &= i \omega_k^{-1/2} V^{-1/2} \frac{\partial}{\partial \eta_k} | \eta_k \rangle, \qquad
+    \hat{p}_k | \eta_k \rangle = \omega_k^{1/2} V^{-1/2} \eta_k | \eta_k \rangle.
+\end{aligned}
+\end{align}
+%
+The overlap between the two bases, as confirmed by acting explicitly with either operator, is
+\begin{align}
+    \langle q_k | p_k \rangle &= \tfrac{1}{2\pi}e^{i \xi_k\eta_k}= \tfrac{1}{2\pi}e^{i V q_k p_k}.
+\end{align}
+
+
+In the real representation, the \emph{normalized} wave function of the $n_k$th excited state $|n_k\rangle$ is
+\begin{align}
+    \langle q_{k} | n_k \rangle =:
+     \psi_{n_k}(q_{k}) 
+     &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2} 
+     \\
+     &=:  \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2}
+     \\
+     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\text{\scriptsize $V^{-1/2}\omega_k^{1/2}q_k$}) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}V^{-1} \omega_k q_k^2}\,.
+\end{align}
+In the conjugate representation the \emph{normalized} wave function of $|n_k\rangle$ reads
+\begin{align}
+    \langle p_{k} | n_k \rangle =:
+     \tilde{\psi}_{n_k}(p_{k}) 
+     &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{(-i)}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_k^2} 
+     \\
+     &=: \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\eta_k) \cdot \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_k^2}
+     \\
+     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\text{\scriptsize $V^{-1/2}\omega_k^{-1/2}p_k$}) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}V^{-1} \omega_k^{-1} p_k^2}
+\end{align}
+%
+This is confirmed explicitly by inserting a resolution of the identity and the explicit overlap between the two bases.
+Using that $\xi_k\mapsto i \partial_{\eta_k}$ and $\partial_{\xi_k} \mapsto i \eta_k$ under Fourier transform, we find
+\begin{align}
+    \langle p_{k} | n_k \rangle = 
+     &= \int \!\!d q_k \, \,\langle p_k | q_k \rangle \,\,\langle q_k | n_k \rangle
+     \\
+     &= \int_\R\!\!\! d\xi_k\, \tfrac{1}{2\pi}e^{-i \xi_k\eta_k} \,\,\underbrace{\frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2}}_{= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}\!(\xi_k) \cdot \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2}}
+     \\
+     &= \int_\R\!\!\!  d\xi_k\, \tfrac{1}{2\pi}e^{-i \xi_k\eta_k} \frac{1}{\sqrt{n_k!}}\Big[(-i)\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2}
+     \\
+     &= \frac{(-i)^{n_k}}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} \int_\R\!\!\!  d\xi_k\, \tfrac{1}{2\pi}e^{-i \xi_k\eta_k}  e^{-\frac{1}{2}\xi_k^2}
+     \\
+     &= \frac{(-i)^{n_k}}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_k^2}
+     \\
+     &=: \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\eta_k) \cdot \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_k^2}
+     \\
+     &= \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}\!(\text{\scriptsize $V^{-1/2}\omega_k^{-1/2}p_k$}) \cdot \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}V^{-1} \omega_k^{-1} p_k^2}\,.
+\end{align}
+%
+
+Finally we compute the wave function for the Fourier transformed field 
+\begin{align}
+    \hat{\phi}_k=\tfrac{1}{\sqrt{2}}\Big[ \big(\hat{q}_k+\hat{q}_{-k}\big) + \tfrac{i}{\omega_k}\big(\hat{p}_k - \hat{p}_{-k}\big) \Big]\quad \text{acting on}\quad \mathcal{M}_k\oplus \mathcal{M}_{-k}\,.
+\end{align}
+%
+The operator $\hat{\phi}_k$ is \emph{not} self-adjoint, but it is \emph{normal}, so that we can still find a Hilbert basis of  $\mathcal{M}_k\oplus \mathcal{M}_{-k}$ made of eigenstates $|f_k\rangle$ of $\phi_k$ with \emph{complex} eigenvalues $f_k\in\C$.
+%
+Indeed it is sufficient to consider a spectral basis for the two self-adjoint \emph{commuting} operators
+\begin{align}
+    \hat{X}_k := \frac{1}{\sqrt{2}} ({q}_k + {q}_{-k} ), \quad
+    \hat{Y}_k := \frac{1}{\omega_k}\frac{1}{\sqrt{2}} ({p}_k - {p}_{-k} ), \quad
+    [\hat{X}_k, \hat{Y}_k]=0\,.
+\end{align}
+Joint eigenstates $|x_k, y_k\rangle$ of $\hat{X}_k$ and $\hat{Y}_k$ with real eigenvalues $x_k, y_k\in\R$ are also eigenstates of $\phi_k$ with complex eigenvalues $f_k = x_k + i y_k\in\C$.
+%
+
+Practically it is convenient to work with the two \emph{rotated} harmonic oscillators 
+\begin{align}
+    &Q_+ := \frac{1}{\sqrt{2}} (q_k + q_{-k}), \quad P_+ := \frac{1}{\sqrt{2}} (p_k + p_{-k}), \quad a_+^{(\dagger)} := \frac{1}{\sqrt{2}} (a_k^{(\dagger)} + a_{-k}^{(\dagger)})\,,
+    \\
+    &Q_- := \frac{1}{\sqrt{2}} (q_k - q_{-k}), \quad P_- := \frac{1}{\sqrt{2}} (p_k - p_{-k})\,\quad a_-^{(\dagger)} := \frac{1}{\sqrt{2}} (a_k^{(\dagger)} - a_{-k}^{(\dagger)})\,.
+\end{align}
+%
+The rotated oscillators {\small $(Q_+, P_+)$} and {\small $(Q_-, P_-)$} are still decoupled, since {\small $[Q_+, P_-]=[Q_-, P_+]=0$} i.e. {\small $[a_+, a_-]=[a_+, a_-^{\dagger}]=0$}.
+%
+The two vacua conincide {\small $|0_k, 0_{-k}\rangle \equiv |0_+, 0_-\rangle$} and pure tensor states of the original and of the rotated oscillators are related by Clebsch-Gordan coefficients as
+{\small
+\begin{align}
+    |n_k, n_{-k}\rangle &:= \frac{(a_k^{\dagger})^{n_k}}{\sqrt{n_k!}} \frac{(a_{-k}^{\dagger})^{n_{-k}}}{\sqrt{n_{-k}!}} |0_k, 0_{-k}\rangle
+    \\
+    &= \frac{1}{\sqrt{n_k!\, n_{-k}!}} \left( \frac{a_+^{\dagger} + a_-^{\dagger}}{\sqrt{2}} \right)^{n_k} \left( \frac{a_+^{\dagger} - a_-^{\dagger}}{\sqrt{2}} \right)^{n_{-k}} |0_+, 0_-\rangle
+    \\
+    &= \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{{2^{(n_k + n_{-k})/2}}}\sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (a_+^{\dagger})^{m+l}\, (a_-^{\dagger})^{n_k + n_{-k} - (m+l)} |0_+, 0_-\rangle
+    \\
+    &=: \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}\sqrt{\frac{(m+l)!\, (n_k + n_{-k} - (m+l))!}{n_k!\, n_{-k}!\, 2^{(n_k+n_{-k})}}}\,\,| m+l, n_k + n_{-k} - (m+l)\rangle_{\pm}\,.
+\end{align}
+}
+
+Mimicking the above treatment for the mode $k$ oscillator, denote adimensional variables
+\begin{align}
+    &\xi_+ := V^{-1/2} \omega_k^{1/2} Q_+ = \frac{1}{\sqrt{2}}(\xi_k + \xi_{-k}), \quad
+    \xi_- := V^{-1/2} \omega_k^{1/2} Q_- = \frac{1}{\sqrt{2}}(\xi_k - \xi_{-k}), \\
+    &\eta_+ := V^{-1/2} \omega_k^{-1/2} P_+ = \frac{1}{\sqrt{2}}(\eta_k + \eta_{-k}), \quad
+    \eta_- := V^{-1/2} \omega_k^{-1/2} P_- = \frac{1}{\sqrt{2}}(\eta_k - \eta_{-k})\,,
+\end{align}
+%
+and corresponding spectral bases $\{|\xi_{\pm}\rangle\}$ for $Q_{\pm}$ and $\{|\eta_{\pm}\rangle\}$ for $P_{\pm}$ of the Hilbert space of the first (resp. second) rotated oscillator.
+%
+In these representations the wave functions reads 
+\begin{align}
+    \langle \xi_{\pm} | n_{\pm} \rangle & = \frac{1}{\sqrt{n_{\pm}!}}  \Big[\tfrac{1}{\sqrt{2}}\big(\xi_\pm-\partial_{\xi_\pm}\big)\Big]^{n_\pm} \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_{\pm}^2}
+    =\frac{1}{\sqrt{2^{n_{\pm}} \,n_{\pm}!}} H_{n_{\pm}}(\xi_{\pm}) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_{\pm}^2}\,,
+    \\
+    \langle \eta_{\pm} | n_{\pm} \rangle &= \frac{1}{\sqrt{n_{\pm}!}} \Big[\tfrac{(-i)}{\sqrt{2}}\big(\eta_\pm-\partial_{\eta_\pm}\big)\Big]^{n_\pm} \left(\tfrac{1}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_{\pm}^2}
+    = \frac{(-i)^{n_{\pm}}}{\sqrt{2^{n_{\pm}} \,n_{\pm}!}} H_{n_{\pm}}(\eta_{\pm}) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_{\pm}^2}\,.
+\end{align}
+%
+We are interested in tensor states $|f_k\rangle \equiv |\xi_+\rangle \otimes |\eta_-\rangle$ which are eigenstates of $\hat{\phi}_k$ with eigenvalue 
+\begin{align}
+    \hat{\phi}_k |f_k\rangle =  f_k |f_k\rangle\, = V^{1/2} \omega_k^{-1/2}\, (\xi_+ + i \eta_-)\, |f_k\rangle\,.
+\end{align}
+%
+The probability amplitude (density) of measuring the value $f_k\in\C$ for the Fourier transformed field $\hat{\phi}_k$, i.e. the wave function for the state $|n_+,n_-\rangle_{\pm}$ of the rotated harmonic oscillators in the mixed\footnote{in the sense that these are joint eigenstate of $Q_+$ and $P_-$} representation $|f_k\rangle=|\xi_+ \rangle \otimes |\eta_- \rangle$ of $\mathcal{M}_+\oplus \mathcal{M}_-$ is given by 
+\begin{align}
+    \langle f_k | n_+, n_- \rangle_{\pm} 
+    &= \langle \xi_+ | n_+ \rangle \cdot \langle \eta_- | n_- \rangle
+    \\
+    &= \frac{1}{\sqrt{2^{n_+} \,n_+!}} H_{n_+}\!(\xi_+) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_{+}^2} \cdot \frac{(-i)^{n_-}}{\sqrt{2^{n_-} \,n_-!}} H_{n_-}\!(\eta_-) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_{-}^2}
+    \\
+    &= \frac{(-i)^{n_-}}{\sqrt{2^{(n_+ + n_-)} \,n_+!\, n_-!}} H_{n_+}\!(\xi_+)\, H_{n_-}\!(\eta_-) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{2}} e^{-\frac{1}{2}(\xi_{+}^2 + \eta_{-}^2)}\,.
+\end{align}
+%
+Finally we find the wave function of the state $|n_k, n_{-k}\rangle$ of the original oscillators in the representation $|f_k\rangle$ of $\mathcal{M}_k\oplus \mathcal{M}_{-k}$ by inserting a resolution of the identity in the rotated basis or equivalently using the Clebsch-Gordan coefficients above,
+{\small
+\begin{align}
+    \langle f_k | n_k, n_{-k} \rangle 
+    &= \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}\sqrt{\frac{(m+l)!\, (n_k + n_{-k} - (m+l))!}{n_k!\, n_{-k}!\, 2^{(n_k+n_{-k})}}}\,\,\langle f_k | m+l, n_k + n_{-k} - (m+l)\rangle_{\pm}
+    \\
+    &= \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}\sqrt{\frac{(m+l)!\, (n_k + n_{-k} - (m+l))!}{n_k!\, n_{-k}!\, 2^{(n_k+n_{-k})}}}
+    \\
+    &\quad \times \frac{(-i)^{n_k + n_{-k} - (m+l)}}{\sqrt{2^{(n_k + n_{-k})} \,(m+l)!\, (n_k + n_{-k} - (m+l))!}} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - (m+l)}(\eta_-) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{2}} e^{-\frac{1}{2}(\xi_{+}^2 + \eta_{-}^2)}
+    \\
+    &= \left( \tfrac{1}{\pi} \right)^{\frac{1}{2}} e^{-\frac{1}{2}(\xi_{+}^2 + \eta_{-}^2)} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}} 
+    \\
+    &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{n_k + n_{-k} - m-l} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - m-l}(\eta_-)
+    \\
+    &= \left( \tfrac{1}{\pi} \right)^{\frac{1}{2}} e^{-\frac{1}{2V}\omega_k |f_k|^2} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}}
+    \\
+    &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{n_k + n_{-k} - m-l} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - m-l}(\eta_-)\,
+\end{align}
+}
+This is the probability amplitude (density) of measuring the value $f_k\in\C$ for the Fourier transformed field $\hat{\phi}_k$ when the two original oscillators $k, -k$ are in the state $|n_k, n_{-k}\rangle$.
+%
+The corresponding probability (density) is simply the modulus squared of the above expression
+{\small
+\begin{align}
+    P_{n_k, n_{-k}}(f_k) \,df_k &= |\langle f_k | n_k, n_{-k} \rangle|^2 \,df_k\,
+    \\
+    &= \left( \tfrac{1}{\pi} \right) e^{-\frac{1}{V}\omega_k |f_k|^2} \frac{1}{n_k!\, n_{-k}!} \frac{1}{2^{2(n_k + n_{-k})}}
+    \\
+    &\quad \times \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - m-l}(\eta_-) \right|^2 \,df_k\,.
+\end{align}
+}
+\end{mytheorem}
+
+
+
+
+%------------------------------------------------------------
+
+\begin{mytheorem}[Fluctuations of the Klein-Gordon field in momentum \& position space\todotag{Huge fix needed}]
 %
 {\color{red}
-Here there is a mistake $\phi_k$ is a complex oscillator. The states $n_k$ you are referring to are not eigenstates of $\phi_k$ but of the real and imaginary parts separately. You need to rewrite everything in terms of real oscillators $q_k, p_k$ or creation-annihilation operators $a_k, a_k^\dagger$.
+Here there is a mistake $\phi_k$ is a complex oscillator.
+The states $n_k$ you are referring to are not eigenstates of $\phi_k$ but of the real and imaginary parts separately. You need to rewrite everything in terms of real oscillators $q_k, p_k$ or creation-annihilation operators $a_k, a_k^\dagger$.
 Then in turn you will find the wave functional in momentum space $\Psi[\{\phi_k\}_k]$ and in position space $\Psi[\{\phi(x)\}_x]$ and the associated probabilities expanding $\phi_k$ in terms of its \emph{real} oscillator constitutents.
 }
 
 Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators, we can assume each oscillator is in a state with a given number of quanta, and then immediately compute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
 We could consider the vacuum state $|0\rangle$ where all oscillators are in their ground state, excited states $|n_{k_1}\dots n_{k_m}\dots \rangle$ with $n_k$ quanta in the mode $k$, coherent states $|\{\alpha_k\}\rangle$ or arbitrary entangled states.
 
-Impose some IR regularization, so that Fourier modes are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
+Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
 %
 Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$ i.e. the harmonic oscillator labelled by $k$ is in the $n_k$-th excited state,
 \begin{equation}
     |\Psi\rangle \equiv |n_{k_1}\dots n_{k_m}\dots \rangle.
 \end{equation}
 %
-Consider the space representation of each Fourier mode $k$, i.e. using a basis of eigenvalues of the $q_k$ operator\footnote{or equivalently of the truly adimensional operator $\hat{\xi}_k:=V^{-1/2}\tilde{q}_k=V^{-1/2}\omega_k^{1/2}q_k$.}, so that the corresponding operators act as multplication and differentiation wrt a variable $\xi_k\in\R$, that is \emph{truly adimensional} $[\xi_k]=E^0$,
-\begin{align}
-    q_k=\omega_k^{-1/2}\,\tilde{q}_k &=\omega_k^{-1/2}\, V^{1/2}\xi_k\,\,,\quad
-    p_k=\omega_k^{1/2}\,\tilde{p}_k = -i \omega_k^{1/2}\, V^{1/2} \partial_{\xi_k}\,. \quad
-\end{align}
-%
-In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is\todotag{parts wrong from here}
-{\color{blue}
-\begin{align}
-    \langle q_{k} | n_k \rangle =:
-     \psi_{n_k}(q_{k}) 
-     &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2} 
-     \\
-     &=:  \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}
-     \\
-     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{-1/2}\omega_k^{1/2}q_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V^{-1} \omega_k q_k^2}
-\end{align}
-We could equivalently compute the wave function the momentum represenation of the Fourier mode $k$, i.e. using a basis of eigenvalues of the $p_k$ operator\footnote{or equivalently of the truly adimensional operator $\hat{\eta}_k:=V^{-1/2}\tilde{p}_k=V^{-1/2}\omega_k^{-1/2}p_k$.}, so that the corresponding operators act as multplication and differentiation wrt a variable $\eta_k\in\R$, that is \emph{truly adimensional} $[\eta_k]=E^0$ variables,
-\begin{align}
-    q_k=\omega_k^{-1/2}\,\tilde{q}_k &= i \omega_k^{-1/2}\, V^{-1/2}\partial_{\eta_k}\,\,,\quad
-    p_k=\omega_k^{1/2}\,\tilde{p}_k = \omega_k^{1/2}\, V^{-1/2} \eta_k\,. \quad
-\end{align}
-In this representation, the wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ is
-\begin{align}
-    \langle p_{k} | n_k \rangle =:
-     \tilde{\psi}_{n_k}(p_{k}) 
-     &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{(-i)}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\eta_k^2} 
-     \\
-     &=: \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\eta_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\eta_k^2}
-     \\
-     &= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{-1/2}\omega_k^{-1/2}p_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V^{-1} \omega_k^{-1} p_k^2}
-\end{align}
-
-Equivalently, the eigenvectors of the $p_k$ operator have overlap with those of the $q_k$ operator given by 
-\begin{align}
-    \langle q_k | p_k \rangle &= \frac{1}{2\pi}e^{i \xi_k\eta_k}= \frac{1}{2\pi}e^{i V q_k p_k}.
-\end{align}
-%
-In turn he wave function of the $n_k$th excited state $|n_k\rangle$ of the oscillator with mode $\vec{k}$ in the $p_k$ representation is obtained inserting a resolution of the identity, using $\xi_k\mapsto i \partial_{\eta_k}$ and $\partial_{\xi_k} \mapsto i \eta_k$ under Fourier transform, we find
-\begin{align}
-    \langle p_{k} | n_k \rangle = 
-     &= \int d q_k \, \langle p_k | q_k \rangle \langle q_k | n_k \rangle
-     \\
-     &= \int_\R d\xi_k\, \frac{1}{2\pi}e^{-i \xi_k\eta_k} \underbrace{\frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}}_{= \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}}
-     \\
-     &= \int_\R d\xi_k\, \frac{1}{2\pi}e^{-i \xi_k\eta_k} \frac{1}{\sqrt{n_k!}}\Big[(-i)\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\xi_k^2}
-     \\
-     &= \frac{(-i)^{n_k}}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4} \int_\R d\xi_k\, \frac{1}{2\pi}e^{-i \xi_k\eta_k}  e^{-\frac{1}{2}\xi_k^2}
-     \\
-     \\
-     &= \frac{(-i)^{n_k}}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\eta_k-\partial_{\eta_k}\big)\Big]^{n_k} \left( \frac{1}{\pi} \right)^{1/4}e^{-\frac{1}{2}\eta_k^2}
-     \\
-     &=: \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\eta_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}\eta_k^2}
-     \\
-     &= \frac{(-i)^{n_k}}{\sqrt{2^{n_k}n_k!}} H_{n_k}(V^{-1/2}\omega_k^{-1/2}p_k) \cdot \left( \frac{1}{\pi} \right)^{1/4} e^{-\frac{1}{2}V^{-1} \omega_k^{-1} p_k^2}
-\end{align}
-}
 
 {\color{red}
 Finally, we can compute the probability density of finding the Fourier mode $\vec{k}$ of the field with modulus  value between $\phi_k$ and $\phi_k + d\phi_k$ is
