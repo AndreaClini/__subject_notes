@@ -575,16 +575,15 @@ Finally we find the wave function of the state $|n_k, n_{-k}\rangle$ of the orig
     &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{n_k + n_{-k} - m-l} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - m-l}(\eta_-)\,
 \end{align}
 }
-This is the probability amplitude (density) of measuring the value $f_k\in\C$ for the Fourier transformed field $\hat{\phi}_k$ when the two original oscillators $k, -k$ are in the state $|n_k, n_{-k}\rangle$.
+This is the probability amplitude (density) of measuring the value $f_k\in\C$ for the Fourier transformed field $\hat{\phi}_k$ when the two original oscillators with modes $k, -k$ are in the state $|n_k, n_{-k}\rangle$.
 %
-The corresponding probability (density) is simply the modulus squared of the above expression
+The corresponding probability (density) of finding the value $f_k\in\C$ for the field $\hat{\phi}_k$ is simply the modulus squared of the above expression
 {\small
 \begin{align}
     P_{n_k, n_{-k}}(f_k) \,df_k &= |\langle f_k | n_k, n_{-k} \rangle|^2 \,df_k\,
     \\
     &= \left( \tfrac{1}{\pi} \right) e^{-\frac{1}{V}\omega_k |f_k|^2} \frac{1}{n_k!\, n_{-k}!} \frac{1}{2^{2(n_k + n_{-k})}}
-    \\
-    &\quad \times \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - m-l}(\eta_-) \right|^2 \,df_k\,.
+    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} H_{m+l}(\xi_+)\, H_{n_k + n_{-k} - m-l}(\eta_-) \right|^2 \,df_k\,.
 \end{align}
 }
 \end{mytheorem}
