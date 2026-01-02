@@ -325,6 +325,7 @@ Following the treatment \eqref{eq:ordinary_QM_harmonic_oscillator} of the ordina
 \end{align}
 The fields are thus expressed as
 \begin{align}\label{eq:relations_fields_creation_operators_harmonic_oscillator_var}
+\begin{aligned}
     \phi_k(t_0) &= \frac{1}{\sqrt{2\omega_k}} (a_k + a_{-k}^{\dagger}) 
     \\
     &= \frac{1}{\sqrt{2\omega_k}}\Big[ \big(\tilde{q}_k+\tilde{q}_{-k}\big) + i \big(\tilde{p}_k - \tilde{p}_{-k}\big) \Big]
@@ -333,6 +334,7 @@ The fields are thus expressed as
     \pi_k(t_0) &= -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger}) \\
     &= \sqrt{\frac{\omega_k}{2}} \Big(\tilde{p}_k + \tilde{p}_{-k}\Big) - i \sqrt{\frac{\omega_k}{2}} \Big( \tilde{q}_k- \tilde{q}_{-k} \Big)
     = \tfrac{1}{\sqrt{2}}\Big[ \big({p}_k - {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big].
+\end{aligned}
 \end{align}
 Note that we could have \emph{completely equivalently} started from self-adjoint oscillators $\{q_k, p_k\}_k$, imposed the field operators are related to these oscillators as above in order to obey the CCR, and then defined creation and annihilation operators accordingly.
 
@@ -425,12 +427,12 @@ For the sake of clarity, since operators have dimensions $[q_k]=E^{-1/2} E^{-d/2
     \end{cases}
 \end{align}
 %
-The two orthonormal improper bases are thus defined as
+The two orthonormal improper bases are then defined, enforcing $\big[|\xi_k\rangle\big]=\big[|\eta_k\rangle\big]= E^{0}$, as\footnote{Note the dimension of bra/kets is $\big[|X\rangle\big]=[X]^{-1/2}$ as usual in 1D to enforce the 1-dimensional Dirac delta.}
 \begin{align}
-    &|\xi_k\rangle \equiv \omega_k^{\frac{1}{2}}  V^{-\frac{1}{2}}|q_k\rangle, \quad \langle \xi_k | \xi_k' \rangle = \delta^{(1)}_D(\xi_k - \xi_k')\,,
+    &|\xi_k\rangle \equiv \Big(\omega_k^{-\frac{1}{2}}  V^{\frac{1}{2}}\Big)^{\frac{1}{2}}\,|q_k\rangle, \quad \langle \xi_k | \xi_k' \rangle = \delta^{(1)}_D(\xi_k - \xi_k') = \omega_k^{-\frac{1}{2}} V^{\frac{1}{2}}\delta^{(1)}_D(q_k - q_k')\,,
     \\
-    &|\eta_k\rangle \equiv \omega_k^{-\frac{1}{2}} V^{-\frac{1}{2}} |p_k\rangle,\quad 
-    \langle \eta_k | \eta_k' \rangle = \delta^{(1)}_D(\eta_k - \eta_k')\,.
+    &|\eta_k\rangle \equiv \Big(\omega_k^{\frac{1}{2}} V^{\frac{1}{2}}\Big)^{\frac{1}{2}}\, |p_k\rangle,\quad 
+    \langle \eta_k | \eta_k' \rangle = \delta^{(1)}_D(\eta_k - \eta_k') = \omega_k^{\frac{1}{2}} V^{\frac{1}{2}}\delta^{(1)}_D(p_k - p_k')\,.
 \end{align}
 In these bases the operators act as multiplication and differentiation, and viceversa, respectively
 \begin{align}
@@ -445,13 +447,12 @@ In these bases the operators act as multiplication and differentiation, and vice
 %
 The overlap between the two bases, as confirmed by acting explicitly with either operator, is
 \begin{align}
-    \langle \xi_k | \eta_k \rangle &= \frac{1}{V}\langle q_k | p_k \rangle = \tfrac{1}{2\pi}e^{i \xi_k\eta_k}= \tfrac{1}{(2\pi)V}e^{i V q_k p_k}.
+    \langle \xi_k | \eta_k \rangle &= V^{\frac{1}{2}}\langle q_k | p_k \rangle = \tfrac{1}{2\pi}e^{i \xi_k\eta_k}= \frac{V^{\frac{1}{2}}}{(2\pi)}e^{i \frac{q_k p_k}{V}}.
 \end{align}
 
 In the real representation, the \emph{normalized} wave function of the $n_k$th excited state $|n_k\rangle$ is
 \begin{align}
-    \langle \xi_{k} | n_k \rangle =:
-     \psi_{n_k}(\xi_{k}) 
+    \langle \xi_{k} | n_k \rangle 
      &= \frac{1}{\sqrt{n_k!}}\Big[\tfrac{1}{\sqrt{2}}\big(\xi_k-\partial_{\xi_k}\big)\Big]^{n_k} \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2} 
      \\
      &=:  \frac{1}{\sqrt{2^{n_k}n_k!}} H_{n_k}(\xi_k) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\xi_k^2}
@@ -490,8 +491,8 @@ Indeed, since $\xi_k\mapsto i \partial_{\eta_k}$ and $\partial_{\xi_k} \mapsto i
 Beware the above expressions are normalized as $\int d\xi_k |\langle \xi_k | n_k \rangle|^2 = 1$ and $\int d\eta_k |\langle \eta_k | n_k \rangle|^2 = 1$.
 The corresponding expressions whose square integrate to unity against $\int dq_k$ or $\int dp_k$ are instead
 \begin{align}
-    \langle q_{k} | n_k \rangle &= V^{-\frac{1}{2}} \omega_k^{\frac{1}{2}} \langle \xi_{k} | n_k \rangle\,, \qquad\text{and}\qquad
-    \langle p_{k} | n_k \rangle = V^{-\frac{1}{2}} \omega_k^{-\frac{1}{2}} \langle \eta_{k} | n_k \rangle\,.
+    \langle q_{k} | n_k \rangle &= \left(V^{-\frac{1}{2}} \omega_k^{\frac{1}{2}}\right)^{\frac{1}{2}} \langle \xi_{k} | n_k \rangle\,, \qquad\text{and}\qquad
+    \langle p_{k} | n_k \rangle = \left(V^{-\frac{1}{2}} \omega_k^{-\frac{1}{2}}\right)^{\frac{1}{2}} \langle \eta_{k} | n_k \rangle\,.
 \end{align}
 
 
@@ -520,9 +521,9 @@ Practically it is convenient to work with the two \emph{rotated} harmonic oscill
 %
 The rotated oscillators {\small $(Q_+, P_+)$} and {\small $(Q_-, P_-)$} are still decoupled since {\small $[Q_+, P_-]=[Q_-, P_+]=0$} i.e. {\small $[a_+, a_-]=[a_+, a_-^{\dagger}]=0$}.
 %
-Denoting $\mathcal{M}_{\pm}$ the Hilbert spaces of the two rotated oscillators, the total Hilbert space decomposes as
+Denoting $\mathcal{M}_{\pm}^{(k)}$ the Hilbert spaces of the two rotated oscillators, the total Hilbert space decomposes as
 \begin{align}
-     \mathcal{M}_k \otimes \mathcal{M}_{-k} \equiv \mathcal{M}_+ \otimes \mathcal{M}_-\,.
+     \mathcal{M}_k \otimes \mathcal{M}_{-k} \equiv \mathcal{M}^{(k)}_+ \otimes \mathcal{M}_-^{(k)}\,.
 \end{align}
 %
 The two vacua conincide {\small $|0_k, 0_{-k}\rangle \equiv |0_+, 0_-\rangle$}, while pure tensor states of the original and rotated oscillators are related by Clebsch-Gordan coefficients as
@@ -553,11 +554,11 @@ Mimicking the above treatment for the mode $k$ oscillator, denote adimensional v
 %
 We find corresponding spectral bases for the operator $Q_{\pm}$ or $P_{\pm}$ in the Hilbert space $\mathcal{M}_{\pm}$ of the first (resp. second) rotated oscillator 
 \begin{align}
-    &|\xi_{\pm}\rangle \equiv \omega_k^{\frac{1}{2}}  V^{-\frac{1}{2}}|Q_{\pm}\rangle, \,\,
-     \langle \xi_{\pm} | \xi_{\pm}' \rangle = \delta^{(1)}_D(\xi_{\pm} - \xi_{\pm}')\,,
-    \quad\text{and}\quad
-    |\eta_{\pm}\rangle \equiv \omega_k^{-\frac{1}{2}} V^{-\frac{1}{2}} |P_{\pm}\rangle,\,\,
-    \langle \eta_{\pm} | \eta_{\pm}' \rangle = \delta^{(1)}_D(\eta_{\pm} - \eta_{\pm}')\,.
+    &|\xi_{\pm}\rangle \equiv \left(\omega_k^{-\frac{1}{2}} V^{\frac{1}{2}}\right)^{\frac{1}{2}}|Q_{\pm}\rangle, \quad
+     \langle \xi_{\pm} | \xi_{\pm}' \rangle = \delta^{(1)}_D(\xi_{\pm} - \xi_{\pm}') = \omega_k^{-\frac{1}{2}} V^{\frac{1}{2}}\delta^{(1)}_D(Q_{\pm} - Q_{\pm}')\,,
+    \\
+    &|\eta_{\pm}\rangle \equiv \left(\omega_k^{\frac{1}{2}} V^{\frac{1}{2}}\right)^{\frac{1}{2}} |P_{\pm}\rangle,\quad
+    \langle \eta_{\pm} | \eta_{\pm}' \rangle = \delta^{(1)}_D(\eta_{\pm} - \eta_{\pm}') = \omega_k^{\frac{1}{2}} V^{\frac{1}{2}}\delta^{(1)}_D(P_{\pm} - P_{\pm}')\,.
 \end{align}
 %
 In these representations the wave functions for rotated oscillators read
@@ -569,10 +570,23 @@ In these representations the wave functions for rotated oscillators read
     = \frac{(-i)^{n_{\pm}}}{\sqrt{2^{n_{\pm}} \,n_{\pm}!}} H_{n_{\pm}}(\eta_{\pm}) \cdot \left( \tfrac{1}{\pi} \right)^{\frac{1}{4}} e^{-\frac{1}{2}\eta_{\pm}^2}\,.
 \end{align}
 %
-We are interested in tensor states $|\xi_+\rangle \otimes |\eta_-\rangle$ which are eigenstates of $\hat{\phi}_k$, namely
+We are interested in tensor states $|\xi_+\rangle \otimes |\eta_-\rangle$ that is eigenstates of $\hat{\phi}_k$ of the form\footnote{Note the dimension of bra/kets is $\big[|f_k\rangle \big]= [f_k]^{-1}$ as usual in 2D to enforce the 2-dimensional Dirac delta.}
 \begin{align}
-    |f_k\rangle := V^{\frac{1}{2}}\omega_k^{-\frac{1}{2}}\, |\xi_+\rangle \otimes |\eta_-\rangle,\qquad
+    |f_k\rangle := \Big(V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\Big)\, |\xi_+\rangle \otimes |\eta_-\rangle,\qquad
     \hat{\phi}_k |f_k\rangle =  f_k |f_k\rangle\, = V^{\frac{1}{2}} \omega_k^{-\frac{1}{2}}\, (\xi_+ + i \eta_-)\, |f_k\rangle\,.
+\end{align}
+%
+Note these states have overlaps
+\begin{align}
+    \langle f_k | f_k' \rangle &= \frac{\omega_k}{V} \langle \xi_+ | \xi_+' \rangle \cdot \langle \eta_- | \eta_-' \rangle 
+    = \frac{\omega_k}{V} \,\delta^{(1)}_D(\xi_+ - \xi_+') \, \delta^{(1)}_D(\eta_- - \eta_-')
+    = \delta^{(2)}_D(f_k - f_k')\,
+\end{align}
+and yields resolutions of the identity on $\mathcal{M}_+ \otimes \mathcal{M}_{-}= \mathcal{M}_k \otimes \mathcal{M}_{-k}$ as
+\begin{align}
+    \mathbb{I}_{\mathcal{M}_k \otimes \mathcal{M}_{-k}} 
+    &= \int_{\R^2} \!d\xi_+ d\eta_-\,\,\, |\xi_+, \eta_- \rangle\, \langle \xi_+, \eta_- |
+    = \int_{\C}\!\!d^2 f_k \,\, |f_k\rangle \, \langle f_k |\,.
 \end{align}
 %
 The wave function for the state $|n_+,n_-\rangle_{\pm}$ of rotated oscillators in the mixed\footnote{in the sense that these are joint eigenstate of $Q_+$ and $P_-$} representation $|f_k\rangle$ of $\mathcal{M}_{k}\otimes \mathcal{M}_{-k}\equiv \mathcal{M}_{+}\otimes \mathcal{M}_{-}$ is given by 
@@ -601,15 +615,15 @@ The wave function for the state $|n_k, n_{-k}\rangle$ of original oscillators in
 \end{align}
 }
 %
-Again beware that the above expression is normalized as $\int_{\R^2} \!\!d\xi_+ d\eta_-\, |\langle \xi_+, \eta_- | n_k, n_{-k} \rangle|^2 = 1$, rather than wrt $\int_{\C} \!d^2\!f_k$.
+Again beware that the above expression is normalized as $\int_{\R^2} \!d\xi_+ d\eta_-\, |\langle \xi_+, \eta_- | n_k, n_{-k} \rangle|^2 = 1$, rather than wrt $\int_{\C} \!d^2\!f_k$.
 %
-The probability amplitude (density) of measuring the value $f_k=V^{\frac{1}{2}}\omega_k^{-\frac{1}{2}}(\xi_+ + i \eta_-)\in\C$ for the Fourier transformed field $\hat{\phi}_k$ when the two original oscillators with modes $k, -k$ are in the state $|n_k, n_{-k}\rangle$ is then
+The probability amplitude (density) of measuring the value $f_k=V^{\frac{1}{2}}\omega_k^{-\frac{1}{2}}(\xi_+ + i \eta_-)\in\C$ for the Fourier transformed field $\hat{\phi}_k$ when the two original oscillators with modes $\pm k$ are in the state $|n_k, n_{-k}\rangle$ is then
 {\small
 \begin{align}
-    \langle f_k | n_k, n_{-k} \rangle &= V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\, \langle \xi_+, \eta_- | n_k, n_{-k} \rangle
+    \langle f_k | n_k, n_{-k} \rangle &= \Big(V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\Big) \langle \xi_+, \eta_- | n_k, n_{-k} \rangle
     \\
     &= \Big(\frac{\omega_k}{V}\Big)^{\frac{1}{2}} \Big( \frac{1}{\pi} \Big)^{\frac{1}{2}} 
-    e^{-\frac{1}{2V}\omega_k |f_k|^2} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}}
+    e^{-\frac{\omega_k}{2V}|f_k|^2} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}}
     \\
     &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{n_k + n_{-k} - m-l} H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$})\,.
 \end{align}
@@ -620,8 +634,9 @@ The corresponding probability density of finding the value $f_k\in\C$ for the fi
 \begin{align}
     &P_{n_k, n_{-k}}(f_k) \,d^2\!f_k = |\langle f_k | n_k, n_{-k} \rangle|^2 \,d^2\!f_k\,
     \\
-    &=\! \left( \tfrac{\omega_k}{V\,\pi} \right) e^{-\frac{\omega_k}{V} |f_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
-    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$}) \right|^2\! \!d^2\!f_k.
+    &=\! \Big(\frac{\omega_k}{V \pi}\Big) 
+    e^{-\frac{\omega_k}{V} |f_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
+    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \!\binom{n_k}{m}\! \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$}) \right|^2\! \!d^2\!f_k.
 \end{align}
 }
 % 
@@ -641,7 +656,7 @@ The probability density for the angle { $\arg(f_k)$} is thus uniform in {$[0, 2\
     =& \int_0^{2\pi} \!\!\!\!d\text{arg}(f_k) \,\,\, P_{n_k, n_{-k}}(|f_k|,\arg(f_k)) 
     \\
     =&
-    \Big(\frac{\omega_k}{\pi\,V}\Big) e^{-\frac{\omega_k}{V} |f_k|^2} |f_k| \,
+    \Big(\frac{\omega_k}{V\,\pi}\Big) \, |f_k| \, e^{-\frac{\omega_k}{V} |f_k|^2} 
     \frac{1}{2^{2(n_k + n_{-k})}\,n_k!\, n_{-k}!}
     \\
     &\times\int_0^{2\pi} \!\!\!\!\!\!d\text{arg}(f_k)\,\,
@@ -690,12 +705,13 @@ The probability density of finding a given field configuration $f$, i.e. a set o
     \\
     &=\!
     \prod_{k\geq0}     
-    \left( \tfrac{\omega_k}{V\,\pi} \right) e^{-\frac{\omega_k}{V} |f_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
+    \left( \frac{\omega_k}{V\pi} \right) e^{-\frac{\omega_k}{V} |f_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
     \\
     &\qquad \times
     \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$}) \right|^2\! \!d^2\!f_k\,,
 \end{align}
 where $Df=\prod_{k\geq0} d^2\!f_k=\prod_{{x}\in\R^3}df(x)$ is the formal product of Lebesgue measures over all Fourier modes or equivalently all space values.
+The expression is again independent of the phases of $f_k$.
 %
 
 Finally, write a general state as a superposition of pure tensor states $|\{n_k\}_k\rangle$ with a definite number of quanta
@@ -716,6 +732,45 @@ The wave functional and corresponding probability density read
 For the sake of completeness, we sketch how the above arguments change if we consider different boundary conditions \eqref{eq:other_BCs_IR_regulated_field} for the IR-regulated field making its Fourier transfor still self-adjoint, so that we do not need to pair modes $\pm k$.
 \end{mytheorem}
 
+\begin{mytheorem}[Wave functional \& fluctuations of the conjugate field $\pi$.\todotag{Do it.}]
+%
+The above arguments are immediately applied to the conjugate field $\pi$.
+Sticking to the treatment \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} above with PBc, the field is decomposed as
+\begin{align}
+    \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
+    = : \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right)\,,
+\end{align}
+%
+and we identify
+\begin{align}
+\begin{aligned}
+    \pi_k(t_0) &= -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger}) 
+    = \tfrac{1}{\sqrt{2}}\Big[ \big({p}_k + {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big].
+\end{aligned}
+\end{align}
+%
+As above recast the Hilbert space $\mathcal{M}_k\otimes \mathcal{M}_{-k} \equiv \mathcal{M}_+^{(k)} \otimes \mathcal{M}_-^{(k)}$ for the two oscillators with modes $k, -k$ into that for rotated oscillators $(Q_{\pm}, P_{\pm})$.
+In the previous notation, a spectral basis for $\hat{\pi}_k$ is given by tensor states
+\begin{align}
+    |g_k\rangle := V^{\frac{1}{2}}\omega_k^{\frac{1}{2}}\, |\eta_+\rangle \otimes |\xi_-\rangle,\qquad
+    \hat{\pi}_k |g_k\rangle = g_k |g_k\rangle\, = V^{\frac{1}{2}} \omega_k^{\frac{1}{2}}\, ( \eta_+ - i \xi_-)\, |g_k\rangle\,.
+\end{align}
+%
+The wave function for the state $|n_k, n_{-k}\rangle$ of original oscillators in the $|g_k\rangle$ representation is obtained similarly as
+{\small
+\begin{align}
+    \langle g_k | n_k, n_{-k} \rangle 
+    &= \Big(\frac{1}{\omega_k V}\Big)^{\frac{1}{2}} \Big( \frac{1}{\pi} \Big)^{\frac{1}{2}} 
+    e^{-\frac{1}{2V}\frac{1}{\omega_k} |g_k|^2} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}}
+    \\
+    &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{m+l} H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Re}g_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Im}g_k$})\,.
+\end{align}
+}
+
+
+
+\end{mytheorem}
+
 
 
 %----------------------------------------------------------------
@@ -728,11 +783,11 @@ The good old Schrödinger equation in Quantum Mechanics reads
 \begin{equation}
     i \hbar \frac{\partial}{\partial t} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle.
 \end{equation}
-In this formulation, it is bound to fail when dealing with systems with variable particle number.
-
-However, as the Heisenberg and Schrödinger formulations of Quantum Mechanics are equivalent, we can still use the latter in Quantum Field Theory and get a corresponding equation.
-The space $\mathcal{F}=\bigoplus \mathcal{H}^{\otimes n}$ of states in QFT is now a Fock space, i.e. a direct sum of $n$-particle Hilbert spaces.
-Taking $\mathcal{H}\simeq L^2(\mathbb{R}^3)$ for simplicity, the general state in $\mathcal{F}$ reads
+In the original formulation it is bound to fail when dealing with systems with variable particle number.
+%
+However, since the Heisenberg and Schrödinger formulations of Quantum Mechanics are completely equivalent, we can still use the latter in QFT and get a corresponding equation.
+The space $\mathcal{F}=\bigoplus \mathcal{H}_1^{\otimes n}$ of states in QFT is now a Fock space, i.e. a direct sum of $n$-particle Hilbert spaces.
+Taking $\mathcal{H}_1\simeq L^2(\mathbb{R}^3)$ for simplicity, the general state in $\mathcal{F}$ can be written as
 \begin{equation}
     |\Psi\rangle = \left( \begin{array}{c}
     \psi_0 \\
@@ -742,11 +797,11 @@ Taking $\mathcal{H}\simeq L^2(\mathbb{R}^3)$ for simplicity, the general state i
     \end{array} \right),\qquad \psi_n(\mathbf{x}_1, \ldots, \mathbf{x}_n) \in L^2(\mathbb{R}^{3n}).
 \end{equation}
 
-The Schrödinger equation in QFT is virtually the same:
+The Schrödinger equation in QFT is virtually identical
 \begin{equation}
     i \hbar \frac{\partial}{\partial t} |\Psi(t)\rangle = \hat{H} |\Psi(t)\rangle.
 \end{equation}
-Here $\hat{H}=\int d^3x \mathcal{H}$ is the Hamiltonian operator acting on the Fock space $\mathcal{F}$, namely the space-integral of the Hamiltonian density operator $\mathcal{H}$.
+Here $\hat{H}=\int d^3x \mathcal{H}$ is the Hamiltonian operator acting on the Fock space $\mathcal{F}$.
 For example, for the free Klein-Gordon field
 \begin{align}
     \hat{H} &= \int d^3 x\, \left( \frac{1}{2} \hat{\pi}^2 + \frac{1}{2} (\nabla \hat{\phi})^2 + \frac{1}{2} m^2 \hat{\phi}^2 \right).
