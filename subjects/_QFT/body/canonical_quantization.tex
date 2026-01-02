@@ -281,7 +281,7 @@ These problems are all related.
 The last one was expected, since we are considering infinite volume and thus a continuum of modes $k$.
 Infrared regularization, like placing the theory in a finite box or ball, would immediately restore countable \emph{discrete} Fourier modes and Kronecker deltas.
 In fact, considering a \emph{finite} box with Dirichlet or Neumann boundary conditions instead of periodic ones, would yield a Fourier expansion in \emph{real} sine and cosine modes, thereby solving also the first issue:
-\begin{align}
+\begin{align}\label{eq:other_BCs_IR_regulated_field}
     \hat{\phi}^{\mathrm{DBC}}_k(t) \simeq  \int_{\text{box}} \!\!d^3 x\, \sin(\mathbf{k} \mathbf{x}) \hat{\phi}(t, \mathbf{x})\,\in\R\,, \quad
     \hat{\phi}^{\mathrm{NBC}}_k(t) \simeq \int_{\text{box}} \!\!d^3 x\, \cos(\mathbf{k} \mathbf{x}) \hat{\phi}(t, \mathbf{x})\,\in\R.
 \end{align}
@@ -399,17 +399,16 @@ We will \textbf{not adopt this convention}, which make the passage to the contin
 
 \begin{mytheorem}[Hilbert spaces for mode $k$ harmonic oscillators of the Klein-Gordon field\questiontag{Check}]
 %
-Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
-%
 When the field $\phi(t,\mathbf{x})$ is expressed in the space variable $\mathbf{x}$ we can identify\footnote{provided the conditions indeed are such that it actually makes sense to talk about particles} a single-particle Hilbert space of the form $\mathcal{H}_1\simeq L^2_{\mathbf{x}}(\R^3)$ and corresponding $n$-particle Hilbert spaces $\mathcal{H}_1^{\otimes^n}$ for excitations with \emph{definite position} $\mathbf{x}$ i.e. particles.
 %
 On the other hand, decomposing the Klein-Gordon field into its constituting uncoupled harmonic oscillators $\phi(t,\mathbf{x})\sim \int d^dk\, \phi_k(t)$, we can identify Hilberts spaces $\mathcal{M}_k$ for excitations with \emph{definite momentum} $k$ which allows for a varying number of quanta (particles) i.e. the Hilberts spaces of each harmonic oscillator.
 %
 The Fock space is equivalently decomposed as direct sum or direct product as
 \begin{align}
-    \mathcal{F}=\bigoplus_{n=0}^\infty \mathcal{H}_1^{\otimes^n}=\bigotimes_{k\,\in\mathrm{modes}}\mathcal{M}_k\,.
+    \mathcal{F}=\bigoplus_{n=0}^\infty \mathcal{H}_1^{\otimes^n}=\bigotimes_{k\in\substack{\text{field}\\\mathrm{modes}}} \mathcal{M}_k \,.
 \end{align}
 %
+Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
 
 For each mode $k$ we can consider the representations of the Hilbert space $\mathcal{M}_k$ in real or Fourier space\footnote{We would naively call them position and momentum representations, but this is somewhat a misnomer since `position' rather means the elongation of the oscillator with momentum $k$ and 'momentum' means the conjugate variable.} i.e. use a basis of eigenvectors of the operators $q_k$ or $p_k$ respectively.
 %
@@ -657,16 +656,21 @@ The probability density for the angle { $\arg(f_k)$} is thus uniform in {$[0, 2\
 
 %------------------------------------------------------------
 
-\begin{mytheorem}[Fluctuations of the Klein-Gordon field in momentum \& position space\todotag{Huge fix needed}]
+\begin{mytheorem}[Fluctuations of the Klein-Gordon field \questiontag{Check}]
 %
-{\color{red}
-Here there is a mistake $\phi_k$ is a complex oscillator.
-The states $n_k$ you are referring to are not eigenstates of $\phi_k$ but of the real and imaginary parts separately. You need to rewrite everything in terms of real oscillators $q_k, p_k$ or creation-annihilation operators $a_k, a_k^\dagger$.
-Then in turn you will find the wave functional in momentum space $\Psi[\{\phi_k\}_k]$ and in position space $\Psi[\{\phi(x)\}_x]$ and the associated probabilities expanding $\phi_k$ in terms of its \emph{real} oscillator constitutents.
-}
-
-Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators, we can assume each oscillator is in a state with a given number of quanta, and then immediately compute the corresponding field fluctuations i.e. the probability of finding a given set of Fourier modes $\{\phi_k\}$ or equivalently field values $\{\phi(x)\}$.
+Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators and found the corresponding wave functions, we now compute the field fluctuations i.e. the probability of finding a given set of Fourier modes $\{f_k\}_k$ or equivalently field values $\{f(x)\}_x$ when the Fock space $\mathcal{F}$ is in a given state $|\Psi\rangle$.
+%
 We could consider the vacuum state $|0\rangle$ where all oscillators are in their ground state, excited states $|n_{k_1}\dots n_{k_m}\dots \rangle$ with $n_k$ quanta in the mode $k$, coherent states $|\{\alpha_k\}\rangle$ or arbitrary entangled states.
+%
+Indeed the Fock space decomposes as\footnote{Here $k\geq0$ is a shorthand to denote a given choice of modes to avoid the double sum over $\pm k$.}
+\begin{align}
+    \mathcal{F}= \bigotimes_{k\in\mathrm{modes}}\mathcal{M}_k = \bigotimes_{k\geq 0}\Big(\mathcal{M}_k\otimes\mathcal{M}_{-k}\Big)
+    =\bigotimes_{k\geq 0}\Big(\underbrace{\mathcal{M}^{(k)}_+\otimes\mathcal{M}^{(k)}_-}_{\equiv \mathcal{M}_k\otimes\mathcal{M}_{-k}}\Big)\,.
+\end{align}
+We have a Hilbert basis of the Fock space made of common eigenvectors of the \emph{commuting normal} operators $\{\hat{\phi}_k(t_0)\}_{k}$ as $f$ varies over all field possible field configurations\footnote{cf. the discussion on $\hat{\phi}$ eigenstates in the next section.}
+\begin{align}
+    |f\rangle \equiv |\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle := \otimes_k |f_k\rangle, \qquad \hat{\phi}_{k}(t_0) |f\rangle = f_{k} \,|f\rangle\,, \,\, f_{k}\in\C\, \quad \forall k\in\text{Fourier modes.}
+\end{align}
 
 Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
 %
@@ -675,76 +679,42 @@ Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$ i
     |\Psi\rangle \equiv |n_{k_1}\dots n_{k_m}\dots \rangle.
 \end{equation}
 %
-
-{\color{red}
-Finally, we can compute the probability density of finding the Fourier mode $\vec{k}$ of the field with modulus  value between $\phi_k$ and $\phi_k + d\phi_k$ is
+Since each mode $k$ is independent, the wave functional in the $|f\rangle$ representation of total space $\mathcal{F}$ factorizes as the product of wave functions for each mode pair $\pm k$,
 \begin{align}
-    P_{n_k}(\phi_k) d\phi_k &= |\psi_{n_k}(\phi_k)|^2 d\phi_k \\
-    &= \left( \frac{m \omega_k}{\pi \hbar} \right)^{\frac{1}{2}} \frac{1}{2^{n_k} n_k!} \left[ H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) \right]^2 e^{-\frac{m \omega_k}{\hbar} \phi_{k}^2} \,d\phi_k.
+     \Psi\big[f\big]\equiv \langle f |n_{k_1}\dots n_{k_m}\dots \rangle = \prod_{k\geq0} \langle f_k | n_{k},n_{-k} \rangle\,.
 \end{align}
-
 %
-The wave \emph{functional} $\Psi$ in momentum space is simply the product of all wave functions,
-\begin{equation}
-    \Psi\big[\{\phi_k\}_k\big] = \langle \{\phi_k\}_k | \Psi \rangle = \prod_k \psi_{n_k}(\phi_k).
-\end{equation}
-The probability density of finding a given field configuration $\{\phi_k\}_k$ in \emph{momentum} space is thus
+The probability density of finding a given field configuration $f$, i.e. a set of Fourier modes $\{f_k\}_k$ or equivalently space values $\{f(x)\}_x$, when the field is in the state $|n_{k_1}\dots n_{k_m}\dots \rangle$ is thus
 \begin{align}
-    P_{\Psi}(\{\phi_k\}_k) \,\,D\phi &= |\langle \{\phi_k\}_k | \Psi \rangle|^2 \,D\phi 
-    = \prod_k |\psi_{n_k}(\phi_k)|^2 \,d\phi_k
+    P_{\Psi}(f)\, Df &= |\Psi[f]|^2 \,\,Df= \prod_{k\geq0}\, \left|\langle f_k | n_{k},n_{-k} \rangle\right|^2\,\,d^2\!f_k
     \\
-    &= \prod_k \left( \frac{m \omega_k}{\pi \hbar} \right)^{\frac{1}{2}} \frac{1}{2^{n_k} n_k!} \left[ H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} \phi_{k} \right) \right]^2 e^{-\frac{m \omega_k}{\hbar} \phi_{k}^2} \,d\phi_k,
-\end{align}
-where $D\phi = \prod_xd \phi(x) = \prod_k d\phi_k$ is the functional measure in the functional space of field configurations, equivalently expressed in terms of space values or Fourier modes.
-%
-
-The states $|\{\phi_k\}_k \rangle \equiv |\{\phi(x)\}_x\rangle$ form a basis of common eigenstates of all the field operators at equal time in both position $\{\hat{\phi}(t,x)\}_x$ and momentum $\{\hat{\phi}_k(t)\}_k$ space.
-Indeed if the state 
-\begin{align}
-    \hat{\phi}(y)&|\{\phi(x)\}_x\rangle = \phi(y) |\{\phi(x)\}_x\rangle, \quad \forall y, \\[6pt]
-    \Rightarrow\,\, &
-    \hat{\phi}_k(t)|\{\phi(x)\}_x\rangle = \int d^3 x\, e^{-i \mathbf{k}\mathbf{x}} \hat{\phi}(t, \mathbf{x}) |\{\phi(x)\}_x\rangle = \int d^3 x\, e^{-i \mathbf{k}\mathbf{x}} \phi(x) |\{\phi(x)\}_x\rangle =
-    \phi_k(t) |\{\phi(x)\}_x\rangle \quad \forall k.
-\end{align}
-%
-
-Given such a $\hat{\phi}$-eigenstate $|\{f(x)\}_x\rangle$ with explicit \emph{position space consifguration}, we obtain the value of the wave functional on this state by inserting a resolution of the identity on the Fock space $\mathcal{F}$ with the spectral basis of $\hat{\phi}$ explicitated in terms of Fourier modes
-\begin{align}
-    \mathbb{I}_{\mathcal{F}}= \int D\phi_k \, |\{\phi_k\}_k \rangle \langle \{\phi_k\}_k |.
-\end{align}
-We immediately obtain
-\begin{align}
-    \Psi\big[\{f(x)\}_x\big] &= \langle \{f(x)\}_x | \Psi \rangle 
-    = \int D\phi_k \, \langle \{f(x)\}_x | \{\phi_k\}_k \rangle \langle \{\phi_k\}_k | \Psi \rangle
+    &=\!
+    \prod_{k\geq0}     
+    \left( \tfrac{\omega_k}{V\,\pi} \right) e^{-\frac{\omega_k}{V} |f_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
     \\
-    &= \int D\phi_k \, \prod_k \delta\left( \phi_k - f_k \right) \cdot \Psi\big[\{\phi_k\}_k\big]
-    = \Psi\big[\{f_k\}_k\big], \quad \text{for}\quad f_k = \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} f(x).
+    &\qquad \times
+    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$}) \right|^2\! \!d^2\!f_k\,,
 \end{align}
-In more practical terms, we simply obtain the Fourier modes of this field configuration
-\begin{align}
-    f_k=\int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} f(x),
-\end{align}
-and we directly evaluate the wave function on the state $|\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle$ itself expressing it via its Fourier space configuration.
-%
-The probability density of finding the field with configuration between $\{f(x)\}_x$ and $\{f(x)+df(x)\}_x$ is thus
-\begin{align}
-    P_{\Psi}(\{f(x)\}_x) \,Df &= |\Psi\big[\{f(x)\}_x\big]|^2 \,Df 
-    = |\Psi\big[\{f_k\}_k\big]|^2 \,Df
-    \\
-    &= \prod_k \left( \frac{m \omega_k}{\pi \hbar} \right)^{\frac{1}{2}} \frac{1}{2^{n_k} n_k!} \left[ H_{n_k}\left( \sqrt{\frac{m \omega_k}{\hbar}} f_{k} \right) \right]^2 e^{-\frac{m \omega_k}{\hbar} f_{k}^2} \,Df,
-\end{align}
-where $Df$ is the functional measure in the function space of field configurations. 
+where $Df=\prod_{k\geq0} d^2\!f_k=\prod_{{x}\in\R^3}df(x)$ is the formal product of Lebesgue measures over all Fourier modes or equivalently all space values.
 %
 
-We remark that nobody really knows what the function space of field configurations--i.e. of the $\hat{\phi}$-eigenvalue collections--should be, nor how to rigorously define the functional measure $Df$.
-A naive guess is to consider the space of square-integrable functions $f(x) \in L^2(\mathbb{R}^3)$, but this is definitely not correct, as the typical field configurations are actually distributions rather than functions.
-This is already evident from the vacuum fluctuations of the field, which diverge at every point in space.
-Rigorous treatments of constructive QFT manage to define suitable function spaces and measures, but they are quite technical and beyond the scope of these notes.
+Finally, write a general state as a superposition of pure tensor states $|\{n_k\}_k\rangle$ with a definite number of quanta
+\begin{align}
+    |\Psi\rangle = \sum_{\{n_k\}} c_{\{n_k\}} | \{n_k\} \rangle\quad\text{with}\quad\sum_{\{n_k\}} |c_{\{n_k\}}|^2 = 1\,.
+\end{align} 
+The wave functional and corresponding probability density read
+\begin{align}
+    \Psi[f] = \sum_{\{n_k\}} c_{\{n_k\}} \prod_{k\geq0} \langle f_k | n_{k},n_{-k} \rangle\,,\quad
+    P_{\Psi}(f)\, Df = |\Psi[f]|^2 \,Df\,.
+\end{align}
 %
-}
 \end{mytheorem}
 
 
+\begin{mytheorem}[Wave functional \& fluctuations of th Klein-Gordon field with other BCs.\todotag{Do it.}]
+%
+For the sake of completeness, we sketch how the above arguments change if we consider different boundary conditions \eqref{eq:other_BCs_IR_regulated_field} for the IR-regulated field making its Fourier transfor still self-adjoint, so that we do not need to pair modes $\pm k$.
+\end{mytheorem}
 
 
 
