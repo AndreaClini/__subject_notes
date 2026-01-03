@@ -686,6 +686,12 @@ We have a Hilbert basis of the Fock space made of common eigenvectors of the \em
 \begin{align}
     |f\rangle \equiv |\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle := \otimes_k |f_k\rangle, \qquad \hat{\phi}_{k}(t_0) |f\rangle = f_{k} \,|f\rangle\,, \,\, f_{k}\in\C\, \quad \forall k\in\text{Fourier modes.}
 \end{align}
+The corresponding resolution of the identity on the total Fock space reads
+\begin{align}
+    \mathbb{I}_{\mathcal{F}} = \int Df \,\, |f\rangle \langle f| = \prod_{k\geq0} \int_{\C} d^2\!f_k \,\, |f_k\rangle \langle f_k |
+\end{align}
+where $Df=\prod_{k\geq0} d^2\!f_k=\prod_{{x}\in\R^3}df(x)$ is the formal product of Lebesgue measures over all Fourier modes or equivalently all space values.
+%
 
 Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
 %
@@ -708,9 +714,8 @@ The probability density of finding a given field configuration $f$, i.e. a set o
     \left( \frac{\omega_k}{V\pi} \right) e^{-\frac{\omega_k}{V} |f_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
     \\
     &\qquad \times
-    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$}) \right|^2\! \!d^2\!f_k\,,
+    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$}) \right|^2\! \!d^2\!f_k\,.
 \end{align}
-where $Df=\prod_{k\geq0} d^2\!f_k=\prod_{{x}\in\R^3}df(x)$ is the formal product of Lebesgue measures over all Fourier modes or equivalently all space values.
 The expression is again independent of the phases of $f_k$.
 %
 
@@ -732,10 +737,10 @@ The wave functional and corresponding probability density read
 For the sake of completeness, we sketch how the above arguments change if we consider different boundary conditions \eqref{eq:other_BCs_IR_regulated_field} for the IR-regulated field making its Fourier transfor still self-adjoint, so that we do not need to pair modes $\pm k$.
 \end{mytheorem}
 
-\begin{mytheorem}[Wave functional \& fluctuations of the conjugate field $\pi$.\todotag{Do it.}]
+\begin{mytheorem}[Wave functional \& fluctuations of the conjugate field $\pi$.\questiontag{check it}]
 %
 The above arguments are immediately applied to the conjugate field $\pi$.
-Sticking to the treatment \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} above with PBc, the field is decomposed as
+Sticking to the above treatment \eqref{eq:relations_fields_creation_operators_harmonic_oscillator_var} with periodic BCs, the field is decomposed as
 \begin{align}
     \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
     = : \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right)\,,
@@ -749,11 +754,22 @@ and we identify
 \end{aligned}
 \end{align}
 %
-As above recast the Hilbert space $\mathcal{M}_k\otimes \mathcal{M}_{-k} \equiv \mathcal{M}_+^{(k)} \otimes \mathcal{M}_-^{(k)}$ for the two oscillators with modes $k, -k$ into that for rotated oscillators $(Q_{\pm}, P_{\pm})$.
-In the previous notation, a spectral basis for $\hat{\pi}_k$ is given by tensor states
+As above we recast the Hilbert space $\mathcal{M}_k\otimes \mathcal{M}_{-k} \equiv \mathcal{M}_+^{(k)} \otimes \mathcal{M}_-^{(k)}$ for the two oscillators with modes $k, -k$ into that for rotated oscillators $(Q_{\pm}, P_{\pm})$, and identify adimensional variables $\xi_{\pm}, \eta_{\pm}$.
+A spectral basis for $\hat{\pi}_k$ with eigenvalues $g_k=V^{\frac{1}{2}} \omega_k^{\frac{1}{2}}\, ( \eta_+ - i \xi_-)$ is now given by tensor states\footnote{Again note bra/kets have dimension $\big[|g_k\rangle\big]=[g_k]^{-1}$ in 2D to enforce the 2-dimensional Dirac delta.}
 \begin{align}
-    |g_k\rangle := V^{\frac{1}{2}}\omega_k^{\frac{1}{2}}\, |\eta_+\rangle \otimes |\xi_-\rangle,\qquad
+    |g_k\rangle := \Big(V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\Big)\, |\eta_+\rangle \otimes |\xi_-\rangle\,,\qquad
     \hat{\pi}_k |g_k\rangle = g_k |g_k\rangle\, = V^{\frac{1}{2}} \omega_k^{\frac{1}{2}}\, ( \eta_+ - i \xi_-)\, |g_k\rangle\,.
+\end{align}
+%
+We have overlaps and corresponding resolutions of the identity
+\begin{align}
+    &\langle g_k | g_k' \rangle= \frac{1}{V\omega_k} \langle \eta_+ | \eta_+' \rangle \cdot \langle \xi_- | \xi_-' \rangle 
+    = \frac{1}{V\omega_k} \,\delta^{(1)}_D(\eta_+ - \eta_+') \, \delta^{(1)}_D(\xi_- - \xi_-')
+    = \delta^{(2)}_D(g_k - g_k')\,,
+    \\
+    &\mathbb{I}_{\mathcal{M}_+ \otimes \mathcal{M}_{-}} 
+    = \int_{\R^2} \!d\eta_+ d\xi_-\,\,\, |\eta_+, \xi_- \rangle\, \langle \eta_+, \xi_- |
+    = \int_{\C}\!\!d^2 g_k \,\, |g_k\rangle \, \langle g_k |\,.
 \end{align}
 %
 The wave function for the state $|n_k, n_{-k}\rangle$ of original oscillators in the $|g_k\rangle$ representation is obtained similarly as
@@ -763,12 +779,36 @@ The wave function for the state $|n_k, n_{-k}\rangle$ of original oscillators in
     &= \Big(\frac{1}{\omega_k V}\Big)^{\frac{1}{2}} \Big( \frac{1}{\pi} \Big)^{\frac{1}{2}} 
     e^{-\frac{1}{2V}\frac{1}{\omega_k} |g_k|^2} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}}
     \\
-    &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{m+l} H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Re}g_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Im}g_k$})\,.
+    &\qquad\times \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l} (-i)^{m+l} H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Re}\,g_k$})\, H_{n_k + n_{-k} - m-l}(-\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Im}\,g_k$})\,.
 \end{align}
 }
+%
+The probability density of measuring the value $g_k=V^{\frac{1}{2}}\omega_k^{\frac{1}{2}}( \eta_+ - i \xi_-)$ for the conjugate field $\hat{\pi}_k$ when the two original oscillators with modes $\pm k$ are in the state $|n_k, n_{-k}\rangle$ is then\footnote{The minus sign inside the argument of $H_{n_k+n_{-k}-m-l}$ drops since Hermite polynomials are odd/even.}
+{\small
+\begin{align}
+    P_{n_k, n_{-k}}(g_k) \,d^2\!g_k &= |\langle g_k | n_k, n_{-k} \rangle|^2 \,d^2\!g_k\,
+    \\
+    &=\! \Big(\frac{1}{\omega_k V \pi}\Big) 
+    e^{-\frac{1}{V \omega_k} |g_k|^2} \frac{1}{2^{2(n_k + n_{-k})}n_k!\, n_{-k}!} 
+    \\
+    & \quad\times
+    \left| \sum_{m=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{m} \binom{n_{-k}}{l}  H_{m+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Re}g_k$})\, H_{n_k + n_{-k} - m-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{-\frac{1}{2}}\text{Im}g_k$}) \right|^2\! \!d^2\!g_k.
+\end{align}
+}
+The expression is again independent of the phase of $g_k$, so that $\arg(g_k)$ is uniformly distributed in $[0,2\pi)$.
 
-
-
+In complete analogy with the field $\phi$, decompose the Fock space as $\mathcal{F}= \bigotimes_{k\geq 0}(\mathcal{M}_k\otimes\mathcal{M}_{-k})$ and consider the spectral basis of common eigenstates of all conjugate field modes $\hat{\pi}_k$,
+\begin{align}
+    |g\rangle \equiv |\{g(x)\}_x\rangle\equiv |\{g_k\}_k\rangle := \otimes_k |g_k\rangle, \qquad \hat{\pi}_{k}(t_0) |g\rangle = g_{k} \,|g\rangle\,, \,\, g_{k}\in\C\, \quad \forall k\in\text{Fourier modes.}
+\end{align}
+The wave functional and corresponding probability density of finding a given configuration $g$ of the conjugate field, i.e. a given set of Fourier modes $\{g_k\}_k$ or equivalently field values $\{g(x)\}_x$, when the field is in the state $|n_{k_1}\dots n_{k_m}\dots \rangle$ read
+\begin{align}
+     \Psi\big[g\big]\equiv \langle g |n_{k_1}\dots n_{k_m}.. \rangle = \prod_{k\geq0} \langle g_k | n_{k},n_{-k} \rangle\,,\quad\text{and}\quad
+    P_{\Psi}(g)\, Dg &= |\Psi[g]|^2 \,\,Dg= \prod_{k\geq0}\, \left|\langle g_k | n_{k},n_{-k} \rangle\right|^2\,\,d^2\!g_k\,,
+\end{align}
+where $Dg=\prod_{k\geq0} d^2\!g_k=\prod_{{x}\in\R^3}dg(x)$ is the functional measure in the configuration space of the conjugate field.
+General superposition of pure states $|\{n_k\}_k\rangle$ with a definite number of quanta are treated as above.
+%
 \end{mytheorem}
 
 
@@ -960,15 +1000,29 @@ Just like in ordinary QM, the field operators act on functionals of the $\phi$-f
     \hat{\pi}(x) &\to g(x)\, \cdot, \quad
     \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
 \end{align}
-The same is true for the Fourier transformed $\hat{\phi}_k(t)$ and $\hat{\pi}_k(t)$, since they are just linear combinations of the $\hat{\phi}(x)$ and $\hat{\pi}(x)$ operators, with multplication and functional derivatives $f_k$ and $g_k$ respectively.
-That is, for any functional $\Psi[f] = \langle f | \Psi \rangle$ of the field consifgurations $f$, respectively of $g$, we have
+%
+The same is true for the Fourier transformed $\hat{\phi}_k(t)$ and $\hat{\pi}_k(t)$, since they are just linear combinations of the $\hat{\phi}(x)$ and $\hat{\pi}(x)$ operators, with multplication and functional derivatives wrt the conjugate of $f_k$ and $g_k$ respectively\footnote{Recall $f_k^*=f_{-k}$ and $g_k^*=g_{-k}$ by reality of the fields.}
+\begin{align}
+    \hat{\phi}_k &\to f_k\, \cdot, \quad
+    \hat{\pi}_k \to -i \hbar (2\pi)^d \,\frac{\delta}{\delta f_{-k}}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
+    \hat{\pi}_k &\to g_k\, \cdot, \quad
+    \hat{\phi}_k \to i \hbar (2\pi)^d \,\frac{\delta}{\delta g_{-k}}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
+\end{align}
+%
+Note the dimensions of functional derivatives in real and momentum space are
+\begin{align}
+    \left[\frac{\delta}{\delta f(x)}\right]= \left[\frac{1}{V}\frac{\partial}{\partial f(x)}\right]= L^{-d} [f(x)]^{-1}, \quad
+    \left[\frac{\delta}{\delta f_k}\right]= \left[V \frac{\partial}{\partial f_k}\right]= L^{d}\, [f_k]^{-1}\,.
+\end{align}
+%
+More generally, for any functional $\Psi[f] = \langle f | \Psi \rangle$ of the field consifgurations $f$, respectively of $g$, we have
 {\small 
 \begin{align}
     \langle f | \hat{\phi}(x) | \Psi \rangle &= f(x) \Psi[f], \quad \langle f | \hat{\phi}_k | \Psi \rangle = f_k \Psi[f], \quad
     \langle f | \hat{\pi}(x) | \Psi \rangle = -i \hbar \frac{\delta}{\delta f(x)} \Psi[f], \quad 
-    \langle f | \hat{\pi}_k | \Psi \rangle = -i \hbar \frac{\delta}{\delta f_k} \Psi[f],\\
+    \langle f | \hat{\pi}_k | \Psi \rangle = -i \hbar (2\pi)^d \frac{\delta}{\delta f_k^*} \Psi[f],\\
     \langle g | \hat{\pi}(x) | \Psi \rangle &= g(x) \Psi[g], \quad \langle g | \hat{\pi}_k | \Psi \rangle = g_k \Psi[g], \quad
-    \langle g | \hat{\phi}(x) | \Psi \rangle = i \hbar \frac{\delta}{\delta g(x)} \Psi[g],\quad \langle g | \hat{\phi}_k | \Psi \rangle = i \hbar \frac{\delta}{\delta g_k} \Psi[g].
+    \langle g | \hat{\phi}(x) | \Psi \rangle = i \hbar \frac{\delta}{\delta g(x)} \Psi[g],\quad \langle g | \hat{\phi}_k | \Psi \rangle = i \hbar (2\pi)^d\frac{\delta}{\delta g_k^*} \Psi[g].
 \end{align}
 }
 %
@@ -982,7 +1036,7 @@ and the action of the operators is (again, analogous results hold for the $\hat{
     \langle f | \hat{\phi}(x) | f_0 \rangle &= f(x) \delta(f - f_0), \quad
     \langle f | \hat{\pi}(x) | f_0 \rangle = -i \hbar \frac{\delta}{\delta f(x)} \delta(f - f_0).
 \end{align}
-Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations (easy check) and thus provides two \emph{unitaryly equivalent} representations of the operator algebra on the Fock space $\mathcal{F}$.
+Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations in both real and momentum space (easy check) and thus provides two \emph{unitaryly equivalent} representations of the operator algebra on the Fock space $\mathcal{F}$.
 
 %
 In fact, we can represent \emph{any} operator $\hat{O}$ acting on the Fock space in either the $\hat{\phi}$ or $\hat{\pi}$ representation by inserting suitable resolutions of the identity
@@ -993,37 +1047,64 @@ In particular, in the two representations, in position and momentum space respec
 \todotag{fix}
 {\small
 \begin{align}
-    &\hat{H} = \int d^3 x\,\tfrac{1}{2}\left( \hat{\pi}^2 +  (\nabla \hat{\phi})^2 + m^2 \hat{\phi}^2 \right)
-    = \int \frac{d^3k}{(2\pi)^3}\,\tfrac{1}{2}\left(\hat{\pi}_k \hat{\pi}_{-k} + (|\mathbf{k}|^2 + m^2) \hat{\phi}_k \hat{\phi}_{-k}\right)
+    &\hat{H} = \int d^d x\,\tfrac{1}{2}\left( \hat{\pi}^2 +  (\nabla \hat{\phi})^2 + m^2 \hat{\phi}^2 \right)
+    = \int \frac{d^d k}{(2\pi)^d}\,\tfrac{1}{2}\left(\hat{\pi}_k \hat{\pi}_{-k} + (|\mathbf{k}|^2 + m^2) \hat{\phi}_k \hat{\phi}_{-k}\right)
     \\
-    &\to \int d^3 x\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f(x)^2} + (\nabla_x f(x))^2 + m^2 f(x)^2 \right) 
-    = \int\frac{d^3k}{(2\pi)^3}\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right)
+    \to \int &d^d x\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f(x)^2} + (\nabla_x f(x))^2 + m^2 f(x)^2 \right)
+    \\ 
+    &= \int\frac{d^d k}{(2\pi)^d}\, \tfrac{1}{2} \left( -\hbar^2 (2\pi)^{2d}\frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right)
     \quad \text{on $\hat{\phi}$ eigenstates }|f\rangle, \\
-    &\to \int d^3 x\, \tfrac{1}{2} \left( g(x)^2 - \hbar^2 \Big(\nabla_x \frac{\delta}{\delta g(x)}\Big)^2 - m^2 \hbar^2 \frac{\delta^2}{\delta g(x)^2} \right)
-    = \int \frac{d^3k}{(2\pi)^3}\,\tfrac{1}{2} \left( g_{-k} g_{k} - \hbar^2 (|\mathbf{k}|^2 + m^2) \frac{\delta^2}{\delta g_k^* \,\delta g_k} \right)
+    \to \int& d^d x\, \tfrac{1}{2} \left( g(x)^2 - \hbar^2 \Big(\nabla_x \frac{\delta}{\delta g(x)}\Big)^2 - m^2 \hbar^2 \frac{\delta^2}{\delta g(x)^2} \right)
+    \\
+    &= \int \frac{d^d k}{(2\pi)^d}\,\tfrac{1}{2} \left( g_{k}^* g_{k} - \hbar^2 (2\pi)^{2d} (|\mathbf{k}|^2 + m^2) \frac{\delta^2}{\delta g_{-k} \,\delta g_k} \right)
     \quad \text{on $\hat{\pi}$ eigenstates }|g\rangle.
 \end{align}
 }
-Crucially, had we used some infrared regularization considering the theory in a \emph{finite} volume, the Fourier modes\footnote{We would have modes $e^{\pm ikx}$ or $\sin(kx)$ for suitable $k=\2\pi(n_1/L_1,n_2/L_2,n_3/L_3)$ in a finite boxe with PBC or DBC resp. and modes $\propto R_n(r) Y_{\ell,m}(\theta,\phi)$ in a finite sphere etc} would be countabble discrete, integrals $d^3k$ would become (possibly infinite) sums and functional derivatives $\frac{\delta}{\delta f_k}$ would become ordinary derivatives $\frac{\partial}{\partial f_k}$, making the above expressions mathematically well-defined.
+Crucially, if we use some infrared regularization, Fourier modes\footnote{e.g. we would have modes $e^{\pm ikx}$ or $\sin(kx)$ for suitable $k=\2\pi(n_1/L_1,n_2/L_2,n_3/L_3)$ in a finite boxe with PBC or DBC resp. and modes $\propto R_n(r) Y_{\ell,m}(\theta,\phi)$ in a finite sphere etc} are countable discrete, we have the replacements \eqref{eq:IR_reg_replacements} and functional derivatives become
+\begin{align}
+    \frac{\delta}{\delta f_k} \longrightarrow \frac{V}{(2\pi)^d} \frac{\partial}{\partial f_k}\,. 
+\end{align}
+%
 \end{mytheorem} 
 
 
 \begin{mytheorem}[Solving the Schrödinger equations in the $\hat{\phi}$ representation\todotag{Fix \& finish}]
 We can explicitly solve the Schrödinger equation in QFT for the free Klein-Gordon field in the $\hat{\phi}$ representation.
 The Hamiltonian operator is reported above.
-The time-dependent Schrödinger equation reads
+The time-dependent Schrödinger equation reads, possibly after IR regularization,
 \begin{align}
-    i \hbar \frac{\partial}{\partial t} \Psi[t; f] &= \int \frac{d^3k}{(2\pi)^3}\, \tfrac{1}{2} \left( -\hbar^2 \frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \Psi[t; f].
+    i \hbar \frac{\partial}{\partial t} \Psi[t; f] &= \int \frac{d^dk}{(2\pi)^d}\, \tfrac{1}{2} \left( -\hbar^2 (2\pi)^{2d}\frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \Psi[t; f]
+    \\
+    &=\frac{1}{V}\sum_k \tfrac{1}{2} \left( -\hbar^2 V^2\frac{\partial^2}{\partial f_k \,\partial f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \Psi[t; f]
+    \\
+    &= \sum_{k\geq0} \left( -\hbar^2V\frac{\partial^2}{\partial f_k \,\partial f_k^*} + \frac{1}{V}(|\mathbf{k}|^2 + m^2) |f_k|^2 \right) \Psi[t; f]\,.
 \end{align}
-We can solve it by separation of variables, writing the wave functional as a product over Fourier modes
+We can solve it by separation of variables, writing the wave functional as a product over Fourier modes\footnote{Here $k\geq0$ is shorthand to denote we do \emph{not} double count over $\pm k$.}
 \begin{align}
-    \Psi[t; f] = \prod_k \psi_k(t; f_k, f_k^*).
+    \Psi[t; f] = \prod_{k\geq 0} \psi_k(t; f_k, f_k^*).
 \end{align}
-Plugging this into the Schrödinger equation, we obtain a separate equation for each Fourier mode
+Plugging this into the Schrödinger equation, we obtain a separate equation for each Fourier mode pair $\pm k$
 \begin{align}
-    i \hbar \frac{\partial}{\partial t} \psi_k(t; f_k, f_k^*) &= \tfrac{1}{2} \left( -\hbar^2 \frac{\partial^2}{\partial f_k \,\partial f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \psi_k(t; f_k, f_k^*).
+    i \hbar \frac{\partial}{\partial t} \psi_k(t; f_k, f_k^*) &= \left( -\hbar^2V\frac{\partial^2}{\partial f_k \,\partial f_k^*} + \frac{1}{V}(|\mathbf{k}|^2 + m^2) |f_k|^2 \right)\,\psi_k(t; f_k, f_k^*)\,.
 \end{align}
-Each of these equations is formally identical to the Schrödinger equation of a single quantum harmonic oscillator with mass $m=1$ and frequency $\omega_k = \sqrt{|\mathbf{k}|^2 + m^2}$, with $f_k$ and $f_k^*$ playing the role of position and momentum variables.
+Each of these equations is formally identical to the Schrödinger equation of a 2D \emph{complex} quantum harmonic oscillator with mass $m=1$ and frequency $\omega_k = \sqrt{|\mathbf{k}|^2 + m^2}$, with complex elongation $V^{-1/2}f_k$.
+Writing as before
+\begin{align}
+    f_k= V^{1/2}\omega_k^{-1/2}(\xi_+ + i\eta_-)
+\end{align}
+we obtain two decoupled real harmonic oscillators in the adimensional variables $\xi_+$ and $\eta_-$ with frequency $\omega_k$,
+\begin{align}
+    i \hbar \frac{\partial}{\partial t} \psi_k(t; \xi_+,\eta_-) &= \frac{2\omega_k}{2}\omega_k\left( -\partial_{\xi_+}^2 - \partial_{\eta_-}^2 + (\xi_+^2 + \eta_-^2) \right)\,\psi_k(t; \xi_+,\eta_-)\,.
+\end{align}
+%
+The eigenfunctions are then
+\begin{align}
+    &\langle \xi_+,\eta_-| n_+, n_- \rangle = \frac{1}{\sqrt{2^{n_+ + n_-} n_+! n_-!}} H_{n_+}\left( \xi_+ \right) H_{n_-}\left( \eta_- \right) \Big(\frac{1}{\pi}\Big)\,e^{-\frac{1}{2} (\xi_+^2 + \eta_-^2)}\,,\\
+    &\quad\text{with}\quad H_k |n_+,n_-\rangle = 2\hbar \omega_k (n_+ + n_- + 1) |n_+, n_-\rangle\,.
+\end{align}
+%
+The corresponding solution 
+
 The solutions are thus well-known energy eigenstates
 \begin{align}
     \psi_{n_k}(t; f_k, f_k^*) &= \left( \frac{\omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{\omega_k}{\hbar}} f_{k} \right) e^{-\frac{\omega_k}{2\hbar} f_{k}^2} e^{-i E_{n_k} t/\hbar}, \quad
