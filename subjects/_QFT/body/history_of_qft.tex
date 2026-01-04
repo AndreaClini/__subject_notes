@@ -1,21 +1,21 @@
 % !TeX root = ../QFT_main.tex
 %=========================================================
 %=========================================================
-\chapter{History \& Principles of Quantum Mechanics and Quantum Field Theory}
+\chapter{History \& Principles of Quantum Mechanics}
 %========================================================
 %=========================================================
 
 
 %---------------------------------------------------------
 %=========================================================
-\section{The rise and fall of Quantum Mechanics} \todotag{To be written}
+\section{The rise and fall of Quantum Mechanics} 
 %=========================================================
 %----------------------------------------------------------
 
 
-\begin{mytheorem}[The rise of Quantume Mechanics.] \todotag{Modify.}
+\begin{mytheorem}[The rise of Quantume Mechanics.\questiontag{Check \& improve.}]
 At the turn of the 20th century, several experimental observations challenged the classical understanding of physics and led to the development of Quantum Mechanics.
-Some of the key discoveries include:
+Some of the key discoveries are the following.
 \begin{itemize}
     \item \textbf{Blackbody Radiation.} Max Planck's solution to the ultraviolet catastrophe by introducing the concept of quantized energy levels.
     \item \textbf{Photoelectric Effect.} Albert Einstein's explanation of the photoelectric effect, proposing that light consists of discrete packets of energy called photons.
@@ -27,9 +27,9 @@ Some of the key discoveries include:
 \end{mytheorem}
 
 
-\begin{mytheorem}[The fall of Quantum Mechanics.] \todotag{Modify}
-Despite its successes, Quantum Mechanics soon after faced several challenges that highlighted its limitations and paved the way for the development of Quantum Field Theory.
-Some of the key issues include:
+\begin{mytheorem}[The fall of Quantum Mechanics. \questiontag{Check \& improve}]
+Despite its successes, Quantum Mechanics soon after faced several challenges that progressively highlighted its limitations, up to making it untenable, and paved the way for the development of Quantum Field Theory.
+%
 \begin{itemize}
     \item \textbf{Relativistic Incompatibility \& negative energies.} Quantum Mechanics, as originally formulated, was not compatible with the principles of special relativity.
     Attempts to create a relativistic version of Quantum Mechanics, such as the Klein-Gordon and Dirac equations, led to difficulties in interpreting negative energy solutions and the need for a new framework.
@@ -43,60 +43,61 @@ Some of the key issues include:
 \end{mytheorem}
 
 
-\begin{mytheorem}[The price of noncommutativity.]
-As we demand that observables are represented by noncommuting operators, we have to pay a price: such observable must be operators acting on some vector space $\mathcal{H}$--i.e. matrices--since standard numbers commute.
+\begin{mytheorem}[The price of noncommutativity.\notetag{Check}]
+If we demand that observables are represented by noncommuting operators, we have to pay a price: such observable must be operators acting on some vector space $\mathcal{H}$, i.e. they must be matrices, since standard numbers commute.
 Furthermore, taking the trace of the canonical commutation relations we have
 \begin{align}
-    [\hat{q}_i, \hat{p}_j] = i\hbar\delta_{ij} \Longrightarrow 0=\text{Tr}([\hat{q}_i, \hat{p}_j]) = i\hbar \text{Tr}(\delta_{ij}) = i \hbar \cdot \dim(\mathcal{H}).
+    [\hat{q}_i, \hat{p}_j] = i\hbar\delta_{ij} \Longrightarrow 0=\text{Tr}([\hat{q}_i, \hat{p}_j]) = i\hbar \,\text{Tr}(\delta_{ij}) = i \hbar \cdot \dim(\mathcal{H}).
 \end{align}
 The only way to resolve this absurdity is to have $\dim(\mathcal{H}) = \infty$ so that the trace is not well-defined and the above equality is meaningless.
-The take home is that such operators must act on an infinite-dimensional Hilbert space.
-Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\delta(x-y)$ which is even more ill-defined and infinite.
+The take home is that such operators must act on an \emph{infinite}-dimensional Hilbert space.
+Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\delta(x-y)$ in the above equality, which is even more ill-defined and infinite.
 
 Incidentally, note that this is not necessarily the case for all quantum systems: for instance, spin systems have a finite number of DoFs and can be described by finite-dimensional Hilbert spaces.
-The primary example is just the spin-$\frac{1}{2}$ system, whose Hilbert space is just $\mathbb{C}^2$ with Pauli matrices as operators obeying $[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k$.
+The primary example is the spin-$\frac{1}{2}$ system, whose Hilbert space is just $\mathbb{C}^2$ with Pauli matrices as operators obeying $[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k$.
 \end{mytheorem}
 
 
-\begin{mytheorem}[The idea of second quantization.]\todotag{finish}
-At some point people started wondering: in quantum meahcnics everything is subject to fluctuations, so why not the very number of particles themselves? That is to say, why not to promote the wave function to an opertor itself?
+\begin{mytheorem}[The idea of second quantization.\todotag{finish}]
+At some point people started wondering: in quantum mechanics everything is subject to fluctuations, so why not the very number of particles themselves? That is to say, why not to promote the wave function to an opertor itself?
 \end{mytheorem}
 
 
-
-\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is always the answer.] \todotag{Modify}
+\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is \emph{always} the answer. \questiontag{Check \& improve}]
+%
 Several attempts were made to formulate a relativistic version of the Schr\"odinger equation.
 The Schr\"odinger equation is first-order in time and second-order in space derivatives, and enforces a non-relativistic energy-momentum relation
 \begin{equation}
-    -i\partial_t\psi = -\frac{\hbar^2}{2m} \nabla^2 \psi \Longrightarrow E = \frac{p^2}{2m}.
+    -i\partial_t\psi = -\frac{\hbar^2}{2m} \nabla^2 \psi\quad \Longrightarrow\quad E = \frac{p^2}{2m}.
 \end{equation}
 It was clear that in order to be relativistic, the equation must treat space and time on an equal footing.
 Several approaches were attempted, ultimately depending on the spin of the particle considered.
 \begin{itemize}
     \item \textbf{Klein-Gordon Equation.} For spin-0 particles, the Klein-Gordon equation was proposed:
     \begin{equation}
-        (\partial_{\mu} \partial^{\mu} + m^2) \phi(x) = 0,
+        (\partial_{\mu} \partial^{\mu} + m^2) \phi(x) = 0\,.
     \end{equation}
-    which is second-order in both time and space derivatives and respects the relativistic energy-momentum relation \(E^2 = p^2 + m^2\).
+    This is second-order in both time and space derivatives and respects the relativistic energy-momentum relation \(E^2 = p^2 + m^2\).
     However, it faced challenges in interpreting negative energy solutions and the associated probability density.
-    \item \textbf{Dirac Equation.} For spin-$\frac{1}{2}$ particles, Dirac proposed a 'square root' of the Klein-Gordon equation that would be first-order in both time and space derivatives:
+    \item \textbf{Dirac Equation.} For spin-$\frac{1}{2}$ particles, Dirac proposed a `square root' of the Klein-Gordon equation that would be first-order in both time and space derivatives:
     \begin{equation}
         (i\gamma^{\mu} \partial_{\mu} - m) \psi(x) = 0.
     \end{equation}
     In doing so, it was necessary to introduce $\gamma$-matrices to yield a Lorentz vector to be contracted with $\partial_{\mu}\psi$ to make the equation Lorentz invariant.
-    The Dirac equation can indeed be derived by seeking a first-order equation whose square reproduces the Klein-Gordon equation
+    The Dirac equation can indeed be derived by seeking a first-order equation whose square reproduces the Klein-Gordon equation:
     \begin{align}
         ia^\mu\partial_\mu\psi + b \psi = 0 &\Longrightarrow (ia^\mu\partial_\mu + b)^*(ia^\nu\partial_\nu + b)\psi = 0 \\
         &\Longrightarrow (a^\mu a^\nu \partial_\mu \partial_\nu + i(b a^\mu-a^\mu b)\partial_\mu + b^2)\psi = 0.
     \end{align}
-    Imposing that this equals the Klein-Gordon equation requires
+    Imposing this matches the Klein-Gordon equation requires
     \begin{align}
         \{a^\mu, a^\nu\} = 2\eta^{\mu\nu}, \quad
         a^\mu b - b a^\mu = 0, \quad
-        b^2= -m^2.
+        b^2= m^2\quad \Rightarrow \quad a^\mu\equiv \gamma^\mu, \quad b \equiv m\,.
     \end{align}
     These relations cannot be satisfied by ordinary numbers, leading to the introduction of the $\gamma$-matrices.
     The Dirac equation successfully incorporated spin and predicted the existence of antimatter, but similarly introduced complexities related to negative energy states.
+    %
     \item For spin-1 particles, the Proca and Maxwell equation was developed--or better borrowed from classical electrodynamics--to describe massive and massless vector bosons respectively:
     \begin{equation}
         \partial_{\mu} F^{\mu\nu} + m^2 A^{\nu} = 0.
@@ -108,28 +109,28 @@ All these equations ultimately obey the Klein-Gordon equation, as it should be s
 
 \begin{mytheorem}[The Casimir effect. \todotag{TBC}]
 %
-The Casimir effect is a physical force which arises e.g. from the zero-point energy of the\emph{quantized} electromagnetic field in the presence of conducting boundaries and pushes them closer together.
-It arises since the zero-point energy of vacuum is reduced as the plates get closer and reduce the allowed modes of the electromagnetic field between them.
-There is an extermely close analogy with the attractive force exerted between to ships travelling parallel to each other in the sea.
-Namely, waves with arbitrary wavelength can exist outside the ships and hit the rightmost ship from the right (resp. the leftmost one from the left) pushing them closer together.
+The Casimir effect is a physical force which arises e.g. from the zero-point energy of the \emph{quantized} electromagnetic field in the presence of conducting boundaries and pushes them closer together.
+It arises since the zero-point energy of vacuum is reduced as the plates get closer thus diminishing the allowed modes of the electromagnetic field between them.
+There is an extermely close analogy with the attractive force exerted between two ships travelling parallel to each other in the sea.
+Indeed, waves with arbitrary wavelength can exist outside the ships and hit the rightmost ship from the right (resp. the leftmost one from the left) pushing them closer together.
 On the other hand, only waves with countable discrete wavelengths $\sim L/n$ can fit between the ships and push them further apart, where $L$ is the distance between them.
 There is thus a net attractive force between the ships since the pressure from outside is larger than the one from inside.
 
-In the context of QFT, consider the electromagnetic field confined between two perfectly conducting, parallel plates separated by a distance $a$.
+In the context of QFT, consider the electromagnetic field confined between two perfectly-conducting parallel plates separated by a distance $a$.
 Boundary conditions discretize the momentum perpendicular to the plates,
 \begin{align}
-    k_z = \frac{n\pi}{a},\qquad n\in\Z
+    k_z = \frac{n\pi}{a},\quad n\in\Z\,,\qquad
     \omega_{n,\mathbf{k}_\perp} = c\sqrt{|\mathbf{k}_\perp|^2 + \Big(\tfrac{n\pi}{a}\Big)^2}.
 \end{align}
 The zero-point energy per unit area is formally divergent and given by
 \begin{equation}
     \frac{E_0(a)}{A} = \sum_{n\in\Z}\int \frac{d^2 k_\perp}{(2\pi)^2}\, \tfrac{1}{2}\hbar\omega_{n,\mathbf{k}_\perp},
 \end{equation}
-The physically meaningful quantity is the \emph{difference} with empty space (no plates):
+The physically meaningful quantity is the \emph{difference} with empty space (no plates)
 \begin{equation}
     \frac{E_{\text{Cas}}(a)}{A} := \frac{E_0(a)}{A} - \frac{E_0(\infty)}{A}.
 \end{equation}
-Using analytic (e.g. zeta-function) regularization, relying on $\zeta(-3)=\tfrac{1}{120}$, one obtains the finite result
+Using analytic regularization (e.g. zeta-function with $\zeta(-3)=\tfrac{1}{120}$), one obtains the finite result
 \begin{equation}
     \frac{E_{\text{Cas}}(a)}{A} = -\,\frac{\pi^2\,\hbar c}{720\,a^3},
 \end{equation}
@@ -137,7 +138,10 @@ which yields an attractive pressure
 \begin{equation}
     \frac{F}{A} = -\,\frac{d}{da}\!\left(\frac{E_{\text{Cas}}}{A}\right) = -\,\frac{\pi^2\,\hbar c}{240\,a^4} < 0.
 \end{equation}
-In natural units ($\hbar=c=1$), $E_{\text{Cas}}/A = -\pi^2/(720\,a^3)$ and $F/A = -\pi^2/(240\,a^4)$. This force has been measured with high precision and exemplifies how vacuum fluctuations plus boundary conditions produce macroscopic effects.
+%
+This force has been measured with high precision and exemplifies how vacuum fluctuations plus boundary conditions produce macroscopic effects.
+Crucially, it is a direct proof that vacuum fluctuations do exist at least down to length scales of order $a$, typically microns or less in experiments, placing a lower bound on the UV cutoff of Qunatum Field Theories.
+In particular, including zero-point energies only down to the micron scale, much bigger than the Planck scale, already yields a vacuum energy density $\sim 10^{60}$ times larger than the observed cosmological constant, highlighting the severity of the cosmological constant problem.
 %
 \end{mytheorem}
 
@@ -154,34 +158,34 @@ In natural units ($\hbar=c=1$), $E_{\text{Cas}}/A = -\pi^2/(720\,a^3)$ and $F/A 
 
 %-------------------------------------------------------------
 %=========================================================
-\section{The guiding theorems} \todotag{To be written}
+\section{The guiding theorems} 
 %=========================================================
 %--------------------------------------------------------------
 
 
-\begin{mytheorem}[Heisenberg canonical quantization procedure.]
-Take the classical phase space variables \(q_i, p_i\) i.e. the classical DoFs, satisfying the relevant Equations of Motions and  Poisson bracket relations (possibly passing to the continuum limit $\delta_{ij} \to \delta(x-y)$)
+\begin{mytheorem}[Heisenberg canonical quantization procedure.\todotag{Modify}]
+Take the classical phase-space variables \(q_i, p_i\), that is the classical DoFs, satisfying the relevant Equations of Motions and  Poisson bracket relations (possibly passing to the continuum limit $\delta_{ij} \to \delta(x-y)$)
 \[\{q_i, p_j\} = \delta_{ij}, \quad \{q_i, q_j\} = 0, \quad \{p_i, p_j\} = 0.\]
 Then, in the quantum theory, promote these variables to operators \(\hat{q}_i, \hat{p}_i\) acting on a Hilbert space \(\mathcal{H}\), satisfying the canonical commutation relations (again possibly in the continuum limit)
 \[[\hat{q}_i, \hat{p}_j] = i\hbar \delta_{ij}, \quad [\hat{q}_i, \hat{q}_j] = 0, \quad [\hat{p}_i, \hat{p}_j] = 0.\]
-These \em[h{operators are self-adjoint} and \emph{obey the same equations of motion as the classical counterparts}, but now in the operator formalism.
+These \emph{operators are self-adjoint} and obey the \emph{same equations of motion as the classical counterparts}, but now in the operator formalism.
 Namely, they are obtained as
 \begin{equation}
-    \frac{d\hat{O}}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{O}] + \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}}.
+    \frac{d\hat{O}}{dt} = \frac{1}{i\hbar} [\hat{O},\hat{H}] + \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}}.
 \end{equation}
-In particular, for the fundamental DoFs, we have
+In particular, for the fundamental DoFs we have
 \begin{align}
-    -i\hbar\frac{d\hat{q}_i}{dt} = [\hat{H}, \hat{q}_i] \quad -i\hbar\frac{d\hat{p}_i}{dt} = [\hat{H}, \hat{p}_i].
+    i\hbar\frac{d\hat{q}_i}{dt} = [\hat{q}_i, \hat{H}] \quad i\hbar\frac{d\hat{p}_i}{dt} = [\hat{p}_i, \hat{H}].
 \end{align}
 \end{mytheorem}
 
 
-\begin{mytheorem}[Heisenberg vs Schr\"odinger picture.]
-In Quantum Mechanics, there are two equivalent ways to describe the time evolution of a system.
+\begin{mytheorem}[Heisenberg vs Schr\"odinger picture.\notetag{Check}]
+There are two equivalent ways to describe the time evolution of a system in Quantum Mechanics.
 They are completely equivalent and related by a unitary transformation.
 \begin{itemize}
-    \item In the \emph{Heisenberg picture}, the operators evolve in time according to the Heisenberg equation of motion, while the state vectors remain constant.
-    \item In the \emph{Schr\"odinger picture}, the state vectors evolve in time according to the Schr\"odinger equation, while the operators remain constant.
+    \item In the \emph{Heisenberg picture}, operators evolve in time according to the Heisenberg equation of motion, while state vectors remain constant.
+    \item In the \emph{Schr\"odinger picture}, state vectors evolve in time according to the Schr\"odinger equation, while operators remain constant.
 \end{itemize}
 In the Schr\"odinger picture states evolves in time as
 \begin{equation}
@@ -198,7 +202,7 @@ In particular, it makes it easier to see how classical observables correspond to
 
 %-------------------------------------------------------------
 %=========================================================
-\section{Further principles and general ideas (miscellaneous)} \todotag{To be written}
+\section{Further principles and general ideas (miscellaneous)} 
 %=========================================================
 %-------------------------------------------------------------
 
@@ -207,6 +211,6 @@ In particular, it makes it easier to see how classical observables correspond to
 In a nutshell, spontaneous symmetry breaking occurs when the underlying laws (Lagrangian or Hamiltonian) of a system possess a certain symmetry, but the ground state (vacuum state) of the system does not exhibit that symmetry.
 This phenomenon has profound implications in various areas of physics, including condensed matter physics and particle physics.
 
-Anomalies, on the other hand, refer to situations where a symmetry that is present at the classical level of a theory is broken when the theory is quantized--i.e. it is not even a symmetry of the quantized lagrangian/hamiltonian.
+Anomalies, on the other hand, refer to situations where a symmetry that is present at the classical level of a theory is broken already when the theory is quantized--i.e. it is not even a symmetry of the quantized lagrangian/hamiltonian.
 Anomalies can have significant consequences, such as the violation of conservation laws associated with the broken symmetry.
 \end{mytheorem}
