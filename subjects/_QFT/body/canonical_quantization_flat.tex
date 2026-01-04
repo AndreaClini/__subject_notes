@@ -112,13 +112,86 @@ This is already familiar from Electrodynamics: it is very unlikely to find high-
 \end{mytheorem}
 
 
+
+\begin{mytheorem}[Rotated harmonic oscillator\todotag{Finish}]
+%
+Consider an isotropic\footnote{\label{fn:isotropic_oscillator}for simplicity, otherwise diagonalize the frequency matrix} harmonic oscillator in dimension $n$
+\begin{align}
+    H = \frac{1}{2m} \sum_{j=1}^n (p^j)^2 + \frac{m\omega^2}{2} \sum_{j=1}^n (q^j)^2, \quad \{q, p^T\} = \delta_{ij}.
+\end{align}
+We can rotate cohordinates with an orthogonal matrix $R \in O(n)$ as   
+\begin{align}
+     \tilde{q}^i = R^i_{j} q_j, \quad \tilde{p}^i = R^i_{j} p_j, \quad 
+     \{\tilde{q}, \tilde{p}^T\} = R\{q,p^T\} R^T = R\,R^T = \delta_{ij}\,.
+\end{align}
+Passing to the quanum case, everythin is unchanged upond replacing $\{\,,\,\}\mapsto \frac{1}{i\hbar} [\,,\,]$.
+In position space representation we have
+{\small
+\begin{align}
+    \tilde{q}^i &= \tilde{x}^i = R^i_{j} x^j, \quad \tilde{p}^i = -i\hbar \frac{\partial}{\partial \tilde{x}^i} = -i\hbar \frac{\partial x^j}{\partial \tilde{x}^i}\frac{\partial}{\partial x^j}
+    = -i\hbar \big(R^{-1})^j_i  \frac{\partial}{\partial x^j} = - i\hbar \big(R^T)^j_i \frac{\partial}{\partial x^j} = R^i_{j}\,\Big(-i\hbar \frac{\partial}{\partial x^j} \Big) = R^i_{j}\, p^j\,.
+\end{align}
+}
+Correspondingly the ladder operators just change the same as
+\begin{align}
+    \tilde{a}^j = \frac{1}{\sqrt{2}}\Big(\sqrt{m\omega}\tilde{q}^j+\frac{i}{\sqrt{m\omega}}\tilde{p}^j\Big)
+    = R^j_k\,\Big(\sqrt{m\omega}{q}^k+\frac{i}{\sqrt{m\omega}}{p}^k\Big) = R^j_k\, a^k\,.
+\end{align}
+\end{mytheorem}
+
 \begin{mytheorem}[Complex \& rotated harmonic oscillators\todotag{Finish}]
 %
-Consider the complex harmonic oscillator with Hamiltonian
+Consider a 2D real isotropic\footnotemark[\getrefnumber{fn:isotropic_oscillator}] harmonic oscillator with Hamiltonian
 \begin{equation}
-    H = \tfrac{1}{2m}(p_x^2 + p_y^2) + \tfrac{m\omega^2}{2} (x^2 + y^2), \quad \{x, p_x\} = \{y, p_y\} = 1.
+    H = \tfrac{1}{2m}(p_x^2 + p_y^2) + \tfrac{m\omega^2}{2} (q_x^2 + q_y^2), \quad \{q_x, p_x\} = \{q_y, p_y\} = 1.
 \end{equation}
+%
+It is customary to rewrite it as a single complex harmonic oscillator by defining the complex canonical variables in 4 possible ways, where the order of $\pm$ and $\mp$ signs correspond to not/taking the conjugate in the CCR, as
+\begin{align}
+    q_z = \frac{1}{\sqrt{2}}(q_x + i q_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,.
+\end{align}
+or as
+\begin{align}
+    q_z = \frac{1}{\sqrt{2}}(q_x + \tfrac{i}{{m\omega}}\, p_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \pm i {m\omega}\,q_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,.
+\end{align}
+All choices lead to the same Hamiltonian expression
+\begin{align}
+    H = \tfrac{1}{m} p_z p_z^{\dagger} + m \omega^2 q_z q_z^{\dagger}\,.
+\end{align}
+In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation
+\begin{align}
+    \{q_z, p_z\} = 1, \quad \text{or}\quad \{q_z, p_z^{\dagger}\} = 1\,.
+\end{align}
+Then identify corresponding real variables, where again the order of $\pm$ and $\mp$ signs correspond to not/taking the conjugate in the CCR, either expressing complex position (resp. momentum) as combination of real positions (resp. momenta) as
+\begin{align}
+    &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
+    q_y=-i\frac{q_z - q_z^\dagger}{\sqrt{2}},\quad p_y =\pm i \frac{p_z - p_z^\dagger}{\sqrt{2}}.
+\end{align}
+or making both complex variables $q_z,p_z$ a mixture of real positions and momenta as
+\begin{align}
+    &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
+    q_y=\frac{\mp i}{\sqrt{2}}\frac{(p_z-p_z^\dagger)}{m\omega},\quad p_y =\frac{-im\omega}{\sqrt{2}} (q_z - q_z^\dagger).
+\end{align}
+%
+In the \emph{complex} position representations, recalling that in \emph{any} case
+\begin{align}
+    \partial_z^ = \frac{1}{\sqrt{2}}\left(\partial_x - i \partial_y\right),\quad
+    \partial_{z^*} = \frac{1}{\sqrt{2}}\left(\partial_x + i \partial_y\right),
+\end{align}
+the complex canonical variables read in the pure position/momentum case
+\begin{align}
+    q_z &= z = \frac{1}{\sqrt{2}}(x + i y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y) = \frac{-i\hbar}{\sqrt{2}}\left(\partial_x \mp i \partial_y\right) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,,
+\end{align}
+and in the mixed case
+\begin{align}
+    q_z &= z = \frac{1}{\sqrt{2}}\left(q_x + \tfrac{i}{m\omega} p_y\right) = \frac{1}{\sqrt{2}}\left(x + \tfrac{\hbar}{m\omega} \partial_y\right), \\
+    p_z & = \frac{1}{\sqrt{2}}\left(p_x \pm i m \omega q_y\right) = \frac{1}{\sqrt{2}}\left(-i\hbar \partial_x \pm i \,m \omega y\right),
+\end{align}
+again with the order of $\pm$ and $\mp$ signs corresponding to not/taking the conjugate in the CCR.
+%
 \end{mytheorem}
+
+
 
 \begin{mytheorem}[Coherent states\todotag{Finish}]
 %
@@ -675,9 +748,9 @@ We pass from one basis to the other via a resolution of the identity
     = \int_{W_{\phi}}\!\!\! Df\,\, |f\rangle\, \,\,\mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)},
 \end{align}
 %
-The above is confirmed by acting with $\hat{\pi}(t_0,x)=-i\hbar\frac{\delta\,\cdot}{\delta f(x)}$ in the $\hat{\phi}$ representation or with $\hat{\phi}(t_0,x)=i\hbar\frac{\delta\,\cdot}{\delta g(x)}$ in the $\hat{\pi}$ representation, and possibly integrating by parts in the functional integral.
+The above is confirmed by acting with $\hat{\pi}(t_0,x)=-i\hbar\frac{\delta\,\cdot}{\delta f(x)}$ in the $\hat{\phi}$ representation or with $\hat{\phi}(t_0,x)=i\hbar\frac{\delta\,\cdot}{\delta g(x)}$ in the $\hat{\pi}$ representation, and then possibly integrating by parts in the functional integral.
 %
-Note that the $\hat{\phi}$ and $\hat{\pi}$ representations are simply related by a functional Fourier transform, just like position and momentum representations in ordinary QM.
+Note the $\hat{\phi}$ and $\hat{\pi}$ \textbf{representations are simply related by a functional Fourier transform}, just like position and momentum representations in ordinary QM.
 
 Given any state $|\Psi\rangle \in \mathcal{F}$, we express it in either basis as
 \begin{align}
@@ -739,7 +812,7 @@ In fact, we can represent \emph{any} operator $\hat{O}$ acting on the Fock space
 \begin{align}
     \hat{O}= \int_{W_{\phi}}\!\!\! \!\!Df \int_{W_{\phi}}\!\!\!\!\!Df' \,\,\, |f\rangle\, \langle f | \hat{O} | f' \rangle \langle f' |= \int_{W_{\pi}}\!\!\!\!\!Dg \int_{W_{\pi}} \!\!\!\!\!Dg' \,\,\, |g\rangle\, \langle g | \hat{O} | g' \rangle \, \langle g'|\,.
 \end{align}
-In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position and momentum space respectively, the Hamiltonian reads\footnote{Recall self-adjointness implies $\hat{\phi}^\dagger_k=-\hat{\phi}_k$, $\hat{\pi}^\dagger_k=-\hat{\pi}_k$ and $f_k^* = f_{-k}$, $g_k^* = g_{-k}$, and each element commutes with its adjoint.}
+In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position and momentum space respectively, the Hamiltonian reads\footnote{Recall $\hat{\phi}^\dagger_k=-\hat{\phi}_k$, $\hat{\pi}^\dagger_k=-\hat{\pi}_k$ and $f_k^* = f_{-k}$, $g_k^* = g_{-k}$ by self-adjoint, and each element commutes with its adjoint.}
 {\small
 \begin{align}
     &\hat{H} = \int d^d x\,\tfrac{1}{2}\left( \hat{\pi}^2_x +  (\nabla \hat{\phi}_x)^2 + m^2 \hat{\phi}^2_x\right)
