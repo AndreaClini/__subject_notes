@@ -15,7 +15,7 @@
 
 This section fixes the notation and reviews the theory of finite dimensional classical and quantum harmonic oscillators, which are the building blocks of Quantum Field Theories.
 
-\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\todotag{Finish}]
+\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\questiontag{Check}]
 %
 The \emph{classical} harmonic oscillator with mass $m$ and frequency $\omega$ is described by the Hamiltonian
 \begin{equation}
@@ -113,7 +113,53 @@ This is already familiar from Electrodynamics: it is very unlikely to find high-
 
 
 
-\begin{mytheorem}[Rotated harmonic oscillator\todotag{Finish}]
+\begin{mytheorem}[Identifying ladder operators\questiontag{check}]
+%
+Ladder operators are a convenient way deal with harmonic oscillators: they diagonalize the Hamiltonian and yield a single \emph{complex} DoF $a$ to track instead of the two real canonical variables $q$ and $p$. 
+The definition of ladder operators can be identified by direct inspection of the Hamiltonian after recaling canonical variables to adimensional ones as above.
+However this procedure somewhat hides the arbitrariness in their definition, which is source of profound physical consequences for QFT in curved spacetime.
+
+Let us proceed more generally, simply defining a complex operator $a$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$
+\begin{align}
+    a = \alpha\, q + i \,\beta \,p \quad \text{for arbitrary }\, \alpha,\, \beta \in \mathbb{R}
+    \quad \Longleftrightarrow \quad \begin{cases}
+        q = \frac{1}{2\alpha}(a + a^\dagger)\,,\\[4pt]
+        p = \frac{-i}{2\beta}(a - a^\dagger)\,{\color{gray}= -i\,\alpha\hbar\,(a-a^\dagger).}
+    \end{cases}
+\end{align}
+We first choose $\beta=\beta(\alpha)$ to enforce convenient CCR for $a,a^\dagger$, and then fix $\alpha$ to make (somebody's) Hamiltonian as simple as possible.
+Namely we choose
+\begin{align}
+    [a, a^\dagger] &= [\alpha q + i \beta p, \alpha q - i \beta p] = 2 \alpha \beta \hbar \quad \Rightarrow\quad \beta = \frac{1}{2\alpha \hbar}\,.
+\end{align}
+The Hamiltonian can then be expressed as
+\begin{align}
+    H&= \frac{1}{2m}p^2+\frac{m\omega^2}{2}q^2 +Jq + Kp\\
+    &= -\frac{\alpha^2\hbar^2}{2m}\,(a-a^\dagger)^2
+    \;+\;\frac{m\omega^2}{8\alpha^2}\,(a+a^\dagger)^2
+    \;+\;\frac{J}{2\alpha}(a+a^\dagger)
+    \;-\; iK\alpha\hbar\,(a-a^\dagger)
+    \\
+    &=\left(\frac{m\omega^2}{8\alpha^2}-\frac{\alpha^2\hbar^2}{2m}\right)\,(a^2+a^{\dagger 2})
+    +\left(\frac{m\omega^2}{8\alpha^2}+\frac{\alpha^2\hbar^2}{2m}\right)\,\underbrace{(a^\dagger a+a a^\dagger)}_{=2a^\dagger a +1}
+    +\frac{J}{2\alpha}(a+a^\dagger)
+    - iK\alpha\hbar\,(a-a^\dagger).  
+\end{align}
+The expression dramatically simplifies upon choosing
+\begin{align}
+    \alpha = \sqrt{\frac{m\omega}{2\hbar}} \quad \Longrightarrow \quad \beta = \frac{1}{\sqrt{2 m \omega \hbar}}\,.
+\end{align}
+The final expressions are
+\begin{align}
+    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
+    H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
+\end{align}
+In particular we see that for suitable $J$ and $K$ it might be convenient to define the ladder operators in some other way e.g. shifting them by suitable terms in case $J$ and $K$ do not depend on them.
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Rotated harmonic oscillator\questiontag{Check}]
 %
 Consider an isotropic\footnote{\label{fn:isotropic_oscillator}for simplicity, otherwise diagonalize the frequency matrix} harmonic oscillator in dimension $n$
 \begin{align}
@@ -139,18 +185,20 @@ Correspondingly the ladder operators just change the same as
 \end{align}
 \end{mytheorem}
 
-\begin{mytheorem}[Complex \& rotated harmonic oscillators\todotag{Finish}]
+
+
+\begin{mytheorem}[Complex \& rotated harmonic oscillators\questiontag{Check}]
 %
 Consider a 2D real isotropic\footnotemark[\getrefnumber{fn:isotropic_oscillator}] harmonic oscillator with Hamiltonian
 \begin{equation}
     H = \tfrac{1}{2m}(p_x^2 + p_y^2) + \tfrac{m\omega^2}{2} (q_x^2 + q_y^2), \quad \{q_x, p_x\} = \{q_y, p_y\} = 1.
 \end{equation}
 %
-It is customary to rewrite it as a single complex harmonic oscillator by defining the complex canonical variables in 4 possible ways, where the order of $\pm$ and $\mp$ signs correspond to not/taking the conjugate in the CCR, as
+It is customary to rewrite it as a single complex harmonic oscillator by defining the complex canonical variables in 4 possible ways\footnote{\label{fn:order_sign_CCR_conjugate} the order of $\pm$ and $\mp$ signs correspond to not taking (resp. taking) the conjugate in the CCR} as
 \begin{align}
     q_z = \frac{1}{\sqrt{2}}(q_x + i q_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,.
 \end{align}
-or as
+or as\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}
     q_z = \frac{1}{\sqrt{2}}(q_x + \tfrac{i}{{m\omega}}\, p_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \pm i {m\omega}\,q_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,.
 \end{align}
@@ -162,33 +210,54 @@ In practice one often starts from a complex harmonic oscillator obeying the CCR 
 \begin{align}
     \{q_z, p_z\} = 1, \quad \text{or}\quad \{q_z, p_z^{\dagger}\} = 1\,.
 \end{align}
-Then identify corresponding real variables, where again the order of $\pm$ and $\mp$ signs correspond to not/taking the conjugate in the CCR, either expressing complex position (resp. momentum) as combination of real positions (resp. momenta) as
+Then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing complex position (resp. momentum) as combination of real positions (resp. momenta) as
 \begin{align}
     &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
     q_y=-i\frac{q_z - q_z^\dagger}{\sqrt{2}},\quad p_y =\pm i \frac{p_z - p_z^\dagger}{\sqrt{2}}.
 \end{align}
-or making both complex variables $q_z,p_z$ a mixture of real positions and momenta as
+or making both complex variables $q_z,p_z$ a mixture of real positions and momenta as\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}
     &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
     q_y=\frac{\mp i}{\sqrt{2}}\frac{(p_z-p_z^\dagger)}{m\omega},\quad p_y =\frac{-im\omega}{\sqrt{2}} (q_z - q_z^\dagger).
 \end{align}
 %
-In the \emph{complex} position representations, recalling that in \emph{any} case
+
+We now consider a \emph{complex} position representation, we would like to identify\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] $q_z\sim z$ and respectively $p_z \sim \mp i\hbar \partial_z^{(*)}$.
+Recall that in \emph{any} case derivatives transform as
 \begin{align}
     \partial_z^ = \frac{1}{\sqrt{2}}\left(\partial_x - i \partial_y\right),\quad
     \partial_{z^*} = \frac{1}{\sqrt{2}}\left(\partial_x + i \partial_y\right),
 \end{align}
-the complex canonical variables read in the pure position/momentum case
+In the pure position/momentum case, we use the position representation for both the $x$ and $y$ variables to get\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}
-    q_z &= z = \frac{1}{\sqrt{2}}(x + i y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y) = \frac{-i\hbar}{\sqrt{2}}\left(\partial_x \mp i \partial_y\right) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,,
+    \hat{q}_z &= \frac{\hat{q}_x + i \hat{q}_y}{\sqrt{2}}=\frac{1}{\sqrt{2}}(x + i y) = z, \\
+    \hat{p}_z &= \frac{1}{\sqrt{2}}(\hat{p}_x \mp i \hat{p}_y) = \frac{-i\hbar}{\sqrt{2}}\left(\partial_x \mp i \partial_y\right) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,.
 \end{align}
-and in the mixed case
+In the mixed case it is instead convenient to use the position representation for $x$ and the momentum representation for $y$, yielding\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}
-    q_z &= z = \frac{1}{\sqrt{2}}\left(q_x + \tfrac{i}{m\omega} p_y\right) = \frac{1}{\sqrt{2}}\left(x + \tfrac{\hbar}{m\omega} \partial_y\right), \\
-    p_z & = \frac{1}{\sqrt{2}}\left(p_x \pm i m \omega q_y\right) = \frac{1}{\sqrt{2}}\left(-i\hbar \partial_x \pm i \,m \omega y\right),
+    \hat{q}_z &= z = \frac{1}{\sqrt{2}}\left(\hat{q}_x + \tfrac{i}{m\omega} \hat{p}_y\right) = \frac{1}{\sqrt{2}}\left(x + iy\right) =z\,, \\
+    \hat{p}_z & = \frac{1}{\sqrt{2}}\left(\hat{p}_x \pm i m \omega \hat{q}_y\right) = \frac{1}{\sqrt{2}}\left(-i\hbar \partial_x \mp i (-i\hbar)\partial_y\right) = -i\hbar \frac{1}{\sqrt{2}}(\partial_x \mp i \partial_y) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,.
 \end{align}
-again with the order of $\pm$ and $\mp$ signs corresponding to not/taking the conjugate in the CCR.
-%
+Crucially, note that as an operator $\big(i\partial_z)^\dagger = i \partial_{z^*}$ since the adjoint flips the sign of derivatives $\partial_{x,y}^\dagger = -\partial_{x,y}$ wrt real variables, so that indeed the CCR are obeyeed in the forms prescribed.
+
+We can also consider the Hamiltonian for more complex variables
+\begin{align}
+    H = \tfrac{1}{m} p_z^{j\,\dagger}\, p_z^j+ m \omega^2 q_z^{j\,\dagger}\,q_z^j\,,\quad \{q^i_z, p_z^{j\, (\dagger)}\} = \delta^i_j\,.
+\end{align}
+Depending on \emph{not} taking or taking the conjugate in the CCR, an orthogonal $U \in O(n)$ resp. unitary transformation $U \in U(n)$ acting on the complex DoFs leave the CCR invariant
+\begin{align}
+     \tilde{q}^i_z = U^i_{j} q_z^j, \quad \tilde{p}^i_z = U^i_{j} p_z^j, \quad 
+     \{\tilde{q}^i_z, \tilde{p}_z^{j\,(\dagger)}\} = U^i_k \{q_z^k, p_z^{l\,(\dagger)}\} U^{j\,(*)}_l
+     = U^i_k \delta^k_l U^{j\,(*)}_l = U^i_k \big(U^{T (*)}\big)^k_j = \delta^i_j\,.
+\end{align}
+However, in the former case the Hamiltonian is invariant only provided $U$ is also \emph{real} since
+\begin{align}
+    H &= \tfrac{1}{m} \tilde{p}_z^{j\,\dagger}\, \tilde{p}_z^j+ m \omega^2 \tilde{q}_z^{j\,\dagger}\,\tilde{q}_z^j
+    = \tfrac{1}{m} (U^{j\,(*)}_l p_z^{l\,\dagger}) (U^j_k p_z^k) + m \omega^2 (U^{j\,(*)}_l q_z^{l\,\dagger}) (U^j_k q_z^k) \\
+    &= \tfrac{1}{m} p_z^{l\,\dagger} \big(U^{T (*)} U\big)^l_k p_z^k + m \omega^2 q_z^{l\,\dagger} \big(U^{T (*)} U\big)^l_k q_z^k
+    \overset{!}{=} \tfrac{1}{m} p_z^{l\,\dagger} \delta^l_k p_z^k + m \omega^2 q_z^{l\,\dagger} \delta^l_k q_z^k\,.
+\end{align}
+Complex harmonic oscillators with CCR implemented with conjugation thus have a larger symmetry group $U(n)$ than those with CCR implemented without conjugation, which only have $O(n)$ symmetry.
 \end{mytheorem}
 
 
@@ -196,8 +265,9 @@ again with the order of $\pm$ and $\mp$ signs corresponding to not/taking the co
 \begin{mytheorem}[Coherent states\todotag{Finish}]
 %
 Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined as the eigenstates of the annihilation operator $a$.
-Note we are assured they exist since $a$ is a \emph{normal} operator...
+Note we are not assured they exist since $a$ is not a \emph{normal} operator...
 \end{mytheorem}
+
 
 
 \begin{mytheorem}[Exciting harmonic oscillators: driving forces \& parametric resonance\todotag{Finish}]
