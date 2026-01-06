@@ -9,7 +9,7 @@
 
 %--------------------------------------------------------
 %=========================================================
-\section{Classical \& Quantum Harmonic Oscillators}
+\section{Classical \& Quantum Harmonic Oscillators}\label{sec:harmonic_oscillators}
 %=========================================================
 %------------------------------------------------------------
 
@@ -113,13 +113,13 @@ This is already familiar from Electrodynamics: it is very unlikely to find high-
 
 
 
-\begin{mytheorem}[Identifying ladder operators\questiontag{check}]
+\begin{mytheorem}[Identifying ladder operators\todotag{check}]
 %
-Ladder operators are a convenient way deal with harmonic oscillators: they diagonalize the Hamiltonian and yield a single \emph{complex} DoF $a$ to track instead of the two real canonical variables $q$ and $p$. 
-The definition of ladder operators can be identified by direct inspection of the Hamiltonian after recaling canonical variables to adimensional ones as above.
-However this procedure somewhat hides the arbitrariness in their definition, which is source of profound physical consequences for QFT in curved spacetime.
+Ladder operators are a convenient way deal with harmonic oscillators: they diagonalize the Hamiltonian and yield a single \emph{complex} DoF tracking both canonical variables $q$ and $p$. 
+The definition of ladder operators can be obtained by direct inspection of the Hamiltonian after rescaling the canonical variables to adimensional ones as done above.
+However, this procedure somewhat hides the arbitrariness in their definition, which is source of profound physical consequences for QFT in curved spacetime.
 
-Let us proceed more generally, simply defining a complex operator $a$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$
+Let us proceed more generally, simply defining a complex operator $\hat{a}$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$
 \begin{align}
     a = \alpha\, q + i \,\beta \,p \quad \text{for arbitrary }\, \alpha,\, \beta \in \mathbb{R}
     \quad \Longleftrightarrow \quad \begin{cases}
@@ -127,12 +127,12 @@ Let us proceed more generally, simply defining a complex operator $a$ tracking b
         p = \frac{-i}{2\beta}(a - a^\dagger)\,{\color{gray}= -i\,\alpha\hbar\,(a-a^\dagger).}
     \end{cases}
 \end{align}
-We first choose $\beta=\beta(\alpha)$ to enforce convenient CCR for $a,a^\dagger$, and then fix $\alpha$ to make (somebody's) Hamiltonian as simple as possible.
+We first choose $\beta=\beta(\alpha)$ to enforce convenient CCR for $a$ and $a^\dagger$, and then fix $\alpha$ to make (somebody's) Hamiltonian as simple as possible.
 Namely we choose
 \begin{align}
     [a, a^\dagger] &= [\alpha q + i \beta p, \alpha q - i \beta p] = 2 \alpha \beta \hbar \quad \Rightarrow\quad \beta = \frac{1}{2\alpha \hbar}\,.
 \end{align}
-The Hamiltonian can then be expressed as
+The original Hamiltonian can then be expressed as
 \begin{align}
     H&= \frac{1}{2m}p^2+\frac{m\omega^2}{2}q^2 +Jq + Kp\\
     &= -\frac{\alpha^2\hbar^2}{2m}\,(a-a^\dagger)^2
@@ -154,7 +154,22 @@ The final expressions are
     a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
     H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
 \end{align}
-In particular we see that for suitable $J$ and $K$ it might be convenient to define the ladder operators in some other way e.g. shifting them by suitable terms in case $J$ and $K$ do not depend on them.
+If $J$ and $K$ are independent of the canonical variables, this form yields convenient equations of motion for $a$ (we might also further shift $a$ to absorb the linear terms).
+On the other hand, if $J$ or $K$ do depend on $q,\,p$, this suggests it might be more convenient to define ladder operators in some other way!
+
+In case $J,\,K$ are indepndent of the canonical variables, the equations of motion for $a$ read
+\begin{align}
+    &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J + i \sqrt{\frac{m \omega \hbar}{2}} K\\
+    &\Longrightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}.
+\end{align}
+For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i, t_f]$, we have
+\begin{align}
+    a(t) &= \begin{cases}
+        a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
+        a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
+        a(t_f) e^{-i\omega (t-t_f)}=: a_{\mathrm{out}} e^{-i\omega (t-t_f)}, & t > t_f.
+    \end{cases}
+\end{align}
 \end{mytheorem}
 
 
@@ -196,21 +211,15 @@ Consider a 2D real isotropic\footnotemark[\getrefnumber{fn:isotropic_oscillator}
 %
 It is customary to rewrite it as a single complex harmonic oscillator by defining the complex canonical variables in 4 possible ways\footnote{\label{fn:order_sign_CCR_conjugate} the order of $\pm$ and $\mp$ signs correspond to not taking (resp. taking) the conjugate in the CCR} as
 \begin{align}
-    q_z = \frac{1}{\sqrt{2}}(q_x + i q_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,.
+    q_z = \frac{1}{\sqrt{2}}(q_x + i q_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,. \label{eq:complex_oscillator_pure_decomposition}
+    \\[4pt]
+    q_z = \frac{1}{\sqrt{2}}(q_x + \tfrac{i}{{m\omega}}\, p_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \pm i {m\omega}\,q_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,. \label{eq:complex_oscillator_mixed_decomposition}
 \end{align}
-or as\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
-\begin{align}
-    q_z = \frac{1}{\sqrt{2}}(q_x + \tfrac{i}{{m\omega}}\, p_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \pm i {m\omega}\,q_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,.
+All choices lead to the same Hamiltonian in terms of complex variables
+\begin{align}\label{eq:complex_harmonic_oscillator}
+    H = \tfrac{1}{m} p_z p_z^{\dagger} + m \omega^2 q_z q_z^{\dagger}\,\quad \text{with}\quad \{q_z, p_z^{(\dagger)}\} = 1\,.
 \end{align}
-All choices lead to the same Hamiltonian expression
-\begin{align}
-    H = \tfrac{1}{m} p_z p_z^{\dagger} + m \omega^2 q_z q_z^{\dagger}\,.
-\end{align}
-In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation
-\begin{align}
-    \{q_z, p_z\} = 1, \quad \text{or}\quad \{q_z, p_z^{\dagger}\} = 1\,.
-\end{align}
-Then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing complex position (resp. momentum) as combination of real positions (resp. momenta) as
+In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation, and then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing complex position (resp. momentum) as combination of real positions (resp. momenta) as
 \begin{align}
     &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
     q_y=-i\frac{q_z - q_z^\dagger}{\sqrt{2}},\quad p_y =\pm i \frac{p_z - p_z^\dagger}{\sqrt{2}}.
@@ -222,10 +231,11 @@ or making both complex variables $q_z,p_z$ a mixture of real positions and momen
 \end{align}
 %
 
-We now consider a \emph{complex} position representation, we would like to identify\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] $q_z\sim z$ and respectively $p_z \sim \mp i\hbar \partial_z^{(*)}$.
+We now consider a \emph{complex} position representation.
+Namely, we would like to identify\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] $q_z\sim z$ and $p_z \sim \mp i\hbar \partial_z^{(*)}$.
 Recall that in \emph{any} case derivatives transform as
 \begin{align}
-    \partial_z^ = \frac{1}{\sqrt{2}}\left(\partial_x - i \partial_y\right),\quad
+    \partial_z = \frac{1}{\sqrt{2}}\left(\partial_x - i \partial_y\right),\quad
     \partial_{z^*} = \frac{1}{\sqrt{2}}\left(\partial_x + i \partial_y\right),
 \end{align}
 In the pure position/momentum case, we use the position representation for both the $x$ and $y$ variables to get\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
@@ -258,14 +268,104 @@ However, in the former case the Hamiltonian is invariant only provided $U$ is al
     \overset{!}{=} \tfrac{1}{m} p_z^{l\,\dagger} \delta^l_k p_z^k + m \omega^2 q_z^{l\,\dagger} \delta^l_k q_z^k\,.
 \end{align}
 Complex harmonic oscillators with CCR implemented with conjugation thus have a larger symmetry group $U(n)$ than those with CCR implemented without conjugation, which only have $O(n)$ symmetry.
+
+The advantage of the mixed decomposition \eqref{eq:complex_oscillator_mixed_decomposition} is that it yields a nicer decomposition of the complex variables $q_z,\,p_z$ in terms of ladder operators of real oscillators \emph{rotated} by $\pi/4$ in phase space.
+Define ladder operators for each real DoF $x,y$ as usual
+\begin{align}
+    &a_{x,y}= \frac{1}{\sqrt{2}}\left(\sqrt{m\omega} q_{x,y} + \frac{i}{\sqrt{m\omega}} p_{x,y}\right),  \quad [a_{x,y}, a_{x,y}^\dagger] = \delta_{xy}\,\\
+    &  q_{x,y}= \frac{1}{\sqrt{2 m \omega}} (a_{x,y} + a_{x,y}^\dagger), \quad p_{x,y} = -i \sqrt{\frac{m \omega}{2}} (a_{x,y} - a_{x,y}^\dagger).
+\end{align}
+Define $\tfrac{\pi}{4}$-rotated oscillators and corresponding ladder operators as
+\begin{align}
+    q_\pm &= \frac{1}{\sqrt{2}}(q_x \pm q_y), \quad p_\pm = \frac{1}{\sqrt{2}}(p_x \pm p_y),\quad a_+ = \frac{1}{\sqrt{2}}(a_x \pm a_y).
+\end{align}
+In the pure case \eqref{eq:complex_oscillator_pure_decomposition} we have\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
+\begin{align}
+    q_z &= \frac{1}{\sqrt{2}}(q_x + i q_y) = \frac{1}{2\sqrt{m\omega}}\left[(a_x + a_x^\dagger) + i (a_y + a_y^\dagger)\right]\\
+    &=  \frac{1}{\sqrt{2}}\left(\frac{q_+ + q_-}{\sqrt{2}} + i \frac{q_+ - q_-}{\sqrt{2}}\right) = \frac{1}{2\sqrt{m\omega}}\left[\tfrac{1+i}{\sqrt{2}}(a_++a_+^\dagger)+ \tfrac{1-i}{\sqrt{2}}(a_-+a_-^\dagger)\right],\\
+    \\
+    p_z &= \frac{1}{\sqrt{2}}(p_x \mp i p_y) = \frac{-i\sqrt{m\omega}}{2}\left[(a_x - a_x^\dagger) \mp i (a_y - a_y^\dagger)\right]
+    \\
+    &= \frac{1}{\sqrt{2}}\left(\frac{p_+ + p_-}{\sqrt{2}} \mp i \frac{p_+ - p_-}{\sqrt{2}}\right) = \frac{-i\sqrt{m\omega}}{2}\left[\tfrac{1\mp i}{\sqrt{2}}(a_+-a_+^\dagger)+ \tfrac{1\pm i}{\sqrt{2}}(a_- - a_-^\dagger)\right].
+\end{align}
+In the mixed case \eqref{eq:complex_oscillator_mixed_decomposition} we instead get\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
+\begin{align}\label{eq:complex_oscillator_rotated_mixed_decomposition}
+    q_z &= \frac{1}{\sqrt{2}}\left(q_x + \tfrac{i}{m\omega} p_y\right) = \frac{1}{2\sqrt{m\omega}}\left[(a_x + a_x^\dagger) + (a_y - a_y^\dagger)\right]\\
+    &=\frac{1}{2}\left((q_++q_-)+\tfrac{i(p_+-p_-)}{m\omega}\right)
+    = \frac{1}{\sqrt{2m\omega}}(a_+ + a_-^\dagger),
+    \\
+    p_z &= \frac{1}{\sqrt{2}}\left(p_x \pm i m \omega q_y\right) = \frac{-i\sqrt{m\omega}}{2}\left[(a_x - a_x^\dagger) \mp (a_y + a_y^\dagger)\right]
+    \\
+    &= \frac{1}{2}\big[(p_+ + p_-) \pm i m \omega (q_+ - q_-)\big] = \Big(i \sqrt{\frac{m\omega}{2}} ( a_+^\dagger-a_-)\Big)^{(\dagger)}.
+\end{align}
+%
 \end{mytheorem}
 
 
 
+\begin{mytheorem}[Ladder operator toolkit\todotag{Finis}]
+%
+Ladder operators $a$ and $a^\dagger$ obeying $[a, a^\dagger] = 1$ have the following useful properties.
+\begin{itemize}
+    \item Physicists Hermite polynomials $H_n(\xi)$ are defined as
+    \begin{align}
+        H_n(\xi):= e^{\frac{\xi^2}{2}}\Big(\underbrace{\xi-\partial_\xi}_{=\sqrt{2}\,a^\dagger}\big)^n e^{-\frac{\xi^2}{2}}\,.
+    \end{align}
+    From the formula $\xi \mapsto H_n(\xi)$ as parity $(-1)^n$.
+    %
+    \item The action of $a$ on a state $\propto \left(a^\dagger\right)^n |0\rangle$ is
+    \begin{align}
+        a \left(a^\dagger\right)^n |0\rangle = n \left(a^\dagger\right)^{n-1} |0\rangle.
+    \end{align}
+    More generally, the lowering operator acts as derivative wrt $a^\dagger$ on any Taylor expandable function $f(a^\dagger)$, in the sense that
+    \begin{align}
+        a f(a^\dagger) |0\rangle = \frac{d f}{d a^\dagger} |0\rangle.
+    \end{align}
+    %
+    \item The Baker-Campbell-Hausdorff formula for ladder operators reads
+    \begin{align}
+        e^{\alpha a + \beta a^\dagger} = e^{\alpha a} e^{\beta a^\dagger} e^{-\frac{1}{2} \alpha \beta}, \quad \alpha, \beta \in \mathbb{C}.
+    \end{align}
+    This is just a simpler version of the general BCH formula,
+    \begin{align}
+        &e^A e^B = E^Z, \quad Z = \log(e^A e^B)= A + B + \tfrac{1}{2}[A,B] + \tfrac{1}{12}([A,[A,B]] - [B,[A,B]]) + \ldots
+        \\[5pt]
+        &\Rightarrow \quad e^A e^B = e^{A+B} e^{+\frac{1}{2}[A,B]} \quad \text{if } [A,[A,B]] = [B,[A,B]] = 0,
+    \end{align}
+    since the commutator is a c-number  $[\alpha a, \beta a^\dagger] = \alpha \beta\in\C$. 
+\end{itemize}
+    %
+\end{mytheorem}
+
 \begin{mytheorem}[Coherent states\todotag{Finish}]
 %
-Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined as the eigenstates of the annihilation operator $a$.
-Note we are not assured they exist since $a$ is not a \emph{normal} operator...
+Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined as the eigenstates of the annihilation operator $a$, namely
+\begin{align}
+    a |\alpha\rangle = \alpha |\alpha\rangle \quad\text{or equivalently}\quad \langle \alpha|a^\dagger = \alpha^* \langle \alpha|, \quad \alpha \in \mathbb{C}.
+\end{align}
+Note it is not assured they exist since $a$ is not a \emph{normal} operator!
+We construct them explictly for arbitrary $\alpha\in \C$ as
+\begin{align}
+    |\alpha\rangle \propto  \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} |n\rangle = \sum_{n=0}^\infty \frac{(\alpha a^\dagger)^n}{n!} |0\rangle
+    = e^{\alpha a^\dagger} |0\rangle\quad \Rightarrow\quad a|\alpha\rangle = a e^{\alpha a^\dagger} |0\rangle = \frac{d}{da^\dagger} e^{\alpha a^\dagger} |0\rangle = \alpha e^{\alpha a^\dagger} |0\rangle = \alpha |\alpha\rangle.
+\end{align}
+To find the normalization it is first convenient to note that
+\begin{align} 
+    e^{\beta a}|0\rangle = 1+\beta a + \frac{\beta^2}{2} a^2 + \ldots = |0\rangle, \quad \forall \beta \in \C\,.
+\end{align}
+We can thus insert $e^{-\alpha^*a}$ next to $|0\rangle$ without changing anything and then use the BCH formula to find 
+\begin{align}
+    |\alpha\rangle &\propto\, e^{\alpha a^\dagger} |0\rangle = e^{\alpha a^\dagger} e^{-\alpha^* a} |0\rangle
+    = e^{\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger - \alpha^* a} |0\rangle\,,\qquad e^{\alpha a^\dagger - \alpha^* a}\in U(\mathcal{H}).
+\end{align}
+The operators $e^{\alpha a^\dagger - \alpha^* a}$ are unitary since $(\alpha a^\dagger - \alpha^* a)^\dagger = -(\alpha a^\dagger - \alpha^* a)$, the normalized coherent state is then
+\begin{align}
+    |\alpha\rangle = e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}|0\rangle =  e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}e^{-\alpha^* a}|0\rangle = e^{\alpha a^\dagger - \alpha^* a} |0\rangle.
+\end{align}
+%
+Coherent states also warn us about the identification of ladder operators as creating/destroying a particle.
+This identification is indeed justified only on states with a definite number of particles, like the Fock states $|n\rangle$ or superpositions thereof.
+On the other hand the action of $a^\dagger$ leave coherent states invariant up to a complex factor.
 \end{mytheorem}
 
 
@@ -505,11 +605,11 @@ The Klein-Gordon equation simply becomes the equation for uncoupled \emph{comple
 \begin{equation}
     \frac{d^2 }{dt^2}\phi_k(t) + (|\mathbf{k}|^2 + m^2) \phi_k(t) = 0, \quad \text{with frequency}\quad \omega_k = \sqrt{|\mathbf{k}|^2 + m^2}.
 \end{equation}
-Coherently, the Hamiltonian is just a sum of independent harmonic oscillator Hamiltonians
+Coherently, the Hamiltonian is just a sum of independent complex harmonic oscillator Hamiltonians
 \begin{equation}
-    H  = \int d^3x\,\left(\tfrac{1}{2} \pi^2 + \tfrac{1}{2} (\nabla \phi)^2 + \tfrac{1}{2} m^2 \phi^2\right) = \int \frac{d^3 k}{(2\pi)^3} \left( \tfrac{1}{2} \pi_k^\dagger\pi_k + \tfrac{1}{2} (|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right).
+    H  = \int d^3x\,\left(\tfrac{1}{2} \pi^2 + \tfrac{1}{2} (\nabla \phi)^2 + \tfrac{1}{2} m^2 \phi^2\right) = \int \frac{d^3 k}{(2\pi)^3} \left( \tfrac{1}{2} \pi_k^\dagger\pi_k + \tfrac{1}{2} (|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right)\,,
 \end{equation}
-Finally, the equal time commutation relations in momentum space become
+and equal time commutation relations in momentum space indeed become the expected oscillator CCR\footnote{Note the commutation relation for the complex harmonic oscillator are of the form $[q_z,p_z^*]=1$ as discussed in \eqref{eq:complex_harmonic_oscillator}.}
 \begin{align}
     [\hat{\phi}_k(t), \hat{\pi}_{k'}(t)] = i\hbar\, (2\pi)^3 \delta^{(3)}(\mathbf{k} + \mathbf{k}'), \quad
     [\hat{\phi}_k(t), \hat{\phi}_{k'}(t)] = 0, \quad
@@ -520,7 +620,7 @@ It seems we managed to diagonalize the Hamiltonian and identify the uncoupled de
 However something is off track.
 \begin{itemize}
     \item The field $\phi_k$ is no more self-adjoint, since $\phi_k^{\dagger} = \phi_{-k}$, whereas we would rather our DoFs be observables.
-    In fact the $\phi_k$ are \emph{normal} operators, so they actually are observables with complex eigenvalue, even though it is not very intuitive. 
+    In fact the $\phi_k$ are \emph{normal} operators, so they actually are observables with complex eigenvalues, even though it is not very intuitive. 
     \item The delta functions of the CCR is $\delta^{(3)}(\mathbf{k} + \mathbf{k}')$ instead of the expected $\delta^{(3)}(\mathbf{k} - \mathbf{k}')$, suggesting that the conjugate momentum of the mode $\phi_k$ is actually $\pi_{-k}$ instead of $\pi_k$.
     \item We have a continuum of Fourier modes $k$, and Dirac $\delta$ instead of Kronecker $\delta$ for the DoFs.
 \end{itemize}
@@ -547,8 +647,8 @@ The two approaches are completely equivalent and force us to understand several 
 Before entering the physical aspects, we fix the conventions for Fourier transform and infrared regularization by placing the theory in a finite cubic box of volume $V=L^d$ with periodic boundary conditions.
 Fourier modes become countable discrete $\mathbf{k} = \frac{2\pi}{L} \mathbf{n}$ with $\mathbf{n}\in\mathbb{Z}^d$, and we have the correspondences
 \begin{align}\label{eq:IR_reg_replacements}
-    \int_V \frac{d^d k}{(2\pi)^d} &\,\,\Longrightarrow \,\,\frac{1}{V} \sum_k\,, \quad
-    (2\pi)^d \delta^{(d)}_D(\mathbf{k} - \mathbf{k}') \equiv \int_V d^dx e^{i\mathbf{x}\cdot(\mathbf{k} - \mathbf{k}')} \,\,\Longrightarrow \,\,V \delta_{k,k'}\,,\quad \frac{\delta}{\delta f_k}\,\,\Longrightarrow \,\, \frac{V}{(2\pi)^d} \frac{\partial}{\partial f_k}\,.
+    \int_V \frac{d^d k}{(2\pi)^d} &\,\,\Rightarrow \,\,\frac{1}{V} \sum_k\,, \quad
+    (2\pi)^d \delta^{(d)}_D(\mathbf{k} - \mathbf{k}') \equiv \int_V d^dx e^{i\mathbf{x}\cdot(\mathbf{k} - \mathbf{k}')} \,\,\Rightarrow \,\,V \delta_{k,k'}\,,\quad \frac{\delta}{\delta f_k}\,\,\Rightarrow \,\, \frac{V}{(2\pi)^d} \frac{\partial}{\partial f_k}\,.
 \end{align}
 The Fourier transforms of fields and of the Hamiltonian become
 \begin{align}
@@ -575,81 +675,83 @@ The \textbf{energy dimensions of operators/variables}, fields $(\phi_k,\,\pi_k)$
     \big(q_k,p_k\big) \mapsto V^{-\frac{1}{2}} \big(q_k,p_k\big), \quad
     \big(\tilde{q}_k, \tilde{p}_k\big) \mapsto V^{-\frac{1}{2}} \big(\tilde{q}_k, \tilde{p}_k\big)\,.
 \end{align}
-so that indeed $a_k$ and $a_k^{\dagger}$ become dimensionless operators obeying $[a_k, a_{k'}^{\dagger}] = \delta_{k,k'}$.
-The fields and Hamiltonian would then read\todotag{insert (q,p) expr}
+In particular ladder operators $a_k$ and $a_k^{\dagger}$ become dimensionless.
+The fields, Hamiltonian and commutation relations change as
 {\small
 \begin{align}
-    \phi(t,\mathbf{x})&= \frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \phi_\mathbf{k}(t)=\frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \mathbf{k}\cdot\mathbf{x}} + a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),\quad \phi_k(t) = \frac{1}{\sqrt{V}} \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \phi(t, \mathbf{x}),
+    \phi_k(t) &= \frac{1}{\sqrt{V}} \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \phi(t, \mathbf{x}),\quad
+    \phi(t,\mathbf{x})= \frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \phi_\mathbf{k}(t)=\frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \mathbf{k}\cdot\mathbf{x}} + a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),
     \\
-    \pi(t,\mathbf{x})&= \frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \pi_\mathbf{k}(t)=\frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \mathbf{k}\cdot\mathbf{x}} + i \omega_k a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),\quad \pi_k(t) = \frac{1}{\sqrt{V}} \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \pi(t, \mathbf{x}).
+    \pi_k(t) &= \frac{1}{\sqrt{V}} \int d^3 x\, e^{-i \mathbf{k} \cdot \mathbf{x}} \pi(t, \mathbf{x}),\quad
+    \pi(t,\mathbf{x})= \frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \pi_\mathbf{k}(t)=\frac{1}{\sqrt{V}} \sum_k e^{i \mathbf{k}\cdot\mathbf{x}} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \mathbf{k}\cdot\mathbf{x}} + i \omega_k a_k^{\dagger} e^{- i \mathbf{k}\cdot\mathbf{x}} \right),
     \\
-    H&= \sum_k \tfrac{1}{2}\,\pi_k^\dagger\pi_k + \tfrac{1}{2}\omega_k^2 \,\phi_k^\dagger \phi_k =\sum_k \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} \right).
+    H&= \sum_k \tfrac{1}{2}\,\pi_k^\dagger\pi_k + \tfrac{1}{2}\omega_k^2 \,\phi_k^\dagger \phi_k =\sum_k \hbar \omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} \right),\qquad [\phi_k,\pi_k^\dagger]=i\hbar\delta_{k,k'}\,\quad[a_{k}, a_{k'}^{\dagger}] = \delta_{k,k'}.
 \end{align}
 }
 %
 This is just a matter of conventions, but it is important to keep track of factors of $V$ when considering fluctuations and zero-point energies.
-We will \textbf{not adopt this convention}, which make the passage to the continuum somewhat less straightforward.
+We will \textbf{not adopt this convention}, which make the passage finite-infinite volume less straightforward.
 %
 \end{mytheorem}
-
 
 
 \begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime.\todotag{Fix}]
 %
-For a free theory in flat spacetime, we naively decompose the field operators at an arbitrary reference \emph{fixed} time $t$ in terms of creation and annihilation operators as
+After Fourier transform, the theory reads as a collection of independent complex harmonic oscillators
 \begin{align}
-    \hat{\phi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\phi}_k(t_0)
-    =: \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \bar{k}\cdot\bar{x}} + a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right),
-    \\
-    \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
-    = : \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right).
+    &H  = \int \frac{d^3 k_{\geq0}}{(2\pi)^3} \left( \pi_k^\dagger\pi_k + (|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right) = \frac{1}{V}\sum_{k\geq0} \left( \pi_k^\dagger\pi_k + (|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right)\,,\\
+    & \quad [\phi_k,\pi_{k'}^\dagger]=i\hbar \delta_D(k-k')= i\hbar V \delta_{k,k'}\,,\quad \phi_k^\dagger = \phi_{-k}\,,\qquad \pi_k^\dagger = \pi_{-k}\,.
 \end{align}
-In terms of creation and annihilation operators the canonical commutation relations become\footnote{In order to get \emph{relativistically normalized} commutation relations $\propto 2E_k\delta^{(3)}(k-k')$, we should use covariant creation/annihilation operators $\sqrt{2\omega_k} a_k$ and $\sqrt{2\omega_k} a_k^\dagger$, that indeed correspond to relativistically normalized states in Minkowski spacetime.}
+The overall factor $\frac{1}{2}$ cancels since modes $\pm k$ contribute the same amount to the Hamiltonian and the shorthand $k\geq0$ means the imtegral/sum is only over half of momentum space, e.g. $k_1\geq0$, to avoid double counting.
+
+These are exactly complex harmonic oscillator \eqref{eq:complex_harmonic_oscillator} with complex CCR $[q_z, p_z^*] = i\hbar$.
+We need to identify corresponding \emph{physical} self-adjoint oscillators $\{Q^{(k)}_\pm,\,P^{(k)}_\pm\}$.
+As argued Section \ref{sec:harmonic_oscillators}, it is more convenient to use the mixed decomposition \eqref{eq:complex_oscillator_mixed_decomposition} since it yields a cleaner decomposition \eqref{eq:complex_oscillator_rotated_mixed_decomposition} of the complex DoFs $\phi_k,\,\pi_k$ in terms of ladder operators of $\frac{\pi}{4}$-rotated oscillators $\{q_{\pm k}, p_{\pm k}\}$.
+Namely define
 \begin{align}
-    [a_{\bar{k}}, a_{\bar{k}'}^{\dagger}] = (2\pi)^3 \delta^{(3)}(\bar{k} - \bar{k}'),\quad
-    [a_{\bar{k}}, a_{\bar{k}'}] = 0, \quad
-    [a_{\bar{k}}^{\dagger}, a_{\bar{k}'}^{\dagger}] = 0.
+    Q^{(k)}_\pm &= \frac{1}{\sqrt{2}} (q_k \pm q_{-k}), \quad P^{(k)}_\pm = \frac{1}{\sqrt{2}} (p_k \pm p_{-k}),
 \end{align}
-%
-The associated Hamiltonian, before normal ordering and using the CCR, reads
-\begin{equation}
-    \hat{H} =  \int \frac{d^3 k}{(2\pi)^3} \, \tfrac{1}{2}\hbar \omega_k \Big( a_k^{\dagger} a_k + a_k a_k^{\dagger} \Big)
-    =\int \frac{d^3 k}{(2\pi)^3} \, \hbar \omega_k \Big( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \Big).
-\end{equation}
-%
-Following the treatment \eqref{eq:ordinary_QM_harmonic_oscillator} of the ordinary QM harmonic oscillator above, we identify the associated self-adjoint harmonic oscillators \emph{dimensional} $\{q_k, p_k\}_k$ and \emph{adimensional} $\{\tilde{q}_k, \tilde{p}_k\}_k$ $k$-space-density variables\footnote{In the sense that they are (a)-dimensional square-root densities in Fourier space, that is $\propto\, k^{-3/2}$.} as
-\begin{align}
-    q_k(t_0) &= \frac{1}{\sqrt{\omega_k}} \tilde{q}_k(t_0)=\frac{1}{\sqrt{2\omega_k}} (a_k + a_k^{\dagger}), \quad
-    p_k(t_0) = \sqrt{\omega_k}\, \tilde{p}_k(t_0)=-i \sqrt{\frac{\omega_k}{2}} (a_k - a_k^{\dagger}).
-\end{align}
-The fields are thus expressed as
+Then recast the fields as
 \begin{align}\label{eq:relations_fields_creation_operators_harmonic_oscillator_var}
 \begin{aligned}
-    \phi_k(t_0) &= \frac{1}{\sqrt{2\omega_k}} (a_k + a_{-k}^{\dagger}) 
+    \phi_k(t_0) &= \frac{1}{\sqrt{2}}\Big(Q_++\frac{i}{\omega_k} P_-\Big) = \tfrac{1}{2}\Big[\big({q}_k+{q}_{-k}\big) + \tfrac{i}{\omega_k}\big({p}_k - {p}_{-k}\big) \Big]
+    =\frac{1}{\sqrt{2\omega_k}} (a_k + a_{-k}^{\dagger}) 
     \\
-    &= \frac{1}{2\sqrt{\omega_k}}\Big[ \big(\tilde{q}_k+\tilde{q}_{-k}\big) + i \big(\tilde{p}_k - \tilde{p}_{-k}\big) \Big]
-    = \tfrac{1}{2}\Big[ \big({q}_k+{q}_{-k}\big) + \tfrac{i}{\omega_k}\big({p}_k - {p}_{-k}\big) \Big]
-    \\
-    \pi_k(t_0) &= -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger}) \\
-    &= \frac{\sqrt{\omega_k}}{2} \Big(\tilde{p}_k + \tilde{p}_{-k}\Big) - i \frac{\sqrt{\omega_k}}{2} \Big( \tilde{q}_k- \tilde{q}_{-k} \Big)
-    = \tfrac{1}{2}\Big[ \big({p}_k - {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big].
+    \pi_k(t_0) &= \frac{1}{\sqrt{2}}\Big(P_+ - i \omega_k Q_-\Big) = \tfrac{1}{2}\Big[ \big({p}_k - {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big]
+    = -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger})\,.
 \end{aligned}
 \end{align}
-Note that we could have \emph{completely equivalently} started from self-adjoint oscillators $\{q_k, p_k\}_k$, imposed the field operators are related to these oscillators as above in order to obey the CCR, and then defined creation and annihilation operators accordingly.
+The ladder operators are defined wrt the rotated oscillators as
+\begin{align}\label{eq:ladder_operators_field}
+    a_k &= \sqrt{\frac{\omega_k}{2}} \left( q_k + \frac{i}{\omega_k} p_k \right), \quad
+    \big[ a_k, a_{k'}^{\dagger} \big] = \hbar (2\pi)^3 \delta^{(3)}(k-k').
+\end{align}
+The Hamiltonian finally reads, \emph{before} normal ordering,
+\begin{align}
+    H  &= \int \frac{d^3 k}{(2\pi)^3} \left( \tfrac{1}{2}\pi_k^\dagger\pi_k + \tfrac{1}{2}(|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right) 
+    \\
+    & = \int \frac{d^3 k}{(2\pi)^3} \frac{\hbar\omega_k}{2} \Big( a_k^{\dagger} a_k + a_k a_k^\dagger\Big)
+    = \int \frac{d^3 k}{(2\pi)^3} \hbar \omega_k \Big( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \Big).
+\end{align}
 
-In any case, this decomposition highlights that the \textbf{truly observable DoFs of the Klein-Gordon field} are given by the self-adjoint harmonic oscillators $\{q_k, p_k\}_k$, or equivalently by the creation and annihilation operators $\{a_k, a_k^{\dagger}\}_k$, which indeed destroy or create quanta of the field with momentum $\bar{k}$ i.e. particles under suitable conditions, whereas the field Fourier modes $\phi_k$ and $\pi_k$ are \emph{complex} harmonic oscillators.
+In real space the \emph{self-adjoint} fields are
+\begin{align}
+    \hat{\phi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\phi}_k(t_0)
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \bar{k}\cdot\bar{x}} + a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right),
+    \\
+    \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right).
+\end{align}
+Note that we could have \emph{completely equivalently} started from ladder operators $a_k$ with commutation relations \eqref{eq:ladder_operators_field}, imposing the fields be expressed as above, and then identified the corresponding oscillators $\{q_k, p_k\}_k$.
+In any case, the decomposition shows the \textbf{truly observable DoFs of the Klein-Gordon field} are \emph{decoupled} real self-adjoint oscillators with frequencies $\omega_k$, and ladder operators create or destroy quanta of these oscillators i.e. quanta of the field with momenta $\bar{k}$ identified with particles under suitable conditions.
 
 Is the above \textbf{decomposition unique}?
 We could choose a different reference time $t_0$, but, as long as we are in a free theory in flat spacetime, this simply corresponds to a phase shift in the definition of creation and annihilation operators, leaving the vacuum invariant.
-On the other hand, there are indeed inequivalent choices of creation and annihilation operators, for instance mixing $a_k$ and $a_{-k}^\dagger$.
+On the other hand, there are indeed inequivalent choices of creation and annihilation operators, for instance mixing $a_k$ and $a_{-k}^\dagger$ as dsicussed in Section \ref{sec:harmonic_oscillators}.
 This indeed changes the vacuum of the theory i.e. the state $|0\rangle$ annihilated by all $a_k$ operators.
-This is not a problem in flat spacetime, where Poincaré invariance selects a preferred vacuum which happily also coincides with the ground state of the Hamiltonian, but it becomes a serious issue in curved spacetime, where no preferred vacuum exists in general. \todotag{Discuss issue in detail below}
+This is not a problem in flat spacetime, where Poincaré invariance selects a preferred vacuum which happily also coincides with the ground state of the Hamiltonian, but it becomes a serious issue in curved spacetime, where no preferred vacuum exists in general. \todotag{Discuss issue in more detail}
 %
 \end{mytheorem}
-
-
-
-
 
 
 %=========================================================
@@ -850,7 +952,7 @@ Just like in ordinary QM, the field operators $\hat{\phi},\,\hat{\pi}$ act as fu
     \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
 \end{align}
 %
-The same is true for the Fourier transformed $\hat{\phi}_k(t)$ and $\hat{\pi}_k(t)$, since they are just linear combinations of the $\hat{\phi}(x)$ and $\hat{\pi}(x)$ operators, with multiplication and \emph{conjugate} differentiation wrt $f_k$ and $g_k$\footnote{Recall $f_k^*=f_{-k}$ and $g_k^*=g_{-k}$ by reality of the fields.}
+The same is true for the Fourier transformed $\hat{\phi}_k(t)$ and $\hat{\pi}_k(t)$, since they are just linear combinations of the $\hat{\phi}(x)$ and $\hat{\pi}(x)$ operators, with multiplication and \emph{conjugate} differentiation wrt $f_k$ and $g_k$\footnotemark[\getrefnumber{fn:reality_implies_fk_star+minus_fk}]
 \begin{align}
     \hat{\phi}_k &\to f_k\, \cdot, \quad
     \hat{\pi}_k \to -i \hbar\, (2\pi)^d \,\frac{\delta\,\cdot}{\delta f^*_{k}}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
@@ -882,7 +984,7 @@ In fact, we can represent \emph{any} operator $\hat{O}$ acting on the Fock space
 \begin{align}
     \hat{O}= \int_{W_{\phi}}\!\!\! \!\!Df \int_{W_{\phi}}\!\!\!\!\!Df' \,\,\, |f\rangle\, \langle f | \hat{O} | f' \rangle \langle f' |= \int_{W_{\pi}}\!\!\!\!\!Dg \int_{W_{\pi}} \!\!\!\!\!Dg' \,\,\, |g\rangle\, \langle g | \hat{O} | g' \rangle \, \langle g'|\,.
 \end{align}
-In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position and momentum space respectively, the Hamiltonian reads\footnote{Recall $\hat{\phi}^\dagger_k=-\hat{\phi}_k$, $\hat{\pi}^\dagger_k=-\hat{\pi}_k$ and $f_k^* = f_{-k}$, $g_k^* = g_{-k}$ by self-adjoint, and each element commutes with its adjoint.}
+In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position and momentum space respectively, the Hamiltonian reads\footnote{\label{fn:reality_implies_fk_star+minus_fk} Recall $\hat{\phi}^\dagger_k=-\hat{\phi}_k$, $\hat{\pi}^\dagger_k=-\hat{\pi}_k$ and $f_k^* = f_{-k}$, $g_k^* = g_{-k}$ by self-adjoint, and each element commutes with its adjoint.}
 {\small
 \begin{align}
     &\hat{H} = \int d^d x\,\tfrac{1}{2}\left( \hat{\pi}^2_x +  (\nabla \hat{\phi}_x)^2 + m^2 \hat{\phi}^2_x\right)
@@ -910,18 +1012,18 @@ In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position a
 
 \begin{mytheorem}[Hilbert spaces for mode $k$ harmonic oscillators of the Klein-Gordon field\questiontag{Check}]
 %
-When the field $\phi(t,\mathbf{x})$ is expressed in the space variable $\mathbf{x}$ we can identify\footnote{provided the conditions indeed are such that it actually makes sense to talk about particles} a single-particle Hilbert space of the form $\mathcal{H}_1\simeq L^2_{\mathbf{x}}(\R^3)$ and corresponding $n$-particle Hilbert spaces $\mathcal{H}_1^{\otimes^n}$ for excitations with \emph{definite position} $\mathbf{x}$ i.e. particles.
+When the field $\phi(t,\mathbf{x})$ is expressed in the space variable $\mathbf{x}$ we can identify\footnote{provided the conditions are indeed such that it actually makes sense to talk about particles} a single-particle Hilbert space of the form $\mathcal{H}_1\simeq L^2_{\mathbf{x}}(\R^3)$ and corresponding $n$-particle Hilbert spaces $\mathcal{H}_1^{\otimes^n}$ for excitations with \emph{definite position} $\mathbf{x}$, that is particles.
 %
-On the other hand, decomposing the Klein-Gordon field into its constituting uncoupled harmonic oscillators $\phi(t,\mathbf{x})\sim \int d^dk\, \phi_k(t)$, we can identify Hilberts spaces $\mathcal{M}_k$ for excitations with \emph{definite momentum} $k$ which allows for a varying number of quanta (particles) i.e. the Hilberts spaces of each harmonic oscillator.
+On the other hand, decomposing the Klein-Gordon field into its constituting uncoupled harmonic oscillators $\phi(t,\mathbf{x})\sim \int d^dk\, \phi_k(t)$, we can identify Hilberts spaces $\mathcal{M}_k$ for excitations with \emph{definite momentum} $k$, which allows for a varying number of quanta (particles) i.e. the Hilberts spaces of each harmonic oscillator.
 %
 The Fock space is equivalently decomposed as direct sum or direct product as
 \begin{align}
     \mathcal{F}=\bigoplus_{n=0}^\infty \mathcal{H}_1^{\otimes^n}=\bigotimes_{k\in\substack{\text{field}\\\mathrm{modes}}} \mathcal{M}_k \,.
 \end{align}
 %
-Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
+Imposing some IR regularization, Fourier modes $k$ become countable discrete and we have the replacements \eqref{eq:IR_reg_replacements}.
 
-For each mode $k$ we can consider the representations of the Hilbert space $\mathcal{M}_k$ in real or Fourier space\footnote{We would naively call them position and momentum representations, but this is somewhat a misnomer since `position' rather means the elongation of the oscillator with momentum $k$ and 'momentum' means the conjugate variable.} i.e. use a basis of eigenvectors of the operators $q_k$ or $p_k$ respectively.
+For each mode $k$ we can consider the representations of the Hilbert space $\mathcal{M}_k$ in real or Fourier space\footnote{We would naively call these `position' and `momentum' representations, but this is somewhat a misnomer since `position' rather means the elongation $q_k$ of the oscillator with momentum $k$, which permeates all of physical space, and 'momentum' means the conjugate variable.} i.e. use a basis of eigenvectors of the operators $q_k$ or $p_k$ respectively.
 %
 For the sake of clarity, since operators have dimensions $[q_k]=E^{-1/2} E^{-d/2}$ and $[p_k]=E^{1/2} E^{-d/2}$ different from ordinary 1D oscillators due to our conventions, we label the two Hilbert bases with truly adimensional variables $\xi_k, \eta_k\in\R$, that is $[\xi_k]=[\eta_k]=E^0$, related to the operators respectively as
 \begin{align}
