@@ -721,29 +721,28 @@ Then recast the fields as
     = -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger})\,.
 \end{aligned}
 \end{align}
-The ladder operators are defined wrt the rotated oscillators as
+The ladder operators are defined wrt the rotated oscillators $\{q_k, p_k\}$ as
 \begin{align}\label{eq:ladder_operators_field}
     a_k &= \sqrt{\frac{\omega_k}{2}} \left( q_k + \frac{i}{\omega_k} p_k \right), \quad
     \big[ a_k, a_{k'}^{\dagger} \big] = \hbar (2\pi)^3 \delta^{(3)}(k-k').
 \end{align}
-The Hamiltonian finally reads, \emph{before} normal ordering,
+After some algebra, \emph{before} normal ordering, the Hamiltonian reads
 \begin{align}
     H  &= \int \frac{d^3 k}{(2\pi)^3} \left( \tfrac{1}{2}\pi_k^\dagger\pi_k + \tfrac{1}{2}(|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right) 
     \\
     & = \int \frac{d^3 k}{(2\pi)^3} \frac{\hbar\omega_k}{2} \Big( a_k^{\dagger} a_k + a_k a_k^\dagger\Big)
     = \int \frac{d^3 k}{(2\pi)^3} \hbar \omega_k \Big( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \Big).
 \end{align}
-
-In real space the \emph{self-adjoint} fields are
+Finally, using $\omega_k=\omega_{-k}$, in real space the \emph{self-adjoint} fields are written
 \begin{align}
-    \hat{\phi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\phi}_k(t_0)
-    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i \bar{k}\cdot\bar{x}} + a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right),
+    \hat{\phi}(x,t_0) &= \int \frac{d^3{k}}{(2\pi)^3}\, e^{i{k}\cdot{x}} \hat{\phi}_k(t_0)
+    = \int \frac{d^3{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i {k}\cdot{x}} + a_k^{\dagger} e^{- i {k}\cdot{x}} \right),
     \\
-    \hat{\pi}(x,t_0) &= \int \frac{d^3\bar{k}}{(2\pi)^3}\, e^{i\bar{k}\cdot\bar{x}} \hat{\pi}_k(t_0)
-    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i \bar{k}\cdot\bar{x}} + i \omega_k a_k^{\dagger} e^{- i \bar{k}\cdot\bar{x}} \right).
+    \hat{\pi}(x,t_0) &= \int \frac{d^3{k}}{(2\pi)^3}\, e^{i{k}\cdot{x}} \hat{\pi}_k(t_0)
+    = \int \frac{d^3{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( -i \omega_k a_k e^{i {k}\cdot{x}} + i \omega_k a_k^{\dagger} e^{- i {k}\cdot{x}} \right).
 \end{align}
 Note that we could have \emph{completely equivalently} started from ladder operators $a_k$ with commutation relations \eqref{eq:ladder_operators_field}, imposing the fields be expressed as above, and then identified the corresponding oscillators $\{q_k, p_k\}_k$.
-In any case, the decomposition shows the \textbf{truly observable DoFs of the Klein-Gordon field} are \emph{decoupled} real self-adjoint oscillators with frequencies $\omega_k$, and ladder operators create or destroy quanta of these oscillators i.e. quanta of the field with momenta $\bar{k}$ identified with particles under suitable conditions.
+In any case, the decomposition shows the \textbf{truly observable DoFs of the Klein-Gordon field} are \emph{decoupled} real self-adjoint oscillators with frequencies $\omega_k$, and ladder operators create or destroy quanta of these oscillators i.e. quanta of the field with momenta ${k}$ identified with particles under suitable conditions.
 
 Is the above \textbf{decomposition unique}?
 We could choose a different reference time $t_0$, but, as long as we are in a free theory in flat spacetime, this simply corresponds to a phase shift in the definition of creation and annihilation operators, leaving the vacuum invariant.
