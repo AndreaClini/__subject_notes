@@ -244,7 +244,7 @@ In the pure position/momentum case, we use the position representation for both 
     \hat{p}_z &= \frac{1}{\sqrt{2}}(\hat{p}_x \mp i \hat{p}_y) = \frac{-i\hbar}{\sqrt{2}}\left(\partial_x \mp i \partial_y\right) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,.
 \end{align}
 In the mixed case it is instead convenient to use the position representation for $x$ and the momentum representation for $y$, yielding\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
-\begin{align}
+\begin{align}\label{eq:complex_oscillator_position_rep_mixed}
     \hat{q}_z &= z = \frac{1}{\sqrt{2}}\left(\hat{q}_x + \tfrac{i}{m\omega} \hat{p}_y\right) = \frac{1}{\sqrt{2}}\left(x + iy\right) =z\,, \\
     \hat{p}_z & = \frac{1}{\sqrt{2}}\left(\hat{p}_x \pm i m \omega \hat{q}_y\right) = \frac{1}{\sqrt{2}}\left(-i\hbar \partial_x \mp i (-i\hbar)\partial_y\right) = -i\hbar \frac{1}{\sqrt{2}}(\partial_x \mp i \partial_y) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,.
 \end{align}
@@ -698,7 +698,7 @@ We will \textbf{not adopt this convention}, which make the passage finite-infini
 \begin{mytheorem}[Observable DoFs of the Klein-Gordon field in flat spacetime.\questiontag{Check}]
 %
 After Fourier transform, the theory reads as a collection of independent complex harmonic oscillators
-\begin{align}
+\begin{align}\label{eq:kg_hamiltonian_complex_oscillators}
     &H  = \int \frac{d^3 k_{\geq0}}{(2\pi)^3} \left( \pi_k^\dagger\pi_k + (|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right) = \frac{1}{V}\sum_{k\geq0} \left( \pi_k^\dagger\pi_k + (|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right)\,,\\
     & \quad [\phi_k,\pi_{k'}^\dagger]=i\hbar \delta_D(k-k')= i\hbar V \delta_{k,k'}\,,\quad \phi_k^\dagger = \phi_{-k}\,,\qquad \pi_k^\dagger = \pi_{-k}\,.
 \end{align}
@@ -987,7 +987,7 @@ More generally they act on any functional $\Psi[f] = \langle f | \Psi \rangle$ o
 In particular, the fields act like this on the \emph{wave functional} $\Psi$ of the system i.e. the one obeying the Schrödinger equation.
 
 In fact, we can represent \emph{any} operator $\hat{O}$ acting on the Fock space in either the $\hat{\phi}$ or $\hat{\pi}$ representation by inserting suitable resolutions of the identity
-\begin{align}
+\begin{align}\label{eq:phi_represenation_operators}
     \hat{O}= \int_{W_{\phi}}\!\!\! \!\!Df \int_{W_{\phi}}\!\!\!\!\!Df' \,\,\, |f\rangle\, \langle f | \hat{O} | f' \rangle \langle f' |= \int_{W_{\pi}}\!\!\!\!\!Dg \int_{W_{\pi}} \!\!\!\!\!Dg' \,\,\, |g\rangle\, \langle g | \hat{O} | g' \rangle \, \langle g'|\,.
 \end{align}
 In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position and momentum space respectively, the Hamiltonian reads\footnote{\label{fn:reality_implies_fk_star+minus_fk} Recall $\hat{\phi}^\dagger_k=-\hat{\phi}_k$, $\hat{\pi}^\dagger_k=-\hat{\pi}_k$ and $f_k^* = f_{-k}$, $g_k^* = g_{-k}$ by self-adjoint, and each element commutes with its adjoint.}
@@ -1136,7 +1136,7 @@ Denoting $\mathcal{M}_{\pm}^{(k)}$ the Hilbert spaces of the two rotated oscilla
 %
 The two vacua conincide {\small $|0_k, 0_{-k}\rangle \equiv |0_+, 0_-\rangle$}, while pure tensor states of the original and rotated oscillators are related by Clebsch-Gordan coefficients as
 {\small
-\begin{align}
+\begin{align}\label{eq:clebsh_gordan_relation_original_rotated_oscillator_states}
     |n_k, n_{-k}\rangle &:= \frac{(a_k^{\dagger})^{n_k}}{\sqrt{n_k!}} \frac{(a_{-k}^{\dagger})^{n_{-k}}}{\sqrt{n_{-k}!}} |0_k, 0_{-k}\rangle
     \\
     &= \frac{1}{\sqrt{n_k!\, n_{-k}!}} \left( \frac{a_+^{\dagger} + a_-^{\dagger}}{\sqrt{2}} \right)^{n_k} \left( \frac{a_+^{\dagger} - a_-^{\dagger}}{\sqrt{2}} \right)^{n_{-k}} |0_+, 0_-\rangle
@@ -1467,58 +1467,68 @@ General superposition of pure states $|\{n_k\}_k\rangle$ with a definite number 
 
 
 
-\begin{mytheorem}[Solving the Schrödinger equations in the $\hat{\phi}$ representation\todotag{Fix \& finish}]
-We can explicitly solve the Schrödinger equation in QFT for the free Klein-Gordon field in the $\hat{\phi}$ representation.
-The Hamiltonian operator is reported above.
-The time-dependent Schrödinger equation reads, possibly after IR regularization,
+\begin{mytheorem}[Solving the Schrödinger equation: time evolution of states\questiontag{Check}]
+We can explicitly solve the Schrödinger equation for the free Klein-Gordon field.
+In abstract form it reads\footnote{\label{fn:double_counting_k_geq_0}The shorthand $k\geq 0$ means some choice of modes to avoid double counting over $\pm k$ and the factor $\tfrac{1}{2}$ will cancel.}
 \begin{align}
-    i \hbar \frac{\partial}{\partial t} \Psi[t; f] &= \int \frac{d^dk}{(2\pi)^d}\, \tfrac{1}{2} \left( -\hbar^2 (2\pi)^{2d}\frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \Psi[t; f]
+    i \hbar \partial_t |\Psi(t)\rangle &= \int \frac{d^3k}{(2\pi)^3}\, \tfrac{1}{2} \left( \hat{\pi}_k^\dagger \hat{\pi}_{k} + (|\mathbf{k}|^2 + m^2) \hat{\phi}_k^\dagger \hat{\phi}_{k} \right) |\Psi(t)\rangle\,.
+\end{align}
+As argued in \eqref{eq:kg_hamiltonian_complex_oscillators} the Hamiltonian is precisely a sum of independent complex harmonic oscillators with conjugate CCR.
+Passing to the $\hat{\phi}$ representation \eqref{eq:phi_represenation_operators} and then using IR regularization \eqref{eq:IR_reg_replacements} we have[\getrefnumber{fn:double_counting_k_geq_0}]
+\begin{align}
+    i \partial_t\Psi[\{f_k\}_k, t] &= \int \frac{d^dk_{\geq 0}}{(2\pi)^d}\, \left( - (2\pi)^{2d}\frac{\delta^2}{\delta f_k \,\delta f_k^*} + (|\mathbf{k}|^2 + m^2) f_{k}^* f_k \right) \Psi[\{f_k\}_k, t]
     \\
-    &=\frac{1}{V}\sum_k \tfrac{1}{2} \left( -\hbar^2 V^2\frac{\partial^2}{\partial f_k \,\partial f_k^*} + (|\mathbf{k}|^2 + m^2) f_{-k} f_k \right) \Psi[t; f]
-    \\
-    &= \sum_{k\geq0} \left( -\hbar^2V\frac{\partial^2}{\partial f_k \,\partial f_k^*} + \frac{1}{V}(|\mathbf{k}|^2 + m^2) |f_k|^2 \right) \Psi[t; f]\,.
+    & =\sum_{k \geq 0} \left( - V\frac{\partial^2}{\partial f_k \,\partial f_k^*} + \omega_k^2 V^{-1} f_{k}^* f_k \right) \Psi[\{f_k\}_k, t]
 \end{align}
-We can solve it by separation of variables, writing the wave functional as a product over Fourier modes\footnote{Here $k\geq0$ is shorthand to denote we do \emph{not} double count over $\pm k$.}
-\begin{align}
-    \Psi[t; f] = \prod_{k\geq 0} \psi_k(t; f_k, f_k^*).
-\end{align}
-Plugging this into the Schrödinger equation, we obtain a separate equation for each Fourier mode pair $\pm k$
-\begin{align}
-    i \hbar \frac{\partial}{\partial t} \psi_k(t; f_k, f_k^*) &= \left( -\hbar^2V\frac{\partial^2}{\partial f_k \,\partial f_k^*} + \frac{1}{V}(|\mathbf{k}|^2 + m^2) |f_k|^2 \right)\,\psi_k(t; f_k, f_k^*)\,.
-\end{align}
-Each of these equations is formally identical to the Schrödinger equation of a 2D \emph{complex} quantum harmonic oscillator with mass $m=1$ and frequency $\omega_k = \sqrt{|\mathbf{k}|^2 + m^2}$, with complex elongation $V^{-1/2}f_k$.
-Writing as before
-\begin{align}
-    f_k= V^{1/2}\omega_k^{-1/2}(\xi_+ + i\eta_-)
-\end{align}
-we obtain two decoupled real harmonic oscillators in the adimensional variables $\xi_+$ and $\eta_-$ with frequency $\omega_k$,
-\begin{align}
-    i \hbar \frac{\partial}{\partial t} \psi_k(t; \xi_+,\eta_-) &= \frac{2\omega_k}{2}\omega_k\left( -\partial_{\xi_+}^2 - \partial_{\eta_-}^2 + (\xi_+^2 + \eta_-^2) \right)\,\psi_k(t; \xi_+,\eta_-)\,.
-\end{align}
-%
-The eigenfunctions are then
-\begin{align}
-    &\langle \xi_+,\eta_-| n_+, n_- \rangle = \frac{1}{\sqrt{2^{n_+ + n_-} n_+! n_-!}} H_{n_+}\left( \xi_+ \right) H_{n_-}\left( \eta_- \right) \Big(\frac{1}{\pi}\Big)\,e^{-\frac{1}{2} (\xi_+^2 + \eta_-^2)}\,,\\
-    &\quad\text{with}\quad H_k |n_+,n_-\rangle = 2\hbar \omega_k (n_+ + n_- + 1) |n_+, n_-\rangle\,.
-\end{align}
-%
-The corresponding solution 
+This is precisely the \emph{complex} position representation \eqref{eq:complex_oscillator_position_rep_mixed} for each complex oscillator, with variable $z:= V^{-1/2} f_k$ (recall we absorbed the mass so that $[z]=E^{-\frac{1}{2}}$).
 
-The solutions are thus well-known energy eigenstates
+We solve by separation of variables, writing the wave functional as a product over Fourier modes\footnotemark[\getrefnumber{fn:double_counting_k_geq_0}]
 \begin{align}
-    \psi_{n_k}(t; f_k, f_k^*) &= \left( \frac{\omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{\omega_k}{\hbar}} f_{k} \right) e^{-\frac{\omega_k}{2\hbar} f_{k}^2} e^{-i E_{n_k} t/\hbar}, \quad
-    E_{n_k} = \hbar \omega_k \left( n_k + \tfrac{1}{2} \right), \quad n_k = 0, 1, 2, \dots
+    \Psi[t; \{f_k\}_k] = \prod_{k\geq 0} \psi_k(t; f_k, f_k^*)\,\,\,\Rightarrow\,\,\,
+    i \frac{\partial}{\partial t} \psi_k(t; f_k, f_k^*) = \left( -V\frac{\partial^2}{\partial f_k \,\partial f_k^*} + \frac{\omega_k^2}{V} |f_k|^2 \right)\,\psi_k(t; f_k, f_k^*)\quad \forall k.
 \end{align}
-The general solution of the Schrödinger equation is thus
+Repeating the previouse treatment, denote adimensional variables 
 \begin{align}
-    \Psi[t; f] &= \prod_k \psi_{n_k}(t; f_k, f_k^* ) 
-    = \prod_k \left( \frac{\omega_k}{\pi \hbar} \right)^{1/4} \frac{1}{\sqrt{2^{n_k} n_k!}} H_{n_k}\left( \sqrt{\frac{\omega_k}{\hbar}} f_{k} \right) e^{-\frac{\omega_k}{2\hbar} f_{k}^2} e^{-i E_{n_k} t/\hbar}.
+    V^{-1/2} \omega_k^{1/2} f_k = \frac{1}{\sqrt{2}}\left(\xi^{(k)}_+ + i \eta^{(k)}_-\right).
 \end{align}
-This solution corresponds to the Fock space state
+The single mode hamiltonian becomes a 2D real harmonic oscillator
 \begin{align}
-    |\Psi\rangle = \bigotimes_k |n_k\rangle,
+    i \frac{\partial}{\partial t} \psi_k(t; \xi_+^{(k)},\eta_-^{(k)}) &= \frac{\omega_k}{2}\left( -\partial_{\xi_+^{(k)}}^2 - \partial_{\eta_-^{(k)}}^2 + (\xi_+^{(k)2} + \eta_-^{(k)2}) \right)\,\psi_k(t; \xi_+^{(k)},\eta_-^{(k)})\,.
 \end{align}
-i.e. the state with $n_k$ particles in the mode $k$ for all $k$.
+The normalized eigenfunctions are just Hermite polynomials times Gaussian factors 
+\begin{align}
+    &\langle \xi_+^{(k)},\eta_-^{(k)}| n_+, n_- \rangle = \frac{1}{\sqrt{2^{n_+ + n_-} n_+! n_-!}} H_{n_+}\left( \xi_+^{(k)} \right) H_{n_-}\left( \eta_-^{(k)} \right) \Big(\frac{1}{\pi}\Big)^{\frac{1}{2}}\,e^{-\frac{1}{2} (\xi_+^{(k)2} + \eta_-^{(k)2})}\,,\\[5pt]
+    &\quad\text{with energies }\quad H_k |n_+,n_-\rangle = \hbar \omega_k (n_+ + n_- + 1) |n_+, n_-\rangle\,.
+\end{align}
+The time evolution of such a state is then simply a phase factor
+\begin{align}
+    \langle \xi_+^{(k)},\eta_-^{(k)}| e^{ -i H_k t/\hbar} |n_+, n_- \rangle = e^{-i \omega_k (n_+ + n_- + 1) t} \langle \xi_+^{(k)},\eta_-^{(k)}| n_+, n_- \rangle.
+\end{align}
+
+We are interested in states $|n_k, n_{-k}\rangle$ with definite quanta of the original oscillators with modes $\pm k$.
+These are again eigenstates of the Hamiltonian with eigenvalues $\hbar \omega_k (n_k + n_{-k} + 1)$ since they correspond to a simple rotation of the 2D oscillator.
+The relation \eqref{eq:clebsh_gordan_relation_original_rotated_oscillator_states} between states with definite quanta of original and rotated oscillators is
+\begin{align}
+    |n_k, n_{-k}\rangle &= \sum_{j=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{j} \binom{n_{-k}}{l}\sqrt{\frac{(j+l)!\, (n_k + n_{-k} - (j+l))!}{n_k!\, n_{-k}!\, 2^{(n_k+n_{-k})}}}\,\,| j+l, n_k + n_{-k} - (j+l)\rangle_{\pm}\,.
+\end{align}
+We can thus express the time evolution of the wave function of the state $|n_k, n_{-k}\rangle$ in the $\hat{\phi}$ representation as
+\begin{align}
+    \langle f_k | e^{-i H_k t/\hbar} | n_k, n_{-k} \rangle 
+    &= e^{-i \omega_k (n_k + n_{-k} + 1) t} \langle f_k | n_k, n_{-k} \rangle
+    \\
+    &=  e^{-i \omega_k (n_k + n_{-k} + 1) t} \left(\frac{\omega_k}{V}\right)^{\frac{1}{2}} \langle \xi_+^{(k)},\eta_-^{(k)} | n_k, n_{-k} \rangle
+    \\
+    &=  e^{-i \omega_k (n_k + n_{-k} + 1) t} \left(\frac{\omega_k}{V\pi}\right)^{\frac{1}{2}} e^{-\frac{\omega_k}{2V} |f_k|^2} \frac{1}{\sqrt{n_k!\, n_{-k}!}} \frac{1}{2^{(n_k + n_{-k})}} 
+    \\
+    &\qquad\times \sum_{j=0}^{n_k} \sum_{l=0}^{n_{-k}} \binom{n_k}{j} \binom{n_{-k}}{l} H_{j+l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Re}f_k$})\, H_{n_k + n_{-k} - j-l}(\text{\scriptsize $V^{-\frac{1}{2}}\omega_k^{\frac{1}{2}}\text{Im}f_k$})\,.
+\end{align}
+General states $\{n_k\}_k\rangle\in\mathcal{F}=\bigotimes_k\mathcal{M}_k$ with definite number of quanta in each mode are treated as before by taking products over all modes $k\geq 0$.
+The time evolution of the wave functional in the $\hat{\phi}$ representation for such states is thus
+\begin{align}
+    \langle \{f_k\}_k | e^{-i \hat{H} t/\hbar} | n_{k_1}\dots n_{k_N} \rangle 
+    &= e^{-i \sum_{k\geq0} \omega_k (n_k + n_{-k} + 1) t} \prod_{k\geq0} \langle f_k | n_k, n_{-k} \rangle\,.
+\end{align}
+General superpositions of tensor states are treated by linearity as before.
 %
 \end{mytheorem}
 
