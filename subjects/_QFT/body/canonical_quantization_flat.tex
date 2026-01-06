@@ -754,7 +754,7 @@ This is not a problem in flat spacetime, where Poincaré invariance selects a pr
 
 
 %=========================================================
-\subsection{Representations of the Fock space}
+\subsection{Representations of the Fock space}\label{sec:representation_field_fock_space}
 %=========================================================
 
 
@@ -1009,7 +1009,7 @@ In particular, in the $\hat{\phi}$ and $\hat{\pi}$ representation, in position a
 %=============================================================
 %-------------------------------------------------------------------
 
-\begin{mytheorem}[Hilbert spaces for mode $k$ harmonic oscillators of the Klein-Gordon field\questiontag{Check}]
+\begin{mytheorem}[Hilbert spaces for mode $k$ excitations of the Klein-Gordon field\questiontag{Check}]
 %
 When the field $\phi(t,\mathbf{x})$ is expressed in the space variable $\mathbf{x}$ we can identify\footnote{provided the conditions are indeed such that it actually makes sense to talk about particles} a single-particle Hilbert space of the form $\mathcal{H}_1\simeq L^2_{\mathbf{x}}(\R^3)$ and corresponding $n$-particle Hilbert spaces $\mathcal{H}_1^{\otimes^n}$ for excitations with \emph{definite position} $\mathbf{x}$, that is particles.
 %
@@ -1266,25 +1266,25 @@ The probability density for the phase {$\arg(f_k)$} is thus uniform in {$[0, 2\p
 Having decomposed the Klein-Gordon field into its constituting uncoupled harmonic oscillators and found the corresponding wave functions, we now compute the field fluctuations i.e. the probability of finding a given set of Fourier modes $\{f_k\}_k$ or equivalently field values $\{f(x)\}_x$ when the Fock space $\mathcal{F}$ is in a given state $|\Psi\rangle$.
 %
 We could consider the vacuum state $|0\rangle$ where all oscillators are in their ground state, excited states $|n_{k_1}\dots n_{k_m}\dots \rangle$ with $n_k$ quanta in the mode $k$, coherent states $|\{\alpha_k\}\rangle$ or arbitrary entangled states.
-%
-Indeed the Fock space decomposes as\footnote{Here $k\geq0$ is a shorthand to denote a given choice of modes to avoid the double sum over $\pm k$.}
+
+In practice, we showed the Fock space decomposes as\footnote{Here $k\geq0$ is a shorthand to denote a given choice of modes to avoid double counting $\pm k$.}
 \begin{align}
-    \mathcal{F}= \bigotimes_{k\in\mathrm{modes}}\mathcal{M}_k = \bigotimes_{k\geq 0}\Big(\mathcal{M}_k\otimes\mathcal{M}_{-k}\Big)
+    \mathcal{F}= \bigotimes_{k\in\mathrm{modes}}\!\!\!\mathcal{M}_k = \bigotimes_{k\geq 0}\Big(\mathcal{M}_k\otimes\mathcal{M}_{-k}\Big)
     =\bigotimes_{k\geq 0}\Big(\underbrace{\mathcal{M}^{(k)}_+\otimes\mathcal{M}^{(k)}_-}_{\equiv \mathcal{M}_k\otimes\mathcal{M}_{-k}}\Big)\,.
 \end{align}
-We have a Hilbert basis of the Fock space made of common eigenvectors of the \emph{commuting normal} operators $\{\hat{\phi}_k(t_0)\}_{k}$ as $f$ varies over all field possible field configurations\footnote{cf. the discussion on $\hat{\phi}$ eigenstates in the next section.}
+In Section \ref{sec:representation_field_fock_space} we discussed \emph{abstractly} the common spectral basis of $\mathcal{F}$ for the \emph{commuting normal} operators $\big\{\hat{\phi}_x(t_0),\,\hat{\phi}_k(t_0)\big\}_{x,k}$, namely
 \begin{align}
-    |f\rangle \equiv |\{f(x)\}_x\rangle\equiv |\{f_k\}_k\rangle := \otimes_k |f_k\rangle, \qquad \hat{\phi}_{k}(t_0) |f\rangle = f_{k} \,|f\rangle\,, \,\, f_{k}\in\C\, \quad \forall k\in\text{Fourier modes.}
+\begin{aligned}
+    &|f\rangle := \mu^{\underset{x}{\sum}\frac{d-1}{4}} |\{f(x)\}_x \rangle = \mu^{\underset{x}{\sum}\frac{d-1}{4}}\!\! \det(F)^{-\frac{1}{2}} |\{f_k\}_k \rangle,\,\,\, \hat{\phi}_{x,k}(t_0) |f\rangle = f_{x,k} \,|f\rangle\,\, \forall\, x\in V \text{ or } k\in\text{Fourier modes}\,.
+\end{aligned}
 \end{align}
-The corresponding resolution of the identity on the total Fock space reads
+This basis is now \emph{concretely} obtained in terms of Fourier modes $\{f_k\}_k$ as the tensor product of spectral bases of each two-mode Hilbert space $\mathcal{M}_k\otimes \mathcal{M}_{-k}\equiv \mathcal{M}_+^{(k)}\otimes \mathcal{M}_{-}^{(k)}$, namely we define
 \begin{align}
-    \mathbb{I}_{\mathcal{F}} = \int Df \,\, |f\rangle \langle f| = \prod_{k\geq0} \int_{\C} d^2\!f_k \,\, |f_k\rangle \langle f_k |
+    |\{f_k\}_k\rangle := \otimes_k |f_k\rangle, \quad |f_k\rangle = \Big(V^{-\frac{1}{2}}\omega_k^{\nicefrac{1}{2}}\Big)\, |\xi_+\rangle \otimes |\eta_-\rangle \in \mathcal{M}_+^{(k)}\otimes \mathcal{M}_{-}^{(k)}\,.
 \end{align}
-where $Df=\prod_{k\geq0} d^2\!f_k=\prod_{{x}\in\R^3}df(x)$ is the formal product of Lebesgue measures over all Fourier modes or equivalently all space values.
 %
+Everything is made rigorous by imposing IR regularization, so that Fourier modes $k$ become countable discrete and we get the changes \eqref{eq:IR_reg_replacements}.
 
-Impose some IR regularization, so that Fourier modes $k$ are countable discrete and Fourier trasnforms change as discussed in \eqref{eq:IR_reg_replacements} above.
-%
 Assume the field is in the pure tensor state with $n_k$ quanta in the mode $k$ i.e. the harmonic oscillator labelled by $k$ is in the $n_k$-th excited state,
 \begin{equation}
     |\Psi\rangle \equiv |n_{k_1}\dots n_{k_m}\dots \rangle.
