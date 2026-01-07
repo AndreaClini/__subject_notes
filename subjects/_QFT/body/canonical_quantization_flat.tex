@@ -408,8 +408,10 @@ There are two main ways to excite a harmonic oscillator, i.e. to increase its en
 \end{itemize}
 %
 The first mechanism is essentially how fields of different species excite each other via interactions.
+A concrete example is how the electron field excites the electromagnetic field to produce photons e.g. when electrons in an antenna oscillate due to an applied voltage and excite the EM field to produce radio waves.
+
 The second is how (quantum) fields in curved spacetime get excited by the expansion of the universe or by time-dependent gravitational fields.
-A primary example if inflation, that modifies frequencies of oscillators up to turning some of them upside-down leading to run-away solutions.
+A primary example if inflation, that modifies frequencies of oscillators even up to turning some of them upside-down leading to run-away solutions.
 %
 \end{mytheorem}
 
@@ -468,7 +470,7 @@ More generally the in-vacuum have overlap with out-Fock states given by
     &\quad\Rightarrow\quad |0\rangle_{\mathrm{in}} = \sum_{n=0}^\infty e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}} |n\rangle_{\mathrm{out}}.
 \end{align}
 }
-General in states have overlap with out-states given by
+General in states have overlap with out-states given by\todotag{CHECK}
 {\small
 \begin{align}
     {}_{\mathrm{out}}\langle n | m \rangle_{\mathrm{in}} &= {}_{\mathrm{out}}\langle 0 | \frac{(a_{\mathrm{out}}\big)^n}{\sqrt{n!}}\frac{(a_{\mathrm{out}}^\dagger-J_0^\dagger\big)^m}{\sqrt{m!}} e^{-\tfrac{1}{2} |J_0|^2} e^{iJ_0a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
@@ -1697,15 +1699,33 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 %======================================================================
 %------------------------------------------------------------------
 
-We would like to identify states in the Fock space $\mathcal{F}$ that correspond to a given number of particles in a given mode, as well as coherent states that approximate classical field configurations.
-
-We anticipate that indeed is not always the case that creation operators $a_k^{\dagger}$ create a particle in the mode $k$ when acting on a given state, nor that number operators $N_k = a_k^{\dagger} a_k$ count the number of particles in the mode $k$.
-The most immediate example is indeed given by squeezed states aka coherent states of the second kind, that are superpositions of different number eigenstates and do not have a well-defined number of particles in any mode.
-
 
 %=======================================================================
 \subsection{States of the field}
 %=======================================================================
+
+\begin{mytheorem}[Particle \& wave interpretations of field excitations\questiontag{Check \& improve}]
+%
+We would like to identify states of the Fock space $\mathcal{F}$ that correspond to a given number of particles in a given mode, as well as (coherent) states that approximate classical field configurations.
+We remark it does not always make sense to interpret excitations of the field in terms of particles.
+There are several caveats to keep in mind.
+\begin{itemize}
+    \item As discussed in Section \ref{sec:harmonic_oscillators} it is not always the case that ladder operators $a_k^{(\dagger)}$ create/destroy a particle in the mode $k$ when acting on a given state, nor that a given state has a well-defined number of particles i.e. is an eigenstate of the number operators $N_k = a_k^{\dagger} a_k$.
+    The most immediate examples are coherent (squeezed) states, superpositions of different number eigenstates without a well-defined number of particles in any mode, that return c-numbers when acted upon by ladder operators.
+    %
+    \item  The particle interpretation requires the potential of a given mode to be bounded from below, so that the spectrum of excitations is discrete and we can identify the corresponding quanta with particles.
+    When the potential is unbounded from below, the spectrum of mode $k$ excitations is continuous, we have run-away solutions and the notion of particles is completely lost.
+    %
+    \item The particle interpretation is valid only in a perturbative regime, where interactions are weak and can be treated as small perturbations of a free theory whose asymptotic states are well-defined particle states.
+    %
+    \item The interpretation is highly frame-dependent, as shown e.g. by the Unruh effect and Hawking radiation.
+    Both for accelerated observers in flat spacetime and inertial observers in curved spacetimes, the notion of particles is observer-dependent and different observers will disagree on the particle content of a given state.
+    %
+\end{itemize}
+On the other hand, the wave interpretation is always valid, and we can always consider the wave functional of the system and compute the probability density for field configurations at a given time.
+\end{mytheorem}
+
+
 
 
 
