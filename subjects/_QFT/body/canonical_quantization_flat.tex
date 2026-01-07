@@ -15,7 +15,7 @@
 
 This section fixes the notation and reviews the theory of finite dimensional classical and quantum harmonic oscillators, which are the building blocks of Quantum Field Theories.
 
-\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\questiontag{Check}]
+\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\questiontag{Check \& improve}]
 %
 The \emph{classical} harmonic oscillator with mass $m$ and frequency $\omega$ is described by the Hamiltonian
 \begin{equation}
@@ -100,13 +100,25 @@ This corresponds to normal-ordering of the previous \emph{quantum} Hamiltonian, 
 As long as gravity is ignored, constant energy shifts do not affect the dynamics of the system, and we can safely normal-order the Hamiltonian.
 In general relativity, all forms of energy will instead source the energy-momentum tensors and thus the gravitational field, and we cannot simply ignore the zero-point energy anymore.
 
+
+\begin{wrapfigure}[16]{r}{0.45\textwidth} % 14 = lines to wrap; adjust as needed
+  \centering
+  \vspace{-0.7\baselineskip}            % optional: nudge up
+  \includegraphics[width=0.4\textwidth,height=5cm]{images/harmonic_oscillator_wf.png}%\\[1pt]
+  %\includegraphics[width=0.35\textwidth,height=3.5cm]{images/lake_fourier.png}
+  %\includegraphics[width=0.30\textwidth,height=5cm,keepaspectratio]{images/lake_fourier.png}
+  \caption{\small Wave functions of the quantum oscillator. The classically allowed region $\xi^2=\alpha^2 x^2\leq 2n+1$ for energies $E_n=\hbar \omega (n+\frac{1}{2})$ is indicated by the dashed lines.}
+\end{wrapfigure}
 It is fundamental to understand how the \emph{fixed} frequency $\omega$ of the oscillator determines the likelyhood of finding the system at a given elongation from equilibrium i.e. the amplitude of oscillation.
 Indeed, all wave functions are proportional to a Gaussian factor, multiplied by suitable Hermite polynomials and normalization constants
+{\small
 \begin{align}
-    \psi_n(q) = C_n\,H_n(\xi)\, e^{-\tfrac{\xi^2}{2}} = C_n \,\, H_n\Big(\sqrt{\tfrac{m\omega}{\hbar}} q\Big) \,\, e^{-\frac{m \omega}{2 \hbar} q^2}
-     \,\propto\, e^{-\frac{m \omega}{2 \hbar} q^2}.
+    \psi_n(q) = C_n\,H_n(\xi)\, e^{-\tfrac{\xi^2}{2}} \!=\! C_n \,\, H_n\Big(\sqrt{\tfrac{m\omega}{\hbar}} q\Big) \,\, e^{-\frac{m \omega}{2 \hbar} q^2}
+     \propto\ e^{-\frac{m \omega}{2 \hbar} q^2}.
 \end{align}
-Crucially, the smaller is the frequency $\omega$, the wider is the Gaussian and in turn the higher the probability of finding the oscillator at large elongations from equilibrium i.e. of observing large amplitudes of oscillation.
+}
+Higher wave functions are more likely found at larger elongations, but the Gaussian envelope always dominates at large $|q|$.
+Crucially, the smaller is the frequency $\omega$, the wider is the Gaussian envelope and in turn the higher the probability of finding the oscillator at large elongations from equilibrium i.e. of observing large amplitudes of oscillation.
 This is already familiar from Electrodynamics: it is very unlikely to find high-frequency electromagnetic waves with large amplitudes, whereas low-frequency waves are easily found with large amplitudes.
 %
 \end{mytheorem}
@@ -150,20 +162,20 @@ The expression dramatically simplifies upon choosing
     \alpha = \sqrt{\frac{m\omega}{2\hbar}} \quad \Longrightarrow \quad \beta = \frac{1}{\sqrt{2 m \omega \hbar}}\,.
 \end{align}
 The final expressions are
-\begin{align}
+\begin{align}\label{eq:oscillator_hamiltonian_written_ladder_operators}
     a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
     H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
 \end{align}
 If $J$ and $K$ are independent of the canonical variables, this form yields convenient equations of motion for $a$ (we might also further shift $a$ to absorb the linear terms).
-On the other hand, if $J$ or $K$ do depend on $q,\,p$, this suggests it might be more convenient to define ladder operators in some other way!
+On the other hand, if $J$ or $K$ do depend on $q,\,p$, this suggests it might be more \textbf{convenient to define ladder operators in some other way!}
 
 In case $J,\,K$ are indepndent of the canonical variables, the equations of motion for $a$ read
-\begin{align}
+\begin{align}\label{eq:1d_oscillator_ladder_operator_time_evolution}
     &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J + i \sqrt{\frac{m \omega \hbar}{2}} K\\
     &\Longrightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}.
 \end{align}
 For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i, t_f]$, we have
-\begin{align}
+\begin{align}\label{eq:a_in_a_out_1d_oscillator}
     a(t) &= \begin{cases}
         a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
         a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
@@ -250,7 +262,7 @@ In the mixed case it is instead convenient to use the position representation fo
 \end{align}
 Crucially, note that as an operator $\big(i\partial_z)^\dagger = i \partial_{z^*}$ since the adjoint flips the sign of derivatives $\partial_{x,y}^\dagger = -\partial_{x,y}$ wrt real variables, so that indeed the CCR are obeyeed in the forms prescribed.
 
-We can also consider the Hamiltonian for more complex variables
+We can also consider \textbf{oscillators with more complex variables}
 \begin{align}
     H = \tfrac{1}{m} p_z^{j\,\dagger}\, p_z^j+ m \omega^2 q_z^{j\,\dagger}\,q_z^j\,,\quad \{q^i_z, p_z^{j\, (\dagger)}\} = \delta^i_j\,.
 \end{align}
@@ -269,7 +281,7 @@ However, in the former case the Hamiltonian is invariant only provided $U$ is al
 \end{align}
 Complex harmonic oscillators with CCR implemented with conjugation thus have a larger symmetry group $U(n)$ than those with CCR implemented without conjugation, which only have $O(n)$ symmetry.
 
-The advantage of the mixed decomposition \eqref{eq:complex_oscillator_mixed_decomposition} is that it yields a nicer decomposition of the complex variables $q_z,\,p_z$ in terms of ladder operators of real oscillators \emph{rotated} by $\pi/4$ in phase space.
+The \textbf{advantage of the mixed decomposition} \eqref{eq:complex_oscillator_mixed_decomposition} is that it yields a \textbf{nicer decomposition} of the complex variables $q_z,\,p_z$ \textbf{in terms of ladder operators} of real oscillators \emph{rotated} by $\pi/4$ in phase space.
 Define ladder operators for each real DoF $x,y$ as usual
 \begin{align}
     &a_{x,y}= \frac{1}{\sqrt{2}}\left(\sqrt{m\omega} q_{x,y} + \frac{i}{\sqrt{m\omega}} p_{x,y}\right),  \quad [a_{x,y}, a_{x,y}^\dagger] = \delta_{xy}\,\\
@@ -303,7 +315,7 @@ In the mixed case \eqref{eq:complex_oscillator_mixed_decomposition} we instead g
 
 
 
-\begin{mytheorem}[Ladder operator toolkit\todotag{Finis}]
+\begin{mytheorem}[Ladder operator toolkit\todotag{Finish}]
 %
 Ladder operators $a$ and $a^\dagger$ obeying $[a, a^\dagger] = 1$ have the following useful properties.
 \begin{itemize}
@@ -346,49 +358,147 @@ Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined 
 Note it is not assured they exist since $a$ is not a \emph{normal} operator!
 We construct them explictly for arbitrary $\alpha\in \C$ as
 \begin{align}
-    |\alpha\rangle \propto  \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} |n\rangle = \sum_{n=0}^\infty \frac{(\alpha a^\dagger)^n}{n!} |0\rangle
+    |\alpha\rangle \,\propto \, \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} |n\rangle = \sum_{n=0}^\infty \frac{(\alpha a^\dagger)^n}{n!} |0\rangle
     = e^{\alpha a^\dagger} |0\rangle\quad \Rightarrow\quad a|\alpha\rangle = a e^{\alpha a^\dagger} |0\rangle = \frac{d}{da^\dagger} e^{\alpha a^\dagger} |0\rangle = \alpha e^{\alpha a^\dagger} |0\rangle = \alpha |\alpha\rangle.
 \end{align}
 To find the normalization it is first convenient to note that
 \begin{align} 
-    e^{\beta a}|0\rangle = 1+\beta a + \frac{\beta^2}{2} a^2 + \ldots = |0\rangle, \quad \forall \beta \in \C\,.
+    e^{\beta a}|0\rangle = 1+\beta a + \frac{\beta^2}{2} a^2 + \ldots = |0\rangle\, \quad \forall \beta \in \C\,.
 \end{align}
 We can thus insert $e^{-\alpha^*a}$ next to $|0\rangle$ without changing anything and then use the BCH formula to find 
 \begin{align}
-    |\alpha\rangle &\propto\, e^{\alpha a^\dagger} |0\rangle = e^{\alpha a^\dagger} e^{-\alpha^* a} |0\rangle
+    |\alpha\rangle &\,\propto\, e^{\alpha a^\dagger} |0\rangle = e^{\alpha a^\dagger} e^{-\alpha^* a} |0\rangle
     = e^{\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger - \alpha^* a} |0\rangle\,,\qquad e^{\alpha a^\dagger - \alpha^* a}\in U(\mathcal{H}).
 \end{align}
-The operators $e^{\alpha a^\dagger - \alpha^* a}$ are unitary since $(\alpha a^\dagger - \alpha^* a)^\dagger = -(\alpha a^\dagger - \alpha^* a)$, the normalized coherent state is then
+The operators $e^{\alpha a^\dagger - \alpha^* a}$ are unitary since $(\alpha a^\dagger - \alpha^* a)^\dagger = -(\alpha a^\dagger - \alpha^* a)$, and the normalized coherent state is then
 \begin{align}
     |\alpha\rangle = e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}|0\rangle =  e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}e^{-\alpha^* a}|0\rangle = e^{\alpha a^\dagger - \alpha^* a} |0\rangle.
 \end{align}
 %
 Coherent states also warn us about the identification of ladder operators as creating/destroying a particle.
-This identification is indeed justified only on states with a definite number of particles, like the Fock states $|n\rangle$ or superpositions thereof.
+This identification is indeed justified only on states with a definite number of particles, like Fock states $|n\rangle$ or superpositions thereof.
 On the other hand the action of $a^\dagger$ leave coherent states invariant up to a complex factor.
 \end{mytheorem}
 
 
 
+%=========================================================
+\subsection{Exciting Harmonic Oscillators \& Bogoliubov Transformations}
+%=========================================================
+
+
 \begin{mytheorem}[Exciting harmonic oscillators: driving forces \& parametric resonance\todotag{Finish}]
 %
-There are two main ways to excite a harmonic oscillator, i.e. to increase its energy.
+There are two main ways to excite a harmonic oscillator, i.e. to increase its energy and amplitude of oscillation.\todotag{add image for both methods}
 \begin{itemize}
-    \item Apply an external \emph{driving force} $F(t)$, modifying the Hamiltonian as
+    \item Apply an external \emph{driving force} $F(t)$ that \emph{shakes} the oscillator, modifying the Hamiltonian as
     \begin{equation}
         H = \tfrac{1}{2m}p^2 + \tfrac{m\omega^2}{2} q^2 - q F(t).
     \end{equation}
-    If the driving force oscillates at the natural frequency of the oscillator, $F(t) = F_0 \cos(\omega t)$, then resonance occurs and the amplitude of oscillation increases linearly with time.
+    If the force oscillates at roughly the natural frequency of the oscillator $F(t) \,\propto e^{i\omega t}$, then resonance occurs and the amplitude of oscillation increases \emph{linearly} with time.
     %
     \item Change in time the \emph{parameters} of the oscillator, like its frequency $\omega(t)$ or mass $m(t)$, modifying the Hamiltonian as
     \begin{equation}
         H = \tfrac{1}{2m(t)}p^2 + \tfrac{m(t)\omega(t)^2}{2} q^2.
     \end{equation}
-    If the parameters are changed periodically at twice the natural frequency of the oscillator, parametric resonance occurs and the amplitude of oscillation increases exponentially with time.
+    If parameters are changed periodically at around twice the natural frequency of the oscillator, \todotag{not sure, check}parametric resonance occurs and amplitude of oscillation increases \emph{exponentially} with time.
+    %
+    In the classical case, the oscillator needs to be already displaced from equilibrium to be excited via parametric resonance.
+    In the quantum case, however, zero-point fluctuations of the ground state are sufficient to trigger the resonance.
 \end{itemize}
 %
-The first is essentially how QFTs of different species excite each other via interactions, while the second is how QFTs in curved spacetime get excited by the expansion of the universe or by time-dependent gravitational fields.
+The first mechanism is essentially how fields of different species excite each other via interactions.
+The second is how (quantum) fields in curved spacetime get excited by the expansion of the universe or by time-dependent gravitational fields.
+A primary example if inflation, that modifies frequencies of oscillators up to turning some of them upside-down leading to run-away solutions.
+%
 \end{mytheorem}
+
+
+
+\begin{mytheorem}[Driving forces \& first examples of Bogoliubov transformations\todotag{Finish}]
+%
+Let us consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively
+\begin{align}
+    H = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 - J(t) q - K(t) p.
+\end{align}
+We define ladder operators to diagonalize the free hamiltonian and get
+\begin{align}
+    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
+    H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
+\end{align}
+If $J,\,K$ are independent of the canonical variables, the equations of motion for $a$ read
+\begin{align}%\label{eq:1d_oscillator_ladder_operator_time_evolution}
+    &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J + i \sqrt{\frac{m \omega \hbar}{2}} K\\
+    &\Longrightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}.
+\end{align}
+For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i, t_f]$, we have
+\begin{align}%\label{eq:a_in_a_out_1d_oscillator}
+    a(t) &= \begin{cases}
+        a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
+        a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
+        a(t_f) e^{-i\omega (t-t_f)}=: a_{\mathrm{out}} e^{-i\omega (t-t_f)}, & t > t_f,
+    \end{cases}
+\end{align}
+where we define
+\begin{align}
+    a_{\mathrm{out}} &= a_{\mathrm{in}} + J_0\,,\quad J_0 := - \frac{i}{\hbar} \int_{t_i}^{t_f} dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{i\omega t'}.
+\end{align}
+
+We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|0\rangle_{\mathrm{in}}$ defined by $a_{\mathrm{in}} |0\rangle_{\mathrm{in}} = 0$, but rather 
+\begin{align}
+    a_{\mathrm{out}} |0\rangle_{\mathrm{in}} = J_0 |0\rangle_{\mathrm{in}} \neq 0.
+\end{align}
+The initial vacuum is thus a \emph{coherent} state of the out-oscillator, i.e. an excited state with a Poissonian distribution of particle number.
+Namely we can rewrite
+\begin{align}
+    |0\rangle_{\mathrm{in}} = e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = e^{J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}} |0\rangle_{\mathrm{out}}.
+\end{align}
+This is confirmed acting explicitly with $a_{\mathrm{out}}$ on the rhs, using $[a_{\mathrm{out}},J_0]=0$,
+\begin{align}
+    a_{\mathrm{out}} |0\rangle_{\mathrm{in}} &= \frac{d}{d a_{\mathrm{out}}^\dagger} \left(e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}\right)
+    = J_0 e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = J_0 |0\rangle_{\mathrm{in}}.
+\end{align}
+More generally the in-vacuum have overlap with out-Fock states given by
+{\small
+\begin{align}
+    {}_{\mathrm{out}}\langle n |0\rangle_{\mathrm{in}} &= e^{-\frac{1}{2} |J_0|^2} {}_{\mathrm{out}}\langle n | \sum_{m=0}^\infty \frac{(J_0 a_{\mathrm{out}}^\dagger)^m}{m!} |0\rangle_{\mathrm{out}}
+    = {}_{\mathrm{out}}\langle 0 | \frac{d^n}{d a_{\mathrm{out}}^n} \left(e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}\right)
+    = e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}}
+    \\[6pt]
+    &\quad\Rightarrow\quad |0\rangle_{\mathrm{in}} = \sum_{n=0}^\infty e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}} |n\rangle_{\mathrm{out}}.
+\end{align}
+}
+General in states have overlap with out-states given by
+{\small
+\begin{align}
+    {}_{\mathrm{out}}\langle n | m \rangle_{\mathrm{in}} &= {}_{\mathrm{out}}\langle 0 | \frac{(a_{\mathrm{out}}\big)^n}{\sqrt{n!}}\frac{(a_{\mathrm{out}}^\dagger-J_0^\dagger\big)^m}{\sqrt{m!}} e^{-\tfrac{1}{2} |J_0|^2} e^{iJ_0a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
+    \\
+    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} {}_{\mathrm{out}}\langle 0 |\frac{d^n}{d a_{\mathrm{out}}^n} \left(a_{\mathrm{out}}^\dagger - J_0^\dagger\right)^m e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
+    \\
+    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}{}_{\mathrm{out}}\langle 0 |\frac{d^\ell}{d (a_{\mathrm{out}}^\dagger)^\ell}\left(a_{\mathrm{out}}^\dagger - J_0^\dagger\right)^{m} \frac{d^{n-\ell}}{d (a_{\mathrm{out}}^\dagger)^{n-\ell}} e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
+    \\
+    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}{}_{\mathrm{out}}\langle 0 |\frac{m!}{(m-\ell)!}\left(a_{\mathrm{out}}^\dagger - J_0^\dagger\right)^{m-\ell} J_0^{n-\ell} e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
+    \\
+    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}{}_{\mathrm{out}}\langle 0 |\frac{m!}{(m-\ell)!}(-1)^{m-\ell}(J_0^\dagger)^{m-\ell} J_0^{n-\ell} e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
+    \\
+    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}\frac{m!}{(m-\ell)!}(-1)^{m-\ell}(J_0^\dagger)^{m+n-2\ell}
+    \\
+    &=  \frac{e^{-\tfrac{1}{2} |J_0|^2}}{\sqrt{n!\, m!}} \sum_{\ell=0}^{n\wedge m} \binom{n}{\ell}\binom{m}{\ell}\ell!(-1)^{m-\ell}\,J_0^{m+n-2\ell}
+\end{align}
+}
+
+
+
+
+
+
+
+
+\end{mytheorem}
+
+
+
+
 
 
 
