@@ -1,12 +1,21 @@
 % !TeX root = ../geometry_main.tex
 %==========================================================
 %=========================================================
-\chapter{Differential geometry leftovers}
+\chapter{Differential Geometry}
 %=========================================================
 %=========================================================
 
 
 In this long chapter, we collect various random topics in differential geometry that I feel like writing down.
+
+
+%-----------------------------------------------------------------------
+%========================================================
+\section{Fundamentals} \todotag{To be written}
+%=========================================================
+%----------------------------------------------------------------------
+
+
 
 
 %-----------------------------------------------------------------------
@@ -792,11 +801,320 @@ Since $\delta \simeq \star d\,\star$ and $\delta \phi=0$ for 0-forms, both expre
 \end{mytheorem}
 
 
+
 %========================================================
- %\subsection{Spectral geometry} \todotag{To be written}
+\subsection{Spectral geometry} 
 %=========================================================
 
-\input{body/spectral_geometry.tex}
+\begin{mytheorem}[Introduction: can you hear the shape of a drum?]
+%
+Can we detect and describe (pseudo-)Riemannian structures \(\mathcal{E}\) directly, without reference to a particular metric \(g\)?
+Possibly yes, using \textbf{spectral geometry}.
+The idea is that the vibration spectrum \(\{\lambda_n\}\) of a manifold (the eigenvalues of a Laplace-type operator) depends only on \(\mathcal{E}\) and not on the choice of coordinates.
+The classical question of spectral geometry, posed by Hermann Weyl in 1911, is:
+%
+\begin{center}
+\emph{Does the spectrum \(\{\lambda_n\}\) encode all information about the shape, i.e. the structure \(\mathcal{E}\)?}
+\end{center}
+%
+The expectation is that the spectra \(\mathrm{spec}(\Delta_p)\) of the laplacian on fiber valued p-forms for different $p$ and fibers contain different information about $M$, possibly enough to reconstruct its shape completely.
+%
+\end{mytheorem}
+
+
+\vspace{-0.3mm}
+\begin{wrapfigure}[9]{r}{0.34\textwidth}
+  \centering
+  \vspace{-\intextsep}
+  \includegraphics[width=\linewidth]{images/seismic_wave.png}
+  %\caption{Shear vs. pressure seismic wave}
+  \label{fig:seismic_waves}
+\end{wrapfigure}
+
+\noindent
+For example, it is known that scalar (a.k.a. pressure, longitudinal) and vector (ak.a. shear, transverse) seismic waves travel and reflect off materials differently, e.g. shear waves propagate slower and do not travel through liquids since liquids do not support shear stresses by definition. Their spectra thus contain different information about the Earth's interior structure. This is indeed how seismologists study the Earth's structure and discovered, for example, that its core is liquid in the outer part and solid in the inner part.
+\bigskip
+
+
+\begin{mytheorem}[Types of waves on \(M\)]
+%
+On a given manifold we can consider fiber valued p-forms \(w(t)\) with time evolution governed by various differential equations.
+%
+\begin{enumerate}
+\item \textbf{Schrödinger equation }
+\(
+ i\hbar\,\partial_t w(x,t)
+ \;=\; -\frac{\hbar^2}{2m}\,\Delta_p\,w(x,t).
+\)
+\item \textbf{Heat equation }
+\(
+ \partial_t w(x,t)
+ \;=\; \,\Delta_p\,w(x,t).
+\)
+\item \textbf{Klein-Gordon/wave equation}
+\(
+ \,\partial_t^2 w(x,t)
+ \;=\; \beta^2\,\Delta_p\,w(x,t),\,
+\)
+where \(\beta\) is the propagation speed of the given type of wave, e.g. the speed of sound $\beta=c_s$ for pressure waves or the speed of shear waves $ \beta=c_{sh}$.
+%
+\end{enumerate}
+%
+Suppose we find an eigenform \(\tilde{\omega}(x)\) of \(\Delta_p\) with eigenvalue \(\lambda\):
+\[
+ \Delta_p\,\tilde{\omega}(x) \;=\; \lambda\,\tilde{\omega}(x).
+\]
+Since \(\Delta_p\) is self-adjoint wrt the Hodge inner product \((w,v)=\int_M w\wedge *v\), such eigenforms exist and form an orthonormal basis if $M$ is Riemannian, compact and without boundary (for simplicity).
+%
+Each evolution equations above is then solved by separation of variables as 
+\begin{align*}
+ \text{Schrödinger:}&\quad
+ w(x,t) \;=\; e^{\tfrac{i\hbar\lambda}{2m}\,t}\,\tilde{\omega}(x),\\[0.3em]
+ \text{Heat:}&\quad
+ w(x,t) \;=\; e^{-\,2\lambda\,t}\,\tilde{\omega}(x),\\[0.3em]
+ \text{Klein–Gordon:}&\quad
+ w(x,t) \;=\; e^{i\beta\lambda\,t}\,\tilde{\omega}(x).
+\end{align*}
+%
+It follows that the spectrum \(\mathrm{spec}(\Delta_p)\) is the \emph{overtone spectrum} of p-form type waves on the manifold \(M\).
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[Practical mathematical aspects of spectral geometry]
+%
+Several practical aspects must be considered regarding the rigorous mathematical formulation of spectral geometry.
+%
+\begin{itemize}
+\item \textbf{(Non)-compact riemannian manifolds} (theorem).
+If \((M,g)\) is a compact Riemannian manifold without boundary (it has then finite volume), for each degree $p$ the spectrum \(\mathrm{spec}(\Delta_p)\) of the Laplace-de Rham operator acting on $T^\star_\bullet M$-valued $p$-forms is discrete, with finite degeneracies and without accumulation points.
+
+On the other hand, if the manifold \(M\) has infinite volume (non-compact) then the spectrum of \(\Delta\) must develop a continuous part\footnote{Besides a possible still discrete point-spectrum.}, and we cannot hope to recover information from it since it is the same for all such manifolds, i.e. `all infinite volume drums sound the same'.
+
+\textbf{In practice} one models an arbitrarily large part of the universe by a compact Riemannian manifold \((M,g)\).  This allows us to describe, for example, 3-dimensional space at a fixed time.
+%
+\item \textbf{Pseudo-Riemannian manifolds}(open problem).
+The spectral geometry of \emph{pseudo}-Riemannian manifolds is still very little developed.
+The main difficulty is that the Hodge inner product has indefinite signature, so that Laplace-type operators on such manifolds are typically not elliptic and the spectral theorem does not apply.
+
+\textbf{In practice} one typically models spacetime as a compact Riemannian manifold \((M,g)\) after Wick rotation and then tries to recover the Lorentzian structure by analytic continuation.
+%
+\item \textbf{Boundaries.} The spectral geometry of manifolds is indeed studied.
+One needs to impose suitable boundary conditions on the eigenforms of \(\Delta_p\) at \(\partial M\), for example Dirichlet or Neumann conditions.
+
+\textbf{In practice} one typically models space(time) as a compact Riemannian manifold without boundary, or with boundary conditions that effectively make the boundary invisible to the waves considered like periodic BCs.
+%
+\end{itemize}
+
+\end{mytheorem}
+
+\begin{mytheorem}[Can you hear the shape of a drum? In general no, but often yes.]
+%
+In general, even in the simplest case of compact Riemannian manifolds without boundary, the spectra of $\Delta$ on \textbf{standard} $\R$\textbf{valued} $p$-forms do \textbf{not contain enough information to uniquely identify the geometric structure}.
+Indeed we shall see below that there is relatively little independent information contained in the spectra of $p$-forms because of the many symmetries of $\Delta$ relating the spectra for different $p$.
+%
+There are indeed examples of pairs \((M,g)\) and \((M',g')\) isospectral for \(\Delta\) on all degrees \(p\), but not isometric.
+Nevertheless, all known \textbf{counterexamples have limited physical significance}.
+They involve manifolds that are locally, but not globally, isometric (e.g.  one is a $k$-fold covering of the other); manifolds that are $\Delta_p$ isospectral only for some $p$; or manifolds occurring in discrete copies (e.g. mirror images).
+%
+
+The situation is different if one considers the spectra of Laplacians acting on more general tensor fields.
+For example, rank 2 \textbf{tensor fields} (in particular, metric perturbations) \textbf{contain new information} about the Riemannian structure wrt the sole $p$-forms.
+Indeed, a rank-2 tensor can be decomposed into scalar, vector and tensor parts, each with its own spectrum.
+While the spectra of scalar and vector parts are related to those of 0- and 1-forms, the tensor part contains genuinely new information not present in the spectra of any $\R$-valued $p$-form.
+%
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Hodge decomposition: exact, closed and harmonic forms \& spectra of $\Delta$]
+%
+For simplicity we consider a compact Riemannian manifold $(M,g)$ without boundary or with suitable boundary conditions like DBc or PBc.
+\emph{Partial} extensions to pseudo-riemannian manifolds or noncompact ones are possible.
+
+The spaces of differential p-forms admit the \textbf{Hodge decomposition} into subspaces orthogonal wrt the Hodge inner product
+\begin{align}
+    \Lambda_p \;=\;d\Lambda_{p-1}\;\oplus\;\delta\Lambda_{p+1}\;\oplus\;\Lambda_p^0.
+\end{align}
+The decomposition holds for arbitrary fiber-valued form since the operators \(d\), \(\delta\) and \(\Delta\) act only on the base manifold, so that 
+ \begin{equation}
+    \Lambda_p \otimes E_F = \left(d\Lambda_{p-1}\;\oplus\;\delta\Lambda_{p+1}\;\oplus\;\Lambda_p^0\right)\otimes E_F = \left(d\Lambda_{p-1}\otimes E_F\right)\;\oplus\;\left(\delta\Lambda_{p+1}\otimes E_F\right)\;\oplus\;\left(\Lambda_p^0\otimes E_F\right).
+\end{equation}
+Each subspace is invariant under the action of the Laplace-de Rham operator \(\Delta_p\) because $\Lambda_p^0:=\ker(\Delta_p)$ and the commutation relations \([\Delta,d]=0\) and \([\Delta,\delta]=0\) and $\Lambda_p^0:=\ker(\Delta_p)$.
+In particular $\Delta_p$ is invertible on the subspaces of exact and co-exact forms.
+Any eigenform of $\Delta$ lies entirely in one of these subspaces and its spectrum decomposes into
+\begin{equation}
+    \mathrm{spec}(\Delta_p) \;=\; \Big(\,\mathrm{spec}(\Delta_p|_{d\Lambda_{p-1}}) \;\cup\; \mathrm{spec}(\Delta_p|_{\delta\Lambda_{p+1}})\,\Big) \sqcup\; \underbrace{\mathrm{spec}(\Delta_p|_{\Lambda_p^0})}_{\equiv\{0\}}.
+\end{equation}
+The decomposition is \textbf{irredubile} i.e. there are no further invariant subspaces of \(\Delta_p\).
+\end{mytheorem}
+\begin{proof}
+\todotag{Insert}
+\end{proof}
+
+\begin{mytheorem}[Hodge decomposition \& de Rham cohomology]
+Each deRham cohomology class contains exactly one harmonic representative, because of the following.
+\begin{itemize}
+    \item Each harmonic form is closed and co-closed, but neither exact nor co-exact
+    \begin{align}
+        \Delta \omega = 0 \quad \Longrightarrow \quad d\omega = 0, \quad \delta \omega = 0.
+    \end{align}
+    \item Every exact (resp. co-exact) form is \emph{not} co-closed (resp. closed)
+    \begin{align}
+        \alpha = d\beta\,\Rightarrow\, \delta \alpha \neq 0, \qquad \eta = \delta \theta\,\Rightarrow\, d\eta \neq 0.
+    \end{align}
+\end{itemize} 
+The vector space of harmonic p-forms is thus linearly isomorphic to the p-th deRham cohomology group of the manifold
+\begin{align}
+    \Lambda_p^0 \cong H^p_{dR}(M) := \frac{\ker(d:\Lambda_p\to\Lambda_{p+1})}{\mathrm{im}(d:\Lambda_{p-1}\to\Lambda_p)}\,,\qquad B_p=\dim(H^p_{dR}(M)) = \dim(\Lambda_p^0).
+\end{align}
+The space $\Lambda_p^0$ is thus a topological invariant of the manifold, independent of the metric \(g\).
+This is non-trivial: even though $d$ depends only on the differentiable structure of $M$, the codifferential $\delta$ and hence the Laplacian $\Delta$ does depend on the metric $g$.
+\end{mytheorem}
+\begin{proof}
+\todotag{Insert}
+\end{proof}
+
+\begin{mytheorem}[Symmetries of $\Delta$ spectra]
+%
+The above `(co-)exatcness vs (co-)closedness' properties and the commutations relations $[\Delta,*]=[\Delta,d]=[\Delta,\delta]=0$ of the Laplace operator imply the following isomorphisms and symmetries of $\Delta$ spectra.
+\begin{itemize}
+    \item \textbf{Hodge duality.} The Hodge map
+    \begin{align}
+        \star:\underbrace{d\Lambda_{p-1}\oplus \delta\Lambda_{p+1} \oplus \Lambda_p^0}_{\Lambda_p} \longrightarrow \underbrace{d\Lambda_{n-p-1}\oplus \delta\Lambda_{n-p+1} \oplus \Lambda_{n-p}^0}_{\Lambda_{n-p}}
+    \end{align}
+    is an isomorphism interchaning the decomposition and preserving the spectra of $\Delta$ as 
+    \begin{align}
+        &\star: d\Lambda_{p-1} \;\longrightarrow\; \delta\Lambda_{n-p+1},\quad \mathrm{spec}(\Delta_{p}|_{d\Lambda_{p-1}}) = \mathrm{spec}(\Delta_{n-p}|_{\delta\Lambda_{n-p+1}}),\\[6pt]
+        &\star: \delta\Lambda_{p+1} \;\longrightarrow\; d\Lambda_{n-p-1},\quad \mathrm{spec}(\Delta_{p}|_{\delta\Lambda_{p+1}}) = \mathrm{spec}(\Delta_{n-p}|_{d\Lambda_{n-p-1}}),\\[6pt]
+        &\star: \Lambda_p^0 \;\longrightarrow\; \Lambda_{n-p}^0, \qquad \qquad\mathrm{spec}(\Delta_p|_{\Lambda_p^0}) = \mathrm{spec}(\Delta_{n-p}|_{\Lambda_{n-p}^0})\equiv \{0\}.
+    \end{align}
+    %
+    \item \textbf{(Co-)Exact duality.} The following maps are isomorphisms, respect spectra of $\Delta$ 
+    \begin{align}
+        &d: \delta\Lambda_{p+1} \;\longrightarrow\; d\Lambda_{p},\quad
+        \delta: d\Lambda_{p} \;\longrightarrow\; \delta\Lambda_{p+1}, \quad \mathrm{spec}(\Delta_{p+1}|_{d\Lambda_{p}}) = \mathrm{spec}(\Delta_p|_{\delta\Lambda_{p+1}})\\[7pt]
+        &\delta\circ d_{|\delta\Lambda_{p+1}} = \Delta_{p|\delta\Lambda_{p+1}},\qquad d\circ \delta_{|d\Lambda_p} = \Delta_{p+1|d\Lambda_p},
+    \end{align}
+    and the compositions are the restrictions of $\Delta$ to the respective subspaces. 
+\end{itemize}
+%
+This is suggestively shown in the following diagram, where equal colors indicate isomorphic subspaces with identical spectra of $\Delta$,
+
+\begin{samepage}
+\begin{align}
+  \begin{array}{l}
+    {\vdots}\\[0pt]
+    \Lambda_{p-1} = {\color{lightblue}d\Lambda_{p-2}}\;\oplus\;{\tikzmarknode{delp}{\color{blue}\delta\Lambda_p}}\;\oplus\;{\color{forestgreen}\Lambda_{p-1}^0}\\[12pt]
+    \Lambda_p     = {\tikzmarknode{dp}{\color{blue}d\Lambda_{p-1}}}\;\oplus\;{\tikzmarknode{delp1}{\color{violet}\delta\Lambda_{p+1}}}\;\oplus\;{\tikzmarknode{hp}{\color{yellow}\Lambda_p^0}}\\[8pt]
+    \Lambda_{p+1} = {\color{violet}d\Lambda_p}\;\oplus\;{\color{red}\delta\Lambda_{p+2}}\;\oplus\;\Lambda_{p+1}^0\\[0pt]
+    {\vdots} \\[0pt]
+    \Lambda_{n-p} = {\tikzmarknode{dnp}{\color{violet}d\Lambda_{n-p-1}}}\;\oplus\;{\tikzmarknode{delnp}{\color{blue}\delta\Lambda_{n-p+1}}}\;\oplus\;{\tikzmarknode{hnp}{\color{yellow}\Lambda_{n-p}^0}}\\[6pt]
+    \Lambda_{n-p+1} = {\color{blue}d\Lambda_{n-p}}\;\oplus\;{\color{lightblue}\delta\Lambda_{n-p+2}}\;\oplus\;{\color{forestgreen}\Lambda_{n-p+1}^0}\\[0pt]
+    {\vdots}
+  \end{array}.
+\end{align}
+%
+\begin{tikzpicture}[remember picture,overlay,>=Stealth,shorten >=2pt,shorten <=2pt]
+  %\draw[blue,<->] (delp.south) to[bend left=15] node[left=2pt] {\scriptsize $d\!-\!\delta$} (dp.north);
+  %\draw[blue,<->] (delp.south) to[bend left=13]node[left=2pt,yshift=4pt] {\scriptsize $d$ - $\delta$}(dp.north);
+  \draw[blue,<->] (delp.south) to[bend left=4] node[pos=0.0,left=2pt,yshift=-8pt] {\scriptsize $\delta$} node[pos=0.7,left=2pt,yshift=3pt] {\scriptsize $d$}(dp.north);
+  %\draw[yellow,<->]      (hp.south east) -- node[right=2pt] {$\star$} (hnp.north east);
+  %\draw[yellow,<->] (hp.south east) to[bend left=15] node[right=2pt] {$\star$} (hnp.north east);
+  \draw[yellow,<->] (hp.south east) to[bend left=15] node[right=2pt] {$\star$} ($(hnp.north east)+(-1.6em,0)$);
+  %\draw[violet,<->]      (delp1.south east) to[bend left=15] node[right=2pt] {$\star$} (dnp.north east);
+  %\draw[blue,<->]        (dp.south east) to[bend left=15] node[right=2pt] {$\star$} (delnp.north east);
+  \draw[violet,<->] (delp1.south west) to[bend right=22] node[near end,right=-1pt,yshift=-2pt] {$\star$} ($(dnp.north east)+(-2.5em,0)$);
+\draw[blue,<->]   ($(dp.south east)+(-1.9em,0)$)    to[bend left=19] node[near end,right=2pt,yshift=-3pt] {$\star$} ($(delnp.north west)+(0,0)$);
+\end{tikzpicture}
+\end{samepage}
+
+\noindent
+This pattern reveals there is relatively little independent information contained in the spectra of $p$-forms because of the many symmetries of $\Delta$.
+%
+For example, when \(\dim(M)=3\) 
+\begin{align}
+\begin{aligned}
+  \Lambda_0 \;=\; 0\;\;&\oplus\;{\color{blue}\delta\Lambda_1}\;\oplus\;{\color{forestgreen}\Lambda_0^0}\\
+  \Lambda_1 \;=\; {\color{blue}d\Lambda_0}\;&\oplus\;{\color{red}\delta\Lambda_2}\;\oplus\;{\color{green}\Lambda_1^0}\\
+  \Lambda_2 \;=\; {\color{red}d\Lambda_1}\;&\oplus\;{\color{blue}\delta\Lambda_3}\;\oplus\;{\color{green}\Lambda_2^0}\\
+  \Lambda_3 \;=\; {\color{blue}d\Lambda_2}\;&\oplus\; 0\; \oplus\;{\color{forestgreen}\Lambda_3^0}\,,\\
+  .
+\end{aligned}
+\qquad \text{and}\qquad
+\begin{aligned}
+  \Lambda_0 \;=\; 0\;\;&\oplus\;{\color{blue}\delta\Lambda_1}\;\oplus\;{\color{forestgreen}\Lambda_0^0}\\
+  \Lambda_1 \;=\; {\color{blue}d\Lambda_0}\;&\oplus\;{\color{red}\delta\Lambda_2}\;\oplus\;{\color{green}\Lambda_1^0}\\
+  \Lambda_2 \;=\; {\color{red}d\Lambda_1}\;&\oplus\;{\color{red}\delta\Lambda_3}\;\oplus\;{\color{yellow}\Lambda_2^0}\\
+  \Lambda_3 \;=\; {\color{red}d\Lambda_2}\;&\oplus\;{\color{blue}\delta\Lambda_4}\;\oplus\;{\color{green}\Lambda_3^0}\\
+  \Lambda_4 \;=\; {\color{blue}d\Lambda_3}\;&\oplus\; 0\; \oplus\;{\color{forestgreen}\Lambda_4^0}\,.
+\end{aligned}
+\end{align}
+%
+In 3D all the information is contained in the spectra of 0-forms and 1-forms, that is scalar and vector waves.
+The same is essentially true in 4D, since harmonic forms are homotopy invariants independent of the metric.
+All the information about the curvature of $(M,g)$ is contained in the spectra of $\Lambda_0$ and $\Lambda_1$, while the genuinely new piece of information $\Lambda_2^0$ is only topological and insensitive to the metric $g$.
+%
+\end{mytheorem}
+\begin{proof}
+\todotag{Insert}
+\end{proof}
+
+
+\begin{mytheorem}[Perturbative spectral geometry \& Lie exponentiation of infinitesimal changes.]
+%    
+Geometry is highly nonlinear.
+In full generality it is impossible to predict how a finite modification to the shape of a manifold (e.g. growing a bump) will change its spectra.
+A possible approach is thus to consider infinitesimal perturbations to a known pseudo-riemannian structure $(M,g)$ and study the corresponding infinitesimal changes in the spectra of its Laplace-type operators.
+The infinitesimal changes can then be iterated to reconstuct the full shape of the manifold and corresponding spectra.
+This is analogous to the way Lie groups are constructed by exponentiating their Lie algebras. 
+
+
+Assume both the manifold and its spectra are given: a compact Riemannian manifold \((M,g)\) without boundary and the spectra \(\{\lambda_n^{(p)}\}_n\) of Laplacian operators  \(\Delta\) on $p$-forms and more genrally on tensor fields.
+%
+In particular, it is possible to define an elliptic self-adjoint Laplacian acting on $T_2(M)$ and find a corresponding orthonormal basis \(\{b_n(x)\}\) with eigenvalues \(\{\lambda_n^{(p)}\}\) satisfying
+\begin{equation}
+ \Delta\, b_n(x) \;=\; \lambda_n\, b_n(x).
+\end{equation}
+
+Now consider an infinitesimal (linear) perturbation to the shape $(M,g)$ and the corresponding infinitesimal (linear) change in  spectra, where $\bullet$ denote suitable tensor types,
+\begin{equation}
+    g\mapsto g+h\qquad \Rightarrow\qquad \{\lambda_n^{\bullet}\}\,\mapsto\,
+ \{\lambda_n^{\bullet}+\mu_n^{\bullet}\}.
+\end{equation}
+%
+The metric perturbation \(h\in T_2(M)\) can be expanded in the above basis as
+\begin{equation}
+ h \;=\; \sum_{n=1}^\infty h_n\, b_n(x).
+\end{equation}
+Schematically one can think of adding a bump described by the coefficients \(\{h_n\}_{n=1}^\infty\) to the metric \(g\) and correspondingly shifting the spectra by \(\{\mu_n^{(\bullet)}\}_{n=1}^\infty\).
+% 
+Concretely, we thus obtain a \emph{linear map}
+\begin{equation}
+    S\colon \{h_n\}\;\longrightarrow\;\{\mu_n^\bullet\}\quad \mid \quad h_n \mapsto \mu_n^\bullet = S_{mn}\,h_m.
+\end{equation}
+Sine the manifold is compact, the indices are indeed countable discrete, so that $S$ is an infinite square matrix.
+If we further introduce some UV regularization, allowing only eigenvectors and eigenvalues up to some cut-off scale, then we have an (equal) finite number $N$ of parameters \(\{h_n\}_{n=1}^N\) and spectral shifts \(\{\mu_n^{(m)}\}_{n=1}^N\), and $S$ is a finite \(N\times N\) square matrix.
+If \(\det S\neq 0\), as it is the case for \emph{general} matrices, then \(S\) is invertible and one can recover \(h\) from the spectral shift.
+That is, we can infer the infinitesimal change in the shape from the infinitesimal change in the sound of the (originally known) drum.
+One should then iterate these infinitesimal perturbations.
+
+\noindent
+\textbf{Further remarks.}
+\begin{itemize}
+\item Not every perturbation \(h\) actually changes the shape.  If \(h=\mathcal{L}_X g\) for some vector field \(X\) then \(g\mapsto g+h\) is merely the infinitesimal change of chart belonging to the flow generated by \(X\).
+\item Symmetric covariant 2-tensors such as \(h\) admit a canonical decomposition similar to the Hodge decomposition.  Accordingly, the Laplacian \(\Delta\) has three distinct spectra on the space \(T_2(M)\) of such tensors.
+\end{itemize}
+
+\noindent
+\textbf{References.}
+This is the subject of ongoing research by Achim Kempf at PI and others.
+For more details see, for example, Kempf's talk at the Perimeter Institute: \url{http://pirsa.org/15090062}.
+The idea of infinitesimal spectral geometry arises from his paper on how spacetime could be simultaneously continuous and discrete, in the same way that information can.
+
+\end{mytheorem}
+
+
 
 
 %========================================================
@@ -1183,7 +1501,7 @@ Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\
 %=======================================================
 %------------------------------------------------------------
 
-The tetrad formalism amount to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
+The tetrad formalism amounts to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
 The only typical requirement is that the two frame are dual to each other, i.e. $\theta^i (e_j) = \delta^i_j$.
 In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimensions or more generally \emph{vielbeins} (n-legs) in n dimensions.
 
@@ -1191,20 +1509,19 @@ In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimens
 \begin{mytheorem}[Avantages \& disadvantages of the tetrad formalism]
 The main advantage of the tetrad formalism is that coefficients of tensors in arbitrary frames transform as scalars under coordinate transformations.
 That is, their coordinates with respect to the tetrad bases do not change under change of coordinates, simply because we change the cohordinates $x^\mu\to \tilde{x}^\mu$ but the tetrad bases $\{e_i(x)\}_i$, $\{\theta^i(x)\}_i$ remain the same.
-The main disadvantage is that expressions might get longer or more cumbersome, since we cannot use the simplifications coming from coordinate bases e.g. the fact that $d (dx^\mu) = 0$ or $[\partial_\mu, \partial_\nu] = 0$.
+The main disadvantage is that expressions might get longer or more cumbersome, since we cannot use simplifications coming from coordinate bases e.g. the fact that $d (dx^\mu) = 0$ or $[\partial_\mu, \partial_\nu] = 0$.
 
 In any case, this has several advtanges.
-For example, we can choose a tetrad that is orthonormal with respect to a given metric $g$ i.e.
+For example, we can choose a tetrad that is orthonormal with respect to a given metric $g$ i.e. we have Minkowski (or Euclidean) metric at every point
 \begin{equation}
-    g = \eta_{ij} \theta^i \otimes \theta^j,
+    g = \eta_{ij} \theta^i \otimes \theta^j,\quad \eta_{ij}=\text{diag}(\pm1\dots \pm1)\,.
 \end{equation}
-where $\eta_{ij}=\text{diag}(\pm1\dots \pm1)$ is the Minkowski (or Euclidean) metric.
 This is particularly useful for spinors.
 By definition, in any chosen frame, the $\gamma$ matrices are required to respect the Clifford algebra
 \begin{equation}
-    \{\gamma^\mu, \gamma^\nu\} = 2 g_{\mu\nu} \mathbb{I}.
+    \{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu} \mathbb{I}.
 \end{equation}
-In the such a orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2 \eta_{\mu\nu} \mathbb{I}$ and we can take the $\gamma^\mu$ as in the usual Clifford algebra in flat space all over the manifold.
+In the such an orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb{I}$ and we can take the $\gamma^\mu$ as in the usual Clifford algebra in flat space all over the manifold.
 \end{mytheorem}
 
 
@@ -1212,14 +1529,22 @@ In the such a orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2
 Fiber valued differential forms are just usual $p$-forms taking values in a fiber space $F$.
 That is, given a fibre bundle $E_F\to M$ with fibre $F$, a fiber valued $p$-form is a section of the product bundle
 \begin{equation}
-    \Lambda^p (M) \otimes E_F \to M.
+     E_F \otimes \Lambda^p (M) \to M.
 \end{equation}
 Given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
 \begin{equation}
-    \alpha = \alpha^a \otimes f_a,
+    \alpha =  f_a \otimes \alpha^a,
 \end{equation}
 where $\alpha^a \in \Lambda^p (M)$ are ordinary differential $p$-forms.
 \smallskip
+
+We can still define a wedge product between any two fiber valued forms $\alpha \in \Lambda^p (M) \otimes E_F$, $\beta \in \Lambda^q (M) \otimes E_G$ as
+\begin{align}
+    &E_F \otimes \Lambda^p (M) \times E_G \otimes \Lambda^q (M) \to (E_F \otimes E_G) \otimes \Lambda^{p+q} (M), \\[4pt]
+    &\alpha,\,\beta \mapsto \alpha \wedge \beta := (f_a \otimes \alpha^a) \wedge (g_b \otimes \beta^b) 
+    := (f_a \otimes g_b) \otimes (\alpha^a \wedge \beta^b) \in (E_F \otimes E_G) \otimes \Lambda^{p+q} (M).
+\end{align}
+In fact, the wedge prodcut is well-defined already at the level of linear spaces at each point $p\in M$.
 
 For example, when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms.
 This notion generalizes all the structures we have seen so far.
@@ -1227,25 +1552,25 @@ This notion generalizes all the structures we have seen so far.
     \item Ordinary differential $p$-form are just fiber valued $p$-form with trivial fiber $F = \mathbb{R}$.
     \item An $(h,k)$-tensor field is just a fiber valued $0$-form with fiber $F = T^h_k M$.
 \end{itemize}
-
+%
 In fact, since $\Lambda*(M)\subset T^*_*(M)$ the splitting in `differntial form part' and `tensor valued image' is somewhat arbitrary.
 The most natural convention is to take all the antisymmetric part as the differential form part and the rest as the tensor valued image.
-For example
 \begin{itemize}
-    \item The torsion $T_{\mu\nu}^{\quad \rho}$, antisymmetric in the $\mu\nu$ indices, is a $(1,0)$-tensor valued 2-form, i.e. a fiber valued 2-form with fiber $F = T^1_0 M$.
-    \item The Riemann curvature $R_{\rho, \mu \nu}^{\quad \sigma}$, antisymmetric in the $\mu\nu$ indices, is a $(1,1)$-tensor valued 2-form, i.e. a fiber valued 2-form with fiber $F = T^1_1 M$.
+    \item The torsion $T_{\mu\nu}^{\, \rho}$, antisymmetric in the $\mu\nu$ indices, is a $(1,0)$-tensor valued 2-form i.e. a fiber valued 2-form with fiber $F = T^1_0 M$.
+    \item The Riemann curvature $R_{\,\rho, \mu \nu}^{\sigma}$, antisymmetric in the $\mu\nu$ indices, is a $(1,1)$-tensor valued 2-form i.e. a fiber valued 2-form with fiber $F = T^1_1 M$.
 \end{itemize}
 \end{mytheorem}
+
 
 
 \begin{mytheorem}[Exterior covariant derivative]
 Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle with connection 1-forms $\omega^b_a$, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
 \begin{equation}
-    d_\nabla: \Lambda^\bullet (M) \otimes E_F \to \Lambda^{\bullet+1} (M) \otimes E_F
+    d_\nabla: E_F \otimes \Lambda^\bullet (M)  \to E_F \otimes \Lambda^{\bullet +1} (M)
 \end{equation}
 that is linear, satisfies the Leibniz rule
 \begin{equation}
-    d_\nabla(\alpha \wedge \beta) = (d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta),\qquad \alpha \in \Lambda^p (M) \otimes E_F, \beta \in \Lambda^q (M) \otimes E_F,
+    d_\nabla(\alpha \wedge \beta) = (d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta),\qquad \alpha \in E_F \otimes \Lambda^p (M),\, \beta \in E_G \otimes \Lambda^\bullet (M),
 \end{equation}
 and reduces to the usual covariant derivative $\nabla$ when acting on fiber valued $0$-forms and the usual exterior derivative $d$ when acting on ordinary differential forms i.e. fiber valued forms with trivial fiber $F = \mathbb{R}$.
 
@@ -1258,17 +1583,34 @@ The condition that $d_\nabla$ reduces to $\nabla$ on fiber valued $0$-forms impl
     d_\nabla \alpha = \nabla f_a \wedge \alpha^a + f_a \otimes d \alpha^a  
     = f_a\otimes\left( \omega^a_{b} \wedge \alpha^b + d \alpha^a \right),
 \end{equation}
-where note that $f_a$ is a fiber valued $0$-form and $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$.
+where note that $f_a$ is a fiber valued $0$-form and $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$ and $\omega^a_{b}$ are the connection 1-forms associated to the connection $\nabla$ on $E_F \to M$.
+Beware that the \textbf{exterior covariant derivative does not square to zero} in general, i.e. $d_\nabla^2 \neq 0$ due to the nontriivial connection 1-forms $\omega^a_b$.
+\smallskip
+
+The Leibniz rule is then obeyed since
+\begin{align}
+    d_\nabla(\alpha \wedge \beta) 
+    &= \nabla (f_a\otimes g_b) \wedge (\alpha^a \wedge \beta^b) + (f_a\otimes g_b) \otimes d(\alpha^a \wedge \beta^b) \\
+    &= \left( \nabla f_a \otimes g_b + f_a \otimes \nabla g_b \right) \wedge (\alpha^a \wedge \beta^b) +
+    (f_a\otimes g_b) \otimes \left( d \alpha^a \wedge \beta^b + (-1)^p \alpha^a \wedge d \beta^b \right)
+    \\
+    &= f_a \otimes g_b \otimes \omega^a_{(F)\,c} \wedge \alpha^c \wedge \beta^b + f_a \otimes g_b \otimes \omega^b_{(G)\,d} \wedge \alpha^a \wedge \beta^d \\
+    &\quad + f_a \otimes g_b \otimes d \alpha^a \wedge \beta^b + (-1)^p f_a \otimes g_b \otimes \alpha^a \wedge d \beta^b
+    \\
+    &= f_a\otimes\left( \omega^a_{(F)\,c} \wedge \alpha^c + d \alpha^a \right) \wedge (g_b \otimes \beta^b) + (-1)^p (f_a \otimes \alpha^a) \wedge \left( g_d \otimes \left( \omega^b_{(G)\,d} \wedge \beta^d + d \beta^b \right) \right)\\
+    &=(d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta)\,.
+\end{align}
 \end{mytheorem}
 
 
+
 %===============================================================================
-\subsection{Curvature forms \& Cartan structure equations}\todotag{To be written}
+\subsection{Connection forms \& Cartan-Bianchi structure equations}
 %================================================================================
 
 
 \begin{mytheorem}[Structure constants of a tetrad frame]
-Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we can define its structure constants $C^i_{\, jk}$ as the coefficients in the expansion
+Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we define its structure constants $C^i_{\, jk}$ as the coefficients in the expansion
 \begin{equation}
     d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k.
 \end{equation}
@@ -1282,8 +1624,8 @@ If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac
 \end{mytheorem}
 
 
-\begin{mytheorem}[Connection 1-form]
-Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we define the $(1,0)$-tensor-valued connection 1-forms $\omega_j$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
+\begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
+Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and a local frame $\{e_i\}_i$, we define the $F$-valued connection 1-forms $\omega_j$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
 \begin{equation}
      \nabla e_j=:\omega_j =:\omega^i_{\,j} \otimes e_i\,.
 \end{equation}
@@ -1291,11 +1633,10 @@ In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
 \begin{equation}
     \nabla X = (dX^i + \omega^i_{\, j}\,\, X^j) \otimes e_i.
 \end{equation}
-Under a change of tetrad frame $\{\theta^i,\, e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
+Under a change of tetrad frame $\{\theta^i,\,e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
 \begin{equation}
     \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
 \end{equation}
-
 
 Just like the other forms, the connection 1-form can be seen as a fiber valued differential form.
 The fiber is the Lie algebra of the structure group of the frame bundle, i.e. $\mathfrak{gl}(n,\R)$ for a general connectin, and $\mathfrak{so}(p,q)$ for an orthonormal frame of metric connection with signature $(p,q)$.
@@ -1361,8 +1702,8 @@ In particular, the Riemann curvature operator acting on a vector field $X = X^j 
 \end{mytheorem}
 
 
-\begin{mytheorem}[Cartan structure equations]\todotag{finish}
-Given a tetrad frame $\{\theta^i,\, e_i\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta := \theta^i \otimes e_i.$
+\begin{mytheorem}[Cartan structure equations\questiontag{Check}]
+Given a tetrad frame $\{\theta^i,\, e_i\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta :=  e_i\otimes \theta^i$
 The connection 1-forms, and the torsion and curvature 2-forms satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
 \begin{align}
     T &= d_\nabla \theta = e_i \otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right) 
@@ -1371,13 +1712,15 @@ The connection 1-forms, and the torsion and curvature 2-forms satisfy the Cartan
     \Omega_{\, j} &= d_\nabla \omega_{\, j} = e_i \otimes \left(d \omega^i_{\, j} + \omega^i_{\,k} \wedge \omega^k_{\, j}\right) 
     \quad\text{i.e.} \quad \Omega^i_{\, j} = d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}.
 \end{align}
+The \textbf{Cartan equations are essentially definitions} of the torsion and curvature 2-forms in terms of the connection 1-forms and the tetrad basis.
 In particular, in absence of torsion the first Cartan structure equation reduces to
 \begin{equation}
     d \theta^i + \omega^i_{\, j} \wedge \theta^j = 0.
 \end{equation}
 \end{mytheorem}
 \begin{proof}
-The second equalities follows since the exterior covariant derivative indeed acts as
+Since the identity are tensorial, we can proove it in a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$.
+The second equalities follow since the exterior covariant derivative indeed acts as
 \begin{align}
     d_\nabla \theta &= d_\nabla (e_i \otimes \theta^i) = e_i\otimes d \theta^i  +  \nabla e_i \wedge \theta^i = e_i\otimes (d \theta^i + \omega^i_{\, j} \wedge \theta^j) ,
     \\
@@ -1396,13 +1739,15 @@ In turn, the first equalities are easily verified by direct computation using a 
 \end{proof}
 
 
-\begin{mytheorem}[Bianchi identities revisited]\todotag{finish}
+\begin{mytheorem}[Bianchi identities in the tetrad formalism\questiontag{Check}]
 The Bianchi identities can be concisely expressed in terms of the exterior covariant derivative $d_\nabla$ as
 \begin{align}
     d_\nabla T &= \Omega_{\, j} \wedge \theta^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \theta^j,
     \\
-    d_\nabla \Omega_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega^i_{\, j} = 0.
+    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = de_i \wedge \Omega^i_{\, j} \graycancel{= e_i \otimes \underbrace{d \Omega_{\, j}^i}_{=0}}\,.
 \end{align}
+NBeware the 2nd identity says the exterior derivative of the $\R$-valued 2-form $\Omega^i_{\, j}$ vanished, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
+The \textbf{Bianchi identities are} essentially express \textbf{symmetries that follow from the} very \textbf{definition} of torsion and curvature.
 In particular, in absence of torsion the first Bianchi identity reduces to
 \begin{equation}
     \Omega^i_{\, j} \wedge \theta^j = 0.
@@ -1421,5 +1766,22 @@ The first identity follows from direct computation of the exterior covariant der
     e_i \otimes \left( d\omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) \wedge \theta^j
     \equiv \Omega_{\, j} \wedge \theta^j.
 \end{align}
-
+For the second equation, renaming dummy indices and using that $\Omega^i_{\, j}$ is a 2-form thereby commuting under the wedge product, we have
+\begin{align}
+    d \Omega_{\,j}^i &= d \left( d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) = \graycancel{d^2 \omega^i_{\, j}} + d\omega^i_{\, k} \wedge \omega^k_{\, j} - \omega^i_{\, k} \wedge d\omega^k_{\, j}
+    \\
+    &= \big(\Omega^i_k-\omega^i_\ell\wedge \omega^\ell_k\big)\wedge \omega^k_{\, j} - \omega^i_{\, k} \wedge \big(\Omega_j^k-\omega^k_\ell\wedge \omega^\ell_j\big)
+    \\
+    & = \underbrace{\Omega^i_k \wedge \omega^k_{\, j} - \omega^i_{\, \ell}\wedge \Omega^\ell_j}_{=0}
+    \,\,\,\,\underbrace{-\omega^i_\ell\wedge \omega^\ell_k\wedge \omega^k_{\, j}
+    + \omega^i_{\, k} \wedge \omega^k_\ell\wedge \omega^\ell_j}_{=0}
+    = 0.
+\end{align}
+The rest follows from the definition of the exterior covariant derivative.
 \end{proof}
+
+
+
+%===============================================================================
+\subsection{Curvature tensors in the tetrad formalism}\todotag{To be written}
+%================================================================================
