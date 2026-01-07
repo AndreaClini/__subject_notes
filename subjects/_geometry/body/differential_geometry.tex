@@ -1785,3 +1785,38 @@ The rest follows from the definition of the exterior covariant derivative.
 %===============================================================================
 \subsection{Curvature tensors in the tetrad formalism}\todotag{To be written}
 %================================================================================
+
+
+\begin{mytheorem}[Christoffel symbols in a tetrad frame\todotag{Check and finish}]
+Given a tetrad frame $\{\theta^i,\, e_i\}_i$ on a manifold \(M\) with affine connection \(\nabla\), we define the Christoffel symbols \(\Gamma^i_{\, jk}\) as the coefficients in the expansion 
+\begin{equation}
+    \nabla_{e_j} e_k =: \Gamma^i_{\, jk} e_i.
+\end{equation}
+In particular, the connection 1-forms can be expressed in terms of the Christoffel symbols as
+\begin{equation}
+    \omega^i_{\, j} = \Gamma^i_{\, jk} \theta^k.
+\end{equation}
+In fact, in case of a metric connection, we may also express in terms of the metric and the structure constants \(C^i_{\, jk}\) of the tetrad frame as
+\begin{equation}
+    \Gamma_{ijk} = \tfrac{1}{2} \left( C_{ijk} - C_{jki} + C_{kij} \right) + \frac{1}{2} \left( \partial_j g_{ik} + \partial_k g_{ij} - \partial_i g_{jk} \right),
+\end{equation}
+where indices are lowered and raised with the metric \(g\) and its inverse.
+\end{mytheorem}
+
+
+\begin{mytheorem}
+[Riemann curvature tensor in a tetrad frame\todotag{Check and finish}]
+Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on a manifold \(M\) with affine connection \(\nabla\), we define the Riemann curvature tensor components \(R^i_{\, jkl}\) as the coefficients in the expansion 
+\begin{equation}
+    R(e_k, e_l) e_j =: R^i_{\, jkl} e_i.
+\end{equation}
+In particular, the curvature 2-forms can be expressed in terms of the Riemann tensor components as
+\begin{equation}
+    \Omega^i_{\, j} = \tfrac{1}{2} R^i_{\, jkl} \theta^k \wedge \theta^l.
+\end{equation}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Einstein tensor in a tetrad frame\todotag{Check and finish}]
+    
+\end{mytheorem}
