@@ -370,14 +370,34 @@ We can thus insert $e^{-\alpha^*a}$ next to $|0\rangle$ without changing anythin
     |\alpha\rangle &\,\propto\, e^{\alpha a^\dagger} |0\rangle = e^{\alpha a^\dagger} e^{-\alpha^* a} |0\rangle
     = e^{\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger - \alpha^* a} |0\rangle\,,\qquad e^{\alpha a^\dagger - \alpha^* a}\in U(\mathcal{H}).
 \end{align}
-The operators $e^{\alpha a^\dagger - \alpha^* a}$ are unitary since $(\alpha a^\dagger - \alpha^* a)^\dagger = -(\alpha a^\dagger - \alpha^* a)$, and the normalized coherent state is then
+The operators $e^{\alpha a^\dagger - \alpha^* a}$ are unitary since $(\alpha a^\dagger - \alpha^* a)^\dagger = -(\alpha a^\dagger - \alpha^* a)$.
+Therefore $e^{\alpha a^\dagger - \alpha^* a} |0\rangle$ has norm one and the normalized coherent state can be written
 \begin{align}
     |\alpha\rangle = e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}|0\rangle =  e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}e^{-\alpha^* a}|0\rangle = e^{\alpha a^\dagger - \alpha^* a} |0\rangle.
 \end{align}
-%
+
 Coherent states also warn us about the identification of ladder operators as creating/destroying a particle.
-This identification is indeed justified only on states with a definite number of particles, like Fock states $|n\rangle$ or superpositions thereof.
-On the other hand the action of $a^\dagger$ leave coherent states invariant up to a complex factor.
+This identification is indeed justified only on states with a definite number of particles like Fock states $|n\rangle$ i.e. eigenstates of the number operator $N = a^\dagger a$.
+Coherent states are an infinite superposition of Fock states with increasing particle numbers, with a \emph{finite} expectation value 
+\begin{align}
+    \langle \alpha| N |\alpha\rangle = \langle \alpha| a^\dagger a |\alpha\rangle = |\alpha|^2\,.
+\end{align}
+The action of $a^\dagger$ leave coherent states invariant up to a complex factor.
+
+\textbf{Coherent states are the closest quantum states to classical states}, as they \textbf{minimize the Heisenberg uncertainty} relation $\Delta q \Delta p = \hbar/2$.
+The \textbf{uncertainty} in position (resp. momentum) is thus \textbf{as small as possible compared to the measured values}, and the \textbf{dynamics closely follow classical trajectories} of the system.
+Inverting the definition of ladder operatos we have
+\begin{align}
+    q = \sqrt{\frac{\hbar}{2 m \omega}} (a + a^\dagger), \quad p = -i \sqrt{\frac{m \omega \hbar}{2}} (a - a^\dagger).
+\end{align}
+Expectations values on coherent states thus read
+\begin{align}
+    &\langle \alpha| q |\alpha\rangle = \sqrt{\tfrac{\hbar}{2 m \omega}} (\alpha + \alpha^*), 
+    \quad \langle \alpha| q^2 |\alpha\rangle = \tfrac{\hbar}{m \omega} \tfrac{1}{2}\Big((\alpha + \alpha^*)^2 +1\Big) \quad \Rightarrow \quad \Delta q = \sqrt{\langle q^2 \rangle - \langle q \rangle^2} = \sqrt{\frac{\hbar}{2 m \omega}}\,,\\
+    &\langle \alpha| p |\alpha\rangle = i \sqrt{\tfrac{m \omega \hbar}{2}} (\alpha^* - \alpha),
+    \quad \langle \alpha| p^2 |\alpha\rangle = \tfrac{m \omega \hbar}{2} \Big(1-(\alpha - \alpha^*)^2 \Big) \quad \Rightarrow \quad \Delta p = \sqrt{\langle p^2 \rangle - \langle p \rangle^2} = \sqrt{\frac{m \omega \hbar}{2}}\,.
+\end{align}
+%
 \end{mytheorem}
 
 
@@ -419,16 +439,16 @@ A primary example if inflation, that modifies frequencies of oscillators even up
 
 \begin{mytheorem}[Driving forces \& first examples of Bogoliubov transformations\todotag{Finish}]
 %
-Let us consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively
+Consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively
 \begin{align}
     H = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 - J(t) q - K(t) p.
 \end{align}
-We define ladder operators to diagonalize the free hamiltonian and get
+Define ladder operators to diagonalize the free hamiltonian and get
 \begin{align}
     a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
     H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
 \end{align}
-If $J,\,K$ are independent of the canonical variables, the equations of motion for $a$ read
+In the Heisenberg picture, if $J,\,K$ commute with $a,\,a^\dagger$ e.g. if they are independent of the canonical variables, the equation of motion for $a$ reads
 \begin{align}%\label{eq:1d_oscillator_ladder_operator_time_evolution}
     &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J + i \sqrt{\frac{m \omega \hbar}{2}} K\\
     &\Longrightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}.
@@ -445,6 +465,20 @@ where we define
 \begin{align}
     a_{\mathrm{out}} &= a_{\mathrm{in}} + J_0\,,\quad J_0 := - \frac{i}{\hbar} \int_{t_i}^{t_f} dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{i\omega t'}.
 \end{align}
+In particular we note the Heisenberg hamiltonian is indipendent of time outside the interval $[t_i, t_f]$
+\begin{align}
+    H = \hbar \omega \left(a_{\mathrm{in}}^\dagger a_{\mathrm{in}} + \tfrac{1}{2}\right), \quad t < t_i, \qquad H = \hbar \omega \left(a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2}\right), \quad t > t_f.
+\end{align}
+It is thus convenient to choose bases of the Hilbert space diagonalizing the hamiltonian either at early or late times, namely the in- and out-Fock states, since they will remain eigenstates of the hamiltonian for earlier resp. later times and evolve trivially in time with a simple phase factor.
+
+We want to understand how the driving force affects several aspects of the dynamics of the system. \todotag{Finish see Kempf L6}
+\begin{itemize}
+    \item \textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change due to the driving force.
+    \item \textbf{Energy.} How energy is pumped into the oscillator by the driving force, i.e. how $\langle H(t)\rangle$ changes with time.
+    \item \textbf{Resonance.} What is the best choice of $J(t)$ to excite the oscillator.
+    \item \textbf{Energy eigenstates \& Bogoliubov transformation.} How the in- and out-Fock states are related, and how the number of quanta (particles) is changed by the driving force.
+\end{itemize}
+------------------------------------------------------------------------------------------
 
 We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|0\rangle_{\mathrm{in}}$ defined by $a_{\mathrm{in}} |0\rangle_{\mathrm{in}} = 0$, but rather 
 \begin{align}
