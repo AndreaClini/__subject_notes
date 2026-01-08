@@ -1604,11 +1604,6 @@ The Leibniz rule is then obeyed since
 
 
 
-%===============================================================================
-\subsection{Connection forms \& Cartan-Bianchi structure equations}
-%================================================================================
-
-
 \begin{mytheorem}[Structure constants of a tetrad frame]
 Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we define its structure constants $C^i_{\, jk}$ as the coefficients in the expansion
 \begin{equation}
@@ -1625,7 +1620,8 @@ If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac
 
 
 \begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
-Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and a local frame $\{e_i\}_i$, we define the $F$-valued connection 1-forms $\omega_j$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
+%
+Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, and a local frame $\{f_a\}_a$, we define the $\mathfrak{g}$-valued connection 1-forms $\omega^{(F)}$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
 \begin{equation}
      \nabla e_j=:\omega_j =:\omega^i_{\,j} \otimes e_i\,.
 \end{equation}
@@ -1782,9 +1778,23 @@ The rest follows from the definition of the exterior covariant derivative.
 
 
 
-%===============================================================================
-\subsection{Curvature tensors in the tetrad formalism}\todotag{To be written}
-%================================================================================
+\begin{mytheorem}[Metric compatibility in arbitrary fiber bundle\todotag{Check and finish}]
+%
+Given a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$, endowed with a metric $g: F \times F \to \R$ and a connection $\nabla$ on $E_F$ with $\mathfrak{g}$-valued connection form $\omega$, we say that the connection is metric compatible if 
+\begin{align}
+    \nabla g \equiv 0\quad \text{i.e.}\quad d \left( g(s,t) \right) = g(\nabla s, t) + g(s, \nabla t)\quad \text{$\forall$ sections }s,t \in \Gamma(E_F).
+\end{align}
+In a tetrad frame $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_a^{~b}$ and metric $g_{ab} := g(f_a, f_b)$, the condition reads
+\begin{equation}
+    d g_{ab} = \omega_{a}^{~c}\, g_{cb} + \omega_{b}^{~c} \,g_{ac}.
+\end{equation}
+If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad
+\begin{equation}
+    \omega_{ab} = - \omega_{ba}\quad \text{ where }\omega_{ab} := g_{ac} \, \omega^c_{~b}.
+\end{equation}
+%
+\end{mytheorem}
+
 
 
 \begin{mytheorem}[Christoffel symbols in a tetrad frame\todotag{Check and finish}]
@@ -1804,8 +1814,7 @@ where indices are lowered and raised with the metric \(g\) and its inverse.
 \end{mytheorem}
 
 
-\begin{mytheorem}
-[Riemann curvature tensor in a tetrad frame\todotag{Check and finish}]
+\begin{mytheorem}[Riemann curvature tensor in a tetrad frame\todotag{Check and finish}]
 Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on a manifold \(M\) with affine connection \(\nabla\), we define the Riemann curvature tensor components \(R^i_{\, jkl}\) as the coefficients in the expansion 
 \begin{equation}
     R(e_k, e_l) e_j =: R^i_{\, jkl} e_i.
