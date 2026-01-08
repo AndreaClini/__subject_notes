@@ -1497,7 +1497,7 @@ Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\
 
 %-----------------------------------------------------------
 %=======================================================
-\section{Tetrad formalism \& tensor-valued forms}\todotag{To be written}
+\section{Tetrad formalism \& tensor-valued forms}\todotag{Reformat whole section}
 %=======================================================
 %------------------------------------------------------------
 
@@ -1605,9 +1605,9 @@ The Leibniz rule is then obeyed since
 
 
 \begin{mytheorem}[Structure constants of a tetrad frame]
-Given a frame $\{\theta^i\}_i$ for the cotangent bundle, we define its structure constants $C^i_{\, jk}$ as the coefficients in the expansion
+Given a frame $\{\theta^i\}_i$ for the cotangent bundle, define its structure constants $C^i_{\, jk}$ as the coefficients, antisymmetric in the two lower indices, of the expansions (repeated indices summed over)
 \begin{equation}
-    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k.
+    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k.
 \end{equation}
 The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
 Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
@@ -1617,6 +1617,30 @@ Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
 By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
 If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
 \end{mytheorem}
+\begin{proof}
+Fix any coordinate system $\{x^\mu\}_\mu$ and let $\theta^i = \theta^i_\mu dx^\mu$, $e_j = e_j^\nu \partial_\nu$.
+By duality of the tetrad we have
+\begin{align}
+    0= \partial_\mu \delta^i_j &= \partial_\mu \big(\theta^i (e_j) \big) = \partial_\mu\big(\theta^i_\nu e_j^\nu \big) = (\partial_\mu \theta^i_\nu) e_j^\nu + \theta^i_\nu (\partial_\mu e_j^\nu)
+    \quad \Rightarrow\quad (\partial_\mu \theta^i_\nu) e_j^\nu =- \theta^i_\nu (\partial_\mu e_j^\nu)\,.
+\end{align}
+By definition of exterior derivative we have
+\begin{align}
+    d \theta^i &= (\partial_\mu \theta^i_\nu) dx^\mu \wedge dx^\nu = \partial_\mu \theta^i_\nu \Big(dx^\mu\otimes dx^\nu- dx^\nu \otimes dx^\mu \Big)\,.
+\end{align}
+Evaluating on the tetrad and using the previous relation we get
+\begin{align}
+    d\theta^i (e_j, e_k) 
+    &= \partial_\mu \theta^i_\nu \Big( e_j^\mu e_k^\nu - e_j^\nu e_k^\mu \Big) \\
+    &= - \theta^i_\nu \Big( (\partial_\mu e_j^\nu) e_k^\mu - (\partial_\mu e_k^\nu) e_j^\mu \Big) \\
+    & =: - \theta^i \big( [e_j, e_k]\big) = - C^i_{jk}\,.
+\end{align}
+That is to say
+\begin{align}
+    d\theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k\, \Leftrightarrow [e_j, e_k] = C^i_{jk} e_i\,.
+\end{align}
+%
+\end{proof}
 
 
 \begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
@@ -1686,15 +1710,19 @@ and on general spinor fields $\psi = \psi^a s_a$ as
 
 
 \begin{mytheorem}[Curvature 2-form]
-Given an affine connection $\nabla$ on a manifold $M$ and a tetrad frame $\{\theta^i\}_i$, we define the $(1,0)$-tensor-valued curvature 2-forms $\Omega_j$ and $\R$-valued curvature 2-forms $\Omega^i_{\,j}$ as the set of 1-forms satisfying
+Given an affine connection $\nabla$ on a vector bundle $E_F\to M$ and a tetrad frame $\{\theta^i,\,e_i\}_i$, we define the $T^1_0E_F$-valued $\Omega_{\, j}$ and $T^1_1E_F$-valued $\Omega^i_{\,j}$  curvature 2-forms as the set of 1-forms satisfying
 \begin{equation}
-    R(e_j) :=\Omega_j=: \Omega^i_{j} \otimes e_i\,,
+    R(e_j) :=\Omega_j=: e_i \otimes \Omega^i_{j} 
 \end{equation}
 where $R$ is the Riemann curvature operator.
 In particular, the Riemann curvature operator acting on a vector field $X = X^j e_j$ reads
 \begin{equation}
-    R(X) =  X^j\,\, \Omega^i_{\,j}\otimes e_i.
+    R(X) =  X^j\,\, \Omega^i_{\,j}\otimes e_i\,.
 \end{equation}
+Explicitating all the cohordinates\todotag{redo}
+\begin{align}
+    R^i_{j,\,\mu\nu}= \Omega^i_j(e_\mu,e_\nu) \theta^\mu \wedge \theta^\nu.
+\end{align}
 \end{mytheorem}
 
 
@@ -1797,21 +1825,45 @@ If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the cond
 
 
 
-\begin{mytheorem}[Christoffel symbols in a tetrad frame\todotag{Check and finish}]
-Given a tetrad frame $\{\theta^i,\, e_i\}_i$ on a manifold \(M\) with affine connection \(\nabla\), we define the Christoffel symbols \(\Gamma^i_{\, jk}\) as the coefficients in the expansion 
+\begin{mytheorem}[Christoffel symbols in a tetrad frame of the tangent bundle\todotag{Check and finish}]
+Given a tetrad $\{\theta^i,\, e_i\}_i$ on the tangent bundle of a manifold \(M\) with affine connection \(\nabla\), define the Christoffel symbols \(\Gamma^i_{\, jk}\) as the coefficients in the expansion 
 \begin{equation}
     \nabla_{e_j} e_k =: \Gamma^i_{\, jk} e_i.
 \end{equation}
-In particular, the connection 1-forms can be expressed in terms of the Christoffel symbols as
+That is, the connection 1-forms is expressed in terms of the Christoffel symbols as
 \begin{equation}
-    \omega^i_{\, j} = \Gamma^i_{\, jk} \theta^k.
+    \omega^i_{\, j} = \Gamma^i_{ jk} \theta^k.
 \end{equation}
-In fact, in case of a metric connection, we may also express in terms of the metric and the structure constants \(C^i_{\, jk}\) of the tetrad frame as
+
+In case $\nabla$ is a metric connection, we can express the Christoffel symbols in terms of the metric $g_{ij} := g(e_i, e_j)$ and the structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) of the tetrad as
 \begin{equation}
-    \Gamma_{ijk} = \tfrac{1}{2} \left( C_{ijk} - C_{jki} + C_{kij} \right) + \frac{1}{2} \left( \partial_j g_{ik} + \partial_k g_{ij} - \partial_i g_{jk} \right),
+    \Gamma^i_{jk} = \tfrac{1}{2} \left( C^i_{jk} - g^{i\ell}g_{j m}C^m_{k\ell} + g_{km}g^{i\ell} C^m_{\ell j} \right) + \tfrac{1}{2}g^{i\ell} \left( \partial_j g_{\ell k} + \partial_k g_{\ell j} - \partial_\ell g_{jk} \right)\,.
 \end{equation}
-where indices are lowered and raised with the metric \(g\) and its inverse.
+If $C_{jk}^i = 0$ (coordinate tetrad) this reduces to the usual expression for the Christoffel symbols in a coordinate basis.
+If $g_{ij} = \eta_{ij}$ (orthonormal tetrad) this reduces to
+\begin{equation}
+    \Gamma^i_{jk} = \tfrac{1}{2} \left( C^i_{jk} - \eta^{i\ell}\eta_{j m}C^m_{k\ell} + \eta_{km}\eta^{i\ell} C^m_{\ell j} \right).
+\end{equation}
 \end{mytheorem}
+\begin{proof}
+By metric compatibility $\nabla g=0$, that is $0=X(g(Y,Z)) - g(\nabla_X Y,Z) - g(Y, \nabla_X Z)$.
+Permutating the vectors $X,Y,z$ and assuming torsion vanishes $\nabla_XY-\nabla_YX = [X,Y]$, the Koszul formula gives
+\begin{align}
+\begin{aligned}
+    2\,g(\nabla_X Y,Z)
+    &=X\,g(Y,Z) + Y\,g(X,Z) - Z\,g(X,Y) 
+    + g([X,Y],Z) - g([X,Z],Y) - g([Y,Z],X).
+\end{aligned}
+\end{align}
+Setting \(X=e_j,\, Y=e_k,\, Z=e_i\) and using the definition of the Christoffel symbols and structure constants yields
+\begin{align}
+    2\, g_{i\ell} \Gamma^\ell_{jk}
+    &=
+    e_j\,g_{k i} + e_k\,g_{j i} - e_i\,g_{j k} \\
+    &\quad
+    + g_{i\ell} C^\ell_{jk} - g_{j\ell} C^\ell_{ik} - g_{k\ell} C^\ell_{ij}.
+\end{align}
+\end{proof}
 
 
 \begin{mytheorem}[Riemann curvature tensor in a tetrad frame\todotag{Check and finish}]
@@ -1833,3 +1885,19 @@ In particular, the curvature 2-forms can be expressed in terms of the Riemann te
 \begin{mytheorem}[EM tensor varying wrt tetrad fields\todotag{Check and finish}]
     
 \end{mytheorem}
+
+{
+\color{red}
+From Kempf GR L10 missing:
+\begin{itemize}
+    \item connection $\mathfrak{g}$-valued 1-form [ANY FIBER]
+    \item change of cohordinates $dA A^{-1}+ A\omega A^{-1}$ for connection 1-form [ANY FIBER]
+    \item curvature $T^1_1F$-valued 2-form [ANY FIBER]
+    \item torsion $T^1_0M$-valued 2-form [ONLY TM]
+    \item Cartan structure equations
+    \item Bianchi identities
+    \item metric compatibility in arbitrary fiber bundle [ANY FIBER WITH METRIC]
+    \item Christoffel symbols for metric connection on tangent bundle via structure constants [ONLY TM]
+    \item Riemann curvature tensor components in tetrad frame [ONLY TM]
+\end{itemize}
+}
