@@ -1502,6 +1502,7 @@ Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\
 %------------------------------------------------------------
 
 The tetrad formalism amounts to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
+It is the natural generalization to the framework necessary for an arbitrary fiber bundle $E_F\to M$.
 The only typical requirement is that the two frame are dual to each other, i.e. $\theta^i (e_j) = \delta^i_j$.
 In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimensions or more generally \emph{vielbeins} (n-legs) in n dimensions.
 
@@ -1605,9 +1606,9 @@ The Leibniz rule is then obeyed since
 
 
 \begin{mytheorem}[Structure constants of a tetrad frame]
-Given a frame $\{\theta^i\}_i$ for the cotangent bundle, define its structure constants $C^i_{\, jk}$ as the coefficients, antisymmetric in the two lower indices, of the expansions (repeated indices summed over)
+Given a frame $\{\theta^i\}_i$ for the cotangent bundle, define its structure constants $C^i_{\, jk}$ as the coefficients, antisymmetric in the two lower indices, of the expansions 
 \begin{equation}
-    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k.
+    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k \quad \text{(sum over repeated indices)}.
 \end{equation}
 The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
 Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
@@ -1616,6 +1617,7 @@ Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
 \end{equation}
 By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
 If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
+Note that structure constants make sense only for the tangent bundle $T^\bullet_\bullet M$ since only there we have a natural notion of commutator of vector fields, and in fact arbitrary fiber-valued forms are expressed as linear combinations of $\R$-valued forms times fiber basis elements.
 \end{mytheorem}
 \begin{proof}
 Fix any coordinate system $\{x^\mu\}_\mu$ and let $\theta^i = \theta^i_\mu dx^\mu$, $e_j = e_j^\nu \partial_\nu$.
@@ -1631,9 +1633,9 @@ By definition of exterior derivative we have
 Evaluating on the tetrad and using the previous relation we get
 \begin{align}
     d\theta^i (e_j, e_k) 
-    &= \partial_\mu \theta^i_\nu \Big( e_j^\mu e_k^\nu - e_j^\nu e_k^\mu \Big) \\
-    &= - \theta^i_\nu \Big( (\partial_\mu e_j^\nu) e_k^\mu - (\partial_\mu e_k^\nu) e_j^\mu \Big) \\
-    & =: - \theta^i \big( [e_j, e_k]\big) = - C^i_{jk}\,.
+    = \partial_\mu \theta^i_\nu \Big( e_j^\mu e_k^\nu - e_j^\nu e_k^\mu \Big) 
+    = - \theta^i_\nu \Big( (\partial_\mu e_j^\nu) e_k^\mu - (\partial_\mu e_k^\nu) e_j^\mu \Big) 
+     =: - \theta^i \big( [e_j, e_k]\big) = - C^i_{jk}\,.
 \end{align}
 That is to say
 \begin{align}
@@ -1645,18 +1647,37 @@ That is to say
 
 \begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
 %
-Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, and a local frame $\{f_a\}_a$, we define the $\mathfrak{g}$-valued connection 1-forms $\omega^{(F)}$ and $\R$-valued connection 1-forms $\omega^i_{\,j}$ as the set of 1-forms satisfying
+Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, define the $\mathfrak{g}$-valued connection 1-forms $\omega^{(F)}$ as the 1-form that in a given local frame $\{e_i\}_i$ for the fiber bundle $E_F \to M$ satisfy
 \begin{equation}
-     \nabla e_j=:\omega_j =:\omega^i_{\,j} \otimes e_i\,.
+     \nabla\cdot e_j=:\omega(\cdot) e_j =: e_i\otimes \omega^i_{\,j}(\cdot)\,.
 \end{equation}
 In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
 \begin{equation}
-    \nabla X = (dX^i + \omega^i_{\, j}\,\, X^j) \otimes e_i.
+    \nabla X = e_i \otimes (dX^i + \omega^i_{\, j}\,\, X^j)\,.
 \end{equation}
 Under a change of tetrad frame $\{\theta^i,\,e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
 \begin{equation}
     \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
 \end{equation}
+This is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates.
+
+To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
+\begin{align}
+    P_\gamma(t): E_{F,\,\gamma(0)} &\to E_{F,\,\gamma(t)} \mid e_a \to M(t)_a^b e_b\quad \text{for some }M(t)\in G \subseteq GL(F).
+\end{align}  
+The covariant derivative then reurns the infinitesimal change, that is 
+\begin{align}
+    P_\gamma(\epsilon) f = f + \epsilon \frac{d}{d t} \Big|_{t=0} P_\gamma(t) f + O(\epsilon^2) = f + \epsilon \nabla_{\dot{\gamma}(0)} f + O(\epsilon^2)
+\end{align}
+On the other hand, since $P_\gamma(t)$ is a linear isomorphism we have $M(t) = \exp(Lt)$ for some $L \in \mathfrak{g}$ so that
+\begin{align}
+    P_\gamma(\epsilon) f = M(\epsilon)^a_b f^b e_a = \left( \delta^a_b + \epsilon \frac{d}{d t} \Big|_{t=0} M(t)^a_b + O(\epsilon^2) \right) f^b e_a = f + \epsilon L f + O(\epsilon^2).
+\end{align}
+Comparing the two expressions we get
+\begin{align}
+    \nabla_{\dot{\gamma}(0)}  = \left( \frac{d}{d t} \Big|_{t=0} M(t) \right) = L \in \mathfrak{g}.
+\end{align}
+
 
 Just like the other forms, the connection 1-form can be seen as a fiber valued differential form.
 The fiber is the Lie algebra of the structure group of the frame bundle, i.e. $\mathfrak{gl}(n,\R)$ for a general connectin, and $\mathfrak{so}(p,q)$ for an orthonormal frame of metric connection with signature $(p,q)$.
@@ -1768,7 +1789,7 @@ The Bianchi identities can be concisely expressed in terms of the exterior covar
 \begin{align}
     d_\nabla T &= \Omega_{\, j} \wedge \theta^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \theta^j,
     \\
-    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = de_i \wedge \Omega^i_{\, j} \graycancel{= e_i \otimes \underbrace{d \Omega_{\, j}^i}_{=0}}\,.
+    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = de_i \wedge \Omega^i_{\, j} = e_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = e_i \otimes\omega_k^i\wedge \Omega^k_j\,.
 \end{align}
 NBeware the 2nd identity says the exterior derivative of the $\R$-valued 2-form $\Omega^i_{\, j}$ vanished, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
 The \textbf{Bianchi identities are} essentially express \textbf{symmetries that follow from the} very \textbf{definition} of torsion and curvature.

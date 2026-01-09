@@ -480,6 +480,28 @@ We want to understand how the driving force affects several aspects of the dynam
 \end{itemize}
 ------------------------------------------------------------------------------------------
 
+
+\textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change due to the driving force.
+For simplicity consider only a position driving force $J(t)$, setting $K(t)=0$.
+Using the time evolution above and the expression of $q$ and $p$ in terms of ladder operators, we find
+\begin{align}
+    {}_{\mathrm{in}}\langle 0 | q(t) | 0 \rangle_{\mathrm{in}} &= \sqrt{\frac{\hbar}{2 m \omega}} \,{}_{\mathrm{in}}\langle 0 | a(t) + a^\dagger(t) | 0 \rangle_{\mathrm{in}}
+    \\
+    = &\sqrt{\frac{\hbar}{2 m \omega}}\,\,\, {}_{\mathrm{in}}\langle 0 | \bigg(\graycancel{a_{\mathrm{in}} e^{-i\omega (t-t_0)} }  - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}\bigg) + \text{h.c.} | 0 \rangle_{\mathrm{in}}
+    \\
+    = &\frac{-ie^{-i\omega (t-t_f)}}{2m \omega}\int_{t_i}^{t\wedge t_f} dt' J(t') e^{i\omega (t'-t_f)}+ c.c.
+    = -\frac{1}{m \omega} \int_{t_i}^{t\wedge t_f} dt' J(t') \sin\big(\omega (t - t')\big).
+\end{align}
+We see that indeed the average position is not zero anymore. 
+The driving makes the expectation value of position oscillate with time, with an amplitude roughly proportional to the Fourier component of $J(t)$ at the natural frequency $\omega$ of the oscillator.
+Indeed, the bigger the interval $t_f-t_i$ the more the wannabe Fourier transform above matches $\tilde{J}(\omega)$.
+Similarly we can compute expectation values of other observables.
+
+
+\textbf{Energy.} How energy is pumped into the oscillator by the driving force, i.e. how $\langle H(t)\rangle$ changes with time. \todotag{Finish}
+
+
+------------------------------------------------------------------------------------------
 We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|0\rangle_{\mathrm{in}}$ defined by $a_{\mathrm{in}} |0\rangle_{\mathrm{in}} = 0$, but rather 
 \begin{align}
     a_{\mathrm{out}} |0\rangle_{\mathrm{in}} = J_0 |0\rangle_{\mathrm{in}} \neq 0.
