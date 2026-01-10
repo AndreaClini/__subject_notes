@@ -439,33 +439,45 @@ A primary example if inflation, that modifies frequencies of oscillators even up
 
 \begin{mytheorem}[Driving forces \& first examples of Bogoliubov transformations\todotag{Finish}]
 %
-Consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively
+Consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively, with Schrödinger Hamiltonian
 \begin{align}
-    H = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 - J(t) q - K(t) p.
+    H = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 + J(t) q - K(t) p.
 \end{align}
-Define ladder operators to diagonalize the free hamiltonian and get
+Define ladder operators to diagonalize the free hamiltonian at some reference time $t_0$ and get
 \begin{align}
     a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
     H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
 \end{align}
-In the Heisenberg picture, if $J,\,K$ commute with $a,\,a^\dagger$ e.g. if they are independent of the canonical variables, the equation of motion for $a$ reads
-\begin{align}%\label{eq:1d_oscillator_ladder_operator_time_evolution}
-    &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J + i \sqrt{\frac{m \omega \hbar}{2}} K\\
-    &\Longrightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}.
+We consider the Heisenberg picture, imposing it coincides with the Schrödinger picture at time $t_0$.
+Note the Schrödinger Hamiltonian is time-dependent due to the driving forces $J(t), K(t)$ and does not commute at different times.
+Indeed, assuming for simplicity $K(t)=0$ and $J(t)$ commute with itself at any two times and with ladder operators, we have
+\begin{align}
+    [H(t), H(s)] = \hbar \omega \sqrt{\frac{\hbar}{2 m \omega}} (J(t) - J(s)) [a + a^\dagger, a^\dagger a] = \hbar \omega \sqrt{\frac{\hbar}{2 m \omega}} (J(t) - J(s)) (a - a^\dagger) \neq 0.
 \end{align}
-For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i, t_f]$, we have
+The Heisenberg Hamiltonian will thus be different from the Schrödinger one
+\begin{align}
+    H_H(t,t_0) &= U^\dagger(t,t_0) H_S(t) U(t,t_0) 
+    = \mathcal{T} \exp\left(\tfrac{1}{\hbar} \int_{t_0}^t dt' H_S(t')\right) H_S(t) \mathcal{T} \exp\left(-\tfrac{1}{\hbar} \int_{t_0}^t dt' H_S(t')\right) 
+    \neq H_S(t).
+\end{align}
+The equation of motion for $a$ in the Heisenberg picture reads
+\begin{align}%\label{eq:1d_oscillator_ladder_operator_time_evolution}
+    &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J \quad
+    \Rightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t')  e^{-i\omega (t-t')}.
+\end{align}
+For example, if $J$ is nonzero only within a finite time interval $[t_i, t_f]$, we have
 \begin{align}%\label{eq:a_in_a_out_1d_oscillator}
     a(t) &= \begin{cases}
         a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
-        a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
+        a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
         a(t_f) e^{-i\omega (t-t_f)}=: a_{\mathrm{out}} e^{-i\omega (t-t_f)}, & t > t_f,
     \end{cases}
 \end{align}
 where we define
 \begin{align}
-    a_{\mathrm{out}} &= a_{\mathrm{in}} + J_0\,,\quad J_0 := - \frac{i}{\hbar} \int_{t_i}^{t_f} dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{i\omega t'}.
+    a_{\mathrm{out}} &= a_{\mathrm{in}} + J_0\,,\quad J_0 := - \frac{i}{\hbar} \int_{t_i}^{t_f} dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{i\omega t'}.
 \end{align}
-In particular we note the Heisenberg hamiltonian is indipendent of time outside the interval $[t_i, t_f]$
+In particular the Heisenberg hamiltonian result independent of time outside the interval $[t_i, t_f]$, albeit different from the Schrödinger one at all times $t\geq t_i$,
 \begin{align}
     H = \hbar \omega \left(a_{\mathrm{in}}^\dagger a_{\mathrm{in}} + \tfrac{1}{2}\right), \quad t < t_i, \qquad H = \hbar \omega \left(a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2}\right), \quad t > t_f.
 \end{align}
@@ -475,17 +487,17 @@ We want to understand how the driving force affects several aspects of the dynam
 \begin{itemize}
     \item \textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change due to the driving force.
     \item \textbf{Energy.} How energy is pumped into the oscillator by the driving force, i.e. how $\langle H(t)\rangle$ changes with time.
-    \item \textbf{Resonance.} What is the best choice of $J(t)$ to excite the oscillator.
+    \item \textbf{Resonance.} What is the best choice of $J(t)$ to excite the oscillator? It is the natural frequency $\omega$ of the oscillator, as shown by the two previous points, and as expected from the \emph{classical} case.
     \item \textbf{Energy eigenstates \& Bogoliubov transformation.} How the in- and out-Fock states are related, and how the number of quanta (particles) is changed by the driving force.
 \end{itemize}
+For simplicity consider only a position driving force $J(t)$, setting $K(t)=0$.
 ------------------------------------------------------------------------------------------
 
 
-\textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change due to the driving force.
-For simplicity consider only a position driving force $J(t)$, setting $K(t)=0$.
+\textbf{Motion.} 
 Using the time evolution above and the expression of $q$ and $p$ in terms of ladder operators, we find
 \begin{align}
-    {}_{\mathrm{in}}\langle 0 | q(t) | 0 \rangle_{\mathrm{in}} &= \sqrt{\frac{\hbar}{2 m \omega}} \,{}_{\mathrm{in}}\langle 0 | a(t) + a^\dagger(t) | 0 \rangle_{\mathrm{in}}
+    {}_{\mathrm{in}}\langle 0 | q(t) | 0 \rangle_{\mathrm{in}} =& \sqrt{\frac{\hbar}{2 m \omega}} \,{}_{\mathrm{in}}\langle 0 | a(t) + a^\dagger(t) | 0 \rangle_{\mathrm{in}}
     \\
     = &\sqrt{\frac{\hbar}{2 m \omega}}\,\,\, {}_{\mathrm{in}}\langle 0 | \bigg(\graycancel{a_{\mathrm{in}} e^{-i\omega (t-t_0)} }  - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}\bigg) + \text{h.c.} | 0 \rangle_{\mathrm{in}}
     \\
@@ -498,10 +510,18 @@ Indeed, the bigger the interval $t_f-t_i$ the more the wannabe Fourier transform
 Similarly we can compute expectation values of other observables.
 
 
-\textbf{Energy.} How energy is pumped into the oscillator by the driving force, i.e. how $\langle H(t)\rangle$ changes with time. \todotag{Finish}
+\textbf{Energy.}
+For simplicity consider only late times $t>t_f$, the energy expectation value reads
+\begin{align}
+    {}_{\mathrm{in}}\langle 0 | H(t) | 0 \rangle_{\mathrm{in}} &= \hbar \omega \,{}_{\mathrm{in}}\langle 0 | a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2} | 0 \rangle_{\mathrm{in}}
+    = \hbar \omega \,{}_{\mathrm{in}}\langle 0 | (a_{\mathrm{in}}^\dagger + J_0^*)(a_{\mathrm{in}} + J_0) + \tfrac{1}{2} | 0 \rangle_{\mathrm{in}}
+    \\[5pt]
+    &= \hbar \omega \left(|J_0|^2 + \tfrac{1}{2}\right),\qquad |J_0|^2 = \frac{1}{2 m \omega \hbar} \left|\int_{t_i}^{t_f} dt' J(t') e^{i\omega t'}\right|^2 \sim \frac{1}{2 m \omega \hbar} |\tilde{J}(\omega)|^2.
+\end{align}
+The driving force pumps energy into the oscillator, increasing its average energy by an amount roughly proportional to the square of the Fourier component of $J(t)$ at the natural oscillator frequency $\omega$.
 
 
-------------------------------------------------------------------------------------------
+\textbf{Eigenstates \& Bogoliubov transforms.}
 We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|0\rangle_{\mathrm{in}}$ defined by $a_{\mathrm{in}} |0\rangle_{\mathrm{in}} = 0$, but rather 
 \begin{align}
     a_{\mathrm{out}} |0\rangle_{\mathrm{in}} = J_0 |0\rangle_{\mathrm{in}} \neq 0.
