@@ -1502,18 +1502,20 @@ Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\
 %------------------------------------------------------------
 
 The tetrad formalism amounts to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
-It is the natural generalization to the framework necessary for an arbitrary fiber bundle $E_F\to M$.
-The only typical requirement is that the two frame are dual to each other, i.e. $\theta^i (e_j) = \delta^i_j$.
+It is the natural generalization to the framework needed for arbitrary fiber bundles $E_F\to M$.
+The only typical requirement is that the two frame be dual to each other i.e. $\theta^i (e_j) = \delta^i_j$.
 In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimensions or more generally \emph{vielbeins} (n-legs) in n dimensions.
 
+To fix the notation, we reserve Greek letters $\mu,\nu,\rho\dots$ for coordinate indices and Latin letters $a,b,i,j,\dots$ for tetrad indices.
+We use $\{\phi^a, f_a\}_a$ for tetrads of a generic fiber bundle $E_F\to M$, and $\{\theta^i,e_i\}_i$ for specific tetrads of the tangent bundle $TM\to M$.
 
-\begin{mytheorem}[Avantages \& disadvantages of the tetrad formalism]
+\begin{mytheorem}[Avantages \& disadvantages of the tetrad formalism \answerinline{Ok}]
 The main advantage of the tetrad formalism is that coefficients of tensors in arbitrary frames transform as scalars under coordinate transformations.
-That is, their coordinates with respect to the tetrad bases do not change under change of coordinates, simply because we change the cohordinates $x^\mu\to \tilde{x}^\mu$ but the tetrad bases $\{e_i(x)\}_i$, $\{\theta^i(x)\}_i$ remain the same.
+That is, their coordinates with respect to the tetrad bases do not change under change of coordinates, simply because we change the cohordinates $x^\mu\to \tilde{x}^\mu$ but the tetrad bases $\{e_a(x)\}_a$, $\{\theta^a(x)\}_a$ remain the same.
 The main disadvantage is that expressions might get longer or more cumbersome, since we cannot use simplifications coming from coordinate bases e.g. the fact that $d (dx^\mu) = 0$ or $[\partial_\mu, \partial_\nu] = 0$.
 
 In any case, this has several advtanges.
-For example, we can choose a tetrad that is orthonormal with respect to a given metric $g$ i.e. we have Minkowski (or Euclidean) metric at every point
+For example, we can choose a tetrad that is orthonormal wrt a given metric $g$ i.e. we have Minkowski (or Euclidean) metric at every point
 \begin{equation}
     g = \eta_{ij} \theta^i \otimes \theta^j,\quad \eta_{ij}=\text{diag}(\pm1\dots \pm1)\,.
 \end{equation}
@@ -1522,13 +1524,14 @@ By definition, in any chosen frame, the $\gamma$ matrices are required to respec
 \begin{equation}
     \{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu} \mathbb{I}.
 \end{equation}
-In the such an orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb{I}$ and we can take the $\gamma^\mu$ as in the usual Clifford algebra in flat space all over the manifold.
+In such an orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb{I}$, and we can thus take the $\gamma^\mu$ constantly equal to the usual Clifford algebra in flat space all over the manifold.
 \end{mytheorem}
 
 
-\begin{mytheorem}[Fiber valued differential forms]
+
+\begin{mytheorem}[Fiber valued differential forms \answerinline{Ok}]
 Fiber valued differential forms are just usual $p$-forms taking values in a fiber space $F$.
-That is, given a fibre bundle $E_F\to M$ with fibre $F$, a fiber valued $p$-form is a section of the product bundle
+That is, given a fibre bundle $E_F\to M$ with fibre $F$, a fiber valued $p$-form is a \emph{section} of the product bundle
 \begin{equation}
      E_F \otimes \Lambda^p (M) \to M.
 \end{equation}
@@ -1539,23 +1542,23 @@ Given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valu
 where $\alpha^a \in \Lambda^p (M)$ are ordinary differential $p$-forms.
 \smallskip
 
-We can still define a wedge product between any two fiber valued forms $\alpha \in \Lambda^p (M) \otimes E_F$, $\beta \in \Lambda^q (M) \otimes E_G$ as
+We define a wedge product between any two fiber valued forms already at the level of linear spaces at each point $p\in M$
 \begin{align}
-    &E_F \otimes \Lambda^p (M) \times E_G \otimes \Lambda^q (M) \to (E_F \otimes E_G) \otimes \Lambda^{p+q} (M), \\[4pt]
+    &E_F \otimes \Lambda^p (M)_{\mid p} \times E_G \otimes \Lambda^q (M)_{\mid p} \to (E_F \otimes E_G) \otimes \Lambda^{p+q} (M)_{\mid p} \quad \text{s.t.}\\[5pt]
     &\alpha,\,\beta \mapsto \alpha \wedge \beta := (f_a \otimes \alpha^a) \wedge (g_b \otimes \beta^b) 
     := (f_a \otimes g_b) \otimes (\alpha^a \wedge \beta^b) \in (E_F \otimes E_G) \otimes \Lambda^{p+q} (M).
 \end{align}
-In fact, the wedge prodcut is well-defined already at the level of linear spaces at each point $p\in M$.
+The wedge prodcut naturally extends to sections of the fiber bundles i.e. fiber-valued differential forms.
+\smallskip 
 
-For example, when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms.
-This notion generalizes all the structures we have seen so far.
+Notably, when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms, and this notion generalizes all the tensorial structures seen so far.
 \begin{itemize}
     \item Ordinary differential $p$-form are just fiber valued $p$-form with trivial fiber $F = \mathbb{R}$.
     \item An $(h,k)$-tensor field is just a fiber valued $0$-form with fiber $F = T^h_k M$.
 \end{itemize}
 %
-In fact, since $\Lambda*(M)\subset T^*_*(M)$ the splitting in `differntial form part' and `tensor valued image' is somewhat arbitrary.
-The most natural convention is to take all the antisymmetric part as the differential form part and the rest as the tensor valued image.
+In fact, since $\Lambda^*(M)\subset T^*_*(M)$ the splitting in `differntial form part' and `tensor valued image' is somewhat arbitrary.
+The most natural convention is to take all the antisymmetric part as the differential form part and the rest as the tensor valued image, as in the following examples.
 \begin{itemize}
     \item The torsion $T_{\mu\nu}^{\, \rho}$, antisymmetric in the $\mu\nu$ indices, is a $(1,0)$-tensor valued 2-form i.e. a fiber valued 2-form with fiber $F = T^1_0 M$.
     \item The Riemann curvature $R_{\,\rho, \mu \nu}^{\sigma}$, antisymmetric in the $\mu\nu$ indices, is a $(1,1)$-tensor valued 2-form i.e. a fiber valued 2-form with fiber $F = T^1_1 M$.
@@ -1564,30 +1567,30 @@ The most natural convention is to take all the antisymmetric part as the differe
 
 
 
-\begin{mytheorem}[Exterior covariant derivative]
-Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle with connection 1-forms $\omega^b_a$, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
+\begin{mytheorem}[Exterior covariant derivative\answerinline{OK}]
+%
+Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
 \begin{equation}
     d_\nabla: E_F \otimes \Lambda^\bullet (M)  \to E_F \otimes \Lambda^{\bullet +1} (M)
 \end{equation}
-that is linear, satisfies the Leibniz rule
+thta is linear, satisfies the Leibniz rule 
 \begin{equation}
     d_\nabla(\alpha \wedge \beta) = (d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta),\qquad \alpha \in E_F \otimes \Lambda^p (M),\, \beta \in E_G \otimes \Lambda^\bullet (M),
 \end{equation}
 and reduces to the usual covariant derivative $\nabla$ when acting on fiber valued $0$-forms and the usual exterior derivative $d$ when acting on ordinary differential forms i.e. fiber valued forms with trivial fiber $F = \mathbb{R}$.
 
-Concretely, given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
-\begin{equation}
-    \alpha = f_a\otimes \alpha^a,
-\end{equation}
-The condition that $d_\nabla$ reduces to $\nabla$ on fiber valued $0$-forms implies and to the usual exterior derivative on forms with trivial fiber $F = \mathbb{R}$ then implies that the exterior covariant derivative acts as
-\begin{equation}
-    d_\nabla \alpha = \nabla f_a \wedge \alpha^a + f_a \otimes d \alpha^a  
-    = f_a\otimes\left( \omega^a_{b} \wedge \alpha^b + d \alpha^a \right),
-\end{equation}
-where note that $f_a$ is a fiber valued $0$-form and $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$ and $\omega^a_{b}$ are the connection 1-forms associated to the connection $\nabla$ on $E_F \to M$.
-Beware that the \textbf{exterior covariant derivative does not square to zero} in general, i.e. $d_\nabla^2 \neq 0$ due to the nontriivial connection 1-forms $\omega^a_b$.
+\textbf{Beware  the exterior covariant derivative does not square to zero} in general, i.e. $d_\nabla^2 \neq 0$ due to the nontrivial connection 1-forms $\omega^a_b$.
 \smallskip
 
+Concretely, given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as $\alpha = f_a\otimes \alpha^a$.
+The condition that $d_\nabla$ reduces to $\nabla$ on fiber valued $0$-forms implies and to the usual exterior derivative on forms with trivial fiber $F = \mathbb{R}$ then implies that the exterior covariant derivative acts as
+\begin{equation}
+    d_\nabla \alpha = d_\nabla ( f_a\otimes \alpha^a)= \nabla f_a \wedge \alpha^a + f_a \otimes d \alpha^a  
+    = f_a\otimes\left( \omega^a_{b} \wedge \alpha^b + d \alpha^a \right),
+\end{equation}
+where note that $f_a$ is a fiber valued $0$-form, and $\nabla f_a$ is a fiber valued $1$-form $T^1_0M\ni X \mapsto \nabla_X f_a \in F$, and $\omega^a_{b}$ are the connection 1-forms of the connection $\nabla$ in the chosen frame $\{f_a\}_a$.
+\smallskip
+\begin{proof}
 The Leibniz rule is then obeyed since
 \begin{align}
     d_\nabla(\alpha \wedge \beta) 
@@ -1601,48 +1604,36 @@ The Leibniz rule is then obeyed since
     &= f_a\otimes\left( \omega^a_{(F)\,c} \wedge \alpha^c + d \alpha^a \right) \wedge (g_b \otimes \beta^b) + (-1)^p (f_a \otimes \alpha^a) \wedge \left( g_d \otimes \left( \omega^b_{(G)\,d} \wedge \beta^d + d \beta^b \right) \right)\\
     &=(d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta)\,.
 \end{align}
-\end{mytheorem}
-
-
-
-\begin{mytheorem}[Structure constants of a tetrad frame]
-Given a frame $\{\theta^i\}_i$ for the cotangent bundle, define its structure constants $C^i_{\, jk}$ as the coefficients, antisymmetric in the two lower indices, of the expansions 
-\begin{equation}
-    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k \quad \text{(sum over repeated indices)}.
-\end{equation}
-The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
-Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
-\begin{equation}
-    [e_j, e_k] = C^i_{jk} e_i.
-\end{equation}
-By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
-If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
-Note that structure constants make sense only for the tangent bundle $T^\bullet_\bullet M$ since only there we have a natural notion of commutator of vector fields, and in fact arbitrary fiber-valued forms are expressed as linear combinations of $\R$-valued forms times fiber basis elements.
-\end{mytheorem}
-\begin{proof}
-Fix any coordinate system $\{x^\mu\}_\mu$ and let $\theta^i = \theta^i_\mu dx^\mu$, $e_j = e_j^\nu \partial_\nu$.
-By duality of the tetrad we have
-\begin{align}
-    0= \partial_\mu \delta^i_j &= \partial_\mu \big(\theta^i (e_j) \big) = \partial_\mu\big(\theta^i_\nu e_j^\nu \big) = (\partial_\mu \theta^i_\nu) e_j^\nu + \theta^i_\nu (\partial_\mu e_j^\nu)
-    \quad \Rightarrow\quad (\partial_\mu \theta^i_\nu) e_j^\nu =- \theta^i_\nu (\partial_\mu e_j^\nu)\,.
-\end{align}
-By definition of exterior derivative we have
-\begin{align}
-    d \theta^i &= (\partial_\mu \theta^i_\nu) dx^\mu \wedge dx^\nu = \partial_\mu \theta^i_\nu \Big(dx^\mu\otimes dx^\nu- dx^\nu \otimes dx^\mu \Big)\,.
-\end{align}
-Evaluating on the tetrad and using the previous relation we get
-\begin{align}
-    d\theta^i (e_j, e_k) 
-    = \partial_\mu \theta^i_\nu \Big( e_j^\mu e_k^\nu - e_j^\nu e_k^\mu \Big) 
-    = - \theta^i_\nu \Big( (\partial_\mu e_j^\nu) e_k^\mu - (\partial_\mu e_k^\nu) e_j^\mu \Big) 
-     =: - \theta^i \big( [e_j, e_k]\big) = - C^i_{jk}\,.
-\end{align}
-That is to say
-\begin{align}
-    d\theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k\, \Leftrightarrow [e_j, e_k] = C^i_{jk} e_i\,.
-\end{align}
-%
 \end{proof}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Inducing connections on arbitrary fiber bundles from the tangent bundle connection \answerinline{OK}]
+The general idea is that we start with a connection $\nabla$ on the tangent bundle $TM\to M$.
+Consider tetrads $\{e_i\}_i$ on the tangent bundle $T^1_0M\to M$ transforming under some (representation of a) structure group $G\subseteq GL(n,\R)$.
+The connection form on the tangent bundle $\omega_{TM}$ must then take values in the representation of the Lie algebra $\mathfrak{g}$ on $T^1_0M$ induced by the action of $G \curvearrowright T^1_0M$, with concrete matrix elements defined in the chosen tetrad $\{e_i\}_i$ as
+\begin{align}
+    \nabla_\cdot e_j &=: \omega_{TM}(\cdot) e_j =: e_i \otimes \omega^i_{\, j}(\cdot)\,.
+\end{align}
+We extend the connection $\nabla$ on the cotangent bundle $T^0_1M$ via the ajoint representation of $\mathfrak{g}$, and to all tensor bundles $T^h_k M$ via the tensor product of (adjoint) representations.
+
+Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$, with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can naturally induce a connection on $E_F\to M$.
+Indeed, regardless of the specific representation, the connection 1-form on the tangent bundle can be seen as taking values in the \emph{abstract} Lie group $\mathfrak{g}$.
+\begin{align}
+    \omega: TM &\to \mathfrak{g} \,\, \mid T_pM \ni X \mapsto \omega(X) \in \mathfrak{g}.
+\end{align}
+We then simply define the connection 1-form $\omega_{(F)}$ on $E_F\to M$ as the 1-form taking values in the above representation of $\mathfrak{g}\curvearrowright F$.
+In a given local frame $\{f_a\}_a$ for $E_F\to M$, the explicit matrix elements are defined as
+\begin{align}
+    \nabla_\cdot f_b &=: \omega_{(F)}(\cdot) f_b =: f_a \otimes \omega^a_{\, b}(\cdot)\,.
+\end{align}
+In particular, the covariant derivative of a section $\psi = \psi^a f_a$ reads
+\begin{equation}
+    \nabla \psi = f_a \otimes \big(d\psi^a + \omega_{(F)\, b}^a \, \psi^b\big)\,.
+\end{equation}
+We again remark that, as abstract elements of $\mathfrak{g}$, the connection 1-forms on $E_F\to M$ and on $TM\to M$ coincide i.e. $[\omega_{(F)}(\cdot)]\equiv [ \omega_{TM}(\cdot)] \equiv \omega(\cdot)\in \mathfrak{g}$.
+\end{mytheorem}
+
 
 
 \begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
@@ -1656,7 +1647,7 @@ In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
     \nabla X = e_i \otimes (dX^i + \omega^i_{\, j}\,\, X^j)\,.
 \end{equation}
 Under a change of tetrad frame $\{\theta^i,\,e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
-\begin{equation}
+\begin{equation}\label{eq:transformation_law_connection_1_form}
     \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
 \end{equation}
 This is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates.
@@ -1677,6 +1668,20 @@ Comparing the two expressions we get
 \begin{align}
     \nabla_{\dot{\gamma}(0)}  = \left( \frac{d}{d t} \Big|_{t=0} M(t) \right) = L \in \mathfrak{g}.
 \end{align}
+
+In turn, we understand that the transformation law \eqref{eq:transformation_law_connection_1_form} of the connection 1-from is nothing else than the expected transformation at the Lie algebra level induced by the corresponding \emph{local} transformation of the represenation space $F$.
+Indeed consdier two local frames $\{f_a\}$ and $\{\tilde{f}_a = A_a^{\, b} f_b\}$ related by a local transformation $A: U \subseteq M \to G$ taking this matrix form in the chosen bases.
+Parallel transport along a curve $\tau \mapsto \gamma(\tau)$ yields a parameter dependent transformation
+\begin{align}
+    G \ni M(t) = \exp\left( - \int_0^t \omega_{(F)}(\dot{\gamma}(\tau)) d\tau \right) : {E_F}_{\gamma(0)} \longrightarrow {E_F}_{\gamma(t)}\,.
+\end{align}
+The matrix elements of the transfromation in the two local frames are related by
+\begin{align}
+    \tilde{M}(t) &= A(\gamma(t)) M(t) A^{-1}(\gamma(0)) 
+     = A(\gamma(t)) \exp\left( - \int_0^t \omega_{(F)}(\dot{\gamma}(\tau)) d\tau \right) A^{-1}(\gamma(0)) \\[6pt]
+    & \Rightarrow\quad \tilde{\omega}_{F}(\dot{\gamma}(0)) \equiv \frac{d}{dt}\tilde{M}(t)_{\mid t=0} = dA(\dot{\gamma}(0)) A^{-1}(\gamma(0)) + A(\gamma(0)) \, \omega_{(F)}(\dot{\gamma}(0)) \, A^{-1}(\gamma(0)).
+\end{align}
+This is precisely the transformation law \eqref{eq:transformation_law_connection_1_form} evaluated on the vector $\dot{\gamma}(0)\in T_{\gamma(0)}M$.
 
 
 Just like the other forms, the connection 1-form can be seen as a fiber valued differential form.
@@ -1730,7 +1735,31 @@ and on general spinor fields $\psi = \psi^a s_a$ as
 \end{mytheorem}
 
 
-\begin{mytheorem}[Curvature 2-form]
+\begin{mytheorem}[Metric compatibility in arbitrary fiber bundle\todotag{Check and finish}]
+%
+Given a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$, endowed with a metric $g: F \times F \to \R$ and a connection $\nabla$ on $E_F$ with $\mathfrak{g}$-valued connection form $\omega$, we say that the connection is metric compatible if 
+\begin{align}
+    \nabla g \equiv 0\quad \text{i.e.}\quad d \left( g(s,t) \right) = g(\nabla s, t) + g(s, \nabla t)\quad \text{$\forall$ sections }s,t \in \Gamma(E_F).
+\end{align}
+In a tetrad frame $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_a^{~b}$ and metric $g_{ab} := g(f_a, f_b)$, the condition reads
+\begin{equation}
+    d g_{ab} = \omega_{a}^{~c}\, g_{cb} + \omega_{b}^{~c} \,g_{ac}.
+\end{equation}
+If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad
+\begin{equation}
+    \omega_{ab} = - \omega_{ba}\quad \text{ where }\omega_{ab} := g_{ac} \, \omega^c_{~b}.
+\end{equation}
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[The example: connection on spinors\todotag{Redo}]
+%
+
+\end{mytheorem}
+
+
+\begin{mytheorem}[Curvature 2-form \todotag{Check \& finish}]
 Given an affine connection $\nabla$ on a vector bundle $E_F\to M$ and a tetrad frame $\{\theta^i,\,e_i\}_i$, we define the $T^1_0E_F$-valued $\Omega_{\, j}$ and $T^1_1E_F$-valued $\Omega^i_{\,j}$  curvature 2-forms as the set of 1-forms satisfying
 \begin{equation}
     R(e_j) :=\Omega_j=: e_i \otimes \Omega^i_{j} 
@@ -1827,22 +1856,54 @@ The rest follows from the definition of the exterior covariant derivative.
 
 
 
-\begin{mytheorem}[Metric compatibility in arbitrary fiber bundle\todotag{Check and finish}]
+
+
+
+%===============================================================
+\subsection{Tetrad formalism in the tangent bundle}
+%===============================================================
+
+
+\begin{mytheorem}[Structure constants of a tetrad frame\answerinline{OK}]
 %
-Given a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$, endowed with a metric $g: F \times F \to \R$ and a connection $\nabla$ on $E_F$ with $\mathfrak{g}$-valued connection form $\omega$, we say that the connection is metric compatible if 
-\begin{align}
-    \nabla g \equiv 0\quad \text{i.e.}\quad d \left( g(s,t) \right) = g(\nabla s, t) + g(s, \nabla t)\quad \text{$\forall$ sections }s,t \in \Gamma(E_F).
-\end{align}
-In a tetrad frame $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_a^{~b}$ and metric $g_{ab} := g(f_a, f_b)$, the condition reads
+Given a tetrad $\{\theta^i,e_i\}_i$ for the tangent bundle, the structure constants $C^i_{jk}$ are defined as the coefficients of the commutator expansion
 \begin{equation}
-    d g_{ab} = \omega_{a}^{~c}\, g_{cb} + \omega_{b}^{~c} \,g_{ac}.
+    [e_j, e_k] = C^i_{jk} e_i \,\, \quad \text{antisymmetric in $j,k$}.
 \end{equation}
-If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad
+The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad vector fields $\{e_i\}_i$.
+They can be equivalently defined as the coefficients of the exterior derivative expansion
 \begin{equation}
-    \omega_{ab} = - \omega_{ba}\quad \text{ where }\omega_{ab} := g_{ac} \, \omega^c_{~b}.
+    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k \quad \text{(sum over repeated indices)}.
 \end{equation}
-%
+By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
+If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
+
+Beware the structure constants make sense only for the tangent bundle $TM$ since only there we have a natural notion of commutator of vector fields, and in fact arbitrary fiber-valued forms are expressed as linear combinations of ordinary $\R$-valued forms times fiber basis elements.
 \end{mytheorem}
+\begin{proof}
+Fix any coordinate system $\{x^\mu\}_\mu$ and let $\theta^i = \theta^i_\mu dx^\mu$, $e_j = e_j^\nu \partial_\nu$.
+By duality of the tetrad we have
+\begin{align}
+    0= \partial_\mu \delta^i_j &= \partial_\mu \big(\theta^i (e_j) \big) = \partial_\mu\big(\theta^i_\nu e_j^\nu \big) = (\partial_\mu \theta^i_\nu) e_j^\nu + \theta^i_\nu (\partial_\mu e_j^\nu)
+    \quad \Rightarrow\quad (\partial_\mu \theta^i_\nu) e_j^\nu =- \theta^i_\nu (\partial_\mu e_j^\nu)\,.
+\end{align}
+By definition of exterior derivative we have
+\begin{align}
+    d \theta^i &= (\partial_\mu \theta^i_\nu) dx^\mu \wedge dx^\nu = \partial_\mu \theta^i_\nu \Big(dx^\mu\otimes dx^\nu- dx^\nu \otimes dx^\mu \Big)\,.
+\end{align}
+Evaluating on the tetrad and using the previous relation we get
+\begin{align}
+    d\theta^i (e_j, e_k) 
+    = \partial_\mu \theta^i_\nu \Big( e_j^\mu e_k^\nu - e_j^\nu e_k^\mu \Big) 
+    = - \theta^i_\nu \Big( (\partial_\mu e_j^\nu) e_k^\mu - (\partial_\mu e_k^\nu) e_j^\mu \Big) 
+     =: - \theta^i \big( [e_j, e_k]\big) = - C^i_{jk}\,.
+\end{align}
+That is to say
+\begin{align}
+    d\theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k\, \Leftrightarrow [e_j, e_k] = C^i_{jk} e_i\,.
+\end{align}
+%
+\end{proof}
 
 
 
@@ -1887,7 +1948,13 @@ Setting \(X=e_j,\, Y=e_k,\, Z=e_i\) and using the definition of the Christoffel 
 \end{proof}
 
 
-\begin{mytheorem}[Riemann curvature tensor in a tetrad frame\todotag{Check and finish}]
+\begin{mytheorem}[Torsion 2-form in a tetrad frame on the tangent bundle\todotag{Check and finish}]
+%
+Beware torsion makes sense only for the tangent bundle since only there we have a natural notion of commutator of vector fields...
+\end{mytheorem}
+
+
+\begin{mytheorem}[Riemann curvature tensor in a tetrad frame on the tangent bundle\todotag{Check and finish}]
 Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on a manifold \(M\) with affine connection \(\nabla\), we define the Riemann curvature tensor components \(R^i_{\, jkl}\) as the coefficients in the expansion 
 \begin{equation}
     R(e_k, e_l) e_j =: R^i_{\, jkl} e_i.
@@ -1899,14 +1966,29 @@ In particular, the curvature 2-forms can be expressed in terms of the Riemann te
 \end{mytheorem}
 
 
-\begin{mytheorem}[Einstein tensor in a tetrad frame\todotag{Check and finish}]
+\begin{mytheorem}[Cartan \& Bianchi equations on the tangent bundle \& recovering coordinate formalism\todotag{Check and finish}]
     
 \end{mytheorem}
+
+
+\begin{mytheorem}[Einstein tensor in a tetrad frame of the tangent bundle\todotag{Check and finish}]
+%
+Here we also discuss the tensor (cf. Kempf 15)
+\begin{equation}
+    H_{\mu\nu\rho}=\dots
+\end{equation}
+\end{mytheorem}
+
 
 \begin{mytheorem}[EM tensor varying wrt tetrad fields\todotag{Check and finish}]
+%
+Since the tetrad formalism is completely equivalent to the metric formalism, we can express the EM tensor as the variation of the matter action wrt the tetrad fields $\{\theta^i\}_i$ instead of the metric $g$. \todotag{Maybe move it to the GR section?}
     
 \end{mytheorem}
 
+
+
+\bigskip
 {
 \color{red}
 From Kempf GR L10 missing:
@@ -1922,3 +2004,32 @@ From Kempf GR L10 missing:
     \item Riemann curvature tensor components in tetrad frame [ONLY TM]
 \end{itemize}
 }
+\bigskip
+
+\noindent
+\textbf{INDEX OF SECTION}
+\begin{enumerate}
+    \item general intro Ok
+    \item advantages of the tetrad formalism Ok
+    \item fiber valued differential forms Ok
+    \item total exterior covariant derivative Ok
+    \item inducing connections on associated fiber bundles Ok
+    \item connection 1-form on arbitrary fiber bundle  MISSING (swap with above point when done)
+    \item metric compatibility in arbitrary fiber bundle MISSING
+    \item example: connection on spinors MISSING
+    \item curvature 2-form on arbitrary fiber bundle MISSING
+    \item Cartan structure equations MISSING
+    \item Bianchi identities MISSING
+\end{enumerate}
+
+\noindent
+\textbf{INDEX OF TANGENT BUNDLE}
+\begin{enumerate}
+    \item structure constants of a tetrad frame Ok
+    \item Christoffel symbols in a tetrad frame of the tangent bundle MISSING
+    \item torsion 2-form in a tetrad frame on the tangent bundle MISSING
+    \item Riemann curvature tensor in a tetrad frame on the tangent bundle MISSING
+    \item Cartan \& Bianchi equations on the tangent bundle \& recovering coordinate formalism MISSING
+    \item Einstein tensor in a tetrad frame of the tangent bundle MISSING
+    \item EM tensor varying wrt tetrad fields MISSING
+\end{enumerate}

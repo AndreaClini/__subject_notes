@@ -1,0 +1,427 @@
+%-----------------------------------------------------------
+%=======================================================
+\section{Tetrad formalism \& tensor-valued forms}\todotag{Reformat whole section}
+%=======================================================
+%------------------------------------------------------------
+
+The tetrad formalism amounts to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
+It is the natural generalization to the framework necessary for an arbitrary fiber bundle $E_F\to M$.
+The only typical requirement is that the two frame are dual to each other, i.e. $\theta^i (e_j) = \delta^i_j$.
+In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimensions or more generally \emph{vielbeins} (n-legs) in n dimensions.
+
+
+\begin{mytheorem}[Avantages \& disadvantages of the tetrad formalism]
+The main advantage of the tetrad formalism is that coefficients of tensors in arbitrary frames transform as scalars under coordinate transformations.
+That is, their coordinates with respect to the tetrad bases do not change under change of coordinates, simply because we change the cohordinates $x^\mu\to \tilde{x}^\mu$ but the tetrad bases $\{e_i(x)\}_i$, $\{\theta^i(x)\}_i$ remain the same.
+The main disadvantage is that expressions might get longer or more cumbersome, since we cannot use simplifications coming from coordinate bases e.g. the fact that $d (dx^\mu) = 0$ or $[\partial_\mu, \partial_\nu] = 0$.
+
+In any case, this has several advtanges.
+For example, we can choose a tetrad that is orthonormal with respect to a given metric $g$ i.e. we have Minkowski (or Euclidean) metric at every point
+\begin{equation}
+    g = \eta_{ij} \theta^i \otimes \theta^j,\quad \eta_{ij}=\text{diag}(\pm1\dots \pm1)\,.
+\end{equation}
+This is particularly useful for spinors.
+By definition, in any chosen frame, the $\gamma$ matrices are required to respect the Clifford algebra
+\begin{equation}
+    \{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu} \mathbb{I}.
+\end{equation}
+In the such an orthonormal frame, this reduces to $\{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb{I}$ and we can take the $\gamma^\mu$ as in the usual Clifford algebra in flat space all over the manifold.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Fiber valued differential forms]
+Fiber valued differential forms are just usual $p$-forms taking values in a fiber space $F$.
+That is, given a fibre bundle $E_F\to M$ with fibre $F$, a fiber valued $p$-form is a section of the product bundle
+\begin{equation}
+     E_F \otimes \Lambda^p (M) \to M.
+\end{equation}
+Given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
+\begin{equation}
+    \alpha =  f_a \otimes \alpha^a,
+\end{equation}
+where $\alpha^a \in \Lambda^p (M)$ are ordinary differential $p$-forms.
+\smallskip
+
+We can still define a wedge product between any two fiber valued forms $\alpha \in \Lambda^p (M) \otimes E_F$, $\beta \in \Lambda^q (M) \otimes E_G$ as
+\begin{align}
+    &E_F \otimes \Lambda^p (M) \times E_G \otimes \Lambda^q (M) \to (E_F \otimes E_G) \otimes \Lambda^{p+q} (M), \\[4pt]
+    &\alpha,\,\beta \mapsto \alpha \wedge \beta := (f_a \otimes \alpha^a) \wedge (g_b \otimes \beta^b) 
+    := (f_a \otimes g_b) \otimes (\alpha^a \wedge \beta^b) \in (E_F \otimes E_G) \otimes \Lambda^{p+q} (M).
+\end{align}
+In fact, the wedge prodcut is well-defined already at the level of linear spaces at each point $p\in M$.
+
+For example, when $E_F = T^h_kM$ is the bundle of $(h,k)$-tensors we have tensor-valued differential forms.
+This notion generalizes all the structures we have seen so far.
+\begin{itemize}
+    \item Ordinary differential $p$-form are just fiber valued $p$-form with trivial fiber $F = \mathbb{R}$.
+    \item An $(h,k)$-tensor field is just a fiber valued $0$-form with fiber $F = T^h_k M$.
+\end{itemize}
+%
+In fact, since $\Lambda*(M)\subset T^*_*(M)$ the splitting in `differntial form part' and `tensor valued image' is somewhat arbitrary.
+The most natural convention is to take all the antisymmetric part as the differential form part and the rest as the tensor valued image.
+\begin{itemize}
+    \item The torsion $T_{\mu\nu}^{\, \rho}$, antisymmetric in the $\mu\nu$ indices, is a $(1,0)$-tensor valued 2-form i.e. a fiber valued 2-form with fiber $F = T^1_0 M$.
+    \item The Riemann curvature $R_{\,\rho, \mu \nu}^{\sigma}$, antisymmetric in the $\mu\nu$ indices, is a $(1,1)$-tensor valued 2-form i.e. a fiber valued 2-form with fiber $F = T^1_1 M$.
+\end{itemize}
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Exterior covariant derivative]
+Given a fiber bundle $E_F \to M$ with fiber $F$ and a connection $\nabla$ on this bundle with connection 1-forms $\omega^b_a$, we define the exterior covariant derivative $d_\nabla$ acting on fiber valued $p$-forms as the unique map
+\begin{equation}
+    d_\nabla: E_F \otimes \Lambda^\bullet (M)  \to E_F \otimes \Lambda^{\bullet +1} (M)
+\end{equation}
+that is linear, satisfies the Leibniz rule
+\begin{equation}
+    d_\nabla(\alpha \wedge \beta) = (d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta),\qquad \alpha \in E_F \otimes \Lambda^p (M),\, \beta \in E_G \otimes \Lambda^\bullet (M),
+\end{equation}
+and reduces to the usual covariant derivative $\nabla$ when acting on fiber valued $0$-forms and the usual exterior derivative $d$ when acting on ordinary differential forms i.e. fiber valued forms with trivial fiber $F = \mathbb{R}$.
+
+Concretely, given a local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$, any fiber valued $p$-form $\alpha \in \Lambda^p (M) \otimes E_F$ can be locally written as
+\begin{equation}
+    \alpha = f_a\otimes \alpha^a,
+\end{equation}
+The condition that $d_\nabla$ reduces to $\nabla$ on fiber valued $0$-forms implies and to the usual exterior derivative on forms with trivial fiber $F = \mathbb{R}$ then implies that the exterior covariant derivative acts as
+\begin{equation}
+    d_\nabla \alpha = \nabla f_a \wedge \alpha^a + f_a \otimes d \alpha^a  
+    = f_a\otimes\left( \omega^a_{b} \wedge \alpha^b + d \alpha^a \right),
+\end{equation}
+where note that $f_a$ is a fiber valued $0$-form and $\nabla f_a$ is a fiber valued $1$-form via $T^1_0M\ni X \mapsto \nabla_X f_a \in F$ and $\omega^a_{b}$ are the connection 1-forms associated to the connection $\nabla$ on $E_F \to M$.
+Beware that the \textbf{exterior covariant derivative does not square to zero} in general, i.e. $d_\nabla^2 \neq 0$ due to the nontriivial connection 1-forms $\omega^a_b$.
+\smallskip
+
+The Leibniz rule is then obeyed since
+\begin{align}
+    d_\nabla(\alpha \wedge \beta) 
+    &= \nabla (f_a\otimes g_b) \wedge (\alpha^a \wedge \beta^b) + (f_a\otimes g_b) \otimes d(\alpha^a \wedge \beta^b) \\
+    &= \left( \nabla f_a \otimes g_b + f_a \otimes \nabla g_b \right) \wedge (\alpha^a \wedge \beta^b) +
+    (f_a\otimes g_b) \otimes \left( d \alpha^a \wedge \beta^b + (-1)^p \alpha^a \wedge d \beta^b \right)
+    \\
+    &= f_a \otimes g_b \otimes \omega^a_{(F)\,c} \wedge \alpha^c \wedge \beta^b + f_a \otimes g_b \otimes \omega^b_{(G)\,d} \wedge \alpha^a \wedge \beta^d \\
+    &\quad + f_a \otimes g_b \otimes d \alpha^a \wedge \beta^b + (-1)^p f_a \otimes g_b \otimes \alpha^a \wedge d \beta^b
+    \\
+    &= f_a\otimes\left( \omega^a_{(F)\,c} \wedge \alpha^c + d \alpha^a \right) \wedge (g_b \otimes \beta^b) + (-1)^p (f_a \otimes \alpha^a) \wedge \left( g_d \otimes \left( \omega^b_{(G)\,d} \wedge \beta^d + d \beta^b \right) \right)\\
+    &=(d_\nabla \alpha) \wedge \beta + (-1)^p \alpha \wedge (d_\nabla \beta)\,.
+\end{align}
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Structure constants of a tetrad frame]
+Given a frame $\{\theta^i\}_i$ for the cotangent bundle, define its structure constants $C^i_{\, jk}$ as the coefficients, antisymmetric in the two lower indices, of the expansions 
+\begin{equation}
+    d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k \quad \text{(sum over repeated indices)}.
+\end{equation}
+The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad basis vector fields $\{e_i\}_i$ dual to $\{\theta^i\}_i$.
+Indeed, one can equivalently define $C^i_{jk}$ as the commutator coefficients
+\begin{equation}
+    [e_j, e_k] = C^i_{jk} e_i.
+\end{equation}
+By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
+If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
+Note that structure constants make sense only for the tangent bundle $T^\bullet_\bullet M$ since only there we have a natural notion of commutator of vector fields, and in fact arbitrary fiber-valued forms are expressed as linear combinations of $\R$-valued forms times fiber basis elements.
+\end{mytheorem}
+\begin{proof}
+Fix any coordinate system $\{x^\mu\}_\mu$ and let $\theta^i = \theta^i_\mu dx^\mu$, $e_j = e_j^\nu \partial_\nu$.
+By duality of the tetrad we have
+\begin{align}
+    0= \partial_\mu \delta^i_j &= \partial_\mu \big(\theta^i (e_j) \big) = \partial_\mu\big(\theta^i_\nu e_j^\nu \big) = (\partial_\mu \theta^i_\nu) e_j^\nu + \theta^i_\nu (\partial_\mu e_j^\nu)
+    \quad \Rightarrow\quad (\partial_\mu \theta^i_\nu) e_j^\nu =- \theta^i_\nu (\partial_\mu e_j^\nu)\,.
+\end{align}
+By definition of exterior derivative we have
+\begin{align}
+    d \theta^i &= (\partial_\mu \theta^i_\nu) dx^\mu \wedge dx^\nu = \partial_\mu \theta^i_\nu \Big(dx^\mu\otimes dx^\nu- dx^\nu \otimes dx^\mu \Big)\,.
+\end{align}
+Evaluating on the tetrad and using the previous relation we get
+\begin{align}
+    d\theta^i (e_j, e_k) 
+    = \partial_\mu \theta^i_\nu \Big( e_j^\mu e_k^\nu - e_j^\nu e_k^\mu \Big) 
+    = - \theta^i_\nu \Big( (\partial_\mu e_j^\nu) e_k^\mu - (\partial_\mu e_k^\nu) e_j^\mu \Big) 
+     =: - \theta^i \big( [e_j, e_k]\big) = - C^i_{jk}\,.
+\end{align}
+That is to say
+\begin{align}
+    d\theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k\, \Leftrightarrow [e_j, e_k] = C^i_{jk} e_i\,.
+\end{align}
+%
+\end{proof}
+
+
+\begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
+%
+Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, define the $\mathfrak{g}$-valued connection 1-forms $\omega^{(F)}$ as the 1-form that in a given local frame $\{e_i\}_i$ for the fiber bundle $E_F \to M$ satisfy
+\begin{equation}
+     \nabla\cdot e_j=:\omega(\cdot) e_j =: e_i\otimes \omega^i_{\,j}(\cdot)\,.
+\end{equation}
+In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
+\begin{equation}
+    \nabla X = e_i \otimes (dX^i + \omega^i_{\, j}\,\, X^j)\,.
+\end{equation}
+Under a change of tetrad frame $\{\theta^i,\,e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
+\begin{equation}
+    \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
+\end{equation}
+This is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates.
+
+To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
+\begin{align}
+    P_\gamma(t): E_{F,\,\gamma(0)} &\to E_{F,\,\gamma(t)} \mid e_a \to M(t)_a^b e_b\quad \text{for some }M(t)\in G \subseteq GL(F).
+\end{align}  
+The covariant derivative then reurns the infinitesimal change, that is 
+\begin{align}
+    P_\gamma(\epsilon) f = f + \epsilon \frac{d}{d t} \Big|_{t=0} P_\gamma(t) f + O(\epsilon^2) = f + \epsilon \nabla_{\dot{\gamma}(0)} f + O(\epsilon^2)
+\end{align}
+On the other hand, since $P_\gamma(t)$ is a linear isomorphism we have $M(t) = \exp(Lt)$ for some $L \in \mathfrak{g}$ so that
+\begin{align}
+    P_\gamma(\epsilon) f = M(\epsilon)^a_b f^b e_a = \left( \delta^a_b + \epsilon \frac{d}{d t} \Big|_{t=0} M(t)^a_b + O(\epsilon^2) \right) f^b e_a = f + \epsilon L f + O(\epsilon^2).
+\end{align}
+Comparing the two expressions we get
+\begin{align}
+    \nabla_{\dot{\gamma}(0)}  = \left( \frac{d}{d t} \Big|_{t=0} M(t) \right) = L \in \mathfrak{g}.
+\end{align}
+
+
+Just like the other forms, the connection 1-form can be seen as a fiber valued differential form.
+The fiber is the Lie algebra of the structure group of the frame bundle, i.e. $\mathfrak{gl}(n,\R)$ for a general connectin, and $\mathfrak{so}(p,q)$ for an orthonormal frame of metric connection with signature $(p,q)$.
+Indeed, for an orthonormal tetrad $\{e_\mu\}_\mu$, metric compatibility $\nabla g=0$ implies
+\begin{align}
+    0 = \nabla_\bullet \eta_{\mu\nu} &= \nabla_\bullet g(e_\mu, e_\nu) = g(\nabla_\bullet e_\mu, e_\nu) + g(e_\mu, \nabla_\bullet e_\nu) = g(\omega_\mu^\rho e_\rho, e_\nu) + g(e_\mu, \omega_\nu^\sigma e_\sigma) = \omega_{\mu \nu} + \omega_{\nu \mu}.
+\end{align}
+Lowering the indices of the connection form with the metric we thus get an antisymmetric form $\omega_{\mu\nu} = - \omega_{\nu\mu}$, which is the hallmark of the Lie algebra $\mathfrak{so}(p,q)$.
+If $G\subseteq GL(T_pM) \equiv GL(n,\R)$ is the subgroup preserving the metric $g_p$ at point $p\in M$, the connection 1-form then takes values in the Lie algebra $\mathfrak{g}$ of $G$.
+Namely, for any curve $t\mapsto A(t)\sim\mathbb{I}+t\omega \in G\subseteq GL(T_pM)$
+\begin{align}
+    g_{\rho\sigma}A^\rho_\mu A^\sigma_\nu = g_{\mu\nu}
+    &\Rightarrow 0 = \frac{d}{dt} \Big|_{t=0} \left( g_{\rho\sigma}A^\rho_\mu(t) A^\sigma_\nu(t) \right) = g_{\rho\sigma} \left( \frac{d}{dt} \Big|_{t=0} A^\rho_\mu(t) \right) \delta^\sigma_\nu + g_{\rho\sigma} \delta^\rho_\mu \left( \frac{d}{dt} \Big|_{t=0} A^\sigma_\nu(t) \right) \\
+    &\Rightarrow g_{\rho\nu} \omega^\rho_\mu + g_{\mu\sigma} \omega^\sigma_\nu = 0.
+\end{align}
+%
+This was indeed expected: the connection ultimately yields the infinitesimal change of a vector under parallel transport, which preserves angles and lengths by definition.
+The change of a vector can thus only be an infinitesimal `generalized rotation' in the tangent space, i.e. an element of the Lie algebra of the orthogonal group of $g_p$, which is $SO(p,q)$ in a suitable basis.
+That is, for $\epsilon \mapsto X(\epsilon)$ a parallelly transported vector along a curve $\epsilon \mapsto \gamma(\epsilon)$,
+\begin{align}
+    X(\epsilon) &= X(0) + \epsilon\, \nabla_{\dot{\gamma}(0)}\, X + O(\epsilon^2) \\
+    &= X(0) + \epsilon\,\, \omega(\dot{\gamma}(0))\, X(0) + O(\epsilon^2) \\
+    & = \left( \mathbb{I} + \epsilon \omega(\dot{\gamma}(0)) \right) X(0) + O(\epsilon^2).
+\end{align}
+
+This tells us how the connection $\nabla$ should act on a general fiber bundle $E_F\to M$ with structure group $G$: via the representation of the Lie algebra $\mathfrak{g}$ on the fiber $F$.
+Namely, if $E_F \to M$ is associated to the frame bundle via a representation $\rho: G \to GL(F)$, the connection 1-form on $E_F \to M$ will be given by
+\begin{equation}
+    \omega^a_{\, b} = \rho_*(\omega^i_{\, j}),
+\end{equation}
+where $\rho_*: \mathfrak{g} \to \mathfrak{gl}(F)$ is the induced Lie algebra representation.
+For example, for the tensor bundle $T^h_kM \to M$ the representation is the tensor product of $h$ copies of the given representation on $T_pM$ and $k$ copies of the dual representation of $G$.
+%
+For spinors, it is the spin representation of the spin group $\text{Spin}(p,q)$, that is the double cover of $SO(p,q)$.
+If $\omega_{\mu\nu}$ is are the connection 1-forms of the connection on $TM$ in a given tetrad frame, and 
+$\{\gamma^a\}_a$ are the gamma matrices in a given representation with basis $s_1\dots s_m$ of the spinor space, the spin representation $\rho_{spin}: \mathfrak{so}(p,q) \to \mathfrak{gl}(\C^m)$ is given by
+\begin{equation}
+    \omega^{\text{sp.}\, b}_{~a}:=\rho_{spin}(\omega_{\mu\nu})^b_{\,a} := \frac{1}{4} \omega_{\mu\nu} \,\{\gamma^\mu, \gamma^\nu\}^b_{\,a}.
+\end{equation}
+The connection 1-form act on basis spinors as 
+\begin{equation}
+    \nabla s_a = \omega^{\text{sp.}\, b}_{~ a}{} s_b = \tfrac{1}{4}\omega_{\mu\nu}\,[\gamma^\mu, \gamma^\nu]^b_{\,a} s_b,
+\end{equation}
+and on general spinor fields $\psi = \psi^a s_a$ as
+\begin{equation}
+    \nabla \psi = d \psi^a \otimes s_a + \psi^a \, \nabla s_a = \left( d \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a \right) \otimes s_b,\,\,\quad \text{i.e.} \quad
+    \nabla_\mu \psi^b = \partial_\mu \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a.
+\end{equation}
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[Curvature 2-form]
+Given an affine connection $\nabla$ on a vector bundle $E_F\to M$ and a tetrad frame $\{\theta^i,\,e_i\}_i$, we define the $T^1_0E_F$-valued $\Omega_{\, j}$ and $T^1_1E_F$-valued $\Omega^i_{\,j}$  curvature 2-forms as the set of 1-forms satisfying
+\begin{equation}
+    R(e_j) :=\Omega_j=: e_i \otimes \Omega^i_{j} 
+\end{equation}
+where $R$ is the Riemann curvature operator.
+In particular, the Riemann curvature operator acting on a vector field $X = X^j e_j$ reads
+\begin{equation}
+    R(X) =  X^j\,\, \Omega^i_{\,j}\otimes e_i\,.
+\end{equation}
+Explicitating all the cohordinates\todotag{redo}
+\begin{align}
+    R^i_{j,\,\mu\nu}= \Omega^i_j(e_\mu,e_\nu) \theta^\mu \wedge \theta^\nu.
+\end{align}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Cartan structure equations\questiontag{Check}]
+Given a tetrad frame $\{\theta^i,\, e_i\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta :=  e_i\otimes \theta^i$
+The connection 1-forms, and the torsion and curvature 2-forms satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
+\begin{align}
+    T &= d_\nabla \theta = e_i \otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right) 
+    \quad \text{i.e.} \quad T^i = d \theta^i + \omega^i_{\, j} \wedge \theta^j,
+    \\
+    \Omega_{\, j} &= d_\nabla \omega_{\, j} = e_i \otimes \left(d \omega^i_{\, j} + \omega^i_{\,k} \wedge \omega^k_{\, j}\right) 
+    \quad\text{i.e.} \quad \Omega^i_{\, j} = d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}.
+\end{align}
+The \textbf{Cartan equations are essentially definitions} of the torsion and curvature 2-forms in terms of the connection 1-forms and the tetrad basis.
+In particular, in absence of torsion the first Cartan structure equation reduces to
+\begin{equation}
+    d \theta^i + \omega^i_{\, j} \wedge \theta^j = 0.
+\end{equation}
+\end{mytheorem}
+\begin{proof}
+Since the identity are tensorial, we can proove it in a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$.
+The second equalities follow since the exterior covariant derivative indeed acts as
+\begin{align}
+    d_\nabla \theta &= d_\nabla (e_i \otimes \theta^i) = e_i\otimes d \theta^i  +  \nabla e_i \wedge \theta^i = e_i\otimes (d \theta^i + \omega^i_{\, j} \wedge \theta^j) ,
+    \\
+    d_\nabla \omega_{\, j} &= d_\nabla (e_i\otimes \omega^i_{\, j} ) = e_i\otimes d \omega^i_{\, j}  + \nabla e_i \wedge \omega^i_{\, j} = e_i\otimes (d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}).
+\end{align}
+In turn, the first equalities are easily verified by direct computation using a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$, using the known expressions $T\sim \Gamma - \Gamma^T$ and $R\sim \partial \Gamma + \Gamma \Gamma$ for the torsion and Riemann tensor and the relations
+\begin{align}
+    \theta^\rho = dx^\rho,\quad d\theta^\rho = 0,\quad
+    \omega^\rho_{\, \nu} = \Gamma^\rho_{\mu \nu} dx^\mu,
+    \quad
+    d \omega^\rho_{\, \nu} = \partial_\sigma \Gamma^\rho_{\mu \nu} dx^\sigma \wedge dx^\mu,
+    \quad
+    \omega^\rho_{\, \sigma} \wedge \omega^\sigma_{\, \nu} = \Gamma^\rho_{\mu \sigma} \Gamma^\sigma_{\lambda \nu} dx^\mu \wedge dx^\lambda.
+\end{align}
+%
+\end{proof}
+
+
+\begin{mytheorem}[Bianchi identities in the tetrad formalism\questiontag{Check}]
+The Bianchi identities can be concisely expressed in terms of the exterior covariant derivative $d_\nabla$ as
+\begin{align}
+    d_\nabla T &= \Omega_{\, j} \wedge \theta^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \theta^j,
+    \\
+    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = de_i \wedge \Omega^i_{\, j} = e_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = e_i \otimes\omega_k^i\wedge \Omega^k_j\,.
+\end{align}
+NBeware the 2nd identity says the exterior derivative of the $\R$-valued 2-form $\Omega^i_{\, j}$ vanished, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
+The \textbf{Bianchi identities are} essentially express \textbf{symmetries that follow from the} very \textbf{definition} of torsion and curvature.
+In particular, in absence of torsion the first Bianchi identity reduces to
+\begin{equation}
+    \Omega^i_{\, j} \wedge \theta^j = 0.
+\end{equation}
+\end{mytheorem}
+\begin{proof}
+The first identity follows from direct computation of the exterior covariant derivative of the torsion 2-form and the second Cartan equation above
+\begin{align}
+    d_\nabla T &= d_\nabla (d_\nabla \theta) = d_\nabla \left[e_i\otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right)\right]
+    \\
+    &=
+    e_i\otimes \left(\graycancel{d^2 \theta^i} + d\omega^i_{\, j} \wedge \theta^j \bluecancel{- \omega^i_{\, j} \wedge d\theta^j}  \right)
+    + e_i \omega^i_k\wedge \left(\bluecancel{d \theta^k} + \omega^k_{\, j} \wedge \theta^j \right) 
+    \\
+    &=
+    e_i \otimes \left( d\omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) \wedge \theta^j
+    \equiv \Omega_{\, j} \wedge \theta^j.
+\end{align}
+For the second equation, renaming dummy indices and using that $\Omega^i_{\, j}$ is a 2-form thereby commuting under the wedge product, we have
+\begin{align}
+    d \Omega_{\,j}^i &= d \left( d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) = \graycancel{d^2 \omega^i_{\, j}} + d\omega^i_{\, k} \wedge \omega^k_{\, j} - \omega^i_{\, k} \wedge d\omega^k_{\, j}
+    \\
+    &= \big(\Omega^i_k-\omega^i_\ell\wedge \omega^\ell_k\big)\wedge \omega^k_{\, j} - \omega^i_{\, k} \wedge \big(\Omega_j^k-\omega^k_\ell\wedge \omega^\ell_j\big)
+    \\
+    & = \underbrace{\Omega^i_k \wedge \omega^k_{\, j} - \omega^i_{\, \ell}\wedge \Omega^\ell_j}_{=0}
+    \,\,\,\,\underbrace{-\omega^i_\ell\wedge \omega^\ell_k\wedge \omega^k_{\, j}
+    + \omega^i_{\, k} \wedge \omega^k_\ell\wedge \omega^\ell_j}_{=0}
+    = 0.
+\end{align}
+The rest follows from the definition of the exterior covariant derivative.
+\end{proof}
+
+
+
+\begin{mytheorem}[Metric compatibility in arbitrary fiber bundle\todotag{Check and finish}]
+%
+Given a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$, endowed with a metric $g: F \times F \to \R$ and a connection $\nabla$ on $E_F$ with $\mathfrak{g}$-valued connection form $\omega$, we say that the connection is metric compatible if 
+\begin{align}
+    \nabla g \equiv 0\quad \text{i.e.}\quad d \left( g(s,t) \right) = g(\nabla s, t) + g(s, \nabla t)\quad \text{$\forall$ sections }s,t \in \Gamma(E_F).
+\end{align}
+In a tetrad frame $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_a^{~b}$ and metric $g_{ab} := g(f_a, f_b)$, the condition reads
+\begin{equation}
+    d g_{ab} = \omega_{a}^{~c}\, g_{cb} + \omega_{b}^{~c} \,g_{ac}.
+\end{equation}
+If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad
+\begin{equation}
+    \omega_{ab} = - \omega_{ba}\quad \text{ where }\omega_{ab} := g_{ac} \, \omega^c_{~b}.
+\end{equation}
+%
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Christoffel symbols in a tetrad frame of the tangent bundle\todotag{Check and finish}]
+Given a tetrad $\{\theta^i,\, e_i\}_i$ on the tangent bundle of a manifold \(M\) with affine connection \(\nabla\), define the Christoffel symbols \(\Gamma^i_{\, jk}\) as the coefficients in the expansion 
+\begin{equation}
+    \nabla_{e_j} e_k =: \Gamma^i_{\, jk} e_i.
+\end{equation}
+That is, the connection 1-forms is expressed in terms of the Christoffel symbols as
+\begin{equation}
+    \omega^i_{\, j} = \Gamma^i_{ jk} \theta^k.
+\end{equation}
+
+In case $\nabla$ is a metric connection, we can express the Christoffel symbols in terms of the metric $g_{ij} := g(e_i, e_j)$ and the structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) of the tetrad as
+\begin{equation}
+    \Gamma^i_{jk} = \tfrac{1}{2} \left( C^i_{jk} - g^{i\ell}g_{j m}C^m_{k\ell} + g_{km}g^{i\ell} C^m_{\ell j} \right) + \tfrac{1}{2}g^{i\ell} \left( \partial_j g_{\ell k} + \partial_k g_{\ell j} - \partial_\ell g_{jk} \right)\,.
+\end{equation}
+If $C_{jk}^i = 0$ (coordinate tetrad) this reduces to the usual expression for the Christoffel symbols in a coordinate basis.
+If $g_{ij} = \eta_{ij}$ (orthonormal tetrad) this reduces to
+\begin{equation}
+    \Gamma^i_{jk} = \tfrac{1}{2} \left( C^i_{jk} - \eta^{i\ell}\eta_{j m}C^m_{k\ell} + \eta_{km}\eta^{i\ell} C^m_{\ell j} \right).
+\end{equation}
+\end{mytheorem}
+\begin{proof}
+By metric compatibility $\nabla g=0$, that is $0=X(g(Y,Z)) - g(\nabla_X Y,Z) - g(Y, \nabla_X Z)$.
+Permutating the vectors $X,Y,z$ and assuming torsion vanishes $\nabla_XY-\nabla_YX = [X,Y]$, the Koszul formula gives
+\begin{align}
+\begin{aligned}
+    2\,g(\nabla_X Y,Z)
+    &=X\,g(Y,Z) + Y\,g(X,Z) - Z\,g(X,Y) 
+    + g([X,Y],Z) - g([X,Z],Y) - g([Y,Z],X).
+\end{aligned}
+\end{align}
+Setting \(X=e_j,\, Y=e_k,\, Z=e_i\) and using the definition of the Christoffel symbols and structure constants yields
+\begin{align}
+    2\, g_{i\ell} \Gamma^\ell_{jk}
+    &=
+    e_j\,g_{k i} + e_k\,g_{j i} - e_i\,g_{j k} \\
+    &\quad
+    + g_{i\ell} C^\ell_{jk} - g_{j\ell} C^\ell_{ik} - g_{k\ell} C^\ell_{ij}.
+\end{align}
+\end{proof}
+
+
+\begin{mytheorem}[Riemann curvature tensor in a tetrad frame\todotag{Check and finish}]
+Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on a manifold \(M\) with affine connection \(\nabla\), we define the Riemann curvature tensor components \(R^i_{\, jkl}\) as the coefficients in the expansion 
+\begin{equation}
+    R(e_k, e_l) e_j =: R^i_{\, jkl} e_i.
+\end{equation}
+In particular, the curvature 2-forms can be expressed in terms of the Riemann tensor components as
+\begin{equation}
+    \Omega^i_{\, j} = \tfrac{1}{2} R^i_{\, jkl} \theta^k \wedge \theta^l.
+\end{equation}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Einstein tensor in a tetrad frame\todotag{Check and finish}]
+    
+\end{mytheorem}
+
+\begin{mytheorem}[EM tensor varying wrt tetrad fields\todotag{Check and finish}]
+    
+\end{mytheorem}
+
+{
+\color{red}
+From Kempf GR L10 missing:
+\begin{itemize}
+    \item connection $\mathfrak{g}$-valued 1-form [ANY FIBER]
+    \item change of cohordinates $dA A^{-1}+ A\omega A^{-1}$ for connection 1-form [ANY FIBER]
+    \item curvature $T^1_1F$-valued 2-form [ANY FIBER]
+    \item torsion $T^1_0M$-valued 2-form [ONLY TM]
+    \item Cartan structure equations
+    \item Bianchi identities
+    \item metric compatibility in arbitrary fiber bundle [ANY FIBER WITH METRIC]
+    \item Christoffel symbols for metric connection on tangent bundle via structure constants [ONLY TM]
+    \item Riemann curvature tensor components in tetrad frame [ONLY TM]
+\end{itemize}
+}
