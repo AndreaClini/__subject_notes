@@ -1779,38 +1779,42 @@ Given also a tetrad frame $\{\theta^\mu, e_\nu\}_\nu$ on $TM\to M$, we can expli
 \end{mytheorem}
 
 
-\begin{mytheorem}[Cartan structure equations\questiontag{Check}]
-Given a tetrad frame $\{\theta^i,\, e_i\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta :=  e_i\otimes \theta^i$
-The connection 1-forms, and the torsion and curvature 2-forms satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
+\begin{mytheorem}[Cartan structure equations\answerinline{OK}]
+%
+Consider a connection $\nabla$ on a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$.
+Given a tetrad frame $\{\phi^a,f_a\}_a$, consider the $(1,0)$ tensor valued 1-form $\phi :=  f_a \otimes \phi^a$.
+The connection 1-form and curvature 2-form satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
 \begin{align}
-    T &= d_\nabla \theta = e_i \otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right) 
-    \quad \text{i.e.} \quad T^i = d \theta^i + \omega^i_{\, j} \wedge \theta^j,
+    T &:= d_\nabla \phi = f_a \otimes \left(d \phi^a + \omega^a_{\, b} \wedge \phi^b \right) 
+    \quad \text{i.e.} \quad T^a = d \phi^a + \omega^a_{\, b} \wedge \phi^b,
     \\
-    \Omega_{\, j} &= d_\nabla \omega_{\, j} = e_i \otimes \left(d \omega^i_{\, j} + \omega^i_{\,k} \wedge \omega^k_{\, j}\right) 
-    \quad\text{i.e.} \quad \Omega^i_{\, j} = d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}.
+    \Omega_{\, b} &= d_\nabla \omega_{\, b} = f_a \otimes \left(d \omega^a_{\, b} + \omega^a_{\,c} \wedge \omega^c_{\, b}\right) 
+    \quad\text{i.e.} \quad \Omega^a_{\, b} = d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b}.
 \end{align}
-The \textbf{Cartan equations are essentially definitions} of the torsion and curvature 2-forms in terms of the connection 1-forms and the tetrad basis.
-In particular, in absence of torsion the first Cartan structure equation reduces to
+The \textbf{Cartan equations are essentially definitions} of the torsion $T$ and curvature 2-form in terms of the connection 1-forms and the tetrad basis.
+In fact, for a general fiber bundles $E_F$ the first line is the \emph{only definition} of torsion, while it coincides with the usual torsion tensor in case $E_F = TM$ is the tangent bundle.
+In particular, in absence of torsion $T=0$ the first Cartan structure equation reduces to
 \begin{equation}
-    d \theta^i + \omega^i_{\, j} \wedge \theta^j = 0.
+    d \phi^a + \omega^a_{\, b} \wedge \phi^b = 0.
 \end{equation}
 \end{mytheorem}
 \begin{proof}
-Since the identity are tensorial, we can proove it in a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$.
-The second equalities follow since the exterior covariant derivative indeed acts as
+From the definition of the exterior covariant derivative we have indeed
 \begin{align}
-    d_\nabla \theta &= d_\nabla (e_i \otimes \theta^i) = e_i\otimes d \theta^i  +  \nabla e_i \wedge \theta^i = e_i\otimes (d \theta^i + \omega^i_{\, j} \wedge \theta^j) ,
+    d_\nabla \phi &= d_\nabla (f_a \otimes \phi^a) = f_a \otimes d \phi^a  +  \nabla f_a \wedge \phi^a = f_a\otimes (d \phi^a + \omega^a_{\, b} \wedge \phi^b) ,
     \\
-    d_\nabla \omega_{\, j} &= d_\nabla (e_i\otimes \omega^i_{\, j} ) = e_i\otimes d \omega^i_{\, j}  + \nabla e_i \wedge \omega^i_{\, j} = e_i\otimes (d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j}).
+    d_\nabla \omega_{\, b} &= d_\nabla (f_a \otimes \omega^a_{\, b} ) = f_a\otimes d \omega^a_{\, b}  + \nabla f_a \wedge \omega^a_{\, b} = f_a\otimes (d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b}).
 \end{align}
-In turn, the first equalities are easily verified by direct computation using a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$, using the known expressions $T\sim \Gamma - \Gamma^T$ and $R\sim \partial \Gamma + \Gamma \Gamma$ for the torsion and Riemann tensor and the relations
+For a general fibre bundle case, the first equation is just a definition of the torsion $T$ as the exterior covariant derivative of the tetrad 1-form $\phi$, and we need only to prove the second expression does indeed coincide with the usual curvature operator.
+Using linearity of the 2-form, we prove it on a coordinate induced basis $\partial_\mu,\,\partial_\nu$ so that 
 \begin{align}
-    \theta^\rho = dx^\rho,\quad d\theta^\rho = 0,\quad
-    \omega^\rho_{\, \nu} = \Gamma^\rho_{\mu \nu} dx^\mu,
-    \quad
-    d \omega^\rho_{\, \nu} = \partial_\sigma \Gamma^\rho_{\mu \nu} dx^\sigma \wedge dx^\mu,
-    \quad
-    \omega^\rho_{\, \sigma} \wedge \omega^\sigma_{\, \nu} = \Gamma^\rho_{\mu \sigma} \Gamma^\sigma_{\lambda \nu} dx^\mu \wedge dx^\lambda.
+    \Omega(\partial_\mu,\,\partial_\nu)(f_b)&:= \nabla_\mu \nabla_\nu f_b - \nabla_\nu \nabla_\mu f_b - \graycancel{\nabla_{[\partial_\mu,\,\partial_\nu]} f_b}
+    \\
+    &= \nabla_\mu \left( f_a \otimes \omega^a_{\, b}(\partial_\nu) \right) - \nabla_\nu \left( f_a \otimes \omega^a_{\, b}(\partial_\mu) \right)
+    \\
+    &= f_a \otimes \left( \partial_\mu \omega^a_{\, b}(\partial_\nu) + \omega^a_{\, c}(\partial_\mu) \, \omega^c_{\, b}(\partial_\nu) - \partial_\nu \omega^a_{\, b}(\partial_\mu) - \omega^a_{\, c}(\partial_\nu) \, \omega^c_{\, b}(\partial_\mu) \right)
+    \\
+    &\equiv f_a \otimes \left( d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b} \right)(\partial_\mu,\,\partial_\nu) =: \left( d_\nabla \omega_{\, b} \right)(\partial_\mu,\,\partial_\nu).
 \end{align}
 %
 \end{proof}
@@ -1969,7 +1973,44 @@ In particular, the curvature 2-forms can be expressed in terms of the Riemann te
 \end{mytheorem}
 
 
-\begin{mytheorem}[Cartan \& Bianchi equations on the tangent bundle \& recovering coordinate formalism\todotag{Check and finish}]
+
+\begin{mytheorem}[Cartan structure equations\answerinline{OK}]
+%
+Consider a connection $\nabla$ on the tangent bundle $TM \to M$.
+Given a tetrad frame $\{\theta^i,e_j\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta :=  e_i \otimes \theta^i$.
+The connection 1-form, and the torsion and curvature 2-forms satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
+\begin{align}
+    T &= d_\nabla \theta = e_a \otimes \left(d \theta^a + \omega^a_{\, b} \wedge \theta^b \right) 
+    \quad \text{i.e.} \quad T^a = d \theta^a + \omega^a_{\, b} \wedge \theta^b,
+    \\
+    \Omega_{\, b} &= d_\nabla \omega_{\, b} = e_a \otimes \left(d \omega^a_{\, b} + \omega^a_{\,c} \wedge \omega^c_{\, b}\right) 
+    \quad\text{i.e.} \quad \Omega^a_{\, b} = d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b}.
+\end{align}
+The \textbf{Cartan equations are essentially definitions} of the torsion and curvature 2-forms in terms of the connection 1-forms and the tetrad basis.
+In the case of the tangent bundle, the first line does indeed coincides with the \textbf{usual definition of torsion} tensor.
+In particular, in \textbf{absence of torsion $T=0$ the first Cartan equation} reduces to
+\begin{equation}
+    d \theta^a + \omega^a_{\, b} \wedge \theta^b = 0.
+\end{equation}
+\end{mytheorem}
+\begin{proof}
+The second equalities just follow from the definition of the exterior covariant derivative and are already shown in the case of general fibre bundles above.
+We need to show the expressions coincide with the old notions of torsion and curvature tensors.
+Since the identity are tensorial, we can prove them by direct computation using a coordinate frame $\{\theta^\mu=dx^\mu,\, e_\nu=\partial_{x^\nu}\}_\nu$, the known expressions $T\sim \Gamma - \Gamma^T$ and $R\sim \partial \Gamma + \Gamma \Gamma$ for the torsion and Riemann tensor, and the relations
+\begin{align}
+    \theta^\rho = dx^\rho,\quad d\theta^\rho = 0,\quad
+    \omega^\rho_{\, \nu} = \Gamma^\rho_{\mu \nu} dx^\mu,
+    \quad
+    d \omega^\rho_{\, \nu} = \partial_\sigma \Gamma^\rho_{\mu \nu} dx^\sigma \wedge dx^\mu,
+    \quad
+    \omega^\rho_{\, \sigma} \wedge \omega^\sigma_{\, \nu} = \Gamma^\rho_{\mu \sigma} \Gamma^\sigma_{\lambda \nu} dx^\mu \wedge dx^\lambda.
+\end{align}
+%
+\end{proof}
+
+
+
+\begin{mytheorem}[Bianchi identities on the tangent bundle \& recovering coordinate formalism\todotag{Check and finish}]
     
 \end{mytheorem}
 
@@ -2020,8 +2061,8 @@ From Kempf GR L10 missing:
     \item connection 1-form on arbitrary fiber bundle  MISSING (swap with above point when done)
     \item metric compatibility in arbitrary fiber bundle OK
     \item example: connection on spinors MISSING
-    \item curvature 2-form on arbitrary fiber bundle MISSING
-    \item Cartan structure equations MISSING
+    \item curvature 2-form on arbitrary fiber bundle OK
+    \item Cartan structure equations OK
     \item Bianchi identities MISSING
 \end{enumerate}
 
@@ -2032,7 +2073,8 @@ From Kempf GR L10 missing:
     \item Christoffel symbols in a tetrad frame of the tangent bundle MISSING
     \item torsion 2-form in a tetrad frame on the tangent bundle MISSING
     \item Riemann curvature tensor in a tetrad frame on the tangent bundle MISSING
-    \item Cartan \& Bianchi equations on the tangent bundle \& recovering coordinate formalism MISSING
+    \item Cartan equations on the tangent bundle \& recovering coordinate formalism OK
+    \item Bianchi identities on the tangent bundle MISSING
     \item Einstein tensor in a tetrad frame of the tangent bundle MISSING
     \item EM tensor varying wrt tetrad fields MISSING
 \end{enumerate}
