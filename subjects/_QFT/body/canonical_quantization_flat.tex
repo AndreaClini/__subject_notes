@@ -599,6 +599,7 @@ However, if the EM field is in a coherent state $|\psi_{\mathrm{EM}}(t_0)\rangle
     H_{\mathrm{int}} &= \vec{p} \otimes B \approx \vec{p} \otimes \langle \{\alpha_{\mathbf{k},\lambda}\}| B | \{\alpha_{\mathbf{k},\lambda}\}\rangle = \vec{p} \otimes B^{cl}(t,\mathbf{x}) = B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1,
 \end{align}
 where $B^{cl}(t,\mathbf{x})$ is a classical EM field given by the expectation value of the field operator $B$ on the coherent state.
+Beware that $|\psi_{\mathrm{EM}}(t_0)\rangle$ cannot be an \emph{exact} eigenstate of $B$, since otherwise the uncertainty in the conjugate variable would be infinite, but since it saturates the uncertainty relation the fluctuations around the expectation value are minimal, making this a good approximation.
 The time evolution is then non-entangling and factorizes as
 \begin{align}
     |\Psi(t)\rangle &\approx e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1\right)}\,\,
@@ -606,7 +607,7 @@ The time evolution is then non-entangling and factorizes as
     \\
     &= \left(e^{\tfrac{-i(t-t_0)}{\hbar} H_{\mathrm{EM}}} |\psi_{\mathrm{EM}}(t_0)\rangle\right) \otimes \left(e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\right)} |\psi_{\mathrm{e}^-}(t_0)\rangle\right).
 \end{align}
-After tracing out the EM field degrees of freedom, the electron is thus left in a pure state evolving under the free Hamiltonian augmented with a classical EM field $B^{cl}(t,\mathbf{x})$.
+After tracing out the EM field degrees of freedom, the electron is thus left in a pure state evolving under the free Hamiltonian augmented with the interaction with a classical EM field.
 %
 \end{mytheorem}
 
