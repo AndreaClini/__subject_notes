@@ -1608,30 +1608,30 @@ The Leibniz rule is then obeyed since
 \end{mytheorem}
 
 
-\begin{mytheorem}[Inducing connections on arbitrary fiber bundles from the tangent bundle connection \answerinline{OK}]
+\begin{mytheorem}[Connections on arbitrary fiber bundles induced from tangent bundle connection \answerinline{OK}]
 The general idea is that we start with a connection $\nabla$ on the tangent bundle $TM\to M$.
 Consider tetrads $\{e_i\}_i$ on the tangent bundle $T^1_0M\to M$ transforming under some (representation of a) structure group $G\subseteq GL(n,\R)$.
-The connection form on the tangent bundle $\omega_{TM}$ must then take values in the representation of the Lie algebra $\mathfrak{g}$ on $T^1_0M$ induced by the action of $G \curvearrowright T^1_0M$, with concrete matrix elements defined in the chosen tetrad $\{e_i\}_i$ as
+The connection form on the tangent bundle $\omega_{TM}$ must then take values in the representation of the Lie algebra $\mathfrak{g}\curvearrowright T^1_0M$ induced by the action of $G \curvearrowright T^1_0M$, with concrete matrix elements defined in the chosen tetrad $\{e_i\}_i$ as
 \begin{align}
     \nabla_\cdot e_j &=: \omega_{TM}(\cdot) e_j =: e_i \otimes \omega^i_{\, j}(\cdot)\,.
 \end{align}
 We extend the connection $\nabla$ on the cotangent bundle $T^0_1M$ via the ajoint representation of $\mathfrak{g}$, and to all tensor bundles $T^h_k M$ via the tensor product of (adjoint) representations.
 
 Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$, with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can naturally induce a connection on $E_F\to M$.
-Indeed, regardless of the specific representation, the connection 1-form on the tangent bundle can be seen as taking values in the \emph{abstract} Lie group $\mathfrak{g}$.
+Indeed, regardless of the specific representation, the connection 1-form on the tangent bundle can be seen as taking values in the \emph{abstract} Lie algebra
 \begin{align}
     \omega: TM &\to \mathfrak{g} \,\, \mid T_pM \ni X \mapsto \omega(X) \in \mathfrak{g}.
 \end{align}
 We then simply define the connection 1-form $\omega_{(F)}$ on $E_F\to M$ as the 1-form taking values in the above representation of $\mathfrak{g}\curvearrowright F$.
 In a given local frame $\{f_a\}_a$ for $E_F\to M$, the explicit matrix elements are defined as
 \begin{align}
-    \nabla_\cdot f_b &=: \omega_{(F)}(\cdot) f_b =: f_a \otimes \omega^a_{\, b}(\cdot)\,.
+    \nabla_\cdot f_b &=: \omega_{(F)}(\cdot) f_b =: f_a \otimes \omega^a_{(F)\, b}(\cdot)\,.
 \end{align}
 In particular, the covariant derivative of a section $\psi = \psi^a f_a$ reads
 \begin{equation}
     \nabla \psi = f_a \otimes \big(d\psi^a + \omega_{(F)\, b}^a \, \psi^b\big)\,.
 \end{equation}
-We again remark that, as abstract elements of $\mathfrak{g}$, the connection 1-forms on $E_F\to M$ and on $TM\to M$ coincide i.e. $[\omega_{(F)}(\cdot)]\equiv [ \omega_{TM}(\cdot)] \equiv \omega(\cdot)\in \mathfrak{g}$.
+In particular we remark that, as abstract elements of $\mathfrak{g}$, the connection 1-forms on $E_F\to M$ and on $TM\to M$ coincide i.e. $[\omega_{(F)}(\cdot)]\equiv [ \omega_{TM}(\cdot)] \equiv \omega(\cdot)\in \mathfrak{g}$.
 \end{mytheorem}
 
 
@@ -1735,20 +1735,22 @@ and on general spinor fields $\psi = \psi^a s_a$ as
 \end{mytheorem}
 
 
-\begin{mytheorem}[Metric compatibility in arbitrary fiber bundle\todotag{Check and finish}]
+\begin{mytheorem}[Metric compatibility in arbitrary fiber bundle\answerinline{OK}]
 %
-Given a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$, endowed with a metric $g: F \times F \to \R$ and a connection $\nabla$ on $E_F$ with $\mathfrak{g}$-valued connection form $\omega$, we say that the connection is metric compatible if 
+Given a fiber bundle $E_F \to M$ with fiber $F$ and structure group $G$, endowed with a metric 
+$g\in\Gamma(\otimes^2 E_F^*)$ and a connection $\nabla$ on $E_F$ with $\mathfrak{g}$-valued connection form $\omega$, we say that the connection is metric compatible if 
 \begin{align}
     \nabla g \equiv 0\quad \text{i.e.}\quad d \left( g(s,t) \right) = g(\nabla s, t) + g(s, \nabla t)\quad \text{$\forall$ sections }s,t \in \Gamma(E_F).
 \end{align}
-In a tetrad frame $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_a^{~b}$ and metric $g_{ab} := g(f_a, f_b)$, the condition reads
+In a tetrad $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_{\,a}^{b}$ and metric $g_{ab} := g(f_a, f_b)$, the condition reads
 \begin{equation}
-    d g_{ab} = \omega_{a}^{~c}\, g_{cb} + \omega_{b}^{~c} \,g_{ac}.
+    d g_{ab} = \omega_{\,a}^{c}\, g_{cb} + \omega_{\,b}^{c} \,g_{ac}.
 \end{equation}
-If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad
+If the tetrad is orthonormal i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad, upon lowering an index with the metric,
 \begin{equation}
-    \omega_{ab} = - \omega_{ba}\quad \text{ where }\omega_{ab} := g_{ac} \, \omega^c_{~b}.
+    \omega_{ab} = - \omega_{ba}\quad \text{ where }\quad \omega_{ab} := g_{ac} \, \omega^c_{~b}\,,
 \end{equation}
+which is the hallmark of the Lie algebra $\omega \in \mathfrak{so}(p,q)$ where $(p,q)$ is the signature of the metric.
 %
 \end{mytheorem}
 
@@ -1759,19 +1761,20 @@ If the tetrad is orthonormal, i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the cond
 \end{mytheorem}
 
 
-\begin{mytheorem}[Curvature 2-form \todotag{Check \& finish}]
-Given an affine connection $\nabla$ on a vector bundle $E_F\to M$ and a tetrad frame $\{\theta^i,\,e_i\}_i$, we define the $T^1_0E_F$-valued $\Omega_{\, j}$ and $T^1_1E_F$-valued $\Omega^i_{\,j}$  curvature 2-forms as the set of 1-forms satisfying
+\begin{mytheorem}[Curvature 2-form \answerinline{OK}]
+Given a connection $\nabla$ on a vector bundle $E_F\to M$ with structure group $G$, and a tetrad frame $\{\phi^a,f_a\}_a$, we define the $G$-valued curvature 2-form $\Omega$ with $\R$-valued matrix curvature 2-forms $\Omega^b_{\, a}$ in the chosen tetrad as
 \begin{equation}
-    R(e_j) :=\Omega_j=: e_i \otimes \Omega^i_{j} 
+    R(X,Y) (f_a) = \Omega(X,Y) (f_a) = f_b \otimes \Omega^b_{\, a}(X,Y), \quad X,Y \in \mathfrak{X}(M)\,.
 \end{equation}
-where $R$ is the Riemann curvature operator.
-In particular, the Riemann curvature operator acting on a vector field $X = X^j e_j$ reads
+Note that indeed $\Omega$ is $G$-valued since it yields a \emph{linear} transformation\todotag{Make sure it is not $\mathfrak{g}$ valued} 
+\[R(X,Y) =\nabla_X \nabla_Y - \nabla_Y \nabla_X - \nabla_{[X,Y]}: E_{F\vert p} \to E_{F\vert p}.\]
+On a general element $\tilde{f}=\tilde{f}^a f_a$ we thus have
 \begin{equation}
-    R(X) =  X^j\,\, \Omega^i_{\,j}\otimes e_i\,.
+    R(X,Y) (\tilde{f}) = \tilde{f}^a R(X,Y) (f_a) = \tilde{f}^a f_b \otimes \Omega^b_{\, a}(X,Y).
 \end{equation}
-Explicitating all the cohordinates\todotag{redo}
+Given also a tetrad frame $\{\theta^\mu, e_\nu\}_\nu$ on $TM\to M$, we can explicitate all indices and write
 \begin{align}
-    R^i_{j,\,\mu\nu}= \Omega^i_j(e_\mu,e_\nu) \theta^\mu \wedge \theta^\nu.
+    R^b_{a,\,\mu\nu}= \Omega^b_a(e_\mu,e_\nu) \theta^\mu \wedge \theta^\nu.
 \end{align}
 \end{mytheorem}
 
@@ -2015,7 +2018,7 @@ From Kempf GR L10 missing:
     \item total exterior covariant derivative Ok
     \item inducing connections on associated fiber bundles Ok
     \item connection 1-form on arbitrary fiber bundle  MISSING (swap with above point when done)
-    \item metric compatibility in arbitrary fiber bundle MISSING
+    \item metric compatibility in arbitrary fiber bundle OK
     \item example: connection on spinors MISSING
     \item curvature 2-form on arbitrary fiber bundle MISSING
     \item Cartan structure equations MISSING
