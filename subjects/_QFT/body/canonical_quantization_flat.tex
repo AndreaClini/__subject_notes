@@ -158,7 +158,7 @@ The original Hamiltonian can then be expressed as
     - iK\alpha\hbar\,(a-a^\dagger).  
 \end{align}
 The expression dramatically simplifies upon choosing
-\begin{align}
+\begin{align}\label{eq:choosing_alpha_ladder_op}
     \alpha = \sqrt{\frac{m\omega}{2\hbar}} \quad \Longrightarrow \quad \beta = \frac{1}{\sqrt{2 m \omega \hbar}}\,.
 \end{align}
 The final expressions are
@@ -349,7 +349,7 @@ Ladder operators $a$ and $a^\dagger$ obeying $[a, a^\dagger] = 1$ have the follo
     %
 \end{mytheorem}
 
-\begin{mytheorem}[Coherent states\todotag{Finish}]
+\begin{mytheorem}[Coherent \& squeezed states\todotag{Polish}]
 %
 Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined as the eigenstates of the annihilation operator $a$, namely
 \begin{align}
@@ -397,7 +397,14 @@ Expectations values on coherent states thus read
     &\langle \alpha| p |\alpha\rangle = i \sqrt{\tfrac{m \omega \hbar}{2}} (\alpha^* - \alpha),
     \quad \langle \alpha| p^2 |\alpha\rangle = \tfrac{m \omega \hbar}{2} \Big(1-(\alpha - \alpha^*)^2 \Big) \quad \Rightarrow \quad \Delta p = \sqrt{\langle p^2 \rangle - \langle p \rangle^2} = \sqrt{\frac{m \omega \hbar}{2}}\,.
 \end{align}
-%
+Then finally the Heisenberg uncertainty is
+\begin{align}
+    \Delta q \Delta p = \sqrt{\frac{\hbar}{2 \graycancel{m \omega}}} \sqrt{\frac{\graycancel{m \omega} \hbar}{2}} = \frac{\hbar}{2}\,.
+\end{align}
+Crucially, the cancellation and hence minimization of uncertainty would occur even if we had chosen a different $m\omega$ to define ladder operators, e.g. $m\omega'$ for some other oscillator with the same mass and different frequency $\omega'\neq \omega$.
+That is, choosing a different $\alpha$ when writing $a=\alpha q + i \beta p$ in \eqref{eq:choosing_alpha_ladder_op}, while still keeping $\beta=\frac{1}{2\alpha \hbar}$ to enforce $[a,a^\dagger]=1$, would lead to different uncertainties $\Delta q$ and $\Delta p$, but their product would still be minimized.
+Coherent states of ladder operators defined to diagonalize some other Hamiltonian thus still minimize the Heisenberg uncertainty relation, in these case they are called \textbf{squeezed states}.
+That is, somebody's coherent states are somebody else's squeezed states and viceversa.
 \end{mytheorem}
 
 
@@ -487,7 +494,7 @@ We want to understand how the driving force affects several aspects of the dynam
 \begin{itemize}
     \item \textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change due to the driving force.
     \item \textbf{Energy.} How energy is pumped into the oscillator by the driving force, i.e. how $\langle H(t)\rangle$ changes with time.
-    \item \textbf{Resonance.} What is the best choice of $J(t)$ to excite the oscillator? It is the natural frequency $\omega$ of the oscillator, as shown by the two previous points, and as expected from the \emph{classical} case.
+    \item \textbf{Resonance.} What is the best choice of $J$ to excite the oscillator? The driving $J(t)$ should oscillate at the natural frequency $\omega$ of the oscillator, as shown by the two previous points, and as expected from the \emph{classical} case.
     \item \textbf{Energy eigenstates \& Bogoliubov transformation.} How the in- and out-Fock states are related, and how the number of quanta (particles) is changed by the driving force.
 \end{itemize}
 For simplicity consider only a position driving force $J(t)$, setting $K(t)=0$.
@@ -499,14 +506,14 @@ Using the time evolution above and the expression of $q$ and $p$ in terms of lad
 \begin{align}
     {}_{\mathrm{in}}\langle 0 | q(t) | 0 \rangle_{\mathrm{in}} =& \sqrt{\frac{\hbar}{2 m \omega}} \,{}_{\mathrm{in}}\langle 0 | a(t) + a^\dagger(t) | 0 \rangle_{\mathrm{in}}
     \\
-    = &\sqrt{\frac{\hbar}{2 m \omega}}\,\,\, {}_{\mathrm{in}}\langle 0 | \bigg(\graycancel{a_{\mathrm{in}} e^{-i\omega (t-t_0)} }  - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}\bigg) + \text{h.c.} | 0 \rangle_{\mathrm{in}}
+    = &\sqrt{\frac{\hbar}{2 m \omega}}\,\,\, {}_{\mathrm{in}}\langle 0 | \bigg(\graycancel{a_{\mathrm{in}} e^{-i\omega (t-t_0)} }  - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}\bigg) + \text{c.c.} | 0 \rangle_{\mathrm{in}}
     \\
     = &\frac{-ie^{-i\omega (t-t_f)}}{2m \omega}\int_{t_i}^{t\wedge t_f} dt' J(t') e^{i\omega (t'-t_f)}+ c.c.
     = -\frac{1}{m \omega} \int_{t_i}^{t\wedge t_f} dt' J(t') \sin\big(\omega (t - t')\big).
 \end{align}
 We see that indeed the average position is not zero anymore. 
 The driving makes the expectation value of position oscillate with time, with an amplitude roughly proportional to the Fourier component of $J(t)$ at the natural frequency $\omega$ of the oscillator.
-Indeed, the bigger the interval $t_f-t_i$ the more the wannabe Fourier transform above matches $\tilde{J}(\omega)$.
+Indeed, the bigger the interval $t_f-t_i$ the better the `wannabe' Fourier transform above matches $\tilde{J}(\omega)$.
 Similarly we can compute expectation values of other observables.
 
 
@@ -515,8 +522,9 @@ For simplicity consider only late times $t>t_f$, the energy expectation value re
 \begin{align}
     {}_{\mathrm{in}}\langle 0 | H(t) | 0 \rangle_{\mathrm{in}} &= \hbar \omega \,{}_{\mathrm{in}}\langle 0 | a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2} | 0 \rangle_{\mathrm{in}}
     = \hbar \omega \,{}_{\mathrm{in}}\langle 0 | (a_{\mathrm{in}}^\dagger + J_0^*)(a_{\mathrm{in}} + J_0) + \tfrac{1}{2} | 0 \rangle_{\mathrm{in}}
-    \\[5pt]
-    &= \hbar \omega \left(|J_0|^2 + \tfrac{1}{2}\right),\qquad |J_0|^2 = \frac{1}{2 m \omega \hbar} \left|\int_{t_i}^{t_f} dt' J(t') e^{i\omega t'}\right|^2 \sim \frac{1}{2 m \omega \hbar} |\tilde{J}(\omega)|^2.
+    = \hbar \omega \left(|J_0|^2 + \tfrac{1}{2}\right),
+    \\[6pt]
+    &\quad\text{for }\quad |J_0|^2 = \frac{1}{2 m \omega \hbar} \left|\int_{t_i}^{t_f} dt' J(t') e^{i\omega t'}\right|^2 \sim \frac{1}{2 m \omega \hbar} |\tilde{J}(\omega)|^2.
 \end{align}
 The driving force pumps energy into the oscillator, increasing its average energy by an amount roughly proportional to the square of the Fourier component of $J(t)$ at the natural oscillator frequency $\omega$.
 
@@ -564,6 +572,43 @@ General in states have overlap with out-states given by\todotag{CHECK}
     &=  \frac{e^{-\tfrac{1}{2} |J_0|^2}}{\sqrt{n!\, m!}} \sum_{\ell=0}^{n\wedge m} \binom{n}{\ell}\binom{m}{\ell}\ell!(-1)^{m-\ell}\,J_0^{m+n-2\ell}
 \end{align}
 }
+
+
+
+\begin{mytheorem}[Making semiclassical treatments rigorous: electron in classical EM field\todotag{Fix \& finish (Kempf L6 fine)}]
+%
+The above analysis of exciting harmonic oscillators allows to understand the rigorous treatment of a quantized electron in a classical electromagnetic field and other semiclassical treatments usually presented in basic QM courses.
+Ignoring spin and gauge subtleties, let the harmonic oscillator represent one mode of the quantized EM field.
+We showed that \textbf{any generic interaction} with some external current $J(t)$ \textbf{will drive the EM field oscillator into a coherent state}.
+These quantum states are the closest to classical states, minimizing the uncertainty relation and having dynamics closely following classical trajectories.
+If each mode of the EM field is in such a state, we can already understand why the above semiclassical treatment works so well.
+
+More rigorously, consider a full Hamiltonian for the EM field interacting with an electron
+\begin{align}
+    H = H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}},
+\end{align}
+where $H_{\mathrm{EM}} \sim \sum_{\mathbf{k},\lambda} \hbar \omega_k (a_{\mathbf{k},\lambda}^\dagger a_{\mathbf{k},\lambda} + \tfrac{1}{2})$ is the Hamiltonian of the free quantized EM field, $H_{\mathrm{e}^-}\sim p^2/2m$ is the Hamiltonian of the free electron and $H_{\mathrm{int}}=\vec{p}\otimes B$ describes a possible interaction.
+The time evolution of a given state will be 
+\begin{align}
+    |\Psi(t)\rangle = U(t,t_0) |\Psi(t_0)\rangle = e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}}\right)}\,\,
+    |\Psi(t_0)\rangle\,.
+\end{align}
+Even if we start from a pure state $|\Psi(t_0)\rangle = |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle$, the interaction will entangle the two subsystems.
+However, if the EM field is in a coherent state $|\psi_{\mathrm{EM}}(t_0)\rangle = |\{\alpha_{\mathbf{k},\lambda}\}\rangle$, then we can approximate the interaction Hamiltonian as
+\begin{align}
+    H_{\mathrm{int}} &= \vec{p} \otimes B \approx \vec{p} \otimes \langle \{\alpha_{\mathbf{k},\lambda}\}| B | \{\alpha_{\mathbf{k},\lambda}\}\rangle = \vec{p} \otimes B^{cl}(t,\mathbf{x}) = B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1,
+\end{align}
+where $B^{cl}(t,\mathbf{x})$ is a classical EM field given by the expectation value of the field operator $B$ on the coherent state.
+The time evolution is then non-entangling and factorizes as
+\begin{align}
+    |\Psi(t)\rangle &\approx e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1\right)}\,\,
+    |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle
+    \\
+    &= \left(e^{\tfrac{-i(t-t_0)}{\hbar} H_{\mathrm{EM}}} |\psi_{\mathrm{EM}}(t_0)\rangle\right) \otimes \left(e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\right)} |\psi_{\mathrm{e}^-}(t_0)\rangle\right).
+\end{align}
+After tracing out the EM field degrees of freedom, the electron is thus left in a pure state evolving under the free Hamiltonian augmented with a classical EM field $B^{cl}(t,\mathbf{x})$.
+%
+\end{mytheorem}
 
 
 
