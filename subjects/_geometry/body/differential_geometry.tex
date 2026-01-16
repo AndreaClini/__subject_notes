@@ -1792,12 +1792,13 @@ The connection 1-form and curvature 2-form satisfy the Cartan structure equation
     \quad\text{i.e.} \quad \Omega^a_{\, b} = d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b}.
 \end{align}
 The \textbf{Cartan equations are essentially definitions} of the torsion $T$ and curvature 2-form in terms of the connection 1-forms and the tetrad basis.
-In fact, for a general fiber bundles $E_F$ the first line is the \emph{only definition} of torsion, while it coincides with the usual torsion tensor in case $E_F = TM$ is the tangent bundle.
+In fact, for \textbf{general fiber bundles} the first line is the \textbf{only definition of torsion}, while it coincides with the usual torsion tensor in case $E_F = TM$ is the tangent bundle.
 In particular, in absence of torsion $T=0$ the first Cartan structure equation reduces to
 \begin{equation}
     d \phi^a + \omega^a_{\, b} \wedge \phi^b = 0.
 \end{equation}
 \end{mytheorem}
+\vspace{-3mm}
 \begin{proof}
 From the definition of the exterior covariant derivative we have indeed
 \begin{align}
@@ -1820,34 +1821,35 @@ Using linearity of the 2-form, we prove it on a coordinate induced basis $\parti
 \end{proof}
 
 
-\begin{mytheorem}[Bianchi identities in the tetrad formalism\questiontag{Check}]
-The Bianchi identities can be concisely expressed in terms of the exterior covariant derivative $d_\nabla$ as
+\begin{mytheorem}[Bianchi identities in the tetrad formalism\answerinline{ok}]
+The Bianchi identities in a tetrad $\{f_i,\,\phi^i\}_i$ are concisely expressed via the exterior covariant derivative $d_\nabla$ as
 \begin{align}
-    d_\nabla T &= \Omega_{\, j} \wedge \theta^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \theta^j,
+    d_\nabla T &= \Omega_{\, j} \wedge \phi^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \phi^j,
     \\
-    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = de_i \wedge \Omega^i_{\, j} = e_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = e_i \otimes\omega_k^i\wedge \Omega^k_j\,.
+    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = f_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = f_i \otimes\omega_k^i\wedge \Omega^k_j\,.
 \end{align}
-NBeware the 2nd identity says the exterior derivative of the $\R$-valued 2-form $\Omega^i_{\, j}$ vanished, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
-The \textbf{Bianchi identities are} essentially express \textbf{symmetries that follow from the} very \textbf{definition} of torsion and curvature.
-In particular, in absence of torsion the first Bianchi identity reduces to
+Beware the 2nd identity says the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ vanish, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
+The \textbf{Bianchi identities} essentially express \textbf{symmetry contraints} that follow \textbf{from the very definition} of torsion and curvature.
+In particular, in absence of torsion $T=0$ the first Bianchi identity reduces to
 \begin{equation}
-    \Omega^i_{\, j} \wedge \theta^j = 0.
+    \Omega^i_{\, j} \wedge \phi^j = 0.
 \end{equation}
 \end{mytheorem}
+\vspace{-3mm}
 \begin{proof}
 The first identity follows from direct computation of the exterior covariant derivative of the torsion 2-form and the second Cartan equation above
 \begin{align}
-    d_\nabla T &= d_\nabla (d_\nabla \theta) = d_\nabla \left[e_i\otimes \left(d \theta^i + \omega^i_{\, j} \wedge \theta^j \right)\right]
+    d_\nabla T &= d_\nabla (d_\nabla \phi) = d_\nabla \left[f_i\otimes \left(d \phi^i + \omega^i_{\, j} \wedge \phi^j \right)\right]
     \\
     &=
-    e_i\otimes \left(\graycancel{d^2 \theta^i} + d\omega^i_{\, j} \wedge \theta^j \bluecancel{- \omega^i_{\, j} \wedge d\theta^j}  \right)
-    + e_i \omega^i_k\wedge \left(\bluecancel{d \theta^k} + \omega^k_{\, j} \wedge \theta^j \right) 
+    f_i\otimes \left(\graycancel{d^2 \phi^i} + d\omega^i_{\, j} \wedge \phi^j \bluecancel{- \omega^i_{\, j} \wedge d\phi^j}  \right)
+    + f_i \otimes \omega^i_k\wedge \left(\bluecancel{d \phi^k} + \omega^k_{\, j} \wedge \phi^j \right) 
     \\
     &=
-    e_i \otimes \left( d\omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) \wedge \theta^j
-    \equiv \Omega_{\, j} \wedge \theta^j.
+    f_i \otimes \left( d\omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) \wedge \phi^j
+    \equiv \Omega_{\, j} \wedge \phi^j.
 \end{align}
-For the second equation, renaming dummy indices and using that $\Omega^i_{\, j}$ is a 2-form thereby commuting under the wedge product, we have
+For the second equation, renaming dummy indices, expressing $\Omega^i_{\, j}$ in terms of $\omega$ and using it commutes under the wedge product since it is a 2-form, we have
 \begin{align}
     d \Omega_{\,j}^i &= d \left( d \omega^i_{\, j} + \omega^i_{\, k} \wedge \omega^k_{\, j} \right) = \graycancel{d^2 \omega^i_{\, j}} + d\omega^i_{\, k} \wedge \omega^k_{\, j} - \omega^i_{\, k} \wedge d\omega^k_{\, j}
     \\
@@ -1877,13 +1879,15 @@ Given a tetrad $\{\theta^i,e_i\}_i$ for the tangent bundle, the structure consta
 \begin{equation}
     [e_j, e_k] = C^i_{jk} e_i \,\, \quad \text{antisymmetric in $j,k$}.
 \end{equation}
-The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad vector fields $\{e_i\}_i$.
+By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
+
 They can be equivalently defined as the coefficients of the exterior derivative expansion
 \begin{equation}
     d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k \quad \text{(sum over repeated indices)}.
 \end{equation}
-By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
-If the tetrad is induced by a coordinate system $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, then the structure constants vanish identically.
+
+The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad vector fields $\{e_i\}_i$.
+The \textbf{structure constants vanish} identically $C_{jk}^i \equiv 0$ if and only if the tetrad is \emph{holonomic} i.e. \textbf{induced by coordinates}  $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$
 
 Beware the structure constants make sense only for the tangent bundle $TM$ since only there we have a natural notion of commutator of vector fields, and in fact arbitrary fiber-valued forms are expressed as linear combinations of ordinary $\R$-valued forms times fiber basis elements.
 \end{mytheorem}
@@ -1909,49 +1913,46 @@ That is to say
 \begin{align}
     d\theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k\, \Leftrightarrow [e_j, e_k] = C^i_{jk} e_i\,.
 \end{align}
+Finally the fact that $C_{ij}^k \equiv 0$ if and only if $e_\mu\equiv \partial_\mu$ for some coordinate system $\{x^\mu\}_\mu$ follows from Frobenius theorem.
 %
 \end{proof}
 
 
 
 \begin{mytheorem}[Christoffel symbols in a tetrad frame of the tangent bundle\todotag{Check and finish}]
-Given a tetrad $\{\theta^i,\, e_i\}_i$ on the tangent bundle of a manifold \(M\) with affine connection \(\nabla\), define the Christoffel symbols \(\Gamma^i_{\, jk}\) as the coefficients in the expansion 
+Given a tetrad $\{\theta^i,\, e_i\}_i$ on the tangent bundle $TM\to M$ with affine connection \(\nabla\), define the Christoffel symbols \(\Gamma^i_{jk}\) by
 \begin{equation}
-    \nabla_{e_j} e_k =: \Gamma^i_{\, jk} e_i.
+    \nabla_{e_j} e_k =: \Gamma^i_{jk} e_i.
 \end{equation}
 That is, the connection 1-forms is expressed in terms of the Christoffel symbols as
 \begin{equation}
-    \omega^i_{\, j} = \Gamma^i_{ jk} \theta^k.
+    \omega^i_{\, j} = \Gamma^i_{ jk}\, \theta^k.
 \end{equation}
 
-In case $\nabla$ is a metric connection, we can express the Christoffel symbols in terms of the metric $g_{ij} := g(e_i, e_j)$ and the structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) of the tetrad as
-\begin{equation}
-    \Gamma^i_{jk} = \tfrac{1}{2} \left( C^i_{jk} - g^{i\ell}g_{j m}C^m_{k\ell} + g_{km}g^{i\ell} C^m_{\ell j} \right) + \tfrac{1}{2}g^{i\ell} \left( \partial_j g_{\ell k} + \partial_k g_{\ell j} - \partial_\ell g_{jk} \right)\,.
-\end{equation}
-If $C_{jk}^i = 0$ (coordinate tetrad) this reduces to the usual expression for the Christoffel symbols in a coordinate basis.
-If $g_{ij} = \eta_{ij}$ (orthonormal tetrad) this reduces to
-\begin{equation}
-    \Gamma^i_{jk} = \tfrac{1}{2} \left( C^i_{jk} - \eta^{i\ell}\eta_{j m}C^m_{k\ell} + \eta_{km}\eta^{i\ell} C^m_{\ell j} \right).
-\end{equation}
+
+For a metric connection $\nabla g\equiv 0$ possibly with non-zero torsion, the \textbf{Koszul formula} holds
+\begin{align}
+\begin{aligned}
+    2\,g(\nabla_X Y, Z) ={}& X\!\left[g(Y,Z)\right] + Y\!\left[g(Z,X)\right] - Z\!\left[g(X,Y)\right] + g([X,Y],Z) - g([Y,Z],X) - g([X,Z],Y) \\
+    & - g\!\left(T(X,Y),Z\right) - g\!\left(T(Y,Z),X\right) - g\!\left(T(X,Z),Y\right).
+\end{aligned}
+\end{align}
+We then express the Christoffel symbols in terms of the metric $g_{ij} := g(e_i, e_j)$, the structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) and the torsion components \(T^i_{\, jk}:=\theta^i(T(e_j,e_k))\) in a given tetrad as
+\begin{align}
+    \Gamma_{ij}^k=&\tfrac{1}{2} g^{k\ell} \Big( e_i\,g_{j \ell} + e_j\,g_{i \ell} - e_\ell\,g_{i j}\Big)
+    + \tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} C^m_{ij} - g_{m j} C^m_{i \ell} - g_{m i} C^m_{j \ell} \Big) \\[5pt]
+    &\quad
+    - \tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} T^m_{ij} +g_{m i} T^m_{j \ell} + g_{m j} T^m_{i \ell}  \Big).
+\end{align}
+In the absence of torsion the second line vanishes, but $\Gamma_{ij}^k$ is not yet symmetric in general in the lower indices due to the possibly nonzero structure constants $C_{ij}^k=[e_i,e_j]^k$.
+If $C_{ij}^k\equiv 0$ we recover usual expression for the Christoffel symbols in a coordinate basis\footnote{In fact we have $C_{ij}^k\equiv 0$ iff there exist some coordinates s.t. $e_\mu=\partial_\mu$.}, split into symmetric $\propto \, \partial g$ and antisymmetric part $\propto \, T$ part.
+Finally in an orthonormal tetrad $g_{ij} = \eta_{ij}$  and the 3 first terms $\sim \, \partial g$ vanish.
 \end{mytheorem}
 \begin{proof}
 By metric compatibility $\nabla g=0$, that is $0=X(g(Y,Z)) - g(\nabla_X Y,Z) - g(Y, \nabla_X Z)$.
-Permutating the vectors $X,Y,z$ and assuming torsion vanishes $\nabla_XY-\nabla_YX = [X,Y]$, the Koszul formula gives
-\begin{align}
-\begin{aligned}
-    2\,g(\nabla_X Y,Z)
-    &=X\,g(Y,Z) + Y\,g(X,Z) - Z\,g(X,Y) 
-    + g([X,Y],Z) - g([X,Z],Y) - g([Y,Z],X).
-\end{aligned}
-\end{align}
-Setting \(X=e_j,\, Y=e_k,\, Z=e_i\) and using the definition of the Christoffel symbols and structure constants yields
-\begin{align}
-    2\, g_{i\ell} \Gamma^\ell_{jk}
-    &=
-    e_j\,g_{k i} + e_k\,g_{j i} - e_i\,g_{j k} \\
-    &\quad
-    + g_{i\ell} C^\ell_{jk} - g_{j\ell} C^\ell_{ik} - g_{k\ell} C^\ell_{ij}.
-\end{align}
+By definition of torsion $T(X,Y) = \nabla_X Y - \nabla_Y X - [X,Y]$ so that $\nabla_X Y = \nabla_Y X + [X,Y] + T(X,Y)$.
+Using these two realtions we get the Koszul formula.
+Setting \(X=e_j,\, Y=e_k,\, Z=e_i\), using the definition of the Christoffel symbols and structure constants, and then raising indices with the metric inverse gives the final expression.
 \end{proof}
 
 
@@ -2063,7 +2064,7 @@ From Kempf GR L10 missing:
     \item example: connection on spinors MISSING
     \item curvature 2-form on arbitrary fiber bundle OK
     \item Cartan structure equations OK
-    \item Bianchi identities MISSING
+    \item Bianchi identities OK
 \end{enumerate}
 
 \noindent
