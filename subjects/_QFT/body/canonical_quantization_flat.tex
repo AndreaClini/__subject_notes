@@ -349,7 +349,7 @@ Ladder operators $a$ and $a^\dagger$ obeying $[a, a^\dagger] = 1$ have the follo
     %
 \end{mytheorem}
 
-\begin{mytheorem}[Coherent \& squeezed states\todotag{Polish}]
+\begin{mytheorem}[Coherent \& squeezed states\questiontag{Polish}]
 %
 Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined as the eigenstates of the annihilation operator $a$, namely
 \begin{align}
@@ -414,9 +414,9 @@ That is, somebody's coherent states are somebody else's squeezed states and vice
 %=========================================================
 
 
-\begin{mytheorem}[Exciting harmonic oscillators: driving forces \& parametric resonance\todotag{Finish}]
+\begin{mytheorem}[Exciting harmonic oscillators: driving forces \& parametric resonance]
 %
-There are two main ways to excite a harmonic oscillator, i.e. to increase its energy and amplitude of oscillation.\todotag{add image for both methods}
+There are two main ways to excite a harmonic oscillator i.e. to increase its energy and amplitude of oscillation.\todotag{add image for both methods}
 \begin{itemize}
     \item Apply an external \emph{driving force} $F(t)$ that \emph{shakes} the oscillator, modifying the Hamiltonian as
     \begin{equation}
@@ -435,41 +435,41 @@ There are two main ways to excite a harmonic oscillator, i.e. to increase its en
 \end{itemize}
 %
 The first mechanism is essentially how fields of different species excite each other via interactions.
-A concrete example is how the electron field excites the electromagnetic field to produce photons e.g. when electrons in an antenna oscillate due to an applied voltage and excite the EM field to produce radio waves.
+A concrete example is how the electron field excites the electromagnetic field to produce photons e.g. when electrons in an antenna oscillate due to an applied voltage and thus excite the EM field to produce radio waves.
 
 The second is how (quantum) fields in curved spacetime get excited by the expansion of the universe or by time-dependent gravitational fields.
-A primary example if inflation, that modifies frequencies of oscillators even up to turning some of them upside-down leading to run-away solutions.
+A primary example is inflation, that changes frequencies of oscillators even up to turning some of these upside-down leading to run-away solutions.
 %
 \end{mytheorem}
 
 
 
-\begin{mytheorem}[Driving forces \& first examples of Bogoliubov transformations\todotag{Finish}]
+\begin{mytheorem}[Driving forces \& first examples of Bogoliubov transformations\questiontag{Polish}]
 %
-Consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively, with Schrödinger Hamiltonian
+Consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(t)$ acting on position and momentum respectively, with \emph{Schrödinger} Hamiltonian
 \begin{align}
-    H = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 + J(t) q - K(t) p.
+    H_S(t) = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 + J(t) q - K(t) p.
 \end{align}
 Define ladder operators to diagonalize the free hamiltonian at some reference time $t_0$ and get
 \begin{align}
-    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
-    H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
+    H_S(t) &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J(t) (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K(t) (a - a^\dagger)\,,\\[5pt]
+    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\tfrac{m\omega}{\hbar}}\, q + i \tfrac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1\,.
 \end{align}
 We consider the Heisenberg picture, imposing it coincides with the Schrödinger picture at time $t_0$.
-Note the Schrödinger Hamiltonian is time-dependent due to the driving forces $J(t), K(t)$ and does not commute at different times.
-Indeed, assuming for simplicity $K(t)=0$ and $J(t)$ commute with itself at any two times and with ladder operators, we have
+Beware the Schrödinger Hamiltonian is time-dependent due to the driving forces and does not commute with itself at different times.
+Indeed, assuming for simplicity $K(t)=0$ and that $J(t)$ commutes with itself at any two times and with ladder operators, we have
 \begin{align}
-    [H(t), H(s)] = \hbar \omega \sqrt{\frac{\hbar}{2 m \omega}} (J(t) - J(s)) [a + a^\dagger, a^\dagger a] = \hbar \omega \sqrt{\frac{\hbar}{2 m \omega}} (J(t) - J(s)) (a - a^\dagger) \neq 0.
+    [H_S(t), H_S(s)] = \hbar \omega \sqrt{\frac{\hbar}{2 m \omega}} (J(t) - J(s)) [a + a^\dagger, a^\dagger a] = \hbar \omega \sqrt{\frac{\hbar}{2 m \omega}} (J(t) - J(s)) (a - a^\dagger) \neq 0.
 \end{align}
 The Heisenberg Hamiltonian will thus be different from the Schrödinger one
 \begin{align}
     H_H(t,t_0) &= U^\dagger(t,t_0) H_S(t) U(t,t_0) 
-    = \mathcal{T} \exp\left(\tfrac{1}{\hbar} \int_{t_0}^t dt' H_S(t')\right) H_S(t) \mathcal{T} \exp\left(-\tfrac{1}{\hbar} \int_{t_0}^t dt' H_S(t')\right) 
+    = \mathcal{T} \exp\left(\tfrac{i}{\hbar} \int_{t_0}^t dt' H_S(t')\right) H_S(t) \mathcal{T} \exp\left(-\tfrac{i}{\hbar} \int_{t_0}^t dt' H_S(t')\right) 
     \neq H_S(t).
 \end{align}
 The equation of motion for $a$ in the Heisenberg picture reads
 \begin{align}%\label{eq:1d_oscillator_ladder_operator_time_evolution}
-    &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J \quad
+    &i\hbar\,\partial_t a= [a, H_H(t,t_0)] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J \quad
     \Rightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t')  e^{-i\omega (t-t')}.
 \end{align}
 For example, if $J$ is nonzero only within a finite time interval $[t_i, t_f]$, we have
@@ -484,25 +484,19 @@ where we define
 \begin{align}
     a_{\mathrm{out}} &= a_{\mathrm{in}} + J_0\,,\quad J_0 := - \frac{i}{\hbar} \int_{t_i}^{t_f} dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{i\omega t'}.
 \end{align}
-In particular the Heisenberg hamiltonian result independent of time outside the interval $[t_i, t_f]$, albeit different from the Schrödinger one at all times $t\geq t_i$,
+In particular the Heisenberg hamiltonian is independent of time outside the interval $[t_i, t_f]$, albeit different from the Schrödinger one at all times $t\geq t_i$,
 \begin{align}
-    H = \hbar \omega \left(a_{\mathrm{in}}^\dagger a_{\mathrm{in}} + \tfrac{1}{2}\right), \quad t < t_i, \qquad H = \hbar \omega \left(a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2}\right), \quad t > t_f.
+    H_H(t,t_0)= \hbar \omega \left(a_{\mathrm{in}}^\dagger a_{\mathrm{in}} + \tfrac{1}{2}\right)\equiv H_S(t)\,\,\quad t < t_i, \qquad H_H(t,t_0) = \hbar \omega \left(a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2}\right)\,\,\quad t > t_f.
 \end{align}
 It is thus convenient to choose bases of the Hilbert space diagonalizing the hamiltonian either at early or late times, namely the in- and out-Fock states, since they will remain eigenstates of the hamiltonian for earlier resp. later times and evolve trivially in time with a simple phase factor.
 
-We want to understand how the driving force affects several aspects of the dynamics of the system. \todotag{Finish see Kempf L6}
-\begin{itemize}
-    \item \textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change due to the driving force.
-    \item \textbf{Energy.} How energy is pumped into the oscillator by the driving force, i.e. how $\langle H(t)\rangle$ changes with time.
-    \item \textbf{Resonance.} What is the best choice of $J$ to excite the oscillator? The driving $J(t)$ should oscillate at the natural frequency $\omega$ of the oscillator, as shown by the two previous points, and as expected from the \emph{classical} case.
-    \item \textbf{Energy eigenstates \& Bogoliubov transformation.} How the in- and out-Fock states are related, and how the number of quanta (particles) is changed by the driving force.
-\end{itemize}
-For simplicity consider only a position driving force $J(t)$, setting $K(t)=0$.
-------------------------------------------------------------------------------------------
+We want to understand how the driving force affects several aspects of the system dynamics: motion, energy, resonance and eigenstates.
+\smallskip
 
-
-\textbf{Motion.} 
-Using the time evolution above and the expression of $q$ and $p$ in terms of ladder operators, we find
+\noindent
+\noindent
+\textbf{Motion.} How expectations of observables like $\langle q(t)\rangle$ and $\langle p(t)^2\rangle$ change in time due to the driving force?
+For example, using the time evolution and the expression of $q$ and $p$ in terms of ladder operators above, we find
 \begin{align}
     {}_{\mathrm{in}}\langle 0 | q(t) | 0 \rangle_{\mathrm{in}} =& \sqrt{\frac{\hbar}{2 m \omega}} \,{}_{\mathrm{in}}\langle 0 | a(t) + a^\dagger(t) | 0 \rangle_{\mathrm{in}}
     \\
@@ -511,14 +505,15 @@ Using the time evolution above and the expression of $q$ and $p$ in terms of lad
     = &\frac{-ie^{-i\omega (t-t_f)}}{2m \omega}\int_{t_i}^{t\wedge t_f} dt' J(t') e^{i\omega (t'-t_f)}+ c.c.
     = -\frac{1}{m \omega} \int_{t_i}^{t\wedge t_f} dt' J(t') \sin\big(\omega (t - t')\big).
 \end{align}
-We see that indeed the average position is not zero anymore. 
+The average position is not zero anymore. 
 The driving makes the expectation value of position oscillate with time, with an amplitude roughly proportional to the Fourier component of $J(t)$ at the natural frequency $\omega$ of the oscillator.
-Indeed, the bigger the interval $t_f-t_i$ the better the `wannabe' Fourier transform above matches $\tilde{J}(\omega)$.
+Indeed, the bigger the interval $t_f-t_i$ the better the `would-be' Fourier transform above matches $\tilde{J}(\omega)$.
 Similarly we can compute expectation values of other observables.
+\smallskip
 
-
-\textbf{Energy.}
-For simplicity consider only late times $t>t_f$, the energy expectation value reads
+\noindent
+\textbf{Energy.} How energy is pumped into the oscillator by the driving force i.e. how {\small $\langle H(t)\rangle$} changes in time?
+Considering only late times $t>t_f$ for simplicity, the energy expectation is
 \begin{align}
     {}_{\mathrm{in}}\langle 0 | H(t) | 0 \rangle_{\mathrm{in}} &= \hbar \omega \,{}_{\mathrm{in}}\langle 0 | a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2} | 0 \rangle_{\mathrm{in}}
     = \hbar \omega \,{}_{\mathrm{in}}\langle 0 | (a_{\mathrm{in}}^\dagger + J_0^*)(a_{\mathrm{in}} + J_0) + \tfrac{1}{2} | 0 \rangle_{\mathrm{in}}
@@ -527,9 +522,16 @@ For simplicity consider only late times $t>t_f$, the energy expectation value re
     &\quad\text{for }\quad |J_0|^2 = \frac{1}{2 m \omega \hbar} \left|\int_{t_i}^{t_f} dt' J(t') e^{i\omega t'}\right|^2 \sim \frac{1}{2 m \omega \hbar} |\tilde{J}(\omega)|^2.
 \end{align}
 The driving force pumps energy into the oscillator, increasing its average energy by an amount roughly proportional to the square of the Fourier component of $J(t)$ at the natural oscillator frequency $\omega$.
+\smallskip
 
+\noindent
+\textbf{Resonance.} What is the best choice of $J$ to excite the oscillator? The driving $J(t)$ should oscillate at the natural frequency $\omega$ of the oscillator, as shown by the two previous points, and as expected from \emph{classical} mechanics.
+\smallskip
 
+\noindent
 \textbf{Eigenstates \& Bogoliubov transforms.}
+How are in- and out-Fock states related? How the number of quanta (particles) is changed by the driving force i.e. what is the probability of transitioning from some initial state ike the in-vacuum $|0\rangle_{\mathrm{in}}$ to some excited out-state $|n\rangle_{\mathrm{out}}$?
+
 We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|0\rangle_{\mathrm{in}}$ defined by $a_{\mathrm{in}} |0\rangle_{\mathrm{in}} = 0$, but rather 
 \begin{align}
     a_{\mathrm{out}} |0\rangle_{\mathrm{in}} = J_0 |0\rangle_{\mathrm{in}} \neq 0.
@@ -539,67 +541,62 @@ Namely we can rewrite
 \begin{align}
     |0\rangle_{\mathrm{in}} = e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = e^{J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}} |0\rangle_{\mathrm{out}}.
 \end{align}
-This is confirmed acting explicitly with $a_{\mathrm{out}}$ on the rhs, using $[a_{\mathrm{out}},J_0]=0$,
+This is confirmed acting explicitly with $a_{\mathrm{out}}$ and using $[a_{\mathrm{out}},J_0]=0$,
 \begin{align}
     a_{\mathrm{out}} |0\rangle_{\mathrm{in}} &= \frac{d}{d a_{\mathrm{out}}^\dagger} \left(e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}\right)
     = J_0 e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = J_0 |0\rangle_{\mathrm{in}}.
 \end{align}
-More generally the in-vacuum have overlap with out-Fock states given by
+More generally the in-vacuum have overlaps and transition amplitudes to out-states given by
 {\small
 \begin{align}
-    {}_{\mathrm{out}}\langle n |0\rangle_{\mathrm{in}} &= e^{-\frac{1}{2} |J_0|^2} {}_{\mathrm{out}}\langle n | \sum_{m=0}^\infty \frac{(J_0 a_{\mathrm{out}}^\dagger)^m}{m!} |0\rangle_{\mathrm{out}}
-    = {}_{\mathrm{out}}\langle 0 | \frac{d^n}{d a_{\mathrm{out}}^n} \left(e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}\right)
-    = e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}}
-    \\[6pt]
-    &\quad\Rightarrow\quad |0\rangle_{\mathrm{in}} = \sum_{n=0}^\infty e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}} |n\rangle_{\mathrm{out}}.
+    {}_{\mathrm{out}}\langle n |0\rangle_{\mathrm{in}} &=  {}_{\mathrm{out}}\langle 0 | \frac{a_{\mathrm{out}}^n}{\sqrt{n!}} e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}
+    = e^{-\frac{1}{2} |J_0|^2} \frac{1}{\sqrt{n!}} {}_{\mathrm{out}}\langle 0 | \frac{d^n}{d a_{\mathrm{out}}^n} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}},\\
+    \\[4pt]
+    &\,\,\,\Rightarrow\quad |0\rangle_{\mathrm{in}} = \sum_{n=0}^\infty e^{-\frac{1}{2} |J_0|^2} \frac{J_0^n}{\sqrt{n!}} |n\rangle_{\mathrm{out}}\, \qquad \mathbb{P}\Big(|0\rangle_{\mathrm{in}} \to |n\rangle_{\mathrm{out}}\Big) = \left|{}_{\mathrm{out}}\langle n |0\rangle_{\mathrm{in}}\right|^2 = e^{-|J_0|^2} \frac{|J_0|^{2n}}{n!}.
 \end{align}
 }
-General in states have overlap with out-states given by\todotag{CHECK}
-{\small
-\begin{align}
-    {}_{\mathrm{out}}\langle n | m \rangle_{\mathrm{in}} &= {}_{\mathrm{out}}\langle 0 | \frac{(a_{\mathrm{out}}\big)^n}{\sqrt{n!}}\frac{(a_{\mathrm{out}}^\dagger-J_0^\dagger\big)^m}{\sqrt{m!}} e^{-\tfrac{1}{2} |J_0|^2} e^{iJ_0a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
-    \\
-    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} {}_{\mathrm{out}}\langle 0 |\frac{d^n}{d a_{\mathrm{out}}^n} \left(a_{\mathrm{out}}^\dagger - J_0^\dagger\right)^m e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
-    \\
-    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}{}_{\mathrm{out}}\langle 0 |\frac{d^\ell}{d (a_{\mathrm{out}}^\dagger)^\ell}\left(a_{\mathrm{out}}^\dagger - J_0^\dagger\right)^{m} \frac{d^{n-\ell}}{d (a_{\mathrm{out}}^\dagger)^{n-\ell}} e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
-    \\
-    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}{}_{\mathrm{out}}\langle 0 |\frac{m!}{(m-\ell)!}\left(a_{\mathrm{out}}^\dagger - J_0^\dagger\right)^{m-\ell} J_0^{n-\ell} e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
-    \\
-    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}{}_{\mathrm{out}}\langle 0 |\frac{m!}{(m-\ell)!}(-1)^{m-\ell}(J_0^\dagger)^{m-\ell} J_0^{n-\ell} e^{J_0 a_{\mathrm{out}}^\dagger}|0\rangle_{\mathrm{out}}
-    \\
-    &= e^{-\tfrac{1}{2} |J_0|^2} \frac{1}{\sqrt{n! m!}} \sum_{\ell=0}^{n\wedge m}\binom{n}{\ell}\frac{m!}{(m-\ell)!}(-1)^{m-\ell}(J_0^\dagger)^{m+n-2\ell}
-    \\
-    &=  \frac{e^{-\tfrac{1}{2} |J_0|^2}}{\sqrt{n!\, m!}} \sum_{\ell=0}^{n\wedge m} \binom{n}{\ell}\binom{m}{\ell}\ell!(-1)^{m-\ell}\,J_0^{m+n-2\ell}
-\end{align}
-}
-
-
-
-\begin{mytheorem}[Making semiclassical treatments rigorous: electron in classical EM field\todotag{Fix \& finish (Kempf L6 fine)}]
+The probability for the driving force to excite $n$ quanta out of the initial vacuum is thus a Poisson distribution with mean and variance $\langle N \rangle =\langle N^2\rangle -\langle N\rangle^2= |J_0|^2$.
 %
-The above analysis of exciting harmonic oscillators allows to understand the rigorous treatment of a quantized electron in a classical electromagnetic field and other semiclassical treatments usually presented in basic QM courses.
+General in states have overlap with out-states and corresponding transition amplitudes given by
+{\small
+\begin{align}
+    {}_{\mathrm{out}}\langle n | m \rangle_{\mathrm{in}} &= {}_{\mathrm{out}}\langle 0 | \frac{(a_{\mathrm{in}}+J_0\big)^n}{\sqrt{n!}}\frac{(a_{\mathrm{in}}^\dagger\big)^m}{\sqrt{m!}} |0\rangle_{\mathrm{in}}\\
+    &= \frac{1}{\sqrt{n!\,m!}}\sum_{\ell=0}^n \binom{n}{\ell} J_0^{n-\ell} {}_{\mathrm{out}}\langle 0 | \frac{d^\ell}{da_{\mathrm{in}}^\ell}(a_{\mathrm{in}}^\dagger\big)^m |0\rangle_{\mathrm{in}}\\
+    &= \frac{1}{\sqrt{n!\,m!}}\sum_{\ell=0}^{m\wedge n} \binom{n}{\ell} J_0^{n-\ell} \frac{m!}{(m-\ell)!}{}_{\mathrm{out}}\langle 0 |(a_{\mathrm{out}}^\dagger-J_0^*\big)^{m-\ell} |0\rangle_{\mathrm{in}}\\
+    &= \sum_{\ell=0}^{m\wedge n} \frac{\sqrt{m!\,n!}}{\ell!(m-\ell)!(n-\ell)!}J_0^{n-\ell} (-J_0^*\big)^{m-\ell}{}_{\mathrm{out}}\langle 0 |0\rangle_{\mathrm{in}}\\
+    &=\sum_{\ell=0}^{m\wedge n} \frac{\sqrt{m!\,n!}\,\, (-1)^{m-\ell}}{\ell!(m-\ell)!(n-\ell)!}\,J_0^{n-\ell} (J_0^*\big)^{m-\ell} e^{-\frac{|J_0|^2}{2}}\,.
+\end{align}
+}
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Making semiclassical treatments rigorous: electron in classical EM field\questiontag{Polish}]
+%
+The above analysis of exciting harmonic oscillators allows to rigorously understand the treatment of a quantized electron in a classical electromagnetic field and other semiclassical treatments usually presented in basic QM courses.
 Ignoring spin and gauge subtleties, let the harmonic oscillator represent one mode of the quantized EM field.
 We showed that \textbf{any generic interaction} with some external current $J(t)$ \textbf{will drive the EM field oscillator into a coherent state}.
-These quantum states are the closest to classical states, minimizing the uncertainty relation and having dynamics closely following classical trajectories.
-If each mode of the EM field is in such a state, we can already understand why the above semiclassical treatment works so well.
+These quantum states are the closest possible to classical states, minimizing the uncertainty relation and having dynamics closely following classical trajectories.
+If each mode of the EM field is in such a state, as expected due to arbitrary interactions, we understand why the above semiclassical treatment works so well.
 
 More rigorously, consider a full Hamiltonian for the EM field interacting with an electron
 \begin{align}
     H = H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}},
 \end{align}
-where $H_{\mathrm{EM}} \sim \sum_{\mathbf{k},\lambda} \hbar \omega_k (a_{\mathbf{k},\lambda}^\dagger a_{\mathbf{k},\lambda} + \tfrac{1}{2})$ is the Hamiltonian of the free quantized EM field, $H_{\mathrm{e}^-}\sim p^2/2m$ is the Hamiltonian of the free electron and $H_{\mathrm{int}}=\vec{p}\otimes B$ describes a possible interaction.
+where $H_{\mathrm{EM}} \sim \sum_{\mathbf{k},\lambda} \hbar \omega_k (a_{\mathbf{k},\lambda}^\dagger a_{\mathbf{k},\lambda} + \tfrac{1}{2})$ is the Hamiltonian of the free quantized EM field, $H_{\mathrm{e}^-}\sim p^2/2m$ is the Hamiltonian of the free electron and $H_{\mathrm{int}}\sim \vec{p}\otimes B$ describes a possible interaction.
 The time evolution of a given state will be 
 \begin{align}
     |\Psi(t)\rangle = U(t,t_0) |\Psi(t_0)\rangle = e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}}\right)}\,\,
     |\Psi(t_0)\rangle\,.
 \end{align}
 Even if we start from a pure state $|\Psi(t_0)\rangle = |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle$, the interaction will entangle the two subsystems.
-However, if the EM field is in a coherent state $|\psi_{\mathrm{EM}}(t_0)\rangle = |\{\alpha_{\mathbf{k},\lambda}\}\rangle$, then we can approximate the interaction Hamiltonian as
+However, if the EM field is in a coherent state $|\psi_{\mathrm{EM}}(t_0)\rangle = |\{\alpha_{\mathbf{k},\lambda}\}\rangle$, we can approximate the interaction Hamiltonian as
 \begin{align}
-    H_{\mathrm{int}} &= \vec{p} \otimes B \approx \vec{p} \otimes \langle \{\alpha_{\mathbf{k},\lambda}\}| B | \{\alpha_{\mathbf{k},\lambda}\}\rangle = \vec{p} \otimes B^{cl}(t,\mathbf{x}) = B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1,
+    H_{\mathrm{int}} &= \vec{p} \otimes B \approx \vec{p} \otimes \langle \{\alpha_{\mathbf{k},\lambda}\}| \hat{B}(t,\mathbf{x}) | \{\alpha_{\mathbf{k},\lambda}\}\rangle = \vec{p} \otimes B^{cl}(t,\mathbf{x}) = B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1,
 \end{align}
-where $B^{cl}(t,\mathbf{x})$ is a classical EM field given by the expectation value of the field operator $B$ on the coherent state.
-Beware that $|\psi_{\mathrm{EM}}(t_0)\rangle$ cannot be an \emph{exact} eigenstate of $B$, since otherwise the uncertainty in the conjugate variable would be infinite, but since it saturates the uncertainty relation the fluctuations around the expectation value are minimal, making this a good approximation.
+where $B^{cl}(t,\mathbf{x})$ is a classical EM field given by the expectation value of the field operator $\hat{B}$ on the coherent state.
+Beware that $|\psi_{\mathrm{EM}}(t_0)\rangle$ cannot be an \emph{exact} eigenstate of $B$, since otherwise the uncertainty in the conjugate variable would be infinite.
+However, since coherent states saturate the uncertainty relation, the fluctuations around the expectation value are minimal, making $\hat{B}(t,x)\simeq \langle \hat{B}(t,x) \rangle$ a good approximation.
 The time evolution is then non-entangling and factorizes as
 \begin{align}
     |\Psi(t)\rangle &\approx e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1\right)}\,\,
@@ -616,9 +613,6 @@ After tracing out the EM field degrees of freedom, the electron is thus left in 
 
 
 
-
-
-\end{mytheorem}
 
 
 
@@ -1823,7 +1817,7 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 
 
 %=======================================================================
-\subsection{States of the field}
+\subsection{Basics}
 %=======================================================================
 
 \begin{mytheorem}[Particle \& wave interpretations of field excitations\questiontag{Check \& improve}]
@@ -1848,20 +1842,33 @@ On the other hand, the wave interpretation is always valid, and we can always co
 \end{mytheorem}
 
 
+\begin{mytheorem}[Coherent states of the KG field\todotag{Do it}]
+    
+\end{mytheorem}
 
 
+\begin{mytheorem}[Exciting the KG field\todotag{Do it}]
+    
+\end{mytheorem}
 
-%=======================================================================
-\subsection{Exciting the KG field}
-%=======================================================================
 
-
-%------------------------------------------------------------
-\subsubsection{Semiclassical treatment made rigorous}
-%------------------------------------------------------------
-
-\begin{mytheorem}[A single electron in a classical electromagnetic field\todotag{Expand \& finish}]
+\begin{mytheorem}[Semiclassical treatment made rigorous: an electron in a classical electromagnetic field\todotag{Expand \& finish}]
 %
 Consider a first quantized electron described moving into a classical electromagnetic field $A_{\mu}$.
 The Lagrangian density for this system is given by...
+\end{mytheorem}
+
+
+
+
+%=======================================================================
+\subsection{Detectors \& the Unruh effect\todotag{Expand \& finish}}
+%=======================================================================
+
+\begin{mytheorem}[What is a particle? Unruh - DeWitt detectors\todotag{Expand \& finish}]
+    
+\end{mytheorem}
+
+\begin{mytheorem}[The Unruh effect\todotag{Expand \& finish}]
+
 \end{mytheorem}
