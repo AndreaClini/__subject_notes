@@ -1,0 +1,37 @@
+% phys_notes/subjects/_algebra/algebra_main.tex
+\documentclass[../all_subjects_main.tex]{subfiles}
+
+\begin{document}
+
+% Only do these when compiling alone, not inside the big book
+\IfSubfilesClassLoaded{%
+    \frontmatter
+    % You can have an algebra-only title page here if you want
+    \input{other/front.tex}
+    \input{other/originality_and_collaborating.tex}
+    \newpage
+    \input{../../shared/other/conventions}
+    \newpage
+    \input{other/introduction.tex}
+    \newpage
+    \tableofcontents
+    \mainmatter
+}{}
+
+\input{body/pending.tex}
+
+%----------------------------------------------------------
+\part{Algebraic Topology}
+
+\input{body/homotopy.tex}
+\input{body/homology.tex}
+\input{body/cohomology.tex}
+
+
+%--------------------------------------------------------
+\part{Algebraic Geometry}
+
+%\input{body/basics_of_ag.tex}
+
+
+\end{document}
