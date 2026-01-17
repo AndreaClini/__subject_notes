@@ -1919,58 +1919,70 @@ Finally the fact that $C_{ij}^k \equiv 0$ if and only if $e_\mu\equiv \partial_\
 
 
 
-\begin{mytheorem}[Christoffel symbols in a tetrad frame of the tangent bundle\todotag{Check and finish}]
+\begin{mytheorem}[Christoffel symbols in a tetrad frame of the tangent bundle\answerinline{OK}]
 Given a tetrad $\{\theta^i,\, e_i\}_i$ on the tangent bundle $TM\to M$ with affine connection \(\nabla\), define the Christoffel symbols \(\Gamma^i_{jk}\) by
 \begin{equation}
-    \nabla_{e_j} e_k =: \Gamma^i_{jk} e_i.
+    \nabla_{e_j} e_k =: \Gamma^i_{jk} e_i\,,\qquad\text{that is}\qquad \omega^i_{\, j}(\cdot) = \Gamma^i_{ jk}\,\, \theta^k(\cdot).
 \end{equation}
-That is, the connection 1-forms is expressed in terms of the Christoffel symbols as
-\begin{equation}
-    \omega^i_{\, j} = \Gamma^i_{ jk}\, \theta^k.
-\end{equation}
-
-
-For a metric connection $\nabla g\equiv 0$ possibly with non-zero torsion, the \textbf{Koszul formula} holds
+%
+For a metric connection $\nabla g\equiv 0$ with arbitrary torsion $T$, the \textbf{Koszul formula} is
 \begin{align}
 \begin{aligned}
-    2\,g(\nabla_X Y, Z) ={}& X\!\left[g(Y,Z)\right] + Y\!\left[g(Z,X)\right] - Z\!\left[g(X,Y)\right] + g([X,Y],Z) - g([Y,Z],X) - g([X,Z],Y) \\
-    & - g\!\left(T(X,Y),Z\right) - g\!\left(T(Y,Z),X\right) - g\!\left(T(X,Z),Y\right).
+    2\,g(\nabla_X Y, Z) ={}& X\!\left(g(Y,Z)\right) + Y\!\left(g(Z,X)\right) - Z\!\left(g(X,Y)\right)\\
+    &\, + g([X,Y],Z) - g([Y,Z],X) - g([X,Z],Y) \\
+    & \,+ g\!\left(T(X,Y),Z\right) - g\!\left(T(Y,Z),X\right) - g\!\left(T(X,Z),Y\right).
 \end{aligned}
 \end{align}
-We then express the Christoffel symbols in terms of the metric $g_{ij} := g(e_i, e_j)$, the structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) and the torsion components \(T^i_{\, jk}:=\theta^i(T(e_j,e_k))\) in a given tetrad as
+We then express the Christoffel symbols in terms of metric $g_{ij} := g(e_i, e_j)$, structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) and torsion components \(T^i_{\, jk}:=\theta^i(T(e_j,e_k))\) in a given tetrad as
 \begin{align}
-    \Gamma_{ij}^k=&\tfrac{1}{2} g^{k\ell} \Big( e_i\,g_{j \ell} + e_j\,g_{i \ell} - e_\ell\,g_{i j}\Big)
-    + \tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} C^m_{ij} - g_{m j} C^m_{i \ell} - g_{m i} C^m_{j \ell} \Big) \\[5pt]
-    &\quad
-    - \tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} T^m_{ij} +g_{m i} T^m_{j \ell} + g_{m j} T^m_{i \ell}  \Big).
+    \Gamma_{ij}^k=&\tfrac{1}{2} g^{k\ell} \Big( \partial_{e_i}\,g_{j \ell} + \partial_{e_j}\,g_{i \ell} - \partial_{e_\ell}\,g_{i j}\Big)\\
+    & + \tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} C^m_{ij} - g_{m j} C^m_{i \ell} - g_{m i} C^m_{j \ell} \Big) \\
+    & +\tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} T^m_{ij} -g_{m i} T^m_{j \ell} - g_{m j} T^m_{i \ell}  \Big).
 \end{align}
+If $C_{ij}^k\equiv 0$ we recover usual expression for Christoffel symbols in a coordinate basis\footnote{In fact we have $C_{ij}^k\equiv 0$ iff there exist some coordinates $x^\mu$ s.t. $e_\mu=\partial_\mu$.}, split into symmetric and antisymmetric part in the lower indices 
+\begin{equation}
+    \Gamma_{(ij)}^k=\tfrac{1}{2} g^{k\ell} \Big( \partial_{e_i}\,g_{j \ell} + \partial_{e_j}\,g_{i \ell} - \partial_{e_\ell}\,g_{i j}\Big) - \tfrac{1}{2} g^{k\ell} \Big( g_{m i} T^m_{j \ell} + g_{m j} T^m_{i \ell}  \Big)\,,
+    \quad \Gamma_{[ij]}^k = \tfrac{1}{2} T^k_{ij}\,.
+\end{equation}
 In the absence of torsion the second line vanishes, but $\Gamma_{ij}^k$ is not yet symmetric in general in the lower indices due to the possibly nonzero structure constants $C_{ij}^k=[e_i,e_j]^k$.
-If $C_{ij}^k\equiv 0$ we recover usual expression for the Christoffel symbols in a coordinate basis\footnote{In fact we have $C_{ij}^k\equiv 0$ iff there exist some coordinates s.t. $e_\mu=\partial_\mu$.}, split into symmetric $\propto \, \partial g$ and antisymmetric part $\propto \, T$ part.
-Finally in an orthonormal tetrad $g_{ij} = \eta_{ij}$  and the 3 first terms $\sim \, \partial g$ vanish.
+Finally in an orthonormal frame $g_{ij} = \eta_{ij}$  and the first line $\propto \, \partial g$ vanishes.
 \end{mytheorem}
 \begin{proof}
 By metric compatibility $\nabla g=0$, that is $0=X(g(Y,Z)) - g(\nabla_X Y,Z) - g(Y, \nabla_X Z)$.
-By definition of torsion $T(X,Y) = \nabla_X Y - \nabla_Y X - [X,Y]$ so that $\nabla_X Y = \nabla_Y X + [X,Y] + T(X,Y)$.
-Using these two realtions we get the Koszul formula.
+By definition of torsion $\nabla_X Y = \nabla_Y X + [X,Y] + T(X,Y)$.
+Permuting the vector fields $X,Y,Z$ cyclically and using these two identities we get the Koszul formula.
 Setting \(X=e_j,\, Y=e_k,\, Z=e_i\), using the definition of the Christoffel symbols and structure constants, and then raising indices with the metric inverse gives the final expression.
 \end{proof}
 
 
-\begin{mytheorem}[Torsion 2-form in a tetrad frame on the tangent bundle\todotag{Check and finish}]
+\begin{mytheorem}[Torsion 2-form in a tetrad frame on the tangent bundle\answerinline{OK}]
 %
-Beware torsion makes sense only for the tangent bundle since only there we have a natural notion of commutator of vector fields...
+Beware torsion makes sense only for the tangent bundle since only there we have a natural notion of commutator of vector fields $[X,Y]$.
+Indeed torsion measures the nonclosure of the parallelogram obtained by following the flow of the first vector field, then the flow of the parallel transport of the second vector field along the first, and then viceversa, an operation which is only defined on the manifold.
+
+Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on the tangent bundle \(TM\to M\) with structure constants \(C^i_{jk}\) and a connection \(\nabla\) with Christoffel symbols \(\Gamma^i_{jk}\), the torsion 2-forms in this tetrad read
+\begin{equation}
+    T^i = \tfrac{1}{2} T^i_{jk} \,\, \theta^j \wedge \theta^k,
+    \qquad \text{where}\qquad
+    T^i_{jk} = \Gamma^i_{jk} - \Gamma^i_{kj} - C^i_{jk}.
+\end{equation}
+In a coordinate induced frame $C_{ij}^k\equiv0$, and we recover the usual expression for the torsion components.
+%
 \end{mytheorem}
 
 
-\begin{mytheorem}[Riemann curvature tensor in a tetrad frame on the tangent bundle\todotag{Check and finish}]
-Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on a manifold \(M\) with affine connection \(\nabla\), we define the Riemann curvature tensor components \(R^i_{\, jkl}\) as the coefficients in the expansion 
+\begin{mytheorem}[Riemann curvature tensor in a tetrad frame on the tangent bundle\answerinline{OK}]
+%
+Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) with structure constants \(C^i_{jk}\) and a connection $\nabla$ on the tangent bundle $TM$ with Christoffel symbols \(\Gamma^i_{jk}\), the Riemann tensor components in this tetrad read
 \begin{equation}
-    R(e_k, e_l) e_j =: R^i_{\, jkl} e_i.
+    R^\ell_{k,\,ij} = \partial_{e_i} \Gamma^\ell_{j k} - \partial_{e_j} \Gamma^\ell_{i k} + \Gamma^\ell_{i m} \Gamma^m_{j k} - \Gamma^\ell_{j m} \Gamma^m_{i k} - C^m_{ij} \Gamma^\ell_{m k}.
 \end{equation}
+In a coordinate induced frame $C_{ij}^m\equiv0$ and we recover the usual expression for the Riemann tensor components.
 In particular, the curvature 2-forms can be expressed in terms of the Riemann tensor components as
 \begin{equation}
-    \Omega^i_{\, j} = \tfrac{1}{2} R^i_{\, jkl} \theta^k \wedge \theta^l.
+    \Omega^\ell_{\, k} = \tfrac{1}{2} R^\ell_{k,\,ij} \,\, \theta^i \wedge \theta^j.
 \end{equation}
+%
 \end{mytheorem}
 
 
@@ -2036,7 +2048,7 @@ Since the tetrad formalism is completely equivalent to the metric formalism, we 
 \bigskip
 {
 \color{red}
-From Kempf GR L10 missing:
+From Kempf GR L10 and then L15 missing:
 \begin{itemize}
     \item connection $\mathfrak{g}$-valued 1-form [ANY FIBER]
     \item change of cohordinates $dA A^{-1}+ A\omega A^{-1}$ for connection 1-form [ANY FIBER]
@@ -2059,9 +2071,9 @@ From Kempf GR L10 missing:
     \item fiber valued differential forms Ok
     \item total exterior covariant derivative Ok
     \item inducing connections on associated fiber bundles Ok
-    \item connection 1-form on arbitrary fiber bundle  MISSING (swap with above point when done)
+    \item connection 1-form on arbitrary fiber bundle  {\color{red}MISSING (swap with above point when done)}
     \item metric compatibility in arbitrary fiber bundle OK
-    \item example: connection on spinors MISSING
+    \item example: connection on spinors {\color{red}MISSING}
     \item curvature 2-form on arbitrary fiber bundle OK
     \item Cartan structure equations OK
     \item Bianchi identities OK
@@ -2071,11 +2083,11 @@ From Kempf GR L10 missing:
 \textbf{INDEX OF TANGENT BUNDLE}
 \begin{enumerate}
     \item structure constants of a tetrad frame Ok
-    \item Christoffel symbols in a tetrad frame of the tangent bundle MISSING
-    \item torsion 2-form in a tetrad frame on the tangent bundle MISSING
-    \item Riemann curvature tensor in a tetrad frame on the tangent bundle MISSING
+    \item Christoffel symbols in a tetrad frame of the tangent bundle OK
+    \item torsion 2-form in a tetrad frame on the tangent bundle Ok
+    \item Riemann curvature tensor in a tetrad frame on the tangent bundle OK
     \item Cartan equations on the tangent bundle \& recovering coordinate formalism OK
-    \item Bianchi identities on the tangent bundle MISSING
-    \item Einstein tensor in a tetrad frame of the tangent bundle MISSING
-    \item EM tensor varying wrt tetrad fields MISSING
+    \item Bianchi identities on the tangent bundle {\color{red}MISSING}
+    \item Einstein tensor in a tetrad frame of the tangent bundle {\color{red} MISSING}
+    \item EM tensor in general 1. varying wrt the metric \& 2. varying wrt tetrad fields  {\color{red}MISSING}
 \end{enumerate}
