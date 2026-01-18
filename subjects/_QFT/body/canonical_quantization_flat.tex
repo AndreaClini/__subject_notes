@@ -375,6 +375,13 @@ Therefore $e^{\alpha a^\dagger - \alpha^* a} |0\rangle$ has norm one and the nor
 \begin{align}
     |\alpha\rangle = e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}|0\rangle =  e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}e^{-\alpha^* a}|0\rangle = e^{\alpha a^\dagger - \alpha^* a} |0\rangle.
 \end{align}
+The full expression for $|\alpha\rangle$ also yields an alternative formula for the action of the adjoint operator
+\begin{align}
+    a^\dagger |\alpha\rangle = a^\dagger e^{-\tfrac{1}{2}|\alpha|^2}e^{\alpha a^\dagger} |0\rangle
+    = e^{-\tfrac{1}{2}|\alpha|^2} \frac{d}{d\alpha} e^{\alpha a^\dagger} |0\rangle
+    = \frac{d}{d\alpha}\left(e^{-\tfrac{1}{2}|\alpha|^2} \frac{d}{d\alpha} e^{\alpha a^\dagger}\right)|0\rangle
+    = \left(\frac{d}{d\alpha} + \frac{\alpha^*}{2}\right) |\alpha\rangle.
+\end{align}
 
 Coherent states also warn us about the identification of ladder operators as creating/destroying a particle.
 This identification is indeed justified only on states with a definite number of particles like Fock states $|n\rangle$ i.e. eigenstates of the number operator $N = a^\dagger a$.
@@ -411,6 +418,7 @@ That is, somebody's coherent states are somebody else's squeezed states and vice
 
 %=========================================================
 \subsection{Exciting Harmonic Oscillators \& Bogoliubov Transformations}
+\label{sec:exciting_harmonic_oscillators_1d}
 %=========================================================
 
 
@@ -451,7 +459,7 @@ Consider a 1D harmonic oscillator driven by time-dependent forces $J(t)$ and $K(
     H_S(t) = \frac{1}{2m} p^2 + \frac{m\omega^2}{2} q^2 + J(t) q - K(t) p.
 \end{align}
 Define ladder operators to diagonalize the free hamiltonian at some reference time $t_0$ and get
-\begin{align}
+\begin{align}\label{eq:driven_real_1d_oscillator}
     H_S(t) &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J(t) (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K(t) (a - a^\dagger)\,,\\[5pt]
     a &= \frac{1}{\sqrt{2}}\left(\sqrt{\tfrac{m\omega}{\hbar}}\, q + i \tfrac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1\,.
 \end{align}
@@ -467,14 +475,14 @@ The Heisenberg Hamiltonian will thus be different from the Schrödinger one
     = \mathcal{T} \exp\left(\tfrac{i}{\hbar} \int_{t_0}^t dt' H_S(t')\right) H_S(t) \mathcal{T} \exp\left(-\tfrac{i}{\hbar} \int_{t_0}^t dt' H_S(t')\right) 
     \neq H_S(t).
 \end{align}
-The equation of motion for $a$ in the Heisenberg picture reads
+The equation of motion for $a(t,t_0):= U^\dagger(t,t_0) a U(t,t_0)$ in the Heisenberg picture reads
 \begin{align}%\label{eq:1d_oscillator_ladder_operator_time_evolution}
-    &i\hbar\,\partial_t a= [a, H_H(t,t_0)] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J \quad
-    \Rightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t')  e^{-i\omega (t-t')}.
+    &i\hbar\,\partial_t a(t,t_0)= [a(t,t_0), H_H(t,t_0)] = U^\dagger(t,t_0) [a, H_S(t)] U(t,t_0) = \hbar \omega a(t,t_0) + \sqrt{\frac{\hbar}{2 m \omega}} J(t) \\[4pt]
+    &\Rightarrow \quad a(t,t_0) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t')  e^{-i\omega (t-t')}.
 \end{align}
 For example, if $J$ is nonzero only within a finite time interval $[t_i, t_f]$, we have
-\begin{align}%\label{eq:a_in_a_out_1d_oscillator}
-    a(t) &= \begin{cases}
+\begin{align}\label{eq:a_in_a_out_1d_oscillator}
+    a(t,t_0) &= \begin{cases}
         a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
         a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
         a(t_f) e^{-i\omega (t-t_f)}=: a_{\mathrm{out}} e^{-i\omega (t-t_f)}, & t > t_f,
@@ -962,7 +970,7 @@ After some algebra, \emph{before} normal ordering, the Hamiltonian reads
     = \int \frac{d^3 k}{(2\pi)^3} \hbar \omega_k \Big( a_k^{\dagger} a_k + \tfrac{1}{2} (2\pi)^3 \delta^{(3)}(\underbrace{k-k}_{=0}) \Big).
 \end{align}
 Finally, using $\omega_k=\omega_{-k}$, in real space the \emph{self-adjoint} fields are written
-\begin{align}
+\begin{align}\label{eq:decompsition_field_ladder_operators_fixed_times}
     \hat{\phi}(x,t_0) &= \int \frac{d^3{k}}{(2\pi)^3}\, e^{i{k}\cdot{x}} \hat{\phi}_k(t_0)
     = \int \frac{d^3{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{i {k}\cdot{x}} + a_k^{\dagger} e^{- i {k}\cdot{x}} \right),
     \\
@@ -1816,9 +1824,6 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 %------------------------------------------------------------------
 
 
-%=======================================================================
-\subsection{Basics}
-%=======================================================================
 
 \begin{mytheorem}[Particle \& wave interpretations of field excitations\questiontag{Check \& improve}]
 %
@@ -1827,7 +1832,7 @@ We remark it does not always make sense to interpret excitations of the field in
 There are several caveats to keep in mind.
 \begin{itemize}
     \item As discussed in Section \ref{sec:harmonic_oscillators} it is not always the case that ladder operators $a_k^{(\dagger)}$ create/destroy a particle in the mode $k$ when acting on a given state, nor that a given state has a well-defined number of particles i.e. is an eigenstate of the number operators $N_k = a_k^{\dagger} a_k$.
-    The most immediate examples are coherent (squeezed) states, superpositions of different number eigenstates without a well-defined number of particles in any mode, that return c-numbers when acted upon by ladder operators.
+    The most immediate examples are coherent states, superpositions of different number eigenstates without a well-defined number of particles in any mode, that return c-numbers when acted upon by ladder operators.
     %
     \item  The particle interpretation requires the potential of a given mode to be bounded from below, so that the spectrum of excitations is discrete and we can identify the corresponding quanta with particles.
     When the potential is unbounded from below, the spectrum of mode $k$ excitations is continuous, we have run-away solutions and the notion of particles is completely lost.
@@ -1842,13 +1847,106 @@ On the other hand, the wave interpretation is always valid, and we can always co
 \end{mytheorem}
 
 
-\begin{mytheorem}[Coherent states of the KG field\todotag{Do it}]
-    
+\begin{mytheorem}[Coherent states of the KG field\todotag{Finish \& check}]
+%
+Coherent states for the Klein-Gordon field are simply \textbf{tensor products over all Fourier modes of coherent states} for each 1D real harmonic oscillator with mode $k$,
+\begin{align}
+    |\{ \beta_k \}_k \rangle := \bigotimes_{k} |\beta_k \rangle\in \bigotimes \mathcal{M}_k\,,\quad\text{with}\quad
+    a_k |\beta_k \rangle = \beta_k |\beta_k \rangle\,,\,\, \beta_k\in \C\,.
+\end{align}
+Beware \textbf{coherent states are different from $\phi$-eigenstates} $|f\rangle$ discussed above.
+Indeed, from the decomposition \eqref{eq:decompsition_field_ladder_operators_fixed_times} the action and the average value of the field operator on a coherent state is
+\begin{align}
+    &\hat{\phi}(x,t_0) |\{ \beta_k \}_k \rangle
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( \beta_k e^{i \bar{k}\cdot\bar{x}} + \frac{\partial}{\partial \beta_k} e^{- i \bar{k}\cdot\bar{x}} \right) |\{ \beta_k \}_k \rangle,\\[5pt]
+    &\langle \{ \beta_k \}_k | \hat{\phi}(x,t_0) | \{ \beta_k \}_k \rangle
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( \beta_k e^{i \bar{k}\cdot\bar{x}} + \beta_k^* e^{- i \bar{k}\cdot\bar{x}} \right).
+\end{align}
+If $\hat{\phi}(x,t)$ is a free field, thus evolving as in \eqref{eq:time_evolution_free_field}, coherent states remains coherent at any time $t$ up to a phase $\beta_k\mapsto  e^{-i \omega_k t}\beta_k$.
+
+Just like in the finite dimensional case, \textbf{coherent states minimize the Heisenberg uncertainty relation} 
+{\small
+\begin{align}
+    \langle& \{\beta_k\}_k | \hat{\phi}(x,t_0)^2 | \{\beta_k\}_k \rangle \\
+    &=\langle \{\beta_k\}_k | \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \int \frac{d^3\bar{\ell}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_{\ell}}} \left( a_k e^{ikx} + a_k^{\dagger} e^{-ikx} \right)\left( a_{\ell} e^{i\ell x} + a_{\ell}^{\dagger} e^{-i\ell x} \right) | \{\beta_k\}_k \rangle\\
+    &=  \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}}\int \frac{d^3\bar{\ell}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_{\ell}}} \left[ \left( \beta_k e^{ikx} + \beta_k^* e^{-ikx} \right)\left( \beta_{\ell} e^{i\ell x} + \beta_{\ell}^* e^{-i\ell x} \right)+ (2\pi)^3\delta_D(k-\ell) e^{i(k-\ell)x}\right]\\
+    &= \Big(\langle \{\beta_k\}_k | \hat{\phi}(x,t_0) | \{\beta_k\}_k \rangle\Big)^2 + \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{2\omega_k}\,.
+\end{align}
+}
+For the conjugate field $\hat{\pi}(x,t)$ we have similarly
+{\small
+\begin{align}
+    \langle& \{\beta_k\}_k | \hat{\pi}(x,t_0)| \{\beta_k\}_k \rangle = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{(-i\omega_k)}{\sqrt{2\omega_k}} \left( \beta_k e^{ikx} - \beta_k^* e^{-ikx} \right),\\[4pt]
+    \langle& \{\beta_k\}_k | \hat{\pi}(x,t_0)^2 | \{\beta_k\}_k \rangle 
+    = \langle \{\beta_k\}_k | \hat{\pi}(x,t_0) | \{\beta_k\}_k \rangle^2 + \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{\omega_k}{2}\,.
+\end{align}
+}
+The uncertainty $\Delta \phi(x,t_0) \Delta \pi(x,t_0)$ is thus minimized, with
+\begin{align}
+    (\Delta \phi(x,t_0))^2 &= \langle \{\beta_k\}_k | \hat{\phi}(x,t_0)^2 | \{\beta_k\}_k \rangle - \langle \{\beta_k\}_k | \hat{\phi}(x,t_0) | \{\beta_k\}_k \rangle^2 = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{2\omega_k}\,,\\
+    (\Delta \pi(x,t_0))^2 &= \langle \{\beta_k\}_k | \hat{\pi}(x,t_0)^2 | \{\beta_k\}_k \rangle - \langle \{\beta_k\}_k | \hat{\pi}(x,t_0) | \{\beta_k\}_k \rangle^2 = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{\omega_k}{2}\,.
+\end{align}
+The uncertainty minimization is even more evident in Fourier space, where the \textbf{total uncertainty} is simply $\tfrac{\hbar}{2}$ per each mode times the \textbf{total volume $V$ occupied} the oscillators:
+{\small
+\begin{align}
+    &\langle \{\beta_k\}_k | \hat{\phi}_k(t_0) | \{\beta_k\}_k \rangle = \frac{1}{\sqrt{2\omega_k}} \left( \beta_k + \beta_{-k}^* \right),\quad \langle \{\beta_k\}_k | \hat{\phi}_k^\dagger \hat{\phi}_k | \{\beta_k\}_k \rangle = \big|\langle \{\beta_k\}_k | \hat{\phi}_k | \{\beta_k\}_k \rangle\big|^2 + \frac{1}{2\omega_k}\,(2\pi)^3\delta_D^{(3)}(0),\\
+    & \langle \{\beta_k\}_k | \hat{\pi}_k(t_0) | \{\beta_k\}_k \rangle = \frac{(-i\omega_k)}{\sqrt{2\omega_k}} \left( \beta_k - \beta_{-k}^* \right),\quad \langle \{\beta_k\}_k | \hat{\pi}_k^\dagger \hat{\pi}_k | \{\beta_k\}_k \rangle = \big|\langle \{\beta_k\}_k | \hat{\pi}_k| \{\beta_k\}_k \rangle\big|^2 + \frac{\omega_k}{2}\,(2\pi)^3\delta_D^{(3)}(0)\\
+    &\Delta\hat{\phi}_k(t_0)^2 = \frac{(2\pi)^3\delta_D^{(3)}(0)}{2\omega_k},\quad \Delta\hat{\pi}_k(t_0)^2 = \frac{\omega_k}{2}(2\pi)^3\delta_D^{(3)}(0) \quad\Rightarrow \quad  \Delta\hat{\phi}_k(t_0)\, \Delta\hat{\pi}_k(t_0) = \tfrac{\hbar}{2}\,(2\pi)^3\delta_D^{(3)}(0) \simeq \tfrac{\hbar}{2} V.
+\end{align}
+}
+Just like in the finite dimensional case, \textbf{coherent states} are thus the quantum states that \textbf{best approximate classical field configurations}, minimizing quantum fluctuations around the classical values (i.e. the expectation value by the Erenfest theorem) and closely following classical trajectories.
 \end{mytheorem}
 
 
-\begin{mytheorem}[Exciting the KG field\todotag{Do it}]
-    
+
+\begin{mytheorem}[Exciting the KG field \& driving to coherent states\todotag{Check \& polish}]
+%
+Just like in the finite dimensional case, consider the coupling of the KG field to a classical source $J(x,t)$.
+The full Schrödinger Hamiltonian is then
+\begin{align}
+    H_S(t) = H_0 + \int d^3\bar{x}\, J(\bar{x},t) \hat{\phi}(\bar{x},t).
+\end{align}
+In Fourier space, defining ladder operators as in \eqref{eq:free_hamiltonian_ladder_operators}-\eqref{eq:decompsition_field_ladder_operators_fixed_times} and using $J^*_k=J_{-k}$ for real sources, we have
+\begin{align}
+    H_S(t) = \int \frac{d^3\bar{k}}{(2\pi)^3} \,\, \tfrac{1}{2}\Big(\pi_k^{\dagger} \pi_k + \omega_k^2 \phi_k^{\dagger} \phi_k \Big)+J_k^*(t)\phi_k
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \,\,\omega_k \left( a_k^{\dagger} a_k + \tfrac{1}{2} \right) + \frac{1}{\sqrt{2\omega_k}} \left( J_k^*(t) a_k + J_k(t) a_k^{\dagger} \right).
+\end{align}
+Each mode $k$ still decouples and yields a driven harmonic oscillator akin to \eqref{eq:driven_real_1d_oscillator}.
+In the Heisenberg picture, the evolution of each ladder operator obtained similarly to \eqref{eq:a_in_a_out_1d_oscillator},
+\begin{align}
+    &i\hbar\,\partial_t a_k(t,t_0)= [a_k(t,t_0), H_H(t,t_0)] = U^\dagger(t,t_0)[a_k,H_S(t)]U(t,t_0)= \hbar \omega_k a_k(t,t_0) + \frac{1}{\sqrt{2 \omega_k}} J_k(t) \\
+    &\Rightarrow \quad a_k(t,t_0) = a_k(t_0) e^{-i\omega_k (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \frac{1}{\sqrt{2 \omega_k}} J_k(t')  e^{-i\omega_k (t-t')}.
+\end{align}
+Assuming $J$ is nonzero only within a finite time interval $[t_i, t_f]$, we have
+\begin{align}\label{eq:a_in_a_out_field_oscillator}
+    a_k(t,t_0) &= \begin{cases}
+        a_k(t_0) e^{-i\omega_k (t-t_0)}=: a_k^{\mathrm{in}}e^{-i\omega_k (t-t_0)}, & t < t_i\,\\[6pt]
+        a_k(t_i) e^{-i\omega_k (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \frac{1}{\sqrt{2 \omega_k}} J_k(t') e^{-i\omega_k (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
+        a_k(t_f) e^{-i\omega_k (t-t_f)}=: a_k^{\mathrm{out}} e^{-i\omega_k (t-t_f)}, & t > t_f,
+    \end{cases}
+\end{align}
+where we define
+\begin{align}
+    a_k^{\mathrm{out}} &= a_k^{\mathrm{in}} + J_k^{0}\,,\quad J_k^{0} := - \frac{i}{\hbar} \int_{t_i}^{t_f} dt' \frac{1}{\sqrt{2 \omega_k}} J_k(t') e^{i\omega_k t'}.
+\end{align}
+
+The effects of the classical source $J$ are completely akin to the finite dimensional case treated in Section \ref{sec:exciting_harmonic_oscillators_1d} after equation \eqref{eq:a_in_a_out_1d_oscillator}.
+Asuming the field started out in its ground state $|0\rangle_{\mathrm{in}}$, at times $t\geq t_f$ after the force has acted, the expected value of elongations is non zero e.g.
+\begin{align}
+    {}_{\mathrm{in}}\langle 0 | \hat{\phi}(x,t) | 0 \rangle_{\mathrm{in}} &= \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( {}_{\mathrm{in}}\langle 0 | a_k^{\mathrm{out}} | 0 \rangle_{\mathrm{in}} e^{-i \omega_k t} e^{i \bar{k}\cdot\bar{x}} + {}_{\mathrm{in}}\langle 0 | a_k^{\mathrm{out}\,\dagger} | 0 \rangle_{\mathrm{in}} e^{i \omega_k t} e^{- i \bar{k}\cdot{\bar{x}}} \right)\\
+    &= \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( J_k^{0} e^{-i \omega_k t} e^{i \bar{k}\cdot\bar{x}} + J_k^{0\,*} e^{i \omega_k t} e^{- i \bar{k}\cdot{\bar{x}}} \right).
+\end{align} 
+The energy is elevated 
+\begin{align}
+    {}_{\mathrm{in}}\langle 0 | H_H(t,t_0)|0\rangle_{\mathrm{in}} &= \int \frac{d^3\bar{k}}{(2\pi)^3} \,\,\omega_k \left( {}_{\mathrm{in}}\langle 0 | a_k^{\mathrm{out}\,\dagger} a_k^{\mathrm{out}} |0\rangle_{\mathrm{in}} + \tfrac{1}{2} \right)
+    = \int \frac{d^3\bar{k}}{(2\pi)^3} \,\,\omega_k \left( |J_k^{0}|^2 + \tfrac{1}{2} \right). 
+\end{align}
+Finally the field is driven to a coherent state $|\{J_k^{0}\}_k\rangle$ since 
+\begin{align}
+    a_k^{\mathrm{out}} |0\rangle_{\mathrm{in}} = \big(a_k^{\mathrm{in}}+J_k^0\big)|0\rangle_{\mathrm{in}} = J_k^0 |0\rangle_{\mathrm{in}}.
+\end{align}
+We remark this is a general phenomenon: \textbf{interactions wil in general drive the field to coherent states}, which approximate classical field configurations with minimal quantum uncertainties.
+%
 \end{mytheorem}
 
 
