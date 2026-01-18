@@ -1,0 +1,53 @@
+% phys_notes/subjects/_analysis/analysis_main.tex
+\documentclass[../all_subjects_main.tex]{subfiles}
+
+\begin{document}
+
+% Only do these when compiling alone, not inside the big book
+\IfSubfilesClassLoaded{%
+    \frontmatter
+    % You can have an analysis-only title page here if you want
+    \input{other/front.tex}
+    \input{other/originality_and_collaborating.tex}
+    \newpage
+    \input{../../shared/other/conventions}
+    \newpage
+    \input{other/introduction.tex}
+    \newpage
+    \tableofcontents
+    \mainmatter
+}{}
+
+\input{body/pending.tex}
+
+%----------------------------------------------------------
+\part{Logic and Computability}
+
+\chapter{Fundamentals of First Order Logic}
+
+\chapter{Category Theory}
+
+
+%----------------------------------------------------------
+\part{Computer Architecture}
+
+\chapter{Functional Blocks, Firmware \& ALU}
+
+\chapter{Finite State Machines \& Control Unit}
+
+\chapter{CPU}
+
+%-----------------------------------------------------------
+\part{Languages}
+
+\chapter{Programming Languages}
+
+
+
+%----------------------------------------------------------
+\part{Networks and Communications}
+
+
+
+
+\end{document}
