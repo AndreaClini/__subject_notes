@@ -1617,42 +1617,42 @@ The connection form on the tangent bundle $\omega_{TM}$ must then take values in
 \end{align}
 We extend the connection $\nabla$ on the cotangent bundle $T^0_1M$ via the ajoint representation of $\mathfrak{g}$, and to all tensor bundles $T^h_k M$ via the tensor product of (adjoint) representations.
 
-Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$, with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can naturally induce a connection on $E_F\to M$.
+Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$ with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can naturally induce a connection on $E_F\to M$.
 Indeed, regardless of the specific representation, the connection 1-form on the tangent bundle can be seen as taking values in the \emph{abstract} Lie algebra
 \begin{align}
     \omega: TM &\to \mathfrak{g} \,\, \mid T_pM \ni X \mapsto \omega(X) \in \mathfrak{g}.
 \end{align}
-We then simply define the connection 1-form $\omega_{(F)}$ on $E_F\to M$ as the 1-form taking values in the above representation of $\mathfrak{g}\curvearrowright F$.
+We then simply define the connection 1-form $\omega_{F}$ on $E_F\to M$ as the 1-form taking values in the above representation of $\mathfrak{g}\curvearrowright F$.
 In a given local frame $\{f_a\}_a$ for $E_F\to M$, the explicit matrix elements are defined as
 \begin{align}
-    \nabla_\cdot f_b &=: \omega_{(F)}(\cdot) f_b =: f_a \otimes \omega^a_{(F)\, b}(\cdot)\,.
+    \nabla_\cdot f_b &=: \omega_{F}(\cdot) f_b =: f_a \otimes \omega^a_{F\, b}(\cdot)\,.
 \end{align}
 In particular, the covariant derivative of a section $\psi = \psi^a f_a$ reads
 \begin{equation}
-    \nabla \psi = f_a \otimes \big(d\psi^a + \omega_{(F)\, b}^a \, \psi^b\big)\,.
+    \nabla \psi = f_a \otimes \big(d\psi^a + \omega_{F\, b}^a \, \psi^b\big)\,.
 \end{equation}
-In particular we remark that, as abstract elements of $\mathfrak{g}$, the connection 1-forms on $E_F\to M$ and on $TM\to M$ coincide i.e. $[\omega_{(F)}(\cdot)]\equiv [ \omega_{TM}(\cdot)] \equiv \omega(\cdot)\in \mathfrak{g}$.
+In particular we remark that, as abstract elements of $\mathfrak{g}$, the connection 1-forms on $E_F\to M$ and on $TM\to M$ coincide i.e. $[\omega_{F}(\cdot)]\equiv [ \omega_{TM}(\cdot)] \equiv \omega(\cdot)\in \mathfrak{g}$.
 \end{mytheorem}
 
 
 
 \begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
 %
-Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, define the $\mathfrak{g}$-valued connection 1-forms $\omega^{(F)}$ as the 1-form that in a given local frame $\{e_i\}_i$ for the fiber bundle $E_F \to M$ satisfy
+Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, define the $\mathfrak{g}$-valued connection 1-forms $\omega_F$ as the 1-form that in a given local frame $\{f_i\}_i$ for the fiber bundle $E_F \to M$ satisfy
 \begin{equation}
-     \nabla\cdot e_j=:\omega(\cdot) e_j =: e_i\otimes \omega^i_{\,j}(\cdot)\,.
+     \nabla_X f_j=:\omega_F(X) f_j =: f_i\otimes \omega^i_{F\, j}(X)\,\quad \forall X \in \mathfrak{X}(M).
 \end{equation}
-In particular, the covariant derivative of a vector field $X = X^i e_i$ reads
+In particular, the covariant derivative of a section $\psi = \psi^i f_i$ is the fiber valued 1-form
 \begin{equation}
-    \nabla X = e_i \otimes (dX^i + \omega^i_{\, j}\,\, X^j)\,.
+    \nabla \psi = f_i \otimes (d\psi^i + \omega^i_{F\, j}\,\, \psi^j)\,.
 \end{equation}
-Under a change of tetrad frame $\{\theta^i,\,e_i\}_i \to \{\tilde{\theta}^i = A^i_{\, j} \theta^j,\,\tilde{e}_i = (A^{-1})^k_{\, i} e_k\}_i$, the connection 1-forms transform as
+Under a change of local frame $\{\tilde{f}_a,\tilde{\phi}^a\}_a$ with $\tilde{f}_a= A_a^i f_i$ for some $A: U \subseteq M \to G$, the connection 1-form transforms as
 \begin{equation}\label{eq:transformation_law_connection_1_form}
-    \tilde{\omega}^i_{\, j} = (A^{-1})^i_{\, k}\,\, \omega^k_{\, l} \,\,A^l_{\, j} + (A^{-1})^i_{\, k} \,\,d A^k_{\, j}.
+    \tilde{\omega}_a^b= (A^{-1})_i^b \,\, d A_a^i + (A^{-1})_i^b \,\, \omega^i_{j} \,\, A_a^j.
 \end{equation}
-This is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates.
+This is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates. (cf. connections on the tangent bundle below).
 
-To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
+\todotag{Fix from here}To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
 \begin{align}
     P_\gamma(t): E_{F,\,\gamma(0)} &\to E_{F,\,\gamma(t)} \mid e_a \to M(t)_a^b e_b\quad \text{for some }M(t)\in G \subseteq GL(F).
 \end{align}  
@@ -1822,6 +1822,7 @@ Using linearity of the 2-form, we prove it on a coordinate induced basis $\parti
 
 
 \begin{mytheorem}[Bianchi identities in the tetrad formalism\answerinline{ok}]
+%
 The Bianchi identities in a tetrad $\{f_i,\,\phi^i\}_i$ are concisely expressed via the exterior covariant derivative $d_\nabla$ as
 \begin{align}
     d_\nabla T &= \Omega_{\, j} \wedge \phi^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \phi^j,
@@ -1924,6 +1925,10 @@ Given a tetrad $\{\theta^i,\, e_i\}_i$ on the tangent bundle $TM\to M$ with affi
 \begin{equation}
     \nabla_{e_j} e_k =: \Gamma^i_{jk} e_i\,,\qquad\text{that is}\qquad \omega^i_{\, j}(\cdot) = \Gamma^i_{ jk}\,\, \theta^k(\cdot).
 \end{equation}
+Under a change of tetrad \(\{\tilde{\theta}^a,\, \tilde{e}_a\}_a\) related to the previous one by \(\tilde{e}_a = A_a^{\, j} e_j\), the Christoffel symbols transform as
+\begin{equation}
+    \tilde{\Gamma}^c_{ab} = (A^{-1})^c_k \left( \Gamma^k_{ij} A_a^{\, i} A_b^{\, j} + A_a^{\, i}\,\,\partial_{e_i} A_b^{\, k}  \right).
+\end{equation}
 %
 For a metric connection $\nabla g\equiv 0$ with arbitrary torsion $T$, the \textbf{Koszul formula} is
 \begin{align}
@@ -2023,9 +2028,27 @@ Since the identity are tensorial, we can prove them by direct computation using 
 
 
 
-\begin{mytheorem}[Bianchi identities on the tangent bundle \& recovering coordinate formalism\todotag{Check and finish}]
-    
+\begin{mytheorem}[Bianchi identities on the tangent bundle \& recovering coordinate formalism\answerinline{OK}]
+%
+The Bianchi identities on the tangent bundle are unchanged from a general fiber bundle and so is the proof.
+In a tetrad $\{e_a,\theta^a\}_a$ of $TM\to M$ they read
+\begin{align}
+    d_\nabla T &= \Omega_{\, b} \wedge \theta^b\qquad \text{i.e.}\quad d_\nabla T^a = \Omega^a_{\, b} \wedge \theta^b,
+    \\
+    d \Omega^a_{\, b} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, b} = e_a \otimes \Big(\omega_c^a\wedge \Omega^c_b + \underbrace{d \Omega_{\, b}^a}_{=0}\Big) = e_a \otimes\omega_c^a\wedge \Omega^c_b\,.
+\end{align}
+Beware the 2nd identity says the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ vanish, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
+The \textbf{Bianchi identities} essentially express \textbf{symmetry contraints} that follow \textbf{from the very definition} of torsion and curvature.
+In particular, \textbf{in absence of torsion} $T=0$ the \textbf{first Bianchi identity becomes}
+\begin{equation}
+    \Omega^a_{\, b} \wedge \theta^b = 0.
+\end{equation}
 \end{mytheorem}
+
+
+
+
+
 
 
 \begin{mytheorem}[Einstein tensor in a tetrad frame of the tangent bundle\todotag{Check and finish}]
@@ -2074,7 +2097,7 @@ From Kempf GR L10 and then L15 missing:
     \item connection 1-form on arbitrary fiber bundle  {\color{red}MISSING (swap with above point when done)}
     \item metric compatibility in arbitrary fiber bundle OK
     \item example: connection on spinors {\color{red}MISSING}
-    \item curvature 2-form on arbitrary fiber bundle OK
+    \item curvature 2-form on arbitrary fiber bundle {\color{red} CHECK NEEDED}
     \item Cartan structure equations OK
     \item Bianchi identities OK
 \end{enumerate}
@@ -2087,7 +2110,7 @@ From Kempf GR L10 and then L15 missing:
     \item torsion 2-form in a tetrad frame on the tangent bundle Ok
     \item Riemann curvature tensor in a tetrad frame on the tangent bundle OK
     \item Cartan equations on the tangent bundle \& recovering coordinate formalism OK
-    \item Bianchi identities on the tangent bundle {\color{red}MISSING}
+    \item Bianchi identities on the tangent bundle OK
     \item Einstein tensor in a tetrad frame of the tangent bundle {\color{red} MISSING}
     \item EM tensor in general 1. varying wrt the metric \& 2. varying wrt tetrad fields  {\color{red}MISSING}
 \end{enumerate}
