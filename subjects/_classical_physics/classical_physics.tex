@@ -1,0 +1,49 @@
+% phys_notes/subjects/_classical_physics/classical_physics.tex
+\documentclass[../all_subjects_main.tex]{subfiles}
+
+\begin{document}
+
+% Only do these when compiling alone, not inside the big book
+\IfSubfilesClassLoaded{%
+    \frontmatter
+    % You can have an analysis-only title page here if you want
+    \input{other/front.tex}
+    \input{other/originality_and_collaborating.tex}
+    \newpage
+    \input{../../shared/other/conventions}
+    \newpage
+    \input{other/introduction.tex}
+    \newpage
+    \tableofcontents
+    \mainmatter
+}{}
+
+\input{body/pending.tex}
+
+
+%----------------------------------------------------------
+\part{Mechanics}
+
+
+%----------------------------------------------------------
+\part{Thermodynamics and Statistical Mechanics}
+
+%\input{body/...
+
+
+%-----------------------------------------------------------
+\part{Fluid Dynamics}
+
+
+%----------------------------------------------------------
+\part{Electromagnetism}
+
+%\input{body/...
+
+
+
+
+
+
+
+\end{document}
