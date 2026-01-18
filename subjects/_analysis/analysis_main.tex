@@ -1,4 +1,4 @@
-% phys_notes/subjects/_algebra/algebra_main.tex
+% phys_notes/subjects/_analysis/analysis_main.tex
 \documentclass[../all_subjects_main.tex]{subfiles}
 
 \begin{document}
@@ -6,7 +6,7 @@
 % Only do these when compiling alone, not inside the big book
 \IfSubfilesClassLoaded{%
     \frontmatter
-    % You can have an algebra-only title page here if you want
+    % You can have an analysis-only title page here if you want
     \input{other/front.tex}
     \input{other/originality_and_collaborating.tex}
     \newpage
@@ -22,28 +22,33 @@
 
 
 %----------------------------------------------------------
-\part{Groups \& Representations}
+\part{Basic Analysis}
 
-\input{body/representations.tex}
+%\input{body/real_analysis.tex}
+
+\input{body/complex_analysis.tex}
+
+\input{body/special_functions.tex}
+
+
+%-----------------------------------------------------------
+\part{Probability \& Measure Theory}
 
 
 %----------------------------------------------------------
-\part{Algebraic Topology}
+\part{Functional Analysis}
 
-\input{body/homotopy.tex}
-\input{body/homology.tex}
-\input{body/cohomology.tex}
+%\input{body/...
 
 
-%--------------------------------------------------------
-\part{Commutative Algebra}
+%----------------------------------------------------------
+\part{Partial Differential Equations}
 
-%\input{body/
+%\input{body/...
 
-%--------------------------------------------------------
-\part{Algebraic Geometry}
 
-%\input{body/basics_of_ag.tex}
+
+
 
 
 \end{document}
