@@ -307,6 +307,22 @@ This backreaction loop between geometry and quantum fields makes the formulation
 \end{mytheorem}
 
 
+\begin{mytheorem}[What is gravity \& what is matter?\questiontag{Polish}]
+%
+The Universe will be filled with fields of different species $\phi^\star_{a,\bullet}$, where $a$ labels different fields and $\star,\bullet$ denote indices (covariant, contravariant, spinorial etc.).
+Connections--i.e. gravity--are identified by Christoffel symbols, and the \textbf{difference of two connections is a (1,2)-tensor} as shown in \eqref{eq:difference_connection_is_tensor}
+\begin{align}
+    Q^\rho_{\mu\nu} := \Gamma^\rho_{\mu\nu} - \tilde{\Gamma}^\rho_{\mu\nu} \in T_2^1M\,.
+\end{align}
+The choice of \textbf{what to attribute to gravity and what to matter is thus \emph{somewhat arbitrary}}, since we can always shift part of the connection into matter fields via $Q^\rho_{\mu\nu}$.
+
+As we discussed in Section \ref{sec:torsion_and_equivalence_principle}, the  antisymmetric part of either connection--i.e. its torsion--corresponds to violation of the equivalence principle.
+This contributes to the antisymmetric part of $Q^\rho_{\mu\nu}$, but will not show up in Einstein equation $G_{\mu\nu} = 8\pi G T_{\mu\nu}$ since $G_{\mu\nu}$ is symmetric by construction.
+On the other hand, the symmetric part $Q^\rho_{(\mu\nu)}$ can be interpreted as a matter field: its indices are suitably contracted in the Einsetin-Hilbert action, and we can \textbf{interpret the part of the EH lagrangian involving $Q$ as the lagrangian for some matter} field $Q$ coupled to gravity.
+%
+\end{mytheorem}
+
+
 
 %=======================================================
 \subsection{The Euler-Lagrange equations for matter}\todotag{TBC}
@@ -319,7 +335,7 @@ The \textbf{action} for a field theory in curved spacetime with a multiplet $\{\
 \begin{align}
     S[\phi] =  \int_M \Omega_g\,\,\mathcal{L}\,=\int \mathrm{d}^n x \sqrt{|g|} \,\,\, \mathcal{L}(\phi_a, \nabla_\mu \phi_a, g_{\mu\nu}).
 \end{align}
-The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensors\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi^\star_{a,\bullet}$, possibly carrying spin, their covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}$ and the metric $g_{\mu\nu}$.
+The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensors\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi^\star_{a,\bullet}$, carrying suitable spin, their covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}$ and the metric $g_{\mu\nu}$.
 That is, it is a total contraction of all indices, including spinorial ones.
 In turn the integrand is simply the contraction of the metric volume form $\Omega_g = \sqrt{|g|} d^n x$ with the scalar $\mathcal{L}$ i.e. a (0,0)-tensor, or equivalently the wedge product of $\Omega_g$ with a 0-form.
 
@@ -375,9 +391,9 @@ For example, for a section of $T^\star_\bullet M$ we have
     = \nabla_\mu \delta \phi^\star_{a,\bullet}.
 \end{align}
 %
-Similarly for Dirac spinors, given a tetrad $\{e_\rho\}_\rho$, a representation of $\gamma$-matrices in a spin basis $\{s^b\}$, and the associated generators $S^{\mu\nu}:=\frac{1}{4}[\gamma^\mu,\gamma^\nu]$ of the spin representation of the Lorentz group, the spin connection 1-form $\omega^{\mathrm{sp.\,}a}_{\,~b}$ is defined by
+Similarly for Dirac spinors, given a tetrad $\{e_\rho\}_\rho$, a representation of $\gamma$-matrices in a spin basis $\{s_b\}$, and the associated generators $S^{\mu\nu}:=\frac{1}{4}[\gamma^\mu,\gamma^\nu]$ of the spin representation of the Lorentz group, the spin connection 1-form $\omega^{\mathrm{sp.\,}a}_{\,~b}$ is defined by
 \begin{align}
-    \nabla_{\cdot}\, s_b &=  \underbrace{\tfrac{1}{2}\omega_{\mu\nu}(\cdot) \left(S^{\mu\nu}\right)^a_{~b}}_{\equiv \,\omega^{\mathrm{sp.\,}a}_{\,~b}(\cdot)}\,  s_a =: \omega^{\mathrm{sp.\,}a}_{\,~b}(\cdot)\, s_a,
+    \nabla_{\cdot}\, s_b &=  \underbrace{\tfrac{1}{2}\omega_{\mu\nu}(\cdot) \left(S^{\mu\nu}\right)^a_{~b}}_{\equiv \,\omega^{\mathrm{sp.\,}a}_{\,~b}(\cdot)}\,  s_a =: \omega^{\mathrm{sp.\,}a}_{\,~b}(\cdot)\, s_a.
 \end{align}
 Therefore, for a general spinor field $\psi=\psi^a s_a$ and any vector field $X$, we have
 \begin{align}
@@ -479,36 +495,63 @@ For example, for a complex scalar field $\phi$ we have
 
 
 {\color{red}
-
 \begin{mytheorem}[The Dirac equation in curved spacetime]\todotag{Finish}
-The Dirac equation for a spin-$\tfrac{1}{2}$ field $\psi$ in curved spacetime is given by
+The Dirac equation for spin-$\tfrac{1}{2}$ fields $\psi$ in curved spacetime is given by
 \begin{align}
     (i \gamma^\mu \nabla_\mu - m) \psi = 0,
 \end{align}
-where $\gamma^\mu$ are the curved spacetime gamma matrices satisfying the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu}$ and $\nabla_\mu$ is the spinor covariant derivative.
+where $\gamma^\mu=\gamma^\mu(x)$ are spacetime dependent gamma matrices satisfying the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu}(x)$ and $\nabla$ is the covariant derivative on the spinor bundle.
+The Dirac equation in curved spacetime generalizes the flat spacetime Dirac equation by replacing the ordinary gamma matrices and partial derivatives with their curved spacetime counterparts.
 The action for the Dirac field in curved spacetime is then simply
 \begin{align}
-    S_\text{Dirac} = \int \mathrm{d}^d x \sqrt{|g|} \, \bar{\psi} (i \gamma^\mu \nabla_\mu - m) \psi,
+    S_\text{Dirac} = \int \mathrm{d}^d x \sqrt{|g|} \,\, \bar{\psi} (i \gamma^\mu \nabla_\mu - m) \psi,
 \end{align}
-where $\bar{\psi} = \psi^\dagger \gamma^0$ is the Dirac adjoint.
+where $\bar{\psi}(x) = \psi^\dagger(x) \gamma^0(x)$ is the Dirac adjoint.
 Varying this action with respect to $\bar{\psi}$ yields the Dirac equation in curved spacetime.
 
-We need to undesratnd how to define the gamma matrices $\gamma^\mu$ and the covariant derivative $\nabla_\mu$ acting on spinors in curved spacetime.
-For this, it is easier to introduce a local orthonormal frame (vielbein) $e_a^\mu$ such that $g_{\mu\nu} = e_\mu^a e_\nu^b \eta_{ab}$, where $\eta_{ab}$ is the Minkowski metric.
-The curved spacetime gamma matrices are then related to the flat spacetime gamma matrices $\gamma^a$ by
+This is more easily understood using an orthonormal tetrad $\{e_a(x)\}_a$ for the tangent bundle, so that $g_{ab} := g(e_a,e_b)\equiv \eta_{ab}$ is the Minkowski metric at each point $x\in M$ in such local basis.
+In this tetrad we can simply define constant gamma matrices $\gamma_{\mathrm{flat}}^a$ satisfying the flat spacetime Clifford algebra $\{\gamma_{\mathrm{flat}}^a, \gamma_{\mathrm{flat}}^b\} = 2 \eta^{ab}$.
+In a coordinate system $x^\mu$ where $e_a(x)=e_a^\mu(x) \partial_\mu$ the spacetime dependent gamma matrices are then simply given by
 \begin{align}
-    \gamma^\mu = e_a^\mu \gamma^a,
+    \gamma^\mu(x) = e_a^\mu(x) \gamma_{\mathrm{flat}}^a\,, \quad \text{since}\quad \{\gamma^\mu(x), \gamma^\nu(x)\} = 2 \eta^{ab} e_a^\mu(x) e_b^\nu(x) = 2 g^{\mu\nu}(x).
 \end{align}
-where the flat spacetime gamma matrices satisfy $\{\gamma^a, \gamma^b\} = 2 \eta^{ab}$.
-The covariant derivative acting on spinors is defined as
+
+Finally recall that, given a metric connection $\nabla$ with connection 1-form $\omega_j^i(\bullet)$ in a tetrad frame $\{e_a\}_a$ of the tangent bundle, and given representation of $\gamma$-matrices $\gamma^a(x)=\gamma^a(x)^i_j$ obeying the Clifford algebra $\{\gamma^a(x),\gamma^b(x)\}= 2 g^{ab}(x)$ in such a tetrad, the covariant derivative acts on \emph{basis} spinors $s_j=(0\dots0\,\underbrace{1}_j\,0\dots0)$ as
 \begin{align}
-    \nabla_\mu \psi = \partial_\mu \psi + \frac{1}{4} \omega_{\mu}^{ab} \gamma_{ab} \psi,
+    \nabla_\bullet s_j = \frac{1}{2} \omega_{ab}(\bullet) \big(S^{a b}\big)^i_{j} \,s_j,\quad \text{where}\quad S^{ab}(x) := \frac{1}{4} [\gamma^a(x), \gamma^b(x)],
 \end{align}
-where $\omega_{\mu}^{ab}$ is the spin connection and $\gamma_{ab} = \frac{1}{2} [\gamma_a, \gamma_b]$.
-As regards $\gamma^\mu$, we introduce a local orthonormal frame (vielbein) $e_a^\mu$ such that $g_{\mu\nu} = e_\mu^a e_\nu^b \eta_{ab}$, where $\eta_{ab}$ is the Minkowski metric.
+are the generators of the spin representation of the Lorentz group.
+The action on a general section of the spinor bundle $\psi=s_j\, \psi^j$ is then obtained by the Leibniz rule
+\begin{align}
+    \nabla \psi = s_j \left( d\psi^j + \frac{1}{2} \omega_{ab} \big(S^{a b}\big)^j_{k} \, \psi^k \right).
+\end{align}
 %
 \end{mytheorem}
 }
+
+
+
+\begin{mytheorem}[Dirac equation from the square root of $\Box$ in the Clifford algebra\todotag{Check \& finish}]
+%
+The Dirac equation can be seen as the `square root' of the Klein-Gordon equation in the Clifford algebra.
+The KG operator $\Box_\nabla = \nabla^\mu \nabla_\mu$ makes sense on any fiber bundle endowed with a connection, including the spinor bundle.
+Similarly we can define exterior covariant derivatives $d_\nabla$ and their adjoints $\delta_\nabla$ as
+\begin{align}
+    d_\nabla \big(s_a\otimes \psi^a)= s_b \otimes \Big(\omega^b_a+d\psi^b\Big),\quad 
+    \delta_\nabla \big(s_a\otimes \psi^a)= s_b \otimes \Big(\delta \psi^b {\color{blue}\underbrace{- (\omega^b_a)_\mu \psi^{a\,\#\mu}}_{\text{not sure}}}\Big),
+\end{align}
+{\color{blue} where in the last term one index of the $\R$-valued p-form $\psi^a$ is raised with the metric and contracted with the corresponding index of the connection 1-form $\omega^b_a$.}
+The associated Hodge--Dirac operator
+\begin{align}
+    \mathcal{D}_\nabla := d_\nabla + \delta_\nabla \quad \Rightarrow \quad \mathcal{D}_\nabla^2= (d_\nabla + \delta_\nabla)^2 = d_\nabla \delta_\nabla + \delta_\nabla d_\nabla =: \Box_\nabla\,.
+\end{align}
+One can prove that indeed $\mathcal{D}_\nabla = \gamma^\mu \nabla_\mu$ where $\gamma^\mu$ are suitable gamma matrices satisfying the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu}$.
+The Dirac equation for a spin-$\tfrac{1}{2}$ field $\psi$ in curved spacetime is then given by
+\begin{align}
+    (i \mathcal{D}_\nabla - m) \psi = (i \gamma^\mu \nabla_\mu - m) \psi = 0.
+\end{align}
+%
+\end{mytheorem}
 
 
 

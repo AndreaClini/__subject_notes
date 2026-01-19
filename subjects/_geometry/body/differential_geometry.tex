@@ -1140,6 +1140,7 @@ This theorem has extensions to more general \emph{homotopically trivial} subsets
 %-----------------------------------------------------------------------
 %======================================================================
 \section{Torsion \& equivalence principle}\todotag{To be written}
+\label{sec:torsion_and_equivalence_principle}
 %========================================================================
 %-------------------------------------------------------------------------
 
@@ -1271,10 +1272,10 @@ In view of what discssed above, we can interpret the Christoffel symbols and the
     \item The symmetric part of the Christoffel symbols corresponds to `standard pseudoforces', like Coriolis force, that can be eliminated by going to a freely falling frame.
     Notably, the choice of what to attribute to gravity and what to inertial forces is \emph{conventional} and depends on the choice of connection.
     Indeed, the difference of two connections $\nabla,\tilde{\nabla}$ is indeed a $(1,2)$-tensor since Christoffel symbols transform as
-    \begin{align}
+    \begin{align}\label{eq:difference_connection_is_tensor}
         \Gamma^{\rho}_{\mu \nu}- \tilde{\Gamma}^{\rho}_{\mu \nu} = \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial x^{\prime \alpha}}{\partial x^{\mu}} \frac{\partial x^{\prime \beta}}{\partial x^{\nu}} \left(\Gamma^{\prime \sigma}_{\alpha \beta}-\tilde{\Gamma}^{\prime \sigma}_{\alpha \beta}\right) + \graycancel{ \frac{\partial x^{\rho}}{\partial x^{\prime \sigma}} \frac{\partial^2 x^{\prime \sigma}}{\partial x^{\mu} \partial x^{\nu}}}.
     \end{align}
-    If both of them are symmetric in the lower indices, their difference is also symmetric and can thus be interpreted as a field contributing to the energy-momentum tensor at the right
+    If both of them are symmetric in the lower indices, their difference is also symmetric and can thus be interpreted as a field contributing to the energy-momentum tensor at the rhs of Einstein's equations.
     %
     \item Finally, the derivatives of the Christoffel symbols measure curvature, that is tidal forces that cannot be eliminated even when going to a freely falling frame.
     Indeed, a freely falling frame is `exactly freely falling' only at a single point, but as soon as we depart from it infinitesimal tidal forces start to act.
@@ -1650,7 +1651,8 @@ Under a change of local frame $\{\tilde{f}_a,\tilde{\phi}^a\}_a$ with $\tilde{f}
 \begin{equation}\label{eq:transformation_law_connection_1_form}
     \tilde{\omega}_a^b= (A^{-1})_i^b \,\, d A_a^i + (A^{-1})_i^b \,\, \omega^i_{j} \,\, A_a^j.
 \end{equation}
-This is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates. (cf. connections on the tangent bundle below).
+This shows the connection 1-form does not transform as a tensor, due to the $A^{-1}\, dA$ piece, and is thus not \emph{tensor}-valued.
+In fact, this is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates. (cf. connections on the tangent bundle below).
 
 \todotag{Fix from here}To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
 \begin{align}
