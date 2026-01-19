@@ -1854,6 +1854,30 @@ Coherent states for the Klein-Gordon field are simply \textbf{tensor products ov
     |\{ \beta_k \}_k \rangle := \bigotimes_{k} |\beta_k \rangle\in \bigotimes \mathcal{M}_k\,,\quad\text{with}\quad
     a_k |\beta_k \rangle = \beta_k |\beta_k \rangle\,,\,\, \beta_k\in \C\,.
 \end{align}
+The \textbf{overlap between two coherent states} is straightforwardly obtained via the BCH formula as
+\begin{align}
+    \langle \beta | \alpha \rangle = e^{-\frac{1}{2}(|\beta|^2 + |\alpha|^2)} \langle 0 | e^{\beta^* a} e^{\alpha a^{\dagger}} |0 \rangle \overset{\mathrm{BCH}}{=} e^{-\frac{1}{2}(|\beta|^2 + |\alpha|^2)} \langle 0 | e^{\beta^*\alpha}e^{\alpha a^\dagger} e^{\beta^* a} |0 \rangle 
+    = e^{-\frac{1}{2}|\alpha-\beta|^2} \underbrace{e^{\frac{1}{2}(\alpha^*\beta-\beta^*\alpha)}}_{\text{pure phase}}\,.
+\end{align}
+The overlap then {dies off exponentially with the distance} $|\alpha-\beta|$ in the complex plane.
+The overlap with Fock states $|\mathbf{n}\rangle = |\{n_k\}_k\rangle$ is also straightforwardly obtained expanding the coherent state in number eigenstates
+\begin{align}
+    |\bm{\beta} \rangle = e^{-\frac{|\beta|^2}{2}} \sum_{\mathbf{n}} \left(\prod_k\frac{\beta_k^{n_k}}{\sqrt{n_k!}}\right) |\mathbf{n}\rangle \quad \Rightarrow \quad
+    \langle \mathbf{n} | \bm{\beta} \rangle = e^{-\frac{|\beta|^2}{2}} \left(\prod_k\frac{\beta_k^{n_k}}{\sqrt{n_k!}}\right)\,.
+\end{align}
+Finally \textbf{coherent state are overcomplete} in the sense thy yield a resolution of the identity 
+\begin{align}
+    \mathbb{I}_{\mathcal{F}} = \prod_k \int_{\C}\!\!\frac{d^2\!\beta_k}{\pi}\,\,\,\, |\{\beta_k\}_k \rangle \langle \{\beta_k\}_k |.
+\end{align}
+This is confirmed inserting two resolutions of the identity $\mathbb{I}_{\mathcal{F}}=\sum_{\mathbf{m}}|\{m_k\}_k \rangle \langle \{m_k\}_k |$ in terms of Fock states and using $\int_\C\frac{d^2\!z}{\pi}e^{-|z|^2}\frac{z^m (z^*)^n}{\sqrt{m! n!}} = \delta_{mn}$, easily proved in polar coordinates,
+\begin{align}
+    \sum_{\mathbf{m}} &\sum_{\mathbf{n}} | \{m_k\}_k \rangle \langle \{m_k\}_k | \left( \prod_{k} \int_{\C}\!\!\frac{d^2\!\beta_k}{\pi}\,\,\,\, |\{\beta_k\}_k \rangle \langle \{\beta_k\}_k | \right) | \{n_k\}_k \rangle \langle \{n_k\}_k |\\
+    &= \sum_{\mathbf{m}} \sum_{\mathbf{n}} |\mathbf{m}\rangle \left(\prod_k \int_{\C}\!\!\frac{d^2\!\beta_k}{\pi}\, \langle m_k | \beta_k \rangle \langle \beta_k | n_k \rangle\right) \,\langle \mathbf{n}|
+    \\
+    &= \sum_{\mathbf{m}} \sum_{\mathbf{n}} |\mathbf{m}\rangle\,\Bigg(\prod_k \underbrace{\int_{\C}\!\!\frac{d^2\!\beta_k}{\pi} e^{-|\beta_k|^2} \frac{(\beta_k)^m(\beta_k^*)^n}{\sqrt{m!\,n!}}}_{=\delta_{m_kn_k}}\Bigg) \,\langle \mathbf{n}|
+    = \sum_{\mathbf{n}} |\mathbf{n}\rangle \langle \mathbf{n}| = \mathbb{I}_{\mathcal{F}}\,.
+\end{align}
+
 Beware \textbf{coherent states are different from $\phi$-eigenstates} $|f\rangle$ discussed above.
 Indeed, from the decomposition \eqref{eq:decompsition_field_ladder_operators_fixed_times} the action and the average value of the field operator on a coherent state is
 \begin{align}
@@ -1895,6 +1919,7 @@ The uncertainty minimization is even more evident in Fourier space, where the \t
 \end{align}
 }
 Just like in the finite dimensional case, \textbf{coherent states} are thus the quantum states that \textbf{best approximate classical field configurations}, minimizing quantum fluctuations around the classical values (i.e. the expectation value by the Erenfest theorem) and closely following classical trajectories.
+%
 \end{mytheorem}
 
 
