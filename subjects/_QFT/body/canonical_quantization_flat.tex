@@ -132,7 +132,7 @@ The definition of ladder operators can be obtained by direct inspection of the H
 However, this procedure somewhat hides the arbitrariness in their definition, which is source of profound physical consequences for QFT in curved spacetime.
 
 Let us proceed more generally, simply defining a complex operator $\hat{a}$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$
-\begin{align}
+\begin{align}\label{eq:ladder_operator_heuristics_1D}
     a = \alpha\, q + i \,\beta \,p \quad \text{for arbitrary }\, \alpha,\, \beta \in \mathbb{R}
     \quad \Longleftrightarrow \quad \begin{cases}
         q = \frac{1}{2\alpha}(a + a^\dagger)\,,\\[4pt]
@@ -579,48 +579,16 @@ General in states have overlap with out-states and corresponding transition ampl
 
 
 
-\begin{mytheorem}[Making semiclassical treatments rigorous: electron in classical EM field\questiontag{Polish}]
+\begin{mytheorem}[Making semiclassical treatments rigorous: electron in classical EM field]
 %
-The above analysis of exciting harmonic oscillators allows to rigorously understand the treatment of a quantized electron in a classical electromagnetic field and other semiclassical treatments usually presented in basic QM courses.
+The above analysis of driven harmonic oscillators allows to rigorously understand the treatment of a quantized electron in a classical electromagnetic field and other semiclassical treatments usually presented in basic QM courses.
 Ignoring spin and gauge subtleties, let the harmonic oscillator represent one mode of the quantized EM field.
 We showed that \textbf{any generic interaction} with some external current $J(t)$ \textbf{will drive the EM field oscillator into a coherent state}.
 These quantum states are the closest possible to classical states, minimizing the uncertainty relation and having dynamics closely following classical trajectories.
-If each mode of the EM field is in such a state, as expected due to arbitrary interactions, we understand why the above semiclassical treatment works so well.
-
-More rigorously, consider a full Hamiltonian for the EM field interacting with an electron
-\begin{align}
-    H = H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}},
-\end{align}
-where $H_{\mathrm{EM}} \sim \sum_{\mathbf{k},\lambda} \hbar \omega_k (a_{\mathbf{k},\lambda}^\dagger a_{\mathbf{k},\lambda} + \tfrac{1}{2})$ is the Hamiltonian of the free quantized EM field, $H_{\mathrm{e}^-}\sim p^2/2m$ is the Hamiltonian of the free electron and $H_{\mathrm{int}}\sim \vec{p}\otimes B$ describes a possible interaction.
-The time evolution of a given state will be 
-\begin{align}
-    |\Psi(t)\rangle = U(t,t_0) |\Psi(t_0)\rangle = e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}}\right)}\,\,
-    |\Psi(t_0)\rangle\,.
-\end{align}
-Even if we start from a pure state $|\Psi(t_0)\rangle = |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle$, the interaction will entangle the two subsystems.
-However, if the EM field is in a coherent state $|\psi_{\mathrm{EM}}(t_0)\rangle = |\{\alpha_{\mathbf{k},\lambda}\}\rangle$, we can approximate the interaction Hamiltonian as
-\begin{align}
-    H_{\mathrm{int}} &= \vec{p} \otimes B \approx \vec{p} \otimes \langle \{\alpha_{\mathbf{k},\lambda}\}| \hat{B}(t,\mathbf{x}) | \{\alpha_{\mathbf{k},\lambda}\}\rangle = \vec{p} \otimes B^{cl}(t,\mathbf{x}) = B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1,
-\end{align}
-where $B^{cl}(t,\mathbf{x})$ is a classical EM field given by the expectation value of the field operator $\hat{B}$ on the coherent state.
-Beware that $|\psi_{\mathrm{EM}}(t_0)\rangle$ cannot be an \emph{exact} eigenstate of $B$, since otherwise the uncertainty in the conjugate variable would be infinite.
-However, since coherent states saturate the uncertainty relation, the fluctuations around the expectation value are minimal, making $\hat{B}(t,x)\simeq \langle \hat{B}(t,x) \rangle$ a good approximation.
-The time evolution is then non-entangling and factorizes as
-\begin{align}
-    |\Psi(t)\rangle &\approx e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\otimes 1\right)}\,\,
-    |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle
-    \\
-    &= \left(e^{\tfrac{-i(t-t_0)}{\hbar} H_{\mathrm{EM}}} |\psi_{\mathrm{EM}}(t_0)\rangle\right) \otimes \left(e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\right)} |\psi_{\mathrm{e}^-}(t_0)\rangle\right).
-\end{align}
-After tracing out the EM field degrees of freedom, the electron is thus left in a pure state evolving under the free Hamiltonian augmented with the interaction with a classical EM field.
+If each mode of the EM field is in such a state, as expected after arbitrary interactions, we understand why the above semiclassical treatment works so well.
+See Section \ref{sec:kg_field_particles_coherent_interactions} for more details.
 %
 \end{mytheorem}
-
-
-
-
-
-
 
 
 
@@ -954,15 +922,23 @@ Then recast the fields as
     =\frac{1}{\sqrt{2\omega_k}} (a_k + a_{-k}^{\dagger}) 
     \\
     \pi_k(t_0) &= \frac{1}{\sqrt{2}}\Big(P_+ - i \omega_k Q_-\Big) = \tfrac{1}{2}\Big[ \big({p}_k - {p}_{-k}\big) -i\,\omega_k\big({q}_k-{q}_{-k}\big)\Big]
-    = -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger})\,.
+    = -i \sqrt{\frac{\omega_k}{2}} (a_k - a_{-k}^{\dagger})\,,
 \end{aligned}
 \end{align}
-The ladder operators are defined wrt the rotated oscillators $\{q_k, p_k\}$ as
+where the ladder operators are defined wrt the rotated oscillators $\{q_k, p_k\}$ as
 \begin{align}\label{eq:ladder_operators_field}
     a_k &= \sqrt{\frac{\omega_k}{2}} \left( q_k + \frac{i}{\omega_k} p_k \right), \quad
     \big[ a_k, a_{k'}^{\dagger} \big] = \hbar (2\pi)^3 \delta^{(3)}(k-k').
 \end{align}
-After some algebra, \emph{before} normal ordering, the Hamiltonian reads
+In fact we could equivalently follow a procedure completely akin to \eqref{eq:ladder_operator_heuristics_1D} and \textbf{define ladder operators directly from the complex fields $\phi_k, \pi_k$.}
+Namely, for each mode $k$ define for suitable constants $\alpha_k, \beta_k\in\R$
+\begin{align}
+    a_k=\alpha_k \phi_k + i \beta_k \pi_k, \quad \Rightarrow\quad [a_k,a_{k'}^\dagger]= 2\alpha_k\beta_k\hbar (2\pi)^3 \delta^{(3)}(k-k')\,.
+\end{align}
+Demanding ladder operators satisfy the easiest CCR $[a_k,a_{k'}^\dagger]=\hbar (2\pi)^3 \delta^{(3)}(k-k')$ fixed $\beta_k=\frac{1}{2\alpha_k}$.
+Finally requiring the Hamiltonian be diagonal in terms of $a_k^\dagger a_k$ fixes $\alpha_k=\alpha_{-k}=\sqrt{\frac{\omega_k}{2}}$ and thus recovers the expression \eqref{eq:ladder_operators_field}.
+
+Either way, after some algebra, \emph{before} normal ordering, the Hamiltonian reads
 \begin{align}\label{eq:free_hamiltonian_ladder_operators}
     H  &= \int \frac{d^3 k}{(2\pi)^3} \left( \tfrac{1}{2}\pi_k^\dagger\pi_k + \tfrac{1}{2}(|\mathbf{k}|^2 + m^2) \phi_k^\dagger \phi_{k} \right) 
     \\
@@ -1819,7 +1795,7 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 
 %------------------------------------------------------------------
 %======================================================================
-\section{Particles, coherent states \& interactions}
+\section{Particles, coherent states \& interactions}\label{sec:kg_field_particles_coherent_interactions}
 %======================================================================
 %------------------------------------------------------------------
 
@@ -1975,10 +1951,42 @@ We remark this is a general phenomenon: \textbf{interactions wil in general driv
 \end{mytheorem}
 
 
-\begin{mytheorem}[Semiclassical treatment made rigorous: an electron in a classical electromagnetic field\todotag{Expand \& finish}]
+
+\begin{mytheorem}[Semiclassical treatment made rigorous: electron in a classical electromagnetic field\questiontag{Polish}]
 %
-Consider a first quantized electron described moving into a classical electromagnetic field $A_{\mu}$.
-The Lagrangian density for this system is given by...
+The above analysis of driven harmonic oscillators allows to rigorously understand the treatment of a quantized electron in a classical electromagnetic field and other semiclassical treatments usually presented in basic QM courses.
+Ignoring spin and gauge subtleties, pretend the {\small KG} field represent the quantized {\small EM} field.
+We showed that \textbf{any generic interaction} with some external current $J(t)$ \textbf{will drive the {\small EM} field oscillators into a coherent state}.
+These quantum states are the closest possible to classical states, minimizing the uncertainty relation and having dynamics closely following classical trajectories.
+If each mode of the EM field is in such a state, as expected after arbitrary interactions, we understand why the above semiclassical treatment works so well.
+
+More rigorously, consider a full Hamiltonian for the {\small EM} field interacting with an electron
+\begin{align}
+    H = H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}},
+\end{align}
+where $H_{\mathrm{EM}} \sim \sum_{\mathbf{k},\lambda} \hbar \omega_k (a_{\mathbf{k},\lambda}^\dagger a_{\mathbf{k},\lambda} + \tfrac{1}{2})$ is the Hamiltonian of the free quantized {\small EM} field, $H_{\mathrm{e}^-}\sim p^2/2m$ is the Hamiltonian of the free electron, and $H_{\mathrm{int}}\sim B \otimes \vec{p}$ describes a possible interaction.
+The time evolution of a given state is then
+\begin{align}
+    |\Psi(t)\rangle = U(t,t_0) |\Psi(t_0)\rangle = e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + H_{\mathrm{int}}\right)}\,\,
+    |\Psi(t_0)\rangle\,.
+\end{align}
+Even if we start from a pure state $|\Psi(t_0)\rangle = |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle$, the interaction will entangle the two subsystems.
+However, if the {\small EM} field is in a coherent state $|\psi_{\mathrm{EM}}(t_0)\rangle = |\{\alpha_{\mathbf{k},\lambda}\}\rangle$, we can approximate the interaction Hamiltonian as
+\begin{align}
+    H_{\mathrm{int}} &= B \otimes \vec{p} \approx \langle \{\alpha_{\mathbf{k},\lambda}\}| \hat{B}(t,\mathbf{x}) | \{\alpha_{\mathbf{k},\lambda}\}\rangle \otimes \vec{p} = B^{cl}(t,\mathbf{x}) \otimes \vec{p} = B^{cl}(t,\mathbf{x})\cdot\,\, 1 \otimes \vec{p},
+\end{align}
+where $B^{cl}(t,\mathbf{x})$ is a classical {\small EM} field given by the expectation value of the field operator $\hat{B}$ on the coherent state.
+Beware that $|\psi_{\mathrm{EM}}(t_0)\rangle$ cannot be an \emph{exact} eigenstate of $B$, since otherwise the uncertainty in the conjugate variable would be infinite.
+However, since coherent states saturate the uncertainty relation, the fluctuations around the expectation value are minimal, making $\hat{B}(t,x)\simeq \langle \hat{B}(t,x) \rangle$ a good approximation.
+The time evolution is then approximately non-entangling and factorizes as
+\begin{align}
+    |\Psi(t)\rangle &\approx e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{EM}}\otimes 1 + 1 \otimes H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, 1 \otimes \vec{p}\right)}\,\,
+    |\psi_{\mathrm{EM}}(t_0)\rangle \otimes |\psi_{\mathrm{e}^-}(t_0)\rangle
+    \\
+    &= \left(e^{\tfrac{-i(t-t_0)}{\hbar} H_{\mathrm{EM}}} |\psi_{\mathrm{EM}}(t_0)\rangle\right) \otimes \left(e^{\tfrac{-i(t-t_0)}{\hbar} \left(H_{\mathrm{e}^-} + B^{cl}(t,\mathbf{x})\cdot\,\, \vec{p}\right)} |\psi_{\mathrm{e}^-}(t_0)\rangle\right).
+\end{align}
+After tracing out the {\small EM} field degrees of freedom, the electron is thus left in a pure state evolving under its free Hamiltonian augmented with the interaction with a classical EM field.
+%
 \end{mytheorem}
 
 
