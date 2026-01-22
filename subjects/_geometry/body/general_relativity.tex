@@ -62,7 +62,7 @@ Spacetimes achieving this maximum number, like Minkowski, de Sitter and anti-de 
 
 
 
-\begin{mytheorem}[Energy-momentum tensor of continuum distributions \& Bianchi conservation laws] \todotag{Finish}
+\begin{mytheorem}[Energy-momentum tensor of continuum distributions \& Bianchi conservation laws\todotag{Finish \& polish}]
 The energy-momentum tensor $T^{\mu\nu}$ is a symmetric rank-2 tensor that encodes the density and flux of energy and momentum in spacetime.
 In flat spacetime we define it directly as the Noether current associated to invariance of the action under spacetime translations 
 \begin{align}
@@ -100,7 +100,28 @@ In terms of the matter lagrangian
 }
 \smallskip
 
-The energy-momentum tensor obey the conservation equations (\textbf{Bianchi identities})
+The general matter action is written as, where $\phi_{a,\bullet}^{\star}$ carries arbitray spin indices and the dependence is on $\nabla_\mu$ and not just $\partial_\mu$ to ensure covariance,
+\begin{align}
+    S=\int d^n x \sqrt{|g|} \,\mathcal{L}(\phi_{a,\bullet}^{\star},\nabla_\mu \phi_{a,\bullet}^{\star}, g_{\mu\nu})\,.
+\end{align}
+The dependence on the metric $g_{\mu\nu}$ can thus be both explicit and implicit through covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}\simeq \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \,\phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\,\phi^\star_{a,\#}$ containing Christoffel symbols, which in turn depend on the metric and its first derivatives.
+In full generality, by the chain rule we have
+\begin{align}
+    \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial g_{\rho\sigma}}= \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma} \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g_{\rho\sigma}}.
+\end{align}
+The general form of energy-momentum tensor for some matter species is then
+{\small
+\begin{align}
+    T_{\mu\nu} &= -\frac{2}{\sqrt{|g|}}\, \frac{\delta S_\text{mat}}{\delta g^{\mu\nu}}= -\frac{2}{\sqrt{|g|}} \frac{\mathrm{d\,}}{\,\mathrm{d} g^{\mu\nu}} \left(\sqrt{|g|} \,\,\mathcal{L}(g,\phi,\nabla \phi)\right)
+    = -\frac{2}{\sqrt{|g|}} \left[ \sqrt{|g|} \,\,\frac{\mathrm{d} \mathcal{L}\,\,}{\mathrm{d} g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+    \\[4pt]
+    &= -\frac{2}{\sqrt{|g|}} \left[\sqrt{|g|}\,\left( \frac{\partial \mathcal{L}}{\partial g^{\mu\nu}}_{\mid \nabla \phi} \!\!+\frac{\partial \mathcal{L}}{\partial \left(\nabla_\mu \phi^\star_{a,\bullet}\right)}_{\mid g_{\mu\nu}}\!\!\!\frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma}\,\, \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g^{\mu\nu}}\right) -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+\end{align}
+}
+The same argument could be done explicitating covariant derivatives in terms of locale frames and spin  connection forms $\omega_a^b$, and differentiating them wrt the metric $\frac{d\omega_a^b}{d g^{\mu\nu}}$.
+In fact, it is possibly more transparent when using non-tensorial (i.e. not integer spin) fields like spinors.
+
+Finally, the energy-momentum tensor obey the conservation equations (\textbf{Bianchi identities})
 \begin{align}
     \nabla_\mu T^{\mu\nu} = 0,\qquad \nu=0,\ldots, n-1,
 \end{align}
@@ -157,6 +178,34 @@ Integrating by parts, using the symmetry of $T^{\mu\nu}$ and Gauss theorem to di
 Since the vector field $X$ is arbitrary (and vanishes at the boundaries or infinity so that boundary terms vanish), we conclude that $\nabla_\mu T^{\mu\nu}=0$.
 %
 \end{proof}
+
+
+
+\begin{mytheorem}[General form of  energy-momentum tensor]
+%
+The general matter action is written
+\begin{align}
+    S=\int d^n x \sqrt{|g|} \,\mathcal{L}(\phi_{a,\bullet}^{\star},\nabla_\mu \phi_{a,\bullet}^{\star}, g_{\mu\nu})\,.
+\end{align}
+The dependence on the metric $g_{\mu\nu}$ can thus be both explicit and implicit through the covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}\simeq \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \,\phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\,\phi^\star_{a,\#}$ which contains the Christoffel symbols which in turn depend on the metric and its first derivatives.
+In full generality we have
+\begin{align}
+    \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial g_{\rho\sigma}}= \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma} \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g_{\rho\sigma}}.
+\end{align}
+The energy-momentum tensor is thus given by
+{\small
+\begin{align}
+    T_{\mu\nu} &= -\frac{2}{\sqrt{|g|}}\, \frac{\delta S_\text{mat}}{\delta g^{\mu\nu}}= -\frac{2}{\sqrt{|g|}} \frac{\mathrm{d\,}}{\,\mathrm{d} g^{\mu\nu}} \left(\sqrt{|g|} \,\,\mathcal{L}(g,\phi,\nabla \phi)\right)
+    = -\frac{2}{\sqrt{|g|}} \left[ \sqrt{|g|} \,\,\frac{\mathrm{d} \mathcal{L}\,\,}{\mathrm{d} g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+    \\[4pt]
+    &= -\frac{2}{\sqrt{|g|}} \left[\sqrt{|g|}\,\left( \frac{\partial \mathcal{L}}{\partial g^{\mu\nu}}_{\mid \nabla \phi} \!\!+\frac{\partial \mathcal{L}}{\partial \left(\nabla_\mu \phi^\star_{a,\bullet}\right)}_{\mid g_{\mu\nu}}\!\!\!\frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma}\,\, \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g^{\mu\nu}}\right) -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+\end{align}
+}
+
+
+\end{mytheorem}
+
+
 
 
 %---------------------------------------------------------------------
