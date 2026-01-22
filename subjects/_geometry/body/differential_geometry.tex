@@ -1768,16 +1768,24 @@ Given a connection $\nabla$ on a vector bundle $E_F\to M$ with structure group $
 \begin{equation}
     R(X,Y) (f_a) = \Omega(X,Y) (f_a) = f_b \otimes \Omega^b_{\, a}(X,Y), \quad X,Y \in \mathfrak{X}(M)\,.
 \end{equation}
-Note that indeed $\Omega$ is $G$-valued since it yields a \emph{linear} transformation\todotag{Make sure it is not $\mathfrak{g}$ valued} 
-\[R(X,Y) =\nabla_X \nabla_Y - \nabla_Y \nabla_X - \nabla_{[X,Y]}: E_{F\vert p} \to E_{F\vert p}.\]
 On a general element $\tilde{f}=\tilde{f}^a f_a$ we thus have
 \begin{equation}
     R(X,Y) (\tilde{f}) = \tilde{f}^a R(X,Y) (f_a) = \tilde{f}^a f_b \otimes \Omega^b_{\, a}(X,Y).
 \end{equation}
+Note that indeed $\Omega$ is $G$-valued since it yields a \emph{linear} transformation\todotag{Make sure it is not $\mathfrak{g}$ valued} 
+\[R(X,Y) =\nabla_X \nabla_Y - \nabla_Y \nabla_X - \nabla_{[X,Y]}: E_{F\vert p} \to E_{F\vert p}.\]
 Given also a tetrad frame $\{\theta^\mu, e_\nu\}_\nu$ on $TM\to M$, we can explicitate all indices and write
 \begin{align}
     R^b_{a,\,\mu\nu}= \Omega^b_a(e_\mu,e_\nu) \theta^\mu \wedge \theta^\nu.
 \end{align}
+Finally under a change of tetrad $\{\tilde{f}_a,\tilde{\phi}^a\}_a$ on $E_F\to M$ with $\tilde{f}_a= A_a^i f_i$ for some $A: U \subseteq M \to G$, the curvature 2-form transforms \emph{tensorially} as it should
+\begin{equation}
+    \tilde{\Omega}_a^b= (A^{-1})_i^b \,\, \Omega^i_{j} \,\, A_a^j.
+\end{equation}
+The same happens chaning tetrads on the tangent bundle with $\tilde{e}_\mu = B_\mu^\rho e_\rho$ for some $B: U \subseteq M \to GL(n,\R)$ giving
+\begin{equation}
+    R^a_{b,\mu\nu}= B_\mu^\rho B_\nu^\sigma R^a_{b,\rho\sigma}.
+\end{equation}
 \end{mytheorem}
 
 
