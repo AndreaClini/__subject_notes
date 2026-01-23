@@ -2021,12 +2021,70 @@ An even more simple analogy for the Unruh effect is: an inertial cube of ice in 
 \end{mytheorem}
 
 
-\begin{mytheorem}[What is a particle? Unruh - DeWitt detectors\todotag{Expand \& finish}]
+\begin{mytheorem}[What is a particle? Unruh - DeWitt detectors\questiontag{Polish}]
 %
-
+So far we have identified particles with quanta created/annihilated by ladder operators $a_k^{(\dagger)}$ associated to a given mode decomposition of the field.
+However we would rather identify particles as entities \emph{localized in space} rather than propagating waves extended over all space.
+Unruh and DeWitt proposed a simple \emph{operational definition of particles} based on the interaction between a quantum field and a localized quantum system acting as a particle detector, such as an atom, an oscillator like a diatomic molecule like $H_2$ or another small quantum system with internal DoFs.
+A particle is then defined as the spacetime-localized excitation of the detector caused by its interaction with the quantum field.
+According to this defintion, particles can be detected by at least 4 mechanisms:
+\begin{itemize}
+    \item the field is in an excited state wrt the detector's frame of reference;
+    \item the detector is accelerated wrt the field's vacuum state;
+    \item the detector is `switched on/off' non-adiabatically i.e. in a finite time; due to the energy-time uncertainty principle, this can excite the detector even if the field is in its vacuum state and the detector is inertial, since we have an uncertainty in the energy exchanged;
+    \item the spacetime is curved, causing different observers to disagree on the particle content of a given state.
+\end{itemize}
+This is clarified in the analysis of the Unruh effect below.
 \end{mytheorem}
 
 \begin{mytheorem}[The Unruh effect\todotag{Expand \& finish}]
 %
+Consider a localized quantum system with a wordline $x(\tau)$ parametrized by its proper time $\tau$.
+For simplicity we consider the detector in 1st quantization and the field in 2nd quantization.
+The total space is $\mathcal{H}_{\phi} \otimes \mathcal{H}_{\mathrm{det}}$ with total hamiltonian
+\begin{align}
+    \hat{H}_{\mathrm{tot}}= 1 \otimes \hat{H}_{\phi} + \hat{H}_{\mathrm{det}} \otimes 1 + \hat{H}_{\mathrm{int}},\quad\text{with}\quad \hat{H}_{\mathrm{int}} = \epsilon(\tau) \,\,\hat{Q}(\tau) \otimes \phi(x(\tau)),
+\end{align}
+where $\hat{H}_{\phi}$ and $\hat{H}_{\mathrm{det}}$ are the free hamiltonians, the self-adjoint operator $\hat{Q}(\tau)$ is some observable of the detector coupled to the field at the detector's spacetime positions $x(\tau)$, and $\epsilon(\tau)$ parametrizes the interaction strength (i.e. the detector efficiency), possibly switched on/off in a finite time interval.
+We consider a coupling to $\phi$ for simplicity, but couplings to any other observable of the field are possible e.g. to the conjugate field $\pi$. 
+For example, in the case of the electromagnetic field possible interactions would be with the momentum or the spin of the detector
+\begin{align}
+    H_{\mathrm{int}}=-\frac{e}{mc} \hat{p}_j\otimes \hat{A}^j(x(\tau))\,,\quad H_{\mathrm{int}} =\hat{s}_j \otimes \hat{B}^j(x(\tau))\,.
+\end{align}
+For simplicity we also assume the spectrum of $\hat{H}_{\mathrm{det}}$ is discrete with eigenstates $|E_n\rangle$ and eigenvalues $E_n$.
+
+Use the proper time of the detector $\tau$ as time parameter.
+We work in the interaction picture, with time evolution operator
+\begin{align}
+    U_I(\tau_2,\tau_1) = \mathcal{T} \exp\left(-\frac{i}{\hbar} \int_{\tau_1}^{\tau_2} d\tau' \hat{H}_{\mathrm{int}}^I(\tau',\tau_0)\right), \quad \hat{H}_{\mathrm{int}}^I(\tau,\tau_0) = e^{\frac{i}{\hbar} \hat{H}_0 (\tau-\tau_0)} \hat{H}_{\mathrm{int}}(\tau) e^{-\frac{i}{\hbar} \hat{H}_0 (\tau-\tau_0)}.
+\end{align}
+Consider a pure initial state $|\Psi_i\rangle = |\psi_{\mathrm{det}}\rangle \otimes |\psi_{\phi}\rangle$ at time $\tau_i$.
+To 1st order in perturbation theory, the final state at time $\tau_f$ is
+\begin{align}
+    |\Psi(\tau_f)\rangle_I &= U_I(\tau_f,\tau_i) |\Psi(\tau_i)\rangle \\
+    &\approx \left(1 -\frac{i}{\hbar} \int_{\tau_i}^{\tau_f} d\tau' \hat{H}_{\mathrm{int}}^I(\tau',\tau_0)\right) |\psi_{\mathrm{det}}\rangle \otimes |\psi_{\phi}\rangle \\
+    &= |\psi_{\mathrm{det}}\rangle \otimes |\psi_{\phi}\rangle - \frac{i}{\hbar} \int_{\tau_i}^{\tau_f} d\tau' \epsilon(\tau') \,\,\,\hat{Q}^I(\tau',\tau_0) |\psi_{\mathrm{det}}\rangle \otimes \hat{\phi}^I(x(\tau'),\tau_0) |\psi_{\phi}\rangle.
+\end{align}
+Up to an irrelevant overall phase depending on the initial time $\tau_0$, the freely time evolved field is 
+\begin{align}
+    \phi^I(x(\tau'),\tau_0) &= e^{\frac{i}{\hbar} \hat{H}_{\phi} (\tau'-\tau_0)} \hat{\phi}(x(\tau')) e^{-\frac{i}{\hbar} \hat{H}_{\phi} (\tau'-\tau_0)} = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{-i k_\mu x^\mu(\tau')} + a_k^{\dagger} e^{i k_\mu x^\mu(\tau')} \right).
+\end{align}
+The transition amplitude to a final state $|\Psi_f\rangle = |\psi_{\mathrm{det},f}\rangle \otimes |\psi_{\phi,f}\rangle$ is thus
+{\small
+\begin{align}
+    \langle\Psi_f | U_I(\tau_f,\tau_i) | \Psi_i\rangle &= - \frac{i}{\hbar} \int_{\tau_i}^{\tau_f} d\tau' \epsilon(\tau') \,\,\,\langle \psi_{\mathrm{det},f} | \hat{Q}^I(\tau',\tau_0) |\psi_{\mathrm{det}}\rangle \,\, \langle \psi_{\phi,f} | \hat{\phi}^I(x(\tau'),\tau_0) |\psi_{\phi}\rangle
+    \\
+    &=
+    - \frac{i}{\hbar} \int_{\tau_i}^{\tau_f} d\tau' \epsilon(\tau') \,\,\langle \psi_{\mathrm{det},f} | e^{\frac{i}{\hbar}(\tau'-\tau_0)}\hat{Q} e^{-\frac{i}{\hbar}(\tau'-\tau_0)} |\psi_{\mathrm{det}}\rangle \\
+    &\quad\qquad\times \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left(\langle \psi_{\phi,f} | a_k| \psi_{\phi,i}\rangle  e^{-i k_\mu x^\mu(\tau')} + \langle \psi_{\phi,f} | a_k^\dagger| \psi_{\phi,i}\rangle e^{i k_\mu x^\mu(\tau')} \right)\,.
+\end{align}
+}
+If we consider energy eigenstates $|\psi_{\mathrm{det}}\rangle = |E_n \rangle$, $|\psi_{\mathrm{det},f}\rangle = |E_m \rangle$ as initial and final states of the detector, the matrix element of $\hat{Q}^I$ is
+\begin{align}
+    \langle E_m | \hat{Q}^I(\tau',\tau_0) | E_n \rangle &= e^{\frac{i}{\hbar} (E_m - E_n)(\tau'-\tau_0)} \langle E_m | \hat{Q}(0) | E_n \rangle.
+\end{align}
+If we further specialize to some detector wordline $\tau \to x^\mu(\tau)$ and field states $|\psi_{\phi,i/f}\rangle$ we can compute the transition amplitude explicitly...
+
+
 
 \end{mytheorem}
