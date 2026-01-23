@@ -6,7 +6,6 @@
 %=========================================================
 
 
-
 %-----------------------------------------------------------
 %=======================================================
 \section{Conservation laws}\todotag{To be written}
@@ -33,36 +32,8 @@ In practice, whenever we have a timelike Killing vector field, we can define a c
 \end{mytheorem}
 
 
-\begin{mytheorem}[Killing vector field\todotag{finish}]
-%
-A Killing vector field $K$ is a vector field whose flow generates an isometry of the metric manifold i.e. the Lie derivative of the metric along $K$ vanishes
-\begin{align}
-    \mathcal{L}_K g = 0.
-\end{align}
-Using metric compatibility $\nabla g=0$ and replacing partial with covariant derivatives\footnote{As discussed in Section \ref{sec:lie_derivative}, both expressions are tensorial and coincide in normal coordinates.} the Killing condition can be equivalently written as
-\begin{align}
-    0=\left(\mathcal{L}_K g\right)_{\mu\nu}&\equiv K^\lambda \partial_\lambda g_{\mu\nu} + g_{\lambda\nu} \partial_\mu K^\lambda + g_{\mu\lambda} \partial_\nu K^\lambda\\
-    &= K^\lambda \underbrace{\nabla_\lambda g_{\mu\nu}}_{=0} + \underbrace{g_{\lambda\nu} \nabla_\mu K^\lambda}_{=\nabla_\mu K_\nu} + \underbrace{g_{\mu\lambda} \nabla_\nu K^\lambda}_{=\nabla_\nu K_\mu}
-    = \nabla_\mu K_\nu + \nabla_\nu K_\mu.
-\end{align}
-That is finally, the Killing equation equivalently reads
-\begin{align}
-    \nabla_\mu K_\nu + \nabla_\nu K_\mu = 0.
-\end{align}
 
-The number of Killing vector fields of a spacetime is a measure of its symmetries.
-In $n$-dimensional spacetime, the maximum number of linearly independent Killing vector fields is $n(n+1)/2$.
-This number is intuitively clear for two reasons.
-First, we have $n$ \emph{local} directions of translation symmetry--i.e. in the tangent space--and $n(n-1)/2$ directions of rotation symmetry.
-For example, in 4D we have 4 translations and 6 `generalized rotations' (3 ordinary spatial rotations and 3 boosts).
-Second, $n(n+1)/2$ is precisely the number of independent components of the metric tensor $g_{\mu\nu}$, so that exceeding this number would overconstrain the metric.
-Spacetimes achieving this maximum number, like Minkowski, de Sitter and anti-de Sitter, are called \emph{maximally symmetric}.
-%
-\end{mytheorem}
-
-
-
-\begin{mytheorem}[Energy-momentum tensor of continuum distributions \& Bianchi conservation laws\todotag{Finish \& polish}]
+\begin{mytheorem}[Energy-momentum tensor of continuum distributions \& Bianchi conservation laws\todotag{Fix proof \& polish}]
 The energy-momentum tensor $T^{\mu\nu}$ is a symmetric rank-2 tensor that encodes the density and flux of energy and momentum in spacetime.
 In flat spacetime we define it directly as the Noether current associated to invariance of the action under spacetime translations 
 \begin{align}
@@ -71,15 +42,16 @@ In flat spacetime we define it directly as the Noether current associated to inv
 %
 In general spacetimes we do not have such symmetries precisely because the nontrivial curvature $g_{\mu\nu}(x)$ might obstruct them.
 It is then intuitive that \emph{whatever we identify with energy and momentum} should be very \emph{sensitive to variations of the metric} $g_{\mu\nu}$, since indeed a trivial metric $g_{\mu\nu}=\eta_{\mu\nu}$ would immediately yield such conserved quantities.
-We thus define the energy-momentum as the tensorial quantity identified in the variation of the matter action under $g_{\mu\nu}\mapsto g_{\mu\nu} + \delta g_{\mu\nu}$\todotag{Fix}
+We thus \textbf{define the energy-momentum tensor} as the tensorial quantity identified in the variation of the matter action under $g_{\mu\nu}\mapsto g_{\mu\nu} + \delta g_{\mu\nu}$ or equivalently $g^{\mu\nu} \mapsto g^{\mu\nu} + \delta g^{\mu\nu}$,
 \begin{align}
     \delta S_\text{mat} = \delta \left(\int \mathrm{d}^dx\,\sqrt{|g|}\,\,\mathcal{L}_\text{mat}\right)
-    =: \frac{1}{2} \int \mathrm{d}^d x \sqrt{-g}\, T^{\mu\nu}_\text{mat}\,\,\delta g_{\mu\nu}.
+    =: \frac{1}{2} \int \mathrm{d}^d x \sqrt{-g}\, T^{\mu\nu}_\text{mat}\,\,\delta g_{\mu\nu}
+    \equiv - \frac{1}{2} \int \mathrm{d}^d x \sqrt{|g|}\, T^{\mu\nu}_\text{mat} \,\,g_{\mu\alpha} g_{\nu\beta} \,\,\delta g^{\alpha\beta}\,.
 \end{align}
-This quantity is indeed a tensor since $\sqrt{|g|}\, \mathrm{d}^d x $ is the volume form, $\delta g^{\mu\nu}$ is a tensor and the action is a scalar.
-The quantity $T_{\mu\nu}$ must then transform as tensor in order to keep $T_{\mu\nu} \delta g^{\mu\nu}$ a scalar.
-
-Using $\delta g_{\mu\nu} = - g_{\mu\alpha} g_{\nu\beta} \delta g^{\alpha\beta}$, we reconcile the different sign conventions in the literature
+This quantity is indeed a tensor since $\sqrt{|g|}\,\mathrm{d}^d x $ is the volume form, the variation $\delta g^{\mu\nu}$ is a tensor and the action is a scalar.
+The quantity $T^{\mu\nu}$ must then transform as tensor in order to keep $T^{\mu\nu} \delta g_{\mu\nu}$ a scalar.
+%
+Using $\delta g_{\mu\nu} = - g_{\mu\alpha} g_{\nu\beta} \delta g^{\alpha\beta}$, we \textbf{reconcile the different sign conventions} in the literature
 {\small
 \begin{align}
     T^{\mu\nu} = \frac{2}{\sqrt{|g|}} \frac{\delta S_\text{mat}}{\delta g_{\mu\nu}}
@@ -90,36 +62,34 @@ Using $\delta g_{\mu\nu} = - g_{\mu\alpha} g_{\nu\beta} \delta g^{\alpha\beta}$,
     = -\frac{2}{\sqrt{|g|}} \frac{\delta S_\text{mat}}{\delta g^{\mu\nu}}.
 \end{align}
 }
+
 In terms of the matter lagrangian 
 {\small
 \begin{align}
-    T_{\mu\nu} = -\frac{2}{\sqrt{|g|}} \frac{\delta}{\delta g^{\mu\nu}} \left(\sqrt{|g|} \mathcal{L}_\text{mat}\right)
-    = -\frac{2}{\sqrt{|g|}} \left( \sqrt{|g|} \frac{\delta \mathcal{L}_\text{mat}}{\delta g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}g_{\mu\nu}\mathcal{L}_\text{mat} \right)
-    = -2 \frac{\delta \mathcal{L}_\text{mat}}{\delta g^{\mu\nu}} + g_{\mu\nu} \mathcal{L}_\text{mat}.
+    T_{\mu\nu} = -\frac{2}{\sqrt{|g|}} \frac{\mathrm{d}}{\mathrm{d} g^{\mu\nu}} \left(\sqrt{|g|} \mathcal{L}_\text{mat}\right)
+    = -\frac{2}{\sqrt{|g|}} \left( \sqrt{|g|} \frac{\mathrm{d} \mathcal{L}_\text{mat}}{\mathrm{d} g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}g_{\mu\nu}\mathcal{L}_\text{mat} \right)
+    = -2 \frac{\mathrm{d} \mathcal{L}_\text{mat}}{\mathrm{d} g^{\mu\nu}} + g_{\mu\nu} \mathcal{L}_\text{mat}.
 \end{align}
 }
-\smallskip
-
-The general matter action is written as, where $\phi_{a,\bullet}^{\star}$ carries arbitray spin indices and the dependence is on $\nabla_\mu$ and not just $\partial_\mu$ to ensure covariance,
+The general matter action depends on arbitrary-spin fields $\phi_{a,\bullet}^{\star}$ and their covariant derivatives $\nabla_\mu$, and not just partial ones $\partial_\mu$ to ensure covariance as discussed in \eqref{eq:general_matter_lagrangian},
 \begin{align}
     S=\int d^n x \sqrt{|g|} \,\mathcal{L}(\phi_{a,\bullet}^{\star},\nabla_\mu \phi_{a,\bullet}^{\star}, g_{\mu\nu})\,.
 \end{align}
 The dependence on the metric $g_{\mu\nu}$ can thus be both explicit and implicit through covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}\simeq \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \,\phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\,\phi^\star_{a,\#}$ containing Christoffel symbols, which in turn depend on the metric and its first derivatives.
-In full generality, by the chain rule we have
+By the chain rule we have
 \begin{align}
     \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial g_{\rho\sigma}}= \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma} \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g_{\rho\sigma}}.
 \end{align}
-The general form of energy-momentum tensor for some matter species is then
+The \textbf{general form of energy-momentum tensor} for some matter species is then
 {\small
 \begin{align}
-    T_{\mu\nu} &= -\frac{2}{\sqrt{|g|}}\, \frac{\delta S_\text{mat}}{\delta g^{\mu\nu}}= -\frac{2}{\sqrt{|g|}} \frac{\mathrm{d\,}}{\,\mathrm{d} g^{\mu\nu}} \left(\sqrt{|g|} \,\,\mathcal{L}(g,\phi,\nabla \phi)\right)
-    = -\frac{2}{\sqrt{|g|}} \left[ \sqrt{|g|} \,\,\frac{\mathrm{d} \mathcal{L}\,\,}{\mathrm{d} g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+    T_{\mu\nu} &= -\frac{2}{\sqrt{|g|}} \left[ \sqrt{|g|} \,\,\frac{\mathrm{d} \mathcal{L}\,\,}{\mathrm{d} g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
     \\[4pt]
-    &= -\frac{2}{\sqrt{|g|}} \left[\sqrt{|g|}\,\left( \frac{\partial \mathcal{L}}{\partial g^{\mu\nu}}_{\mid \nabla \phi} \!\!+\frac{\partial \mathcal{L}}{\partial \left(\nabla_\mu \phi^\star_{a,\bullet}\right)}_{\mid g_{\mu\nu}}\!\!\!\frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma}\,\, \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g^{\mu\nu}}\right) -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+    &= -\frac{2}{\sqrt{|g|}} \left[\sqrt{|g|}\,\left( \frac{\partial \mathcal{L}}{\partial g^{\mu\nu}}_{\mid \nabla \phi} \!\!+\frac{\partial \mathcal{L}}{\partial \left(\nabla_\mu \phi^\star_{a,\bullet}\right)}_{\mid g_{\mu\nu}}\!\!\!\frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma}\,\, \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g^{\mu\nu}}\right) -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]\,.
 \end{align}
 }
-The same argument could be done explicitating covariant derivatives in terms of locale frames and spin  connection forms $\omega_a^b$, and differentiating them wrt the metric $\frac{d\omega_a^b}{d g^{\mu\nu}}$.
-In fact, it is possibly more transparent when using non-tensorial (i.e. not integer spin) fields like spinors.
+\textbf{Completely equivalent formulas} are obtained explicitating covariant derivatives \textbf{in terms of} local frames $f_a$ and associated \textbf{spin connection forms $\omega_a^b$}, and differentiating them wrt the metric $\frac{d\omega_a^b}{d g^{\mu\nu}}$.
+In fact, this is probably even better when using non-tensorial (i.e. not integer spin) fields like spinors.
 
 Finally, the energy-momentum tensor obey the conservation equations (\textbf{Bianchi identities})
 \begin{align}
@@ -127,12 +97,12 @@ Finally, the energy-momentum tensor obey the conservation equations (\textbf{Bia
 \end{align}
 which is a consequence of diffeomorphism invariance of the matter action.
 In particular, this is not a `law of physics', but rather a `law of math'.
-It is indeed an \emph{unavoidable geometric constraint} that follows from demanding the matter action be invariant under diffeomorphisms $x\mapsto \tilde{x}(x)$.
+It is indeed an \textbf{unavoidable geometric constraint} that follows from demanding the matter action be \textbf{invariant under diffeomorphisms} $x\mapsto \tilde{x}(x)$.
 
 We also stress this should \emph{not} be interpreted as a global conservation law, since in curved spacetimes we generally do not even have global energy and momentum definitions.
 In fact $\nabla_\mu T^{\mu\nu}$ is not even a true divergence i.e. it is not of the form $\nabla_\mu V^\mu$ for some vector field $V^\mu$, so that Gauss theorem does not apply and in general we cannot define a vector whose flux through a closed surface vanishes.
 
-Finally note that we have precisely $n$ consraints, as expected since we have $n$ DoFs for the general diffeomorphism in $n$-dimensions.
+Finally note that we have \textbf{precisely $n$ consraints}, as expected since we have $n$ DoFs for the general \textbf{diffeomorphism in $n$-dimensions}.
 When such a diffeomorphism is a symmetry of the spacetime--i.e. generated by a Killing vector field--we can indeed identify a conserved energy or momentum component as described below.
 %
 \end{mytheorem}
@@ -141,38 +111,38 @@ When such a diffeomorphism is a symmetry of the spacetime--i.e. generated by a K
 Consider an infinitesimal diffeomorphism $\phi_{X,\epsilon}:M\to M$  generated by a vector field $X=X^\mu \partial_\mu$.
 The matter action is a scalar i.e. diffeomorphism invariant, so that \todotag{Fix proof, variations must be wrt covariant derivatives $\nabla$}
 \begin{align}
-    \int_M d^nx\sqrt{|g|}\,\mathcal{L}(\psi,\partial\psi,g,x) \equiv \int_M d^n\tilde{x}_\epsilon\sqrt{|\tilde{g}_\epsilon|}\tilde{\mathcal{L}}_\epsilon 
-    = \int_M \!\!\!d^nx\,\sqrt{|\phi_{X,\epsilon}^* g|}\,\,\left( \phi_{X,\epsilon}^* \mathcal{L}\right),
+    \int_M d^nx\sqrt{|g|}\,\mathcal{L}(\psi,\nabla\psi,g,x) \equiv \int_M \!\!\!d^n\tilde{x}_\epsilon\sqrt{|\tilde{g}_\epsilon|}\,\,\tilde{\mathcal{L}}_\epsilon 
+    = \int_M \!\!\!d^nx\,\sqrt{|\phi_{X,\epsilon}^* g|}\,\,\left( \phi_{X,\epsilon}^*\, \mathcal{L}\right)
     \quad \forall \epsilon.
 \end{align}
 Taking the limit
 \begin{align}
-    0 = \delta S_\text{mat} &= \lim_{\epsilon\to 0} \frac{1}{\epsilon} \left( \int_M d^nx\sqrt{|\phi_{X,\epsilon}^* g|}\, \phi_{X,\epsilon}^* \mathcal{L} - \int_M d^nx\sqrt{|g|}\mathcal{L} \right)
+    0 = \delta S_\text{mat} &= \lim_{\epsilon\to 0} \frac{1}{\epsilon} \left( \int_M \!\!\!d^nx\sqrt{|\phi_{X,\epsilon}^* g|}\, \phi_{X,\epsilon}^* \mathcal{L} - \int_M \!\!\!d^nx\sqrt{|g|}\mathcal{L} \right)
     \\
-    =& \int_M \!\!d^nx \tfrac{1}{2}\sqrt{|g|} g^{\mu\nu}\underbrace{\lim_{\epsilon\to 0}\frac{(\phi_{X,\epsilon}^*g_{\mu\nu}-g_{\mu\nu})}{\epsilon}}_{=(\mathcal{L}_Xg)_{\mu\nu}}\,\mathcal{L}
+    =& \int_M \!\!d^nx \underbrace{\tfrac{1}{2}\sqrt{|g|}\, g^{\mu\nu}}_{=\frac{d\sqrt{|g|}}{d g_{\mu\nu}}}\,\,\underbrace{\lim_{\epsilon\to 0}\frac{(\phi_{X,\epsilon}^*g_{\mu\nu}-g_{\mu\nu})}{\epsilon}}_{=(\mathcal{L}_Xg)_{\mu\nu}}\,\mathcal{L}
     + \int_M\!\! d^nx \sqrt{|g|} \lim_{\epsilon\to 0} \frac{\phi_{X,\epsilon}^* \mathcal{L} - \mathcal{L}}{\epsilon}.
 \end{align}
-For the latter observe that $\phi_{X,\epsilon}^* \mathcal{L} = \mathcal{L}(\phi_{X,\epsilon}^* \psi, \partial (\phi_{X,\epsilon}^* \psi), \phi_{X,\epsilon}^* g, x)$.
+For the latter observe that $\phi_{X,\epsilon}^* \mathcal{L} = \mathcal{L}(\phi_{X,\epsilon}^* \psi,\phi_{X,\epsilon}^* \nabla \psi, \phi_{X,\epsilon}^* g, x)$ since the lagrangian is a scalar function of its arguments.
 Therefore 
 \begin{align}
     \lim_{\epsilon\to 0} \frac{\phi_{X,\epsilon}^* \mathcal{L} - \mathcal{L}}{\epsilon} 
-    &= \frac{\delta \mathcal{L}}{\delta \psi} \lim_{\epsilon\to 0} \frac{\phi_{X,\epsilon}^* \psi - \psi}{\epsilon}
-    + \frac{\delta \mathcal{L}}{\delta (\partial_\mu \psi)} \lim_{\epsilon\to 0} \frac{\partial_\mu (\phi_{X,\epsilon}^* \psi) - \partial_\mu \psi}{\epsilon}
-    + \frac{\delta \mathcal{L}}{\delta g_{\mu\nu}} \lim_{\epsilon\to 0} \frac{(\phi_{X,\epsilon}^* g_{\mu\nu}-g_{\mu\nu})}{\epsilon}
+    &= \frac{\partial \mathcal{L}}{\partial \psi} \lim_{\epsilon\to 0} \frac{\phi_{X,\epsilon}^* \psi - \psi}{\epsilon}
+    + \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \psi)} \lim_{\epsilon\to 0} \frac{\phi_{X,\epsilon}^* \nabla_\mu\psi - \nabla_\mu \psi}{\epsilon}
+    + \frac{\partial \mathcal{L}}{\partial g_{\mu\nu}} \lim_{\epsilon\to 0} \frac{\phi_{X,\epsilon}^* g_{\mu\nu}-g_{\mu\nu}}{\epsilon}
     \\
-    &= \frac{\delta \mathcal{L}}{\delta \psi} \mathcal{L}_X \psi + \frac{\delta \mathcal{L}}{\delta (\partial_\mu \psi)} \partial_\mu (\mathcal{L}_X \psi) + \frac{\delta \mathcal{L}}{\delta g_{\mu\nu}} (\mathcal{L}_X g)_{\mu\nu}.
+    &= \frac{\partial \mathcal{L}}{\partial \psi} \mathcal{L}_X \psi + \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \psi)} \,\,\nabla_\mu\mathcal{L}_X \psi + \frac{\partial \mathcal{L}}{\partial g_{\mu\nu}} \mathcal{L}_X g_{\mu\nu}.
 \end{align}
 
-Integrating by parts, using the symmetry of $T^{\mu\nu}$ and Gauss theorem to discard boundary terms, and using that $\psi$ solves the Euler-Lagrange equations, we finally obtain
+Integrating by parts twice, discarding boundary terms with Gauss theorem, using that $\psi$ solves the Euler-Lagrange equations, and using the symmetry of $T^{\mu\nu}$, we finally obtain
 {\small
 \begin{align}
-0= \delta S = & \int_M \!\!d^nx \sqrt{|g|} \left[ \tfrac{1}{2} g^{\mu\nu} \mathcal{L} + \frac{\delta \mathcal{L}}{\delta g_{\mu\nu}} \right] (\mathcal{L}_X g)_{\mu\nu}
+0= \delta S = & \int_M \!\!d^nx \sqrt{|g|} \left[ \tfrac{1}{2} g^{\mu\nu} \mathcal{L} + \frac{\mathrm{d} \mathcal{L}}{\mathrm{d} g_{\mu\nu}} \right] (\mathcal{L}_X g)_{\mu\nu}
 \\
-&+ \int_M \!\!d^nx \sqrt{|g|} \underbrace{\left[ \frac{\delta \mathcal{L}}{\delta \psi} - \nabla_\mu \left( \frac{\delta \mathcal{L}}{\delta (\partial_\mu \psi)} \right) \right]}_{=0 \text{ by EoM}} \mathcal{L}_X \psi + \int_M \!\!d^nx \sqrt{|g|} \graycancel{\nabla_\mu \left( \frac{\delta \mathcal{L}}{\delta (\partial_\mu \psi)} \mathcal{L}_X \psi \right)}
+&+ \int_M \!\!d^nx \sqrt{|g|} \underbrace{\left[ \frac{\delta \mathcal{L}}{\delta \psi} - \nabla_\mu \left( \frac{\delta \mathcal{L}}{\delta (\nabla_\mu \psi)} \right) \right]}_{=0 \text{ by EoM}} \mathcal{L}_X \psi + \int_M \!\!d^nx \sqrt{|g|} \graycancel{\nabla_\mu \left( \frac{\delta \mathcal{L}}{\delta (\partial_\mu \psi)} \mathcal{L}_X \psi \right)}
 \\
-=& \int_M \!\!d^nx \sqrt{|g|} \underbrace{\left[ \tfrac{1}{2} g^{\mu\nu} \mathcal{L} + \frac{\delta \mathcal{L}}{\delta g_{\mu\nu}} \right]}_{=\tfrac{1}{2}T^{\mu\nu}} (\nabla_\mu X_\nu + \nabla_\nu X_\mu)
+=& \int_M \!\!d^nx \sqrt{|g|} \underbrace{\left[ \tfrac{1}{2} g^{\mu\nu} \mathcal{L} + \frac{\mathrm{d}\mathcal{L}}{\mathrm{d} g_{\mu\nu}} \right]}_{=\tfrac{1}{2}T^{\mu\nu}} (\nabla_\mu X_\nu + \nabla_\nu X_\mu)
 = \int_M\!\! d^nx \sqrt{|g|} \nabla_{\mu}T^{\mu\nu} X_\nu 
-+ \int_M \!\!d^nx \sqrt{|g|} \graycancel{\nabla_{\mu}\left(T^{\mu\nu}K_\nu\right)}
++ \int_M \!\!d^nx \sqrt{|g|} \graycancel{\nabla_{\mu}\left(T^{\mu\nu}X_\nu\right)}
 \end{align}
 }
 Since the vector field $X$ is arbitrary (and vanishes at the boundaries or infinity so that boundary terms vanish), we conclude that $\nabla_\mu T^{\mu\nu}=0$.
@@ -180,30 +150,51 @@ Since the vector field $X$ is arbitrary (and vanishes at the boundaries or infin
 \end{proof}
 
 
-
-\begin{mytheorem}[General form of  energy-momentum tensor]
+\begin{mytheorem}[Energy-momentum of a perfect fluid\todotag{Finish}]
 %
-The general matter action is written
+A perfect fluid is a continuum distribution of matter characterized by a well-defined velocity field $u^\mu$ at each point in spacetime, an energy density $\rho$ and \emph{isotropic} pressure $p$ in its rest frame.
+Its energy-momentum tensor is then given by\footnote{Note the sign convention $(-,+,+,+)$ for the metric.}
 \begin{align}
-    S=\int d^n x \sqrt{|g|} \,\mathcal{L}(\phi_{a,\bullet}^{\star},\nabla_\mu \phi_{a,\bullet}^{\star}, g_{\mu\nu})\,.
+    T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}\,.
 \end{align}
-The dependence on the metric $g_{\mu\nu}$ can thus be both explicit and implicit through the covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}\simeq \partial_\mu \phi^\star_{a,\bullet} -\Gamma_{\mu \#}^\star \,\phi^{\#}_{a,\bullet} + \Gamma_{\mu\bullet}^{\#}\,\phi^\star_{a,\#}$ which contains the Christoffel symbols which in turn depend on the metric and its first derivatives.
-In full generality we have
+%
+\end{mytheorem}
+
+\begin{mytheorem}[Energy-momentum of a scalar field: quintessence \& k-essence\questiontag{Finish}]
+%
+The most general action for a real scalar field is given by the $k$-essence lagrangians for arbitrary, yet physically meaningful, functions $P(\phi,X)$ of the scalar field $\phi$ and the kinetic term $X:=-g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi$
 \begin{align}
-    \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial g_{\rho\sigma}}= \frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma} \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g_{\rho\sigma}}.
+    S_{\text{k-ess}} = \int \!\!d^nx \sqrt{|g|} \,P(\phi,X).
 \end{align}
-The energy-momentum tensor is thus given by
+The energy-momentum tensor of such scalar field theories is given by
+\begin{align}
+    T_{\mu\nu} = 2P_{X} \,\partial_\mu \,\phi \partial_\nu \phi +  P(\phi,X) g_{\mu\nu},\quad \text{where}\quad P_X := \frac{\partial P}{\partial X}.
+\end{align}
+Matching to a perfect fluid $T_{\mu\nu}=(\rho + p) u_\mu u_\nu + p g_{\mu\nu}$ we thus identify
+\begin{align}
+    u_{\mu}= \frac{\partial_\mu \phi}{\sqrt{X}},\quad \rho = 2X P_X - P,\quad p = P.
+\end{align}
+For the matching to work i.e. in order to identify the 4-velocity $u_\mu \,\propto \,\partial_\mu \phi$, it is \textbf{crucial that $\partial_\mu \phi$ is timelike}, that is time variations of the field should dominate over spatial ones $\dot{\phi}^2 > (\nabla \phi)^2$.
+
+For example $P(X,\phi)=\tfrac{1}{2}X-V(\phi)$ recovers the simpler \emph{quintessence} action
 {\small
 \begin{align}
-    T_{\mu\nu} &= -\frac{2}{\sqrt{|g|}}\, \frac{\delta S_\text{mat}}{\delta g^{\mu\nu}}= -\frac{2}{\sqrt{|g|}} \frac{\mathrm{d\,}}{\,\mathrm{d} g^{\mu\nu}} \left(\sqrt{|g|} \,\,\mathcal{L}(g,\phi,\nabla \phi)\right)
-    = -\frac{2}{\sqrt{|g|}} \left[ \sqrt{|g|} \,\,\frac{\mathrm{d} \mathcal{L}\,\,}{\mathrm{d} g^{\mu\nu}} -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
-    \\[4pt]
-    &= -\frac{2}{\sqrt{|g|}} \left[\sqrt{|g|}\,\left( \frac{\partial \mathcal{L}}{\partial g^{\mu\nu}}_{\mid \nabla \phi} \!\!+\frac{\partial \mathcal{L}}{\partial \left(\nabla_\mu \phi^\star_{a,\bullet}\right)}_{\mid g_{\mu\nu}}\!\!\!\frac{\partial \nabla_\mu \phi^\star_{a,\bullet}}{\partial \Gamma_{\alpha\beta}^\gamma}\,\, \frac{\partial \Gamma_{\alpha\beta}^\gamma}{\partial g^{\mu\nu}}\right) -\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\,\mathcal{L} \right]
+    S_{\text{5-ess}}=\int\!\! d^nx \sqrt{|g|} \left( -\frac{1}{2} g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - V(\phi) \right),\quad
+    \rho = \tfrac{1}{2} X + V(\phi),\quad p = \tfrac{1}{2} X - V(\phi), \quad w:= \frac{p}{\rho} = \frac{\tfrac{1}{2}X - V(\phi)}{\tfrac{1}{2}X + V(\phi)}
 \end{align}
 }
-
-
+with the famous equation of state parameter $w$ yielding $w\approx -1$ when potential energy dominates over the kinetic one $V(\phi) \gg X$.
+%
 \end{mytheorem}
+
+\begin{mytheorem}[Energy-momentum of spin-1 field\todotag{Finish}]
+\end{mytheorem}
+
+\begin{mytheorem}[Energy-momentum of spin-$\tfrac12$ field\todotag{Finish}]
+\end{mytheorem}
+
+
+
 
 
 
@@ -261,16 +252,52 @@ The energy-momentum tensor of a point particle of mass $m$ moving along a worldl
 
 
 
+\begin{mytheorem}[Killing vector field\todotag{finish}]
+%
+A Killing vector field $K$ is a vector field whose flow generates an isometry of the metric manifold i.e. the Lie derivative of the metric along $K$ vanishes
+\begin{align}
+    \mathcal{L}_K g = 0.
+\end{align}
+Using metric compatibility $\nabla g=0$ and the absence of torsion $0=\nabla_X Y-\nabla_Y X - [X,Y]$, the Killing condition can be equivalently written as
+\begin{align}
+    \begin{cases}
+    0= \mathcal{L}_K g_{\mu\nu} =K(g_{\mu\nu}) - g([K,\partial_\mu],\partial_\nu) - g(\partial_\mu,[K,\partial_\nu]) \\
+    0 = \nabla_K g_{\mu\nu}= K(g_{\mu\nu}) -g(\nabla_K \partial_\mu,\partial_\nu) - g(\partial_\mu, \nabla_K \partial_\nu)
+    \end{cases}\quad \Rightarrow \quad g(\nabla_\mu K, \partial_\nu) + g(\partial_\mu, \nabla_\nu K) =0.
+\end{align}
+The same formula is obatined replacing partial with covariant derivatives since both expressions are tensorial \footnote{As discussed in Section \ref{sec:lie_derivative}, both expressions are tensorial and coincide in normal coordinates.}
+\begin{align}
+    0=\left(\mathcal{L}_K g\right)_{\mu\nu}&\equiv K^\lambda \partial_\lambda g_{\mu\nu} + g_{\lambda\nu} \partial_\mu K^\lambda + g_{\mu\lambda} \partial_\nu K^\lambda\\
+    &= K^\lambda \underbrace{\nabla_\lambda g_{\mu\nu}}_{=0} + \underbrace{g_{\lambda\nu} \nabla_\mu K^\lambda}_{=\nabla_\mu K_\nu} + \underbrace{g_{\mu\lambda} \nabla_\nu K^\lambda}_{=\nabla_\nu K_\mu}
+    = \nabla_\mu K_\nu + \nabla_\nu K_\mu.
+\end{align}
+Finally, either way, the Killing equation equivalently reads
+\begin{align}
+    \nabla_\mu K_\nu + \nabla_\nu K_\mu = 0.
+\end{align}
+
+The number of Killing vector fields of a spacetime is a measure of its symmetries.
+In $n$-dimensional spacetime, the maximum number of linearly independent Killing vector fields is $n(n+1)/2$.
+This number is intuitively clear for two reasons.
+First, we have $n$ \emph{local} directions of translation symmetry--i.e. in the tangent space--and $n(n-1)/2$ directions of rotation symmetry.
+For example, in 4D we have 4 translations and 6 `generalized rotations' (3 ordinary spatial rotations and 3 boosts).
+Second, $n(n+1)/2$ is precisely the number of independent components of the metric tensor $g_{\mu\nu}$, so that exceeding this number would overconstrain the metric.
+Spacetimes achieving this maximum number, like Minkowski, de Sitter and anti-de Sitter, are called \emph{maximally symmetric}.
+%
+\end{mytheorem}
+
+
+
 \begin{mytheorem}[Conserved quantities along Killing vector fields: point \& continuum distributions]\todotag{Finish}
 Consider a particle moving along a geodesic $x^\mu(\lambda)$ with $4$-momentum $p^\mu = m\,\mathrm{d}x^\mu/\mathrm{d}\lambda$.
 Note that $\lambda$ has energy-dimension $[E]^{-2}$.
 For massive particles--timelike geodesics--we simply take $\lambda=\tau/m$ where $\tau$ is the proper time along the worldline  $\partial_\tau x^\mu \partial_\tau x_\mu=-1$.
 For massless particles--i.e. null geodesics $\partial_\lambda x^\mu \partial_\lambda x_\mu=0$--the parameter $\lambda$ is \emph{defined} so that the geodesic equation holds, up to affine transformations $\lambda \mapsto a \lambda + b$; the rescaling $\lambda \mapsto a \lambda$ changes the momentum $p^\mu \mapsto p^\mu/a$ and is fixed demanding a specific energy normalization $E=p^\mu U_\mu$ with respect to an observer with $4$-velocity $U^\mu$.
-If $K^\mu$ is a Killing vector field, the following quantity is conserved along the geodesic
+If $K^\mu$ is a Killing vector field, the following \textbf{quantity is conserved along the geodesic}
 \begin{align}
     Q := K_\mu \,p^\mu, \qquad \frac{\mathrm{d}Q}{\mathrm{d}\lambda} = 0.
 \end{align}
-For a continuum distribution of matter with stress-energy tensor $T^{\mu\nu}$, the following current is conserved
+For a continuum distribution of matter with stress-energy tensor $T^{\mu\nu}$, the following \textbf{current is conserved}
 \begin{align}
     J^\mu := T^{\mu\nu} K_\nu,\qquad \nabla_\mu J^\mu = 0.
 \end{align}
@@ -381,7 +408,7 @@ On the other hand, the symmetric part $Q^\rho_{(\mu\nu)}$ can be interpreted as 
 \begin{mytheorem}[Euler-Lagrange equations in curved spacetime for arbitrary-spin fields.]
 %
 The \textbf{action} for a field theory in curved spacetime with a multiplet $\{\phi^\star_{a,\bullet}\}_a$ of fields with \emph{arbitrary spin} is 
-\begin{align}
+\begin{align}\label{eq:general_matter_lagrangian}
     S[\phi] =  \int_M \Omega_g\,\,\mathcal{L}\,=\int \mathrm{d}^n x \sqrt{|g|} \,\,\, \mathcal{L}(\phi_a, \nabla_\mu \phi_a, g_{\mu\nu}).
 \end{align}
 The lagrangian density $\mathcal{L}$ is a \emph{scalar} function of the following tensors\footnote{To be precise, for half-integer spin the first two are sections of a suitable fiber bundle.}: the fields $\phi^\star_{a,\bullet}$, carrying suitable spin, their covariant derivatives $\nabla_\mu \phi^\star_{a,\bullet}$ and the metric $g_{\mu\nu}$.
