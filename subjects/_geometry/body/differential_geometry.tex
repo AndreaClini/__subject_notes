@@ -1609,8 +1609,90 @@ The Leibniz rule is then obeyed since
 \end{mytheorem}
 
 
+
+
+
+\begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
+%
+Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, define the $\mathfrak{g}$-valued connection 1-forms $\omega_F$ as the 1-form that in a given local frame $\{f_a\}_a$ for the fiber bundle $E_F \to M$ satisfy
+\begin{equation}
+     \nabla_X f_b=:\omega_F(X) f_b =: f_a\otimes \omega^a_{F\, b}(X)\,\quad \forall X \in \mathfrak{X}(M).
+\end{equation}
+The covariant derivative of a general section $\psi = \psi^a f_a$ is then given by the Leibniz rule 
+\begin{equation}
+    \nabla \psi = f_a \otimes (d\psi^a + \omega^a_{F\, b}\,\, \psi^b)\,.
+\end{equation}
+Under a change of local frame $\{\tilde{f}_a,\tilde{\phi}^a\}_a$ with $\tilde{f}_a= A_a^i f_i$ for some $A: U \subseteq M \to G$, the connection 1-form transforms as
+\begin{equation}\label{eq:transformation_law_connection_1_form}
+    \tilde{\omega}_a^b= (A^{-1})_j^b \,\, d A_a^j + (A^{-1})_j^b \,\, \omega^j_{i} \,\, A_a^i.
+\end{equation}
+This shows the connection 1-form does not transform as a tensor, due to the $A^{-1}\, dA$ piece, and is thus not \emph{tensor}-valued.
+In fact, this is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates. (cf. connections on the tangent bundle below).
+
+The connection 1-form should in fact be seen as a fiber valued differential form, with fiber is the Lie algebra of the structure group of the frame bundle, i.e. $\mathfrak{gl}(n,\R)$ for general connections and $\mathfrak{so}(p,q)$ for orthonormal frames of metric connection with signature $(p,q)$.
+
+\todotag{Fix from here}To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
+\begin{align}
+    P_\gamma(t): E_{F,\,\gamma(0)} &\to E_{F,\,\gamma(t)} \mid f \to P_\gamma(t)\,f\quad \text{for some curve }P_\gamma(t)\in G \subseteq GL(F).
+\end{align}  
+The covariant derivative then reurns the infinitesimal change, that is 
+\begin{align}
+    P_\gamma(\epsilon) f = f + \epsilon \frac{d}{d t} \Big|_{t=0} P_\gamma(t) f + O(\epsilon^2) = f + \epsilon \nabla_{\dot{\gamma}(0)} f + O(\epsilon^2)\,.
+\end{align}
+Since $\exp:\mathfrak{g}\to G$ is a local diffeomorphism and we have the commutative diagram
+\[
+    \begin{tikzpicture}[scale=1]
+    \node (A) at (0,1) {$\R$};
+    \node (B) at (2,1) {$\mathfrak{g}$};
+    \node (C) at (0,0) {$\R$};
+    \node (D) at (2,0) {$G\,,$};
+
+    \draw[->] (A) -- node[above] {} (B);
+    \draw[->] (A) -- node[left]  {$\exp$} (C);
+    \draw[->] (B) -- node[right] {$\exp$} (D);
+    \draw[->] (C) -- node[below] {$P_\gamma$} (D);
+    \end{tikzpicture}
+\]
+there exists $L\in\mathfrak{g}$ such that locally $P_\gamma(t) = \exp(L t)$ for $t\sim 0$.
+Comparing the two expressions we thus confirm that
+\begin{align}
+    P_\gamma(\epsilon) f = \exp(\epsilon L)f = f + \epsilon L f + O(\epsilon^2) \quad \Rightarrow \quad \nabla_{\dot{\gamma}(0)} = \frac{\mathrm{d}P_\gamma}{\mathrm{d}t}_{\mid t=0}= L \in \mathfrak{g}.
+\end{align}
+%
+In turn, we understand that the transformation law \eqref{eq:transformation_law_connection_1_form} of the connection 1-from is nothing else than the expected transformation at the Lie algebra level induced by the corresponding \emph{local} transformation of the represenation space $F$.
+Indeed we can write at the level of abstract elements of $\mathfrak{g}$
+\begin{align}
+    \frac{\mathrm{d}P_\gamma}{\mathrm{d}t}f= \nabla_{\dot{\gamma}(t_0)} f 
+    \quad \Rightarrow\quad P_\gamma(t) = \exp\left( \int_0^t \nabla_{\dot{\gamma}(\tau)} d\tau \right)
+\end{align}
+Now consider two local frames $\{f_i\}_i$ and $\{\tilde{f}_a = A_a^{i} f_i\}_a$ related by a local transformation $A: U \subseteq M \to G$, with connection 1-forms $\omega_{F}$ and $\tilde{\omega}_{F}$ respectively.
+Representing the parallel transport isomorphism  $P_\gamma(t): {E_F}_{\gamma(0)} \longrightarrow {E_F}_{\gamma(t)}$ in both frames we find
+\begin{align}
+     P_\gamma(t)^j_i = \exp\left( \int_0^t \omega_{F}(\dot{\gamma}(\tau))\, d\tau \right)^j_i
+     \quad 
+     &\tilde{P}_\gamma(t)^b_a = \exp\left( \int_0^t \tilde{\omega}_{F}(\dot{\gamma}(\tau))\, d\tau \right)^b_a = \big(A_{\gamma(t)}^{-1}\big)^b_j \, P_\gamma(t)^j_i \, \big(A_{\gamma(0)}\big)^i_a\\[5pt]
+     \quad\Rightarrow\quad
+    \tilde{\omega}_{F}(\dot{\gamma}(0))^b_a = \frac{d}{dt}\tilde{P}_\gamma(t)^b_a \Big|_{t=0} 
+    &= \frac{d}{dt}_{|_{t=0}} \!\!\left( (A_{\gamma(t)}^{-1})^b_j \, P_\gamma(t)^j_i \, (A_{\gamma(0)})^i_a \right)\\[4pt]
+    &= d(A^{-1})^b_j(\dot{\gamma}(0))\, (A_{\gamma(0)})_a^j + (A^{-1}_{\gamma(0)})^b_j \, \omega_{F}(\dot{\gamma}(0))^j_i \, (A_{\gamma(0)})^i_a.
+\end{align}
+This is precisely the transformation law \eqref{eq:transformation_law_connection_1_form} evaluated on the vector $\dot{\gamma}(0)\in T_{\gamma(0)}M$.
+%
+\end{mytheorem}
+
+
+
+
 \begin{mytheorem}[Connections on arbitrary fiber bundles induced from tangent bundle connection \answerinline{OK}]
-The general idea is that we start with a connection $\nabla$ on the tangent bundle $TM\to M$.
+The previous analysis suggests how to define arbitrary connections or how to extend a given connection to other fiber bundles.
+Indeed, given an abstract $\mathfrak{g}$-valued 1-form $\omega\in \Gamma\left(\Lambda^1(M,\mathfrak{g})\right)$ and a fiber bundle $E_F\to M$ with structure group $G\curvearrowright F$ i.e. a representation $\rho: G \to GL(F)$, we can define a connection on $E_F\to M$ via
+\begin{equation}
+    \omega_F := \rho_*(\omega)
+\end{equation}
+where $\rho_*: \mathfrak{g} \to \mathfrak{gl}(F)$ is the induced Lie algebra representation.
+\smallskip
+
+The most common case is that we start with a connection $\nabla$ on the tangent bundle $TM\to M$.
 Consider tetrads $\{e_i\}_i$ on the tangent bundle $T^1_0M\to M$ transforming under some (representation of a) structure group $G\subseteq GL(n,\R)$.
 The connection form on the tangent bundle $\omega_{TM}$ must then take values in the representation of the Lie algebra $\mathfrak{g}\curvearrowright T^1_0M$ induced by the action of $G \curvearrowright T^1_0M$, with concrete matrix elements defined in the chosen tetrad $\{e_i\}_i$ as
 \begin{align}
@@ -1618,7 +1700,7 @@ The connection form on the tangent bundle $\omega_{TM}$ must then take values in
 \end{align}
 We extend the connection $\nabla$ on the cotangent bundle $T^0_1M$ via the ajoint representation of $\mathfrak{g}$, and to all tensor bundles $T^h_k M$ via the tensor product of (adjoint) representations.
 
-Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$ with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can naturally induce a connection on $E_F\to M$.
+Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$ with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can also naturally induce a connection on $E_F\to M$.
 Indeed, regardless of the specific representation, the connection 1-form on the tangent bundle can be seen as taking values in the \emph{abstract} Lie algebra
 \begin{align}
     \omega: TM &\to \mathfrak{g} \,\, \mid T_pM \ni X \mapsto \omega(X) \in \mathfrak{g}.
@@ -1628,112 +1710,11 @@ In a given local frame $\{f_a\}_a$ for $E_F\to M$, the explicit matrix elements 
 \begin{align}
     \nabla_\cdot f_b &=: \omega_{F}(\cdot) f_b =: f_a \otimes \omega^a_{F\, b}(\cdot)\,.
 \end{align}
-In particular, the covariant derivative of a section $\psi = \psi^a f_a$ reads
+By the Leibniz rule the covariant derivative of a general section $\psi = \psi^a f_a$ then reads
 \begin{equation}
     \nabla \psi = f_a \otimes \big(d\psi^a + \omega_{F\, b}^a \, \psi^b\big)\,.
 \end{equation}
 In particular we remark that, as abstract elements of $\mathfrak{g}$, the connection 1-forms on $E_F\to M$ and on $TM\to M$ coincide i.e. $[\omega_{F}(\cdot)]\equiv [ \omega_{TM}(\cdot)] \equiv \omega(\cdot)\in \mathfrak{g}$.
-\end{mytheorem}
-
-
-
-\begin{mytheorem}[Connection 1-form\todotag{Redo accounting for general $F$}]
-%
-Given an affine connection $\nabla$ on a fibre bundle $E_F \to M$ with fiber $F$ and structure group $G$, define the $\mathfrak{g}$-valued connection 1-forms $\omega_F$ as the 1-form that in a given local frame $\{f_i\}_i$ for the fiber bundle $E_F \to M$ satisfy
-\begin{equation}
-     \nabla_X f_j=:\omega_F(X) f_j =: f_i\otimes \omega^i_{F\, j}(X)\,\quad \forall X \in \mathfrak{X}(M).
-\end{equation}
-In particular, the covariant derivative of a section $\psi = \psi^i f_i$ is the fiber valued 1-form
-\begin{equation}
-    \nabla \psi = f_i \otimes (d\psi^i + \omega^i_{F\, j}\,\, \psi^j)\,.
-\end{equation}
-Under a change of local frame $\{\tilde{f}_a,\tilde{\phi}^a\}_a$ with $\tilde{f}_a= A_a^i f_i$ for some $A: U \subseteq M \to G$, the connection 1-form transforms as
-\begin{equation}\label{eq:transformation_law_connection_1_form}
-    \tilde{\omega}_a^b= (A^{-1})_i^b \,\, d A_a^i + (A^{-1})_i^b \,\, \omega^i_{j} \,\, A_a^j.
-\end{equation}
-This shows the connection 1-form does not transform as a tensor, due to the $A^{-1}\, dA$ piece, and is thus not \emph{tensor}-valued.
-In fact, this is nothing else that the abstract tetrad form of the well-known transformation of Christoffel symbols under change of coordinates. (cf. connections on the tangent bundle below).
-
-\todotag{Fix from here}To confirm the connection 1-form does indeed take values in the Lie algebra $\mathfrak{g}$ of the structure group $G$, note that $\nabla$-parallel transport in $E_F\to M$ along a given curve $\gamma: [0,1] \to M$ yields linear isomorphisms (also metric preserving if $\nabla$ is a metric connection)
-\begin{align}
-    P_\gamma(t): E_{F,\,\gamma(0)} &\to E_{F,\,\gamma(t)} \mid e_a \to M(t)_a^b e_b\quad \text{for some }M(t)\in G \subseteq GL(F).
-\end{align}  
-The covariant derivative then reurns the infinitesimal change, that is 
-\begin{align}
-    P_\gamma(\epsilon) f = f + \epsilon \frac{d}{d t} \Big|_{t=0} P_\gamma(t) f + O(\epsilon^2) = f + \epsilon \nabla_{\dot{\gamma}(0)} f + O(\epsilon^2)
-\end{align}
-On the other hand, since $P_\gamma(t)$ is a linear isomorphism we have $M(t) = \exp(Lt)$ for some $L \in \mathfrak{g}$ so that
-\begin{align}
-    P_\gamma(\epsilon) f = M(\epsilon)^a_b f^b e_a = \left( \delta^a_b + \epsilon \frac{d}{d t} \Big|_{t=0} M(t)^a_b + O(\epsilon^2) \right) f^b e_a = f + \epsilon L f + O(\epsilon^2).
-\end{align}
-Comparing the two expressions we get
-\begin{align}
-    \nabla_{\dot{\gamma}(0)}  = \left( \frac{d}{d t} \Big|_{t=0} M(t) \right) = L \in \mathfrak{g}.
-\end{align}
-
-In turn, we understand that the transformation law \eqref{eq:transformation_law_connection_1_form} of the connection 1-from is nothing else than the expected transformation at the Lie algebra level induced by the corresponding \emph{local} transformation of the represenation space $F$.
-Indeed consdier two local frames $\{f_a\}$ and $\{\tilde{f}_a = A_a^{\, b} f_b\}$ related by a local transformation $A: U \subseteq M \to G$ taking this matrix form in the chosen bases.
-Parallel transport along a curve $\tau \mapsto \gamma(\tau)$ yields a parameter dependent transformation
-\begin{align}
-    G \ni M(t) = \exp\left( - \int_0^t \omega_{(F)}(\dot{\gamma}(\tau)) d\tau \right) : {E_F}_{\gamma(0)} \longrightarrow {E_F}_{\gamma(t)}\,.
-\end{align}
-The matrix elements of the transfromation in the two local frames are related by
-\begin{align}
-    \tilde{M}(t) &= A(\gamma(t)) M(t) A^{-1}(\gamma(0)) 
-     = A(\gamma(t)) \exp\left( - \int_0^t \omega_{(F)}(\dot{\gamma}(\tau)) d\tau \right) A^{-1}(\gamma(0)) \\[6pt]
-    & \Rightarrow\quad \tilde{\omega}_{F}(\dot{\gamma}(0)) \equiv \frac{d}{dt}\tilde{M}(t)_{\mid t=0} = dA(\dot{\gamma}(0)) A^{-1}(\gamma(0)) + A(\gamma(0)) \, \omega_{(F)}(\dot{\gamma}(0)) \, A^{-1}(\gamma(0)).
-\end{align}
-This is precisely the transformation law \eqref{eq:transformation_law_connection_1_form} evaluated on the vector $\dot{\gamma}(0)\in T_{\gamma(0)}M$.
-
-
-Just like the other forms, the connection 1-form can be seen as a fiber valued differential form.
-The fiber is the Lie algebra of the structure group of the frame bundle, i.e. $\mathfrak{gl}(n,\R)$ for a general connectin, and $\mathfrak{so}(p,q)$ for an orthonormal frame of metric connection with signature $(p,q)$.
-Indeed, for an orthonormal tetrad $\{e_\mu\}_\mu$, metric compatibility $\nabla g=0$ implies
-\begin{align}
-    0 = \nabla_\bullet \eta_{\mu\nu} &= \nabla_\bullet g(e_\mu, e_\nu) = g(\nabla_\bullet e_\mu, e_\nu) + g(e_\mu, \nabla_\bullet e_\nu) = g(\omega_\mu^\rho e_\rho, e_\nu) + g(e_\mu, \omega_\nu^\sigma e_\sigma) = \omega_{\mu \nu} + \omega_{\nu \mu}.
-\end{align}
-Lowering the indices of the connection form with the metric we thus get an antisymmetric form $\omega_{\mu\nu} = - \omega_{\nu\mu}$, which is the hallmark of the Lie algebra $\mathfrak{so}(p,q)$.
-If $G\subseteq GL(T_pM) \equiv GL(n,\R)$ is the subgroup preserving the metric $g_p$ at point $p\in M$, the connection 1-form then takes values in the Lie algebra $\mathfrak{g}$ of $G$.
-Namely, for any curve $t\mapsto A(t)\sim\mathbb{I}+t\omega \in G\subseteq GL(T_pM)$
-\begin{align}
-    g_{\rho\sigma}A^\rho_\mu A^\sigma_\nu = g_{\mu\nu}
-    &\Rightarrow 0 = \frac{d}{dt} \Big|_{t=0} \left( g_{\rho\sigma}A^\rho_\mu(t) A^\sigma_\nu(t) \right) = g_{\rho\sigma} \left( \frac{d}{dt} \Big|_{t=0} A^\rho_\mu(t) \right) \delta^\sigma_\nu + g_{\rho\sigma} \delta^\rho_\mu \left( \frac{d}{dt} \Big|_{t=0} A^\sigma_\nu(t) \right) \\
-    &\Rightarrow g_{\rho\nu} \omega^\rho_\mu + g_{\mu\sigma} \omega^\sigma_\nu = 0.
-\end{align}
-%
-This was indeed expected: the connection ultimately yields the infinitesimal change of a vector under parallel transport, which preserves angles and lengths by definition.
-The change of a vector can thus only be an infinitesimal `generalized rotation' in the tangent space, i.e. an element of the Lie algebra of the orthogonal group of $g_p$, which is $SO(p,q)$ in a suitable basis.
-That is, for $\epsilon \mapsto X(\epsilon)$ a parallelly transported vector along a curve $\epsilon \mapsto \gamma(\epsilon)$,
-\begin{align}
-    X(\epsilon) &= X(0) + \epsilon\, \nabla_{\dot{\gamma}(0)}\, X + O(\epsilon^2) \\
-    &= X(0) + \epsilon\,\, \omega(\dot{\gamma}(0))\, X(0) + O(\epsilon^2) \\
-    & = \left( \mathbb{I} + \epsilon \omega(\dot{\gamma}(0)) \right) X(0) + O(\epsilon^2).
-\end{align}
-
-This tells us how the connection $\nabla$ should act on a general fiber bundle $E_F\to M$ with structure group $G$: via the representation of the Lie algebra $\mathfrak{g}$ on the fiber $F$.
-Namely, if $E_F \to M$ is associated to the frame bundle via a representation $\rho: G \to GL(F)$, the connection 1-form on $E_F \to M$ will be given by
-\begin{equation}
-    \omega^a_{\, b} = \rho_*(\omega^i_{\, j}),
-\end{equation}
-where $\rho_*: \mathfrak{g} \to \mathfrak{gl}(F)$ is the induced Lie algebra representation.
-For example, for the tensor bundle $T^h_kM \to M$ the representation is the tensor product of $h$ copies of the given representation on $T_pM$ and $k$ copies of the dual representation of $G$.
-%
-For spinors, it is the spin representation of the spin group $\text{Spin}(p,q)$, that is the double cover of $SO(p,q)$.
-If $\omega_{\mu\nu}$ is are the connection 1-forms of the connection on $TM$ in a given tetrad frame, and 
-$\{\gamma^a\}_a$ are the gamma matrices in a given representation with basis $s_1\dots s_m$ of the spinor space, the spin representation $\rho_{spin}: \mathfrak{so}(p,q) \to \mathfrak{gl}(\C^m)$ is given by
-\begin{equation}
-    \omega^{\text{sp.}\, b}_{~a}:=\rho_{spin}(\omega_{\mu\nu})^b_{\,a} := \frac{1}{4} \omega_{\mu\nu} \,\{\gamma^\mu, \gamma^\nu\}^b_{\,a}.
-\end{equation}
-The connection 1-form act on basis spinors as 
-\begin{equation}
-    \nabla s_a = \omega^{\text{sp.}\, b}_{~ a}{} s_b = \tfrac{1}{4}\omega_{\mu\nu}\,[\gamma^\mu, \gamma^\nu]^b_{\,a} s_b,
-\end{equation}
-and on general spinor fields $\psi = \psi^a s_a$ as
-\begin{equation}
-    \nabla \psi = d \psi^a \otimes s_a + \psi^a \, \nabla s_a = \left( d \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a \right) \otimes s_b,\,\,\quad \text{i.e.} \quad
-    \nabla_\mu \psi^b = \partial_\mu \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a.
-\end{equation}
-%
 \end{mytheorem}
 
 
@@ -1748,18 +1729,41 @@ In a tetrad $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_{\,a}^{b}$
 \begin{equation}
     d g_{ab} = \omega_{\,a}^{c}\, g_{cb} + \omega_{\,b}^{c} \,g_{ac}.
 \end{equation}
-If the tetrad is orthonormal i.e. $g_{ab} = (\pm1\dots\pm1)$ constant, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad, upon lowering an index with the metric,
+If the tetrad is orthonormal i.e. $g_{ab} \equiv \eta_{ab}= (\pm1\dots\pm1)$ constant with some signature $(p,q)$, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad, upon lowering an index with the metric, and confirms in such tetrad the connection 1-form takes values in $\omega\in\mathfrak{so}(p,q)\subset \mathfrak{gl}(n)$
 \begin{equation}
-    \omega_{ab} = - \omega_{ba}\quad \text{ where }\quad \omega_{ab} := g_{ac} \, \omega^c_{~b}\,,
+    0 = d(\eta_{ab})\quad \Rightarrow\quad \omega_{ab} = - \omega_{ba}\quad \text{ where }\quad \omega_{ab} := g_{ac} \, \omega^c_{~b}\,.
 \end{equation}
-which is the hallmark of the Lie algebra $\omega \in \mathfrak{so}(p,q)$ where $(p,q)$ is the signature of the metric.
 %
+Antisymmetry in the lowered indices is indeed the hallmark of the Lie algebra $\mathfrak{so}(p,q)$.
+Ineed, if $G\subseteq GL(T_pM) \equiv GL(n,\R)$ is the subgroup preserving the metric $g_p$ at point $p\in M$, for any curve $t\mapsto A(t)\sim\mathbb{I}+t\,\omega \in G\subseteq GL(T_pM)$
+\begin{align}
+    (g_p)_{\rho\sigma}A^\rho_\mu A^\sigma_\nu = (g_p)_{\mu\nu}
+    &\Rightarrow 0 = \frac{d}{dt} \Big|_{t=0} \left( (g_p)_{\rho\sigma}A^\rho_\mu(t) A^\sigma_\nu(t) \right) = g_{\rho\sigma} \left( \frac{d}{dt} \Big|_{t=0} A^\rho_\mu(t) \right) \delta^\sigma_\nu + g_{\rho\sigma} \delta^\rho_\mu \left( \frac{d}{dt} \Big|_{t=0} A^\sigma_\nu(t) \right) \\
+    &\Rightarrow g_{\rho\nu} \omega^\rho_\mu + g_{\mu\sigma} \omega^\sigma_\nu = 0.
+\end{align}
+This is indeed expected: a connection ultimately yields the infinitesimal change of a vector under parallel transport, and preserves angles and lengths by definition if it is metric compatible.
+The change of a vector can thus only be an infinitesimal `generalized rotation' in the tangent space, i.e. an element of the Lie algebra of the orthogonal group of $g_p$, which is $SO(p,q)$ in a suitable basis.
 \end{mytheorem}
 
 
 \begin{mytheorem}[The example: connection on spinors\todotag{Redo}]
 %
-
+%
+Given a metric connection $\nabla$ on the tangent bundle $TM\to M$ with structure group $SO(p,q)$, we can naturally induce a connection on the spinor bundle $E_{spin}\to M$ since its structure group--the spin group $\text{Spin}(p,q)$--is the double cover of $SO(p,q)$ and thus have the same Lie algebra $\mathfrak{so}(p,q)$.
+If $\omega_{\mu\nu}$ is are the connection 1-forms of a metric connection on $TM$ in a given tetrad frame, and 
+$\{\gamma^a\}_a$ are the gamma matrices of a given representation with basis $s_a\dots s_m$ of the spinor space, the spin representation $\rho_{spin}: \mathfrak{so}(p,q) \to \mathfrak{gl}(\C^m)$ is given by
+\begin{equation}
+    \omega^{b}_{\text{sp},\,a}:=\rho_{spin}(\omega_{\mu\nu})^b_{\,a} := \frac{1}{4} \omega_{\mu\nu} \,\{\gamma^\mu, \gamma^\nu\}^b_{\,a}.
+\end{equation}
+The connection 1-form act on basis spinors as 
+\begin{equation}
+    \nabla s_a = \omega^{\text{sp.}\, b}_{~ a}{} s_b = \tfrac{1}{4}\omega_{\mu\nu}\,[\gamma^\mu, \gamma^\nu]^b_{\,a} s_b,
+\end{equation}
+and on general spinor fields $\psi = \psi^a s_a$ as
+\begin{equation}
+    \nabla \psi = d \psi^a \otimes s_a + \psi^a \, \nabla s_a = \left( d \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a \right) \otimes s_b,\,\,\quad \text{i.e.} \quad
+    \nabla_\mu \psi^b = \partial_\mu \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a.
+\end{equation}
 \end{mytheorem}
 
 
