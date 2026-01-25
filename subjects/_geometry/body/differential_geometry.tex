@@ -1690,7 +1690,6 @@ Indeed, given an abstract $\mathfrak{g}$-valued 1-form $\omega\in \Gamma\left(\L
     \omega_F := \rho_*(\omega)
 \end{equation}
 where $\rho_*: \mathfrak{g} \to \mathfrak{gl}(F)$ is the induced Lie algebra representation.
-\smallskip
 
 The most common case is that we start with a connection $\nabla$ on the tangent bundle $TM\to M$.
 Consider tetrads $\{e_i\}_i$ on the tangent bundle $T^1_0M\to M$ transforming under some (representation of a) structure group $G\subseteq GL(n,\R)$.
@@ -1729,42 +1728,57 @@ In a tetrad $\{f_a\}_a$ for $E_F \to M$ with connection forms $\omega_{\,a}^{b}$
 \begin{equation}
     d g_{ab} = \omega_{\,a}^{c}\, g_{cb} + \omega_{\,b}^{c} \,g_{ac}.
 \end{equation}
-If the tetrad is orthonormal i.e. $g_{ab} \equiv \eta_{ab}= (\pm1\dots\pm1)$ constant with some signature $(p,q)$, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad, upon lowering an index with the metric, and confirms in such tetrad the connection 1-form takes values in $\omega\in\mathfrak{so}(p,q)\subset \mathfrak{gl}(n)$
+If the tetrad is orthonormal i.e. $g_{ab} \equiv \eta_{ab}= (\pm1\dots\pm1)$ constant with some signature $(p,q)$, the condition reduces to \emph{antisymmetry} of the connection 1-forms in this tetrad, upon lowering an index with the metric,
 \begin{equation}
-    0 = d(\eta_{ab})\quad \Rightarrow\quad \omega_{ab} = - \omega_{ba}\quad \text{ where }\quad \omega_{ab} := g_{ac} \, \omega^c_{~b}\,.
+    0 = d(\eta_{ab})\quad \Rightarrow\quad \omega_{ab} = - \omega_{ba}\quad \text{ where }\quad \omega_{ab} := g_{ac} \, \omega^c_{~b}\,,
 \end{equation}
-%
-Antisymmetry in the lowered indices is indeed the hallmark of the Lie algebra $\mathfrak{so}(p,q)$.
-Ineed, if $G\subseteq GL(T_pM) \equiv GL(n,\R)$ is the subgroup preserving the metric $g_p$ at point $p\in M$, for any curve $t\mapsto A(t)\sim\mathbb{I}+t\,\omega \in G\subseteq GL(T_pM)$
+confirming that in such tetrad the connection 1-form takes values in $\omega\in\mathfrak{so}(p,q)\subset \mathfrak{gl}(n)$.
+
+\textbf{Antisymmetry} in the lowered indices is indeed the \textbf{hallmark of the Lie algebra $\mathfrak{so}(p,q)$.}
+If $G\subseteq GL(T_pM) \equiv GL(n,\R)$ is the subgroup preserving the metric $g_p$ at point $p\in M$, for any curve $t\mapsto A(t)\sim\mathbb{I}+t\,\omega \in G\subseteq GL(T_pM)$
+{\small
 \begin{align}
     (g_p)_{\rho\sigma}A^\rho_\mu A^\sigma_\nu = (g_p)_{\mu\nu}
     &\Rightarrow 0 = \frac{d}{dt} \Big|_{t=0} \left( (g_p)_{\rho\sigma}A^\rho_\mu(t) A^\sigma_\nu(t) \right) = g_{\rho\sigma} \left( \frac{d}{dt} \Big|_{t=0} A^\rho_\mu(t) \right) \delta^\sigma_\nu + g_{\rho\sigma} \delta^\rho_\mu \left( \frac{d}{dt} \Big|_{t=0} A^\sigma_\nu(t) \right) \\
     &\Rightarrow g_{\rho\nu} \omega^\rho_\mu + g_{\mu\sigma} \omega^\sigma_\nu = 0.
 \end{align}
+}
 This is indeed expected: a connection ultimately yields the infinitesimal change of a vector under parallel transport, and preserves angles and lengths by definition if it is metric compatible.
-The change of a vector can thus only be an infinitesimal `generalized rotation' in the tangent space, i.e. an element of the Lie algebra of the orthogonal group of $g_p$, which is $SO(p,q)$ in a suitable basis.
+The \textbf{change of a vector} can thus only be an \textbf{infinitesimal `generalized rotation'} in the tangent space, i.e. an element of the Lie algebra of the orthogonal group of $g_p$, which is $SO(p,q)$ in a suitable basis.
 \end{mytheorem}
 
 
-\begin{mytheorem}[The example: connection on spinors\todotag{Redo}]
+\begin{mytheorem}[The example: connection on spinors\todotag{Check \& polish}]
 %
+Given a connection $\nabla$ on the tangent bundle $TM$ compatible with a metric of signature $(p,q)$,  we can naturally induce a connection on the spinor bundle $E_{\text{sp\tiny(p,q)}}\to M$ since its structure group--the spin group $\text{Spin}(p,q)$--is the double cover of $SO(p,q)$ and thus have the same Lie algebra $\mathfrak{so}(p,q)$, and we know how to get a representation $\mathfrak{so}(p,q) \to \mathfrak{gl}(\C^m)$ on the spinor space $\C^m$ in terms of gamma matrices satisfying the Clifford algebra.
+\smallskip
+
+If $\{e_{\mu}\}_\mu$ is an orthonormal tetrad on $TM$ with $\mathfrak{so}(p,q)$-valued connection 1-forms $\omega^{\mu}_{{\text{\tiny TM}}\,\nu}$, and $\{s_a\}_a$ is a local tetrad of the spinor space with corresponding gamma matrices $\{\gamma^\mu\}_\mu$ satisfying the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2 \eta^{\mu\nu} \mathbb{I}$, we define the connection 1-forms on the spinor bundle $E_{\text{sp(\small p,q)}}$ by\footnote{Repeated indices are summed over, note that $S^{\mu\nu}=-S^{\nu\mu}$ and $\omega^{\text{\tiny TM}}_{\mu\nu}=-\omega^{\text{\tiny TM}}_{\nu\mu}$ cancels the $\tfrac12$ factor.}
+\begin{align}
+    \omega^{b}_{{\text{\tiny Sp}}\, a}&:= \tfrac12 \omega^{\text{\tiny TM}}_{\mu\nu} \big(S^{\mu\nu}\big)^b_{\,a} \quad \text{where}\quad \omega^{\text{\tiny TM}}_{\mu\nu}= g_{\rho\mu} \omega^\rho_{{\text{\tiny TM}}\, \nu}, \quad S^{\mu\nu} := \tfrac{1}{4} [\gamma^\mu, \gamma^\nu] = \tfrac12 \gamma^\mu\gamma^\nu\,.
+\end{align}
+The covariant derivative of a general spinor $\psi = s_a \psi^a$ is then
+\begin{equation}
+    \nabla \psi =  s_a d\psi^a + \psi^a \, \nabla s_a = s_b\otimes \left( d \psi^b + \omega^b_{\text{\tiny Sp}\, a} \, \psi^a \right)=
+     s_b\otimes \left( d \psi^b + \tfrac{1}{8} \omega^{\text{\tiny TM}}_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a \right)\,.
+\end{equation}
 %
-Given a metric connection $\nabla$ on the tangent bundle $TM\to M$ with structure group $SO(p,q)$, we can naturally induce a connection on the spinor bundle $E_{spin}\to M$ since its structure group--the spin group $\text{Spin}(p,q)$--is the double cover of $SO(p,q)$ and thus have the same Lie algebra $\mathfrak{so}(p,q)$.
-If $\omega_{\mu\nu}$ is are the connection 1-forms of a metric connection on $TM$ in a given tetrad frame, and 
-$\{\gamma^a\}_a$ are the gamma matrices of a given representation with basis $s_a\dots s_m$ of the spinor space, the spin representation $\rho_{spin}: \mathfrak{so}(p,q) \to \mathfrak{gl}(\C^m)$ is given by
+Finally consider another tetrad $\{\tilde{e}_i\}_i$ on $TM$, not necessarily orthonormal, related to the first one by $\tilde{e}_i= B_i^\mu e_\mu$.
+The metric coefficients in such tetrad are then
+\begin{align}
+    \tilde{g}_{ij}:=g(\tilde{e}_i,\tilde{e}_j) = B_i^\mu B_j^\nu \eta^{\mu\nu}\,.
+\end{align}
+If we take the same tetrad $\{s_a\}_a$ of the spinor space, then $\gamma$ matrices satisfying the Clifford algebra wrt the new metric $\tilde{g}_{ij}$ are given by
 \begin{equation}
-    \omega^{b}_{\text{sp},\,a}:=\rho_{spin}(\omega_{\mu\nu})^b_{\,a} := \frac{1}{4} \omega_{\mu\nu} \,\{\gamma^\mu, \gamma^\nu\}^b_{\,a}.
+    \tilde{\gamma}^i = \tilde{g}^{i\ell}\, B_\ell^\rho \eta_{\rho\mu} \, \gamma^\mu = (B^{-1})^i_\mu \gamma^\mu \quad \Rightarrow \quad \{\tilde{\gamma}^i, \tilde{\gamma}^j\} = (B^{-1})^i_\mu (B^{-1})^j_\nu \{\gamma^\mu, \gamma^\nu\} = (B^{-1})^i_\mu (B^{-1})^j_\nu 2 \eta^{\mu\nu} = 2 \tilde{g}^{ij}\,.
 \end{equation}
-The connection 1-form act on basis spinors as 
-\begin{equation}
-    \nabla s_a = \omega^{\text{sp.}\, b}_{~ a}{} s_b = \tfrac{1}{4}\omega_{\mu\nu}\,[\gamma^\mu, \gamma^\nu]^b_{\,a} s_b,
-\end{equation}
-and on general spinor fields $\psi = \psi^a s_a$ as
-\begin{equation}
-    \nabla \psi = d \psi^a \otimes s_a + \psi^a \, \nabla s_a = \left( d \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a \right) \otimes s_b,\,\,\quad \text{i.e.} \quad
-    \nabla_\mu \psi^b = \partial_\mu \psi^b + \tfrac{1}{4} \omega_{\mu\nu}\, [\gamma^\mu, \gamma^\nu]^b_{\,a} \, \psi^a.
-\end{equation}
+Inverting the relation $\gamma^\mu = B^\mu_i \tilde{\gamma}^i$, we can express the \textbf{connection 1-forms on the spinor bundle in terms of an arbitrary set of gamma matrices $\{\tilde{\gamma}^i\}_i$} as
+\begin{align}
+    \omega^{b}_{{\text{\tiny Sp}}\, a}&= \tfrac14 \omega^{\text{\tiny TM}}_{\mu\nu} \gamma^\mu\gamma^\nu 
+    = \tfrac14 \omega^{\text{\tiny TM}}_{\mu\nu} B^\mu_i B^\nu_j \tilde{\gamma}^i \tilde{\gamma}^j\,.  
+\end{align}
 \end{mytheorem}
+
 
 
 \begin{mytheorem}[Curvature 2-form \answerinline{OK}]
