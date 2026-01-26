@@ -1800,6 +1800,12 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 %------------------------------------------------------------------
 
 
+%------------------------------------------------------------------
+%======================================================================
+\section{Excitations \& coherent states}
+%======================================================================
+%------------------------------------------------------------------
+
 
 \begin{mytheorem}[Particle \& wave interpretations of field excitations\questiontag{Check \& improve}]
 %
@@ -2047,7 +2053,7 @@ The total space is $\mathcal{H}_{\phi} \otimes \mathcal{H}_{\mathrm{det}}$ with 
 \end{align}
 where $\hat{H}_{\phi}$ and $\hat{H}_{\mathrm{det}}$ are the free hamiltonians, the self-adjoint operator $\hat{Q}(\tau)$ is some observable of the detector coupled to the field at the detector's spacetime positions $x(\tau)$, and $\epsilon(\tau)$ parametrizes the interaction strength (i.e. the detector efficiency), possibly switched on/off in a finite time interval.
 We consider a coupling to $\phi$ for simplicity, but couplings to any other observable of the field are possible e.g. to the conjugate field $\pi$. 
-For example, in the case of the electromagnetic field possible interactions would be with the momentum or the spin of the detector
+For example, in the case of the electromagnetic field realistic interactions would be with the momentum or the spin of the detector
 \begin{align}
     H_{\mathrm{int}}=-\frac{e}{mc} \hat{p}_j\otimes \hat{A}^j(x(\tau))\,,\quad H_{\mathrm{int}} =\hat{s}_j \otimes \hat{B}^j(x(\tau))\,.
 \end{align}
@@ -2065,9 +2071,9 @@ To 1st order in perturbation theory, the final state at time $\tau_f$ is
     &\approx \left(1 -\frac{i}{\hbar} \int_{\tau_i}^{\tau_f} d\tau' \hat{H}_{\mathrm{int}}^I(\tau',\tau_0)\right) |\psi_{\mathrm{det}}\rangle \otimes |\psi_{\phi}\rangle \\
     &= |\psi_{\mathrm{det}}\rangle \otimes |\psi_{\phi}\rangle - \frac{i}{\hbar} \int_{\tau_i}^{\tau_f} d\tau' \epsilon(\tau') \,\,\,\hat{Q}^I(\tau',\tau_0) |\psi_{\mathrm{det}}\rangle \otimes \hat{\phi}^I(x(\tau'),\tau_0) |\psi_{\phi}\rangle.
 \end{align}
-Up to an irrelevant overall phase depending on the initial time $\tau_0$, the freely time evolved field is 
+Up to an irrelevant overall phase depending on the initial time $\tau_0$, the freely time evolved field is\footnote{Here we denote $k_\mu x^\mu(\tau)= \omega_k\cdot(x^0(\tau)\!-\!\tau_0)- \vec{k}\cdot \vec{x}(\tau)$} 
 \begin{align}
-    \phi^I(x(\tau'),\tau_0) &= e^{\frac{i}{\hbar} \hat{H}_{\phi} (\tau'-\tau_0)} \hat{\phi}(x(\tau')) e^{-\frac{i}{\hbar} \hat{H}_{\phi} (\tau'-\tau_0)} = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{-i k_\mu x^\mu(\tau')} + a_k^{\dagger} e^{i k_\mu x^\mu(\tau')} \right).
+    \phi^I(x(\tau),\tau_0) &= e^{\frac{i}{\hbar} \hat{H}_{\phi} (x^0(\tau)-\tau_0)} \hat{\phi}(\vec{x}(\tau)) e^{-\frac{i}{\hbar} \hat{H}_{\phi} (x^0(\tau)-\tau_0)} = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \left( a_k e^{-i k_\mu x^\mu(\tau)} + a_k^{\dagger} e^{i k_\mu x^\mu(\tau)} \right).
 \end{align}
 The transition amplitude to a final state $|\Psi_f\rangle = |\psi_{\mathrm{det},f}\rangle \otimes |\psi_{\phi,f}\rangle$ is thus
 {\small
@@ -2084,7 +2090,67 @@ If we consider energy eigenstates $|\psi_{\mathrm{det}}\rangle = |E_n \rangle$, 
     \langle E_m | \hat{Q}^I(\tau',\tau_0) | E_n \rangle &= e^{\frac{i}{\hbar} (E_m - E_n)(\tau'-\tau_0)} \langle E_m | \hat{Q}(0) | E_n \rangle.
 \end{align}
 If we further specialize to some detector wordline $\tau \to x^\mu(\tau)$ and field states $|\psi_{\phi,i/f}\rangle$ we can compute the transition amplitude explicitly...
+\medskip
+
+\noindent
+\textbf{Inertial motion.}
+Up to a Lorentz transformation, we can take the detector wordline to be $x^\mu(\tau) = (\tau-\tau_0,0,0,0)$.
+The amplitude is then
+\begin{align}
+    \langle\Psi_f | U_I(\tau_f,\tau_i) | \Psi_i\rangle 
+    &=
+    - \frac{i}{\hbar}\langle E_m | \hat{Q}(0) | E_n \rangle \left(\int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \langle \psi_{\phi,f} | a_k| \psi_{\phi,i}\rangle \int_{\tau_i}^{\tau_f}\!\! d\tau' \epsilon(\tau') e^{i \left(\frac{E_m-E_n}{\hbar} -\omega_k \right) (\tau'-\tau_0)} \right.\\
+    &\qquad \qquad\qquad\left. +\int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2\omega_k}} \langle \psi_{\phi,f} | a^\dagger_k| \psi_{\phi,i}\rangle \int_{\tau_i}^{\tau_f}\!\! d\tau' \epsilon(\tau') e^{i \left(\frac{E_m-E_n}{\hbar} +\omega_k \right) (\tau'-\tau_0)}\right)\,.
+\end{align}
+In the limit where $\tau_f-\tau_i \to \infty$ and the detector is switched on adiabatically $\epsilon(\tau')\to 1$, the time integrals yield delta functions enforcing energy conservation and we thus get
+{\small
+\begin{align}
+    \lim_{\substack{\tau_f-\tau_i \to \infty \\ \epsilon\to 1}} \langle\Psi_f | U_I(\tau_f,\tau_i) | \Psi_i\rangle =
+    - \frac{i}{\hbar}\langle E_m | \hat{Q}(0) | E_n \rangle &\left(\int \frac{d^3\bar{k}}{(2\pi)^3}  \frac{\langle \psi_{\phi,f} | a_k| \psi_{\phi,i}\rangle}{\sqrt{2\omega_k}}\,\, (2\pi)\,\,\delta_D\!\left(\tfrac{E_m-E_n}{\hbar} -\omega_k\right)\right.\\
+    &\left.\qquad + \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{\langle \psi_{\phi,f} | a^\dagger_k| \psi_{\phi,i}\rangle}{\sqrt{2\omega_k}}\,\, (2\pi)\,\,\delta_D\!\left(\tfrac{E_m-E_n}{\hbar} +\omega_k\right)\right)\,.
+\end{align}
+}
+In this limit only the first (resp. second) term contributes if $E_m > E_n$ (resp. $E_m < E_n$), corresponding to the detector absorbing (resp. emitting) a field quantum of fixed mode $k_\Delta$ such that $ |E_m - E_n| \equiv \hbar\,  \omega_{k_\Delta} = \sqrt{k_\Delta^2+m^2}$.
+The amplitude $\propto\, \langle \psi_{\phi,f} | a_k^{(\dagger)}| \psi_{\phi,i}\rangle$ is modulated by the overlap between the initial and final field states after removing (resp. adding) the given quantum.
+For example, considering relativistically normalized Fock states  
+\begin{align}
+    |\{n_k\}_k\rangle := \prod_k \frac{\big(\sqrt{2\omega_k}\,\,a_k^\dagger\big)^{n_k}}{\sqrt{n_k!}} |0\rangle,\quad \text{so that}\quad \langle \mathbf{m} |\mathbf{n}\rangle = \prod_k \delta^{\mathrm{Kro}}_{m_k,n_k}\,\Big((2\omega_k)\, (2\pi)^3 \delta_D^{(3)}(k\!-\!k)\Big)^{n_k},
+\end{align}
+with final state with only one less quantum in mode $k_\Delta$, i.e. $|\psi_{\phi,i}\rangle = |\{n_k\}_k\rangle$ and $|\psi_{\phi,f}\rangle = |\{n_k - \delta_{k,k_\Delta}\}_k\rangle$, we have
+\begin{align}
+    \langle \psi_{\phi,f} | a_{k}| \psi_{\phi,i}\rangle = \frac{\sqrt{2\omega_{k_\Delta}}}{\sqrt{n_{k_\Delta}}} (2\pi)^3 \delta_D(k_\Delta-k_\Delta) \langle \psi_{\phi,f} | \psi_{\phi,f}\rangle\,.
+\end{align}
+Integrating over the solid angle and using the delta function to perform the radial integral, we finally get
+\begin{align}
+    \lim_{\substack{\tau_f-\tau_i \to \infty \\ \epsilon\to 1}} \langle\Psi_f | U_I(\tau_f,\tau_i) | \Psi_i\rangle &=
+    - \frac{i}{\hbar}\langle E_m | \hat{Q}(0) | E_n \rangle \frac{(2\pi)^3 \delta_D(k_\Delta-k_\Delta)}{\sqrt{n_{k_\Delta}}} \langle \psi_{\phi,f} | \psi_{\phi,f}\rangle\\
+    &\qquad\times\int \frac{d\Omega}{(2\pi)^3}\int dk\, k^2 \,\, (2\pi)\,\,\delta_D\!\left(E_{mn}/\hbar-\omega_k\right)\\
+    &= -i \langle E_m | \hat{Q}(0) | E_n \rangle \frac{(2\pi)^3 \delta^{(3)}_D(k_\Delta-k_\Delta)}{\sqrt{n_{k_\Delta}}} \langle \psi_{\phi,f} | \psi_{\phi,f}\rangle \frac{E_{\Delta}\,\sqrt{E_{\Delta}^2-m^2}}{\pi}\,,
+\end{align}
+where $E_{\Delta} := |E_m - E_n|$ and $k_\Delta := \sqrt{E_{\Delta}^2 - m^2}$. Analogous formulas hold if $E_m < E_n$.
+\medskip
+
+\noindent
+\textbf{Time-energy uncertainty \& non-adiabatic switching.}\todotag{Finish}
+If the detector is switched on/off non-adiabatically in a finite time interval $\tau_f - \tau_i$, even in inertial motion there is a non-zero probability of excitation/de-excitation of the detector due to the time-energy uncertainty principle.
+Roughly speaking, if the interaction is switched on/off in a finite time $\Delta \tau$, there is an uncertainty in the energy exchanged $\Delta E \gtrsim \hbar/\Delta \tau$, allowing the detector to be excited/de-excited even if the field stays in its vacuum state and the detector is inertial.
+This is manifest in the above formulas since the time integrals do not yield perfect delta functions enforcing energy conservation, but rather functions peaked around the resonance frequencies $\omega_k = \pm (E_m - E_n)/\hbar$ with a width $\Delta \omega \sim 1/(\tau_f - \tau_i)$.
+\medskip
 
 
-
+\noindent
+\textbf{Uniformly accelerated motion \& finite-temperature effects.}\todotag{Finish}
+The above analysis can be extended to arbitrary wordlines $x^\mu(\tau)$.
+It is particularly interesting to consider a uniformly accelerated detector with proper acceleration $a$, following the Rindler trajectory (see Birrell \& Davies, pg. 52-58)
+\begin{align}
+    x^\mu(\tau) = \left(\frac{c^2}{a}\sinh\left(\frac{a \tau}{c}\right), \frac{c^2}{a}\cosh\left(\frac{a \tau}{c}\right),0,0\right).
+\end{align}
+In this case, even if the field is in its vacuum state $|\psi_{\phi,i}\rangle = |0\rangle$, the detector has a non-zero probability of being excited to higher energy levels $|\psi_{\mathrm{det},f}\rangle = |E_m\rangle$ due to its interaction with the vacuum fluctuations of the quantum field along its accelerated trajectory.
+Calculting the transition amplitude and probability, one finds that the detector behaves as if it were immersed in a thermal bath of particles at the Unruh temperature
+\begin{align}
+    T_U = \frac{\hbar a}{2\pi k_B c}\,.
+\end{align}
+This is the essence of the Unruh effect: an accelerated observer perceives the vacuum state of a quantum field as a thermal state with a temperature proportional to its acceleration.
+In terms of the initial analogies: an accelerated cube of ice will melt even if it is in vacuum.
+%
 \end{mytheorem}
