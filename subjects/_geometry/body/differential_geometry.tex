@@ -1908,16 +1908,24 @@ Given a tetrad $\{\theta^i,e_i\}_i$ for the tangent bundle, the structure consta
 \begin{equation}
     [e_j, e_k] = C^i_{jk} e_i \,\, \quad \text{antisymmetric in $j,k$}.
 \end{equation}
-By construction, the structure constants are antisymmetric in the lower indices $C^i_{jk} = - C^i_{kj}$.
-
+By construction, the structure constants are antisymmetric in the two lower indices $C^i_{jk} = - C^i_{kj}$.
+They measure the nonclosure of infinitesimal parallelograms constructed using the tetrad vector fields $\{e_i\}_i$.
+%
 They can be equivalently defined as the coefficients of the exterior derivative expansion
 \begin{equation}
     d \theta^i = - \frac{1}{2} C^i_{jk} \theta^j \wedge \theta^k = - C^i_{j k} \,\, \theta^j \otimes \theta^k \quad \text{(sum over repeated indices)}.
 \end{equation}
-
-The structure constants measure the nonclosure of infinitesimal parallelograms constructed using the tetrad vector fields $\{e_i\}_i$.
-The \textbf{structure constants vanish} identically $C_{jk}^i \equiv 0$ if and only if the tetrad is \emph{holonomic} i.e. \textbf{induced by coordinates}  $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$
-
+%
+If two tetrads $\{e_i,\theta^i\}_i$ and $\{\tilde{e}_a, \tilde{\theta}^a\}_a$ are related by $\tilde{e}_a = A_a^{\, i} e_i$, the structure constants transform as
+\begin{equation}
+    \tilde{C}^c_{ab} = (A^{-1})^c_k \left( C^k_{ij} A_a^{\, i} A_b^{\, j} + A_a^{\, i}\,\,\partial_{e_i} A_b^{\, k} - A_b^{\, j}\,\,\partial_{e_j} A_a^{\, k} \right).
+\end{equation}
+The \textbf{structure constants vanish} identically $C_{jk}^i \equiv 0$ if and only if the tetrad is \emph{holonomic} i.e. \textbf{induced by coordinates}  $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, because of Frobenius theorem.
+Then, if $e_i = B_i^\mu \partial_\mu$ for some coordinate system $\{x^\mu\}_\mu$, we express the structure constants as
+\begin{equation}
+    C_{ij}^k= (B^{-1})^k_\nu \left( B_i^\mu \partial_\mu B_j^\nu - B_j^\mu \partial_\mu B_i^\nu \right).
+\end{equation}
+%
 Beware the structure constants make sense only for the tangent bundle $TM$ since only there we have a natural notion of commutator of vector fields, and in fact arbitrary fiber-valued forms are expressed as linear combinations of ordinary $\R$-valued forms times fiber basis elements.
 \end{mytheorem}
 \begin{proof}
@@ -1959,7 +1967,7 @@ Under a change of tetrad \(\{\tilde{\theta}^a,\, \tilde{e}_a\}_a\) related to th
 \end{equation}
 %
 For a metric connection $\nabla g\equiv 0$ with arbitrary torsion $T$, the \textbf{Koszul formula} is
-\begin{align}
+\begin{align}\label{eq:koszul_formula}
 \begin{aligned}
     2\,g(\nabla_X Y, Z) ={}& X\!\left(g(Y,Z)\right) + Y\!\left(g(Z,X)\right) - Z\!\left(g(X,Y)\right)\\
     &\, + g([X,Y],Z) - g([Y,Z],X) - g([X,Z],Y) \\
@@ -1967,10 +1975,12 @@ For a metric connection $\nabla g\equiv 0$ with arbitrary torsion $T$, the \text
 \end{aligned}
 \end{align}
 We then express the Christoffel symbols in terms of metric $g_{ij} := g(e_i, e_j)$, structure constants \(C^i_{\, jk}:=\theta^k([e_i,e_j])\) and torsion components \(T^i_{\, jk}:=\theta^i(T(e_j,e_k))\) in a given tetrad as
-\begin{align}
+\begin{align}\label{eq:koszul_formula_cohordinates}
+\begin{aligned}
     \Gamma_{ij}^k=&\tfrac{1}{2} g^{k\ell} \Big( \partial_{e_i}\,g_{j \ell} + \partial_{e_j}\,g_{i \ell} - \partial_{e_\ell}\,g_{i j}\Big)\\
     & + \tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} C^m_{ij} - g_{m j} C^m_{i \ell} - g_{m i} C^m_{j \ell} \Big) \\
     & +\tfrac{1}{2} g^{k\ell} \Big( g_{m \ell} T^m_{ij} -g_{m i} T^m_{j \ell} - g_{m j} T^m_{i \ell}  \Big).
+\end{aligned}
 \end{align}
 If $C_{ij}^k\equiv 0$ we recover usual expression for Christoffel symbols in a coordinate basis\footnote{In fact we have $C_{ij}^k\equiv 0$ iff there exist some coordinates $x^\mu$ s.t. $e_\mu=\partial_\mu$.}, split into symmetric and antisymmetric part in the lower indices 
 \begin{equation}
@@ -1999,23 +2009,29 @@ Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) on the tangent bundle \(TM\to M\)
     \qquad \text{where}\qquad
     T^i_{jk} = \Gamma^i_{jk} - \Gamma^i_{kj} - C^i_{jk}.
 \end{equation}
-In a coordinate induced frame $C_{ij}^k\equiv0$, and we recover the usual expression for the torsion components.
+Beware torsion is not always antisymmetric in the lower indices, because of the nontrivial structure constants contribution.
+In a coordinate induced frame $C_{ij}^k\equiv0$, and we recover the usual (antisymmetric) expression for the torsion components.
 %
 \end{mytheorem}
 
 
 \begin{mytheorem}[Riemann curvature tensor in a tetrad frame on the tangent bundle\answerinline{OK}]
 %
-Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) with structure constants \(C^i_{jk}\) and a connection $\nabla$ on the tangent bundle $TM$ with Christoffel symbols \(\Gamma^i_{jk}\), the Riemann tensor components in this tetrad read
+Given a tetrad frame \(\{\theta^i,\, e_i\}_i\) with structure constants \(C^i_{jk}\) and a connection $\nabla$ on the tangent bundle $TM$ with Christoffel symbols \(\Gamma^i_{jk}\), we can express the curvature 2-forms as
+\begin{equation}
+    \Omega^\ell_{\, k} = \tfrac{1}{2} R^\ell_{k,\,ij} \,\, \theta^i \wedge \theta^j.
+\end{equation}
+in terms of the Riemann tensor components in this tetrad 
 \begin{equation}
     R^\ell_{k,\,ij} = \partial_{e_i} \Gamma^\ell_{j k} - \partial_{e_j} \Gamma^\ell_{i k} + \Gamma^\ell_{i m} \Gamma^m_{j k} - \Gamma^\ell_{j m} \Gamma^m_{i k} - C^m_{ij} \Gamma^\ell_{m k}.
 \end{equation}
 In a coordinate induced frame $C_{ij}^m\equiv0$ and we recover the usual expression for the Riemann tensor components.
-In particular, the curvature 2-forms can be expressed in terms of the Riemann tensor components as
-\begin{equation}
-    \Omega^\ell_{\, k} = \tfrac{1}{2} R^\ell_{k,\,ij} \,\, \theta^i \wedge \theta^j.
-\end{equation}
+
+{\color{red}
+More generally, we can plug in the \emph{arbitrary} expression for the torsion $T_{ij}^k$ and formula \eqref{eq:koszul_formula_cohordinates} for the Christoffel symbols to express the Riemann tensor purely in terms of metric, structure constants and torsion.
 %
+If we start from a coordinate system $x^\mu$ and we pass to a orthonormal tetrad $\{e_a = B_a^\mu \partial_\mu,\, \theta^a = (B^{-1})^a_\mu dx^\mu\}_a$, we can express everything in terms of the torsion, and the matrix $B$ and its derivatives.
+}\todotag{Finish}
 \end{mytheorem}
 
 
@@ -2039,6 +2055,7 @@ In particular, in \textbf{absence of torsion $T=0$ the first Cartan equation} re
     d \theta^a + \omega^a_{\, b} \wedge \theta^b = 0.
 \end{equation}
 \end{mytheorem}
+\vspace{-4mm}
 \begin{proof}
 The second equalities just follow from the definition of the exterior covariant derivative and are already shown in the case of general fibre bundles above.
 We need to show the expressions coincide with the old notions of torsion and curvature tensors.

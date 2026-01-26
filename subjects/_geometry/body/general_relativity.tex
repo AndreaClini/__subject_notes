@@ -570,40 +570,42 @@ For example, for a complex scalar field $\phi$ we have
 \end{mytheorem}
 
 
-{\color{red}
-\begin{mytheorem}[The Dirac equation in curved spacetime]\todotag{Finish}
-The Dirac equation for spin-$\tfrac{1}{2}$ fields $\psi$ in curved spacetime is given by
+\begin{mytheorem}[The Dirac equation in curved spacetime\todotag{Check \& polish}]
+%
+The action for the Dirac spin-$\tfrac12$ field in curved spacetime is
 \begin{align}
-    (i \gamma^\mu \nabla_\mu - m) \psi = 0,
-\end{align}
-where $\gamma^\mu=\gamma^\mu(x)$ are spacetime dependent gamma matrices satisfying the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2 g^{\mu\nu}(x)$ and $\nabla$ is the covariant derivative on the spinor bundle.
-The Dirac equation in curved spacetime generalizes the flat spacetime Dirac equation by replacing the ordinary gamma matrices and partial derivatives with their curved spacetime counterparts.
-The action for the Dirac field in curved spacetime is then simply
-\begin{align}
-    S_\text{Dirac} = \int \mathrm{d}^d x \sqrt{|g|} \,\, \bar{\psi} (i \gamma^\mu \nabla_\mu - m) \psi,
+    S_\text{Dirac} = \int \mathrm{d}^d x \sqrt{|g|} \,\, \bar{\psi}\, (i \gamma^\mu \nabla_\mu - m) \psi,
 \end{align}
 where $\bar{\psi}(x) = \psi^\dagger(x) \gamma^0(x)$ is the Dirac adjoint.
-Varying this action with respect to $\bar{\psi}$ yields the Dirac equation in curved spacetime.
-
-This is more easily understood using an orthonormal tetrad $\{e_a(x)\}_a$ for the tangent bundle, so that $g_{ab} := g(e_a,e_b)\equiv \eta_{ab}$ is the Minkowski metric at each point $x\in M$ in such local basis.
-In this tetrad we can simply define constant gamma matrices $\gamma_{\mathrm{flat}}^a$ satisfying the flat spacetime Clifford algebra $\{\gamma_{\mathrm{flat}}^a, \gamma_{\mathrm{flat}}^b\} = 2 \eta^{ab}$.
-In a coordinate system $x^\mu$ where $e_a(x)=e_a^\mu(x) \partial_\mu$ the spacetime dependent gamma matrices are then simply given by
+Varying this action with respect to $\bar{\psi}$ yields the Dirac equation for $\psi$, and varying wrt $\psi$ gives the conjugate equation for $\bar{\psi}$,
 \begin{align}
-    \gamma^\mu(x) = e_a^\mu(x) \gamma_{\mathrm{flat}}^a\,, \quad \text{since}\quad \{\gamma^\mu(x), \gamma^\nu(x)\} = 2 \eta^{ab} e_a^\mu(x) e_b^\nu(x) = 2 g^{\mu\nu}(x).
+    (i \gamma^\mu_x \nabla_\mu - m) \psi(x) = 0\,.
 \end{align}
-
-Finally recall that, given a metric connection $\nabla$ with connection 1-form $\omega_j^i(\bullet)$ in a tetrad frame $\{e_a\}_a$ of the tangent bundle, and given representation of $\gamma$-matrices $\gamma^a(x)=\gamma^a(x)^i_j$ obeying the Clifford algebra $\{\gamma^a(x),\gamma^b(x)\}= 2 g^{ab}(x)$ in such a tetrad, the covariant derivative acts on \emph{basis} spinors $s_j=(0\dots0\,\underbrace{1}_j\,0\dots0)$ as
+Here $\nabla$ is the covariant derivative on the spinor bundle $E_{\text{\tiny Sp(p,q)}}\to M$, and $\gamma^\mu=\gamma^\mu(x)$ are spacetime dependent $\gamma$-matrices acting on the spinor fibre $\C^m$, indiced by the same indices of a tetrad $\{e_{\mu}\}_{\mu=1\dots n}$ of the tangent bundle $TM$ and satisfying the Clifford algebra at each spacetime point $x\in M$
+\begin{equation}
+    \{\gamma^\mu(x), \gamma^\nu(x)\} = 2 g^{\mu\nu}(x),\quad \text{where}\quad g_{\mu\nu}:=g(e_\mu,e_\nu).
+\end{equation}
+The connection 1-form on the spinor bundle is more easily expressed in terms of an orthornormal tetrad $\{\tilde{e}_i\}_i$ of the tangent bundle, where $\tilde{g}_{ij}:=g(v_i,v_j)=\eta_{ij}$ is $(p,q)$-Minkowski metric at each point $x\in M$.
+If $\tilde{\omega}_{\text{\tiny TM}\,j}^i$ are the connection 1-forms on $TM$ in such tetrad, and $\tilde{\gamma}^i$ are constant gamma matrices satisfying the flat spacetime Clifford algebra $\{\tilde{\gamma}^i,\tilde{\gamma}^j\}=2 \eta^{ij}$, then the connection 1-forms on the spinor bundle are given by
 \begin{align}
-    \nabla_\bullet s_j = \frac{1}{2} \omega_{ab}(\bullet) \big(S^{a b}\big)^i_{j} \,s_j,\quad \text{where}\quad S^{ab}(x) := \frac{1}{4} [\gamma^a(x), \gamma^b(x)],
+    \omega_{\text{\tiny Sp}\,b}^a(\cdot) = \tfrac{1}{2} \tilde{\omega}_{\text{\tiny TM}\,ij}(\cdot) \big(S^{ij}\big)^a_{b}\,,\quad \text{for}\quad \tilde{\omega}_{\text{\tiny TM}\,ij}= \eta_{i\ell}\,\tilde{\omega}^\ell_{\text{\tiny TM}\,j},\quad S^{ij} := \frac{1}{4} [\tilde{\gamma}^i, \tilde{\gamma}^j]\,,
 \end{align}
-are the generators of the spin representation of the Lorentz group.
-The action on a general section of the spinor bundle $\psi=s_j\, \psi^j$ is then obtained by the Leibniz rule
+where $\{s_a\}_a$ is a basis of the spinor fiber $\C^m$ and $S^{ij}$ are the generators of the spin representation of the Lorentz group.
+The action on a general section of the spinor bundle $\psi=s_a\, \psi^a$ is then given by the Leibniz rule
 \begin{align}
-    \nabla \psi = s_j \left( d\psi^j + \frac{1}{2} \omega_{ab} \big(S^{a b}\big)^j_{k} \, \psi^k \right).
+    \nabla \psi = s_b \otimes \Big( d\psi^b + \frac{1}{2} \omega_{\text{\tiny Sp}\, a}^b \psi^a\Big).
+\end{align}
+If the two tetrads on $TM$ are related by $\tilde{e}_i = A_i^\mu e_\mu$  so that $g_{\mu\nu}(x) = g(e_\mu,e_\nu) = \eta_{ij} \,(A^{-1})_\mu^i\,(A^{-1})_\nu^j$, then $\gamma$-maatrices are related by
+\begin{align}
+    \gamma^\mu(x) = A_i^\mu(x)\, \gamma^i_{\mathrm{fl}}, \quad \text{since}\quad \{\gamma^\mu(x), \gamma^\nu(x)\} = 2 \eta^{ij} A_i^\mu(x) A_j^\nu(x) = 2 g^{\mu\nu}(x).
+\end{align}
+Note the action is indepent of the choice of the tetrad on $TM$ and of the corresponding gamma matrices, since
+\begin{align}
+    \gamma^\mu \nabla_{e_\mu} = A^\mu_i \tilde{\gamma}^i \nabla_{(A^{-1})_\mu^j \tilde{e}_j} = \tilde{\gamma}^i \nabla_{\tilde{e}_i}.
 \end{align}
 %
 \end{mytheorem}
-}
+
 
 
 
