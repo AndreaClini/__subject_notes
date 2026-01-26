@@ -4,3 +4,83 @@
 \chapter{Representations}\label{ch:representations}
 %====================================
 %====================================
+
+\begin{mytheorem}[Symmetries \& Representations in Physics]
+%
+Symmetries have become a key idea in modern physics, and they are an indispensable tool for the construction of new physical theories. They play an important role in the formulation of practically all established physical theories, from Classical/Relativistic Mechanics, Electrodynamics to General Relativity and Particle Physics.
+
+The word "symmetry" used in a physics context (usually) refers to the mathematical structure of a group.
+For example, besides the standard Poincaré/Lorentz invariance of all such theories, one encounters internal (continuous) groups such as $S U(3)$ in QCD, $S U(5)$ and $S O(10)$ in grand unified theories (GUTs), and $E_{6}$ and $E_{8}$ in string theory. Discrete groups also play an important role in particle physics model building, for example in the context of models for fermion masses.
+
+In physics, the typical problem is to construct a theory which "behaves" in a certain defined way under the action of a symmetry, for example, which is invariant. To tackle such a problem we need to know how symmetries act on the basic building blocks of physical theories, and these building blocks are often elements of vector spaces. (Think, for example, of the trajectory $\mathbf{r}(t)$ of a particle in Classical Mechanics which, for every time $t$, is an element of $\mathbb{R}^{3}$, a four-vector $x^{\mu}(t)$ which is an element of $\mathbb{R}^{4}$ or the electric and magnetic fields which, at each point in space-time, are elements of $\mathbb{R}^{3}$.) Hence, we need to study the action of groups on vector spaces and the mathematical theory dealing with this problem is called (linear) representation theory of groups. The translation between physical and mathematical terminology is summarised in the diagram below.
+\vspace{-5mm}
+
+\begin{center}
+\begin{tikzpicture}[font=\normalsize]
+% --- light-blue background box ---
+\node[draw=none, inner sep=4pt] (box) {
+  \begin{tikzpicture}[baseline]
+    \matrix (m) [
+      matrix of nodes,
+      nodes={align=center, text depth=0.25ex},
+      column sep=22mm,
+      row sep=2.5mm
+    ]{
+      \textbf{physics} & \textbf{mathematics} \\
+      symmetry         & group               \\
+      $\downarrow$     & $\downarrow$        \\
+      building blocks  & vector spaces       \\
+    };
+
+    % --- middle "cong" symbols ---
+    \node at ($(m-2-1)!0.5!(m-2-2)$) {$\cong$};
+    \node at ($(m-4-1)!0.5!(m-4-2)$) {$\cong$};
+  \end{tikzpicture}
+};
+% --- side labels (outside the box) ---
+\node[left=6mm of box.west]  (L) {action on};
+\node[right=6mm of box.east] (R) {representation};
+\end{tikzpicture}
+\end{center}
+%
+\end{mytheorem}
+
+
+%--------------------------------------------
+%==========================================
+\section{Basics of Representation Theory}
+%=============================================
+%----------------------------------------------
+
+\begin{definition}[Representation of a group]
+A representation $R$ of a group $G$ is a group homomorphism $R: G \rightarrow \mathrm{GL}(V)$ where $V$ is a vector space over $\mathbb{F}$, called \emph{base space}.
+The dimension of the representation $R$ is defined by $\operatorname{dim}(R)=\operatorname{dim}_{\mathbb{F}}(V)$.
+The trivial representation $R_{\text{triv}}$ of a group $G$ is defined by $R_{\text{triv}}(g)=\mathbb{1}$ for all $g \in G$.
+\end{definition}
+
+
+\begin{definition}[Equivalent representations]
+Two representations $R_{1}: G \rightarrow \mathrm{GL}\left(V_{1}\right)$ and $R_{2}: G \rightarrow \mathrm{GL}\left(V_{2}\right)$ are called equivalent iff these exists an isomorphism $\phi: V_{1} \rightarrow V_{2}$ such that
+\begin{equation*}
+R_{1}(g)=\phi^{-1} \circ R_{2}(g) \circ \phi \quad \forall g \in G\,.
+\end{equation*}
+In this case, we write $R_{1} \cong R_{2}$. Otherwise, the representations are called inequivalent and we write $R_{1} \neq R_{2}$.
+
+(i) Note that the linear map $\phi$ in the above definition is the same for all $g \in G$. Its existence (or otherwise) is, therefore, a non-trivial matter.
+
+(ii) Since $\phi: V_{1} \rightarrow V_{2}$ is an isomorphism (so $\operatorname{dim}_{\mathbb{F}}\left(V_{1}\right)=\operatorname{dim}_{\mathbb{F}}\left(V_{2}\right)$ in particular) two representations $R_{1}$ and $R_{2}$ can only be equivalent if they have the same dimension, $\operatorname{dim}\left(R_{1}\right)=\operatorname{dim}\left(R_{2}\right)$.
+\end{definition}
+
+
+\subsection*{Basic properties of representations}\todotag{Fix}
+
+Often vector spaces $V$ have additional structure, the most prominent one being a s scalar product, $\langle\cdot, \cdot\rangle$. A vector space with a scalar product is also called an inner product vector space. On such an inner product space we can consider the invertible linear maps $f \in \mathrm{GL}(V)$ which leave the scalar product invariant, that is, the maps $f \in \mathrm{GL}(V)$ which satisfy $\langle f(v), f(w)\rangle=\langle v, w\rangle$ for all $v, w \in V$. Such linear maps are called unitary and the set of all unitary linear maps (relative to the given scalar product), denoted $\mathrm{U}(V)$, forms a subgroup of $\operatorname{GL}(V)$. If $V=\mathbb{R}^{n}$ with the dot product, then the unitary maps are the orthogonal $n \times n$ matrices, denoted $\mathrm{O}(n)=\mathrm{U}\left(\mathbb{R}^{n}\right)$. For $V=\mathbb{C}^{n}$ with the standard hermitian scalar product the unitary maps are precisely the unitary $n \times n$ matrices $\mathrm{U}(n)=\mathrm{U}\left(\mathbb{C}^{n}\right)$.
+
+Exercise 1.8. Let $V$ be an inner product vector space. Show that the set $\mathrm{U}(V)$ of unitary maps forms a subgroup of $\mathrm{GL}(V)$.
+
+For an inner product vector space $V$ we can consider special representations where all representation maps are contained in the subgroup $\mathrm{U}(V) \subset \mathrm{GL}(V)$.
+
+Definition 1.10. (Unitary representations) $A$ representation $R: V \rightarrow \mathrm{GL}(V)$ on an inner product vector space $V$ is called unitary if $R(g)$ is a unitary linear map for all $g \in G$ (or, equivalently, iff $\operatorname{Im}(R) \subset \mathrm{U}(V)$ ).
+
+The following is just a somewhat redundant but often-used piece of terminology.
+Definition 1.11. (Faithful representation) A representation $R: G \rightarrow \mathrm{GL}(V)$ is called faithful iff it is one-to-one, or, equivalently, iff $\operatorname{Ker}(R)=\{e\}$.
