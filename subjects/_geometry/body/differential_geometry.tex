@@ -1794,7 +1794,7 @@ Note that indeed $\Omega$ is $G$-valued since it yields a \emph{linear} transfor
 \[R(X,Y) =\nabla_X \nabla_Y - \nabla_Y \nabla_X - \nabla_{[X,Y]}: E_{F\vert p} \to E_{F\vert p}.\]
 Given also a tetrad frame $\{\theta^\mu, e_\nu\}_\nu$ on $TM\to M$, we can explicitate all indices and write
 \begin{align}
-    R^b_{a,\,\mu\nu}= \Omega^b_a(e_\mu,e_\nu) \theta^\mu \wedge \theta^\nu.
+    \Omega_a^b= \tfrac12\underbrace{\Omega^b_a(e_\mu,e_\nu)}_{=\R^b_{a,\,\mu\nu}}\theta^\mu \wedge \theta^\nu.
 \end{align}
 Finally under a change of tetrad $\{\tilde{f}_a,\tilde{\phi}^a\}_a$ on $E_F\to M$ with $\tilde{f}_a= A_a^i f_i$ for some $A: U \subseteq M \to G$, the curvature 2-form transforms \emph{tensorially} as it should
 \begin{equation}
@@ -1853,9 +1853,9 @@ Using linearity of the 2-form, we prove it on a coordinate induced basis $\parti
 %
 The Bianchi identities in a tetrad $\{f_i,\,\phi^i\}_i$ are concisely expressed via the exterior covariant derivative $d_\nabla$ as
 \begin{align}
-    d_\nabla T &= \Omega_{\, j} \wedge \phi^j\qquad \text{i.e.}\quad d_\nabla T^i = \Omega^i_{\, j} \wedge \phi^j,
+    d_\nabla T &= \Omega_{\, j} \wedge \phi^j\qquad \text{i.e.}\quad d_\nabla T:=d_\nabla(f_i\otimes T^i) = f_i\otimes\big( \Omega^i_{\, j} \wedge \phi^j\big),
     \\
-    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j} = f_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = f_i \otimes\omega_k^i\wedge \Omega^k_j\,.
+    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j}:=d_\nabla\Big(f_i \otimes \Omega^i_{\, j}\Big) = f_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = f_i \otimes\omega_k^i\wedge \Omega^k_j\,.
 \end{align}
 Beware the 2nd identity says the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ vanish, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
 The \textbf{Bianchi identities} essentially express \textbf{symmetry contraints} that follow \textbf{from the very definition} of torsion and curvature.
@@ -1922,7 +1922,7 @@ If two tetrads $\{e_i,\theta^i\}_i$ and $\{\tilde{e}_a, \tilde{\theta}^a\}_a$ ar
 \end{equation}
 The \textbf{structure constants vanish} identically $C_{jk}^i \equiv 0$ if and only if the tetrad is \emph{holonomic} i.e. \textbf{induced by coordinates}  $\theta^\mu=dx^\mu,\,e_\nu=\frac{\partial}{\partial x^\nu}$, because of Frobenius theorem.
 Then, if $e_i = B_i^\mu \partial_\mu$ for some coordinate system $\{x^\mu\}_\mu$, we express the structure constants as
-\begin{equation}
+\begin{equation}\label{eq:structure_constants_from_coordinates}
     C_{ij}^k= (B^{-1})^k_\nu \left( B_i^\mu \partial_\mu B_j^\nu - B_j^\mu \partial_\mu B_i^\nu \right).
 \end{equation}
 %
@@ -1988,7 +1988,15 @@ If $C_{ij}^k\equiv 0$ we recover usual expression for Christoffel symbols in a c
     \quad \Gamma_{[ij]}^k = \tfrac{1}{2} T^k_{ij}\,.
 \end{equation}
 In the absence of torsion the second line vanishes, but $\Gamma_{ij}^k$ is not yet symmetric in general in the lower indices due to the possibly nonzero structure constants $C_{ij}^k=[e_i,e_j]^k$.
-Finally in an orthonormal frame $g_{ij} = \eta_{ij}$  and the first line $\propto \, \partial g$ vanishes.
+
+Finally in an orthonormal frame $g_{ij}:=g(e_i,e_j) = \eta_{ij}$ and the first line $\propto \, \partial g$ vanishes.
+If $e_i=B_i^\mu\partial_\mu$ for some coordinate system $\{x^\mu\}_\mu$, we can express the Christoffel symbols as
+\begin{align}
+\begin{aligned}
+    \Gamma_{ij}^k=&\tfrac{1}{2} \eta^{k\ell} \Big( \eta_{m \ell} C^m_{ij} - \eta_{m j} C^m_{i \ell} - \eta_{m i} C^m_{j \ell} \Big) \\
+    & +\tfrac{1}{2} \eta^{k\ell} \Big( \eta_{m \ell} T^m_{ij} -\eta_{m i} T^m_{j \ell} - \eta_{m j} T^m_{i \ell}  \Big),\quad \text{where}\quad C_{ij}^k= (B^{-1})^k_\nu \left( B_i^\mu \partial_\mu B_j^\nu - B_j^\mu \partial_\mu B_i^\nu \right).
+\end{aligned}
+\end{align}
 \end{mytheorem}
 \begin{proof}
 By metric compatibility $\nabla g=0$, that is $0=X(g(Y,Z)) - g(\nabla_X Y,Z) - g(Y, \nabla_X Z)$.
@@ -2027,11 +2035,9 @@ in terms of the Riemann tensor components in this tetrad
 \end{equation}
 In a coordinate induced frame $C_{ij}^m\equiv0$ and we recover the usual expression for the Riemann tensor components.
 
-{\color{red}
-More generally, we can plug in the \emph{arbitrary} expression for the torsion $T_{ij}^k$ and formula \eqref{eq:koszul_formula_cohordinates} for the Christoffel symbols to express the Riemann tensor purely in terms of metric, structure constants and torsion.
+More generally, we can plug in formula \eqref{eq:koszul_formula_cohordinates} for the Christoffel symbols to express the Riemann tensor purely in terms of metric $g_{ij}$, structure constants $C_{ij}^k$ and the \emph{arbitrary} torsion $T_{ij}^k$.
 %
-If we start from a coordinate system $x^\mu$ and we pass to a orthonormal tetrad $\{e_a = B_a^\mu \partial_\mu,\, \theta^a = (B^{-1})^a_\mu dx^\mu\}_a$, we can express everything in terms of the torsion, and the matrix $B$ and its derivatives.
-}\todotag{Finish}
+If we consider an orthonormal tetrad $e_a = B_a^\mu \partial_\mu$ related to some coordinate system $x^\mu$, we can also express everything in terms of the torsion and the matrix $B$ and its derivatives, using formula \eqref{eq:structure_constants_from_coordinates} for the structure constants.
 \end{mytheorem}
 
 
@@ -2042,10 +2048,10 @@ Consider a connection $\nabla$ on the tangent bundle $TM \to M$.
 Given a tetrad frame $\{\theta^i,e_j\}_i$, consider the $(1,0)$ tensor valued 1-form $\theta :=  e_i \otimes \theta^i$.
 The connection 1-form, and the torsion and curvature 2-forms satisfy the Cartan structure equations, expressed concisely in terms of the exterior covariant derivative $d_\nabla$ as
 \begin{align}
-    T &= d_\nabla \theta = e_a \otimes \left(d \theta^a + \omega^a_{\, b} \wedge \theta^b \right) 
+    T &= d_\nabla \theta := d_\nabla (e_a\otimes \theta^a)= e_a \otimes \left(d \theta^a + \omega^a_{\, b} \wedge \theta^b \right) 
     \quad \text{i.e.} \quad T^a = d \theta^a + \omega^a_{\, b} \wedge \theta^b,
     \\
-    \Omega_{\, b} &= d_\nabla \omega_{\, b} = e_a \otimes \left(d \omega^a_{\, b} + \omega^a_{\,c} \wedge \omega^c_{\, b}\right) 
+    \Omega_{\, b} &= d_\nabla \omega_{\, b}:=d_\nabla (e_a \otimes \omega^a_{\, b}) = e_a \otimes \left(d \omega^a_{\, b} + \omega^a_{\,c} \wedge \omega^c_{\, b}\right) 
     \quad\text{i.e.} \quad \Omega^a_{\, b} = d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b}.
 \end{align}
 The \textbf{Cartan equations are essentially definitions} of the torsion and curvature 2-forms in terms of the connection 1-forms and the tetrad basis.
@@ -2078,9 +2084,9 @@ Since the identity are tensorial, we can prove them by direct computation using 
 The Bianchi identities on the tangent bundle are unchanged from a general fiber bundle and so is the proof.
 In a tetrad $\{e_a,\theta^a\}_a$ of $TM\to M$ they read
 \begin{align}
-    d_\nabla T &= \Omega_{\, b} \wedge \theta^b\qquad \text{i.e.}\quad d_\nabla T^a = \Omega^a_{\, b} \wedge \theta^b,
+    &d_\nabla T :=d_\nabla\big(e_a\otimes T^a\big) = \Omega_{\, b} \wedge \theta^b\qquad \text{i.e.}\quad \omega_b^a\wedge T^b +d T^a = \Omega^a_{\, b} \wedge \theta^b,
     \\
-    d \Omega^a_{\, b} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, b} = e_a \otimes \Big(\omega_c^a\wedge \Omega^c_b + \underbrace{d \Omega_{\, b}^a}_{=0}\Big) = e_a \otimes\omega_c^a\wedge \Omega^c_b\,.
+    &d \Omega^a_{\, b} = 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, b} :=d_\nabla (e_a \otimes \Omega^a_{\, b})= e_a \otimes \Big(\omega_c^a\wedge \Omega^c_b + \underbrace{d \Omega_{\, b}^a}_{=0}\Big) = e_a \otimes\omega_c^a\wedge \Omega^c_b\,.
 \end{align}
 Beware the 2nd identity says the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ vanish, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
 The \textbf{Bianchi identities} essentially express \textbf{symmetry contraints} that follow \textbf{from the very definition} of torsion and curvature.
@@ -2090,6 +2096,53 @@ In particular, \textbf{in absence of torsion} $T=0$ the \textbf{first Bianchi id
 \end{equation}
 \end{mytheorem}
 
+
+
+
+%================================================================
+\subsection{Einstein tensor and energy-momentum tensor in the tetrad formalism}
+%================================================================
+
+Let us now assume torsion vanishes $T\equiv 0$ and $\nabla$ is the Levi-Civita connection of a Lorentzian metric $g$ on $M$.
+The Cartan equations and Bianchi equations become
+\begin{align}
+    \begin{cases}
+    d \theta^a + \omega^a_{\, b} \wedge \theta^b = 0,
+    \\[4pt]
+    d \omega^a_{\, b} + \omega^a_{\, c} \wedge \omega^c_{\, b} = \Omega^a_{\, b},
+    \end{cases}
+    \qquad\qquad
+    \begin{cases}
+    \Omega^a_{\, b} \wedge \theta^b = 0,
+    \\[4pt]
+    d \Omega^a_{\, b} = 0.
+    \end{cases}
+\end{align}
+If we consider an orthonormal tetrad $e_i$, we also have antisymmetric connection 1-forms
+\begin{align}
+    \omega_{jk}=-\omega_{kj}\quad \text{where}\quad \omega_{jk}:=\eta_{j a} \omega^a_{\, k}\,.
+\end{align}
+And if the tetrad is related to some coordinate system $x^\mu$ by $e_i = B_i^\mu \partial_\mu$, we express the Crhsitoffel symbols as
+\begin{align}
+\begin{aligned}
+    \omega_j^k(e_i)\equiv \Gamma_{ij}^k=&\tfrac{1}{2} \eta^{k\ell} \Big( \eta_{m \ell} C^m_{ij} - \eta_{m j} C^m_{i \ell} - \eta_{m i} C^m_{j \ell} \Big)\quad \text{where}\quad C_{ij}^k= (B^{-1})^k_\nu \left( B_i^\mu \partial_\mu B_j^\nu - B_j^\mu \partial_\mu B_i^\nu \right).
+\end{aligned}
+\end{align} 
+The process has been
+\begin{align}
+    B_i^\mu\, \Longrightarrow \theta^i\,\Longrightarrow C_{ij}^k\, \Longrightarrow \Gamma_{ij}^k\, \Longrightarrow \omega_j^k\, \Longrightarrow \Omega_j^k\,.
+\end{align}
+It wil be convenient to define a (0,2) tensor valued 2-form\todotag{Check def \& name}
+\begin{align}
+    H_{\alpha\beta} \theta^\alpha\otimes \theta^\beta,\quad H_{\alpha\beta}:= \star\Big(\theta^\alpha \wedge \theta^\beta\Big) = \tfrac{1}{2} \underbrace{\sqrt{|g|}}_{=1}\,\epsilon_{\alpha\beta\gamma\delta} \,\, \theta^\gamma \wedge \theta^\delta,
+\end{align}
+and a (0,3)-tensor valued 1-form 
+\begin{align}
+    H_{\alpha\beta\gamma} \theta^\alpha\otimes \theta^\beta \otimes \theta^\gamma,\quad H_{\alpha\beta\gamma} := \star\Big(\theta^\alpha \wedge \theta^\beta \wedge \theta^\gamma\Big) = \underbrace{\sqrt{|g|}}_{=1}\, \epsilon_{\alpha\beta\gamma\delta} \,\, \theta^\delta.
+\end{align}
+Note they are antisymmetric in all of the indices, regardless of whch are considered to be part of the form or part of the tensor.
+
+We now want to express the Eintein equations in this formalisms...
 
 
 
