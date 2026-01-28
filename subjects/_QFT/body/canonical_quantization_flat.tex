@@ -441,7 +441,15 @@ There are two main ways to excite a harmonic oscillator i.e. to increase its ene
     In the classical case, the oscillator needs to be already displaced from equilibrium to be excited via parametric resonance.
     In the quantum case, however, zero-point fluctuations of the ground state are sufficient to trigger the resonance.
 \end{itemize}
-%
+
+\begin{wrapfigure}[6]{r}{0.45\textwidth} % 16 = lines to wrap; adjust as needed
+    \centering
+    \vspace{-0.9mm}            % optional: nudge up
+    \raisebox{1.5mm}{\includegraphics[width=0.4\textwidth]{images/exciting_harmonic_oscillator.png}}
+    %\includegraphics[width=0.4\textwidth]{images/exciting_harmonic_oscillator.png}
+    %\caption{}
+    \label{fig:exciting_1d_harmonic_oscillator}
+\end{wrapfigure}
 The first mechanism is essentially how fields of different species excite each other via interactions.
 A concrete example is how the electron field excites the electromagnetic field to produce photons e.g. when electrons in an antenna oscillate due to an applied voltage and thus excite the EM field to produce radio waves.
 
@@ -1561,7 +1569,7 @@ We can now draw random realizations or expectations valus of the field and funct
 The outcomes are of course sensitive to the chosen state $|\Psi\rangle$ of the system.
 For example if we choose a state $|0\dots n_\mathbf{k}\dots\rangle$ with a single excited mode $\mathbf{k}$, the field fluctuations will display a characteristic wavelength $\lambda = \frac{2\pi}{|\mathbf{k}|}$, a phase preference dictated by the wave vector $\hat{\mathbf{k}}$ resulting in a net trend in this direction, and an average amplitude increasing with $n_\mathbf{k}$.
 
-\begin{wrapfigure}[16]{r}{0.45\textwidth} % 14 = lines to wrap; adjust as needed
+\begin{wrapfigure}[16]{r}{0.45\textwidth} % 16 = lines to wrap; adjust as needed
     \centering
     \vspace{-0.5\baselineskip}            % optional: nudge up
     \includegraphics[width=0.35\textwidth]{images/field_fluctuations.png}
@@ -2005,25 +2013,40 @@ After tracing out the {\small EM} field degrees of freedom, the electron is thus
 
 
 
-\begin{mytheorem}[Intuition for the Unruh effect: pulling a cork across the lake \& melting ice in vacuum\todotag{Expand \& polish \& add images for all}]
+\begin{mytheorem}[Intuition for the Unruh effect: pulling a cork across the lake \& melting ice in vacuum\questiontag{Polish}]
 %
 Consider attaching a cork to a string and pulling it across the surface of a calm lake.
-If we pull the cork gently and slowly--uniform inertial motion--it will follow the motion of the string without creating any ripples on the water surface.
-However, if we pull the cork abruptly and quickly--accelerated motion-- it will create ripples that propagate away from it.
+If we pull the cork gently and slowly--inertial uniform motion--it will follow the motion of the string without creating any ripples on the water surface.
+However, if we pull the cork abruptly and quickly--noninertial accelerated motion-- it will create ripples that propagate away from it.
 The faster we pull the cork, the more ripples we create.
 
+\begin{wrapfigure}[16]{r}{0.3\textwidth} % 14 = lines to wrap; adjust as needed
+  \centering
+  \vspace{-0.5\baselineskip}            % optional: nudge up
+  \includegraphics[width=0.3\textwidth,height=3.5cm]{images/unruh effect/cork_pull.png}\\[1pt]
+  \includegraphics[width=0.3\textwidth,height=3.5cm]{images/unruh effect/cork_pull_spring.png}
+  %\includegraphics[width=0.30\textwidth,height=5cm,keepaspectratio]{images/lake_fourier.png}
+  %\caption{...}
+\end{wrapfigure}
 Furthermore, if we imagine cutting the cork in two halves and connecting them with a spring, we can endow it with some internal degrees of freedom.
 Again if we pull the cork gently, the internal degrees of freedom will remain in their ground state.
-However, if we pull the cork abruptly and quickly, the ripples created on the water surface will interact with the internal DoFs of the cork and excite them to higher energy levels, making also the cork vibrate.
+However, if we pull the cork abruptly and quickly, the ripples created on the water surface will interact with the internal DoFs of the cork and excite them to higher energy levels, also making the cork vibrate.
 This is akin to considering a particle with some internal dynamics (e.g. an atom with electronic levels) moving through the quantum field, instead of an elementary particle like a positron with no internal structure.
 %
 
 This simple analogy captures the essence of the Unruh effect, which is already manifest in qft in flat spacetime.
-A particle in inertial motion through the vacuum (or a definite particle state) of a quantum field will not detect any particles (resp. detect te given number of particles), since the field is in its ground state and there are no excitations to interact with.
-However, an accelerated particle will interact with the quantum field in a non-trivial way, causing excitations and detecting particles even if the field is in its vacuum state (resp. a different number of parrticles then the inertial observer would detect).
+A particle in inertial motion through the vacuum (or a definite particle state) of a quantum field will not detect any particles (resp. detect the given number of particles), since the field is in its ground state and there are no excitations to interact with.
+However, an accelerated particle will interact with the field in a non-trivial way, causing excitations and detecting particles even if the field is in its vacuum state (resp. a different number of parrticles then the inertial observer would detect).
 %
 
-An even more simple analogy for the Unruh effect is: an inertial cube of ice in vacuum remains solid because there is no particle to interact with, while accelerating the cube of ice will melt it (even if the inertial observer confirm there are no particles the cube could interact with). 
+\begin{wrapfigure}[7]{r}{0.4\textwidth} % 16 = lines to wrap; adjust as needed
+    \centering
+    %\vspace{-0.9mm}            % optional: nudge up
+    \includegraphics[width=0.25\textwidth]{images/unruh effect/melting_ice.png}
+    %\caption{}
+    \label{fig:melting_ice_unruh_effect}
+\end{wrapfigure}
+An even more simple analogy for the Unruh effect is: a cube of ice following inertial motion through vacuum remains solid because there is no particle to interact with, while an accelerated cube of ice will detect particles and melt due to interactions with them (even if the inertial observer confirm there are no particles the cube could interact with). 
 \end{mytheorem}
 
 
@@ -2031,6 +2054,13 @@ An even more simple analogy for the Unruh effect is: an inertial cube of ice in 
 %
 So far we have identified particles with quanta created/annihilated by ladder operators $a_k^{(\dagger)}$ associated to a given mode decomposition of the field.
 However we would rather identify particles as entities \emph{localized in space} rather than propagating waves extended over all space.
+
+\begin{wrapfigure}[3]{r}{0.1\textwidth} % 14 = lines to wrap; adjust as needed
+  \centering
+  %\vspace{-0.5\baselineskip}            % optional: nudge up
+  \includegraphics[width=0.1\textwidth]{images/unruh effect/atom.png}
+  %\caption{...}
+\end{wrapfigure}
 Unruh and DeWitt proposed a simple \emph{operational definition of particles} based on the interaction between a quantum field and a localized quantum system acting as a particle detector, such as an atom, an oscillator like a diatomic molecule like $H_2$ or another small quantum system with internal DoFs.
 A particle is then defined as the spacetime-localized excitation of the detector caused by its interaction with the quantum field.
 According to this defintion, particles can be detected by at least 4 mechanisms:
@@ -2161,7 +2191,7 @@ The sinc functions peaks for $\nu_k^\pm=0$, that is $k$ such that $\omega_k = \p
 \noindent
 \textbf{Uniformly accelerated motion \& finite-temperature effects.}\todotag{Check \& Finish}
 The above analysis can be extended to arbitrary wordlines $x^\mu(\tau)$.
-It is particularly interesting to consider a uniformly accelerated detector with proper acceleration $a$, following the Rindler trajectory (see Birrell \& Davies, pg. 52-58)
+It is particularly interesting to consider a uniformly accelerated detector with proper acceleration $a$, following the Rindler trajectory (cf. Birrell \& Davies, pg. 52-58)
 {\small
 \begin{align}
     x^\mu(\tau) = \left(\frac{c^2}{a}\sinh\left(\frac{a \tau}{c}\right), \frac{c^2}{a}\cosh\left(\frac{a \tau}{c}\right),0,0\right).
@@ -2171,13 +2201,13 @@ In this case, even if the field is in its vacuum state $|\psi_{\phi,i}\rangle = 
 For example, considering the detector in its ground state $|E_0\rangle$, tracing over all 1-particle final states of the field $|\psi_{\phi,f}\rangle=\sqrt{2\omega_k}a_k^\dagger|0\rangle$ and using $\sum_k \to V\int \frac{d^3\mathbf{k}}{(2\pi)^3}$, and letting $\tau_f-\tau_i\to \infty$ with adiabatic switching $\epsilon(\tau)\to 1$, the transition probability is
 {\small
 \begin{align}
-    P_{E_0\to E_m} &:= \sum_{k} \left|\langle E_m | \otimes \langle \sqrt{2\omega_k} a_k^\dagger | U_I(\tau_f,\tau_i) | 0 \rangle \otimes | E_0 \rangle\right|^2 \\
-    &= \frac{1}{\hbar^2} |\langle E_m | \hat{Q}(0) | E_0 \rangle|^2 V\int \frac{d^3\mathbf{k}}{(2\pi)^3} \left| \int_{-\infty}^{+\infty} d\tau' e^{\frac{i}{\hbar}E_{m0} \tau'} e^{i k_\mu x^\mu(\tau')} \right|^2 \\
-    &= \frac{1}{\hbar^2} |\langle E_m | \hat{Q}(0) | E_0 \rangle|^2 V \int \frac{d^3\mathbf{k}}{(2\pi)^3} \left| \int_{-\infty}^{+\infty} d\tau'e^{\frac{i}{\hbar}E_{m0} \tau'} e^{\frac{i}{a}\left(\omega_k \sinh\left(a \tau'\right) - k_x \cosh\left(a \tau'\right)\right)} \right|^2.
+    P_{E_0\to E_m} &= \sum_{k} \left|\langle E_m | \otimes \langle \sqrt{2\omega_k} a_k^\dagger | U_I(\tau_f,\tau_i) | 0 \rangle \otimes | E_0 \rangle\right|^2 \\
+    &= \frac{1}{\hbar^2} |\langle E_m | \hat{Q}(0) | E_0 \rangle|^2\, V\int \frac{d^3\mathbf{k}}{(2\pi)^3} \left| \int_{-\infty}^{+\infty} d\tau' e^{\frac{i}{\hbar}E_{m0} \tau'} e^{i k_\mu x^\mu(\tau')} \right|^2 \\
+    &= \frac{1}{\hbar^2} |\langle E_m | \hat{Q}(0) | E_0 \rangle|^2 \,V \int \frac{d^3\mathbf{k}}{(2\pi)^3} \left| \int_{-\infty}^{+\infty} d\tau'e^{\frac{i}{\hbar}E_{m0} \tau'} e^{\frac{i}{a}\left(\omega_k \sinh\left(a \tau'\right) - k_x \cosh\left(a \tau'\right)\right)} \right|^2.
 \end{align}
 }
 Considering a massless scalar field for simplicity $\omega_k=|k|$, the integral can be computed exactly.
-The transition probability results to be proportional to a Planckian distribution
+The transition probability results to be proportional to a Bose-Einstein distribution
 {\small
 \begin{align}
     P_{E_0\to E_m} &\propto \frac{1}{e^{E_m/(k_B T_U)} - 1}\,,\quad k_BT_U = \frac{\hbar a}{2\pi c},
@@ -2185,18 +2215,28 @@ The transition probability results to be proportional to a Planckian distributio
 }
 characteristic of a thermal bath of particles at the Unruh temperature $T_U = \frac{\hbar a}{2\pi k_B c}$.
 This is the essence of the Unruh effect: an accelerated observer perceives the vacuum state of a quantum field as a thermal state with a temperature proportional to its acceleration.
-In terms of the initial analogies: an accelerated cube of ice will melt even if it is in vacuum.
+In terms of the initial analogy: an accelerated cube of ice will melt even through vacuum.
 %
 \end{mytheorem}
 
 
-\begin{mytheorem}[Another interpretation of Unruh effect: particles as mode decomposition in two different frames\todotag{Expand \& finish}]
+\begin{mytheorem}[Reinterpreting Unruh effect: relating mode decompositions in two different frames\todotag{Expand \& finish eventually}]
 %
-The Unruh effect can also be understood in terms of two different mode decompositions of the quantum field, associated to two different frames of reference: an inertial frame and a uniformly accelerated frame.
+The Unruh effect can alternatively be understood in terms of two different mode decompositions of the quantum field, associated to an inertial frame and a uniformly accelerated one, with corresponding non-trivial Bogoliubov transformations relating them.
 Indeed the decomposition \eqref{eq:time_evolution_free_field} is invariant under global Lorentz transformations since the modes $k^\mu=(\omega_k,\mathbf{k})$ are 4-vectors, but not under general non-inertial transformations.
-A uniformly accelerated observer will naturally use Rindler coordinates $(\eta,\xi,y,z)$, related to inertial coordinates $(t,x,y,z)$ by
+A uniformly accelerated observer will naturally use Rindler coordinates $(\eta,\xi,y,z)$, related to inertial ones $(t,x,y,z)$ by
 \begin{align}
     t = \xi \sinh(\eta),\quad x = \xi \cosh(\eta),\quad y=y,\quad z=z, \quad \xi \in (0,+\infty),\quad \eta \in (-\infty,+\infty).
 \end{align}
-Performing such change of coordinates the accelerated observer will decompose the field in different modes and the relation between these two sets of modes will change over time, leading to mixing and excitations in the mode decomposition of the accelerated observer even if the field stays in vacuum for the inertial one.\todotag{add image Kempf 8}
+
+\begin{wrapfigure}[4]{r}{0.45\textwidth} % 16 = lines to wrap; adjust as needed
+    \centering
+    %\vspace{-0.9mm}            % optional: nudge up
+    \includegraphics[width=0.3\textwidth]{images/unruh effect/modes_accelerated_frame.png}
+    %\caption{}
+    \label{fig:modes_accelerated_frame}
+\end{wrapfigure}
+Performing this change of coordinates, the accelerated observer will decompose the field in different modes and the relation between these two sets of modes will change over time, leading to mixing and excitations in the mode decomposition of the accelerated observer even if the field stays in vacuum for the inertial one.
+Namely, a definite mode for the inertial observer is not monocromatic for the accelerated one, but rather a time-dependent superposition of modes.
 \end{mytheorem}
+

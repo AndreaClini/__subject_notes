@@ -116,6 +116,13 @@ Indeed, waves with arbitrary wavelength can exist outside the ships and hit the 
 On the other hand, only waves with countable discrete wavelengths $\sim L/n$ can fit between the ships and push them further apart, where $L$ is the distance between them.
 There is thus a net attractive force between the ships since the pressure from outside is larger than the one from inside.
 
+\begin{wrapfigure}[11]{r}{0.45\textwidth} % 16 = lines to wrap; adjust as needed
+    \centering
+    \vspace{-0.5\baselineskip}            % optional: nudge up
+    \includegraphics[width=0.4\textwidth]{images/casimir_effect.jpeg}
+    \caption{Illustration of the Casimir effect between two parallel conducting plates.}
+    \label{fig:casimir_effect}
+\end{wrapfigure}
 In the context of QFT, consider the electromagnetic field confined between two perfectly-conducting parallel plates separated by a distance $a$.
 Boundary conditions discretize the momentum perpendicular to the plates,
 \begin{align}
@@ -130,14 +137,13 @@ The physically meaningful quantity is the \emph{difference} with empty space (no
 \begin{equation}
     \frac{E_{\text{Cas}}(a)}{A} := \frac{E_0(a)}{A} - \frac{E_0(\infty)}{A}.
 \end{equation}
-Using analytic regularization (e.g. zeta-function with $\zeta(-3)=\tfrac{1}{120}$), one obtains the finite result
+Using analytic regularization (e.g. zeta-function with $\zeta(-3)=\tfrac{1}{120}$), one obtains a finite energy per unit area, yielding an attractive force between the plates
+{\small
 \begin{equation}
-    \frac{E_{\text{Cas}}(a)}{A} = -\,\frac{\pi^2\,\hbar c}{720\,a^3},
+    \frac{E_{\text{Cas}}(a)}{A} = -\,\frac{\pi^2\,\hbar c}{720\,a^3} \quad \Rightarrow\quad 
+     \frac{F}{A} = -\,\frac{d}{da}\!\left(\frac{E_{\text{Cas}}}{A}\right) = -\,\frac{\pi^2\,\hbar c}{240\,a^4} < 0.
 \end{equation}
-which yields an attractive pressure
-\begin{equation}
-    \frac{F}{A} = -\,\frac{d}{da}\!\left(\frac{E_{\text{Cas}}}{A}\right) = -\,\frac{\pi^2\,\hbar c}{240\,a^4} < 0.
-\end{equation}
+}
 %
 This force has been measured with high precision and exemplifies how vacuum fluctuations plus boundary conditions produce macroscopic effects.
 Crucially, it is a direct proof that vacuum fluctuations do exist at least down to length scales of order $a$, typically microns or less in experiments, placing a lower bound on the UV cutoff of Qunatum Field Theories.
@@ -145,12 +151,8 @@ In particular, including zero-point energies only down to the micron scale, much
 %
 \end{mytheorem}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{images/casimir_effect.jpeg}
-    \caption{Illustration of the Casimir effect between two parallel conducting plates.}
-    \label{fig:casimir_effect}
-\end{figure}
+
+
 
 
 

@@ -1,0 +1,52 @@
+% !TeX root = ../QFT_main.tex
+%=========================================================
+%=========================================================
+\chapter{Path Integral Formulation}\label{ch:path_integral_formulation}
+%========================================================
+%=========================================================
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Generating functional}
+%=========================================================
+%------------------------------------------------------------
+
+
+\begin{mytheorem}[Quantu theory is to classical theory what Legendre transform is to Fourier transform\todotag{Check \& Finish}]
+%
+Consider the generating functional of a field theory
+\begin{align}
+    e^{iW[J]} &= \int \mathcal{D}\phi\, e^{iS[\phi]} e^{-i\int d^4x\, J(x)\phi(x)}.
+\end{align}
+In this sense $W[J]$ is the infinite-dimensional Fourier transform of the functional $\phi\mapsto e^{iS[\phi]}$ and $J(x)$ is the conjugate variable to the field $\phi(x)$.
+The generating functional is the generator of all connected diagrams, therefore its knowledge is equivalent to the knowledge of the full quantum theory.
+
+The \emph{stationary phase approximation} consists in approximating the path integral by the configuration that contributes the most to the integral, i.e., the one that extremizes the action and thus reduces the oscillations of the integrand
+\begin{align}
+    &\int \mathcal{D}\phi\, e^{iS[\phi]-\int d^4x\, J(x)\phi(x)} \sim e^{iS[\phi_{cl}]-\int d^4x\, J(x)\phi_{cl}(x)}\quad \text{for $\,\phi_{cl}\,$ solving}\quad \left.\frac{\delta S}{\delta \phi(x)}\right|_{\phi_{cl}} = J(x)\\
+    &\quad \Rightarrow \quad W[J] \sim S[\phi_{cl}] - \int d^4x\, J(x)\phi_{cl}(x)
+\end{align} 
+By definition this approximate $W[J]$ with the Legendre transform of the classical action.
+
+Finally, recalling that the \emph{effective action} $\Gamma[\phi]$ is defined as the Legendre transform of $W[J]$
+\begin{align}
+    \Gamma[\phi] = W[J] - \int d^4x\, J(x)\phi(x),
+\end{align}
+we see that in stationary phase approximation the effective action reduces to the classical action
+\begin{align}
+    \Gamma[\phi] \sim S[\phi].
+\end{align}
+
+To make the analogy clear, consider the 1-dimensional Fourier transform of a function $f(y) = e^{iS(y)}$, where $S(y)\in\C$ so that there is no loss of generality,
+\begin{align}
+    e^{ig(z)}=\int dy\, e^{iS(y)} e^{-izy}.
+\end{align}
+Then, in stationary phase approximation, we approximate the Fourier transform with the Legendre transform
+\begin{align}
+    &\int dy\, e^{iS(y)-izy} \sim e^{iS(y_{cl}) - izy_{cl}}\quad \text{for $\,y_{cl}\,$ solving}\quad \left.\frac{dS}{dy}\right|_{y_{cl}} = z \quad \Rightarrow \quad g(z) \sim S(y_{cl}) - zy_{cl}.
+\end{align}
+%
+
+\end{mytheorem}

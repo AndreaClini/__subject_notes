@@ -1,0 +1,70 @@
+% !TeX root = ../QFT_main.tex
+%=========================================================
+%=========================================================
+\chapter{Quantum Field Theory in Curved Spacetime}\label{ch:qft_in_curved_spacetime}
+%========================================================
+%=========================================================
+
+
+\begin{mytheorem}[How to formulate QFT in curved spacetime?\todotag{polish}]
+%
+Canonical quantization is performed in Hamiltonian formalism, which requires a global time coordinate to define equal-time commutation relations, and is thus coordinate-dependent by definition.
+We should find a way to identify conjugate variables and commutation relations in a coordinate-independent way.
+Alternatively, we can formulate QFT in Lagrangian formalism via path integrals, which is manifestly covariant and does not require singling out a time coordinate.
+This is even more powrful since it extends beyond the perturbative regime.
+The diagram below summarize the two procedure.
+
+\begin{tikzpicture}[
+  font=\small,
+  node distance=18mm and 38mm,
+  >={Stealth[length=3mm]},
+  box/.style={align=left, inner sep=1pt},
+  arr/.style={->, line width=1.1pt},
+  darr/.style={->, line width=1.1pt, dashed},
+  equiv/.style={line width=1.1pt, <->},
+  purpletxt/.style={text=purple!70!black},
+  greentxt/.style={text=green!45!black},
+  orangearr/.style={draw=orange!85!black}
+]
+
+% --- Top row (SR) ---
+\node[box, purpletxt] (srH) {SR, classical field theory\\Hamiltonian formalism};
+\node[box, purpletxt, right=of srH] (srL) {SR, classical field theory\\Lagrangian formalism};
+
+\draw[arr, orangearr] (srH) -- node[above, greentxt, align=center]
+  {Legendre transform\\equivalence} (srL);
+
+% --- Middle row (GR, classical) ---
+\node[box, purpletxt, below=of srH] (grHc) {GR, classical field theory\\Hamiltonian formalism};
+\node[box, purpletxt, below=of srL] (grLc) {GR, classical field theory\\Lagrangian formalism};
+
+\draw[arr, orangearr] (srL) -- node[right, greentxt, align=center]
+  {allow curvature \\ \& make covariant} (grLc);
+
+\draw[arr, orangearr] (grLc) -- node[above, greentxt, align=center]
+  {Legendre transform\\equivalence} (grHc);
+
+% --- Bottom row (GR, QFT) ---
+\node[box, purpletxt, below=of grHc] (grHq) {GR, QFT\\Hamiltonian formalism\\ (Canonical quantization)};
+\node[box, purpletxt, below=of grLc] (grLq) {GR, QFT\\Lagrangian formalism\\(Path integral QFT)};
+
+\draw[arr, orangearr] (grHc) -- node[left, greentxt, align=center]
+  {as outlined\\already} (grHq);
+
+\draw[arr, orangearr] (grLc) -- node[above, greentxt, align=center]
+  {path\\integral} (grLq);
+
+\draw[equiv] (grHq) -- node[below, align=center]
+  {\scriptsize Dyson--Schwinger eqs are the same\\[-1pt]\scriptsize equivalence} (grLq);
+
+\end{tikzpicture}
+%  
+\end{mytheorem}
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Green functions}
+%=========================================================
+%------------------------------------------------------------
