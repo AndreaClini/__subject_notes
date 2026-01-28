@@ -2103,7 +2103,7 @@ In particular, \textbf{in absence of torsion} $T=0$ the \textbf{first Bianchi id
 \subsection{Einstein tensor and energy-momentum tensor in the tetrad formalism}
 %================================================================
 
-Let us now assume torsion vanishes $T\equiv 0$ and $\nabla$ is the Levi-Civita connection of a Lorentzian metric $g$ on $M$.
+Let us now assume $\nabla$ is the Levi-Civita connection of a Lorentzian metric $g$ on $M$ with vanishing torsion $T\equiv 0$.
 The Cartan equations and Bianchi equations become
 \begin{align}
     \begin{cases}
@@ -2122,17 +2122,18 @@ If we consider an orthonormal tetrad $e_i$, we also have antisymmetric connectio
 \begin{align}
     \omega_{jk}=-\omega_{kj}\quad \text{where}\quad \omega_{jk}:=\eta_{j a} \omega^a_{\, k}\,.
 \end{align}
-And if the tetrad is related to some coordinate system $x^\mu$ by $e_i = B_i^\mu \partial_\mu$, we express the Crhsitoffel symbols as
+If the tetrad is related to some coordinate system $x^\mu$ by $e_i = B_i^\mu \partial_\mu$, we can express the Crhsitoffel symbols as
 \begin{align}
 \begin{aligned}
     \omega_j^k(e_i)\equiv \Gamma_{ij}^k=&\tfrac{1}{2} \eta^{k\ell} \Big( \eta_{m \ell} C^m_{ij} - \eta_{m j} C^m_{i \ell} - \eta_{m i} C^m_{j \ell} \Big)\quad \text{where}\quad C_{ij}^k= (B^{-1})^k_\nu \left( B_i^\mu \partial_\mu B_j^\nu - B_j^\mu \partial_\mu B_i^\nu \right).
 \end{aligned}
 \end{align} 
-The process has been
+The information initially contained in the spacetime dependent metric $g_{\mu\nu}(x)$ is thus recast into the matrices $B_i^\mu(x)$ specifying the orthonormal tetrad.
+The coefficients originally obtained from the metric are now obtained via the process 
 \begin{align}
     B_i^\mu\, \Longrightarrow \theta^i\,\Longrightarrow C_{ij}^k\, \Longrightarrow \Gamma_{ij}^k\, \Longrightarrow \omega_j^k\, \Longrightarrow \Omega_j^k\,.
 \end{align}
-It wil be convenient to define a (0,2) tensor valued 2-form\todotag{Check def \& name}
+To express the Einstein equations in this formalism, it wil be convenient to define a (0,2) tensor valued 2-form\todotag{Check def \& name}
 \begin{align}
     H_{\alpha\beta} \theta^\alpha\otimes \theta^\beta,\quad H_{\alpha\beta}:= \star\Big(\theta^\alpha \wedge \theta^\beta\Big) = \tfrac{1}{2} \underbrace{\sqrt{|g|}}_{=1}\,\epsilon_{\alpha\beta\gamma\delta} \,\, \theta^\gamma \wedge \theta^\delta,
 \end{align}
@@ -2144,7 +2145,11 @@ Note they are antisymmetric in all of the indices, regardless of whch are consid
 
 We now want to express the Eintein equations in this formalisms...
 
-
+First note that the Einstein_Hilbert action can be expressed as
+\begin{align}
+    S_{EH}[g] = \frac{1}{16\pi G}\int_M d\Omega_g\,\,(R-2\Lambda) 
+    = \frac{1}{16\pi G}\int_M \star (R-2\Lambda) 
+\end{align}
 
 
 

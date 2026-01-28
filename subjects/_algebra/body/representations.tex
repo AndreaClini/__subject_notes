@@ -84,3 +84,25 @@ Definition 1.10. (Unitary representations) $A$ representation $R: V \rightarrow 
 
 The following is just a somewhat redundant but often-used piece of terminology.
 Definition 1.11. (Faithful representation) A representation $R: G \rightarrow \mathrm{GL}(V)$ is called faithful iff it is one-to-one, or, equivalently, iff $\operatorname{Ker}(R)=\{e\}$.
+
+
+
+%==================================================
+\section{Finite groups}
+%==================================================
+
+\begin{theorem}
+%
+Any representation of a finite group $G$ is equivalent to a unitary representation wrt a suitable inner product on the base space.
+For example, ig $G\to GL(V)$ and $\langle\cdot,\cdot\rangle$ is any inner product on $V$, then the inner product
+\begin{equation*}
+\langle v, w\rangle_{G}:=\frac{1}{|G|} \sum_{g \in G}\langle R(g) v, R(g) w\rangle
+\end{equation*}
+is invariant under the action of $G$, i.e. $\langle R(g) v, R(g) w\rangle_{G}=\langle v, w\rangle_{G}$ for all $g \in G$ and $v, w \in V$.
+%
+In particular we have that the dual representation $R^{*}: G \rightarrow \mathrm{GL}\left(V^{*}\right)$ defined by
+\begin{equation*}
+V^*\ni f\mapsto R^{dual}(g)f:=f\circ R\left(g^{-1}\right)
+\end{equation*}
+obeys that $\chi_{R^{dual}}(g)=\overline{\chi_{R}(g)}$ for all $g \in G$ since...
+\end{theorem}
