@@ -55,10 +55,54 @@ The diagram below summarize the two procedure.
   {path\\integral} (grLq);
 
 \draw[equiv] (grHq) -- node[below, align=center]
-  {\scriptsize Dyson--Schwinger eqs are the same\\[-1pt]\scriptsize equivalence} (grLq);
+  {\scriptsize Dyson--Schwinger eqs for \\ correlators are the same\\[-1pt]\scriptsize equivalence} (grLq);
 
 \end{tikzpicture}
-%  
+
+
+A quantum theory is completely specified by its (time ordered) correlators (expectation values of products of field operators), and these are uniquely determined by the Dyson--Schwinger equations.
+Then, if two theories have all the same Dyson--Schwinger equations for correlators, they are equivalent.
+
+\begin{itemize}
+  \item We are used to writing down the usual lagrangian or hamilotnian in flat space because we always use inertial coordinates related by global Lorentz transformations.
+  If we used other coordinates, e.g. polar coordinates, the expressions for $\mathcal{L}$ and $\mathcal{H}$ would be different (and possibly more complicated) even in flat spacetime, but the physics would be the same.
+  \item This open the door to generalizing to curved spacetimes, where we can write down $\mathcal{L}$ and $\mathcal{H}$ in a covariant way using the metric $g_{\mu\nu}$.
+  Write an expression that is invariant under change of coordinates in flat spacetime. Then promote to arbitrary spacetimes.
+  \item The lagrangian formulation is manifestly covariant and independent of coordinate choice. The Hamiltonian formulation requires fixing a coordinate system and a time slicing.
+  Indeed the very expressions of $\mathcal{H}$ and the conjugate field $\pi$ depend on this choice.
+  This seems to break covariance, but in facts only hides it.
+  Indeed, combining the two hamilton equations for $\phi$ and its coordinate-dependent conjugate field $\pi$ gives back the covariant Euler--Lagrange equations.
+  \item This also clarify that \textbf{each hamiltonian $\mathcal{H}$ is the generator of time translations along the chosen time coordinate}.
+  Indeed the hamilton equations in the chosen coordinates $(t,\mathbf{x})$ read
+  \begin{align}
+    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H}{\delta \pi(t,\mathbf{x})}, \quad
+    \frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H}{\delta \phi(t,\mathbf{x})},\\
+    &\quad\text{and more generally }\quad \frac{\partial \mathcal{O}}{\partial t} = \{\mathcal{O}, H\}\quad \forall\,\, \text{field}\quad  \mathcal{O}.
+  \end{align}
+  Or at the quantum level
+  \begin{equation}
+    \frac{\partial \hat{\mathcal{O}}}{\partial t} = -\frac{i}{\hbar} [\hat{\mathcal{O}}, \hat{H}]\quad \forall \,\,\text{field operator}\quad \hat{\mathcal{O}}.
+  \end{equation}
+  This tells us that time translations \emph{parametrized by the chosen coordinate $t$} will be given by the operator
+  \begin{align}
+    &U(t,t_0) = \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{t_0}^t dt' H(t')\right),
+  \end{align}
+  If we where to choose another time coordinate $\tau$, we would get another hamiltonian $\tilde{H}$ generating time translations along $\tau$. 
+  The two hamiltonians would be different and related so that translations from $t_0=t(\tau_0)$ to $t=t(\tau)$ are the same as translations from $\tau_0$ to $\tau$
+  \begin{equation}
+    \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{t(\tau_0)}^{t(\tau)} dt' H(t')\right)
+    =
+    \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{\tau_0}^{\tau} d\tau' \tilde{H}(\tau')\right).
+  \end{equation}
+
+  \item We remark we should be careful with what we identify with the conjugate field $\pi$. 
+  This indeed does depend of the choice of coordinates and the time slicing. So does the form of $\mathcal{H}$. On the other hand, the form of the lagrangian density $\mathcal{L} \sqrt{|g|}$ is formally the same in any coordinates.
+  \item The path integral formulation is manifestly covariant and does not require singling out a time coordinate.
+  This is even more powrful since it extends beyond the perturbative regime.
+  \item Both formulations are equivalent since they give rise to the same Dyson--Schwinger equations for correlators.
+\end{itemize}
+
+
 \end{mytheorem}
 
 

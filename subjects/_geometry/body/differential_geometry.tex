@@ -1347,12 +1347,12 @@ This is the gauge-fixing problem already well-known from other gauge theories li
 
 
 
-\begin{mytheorem}[Pseudo-Riemannian structures \& fixing the gauge.]
+\begin{mytheorem}[Pseudo-Riemannian structures \& fixing the gauge.\notetag{Polish}]
 %
 If \((M,g)\) and \((M,g')\) are related by an isometry then they are merely different coordinate descriptions of the same manifold and hence have the same `shape'
 %
 A \textbf{pseudo-Riemannian structure} \(\mathcal{E}\) is an equivalence class of pseudo-Riemannian manifolds which can be mapped into each other via metric-preserving diffeomorphisms i.e. coordinate changes.
-Hence space(time) should be modelled as a (pseudo-)Riemannian structure \(\mathcal{E}\), i.e. an equivalence class of pairs \((M,g)\).
+Hence space(time) should be modelled as a (pseudo)-Riemannian structure \(\mathcal{E}\), i.e. an equivalence class of pairs \((M,g)\).
 
 One would like to \textbf{fix the gauge}, i.e. identify exactly one representative \((M,g)\) for each class \(\mathcal{E}\).
 %
@@ -1377,6 +1377,18 @@ What we initially have is however an integral over all metrics or connections or
 We must then introduce a gauge-fixing functional \(\delta(\mathcal{E})\) so that from each equivalence class of metrics, or other objects uniquely identifying a pseudo-Riemannian structure, only one representative contributes to the path integral.
 %
 A viable option is to perform the integration directly over \textbf{non-redundant invariants} that uniquely identify a pseudo-Riemannian structure, like spectra of suitable differential operators on tensor valued forms or K-theory classes, so that no gauge-fixing is needed.
+
+It is useful to count the actual physical degrees of freedom of a pseudo-Riemannian structure in \(n\) dimensions.
+A symmetric covariant 2-tensor \(g_{\mu \nu}\) has \(\frac{n(n+1)}{2}\) independent components at each point.
+However, diffeomorphisms can be used to eliminate \(n\) of them, which are spurious artifacts of coordinates.
+The \textbf{number of physical degrees of freedom of a pseudo-Riemannian structure} is thus
+\begin{equation}
+    \frac{n(n+1)}{2} - n = \frac{n(n-1)}{2}.
+\end{equation}
+In \(n=4\) dimensions we have \(10-4=6\) physical degrees of freedom at each point.
+Notably, in $n=2$ we only have one DoF, confirming that curvature in 2D is completely specified by a single scalar, the Gaussian curvature i.e. the sectional curvature of the only 2D plane in the tangent space.
+In particular any 2d metric is \emph{locally}\footnote{There might be global topological obstructions.} conformally flat i.e. can be written as \(g_{\mu\nu}=e^{\phi(x)}\eta_{\mu\nu}\) for some scalar function \(\phi\).
+Also note for $n=1$ there are no DoFs: there is no curvature in 1 dimension.
 %
 \end{mytheorem}
 
@@ -2141,15 +2153,15 @@ and a (0,3)-tensor valued 1-form
 \begin{align}
     H_{\alpha\beta\gamma} \theta^\alpha\otimes \theta^\beta \otimes \theta^\gamma,\quad H_{\alpha\beta\gamma} := \star\Big(\theta^\alpha \wedge \theta^\beta \wedge \theta^\gamma\Big) = \underbrace{\sqrt{|g|}}_{=1}\, \epsilon_{\alpha\beta\gamma\delta} \,\, \theta^\delta.
 \end{align}
-Note they are antisymmetric in all of the indices, regardless of whch are considered to be part of the form or part of the tensor.
+Note they are antisymmetric in all the indices, regardless of whch are considered to be part of the form or part of the tensor.
 
 We now want to express the Eintein equations in this formalisms...
 
-First note that the Einstein_Hilbert action can be expressed as
-\begin{align}
-    S_{EH}[g] = \frac{1}{16\pi G}\int_M d\Omega_g\,\,(R-2\Lambda) 
-    = \frac{1}{16\pi G}\int_M \star (R-2\Lambda) 
-\end{align}
+%First note that the Einstein_Hilbert action can be expressed as
+% \begin{align}
+%     S_{EH}[g] = \frac{1}{16\pi G}\int_M d\Omega_g\,\,(R-2\Lambda) 
+%     = \frac{1}{16\pi G}\int_M \star (R-2\Lambda) 
+% \end{align}
 
 
 

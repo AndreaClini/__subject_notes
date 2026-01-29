@@ -1808,11 +1808,11 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 %------------------------------------------------------------------
 
 
-%------------------------------------------------------------------
+
 %======================================================================
-\section{Excitations \& coherent states}
+\subsection{Excitations \& coherent states}
 %======================================================================
-%------------------------------------------------------------------
+
 
 
 \begin{mytheorem}[Particle \& wave interpretations of field excitations\questiontag{Check \& improve}]
@@ -2220,9 +2220,9 @@ In terms of the initial analogy: an accelerated cube of ice will melt even throu
 \end{mytheorem}
 
 
-\begin{mytheorem}[Reinterpreting Unruh effect: relating mode decompositions in two different frames\todotag{Expand \& finish eventually}]
+\begin{mytheorem}[Reinterpreting Unruh effect: relating mode decompositions in two different frames\todotag{Polish, expand \& finish eventually}]
 %
-The Unruh effect can alternatively be understood in terms of two different mode decompositions of the quantum field, associated to an inertial frame and a uniformly accelerated one, with corresponding non-trivial Bogoliubov transformations relating them.
+The Unruh effect can alternatively be understood in terms of two different mode decompositions of the quantum field in different frames related by non-inertial transformations, e.g. an inertial frame and a uniformly accelerated one, with corresponding non-trivial Bogoliubov transformations relating them.
 Indeed the decomposition \eqref{eq:time_evolution_free_field} is invariant under global Lorentz transformations since the modes $k^\mu=(\omega_k,\mathbf{k})$ are 4-vectors, but not under general non-inertial transformations.
 A uniformly accelerated observer will naturally use Rindler coordinates $(\eta,\xi,y,z)$, related to inertial ones $(t,x,y,z)$ by
 \begin{align}
@@ -2238,5 +2238,12 @@ A uniformly accelerated observer will naturally use Rindler coordinates $(\eta,\
 \end{wrapfigure}
 Performing this change of coordinates, the accelerated observer will decompose the field in different modes and the relation between these two sets of modes will change over time, leading to mixing and excitations in the mode decomposition of the accelerated observer even if the field stays in vacuum for the inertial one.
 Namely, a definite mode for the inertial observer is not monocromatic for the accelerated one, but rather a time-dependent superposition of modes.
+
+Note this is somewhat different from the previous analysis.
+Indeed above we considered \emph{only the wordline} of the detector and showed that it affects the interaction with the field, causing excitations even if the field is in its vacuum state for the inertial observer.
+Here we are considering an entirely new frame, as if the accelerated observer had its own set of coordinates covering a portion of Minkowsky space, and thus its own mode decomposition of the field.
+The Unruh effect can thus be reinterpreted as the fact that the vacuum state (resp. other states) for the inertial observer is not the vacuum state (resp. the same state) for the accelerated one, due to the non-trivial relation between the two mode decompositions.
+Specifically, just like we found for the detector energy levels, one would find that the occupation numbers of the modes for the accelerated observer follow a thermal distribution at the Unruh temperature $T_U$ when the field is in its inertial vacuum state.
+%
 \end{mytheorem}
 
