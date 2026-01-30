@@ -6,13 +6,15 @@
 %=========================================================
 
 
+\section{Initial consideration \todotag{Finish \& remove sec header}}
+
 \begin{mytheorem}[How to formulate QFT in curved spacetime?\todotag{polish}]
 %
 Canonical quantization is performed in Hamiltonian formalism, which requires a global time coordinate to define equal-time commutation relations, and is thus coordinate-dependent by definition.
 We should find a way to identify conjugate variables and commutation relations in a coordinate-independent way.
 Alternatively, we can formulate QFT in Lagrangian formalism via path integrals, which is manifestly covariant and does not require singling out a time coordinate.
 This is even more powrful since it extends beyond the perturbative regime.
-The diagram below summarize the two procedure.
+The diagram below summarize the two procedures.
 
 \begin{tikzpicture}[
   font=\small,
@@ -59,9 +61,8 @@ The diagram below summarize the two procedure.
 
 \end{tikzpicture}
 
+The latter equivalence is guaranteed since a theory is completely specified by its correlators, which are uniquely determined by the Dyson--Schwinger equations.
 
-A quantum theory is completely specified by its (time ordered) correlators (expectation values of products of field operators), and these are uniquely determined by the Dyson--Schwinger equations.
-Then, if two theories have all the same Dyson--Schwinger equations for correlators, they are equivalent.
 
 \begin{itemize}
   \item We are used to writing down the usual lagrangian or hamilotnian in flat space because we always use inertial coordinates related by global Lorentz transformations.
@@ -107,8 +108,64 @@ Then, if two theories have all the same Dyson--Schwinger equations for correlato
 
 
 
+
+
+
+\begin{mytheorem}
+%
+QFT in curved spacetime requires a careful rethinking of our approach.
+Indeed canonical quantization is performed in Hamiltonian formalism, which requires a global time coordinate to define conjugate variables and then equal-time commutation relations.
+The Hamiltonian formalism is thus coordinate-dependent by definition, and \emph{would seem} doomed to fail in curved spacetime.
+We should find a way to identify conjugate variables and commutation relations in a coordinate-independent way.
+
+To develop the intuition, first note that we are used the familiar expression for the lagrangian or hamiltonian in flat spacetime because we always use inertial `rectangular' coordinates related by global Lorentz transformations.
+If we used other coordinates, e.g. polar coordinates, the expressions for $\mathcal{L}$ and $\mathcal{H}$ would be different (and possibly more complicated) even in flat spacetime, but the physics would be the same.
+This already suggests how to proceed: we should recast the lagrangian in a covariant form, that is formally invariant under change of coordinates in flat spacetime, and then promote it to arbitrary spacetimes by replacing the Minkowski metric $\eta_{\mu\nu}$ with a general metric $g_{\mu\nu}$.
+
+Having obtained a Lagrangian formulation valid in curved spacetime, we can then derive the Hamiltonian formulation by choosing a coordinate system and a time slicing.
+This will give us expressions for $\mathcal{H}$ and the conjugate field $\pi$ that depend on this choice.
+While this seems to break covariance, in facts it only hides it.
+Indeed, regardless of the coordinate choice and the corresponding expressions, combining the two hamilton equations for $\phi$ and its coordinate-dependent conjugate field $\pi$ gives back the covariant Euler--Lagrange equations.
+
+Alternatively, we can formulate QFT directly in Lagrangian formalism via path integrals, which is manifestly covariant and does not require singling out a time coordinate.
+This is even more powrful since it extends beyond the perturbative regime.
+The diagram below summarize the two procedures.
+
+
+\end{mytheorem}
+
+
+
+
+
+
+\begin{mytheorem}[Hamiltonian as generator of time translations\todotag{Finish}]
+%
+\end{mytheorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
 %--------------------------------------------------------
 %=========================================================
 \section{Green functions}
 %=========================================================
 %------------------------------------------------------------
+
+
+\begin{mytheorem}[Dyson--Schwinger equations for correlators in curved spacetime\todotag{polish}]
+%
+A quantum theory is completely specified by its correlators\footnote{In fact, it is even sufficient to only know time-ordered ones.} (expectation values of products of time-evolved field operators).
+Correlators are uniquely determined by the Dyson--Schwinger equations, which are an infinite set of coupled differential equations relating all $n$-point functions to each other for all $n\in\mathbb{N}$.
+If two theories have all the same Dyson--Schwinger equations for correlators, they are thus completely equivalent.
+In particular this proves the equivalence between canonical quantization and path integral quantization in curved spacetime, at least as long as the former approach is applicable.
+\end{mytheorem}
