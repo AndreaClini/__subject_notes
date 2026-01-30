@@ -1354,10 +1354,9 @@ If \((M,g)\) and \((M,g')\) are related by an isometry then they are merely diff
 A \textbf{pseudo-Riemannian structure} \(\mathcal{E}\) is an equivalence class of pseudo-Riemannian manifolds which can be mapped into each other via metric-preserving diffeomorphisms i.e. coordinate changes.
 Hence space(time) should be modelled as a (pseudo)-Riemannian structure \(\mathcal{E}\), i.e. an equivalence class of pairs \((M,g)\).
 
-One would like to \textbf{fix the gauge}, i.e. identify exactly one representative \((M,g)\) for each class \(\mathcal{E}\).
-%
-\textbf{Problem.}  These equivalence classes are hard to handle because the absence or existence of an isometry relating two metrics \(g\) and \(g'\) is difficult to check.
-There is no known general algorithm to decide whether two metrics are isometric or not.
+One would like to \textbf{fix the gauge} i.e. identify exactly one representative \((M,g)\) for each equivalence class \(\mathcal{E}\).
+These \textbf{classes} are \textbf{hard} to handle \textbf{because the nonlinearity of geometry} makes it hard to establish the (in)existence of an isometry between two generic curved metrics \(g\) and \(g'\).
+The flat metric (class) is easy to identify, regardless of complicated coordinates, since it is equivalent to the vanishing of the Riemann tensor, but there is no known general algorithm to establish the isometry of two arbitrary metrics.
 Instead one typically relies on (incomplete) sets of invariants, like curvature scalars, holonomies, spectra of differential operators, K-theory classes, etc.
 
 This issue is particularly evident in the \textbf{path integral formulation of gravity}.
@@ -1378,21 +1377,29 @@ We must then introduce a gauge-fixing functional \(\delta(\mathcal{E})\) so that
 %
 A viable option is to perform the integration directly over \textbf{non-redundant invariants} that uniquely identify a pseudo-Riemannian structure, like spectra of suitable differential operators on tensor valued forms or K-theory classes, so that no gauge-fixing is needed.
 
-It is useful to count the actual physical degrees of freedom of a pseudo-Riemannian structure in \(n\) dimensions.
-A symmetric covariant 2-tensor \(g_{\mu \nu}\) has \(\frac{n(n+1)}{2}\) independent components at each point.
-However, diffeomorphisms can be used to eliminate \(n\) of them, which are spurious artifacts of coordinates.
-The \textbf{number of physical degrees of freedom of a pseudo-Riemannian structure} is thus
-\begin{equation}
-    \frac{n(n+1)}{2} - n = \frac{n(n-1)}{2}.
-\end{equation}
-In \(n=4\) dimensions we have \(10-4=6\) physical degrees of freedom at each point.
-Notably, in $n=2$ we only have one DoF, confirming that curvature in 2D is completely specified by a single scalar, the Gaussian curvature i.e. the sectional curvature of the only 2D plane in the tangent space.
+How many  actual physical degrees of freedomhas a pseudo-Riemannian structure in \(n\) dimensions?
+A symmetric covariant 2-tensor \(g_{\mu \nu}\) has \(\frac{n(n+1)}{2}\) independent components at each point, but diffeomorphisms eliminate \(n\) of them, which are spurious artifacts of coordinates.
+The \textbf{number of physical degrees of freedom of a pseudo-Riemannian structure} is thus \(\frac{n(n-1)}{2}\).
+In \(n=4\) dimensions we have 6 physical DoFS at each point.
+Notably, in $n=2$ we only have 1 DoF, confirming that curvature in 2D is completely specified by a single scalar, the Gaussian curvature i.e. the sectional curvature of the only 2D plane in the tangent space.
 In particular any 2d metric is \emph{locally}\footnote{There might be global topological obstructions.} conformally flat i.e. can be written as \(g_{\mu\nu}=e^{\phi(x)}\eta_{\mu\nu}\) for some scalar function \(\phi\).
 Also note for $n=1$ there are no DoFs: there is no curvature in 1 dimension.
 %
 \end{mytheorem}
 
 
+\begin{mytheorem}[Weyl \& Ricci curvature decomposition\todotag{Finish}]
+%
+In $n>3$ the Ricci tensor does not encode all the information of the Riemann tensor i.e. all the DoFs of the curvature, the remaining being encoded in the Weyl tensor.
+In general, the Riemann curvature tensor \(R_{\alpha \beta, \mu \nu}\) can be decomposed into the \textbf{Weyl tensor} \(C_{\alpha \beta, \mu \nu}\) and terms depending on the Ricci tensor \(R_{\mu \nu}\) and the Ricci scalar \(R\) as\todotag{Check}
+\begin{equation}
+    R_{\alpha \beta, \mu \nu} = C_{\alpha \beta, \mu \nu} + \frac{1}{n-2} \left( g_{\alpha [\mu} R_{\nu] \beta} - g_{\beta [\mu} R_{\nu] \alpha} \right) - \frac{R}{(n-1)(n-2)} g_{\alpha [\mu} g_{\nu] \beta}.
+\end{equation}
+The Weyl tensor is traceless and encodes the conformal part of the curvature, while the Ricci part encodes the volume-changing part of the curvature.
+According to the power counting above, in 2D the metric has only 1 DoF, completely encoded in the Ricci scalar, and the Weyl tensor vanishes identically.
+In 3D the metric has 3 DoFs, the (symmetric) Ricci tensor also has $3=\frac{3(3+1)}{2}-3$ independent components, and the Weyl tensor can be expressed entirely in terms of the Ricci tensor and scalar.
+%
+\end{mytheorem}
 
 
 
