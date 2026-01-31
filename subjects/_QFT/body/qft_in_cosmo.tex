@@ -36,54 +36,6 @@ But the path integral approach is practically more powerful since it extends bey
 The two procedures are summarized in the following diagram.
 \vspace{2mm}
 
-% \begin{tikzpicture}[
-%   font=\small,
-%   >=Stealth,
-%   block/.style={
-%     draw=purple!70!black,
-%     rounded corners=2pt,
-%     thick,
-%     fill=purple!4,
-%     text width=5.1cm,
-%     align=center,
-%     inner sep=5pt
-%   },
-%   lab/.style={
-%     font=\scriptsize,
-%     align=center,
-%     text=green!40!black,
-%     fill=white,
-%     fill opacity=0.9,
-%     text opacity=1,
-%     inner sep=1.5pt
-%   },
-%   arr/.style={->, thick, draw=orange!85!black},
-%   equiv/.style={<->, thick, draw=orange!85!black}
-% ]
-% \matrix (m) [matrix of nodes, row sep=16mm, column sep=36mm, nodes={block}] {
-%   |[name=srH ]| {SR, classical field theory\\Hamiltonian formalism}
-%     & |[name=srL ]| {SR, classical field theory\\Lagrangian formalism} \\
-%   |[name=grHc]| {GR, classical field theory\\Hamiltonian formalism}
-%     & |[name=grLc]| {GR, classical field theory\\Lagrangian formalism} \\
-%   |[name=grHq]| {GR, QFT\\Hamiltonian formalism\\(Canonical quantization)}
-%     & |[name=grLq]| {GR, QFT\\Lagrangian formalism\\(Path integral QFT)} \\
-% };
-% % Top row
-% \draw[equiv] (srH) -- node[lab, above] {Legendre transform\\equivalence} (srL);
-% % Middle row
-% \draw[arr]  (srL) -- node[lab, right] {allow curvature\\\& make covariant} (grLc);
-% \draw[equiv] (grHc) -- node[lab, above] {Legendre transform\\equivalence} (grLc);
-% % Bottom row
-% \draw[arr] (grHc) -- node[lab, left] {canonical\\quantization} (grHq);
-% \draw[arr] (grLc) -- node[lab, right] {path\\integral} (grLq);
-% \draw[<->, thick] (grHq) -- node[
-%   font=\scriptsize, align=center,
-%   fill=white, fill opacity=0.9, text opacity=1,
-%   inner sep=1.5pt, below
-% ]{same Dyson--Schwinger eqs\\ for correlators} (grLq);
-% \end{tikzpicture}
-%
-
 \begin{tikzpicture}[
   font=\small,
   >=Stealth,
@@ -126,7 +78,7 @@ The two procedures are summarized in the following diagram.
 \draw[arr] (grLc) -- node[lab, right] {path\\integral} (grLq);
 \draw[equiv] (grHq) -- node[lab, above]{same Dyson--Schwinger eqs\\ for correlators} node[lab, below]{equivalence} (grLq);
 \end{tikzpicture}
-
+%
 \end{mytheorem}
 
 
@@ -148,7 +100,7 @@ In both classical and quantum cases, this shows that $H_F$ is the generator of t
 \end{align}
 A different choice $\tilde{F}$ of coordinates and foliation  $\mathcal{M}\simeq \R\times \tilde{\Sigma}$ yields a different hamiltonian $H_{\tilde{F}}$ generating time translations along the corresponding time $\tilde{t}\equiv \tilde{x}^0$.
 
-If the two foliations are equivalent i.e. fixed-time leaves are mapped into each other by the change of coordinates, \todoinline{Not sure what if $\tilde{t}=\tilde{t}(t,\mathbf{x})$ i.e. leaves don't map into each other?}
+If the two foliations are equivalent i.e. fixed-time leaves are mapped into each other by the change of coordinates, \todotag{Not sure what if $\tilde{t}=\tilde{t}(t,\mathbf{x})$ i.e. leaves not map into each other?}
 \begin{align}
   \R\times \Sigma \simeq\mathcal{M}\simeq  \tilde{\R}\times \tilde{\Sigma} \quad \text{via}\quad (t,\mathbf{x}) \mapsto (\tilde{t}(t), \tilde{\mathbf{x}}(t,\mathbf{x})),
 \end{align}
@@ -179,11 +131,54 @@ In this case, we can relate the two Hilbert (resp. classical) spaces and corresp
 \end{mytheorem}
 
 
+To fix ideas we consider below the case of quintessence scalar field, but the analysis extends to any field theory in curved spacetime.
+
+\begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
+%
+Consider the action for a scalar field in curved spacetime and choose a foliation $\mathcal{M}\R\times\Sigma$
+\begin{align}
+    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right) = \int dt \underbrace{\int_\Sigma d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right)}_{L(t)}.
+\end{align}
+The conjugate field in such coordinates is
+{
+\begin{align}
+    \pi(t,\mathbf{x}) = \frac{\delta L(t)}{\delta \dot{\phi}(t,\mathbf{x})} = \sqrt{|g|} g^{0\nu} \nabla_\nu \phi(t,\mathbf{x}) = \sqrt{|g|} \left( g^{00} \,\nabla_0\phi(t,\mathbf{x}) + g^{0j} \,\nabla_{\!j} \phi(t,\mathbf{x}) \right) \quad \Rightarrow \quad \nabla_0 \phi(t,\mathbf{x}) = \frac{1}{\sqrt{|g|} g^{00}} \left( \pi(t,\mathbf{x}) - \sqrt{|g|} g^{0j} \nabla_{\!j} \phi(t,\mathbf{x}) \right).
+\end{align}
+}
+The hamiltonian density is thus
+\begin{align}
+    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \nabla_0 \phi(t,\mathbf{x}) - \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi(t,\mathbf{x}) \nabla_\nu \phi(t,\mathbf{x}) - V(\phi(t,\mathbf{x})) \right) \\
+    &= \frac{\pi^2(t,\mathbf{x})}{2\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \pi(t,\mathbf{x}) \nabla_{\!j} \phi(t,\mathbf{x}) + \sqrt{|g|} \left( \frac{1}{2} h^{ij} \nabla_{\!i} \phi(t,\mathbf{x}) \nabla_{\!j} \phi(t,\mathbf{x}) + V(\phi(t,\mathbf{x})) \right),
+\end{align}
+where $h^{ij} = g^{ij} - \frac{g^{0i} g^{0j}}{g^{00}}$ is the inverse induced metric on the spatial slices $\Sigma_t$.
+The hamiltonian is $H(t) = \int_\Sigma d^3\mathbf{x}\, \mathcal{H}(t,\mathbf{x})$.
+The classical hamilton equations are
+\begin{align}
+    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H(t)}{\delta \pi(t,\mathbf{x})} = \frac{\pi(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \nabla_{\!j} \phi(t,\mathbf{x}), \\
+    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = \nabla_{\!j} \left( \sqrt{|g|} h^{ij} \nabla_{\!i} \phi(t,\mathbf{x}) \right) - \sqrt{|g|} V'(\phi(t,\mathbf{x})).
+\end{align}
+Combining them gives back the covariant Euler--Lagrange equations
+\begin{align}
+    \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0.
+\end{align}
+%
+\end{mytheorem}
 
 
-
-
-
+\begin{mytheorem}[Canonical quantization of scalar field in curved spacetime\todotag{Finish}]
+%
+We now proceed to canonical quantization following Heinsenberg procedure.
+We promote the classical fields $\phi(t,\mathbf{x})$ and $\pi(t,\mathbf{x})$ to \emph{self-adjoint} operators $\hat{\phi}(t,\mathbf{x})$ and $\hat{\pi}(t,\mathbf{x})$ acting on a Hilbert space $\mathcal{H}$ and the equations are left unchanged upon replacing Poisson brackets with commutators $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$.
+In particular EoM for the fields and equal-time CCR read
+\begin{align}
+    &\frac{\partial \hat{\phi}(t,\mathbf{x})}{\partial t} = \frac{1}{i\hbar} [\hat{\phi}(t,\mathbf{x}), \hat{H}(t)] = \frac{\hat{\pi}(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \nabla_{\!j} \hat{\phi}(t,\mathbf{x}), \\
+    &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = \frac{1}{i\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = \nabla_{\!j} \left( \sqrt{|g|} h^{ij} \nabla_{\!i} \hat{\phi}(t,\mathbf{x}) \right) - \sqrt{|g|} V'(\hat{\phi}(t,\mathbf{x})), \\
+    &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}(\mathbf{x}-\mathbf{y}).
+\end{align}
+We now want to solve this theory.
+The strategy is to mimick the flat spacetime approach and expand the field operator in terms of mode solutions to the Klein--Gordon equation in curved spacetime...
+  
+\end{mytheorem}
 
 
 
