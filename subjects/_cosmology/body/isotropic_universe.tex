@@ -6,3 +6,123 @@
 %=========================================================
 
 
+%---------------------------------------------------
+%==================================================
+\section{Cosmological Principle \& FLRW Metric}
+%==================================================
+
+The \textbf{Cosmological Principle} states that the Universe is homogeneous and isotropic on large scales. The properties of the Universe are thus same everywhere and in all directions on sufficiently large scales (greater than about 100 Mpc).
+The CMB is the main experimental evidence for isotropy and LSS surveys support homogeneity.
+
+
+Isotropy and homogeneity imply the sectional curvature of each 2d tangent plane at each point is the same.
+The spatial sections are thus constant-curvature 3d spaces, classified by the curvature $K$.
+The most general metric consistent with the Cosmological Principle is the \textbf{Friedmann-Lemaître-Robertson-Walker (FLRW) metric}
+\begin{equation}
+    ds^2 = -dt^2 + a^2(t) \left[ \frac{dr^2}{1-Kr^2} + r^2 \underbrace{(d\theta^2 + \sin^2\theta d\phi^2)}_{d\Omega^2} \right]
+    = -dt^2 + a^2(t) \left[ d\chi^2 + S_K^2(\chi) d\Omega^2 \right],
+\end{equation}
+The relation between the comoving distance $\chi$ and the metric distance $r$ is given by
+\begin{equation}
+    r(\chi) = \begin{cases}
+        \frac{1}{\sqrt{K}} \sin(\sqrt{K}\chi) & K > 0 \\
+        \chi & K = 0 \\
+        \frac{1}{\sqrt{|K|}} \sinh(\sqrt{|K|}\chi) & K < 0
+    \end{cases},
+\end{equation}
+
+
+The Christoffel symbols for the FLRW metric are
+\begin{equation}
+    \Gamma^0_{ij} = a\dot{a} \gamma_{ij}, \quad
+    \Gamma^i_{0j} = \frac{\dot{a}}{a} \delta^i_j, \quad
+    \Gamma^i_{jk} = \tilde{\Gamma}^i_{jk},
+\end{equation}
+where $\tilde{\Gamma}^i_{jk}$ are the Christoffel symbols of the spatial metric $\gamma_{ij}$.
+
+
+The Friedmann equations governing the dynamics of the scale factor $a(t)$ are
+\begin{equation}
+    \left( \frac{\dot{a}}{a} \right)^2 = \frac{8\pi G}{3} \rho - \frac{K}{a^2} + \frac{\Lambda}{3},
+\end{equation}
+\begin{equation}
+    \frac{\ddot{a}}{a} = -\frac{4\pi G}{3} (\rho + 3p) + \frac{\Lambda}{3}.
+\end{equation}
+
+The Hublle constant today is
+\begin{align}
+    H_0 = 100 h \; \mathrm{km \, s^{-1} \, Mpc^{-1}} \approx\, h \,3.3 \times 10^{-3} \, \mathrm{Mpc^{-1}}
+\end{align}
+The Friedmann equation are written in terms of the density parameters as
+\begin{equation}
+    H^2 = H_0^2 \left[ \sum_x \Omega_x a^{-3(1+w_x)} + \Omega_K a^{-2} + \Omega_\Lambda \right],
+\end{equation}
+where
+\begin{equation}
+    \Omega_r = \frac{8\pi G \rho_{r0}}{3H_0^2}, \quad
+    \Omega_m = \frac{8\pi G \rho_{m0}}{3H_0^2}, \quad
+    \Omega_\Lambda = \frac{\Lambda}{3H_0^2}, \quad
+    \Omega_K = 1 - \sum_x \Omega_x - \Omega_\Lambda.
+\end{equation}
+
+
+
+
+%=====================================================
+\subsection{Back of the envelope calculations}
+%======================================================
+
+
+\begin{mytheorem}[The age of the Universe\todotag{Finsh}]
+Constraining the cosmological parameters $\Omega_x$ we can get an estimate for the age of the universe from Friedman equation
+\begin{align} 
+    \frac{(da/dt)}{a} = H_0 \Big[\sum_x \Omega_x a^{-3(1+w_x)} \Big]^{1/2} \quad \Rightarrow \quad T_{\text{uni}}=\int dt = \int_0^1\frac{da}{a H_0 \Big[\sum_x \Omega_x a^{-3(1+w_x)} \Big]^{1/2}}.
+\end{align}
+Inserting approximate values we ger $T_{\text{uni}} \approx 13.8$ Gyr.
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[Size of the ovserbale universe: particle horizon vs Hubble radius\todotag{Finsh}]
+Similarly we can estimate the size of the observable universe as the comoving distance traveled by a photon since the Big Bang, i.e. the particle horizon
+\begin{align}
+    \dots
+\end{align}
+For polynomial expansion $a(t) \sim t^\beta$ we find this is similar to the Hubble radius $d_H = c/H(t)$ up to a factor $\beta/(1-\beta)$.
+    
+\end{mytheorem}
+
+
+
+
+%=====================================================
+\subsection{Fine tuning problems}
+%======================================================
+
+
+%-------------------------------------------------
+\subsubsection*{The cosmological constant problem}\todotag{Polish}
+%------------------------------------------------------
+
+
+The effect of a cosmological constant in the EH action $\int \sqrt{-g} (R-2\Lambda^\mathrm{bare})$ can be reabsorbed as a vacuum energy contribution to the stress-energy tensor
+\begin{align}
+    G_{\mu\nu}+\Lambda^\mathrm{bare} g_{\mu\nu} = 8\pi G T_{\mu\nu}  \quad \Rightarrow \quad G_{\mu\nu} = 8\pi G \left(T_{\mu\nu} + T^\Lambda_{\mu\nu}\right), \quad T^\Lambda_{\mu\nu} = -\frac{\Lambda^\mathrm{bare}}{8\pi G} g_{\mu\nu}\,.
+\end{align}
+Quantum vacuum energy also contributes to the stress tensor as a cosmological constant $\Lambda_{\mathrm{vac}}$ i.e. $\rho_{\mathrm{vac}}= -\frac{\Lambda_{\mathrm{vac}}}{8\pi G} = -p_{\mathrm{vac}}$, the total effective cosmological constant is then
+\begin{align}
+    \Lambda_{\mathrm{eff}} = \Lambda_\mathrm{bare} + \Lambda_{\mathrm{vac}}\,.
+\end{align}
+The theoretical prediction for vacuum energy density from QFT is $\rho_{\mathrm{vac}} \sim M_{\mathrm{Pl}}^4 \sim 10^{76} \, \mathrm{GeV}^4$, while the experimentally observed value from cosmology is $\rho_{\Lambda} = \Omega_\Lambda \rho_{\mathrm{crit} 0} \approx (0.7)\tfrac{3H_0^2}{8\pi G}\sim 10^{-47} \, \mathrm{GeV}^4$.
+This discrepancy of about 123 orders of magnitude is known as the cosmological constant problem, representing a significant fine-tuning issue since the \emph{bare} vacuum energy entering Einstein equations must cancel the \emph{quantum} vacuum energy to an extraordinary degree of precision to yield the observed value of $\Lambda_{\mathrm{eff}}$
+\begin{align}
+    \frac{\Lambda_{\mathrm{bare}}}{\Lambda_{\mathrm{vac}}} = -1 + \frac{\Lambda_{\mathrm{eff}}}{\Lambda_{\mathrm{vac}}} \simeq -1 + 10^{123}.
+\end{align}
+The equation of state of vacuum energy is also reason of debate.
+The interpretation as vacuum energy implies $w=-1$, but dynamical DE models with $w\neq -1$ are also possible.
+The current experimental value from Planck 2018 is $w=-1.03\pm 0.03$.
+
+
+%-------------------------------------------------
+\subsubsection*{The flatness problem}
+%------------------------------------------------------
