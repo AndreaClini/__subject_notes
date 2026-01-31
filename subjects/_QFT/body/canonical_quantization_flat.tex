@@ -2055,9 +2055,8 @@ An even more simple analogy for the Unruh effect is: a cube of ice following ine
 So far we have identified particles with quanta created/annihilated by ladder operators $a_k^{(\dagger)}$ associated to a given mode decomposition of the field.
 However we would rather identify particles as entities \emph{localized in space} rather than propagating waves extended over all space.
 
-\begin{wrapfigure}[3]{r}{0.1\textwidth} % 14 = lines to wrap; adjust as needed
-  \centering
-  %\vspace{-0.5\baselineskip}            % optional: nudge up
+\begin{wrapfigure}[4]{r}{0.1\textwidth} % 14 = lines to wrap; adjust as needed
+  \centering           % optional: nudge up
   \includegraphics[width=0.1\textwidth]{images/unruh effect/atom.png}
   %\caption{...}
 \end{wrapfigure}
@@ -2073,25 +2072,56 @@ According to this defintion, particles can be detected by at least 4 mechanisms:
 This is clarified in the analysis of the Unruh effect below.
 \end{mytheorem}
 
-\begin{mytheorem}[The Unruh effect\todotag{Expand \& finish}]
+\begin{mytheorem}[The Unruh effect\todotag{Expand final part \& polish}]
 %
-Consider Minkowsky space with inertial coordinates $x^{\mu}=(t,\mathbf{x})$, and a scalar quantum field $\hat{\phi}(t_0,\mathbf{x})$ on it with free Hamiltonian $H_{\phi}$.
-The freely time-evolved field solves the Heisenberg equation $ih\partial \phi(t,\mathbf{x}) = [\phi(t,\mathbf{x}), H_{\phi}]$ wrt the inertial time $t$ (and states similarly solve the Schrödinger equation wrt time $t$), and its mode decomposition wrt such inertial coordinates is thus given by \eqref{eq:time_evolution_free_field}.
+For simplicity consider the detector in 1st quantization and the field in 2nd quantization, with total Hibert space $\mathcal{H}_{\phi} \otimes \mathcal{H}_{\mathrm{det}}$.
+
+Consider Minkowsky space with inertial coordinates $x^{\mu}=(t,\mathbf{x})$, and a scalar quantum field $\hat{\phi}(t_0,\mathbf{x})$ with free Hamiltonian $H_{\phi}$ in such coordinates.
+The freely time-evolved field thus solves the Heisenberg equation $ih\partial \phi(t,\mathbf{x}) = [\phi(t,\mathbf{x}), H_{\phi}]$ wrt the inertial time $t$ (and states similarly solve the Schrödinger equation wrt time $t$), and its mode decomposition wrt such inertial coordinates is given by \eqref{eq:time_evolution_free_field}.
 
 The detector is a localized quantum system with wordline $x^\mu(\tau)$ parametrized by its proper time $\tau$.
-For simplicity we consider the detector in 1st quantization and the field in 2nd quantization, with total Hibert space $\mathcal{H}_{\phi} \otimes \mathcal{H}_{\mathrm{det}}$.
-The detector solves the Schrödinger and Heisenberg equations wrt its own proper time $\tau$. 
+Let  $H_{\mathrm{det}}$ be the free Hamiltonian of the detector wrt its proper time $\tau$, so that its the Schrödinger and Heisenberg equations holds wrt $H_{\mathrm{det}}$ and its own proper time $\tau$. 
 
 We use the proper time of the detector $\tau$ as time parameter, and for simplicity reference time $\tau_0$ such that $x^0(\tau_0)=t_0$.
+This is allowed as long as we use parameter $\tau$ and $H_{\mathrm{det}}$ to evolve the detector operators and states, and parameter $t=t(\tau)$ and $H_{\phi}$ to evolve the field operators and states, and we ultimately evolve up to same corresponding times $\tau^*$ or $t^*=t(\tau^*)$.
+Indeed the Hamiltonians $H_{\mathrm{det}}$ and $H_\phi$ are written wrt time $\tau$ and $t$ respectively and thus are generators of time translations wrt paramter $\tau$ and $t=x^0$ respectively.
+
+To fix ideas, let the free Hamiltonian and the corresponding lagrangian of the detector written wrt its proper time $\tau$ be
+\begin{align}
+    H^\tau_{\mathrm{det}} = \tfrac{1}{2m} \pi_\tau^2- \tfrac12 m\omega^2 q^2 \quad \Rightarrow\quad \tfrac{dq}{d\tau}:= \tfrac{\partial H^\tau_{\mathrm{det}}}{\partial \pi_\tau} = \tfrac{\pi_\tau}{m}, \quad L^\tau_{\mathrm{det}} = \tfrac12 m \left(\tfrac{dq}{d\tau}\right)^2 + \tfrac12 m\omega^2 q^2.
+\end{align}
+The action must be invariant under coordinate reparametrizations, thus changing measure from proper time $\tau$ to inertial time $t$ in the action, we obtain the lagrangian wrt inertial time $t$ and then the corresponding conjugate variable $\pi_t$ and hamiltonian
+{\small
+\begin{align}
+    S_{\mathrm{det}} = \int d\tau\, L^\tau_{\mathrm{det}} = \int dt\,\tfrac{d\tau}{dt} L^\tau_{\mathrm{det}}
+    \quad\Rightarrow\quad
+    & L^t_{\mathrm{det}} = \tfrac{d\tau}{dt} L^\tau_{\mathrm{det}}=
+    \tfrac{d\tau}{dt} \left(\tfrac12 m \left(\tfrac{dq}{d\tau}\right)^2 + \tfrac12 m\omega^2 q^2\right)
+    =  \tfrac12 m \left(\tfrac{dq}{dt}\right)^2 \tfrac{dt}{d\tau} + \tfrac12 m\omega^2 q^2 \tfrac{d\tau}{dt}\\
+    &\Rightarrow\quad  \pi_t = \tfrac{dL^t_{\mathrm{det}}}{d(dq/dt)} = m \tfrac{dq}{dt} \tfrac{dt}{d\tau}\equiv \pi_\tau,\quad
+    H^t_{\mathrm{det}} = \pi_t \tfrac{dq}{dt} - L^t_{\mathrm{det}} =... = \tfrac{d\tau}{dt} H^\tau_{\mathrm{det}}.
+\end{align}
+}
+The conjugate field wrt the two time coordinates turns out to be the same, while the hamiltonians are related by a time-dilation factor, with $H^\tau_{\mathrm{det}}$ time independent and $H_{\mathrm{det}}^t$ in general time-dependent due to the non-trivial $\frac{d\tau}{dt}$ accounting for the detector's motion.
+The free time evolution from time $\tau_0= \tau(t_0)$ to $\tau=\tau(t)$ is thus equivalently written wrt either time coordinate as
+{\small
+\begin{align}
+    U_{\mathrm{det}}(\tau,\tau_0) &= \exp\left(-\frac{i}{\hbar} \int_{\tau_0}^{\tau} d\tau' H_{\mathrm{det}}^\tau\right) = \exp\left(-\frac{i}{\hbar} \int_{t(\tau_0)}^{t(\tau)} dt' \tfrac{d\tau}{dt}H_{\mathrm{det}}^\tau\right) = \exp\left(-\frac{i}{\hbar} \int_{t(\tau_0)}^{t(\tau)} dt' H_{\mathrm{det}}^t\right) = U_{\mathrm{det}}^t(t,t_0).
+\end{align}
+}
+The same argument holds for the time evolution of the field wrt either time coordinate using the corresponding hamiltonian $H_\phi:=H_\phi^t$ or $H_\phi^\tau = \tfrac{dt}{d\tau} H_\phi^t$.
+
 The interaction-picture Hamiltonian, \emph{already freely time-evolved} up to time $\tau$ is then
 \begin{align}
     \hat{H}^I_{\mathrm{tot}}(\tau)= 1 \otimes \hat{H}_{\phi} + \hat{H}_{\mathrm{det}} \otimes 1 + \hat{H}_{\mathrm{int}}^I(\tau),\quad\text{with}\quad \hat{H}^I_{\mathrm{int}}(\tau) = \epsilon(\tau) \,\,\hat{Q}^I(\tau) \otimes \phi^I(x^0(\tau),\mathbf{x}(\tau))\,,
 \end{align}
 where $\hat{H}_{\phi}$ and $\hat{H}_{\mathrm{det}}$ are the free hamiltonians, time-independent and thus with trivial free time evolution, and each operator is time-evolved wrt the total free Hamiltonian\footnote{We suppress the reference time i.e. $\hat{\mathcal{O}}^I(\tau)\equiv \hat{\mathcal{O}}^I(\tau,\tau_0)$ for brevity.}
+{\small
 \begin{align}
     \mathcal{O}\mapsto \mathcal{O}^I(\tau)\!=\! \left(e^{\frac{i}{\hbar} (\tau-\tau_0)\hat{H}_{\mathrm{det}}}\otimes 1 + 1 \otimes e^{\frac{i}{\hbar}(x^0(\tau)-x^0(\tau_0)) \hat{H}_{\phi}}\right) \,\mathcal{O} \left(e^{-\frac{i}{\hbar} (\tau-\tau_0)\hat{H}_{\mathrm{det}}}\otimes 1 + 1 \otimes e^{-\frac{i}{\hbar}(x^0(\tau)-x^0(\tau_0)) \hat{H}_{\phi}}\right).
 \end{align}
-Note we use two different times for the evolution operators, as it should be, since the parameter for the generator of time translations for the detector (resp. field) is $\tau$ (resp. $t=x^0$), but we ultimately have to evolve up to the same time $\tau$ or $x^0(\tau)$.
+}
+Note we use different parameters $\tau$ and $t$ for the time evolution operators as explained above, but we ultimately evolve up to the same time $\tau$ and $x^0(\tau)$.
 
 In the interaction term, the self-adjoint operator $\hat{Q}^I(\tau)$ is some (freely time-evolved) observable of the detector coupled to the field at the detector's spacetime positions $x^\mu(\tau)$, and $\epsilon(\tau)$ parametrizes the interaction strength (i.e. the detector efficiency), possibly switched on/off in a finite time interval.
 We consider a coupling to $\phi$ for simplicity, but couplings to any other observable of the field are possible e.g. to the conjugate field $\pi$. 
