@@ -8,141 +8,175 @@
 
 \section{Initial consideration \todotag{Finish \& remove sec header}}
 
-\begin{mytheorem}[How to formulate QFT in curved spacetime?\todotag{polish}]
-%
-Canonical quantization is performed in Hamiltonian formalism, which requires a global time coordinate to define equal-time commutation relations, and is thus coordinate-dependent by definition.
-We should find a way to identify conjugate variables and commutation relations in a coordinate-independent way.
-Alternatively, we can formulate QFT in Lagrangian formalism via path integrals, which is manifestly covariant and does not require singling out a time coordinate.
-This is even more powrful since it extends beyond the perturbative regime.
-The diagram below summarize the two procedures.
-
-\begin{tikzpicture}[
-  font=\small,
-  node distance=18mm and 38mm,
-  >={Stealth[length=3mm]},
-  box/.style={align=left, inner sep=1pt},
-  arr/.style={->, line width=1.1pt},
-  darr/.style={->, line width=1.1pt, dashed},
-  equiv/.style={line width=1.1pt, <->},
-  purpletxt/.style={text=purple!70!black},
-  greentxt/.style={text=green!45!black},
-  orangearr/.style={draw=orange!85!black}
-]
-
-% --- Top row (SR) ---
-\node[box, purpletxt] (srH) {SR, classical field theory\\Hamiltonian formalism};
-\node[box, purpletxt, right=of srH] (srL) {SR, classical field theory\\Lagrangian formalism};
-
-\draw[arr, orangearr] (srH) -- node[above, greentxt, align=center]
-  {Legendre transform\\equivalence} (srL);
-
-% --- Middle row (GR, classical) ---
-\node[box, purpletxt, below=of srH] (grHc) {GR, classical field theory\\Hamiltonian formalism};
-\node[box, purpletxt, below=of srL] (grLc) {GR, classical field theory\\Lagrangian formalism};
-
-\draw[arr, orangearr] (srL) -- node[right, greentxt, align=center]
-  {allow curvature \\ \& make covariant} (grLc);
-
-\draw[arr, orangearr] (grLc) -- node[above, greentxt, align=center]
-  {Legendre transform\\equivalence} (grHc);
-
-% --- Bottom row (GR, QFT) ---
-\node[box, purpletxt, below=of grHc] (grHq) {GR, QFT\\Hamiltonian formalism\\ (Canonical quantization)};
-\node[box, purpletxt, below=of grLc] (grLq) {GR, QFT\\Lagrangian formalism\\(Path integral QFT)};
-
-\draw[arr, orangearr] (grHc) -- node[left, greentxt, align=center]
-  {as outlined\\already} (grHq);
-
-\draw[arr, orangearr] (grLc) -- node[above, greentxt, align=center]
-  {path\\integral} (grLq);
-
-\draw[equiv] (grHq) -- node[below, align=center]
-  {\scriptsize Dyson--Schwinger eqs for \\ correlators are the same\\[-1pt]\scriptsize equivalence} (grLq);
-
-\end{tikzpicture}
-
-The latter equivalence is guaranteed since a theory is completely specified by its correlators, which are uniquely determined by the Dyson--Schwinger equations.
-
-
-\begin{itemize}
-  \item We are used to writing down the usual lagrangian or hamilotnian in flat space because we always use inertial coordinates related by global Lorentz transformations.
-  If we used other coordinates, e.g. polar coordinates, the expressions for $\mathcal{L}$ and $\mathcal{H}$ would be different (and possibly more complicated) even in flat spacetime, but the physics would be the same.
-  \item This open the door to generalizing to curved spacetimes, where we can write down $\mathcal{L}$ and $\mathcal{H}$ in a covariant way using the metric $g_{\mu\nu}$.
-  Write an expression that is invariant under change of coordinates in flat spacetime. Then promote to arbitrary spacetimes.
-  \item The lagrangian formulation is manifestly covariant and independent of coordinate choice. The Hamiltonian formulation requires fixing a coordinate system and a time slicing.
-  Indeed the very expressions of $\mathcal{H}$ and the conjugate field $\pi$ depend on this choice.
-  This seems to break covariance, but in facts only hides it.
-  Indeed, combining the two hamilton equations for $\phi$ and its coordinate-dependent conjugate field $\pi$ gives back the covariant Euler--Lagrange equations.
-  \item This also clarify that \textbf{each hamiltonian $\mathcal{H}$ is the generator of time translations along the chosen time coordinate}.
-  Indeed the hamilton equations in the chosen coordinates $(t,\mathbf{x})$ read
-  \begin{align}
-    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H}{\delta \pi(t,\mathbf{x})}, \quad
-    \frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H}{\delta \phi(t,\mathbf{x})},\\
-    &\quad\text{and more generally }\quad \frac{\partial \mathcal{O}}{\partial t} = \{\mathcal{O}, H\}\quad \forall\,\, \text{field}\quad  \mathcal{O}.
-  \end{align}
-  Or at the quantum level
-  \begin{equation}
-    \frac{\partial \hat{\mathcal{O}}}{\partial t} = -\frac{i}{\hbar} [\hat{\mathcal{O}}, \hat{H}]\quad \forall \,\,\text{field operator}\quad \hat{\mathcal{O}}.
-  \end{equation}
-  This tells us that time translations \emph{parametrized by the chosen coordinate $t$} will be given by the operator
-  \begin{align}
-    &U(t,t_0) = \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{t_0}^t dt' H(t')\right),
-  \end{align}
-  If we where to choose another time coordinate $\tau$, we would get another hamiltonian $\tilde{H}$ generating time translations along $\tau$. 
-  The two hamiltonians would be different and related so that translations from $t_0=t(\tau_0)$ to $t=t(\tau)$ are the same as translations from $\tau_0$ to $\tau$
-  \begin{equation}
-    \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{t(\tau_0)}^{t(\tau)} dt' H(t')\right)
-    =
-    \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{\tau_0}^{\tau} d\tau' \tilde{H}(\tau')\right).
-  \end{equation}
-
-  \item We remark we should be careful with what we identify with the conjugate field $\pi$. 
-  This indeed does depend of the choice of coordinates and the time slicing. So does the form of $\mathcal{H}$. On the other hand, the form of the lagrangian density $\mathcal{L} \sqrt{|g|}$ is formally the same in any coordinates.
-  \item The path integral formulation is manifestly covariant and does not require singling out a time coordinate.
-  This is even more powrful since it extends beyond the perturbative regime.
-  \item Both formulations are equivalent since they give rise to the same Dyson--Schwinger equations for correlators.
-\end{itemize}
-
-
-\end{mytheorem}
-
-
-
-
-
-
-\begin{mytheorem}
+\begin{mytheorem}[How to formulate QFT in curved spacetime?\questiontag{Polish}]
 %
 QFT in curved spacetime requires a careful rethinking of our approach.
 Indeed canonical quantization is performed in Hamiltonian formalism, which requires a global time coordinate to define conjugate variables and then equal-time commutation relations.
 The Hamiltonian formalism is thus coordinate-dependent by definition, and \emph{would seem} doomed to fail in curved spacetime.
-We should find a way to identify conjugate variables and commutation relations in a coordinate-independent way.
+We should find a way to quantization that ultimately preserves covariance and yields the same physics.
 
-To develop the intuition, first note that we are used the familiar expression for the lagrangian or hamiltonian in flat spacetime because we always use inertial `rectangular' coordinates related by global Lorentz transformations.
-If we used other coordinates, e.g. polar coordinates, the expressions for $\mathcal{L}$ and $\mathcal{H}$ would be different (and possibly more complicated) even in flat spacetime, but the physics would be the same.
-This already suggests how to proceed: we should recast the lagrangian in a covariant form, that is formally invariant under change of coordinates in flat spacetime, and then promote it to arbitrary spacetimes by replacing the Minkowski metric $\eta_{\mu\nu}$ with a general metric $g_{\mu\nu}$.
+To develop the intuition, note that we are used familiar expressions for the lagrangian or hamiltonian in flat spacetime because we always use inertial `rectangular' coordinates related by global Lorentz transformations.
+In other coordinates e.g. polar ones, the expressions for $\mathcal{L}$ and $\mathcal{H}$ would be different (and possibly more complicated) even in flat spacetime, but the physics would be the same.
+This suggests how to proceed: we should recast the lagrangian density $\sqrt{|g|}\mathcal{L}$ in a covariant form, that is \emph{formally} invariant under change of coordinates in flat spacetime, and then promote it to arbitrary spacetimes by replacing the Minkowski metric with a general one and partial derivatives with covariant ones.
 
-Having obtained a Lagrangian formulation valid in curved spacetime, we can then derive the Hamiltonian formulation by choosing a coordinate system and a time slicing.
-This will give us expressions for $\mathcal{H}$ and the conjugate field $\pi$ that depend on this choice.
+Having a Lagrangian formulation valid in curved spacetime, we can then derive the Hamiltonian formulation by choosing a coordinate system and a time slicing.
+Beware the expressions for $\mathcal{H}$ and the conjugate field $\pi$ do depend on this choice.
 While this seems to break covariance, in facts it only hides it.
-Indeed, regardless of the coordinate choice and the corresponding expressions, combining the two hamilton equations for $\phi$ and its coordinate-dependent conjugate field $\pi$ gives back the covariant Euler--Lagrange equations.
-
+Indeed, regardless of the coordinate choice and corresponding expressions, combining the two hamilton equations for $\phi$ and its coordinate-dependent conjugate field $\pi$ gives back the covariant Euler--Lagrange equations
+\begin{align}
+  \begin{cases}
+    \frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H}{\delta \pi(t,\mathbf{x})}, \\
+    \frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H}{\delta \phi(t,\mathbf{x})},
+  \end{cases} \quad \Leftrightarrow \quad \nabla_\mu \left(\tfrac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)}\right) - \tfrac{\partial \mathcal{L}}{\partial \phi} = 0.
+\end{align}
 Alternatively, we can formulate QFT directly in Lagrangian formalism via path integrals, which is manifestly covariant and does not require singling out a time coordinate.
-This is even more powrful since it extends beyond the perturbative regime.
-The diagram below summarize the two procedures.
 
+The resulting quantum theories are completely equivalent since they have the same Dyson--Schwinger equations for correlators.
+But the path integral approach is practically more powerful since it extends beyond the perturbative regime.
+The two procedures are summarized in the following diagram.
+\vspace{2mm}
 
-\end{mytheorem}
-
-
-
-
-
-
-\begin{mytheorem}[Hamiltonian as generator of time translations\todotag{Finish}]
+% \begin{tikzpicture}[
+%   font=\small,
+%   >=Stealth,
+%   block/.style={
+%     draw=purple!70!black,
+%     rounded corners=2pt,
+%     thick,
+%     fill=purple!4,
+%     text width=5.1cm,
+%     align=center,
+%     inner sep=5pt
+%   },
+%   lab/.style={
+%     font=\scriptsize,
+%     align=center,
+%     text=green!40!black,
+%     fill=white,
+%     fill opacity=0.9,
+%     text opacity=1,
+%     inner sep=1.5pt
+%   },
+%   arr/.style={->, thick, draw=orange!85!black},
+%   equiv/.style={<->, thick, draw=orange!85!black}
+% ]
+% \matrix (m) [matrix of nodes, row sep=16mm, column sep=36mm, nodes={block}] {
+%   |[name=srH ]| {SR, classical field theory\\Hamiltonian formalism}
+%     & |[name=srL ]| {SR, classical field theory\\Lagrangian formalism} \\
+%   |[name=grHc]| {GR, classical field theory\\Hamiltonian formalism}
+%     & |[name=grLc]| {GR, classical field theory\\Lagrangian formalism} \\
+%   |[name=grHq]| {GR, QFT\\Hamiltonian formalism\\(Canonical quantization)}
+%     & |[name=grLq]| {GR, QFT\\Lagrangian formalism\\(Path integral QFT)} \\
+% };
+% % Top row
+% \draw[equiv] (srH) -- node[lab, above] {Legendre transform\\equivalence} (srL);
+% % Middle row
+% \draw[arr]  (srL) -- node[lab, right] {allow curvature\\\& make covariant} (grLc);
+% \draw[equiv] (grHc) -- node[lab, above] {Legendre transform\\equivalence} (grLc);
+% % Bottom row
+% \draw[arr] (grHc) -- node[lab, left] {canonical\\quantization} (grHq);
+% \draw[arr] (grLc) -- node[lab, right] {path\\integral} (grLq);
+% \draw[<->, thick] (grHq) -- node[
+%   font=\scriptsize, align=center,
+%   fill=white, fill opacity=0.9, text opacity=1,
+%   inner sep=1.5pt, below
+% ]{same Dyson--Schwinger eqs\\ for correlators} (grLq);
+% \end{tikzpicture}
 %
+
+\begin{tikzpicture}[
+  font=\small,
+  >=Stealth,
+  block/.style={
+    draw=blue!60!black,
+    rounded corners=2pt,
+    thick,
+    fill=blue!8,
+    text width=5.1cm,
+    align=center,
+    inner sep=5pt
+  },
+  lab/.style={
+    font=\scriptsize,
+    align=center,
+    text=blue!70!black,
+    fill=white,
+    fill opacity=0.9,
+    text opacity=1,
+    inner sep=1.5pt
+  },
+  arr/.style={->, thick, draw=black},
+  equiv/.style={<->, thick, draw=black}
+]
+\matrix (m) [matrix of nodes, row sep=16mm, column sep=38mm, nodes={block}] {
+  |[name=srH ]| {SR, classical field theory\\Hamiltonian formalism}
+    & |[name=srL ]| {SR, classical field theory\\Lagrangian formalism} \\
+  |[name=grHc]| {GR, classical field theory\\Hamiltonian formalism}
+    & |[name=grLc]| {GR, classical field theory\\Lagrangian formalism} \\
+  |[name=grHq]| {GR, QFT\\Hamiltonian formalism\\(Canonical quantization)}
+    & |[name=grLq]| {GR, QFT\\Lagrangian formalism\\(Path integral QFT)} \\
+};
+% Top row
+\draw[equiv] (srH) -- node[lab, above]{Legendre transform} node[lab, below]{equivalence} (srL);
+% Middle row
+\draw[arr]  (srL) -- node[lab, right] {allow curvature\\\& make covariant} (grLc);
+\draw[equiv] (grHc) -- node[lab, above]{Legendre transform} node[lab, below]{equivalence} (grLc);
+% Bottom row
+\draw[arr] (grHc) -- node[lab, left] {canonical\\quantization} (grHq);
+\draw[arr] (grLc) -- node[lab, right] {path\\integral} (grLq);
+\draw[equiv] (grHq) -- node[lab, above]{same Dyson--Schwinger eqs\\ for correlators} node[lab, below]{equivalence} (grLq);
+\end{tikzpicture}
+
 \end{mytheorem}
 
+
+\begin{mytheorem}[Hamiltonian as generator of time translations \& different foliations\todotag{Polish \& understand better}]
+%
+The above analysis clarifies that for any given choice $F$ spacetime foliation $\mathcal{M}\simeq \R\times \Sigma$ with coordinates $x^\mu$, the corresponding hamiltonian $H_F=\int_\Sigma d^3\mathbf{x}\,\mathcal{H}_F$  is the generator of time translations along the chosen time coordinate $t\equiv x^0$.
+Indeed the \emph{classical} hamilton equations in the chosen coordinates $(t,\mathbf{x})$ read
+\begin{align}
+  &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H_F}{\delta \pi_F(t,\mathbf{x})}, \quad
+  \frac{\partial \pi_F(t,\mathbf{x})}{\partial t} = -\frac{\delta H_F}{\delta \phi(t,\mathbf{x})},\quad\text{and more generally }\quad \frac{\partial \mathcal{O}}{\partial t} = \{\mathcal{O}, H_F\}\quad \forall\,\, \text{field}\,\,\mathcal{O}.
+\end{align}
+Or at the quantum level, replacing $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$ and time-evolving operators in Heisenberg picture
+\begin{equation}
+  \frac{\partial \hat{\mathcal{O}}}{\partial t} = -\frac{i}{\hbar} [\hat{\mathcal{O}}(t), \hat{H}_F]\quad \forall \,\,\text{field operator}\,\, \hat{\mathcal{O}}.
+\end{equation}
+In both classical and quantum cases, this shows that $H_F$ is the generator of the time evolution operator parametrized wrt the chosen coordinate time $t$
+\begin{align}
+  &U(t,t_0) = \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{t_0}^t \!\! dt' H_F(t')\right)\,.
+\end{align}
+A different choice $\tilde{F}$ of coordinates and foliation  $\mathcal{M}\simeq \R\times \tilde{\Sigma}$ yields a different hamiltonian $H_{\tilde{F}}$ generating time translations along the corresponding time $\tilde{t}\equiv \tilde{x}^0$.
+
+If the two foliations are equivalent i.e. fixed-time leaves are mapped into each other by the change of coordinates, \todoinline{Not sure what if $\tilde{t}=\tilde{t}(t,\mathbf{x})$ i.e. leaves don't map into each other?}
+\begin{align}
+  \R\times \Sigma \simeq\mathcal{M}\simeq  \tilde{\R}\times \tilde{\Sigma} \quad \text{via}\quad (t,\mathbf{x}) \mapsto (\tilde{t}(t), \tilde{\mathbf{x}}(t,\mathbf{x})),
+\end{align}
+the Hilbert spaces $\mathcal{H}=\bigotimes_n L^2(\Sigma,\C)^{\otimes^n}$ of the two quantum theories are isomorphic (resp. the fixed-time function spaces $\mathcal{C}(\Sigma_t,\R)$ in the classical case) and so must be the time evolution of their states and operators, provided we evolve across corresponding time intervals $[t_1,t_2]$ and $[\tilde{t}_1,\tilde{t}_2]$ with $\tilde{t}_j:=\tilde{t}(t_j)$.
+If $\chi_t: \mathcal{H}_F \to \mathcal{H}_{\tilde{F}}$ is the isomorphism between the two Hilbert spaces (resp. classical spaces) induced by the coordinate change $\mathbf{x}\mapsto \tilde{\mathbf{x}}(t,\mathbf{x})$ at time $t$, the corresponding time evolutions obey
+{\small
+\begin{equation}
+  \chi_{t_2} \circ U_F(t_2,t_1)\circ \chi_{t_1}^{-1} 
+  = \chi_{t_2} \circ \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{t_1}^{t_2} dt' H_F(t')\right)\circ \chi_{t_1}^{-1}
+  = \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{\tilde{t}(t_1)}^{\tilde{t}(t_2)} d\tilde{t}' H_{\tilde{F}}(\tilde{t}')\right)
+  = U_{\tilde{F}}(\tilde{t}_2,\tilde{t}_1)\,.
+\end{equation}
+}
+If the coordinate change does not mix time and space $(t,\mathbf{x})\mapsto (\tilde{t}(t),\tilde{\mathbf{x}}(\mathbf{x}))$, the isomorphism bewteen Hilberts (resp. classical) spaces $\chi_t\equiv \chi$ is time-independent, and we can take it to be the identity upon changing space coordinates in one frame yielding the same leaves $\Sigma_t=\tilde{\Sigma}_{\tilde{t}(t)}$ at all times.
+The two hamiltonians and time evolutions then act on the \emph{same} Hilbert space, and we simply have a time change relation
+{\small
+\begin{align}
+  H_F(t) = \tfrac{d\tilde{t}}{dt} H_{\tilde{F}}(\tilde{t}(t)), \quad
+  U_F(t_2,t_1) = \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{t_1}^{t_2} dt' H_F(t')\right)
+  = \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{\tilde{t}(t_1)}^{\tilde{t}(t_2)} d\tilde{t}' H_{\tilde{F}}(\tilde{t}')\right)
+  = U_{\tilde{F}}(\tilde{t}_2,\tilde{t}_1).
+\end{align}
+}
+
+Finally, the above analysis allow for a temporary period where two foliations $F$ and $\tilde{F}$ are inequivalent, e.g. during a gravitational collapse or other highly dynamical spacetime process, as long as spacetime is asymptotically stationary in the past and future.
+That is the coordinate change $(t,\mathbf{x})\mapsto \tilde{t}=\tilde{t}(t,\mathbf{x})$ does not map leaves of the foliations into each other for some time interval $[t_i,t_f]$, but does so asymptotically for $t\to \pm\infty$.
+In this case, we can relate the two Hilbert (resp. classical) spaces and corresponding time evolutions via the isomorshisms $\chi_t$ as above only in the asymptotic regions $t<t_i$ and $t>t_f$, and define $S$-matrix like operators mapping states (resp. classical configurations) from one foliation to the other across the dynamical period.
+\end{mytheorem}
 
 
 
