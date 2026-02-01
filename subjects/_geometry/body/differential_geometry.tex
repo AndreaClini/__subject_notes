@@ -505,10 +505,22 @@ Then
 \end{equation}
 In the case $\Omega$ is the volume form induced by a metric $g$, we can rewrite the right-hand side and get
 \begin{equation}
-    \int_M \mathrm{div}_g (X) = \int_{\partial M} i_X \Omega_g = \int_{\partial M} g(X, N)\,\, \tilde{\Omega}_g,
+    \int_M \mathrm{div}_g (X) = \int_{\partial M} i_X \Omega_g = \int_{\partial M} g(X, N)\,\, \tilde{\Omega}_{g|\partial M},
 \end{equation}
-where $N$ is the outward-pointing unit normal vector field on $\partial M$ and $\tilde{\Omega}$ is the volume form induced by the metric on $\partial M$.
-It is indeed immediate to check that $i_X \Omega_g = g(X,N) \tilde{\Omega}_g$.
+where $N$ is the outward-pointing unit normal vector field on $\partial M$ and $\tilde{\Omega}_{g|\partial M}$ is the volume form induced by the metric on $\partial M$.
+
+It is indeed immediate to check that $i_X \Omega_g = g(X,N) \tilde{\Omega}_{g|\partial M}$.
+By definition, the metric volume form on a metric manifold $(N^{(d)},h)$ is the unique $d$-form such that $\tilde{\Omega}_h (Y_1, \dots, Y_d) = 1$ for any orthonormal positively oriented basis $\{Y_j\}$ at any point $p\in N$.
+By the `outward-normal first' convention, if $\{Y_j\}$ is an orthonormal oriented basis of $T_p \partial M$, then $\{N, Y_1, \dots, Y_{n-1}\}$ is an orthonormal oriented basis of $T_p M$.
+In turn by definition
+{\small
+\begin{align}
+    i_X&\Omega_g(Y_1, \dots, Y_{n-1}):= \Omega_g (X, Y_1, \dots, Y_{n-1})\\
+    &= g(X,N) \underbrace{\Omega_g (N, Y_1, \dots, Y_{n-1})}_{=1} + \sum_j^{n-1} g(X,Y_j) \underbrace{\Omega_g(Y_j, Y_1, \dots)}_{=0} = g(X,N)
+    \quad \Rightarrow \quad i_X \Omega_g = g(X,N) \tilde{\Omega}_{g|\partial M}. 
+\end{align}
+}
+A different proof explicitly using coordinates is given below.
 
 In turn, we have the notion of \textbf{integration by parts}.
 First note that for any \emph{arbitrary} volume form
@@ -524,11 +536,48 @@ In case $\Omega = \sqrt{|g|} dx^1 \wedge \cdots \wedge dx^n$ is the metric volum
 \begin{aligned}
     \int_{M} f\, \underbrace{\nabla_\mu X^{\mu} \, \Omega_g}_{\mathrm{div}_g(X)}
     &= \int_{\partial M} f\,\, i_X\Omega_g\, - \int_M \underbrace{df(X)}_{= X^{\mu} \partial_\mu f} \, \Omega_g
-    = \int_{\partial M} f\,\, g(X,N)\, \tilde{\Omega}_g - \int_M \underbrace{X^{\mu} \partial_\mu f}_{=g(X,\nabla f)}\, \Omega_g,
+    = \int_{\partial M} f\,\, g(X,N)\, \tilde{\Omega}_{g|\partial M} - \int_M \underbrace{X^{\mu} \partial_\mu f}_{=g(X,\nabla f)}\, \Omega_g,
 \end{aligned}
 \end{align}
-where $\tilde{\Omega}_g$ is the volume form induced by the metric on $\partial M$ and $N$ is the outward-pointing unit normal vector field on $\partial M$.
+where $\tilde{\Omega}_{g|\partial M}$ is the volume form induced by the metric on $\partial M$ and $N$ is the outward-pointing unit normal vector field on $\partial M$.
 \end{mytheorem}
+\begin{proof}
+We prove the identity $i_X \Omega_g = g(X,N) \tilde{\Omega}_{g|\partial M}$ using coordinates.
+Let $\{x^\mu\}_{\mu=0\dots n}$ be coordinates adapted to the boundary i.e. locally $\partial M=\{x^0 = \text{const.}\}$, so that the outward normal can be written $N = \frac{g^{0\mu}}{\sqrt{g^{00}}} \partial_\mu$.
+Let $\phi:\partial M \to M$ be any embedding of the boundary into the manifold, so that in the $x^\mu$ coordinates $\phi^0\equiv \text{const.}$.
+If $\{y^1\dots y^n\}$ are arbitrary coordinates on $\partial M$, then $\{\partial_{y^a}\phi\}_{a=1\dots n}$ span $T_p \partial M$ and $\{N, \partial_{y^a}\phi\}$ span $T_p M$.
+The metric coefficients in the two bases are related by
+{\small
+\begin{align}
+    &\begin{pmatrix}
+    \underbrace{g(N,N)}_{=1} & \underbrace{g(N, \tfrac{\partial \phi}{\partial y^a})}_{=0} \\
+    \underbrace{g(N, \tfrac{\partial \phi}{\partial y^a})}_{=0} & g(\tfrac{\partial \phi}{\partial y^a}, \tfrac{\partial \phi}{\partial y^b})
+    \end{pmatrix}
+    = \begin{pmatrix}
+    N^0 & \underbrace{\tfrac{\partial \phi^0}{\partial y^a}}_{\equiv 0}
+    \\
+    N^i & \tfrac{\partial \phi^i}{\partial y^a}
+    \end{pmatrix}^T g\Big(\tfrac{\partial}{\partial x^\mu}, \tfrac{\partial}{\partial x^\nu}\Big)
+    \begin{pmatrix}
+    N^0 &  \underbrace{\tfrac{\partial \phi^0}{\partial y^a}}_{\equiv 0}
+    \\
+    N^i & \tfrac{\partial \phi^i}{\partial y^a}
+    \end{pmatrix}\\[4pt]
+    &\quad 
+     \Rightarrow\quad \det \big(g(\partial_{y^a} \phi, \partial_{y^b} \phi)\big) = (N^0)^2\, \det\big(\tfrac{\partial \phi^i}{\partial y^a}\big)^2\, \det(g_{\mu \nu}).
+\end{align}
+}
+Pulling back to $\partial M$ the form $i_X \Omega_g$ along $\phi$, using the above relation for determinants and noting that $g(X,N)= g_{\mu\nu}X^\mu N^\nu = X^\mu g_{\mu\nu} \tfrac{g^{0\nu}}{\sqrt{g^{00}}}= \tfrac{X^0}{N^0}$, we have
+{\small
+\begin{align}
+    \phi^*\Big(i_X\Omega_g\Big) &= \phi^*\Big( \sqrt{\det(g_{\mu \nu})}\, \epsilon_{\alpha,\beta_1\dots\beta_n} X^\alpha \frac{1}{n!} dx^{\beta_1} \wedge \cdots \wedge dx^{\beta_n} \Big)\\
+    &= \sqrt{\det(g_{\mu \nu})} X^\alpha \underbrace{\epsilon_{\alpha,\beta_1\dots\beta_n}  \frac{1}{n!} d\phi^{\beta_1} \wedge \cdots \wedge d\phi^{\beta_n}}_{=\epsilon_{\alpha 1 \dots n} d\phi^1\wedge \cdots \wedge d\phi^n}\\
+    &= \sqrt{\det(g_{\mu \nu})}\, X^0 d\phi^1\wedge \cdots \wedge d\phi^n\\
+    &= \sqrt{\det g(\partial_{y^a} \phi, \partial_{y^b} \phi)}\, \frac{X^0}{N^0} \underbrace{\det\big(\partial_{y^a}\phi^i\big)^{-1} d\phi^1\wedge \cdots \wedge d\phi^n}_{=dy^1 \wedge \cdots \wedge dy^n}\\
+    &= \sqrt{\det g_{|_{\partial M}}(\tfrac{\partial}{\partial y^a},\tfrac{\partial}{\partial y^a})} g(X,N) \, dy^1 \wedge \cdots \wedge dy^n =: g(X,N)\, \tilde{\Omega}_{g|\partial M}.
+\end{align}
+}
+\end{proof}
 
 
 \begin{mytheorem}[Curl \& 3D Stokes theorem.]

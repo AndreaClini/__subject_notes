@@ -131,6 +131,11 @@ In this case, we can relate the two Hilbert (resp. classical) spaces and corresp
 \end{mytheorem}
 
 
+
+%==================================================================================
+\subsection{Canonical quantization of the Klein-Gordon field}
+%==================================================================================
+
 To fix ideas we consider below the case of quintessence scalar field, but the analysis extends to any field theory in curved spacetime.
 
 \begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
@@ -165,6 +170,101 @@ Combining them gives back the covariant Euler--Lagrange equations
 \end{mytheorem}
 
 
+
+\begin{mytheorem}[Sympetic structure of the classical phase space]
+%
+Consider the space of $\R$-valued (smooth, vanishing at \emph{spatial} infinity) solutions of the Klein-Gordon equation
+\begin{align}\label{eq:real_space_KG_solutions}
+    \mathcal{S} = \{ \phi \in C^\infty_0(\mathcal{M},\R) \mid (\nabla_\mu \nabla^\mu + 2\partial_\phi V + \xi R) \phi = 0 \}.
+\end{align}
+In the free case $V(\phi) = \frac{1}{2} m^2 \phi^2$, this is a real vector space endowed with a symplectic structure $\omega$ defined in a variety of equivalent ways.
+The pair $(\mathcal{S}, \omega)$ is thus the classical phase space of the theory.
+
+For any $\phi_1, \phi_2 \in \mathcal{S}$, we have the equivalent definitions
+\begin{align}
+    \omega(\phi_1, \phi_2) &= \int_\Sigma \star d\phi_1 \, \phi_2 - \phi_1 \, \star d\phi_2
+    =\int_\Sigma \star \big(J^{12}_\mu\, dx^\mu\big) \\
+    &= \int_\Sigma \sqrt{|g|}\, g^{\alpha\beta}\Big(\partial_\beta \phi_1 \phi_2- \phi_1 \partial_\beta \phi_2\Big)\, \epsilon_{\alpha \mu_1\dots\mu_n}\,\frac{1}{n!} dx^{\mu_1}\wedge \cdots \wedge dx^{\mu_n} \\
+    &= \int_\Sigma i_{J_{{12}}}\Omega_g\\
+    &= \int_\Sigma \Omega_{g_{|\Sigma}}\, n^\mu \Big(\partial_\mu \phi_1 \phi_2- \phi_1 \partial_\mu \phi_2\Big) = \int_\Sigma \underbrace{d^n\mathbf{y}\,\sqrt{g_{|_\Sigma}}}_{\equiv \,\Omega_{g_{|\Sigma}}}\,\, g(n, J_{{12}}),
+\end{align}
+where it is always intended that the $n$-form is pulled back to the spatial slice $\Sigma^{(n)}$ before integration (except for the last where it is already done) and  $n^\mu$ is the unit outward normal to the spatial slice $\Sigma$. 
+
+The current is defined as
+\begin{align}
+    (J_{12})_\mu \, dx^\mu= \nabla \phi_1 \, \phi_2 - \phi_1 \, \nabla \phi_2 = \big(d\phi_1\phi_2 - \phi_1 d\phi_2\big), \quad \nabla_\mu J^\mu_{12} = 0,
+\end{align}
+and is conserved since both fields satisfy the \emph{free}\footnote{It is indeed crucial that $V(\phi)=a+b\phi+c\phi^2$ for the cancellation to occur bewteen the two fields.} Klein--Gordon equation \eqref{eq:real_space_KG_solutions}.
+
+The symplectic form is independent of the choice of Cauchy surface $\Sigma_t$ thanks to current conservation and Gauss theorem
+\begin{align}
+    \int_{\Sigma_{t_1}}\star J - \int_{\Sigma_{t_2}} \star J 
+    = \int_{\partial\big([t_1,t_2]\times \Sigma\big)} \!\!\!\!\!\!\star J
+    = \int_{[t_1,t_2]\times \Sigma} d \star J =0.
+\end{align}
+
+In a frame $x^\mu = (t,\mathbf{x})$ adapted to the foliation $\mathcal{M}\simeq \R\times \Sigma$ i.e. $\Sigma_t=\{x^0=t\}$, we have $n^{\mu}= g^{\mu 0}/\sqrt{g^{00}}$ and the symplectic form takes the familiar form in terms of conjugate fields
+\begin{align}
+    \omega(\phi_1, \phi_2) &= 
+    \int_\Sigma \!\!\! d^n\mathbf{x}\,\,\sqrt{g_{|_\Sigma}}\,\,\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \left( \partial_\mu \phi_1(t,\mathbf{x}) \phi_2(t,\mathbf{x}) - \phi_1(t,\mathbf{x}) \partial_\mu \phi_2(t,\mathbf{x}) \right)\\
+    &=\int_\Sigma \!\!d^n\mathbf{x} \big( \pi_1(t,\mathbf{x})\phi_2(t,\mathbf{x}) - \phi_1(t,\mathbf{x}) \pi_2(t,\mathbf{x}) \big), \quad\text{for}\quad \pi(t,\mathbf{x})=\frac{\delta L(t)}{\delta (\partial_t\phi)} = \sqrt{|g|}\, \,g^{0\mu}\, \partial_\mu \phi(t,\mathbf{x}).
+\end{align}
+The symplectic space is naturally promoted to a Poisson space by defining the Poisson bracket between two functionals $F_1, F_2: \mathcal{S} \to \R$ as
+\begin{align}
+    \{F_1, F_2\} = \omega(X_{F_1}, X_{F_2}),
+\end{align}
+where the hamiltonian vector field $X_F$ associated to a functional $F$ is defined by enforcing
+\begin{align}
+    \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \quad \forall\, Y \in T_\phi \mathcal{S} \simeq \mathcal{S}.
+\end{align}
+
+Finally we complexify the space of solutions to
+\begin{align}
+    \mathcal{S}_\C = \{ \phi \in C^\infty_0(\mathcal{M},\C) \mid (\nabla_\mu \nabla^\mu + 2\partial_\phi V + \xi R) \phi = 0 \} = \mathcal{S} \otimes_\R \C
+\end{align}
+and promote the symplectic form to a hermitian sesquilinear form by 
+\begin{align}
+  \langle \psi_1, \psi_2\rangle := i \omega(\psi^*_1, \psi_2) = i\int_\Sigma \star d\psi_1^* \, \psi_2 - \psi_1^* \, \star d\psi_2
+  \quad \forall\, \psi_1, \psi_2 \in \mathcal{S}_\C, \qquad \langle \psi_1, \psi_2\rangle = \langle \psi_2, \psi_1\rangle^*.
+\end{align}
+This is again written in terms of the \emph{complex} conserved current
+\begin{align}
+    \langle \psi_1, \psi_2\rangle \equiv \int_\Sigma \star J_{12}\,,\quad\text{for}\quad
+    J_{12}= i\big(d\psi_1^* \psi_2 - \psi_1^* d\psi_2\big)\quad \text{with} \quad J_{12}^* = J_{21}, \quad \nabla_\mu J^\mu_{12} = 0.
+\end{align}
+Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\pm1$ by constuction, since it arises from a symplectic (real antisymmetric) form and thus
+\begin{align}\label{eq:signature_pm_hermitian_product_phase_space}
+    \langle \psi^*,\chi^*\rangle := i\, \omega(\psi, \chi^*) = -i\, \omega(\chi^*, \psi) =: -\langle \chi, \psi \rangle^* = -\langle \psi, \chi \rangle.
+\end{align}
+
+Sylvester theorem ensures the existence of a basis of $\{u_n, v_n, z_n\}_{n}$ of $\mathcal{S}_\C$ such that the hermitian form decomposes orthogonally as
+\begin{align}
+    \langle u_n, u_m \rangle = +\delta_{nm}, \,\,\, \langle v_n, v_m \rangle = -\delta_{nm}, \,\,\, \langle u_n, v_m \rangle = 0, \,\,\, \langle z_n, \cdot \rangle = 0, \quad \mathcal{S}_\C = \mathcal{S}_\C^+ \oplus^\perp \mathcal{S}_\C^- \oplus^\perp \mathcal{S}_\C^0,
+\end{align}
+Because of \eqref{eq:signature_pm_hermitian_product_phase_space}, we can (and will) actually arrange the basis so that $*:\mathcal{S}_\C^+ \to \mathcal{S}_\C^-$ is an isomorphism and $v_n \equiv u_n^*$, and then remove the ghost modes $z_n$ upon quotienting $\mathcal{S}_C/\mathcal{S}_\C^0$.
+Equivalently Darboux theorem for sympletic forms ensures the existence of a basis $\{\phi_n, \, \pi_n, z_n\}_n$ of $\mathcal{S}_\R$ such that
+\begin{align}
+    \omega = \begin{pmatrix}
+    0 & \mathbb{I} &0\\
+    -\mathbb{I} & 0 & 0\\
+    0 & 0 & 0
+    \end{pmatrix}
+    \quad\text{i.e.}\quad
+    \omega(\phi_n, \phi_m) = 0, \quad \omega(\pi_n, \pi_m) = 0, \quad \omega(\phi_n, \pi_m) = \delta_{nm}, \quad \omega(z_n, \cdot) = 0,
+\end{align}
+which is related to the previous basis $\{u_n, u_n^*\}$ simply by
+\begin{align}
+    \phi_n= \frac{u_n-u_n^*}{i\sqrt{2}}, \quad \pi_n = \frac{u_n+u_n^*}{\sqrt{2}}.
+\end{align}
+The index $n$ can be discrete with Kronecker delta or continuous with Dirac delta depending on the spatial topology and boundary conditions.
+In any case the bases are complete and yield a resolution of the identity (and similarly for $\mathcal{S}_\R$)
+\begin{align}
+    \sum_n |u_n\rangle \langle u_n| - \sum_n |v_n\rangle \langle v_n| = \mathbb{I}_{\mathcal{S}_\C}.
+\end{align}
+%
+\end{mytheorem}
+
+
 \begin{mytheorem}[Canonical quantization of scalar field in curved spacetime\todotag{Finish}]
 %
 We now proceed to canonical quantization following Heinsenberg procedure.
@@ -177,7 +277,6 @@ In particular EoM for the fields and equal-time CCR read
 \end{align}
 We now want to solve this theory.
 The strategy is to mimick the flat spacetime approach and expand the field operator in terms of mode solutions to the Klein--Gordon equation in curved spacetime...
-  
 \end{mytheorem}
 
 
