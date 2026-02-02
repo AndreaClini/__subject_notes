@@ -140,31 +140,35 @@ To fix ideas we consider below the case of quintessence scalar field, but the an
 
 \begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
 %
-Consider the action for a scalar field in curved spacetime and choose a foliation $\mathcal{M}\R\times\Sigma$
+Consider the action for a scalar field in curved spacetime and choose a foliation $\mathcal{M}\simeq \R\times\Sigma_t$ with coordinates $x^\mu=(t,\mathbf{x})$ 
 \begin{align}
-    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right) = \int dt \underbrace{\int_\Sigma d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right)}_{L(t)}.
+    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right) = \int dt \underbrace{\int_{\Sigma_t} d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right)}_{=\int d\mathbf{x}\sqrt{|g|}\, \mathcal{L}\,\,=  \, L(t)}.
 \end{align}
-The conjugate field in such coordinates is
+The conjugate field in these coordinates is then\footnote{Note for spin fields $\phi^\star_\bullet$ we would have terms $\sim \phi^\star_{\bullet} \Gamma_{0\star}^\bullet$. to extract $\dot{\phi}^\star_\bullet$.}
 {
 \begin{align}
-    \pi(t,\mathbf{x}) = \frac{\delta L(t)}{\delta \dot{\phi}(t,\mathbf{x})} = \sqrt{|g|} g^{0\nu} \nabla_\nu \phi(t,\mathbf{x}) = \sqrt{|g|} \left( g^{00} \,\nabla_0\phi(t,\mathbf{x}) + g^{0j} \,\nabla_{\!j} \phi(t,\mathbf{x}) \right) \quad \Rightarrow \quad \nabla_0 \phi(t,\mathbf{x}) = \frac{1}{\sqrt{|g|} g^{00}} \left( \pi(t,\mathbf{x}) - \sqrt{|g|} g^{0j} \nabla_{\!j} \phi(t,\mathbf{x}) \right).
+    &\pi(t,\mathbf{x}) = \frac{\delta L(t)}{\delta \dot{\phi}(t,\mathbf{x})}= \frac{\partial\big(\sqrt{|g|}\, \mathcal{L}(t,\mathbf{x})\big)}{\partial \dot{\phi}(t,\mathbf{x})} = \sqrt{|g|} g^{0\nu} \nabla_\nu \phi(t,\mathbf{x}) = \sqrt{|g|} \left( g^{00} \,\nabla_0\phi(t,\mathbf{x}) + g^{0j} \,\nabla_{\!j} \phi(t,\mathbf{x}) \right)\\
+    & \quad \Rightarrow \quad \dot{\phi}(t,\mathbf{x}) = \frac{1}{\sqrt{|g|} g^{00}} \Big( \pi(t,\mathbf{x}) - \sqrt{|g|} g^{0j} \nabla_{\!j} \phi(t,\mathbf{x}) \Big).
 \end{align}
 }
-The hamiltonian density is thus
+The hamiltonian \emph{density} is then
 \begin{align}
-    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \nabla_0 \phi(t,\mathbf{x}) - \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi(t,\mathbf{x}) \nabla_\nu \phi(t,\mathbf{x}) - V(\phi(t,\mathbf{x})) \right) \\
-    &= \frac{\pi^2(t,\mathbf{x})}{2\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \pi(t,\mathbf{x}) \nabla_{\!j} \phi(t,\mathbf{x}) + \sqrt{|g|} \left( \frac{1}{2} h^{ij} \nabla_{\!i} \phi(t,\mathbf{x}) \nabla_{\!j} \phi(t,\mathbf{x}) + V(\phi(t,\mathbf{x})) \right),
+    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) \\[3pt]
+    &= \frac{1}{\sqrt{g}} \frac{\pi^2}{g^{00}} - \frac{g^{0j}}{g^{00}} \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\partial_j\phi + \sqrt{g}\,V(\phi)
 \end{align}
-where $h^{ij} = g^{ij} - \frac{g^{0i} g^{0j}}{g^{00}}$ is the inverse induced metric on the spatial slices $\Sigma_t$.
-The hamiltonian is $H(t) = \int_\Sigma d^3\mathbf{x}\, \mathcal{H}(t,\mathbf{x})$.
-The classical hamilton equations are
+Here $g_{|\Sigma}^{ij}= g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}$ is the inverse of the metric induced on spatial slices, negative definite in our mostly minus convention, as confirmed by
 \begin{align}
-    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H(t)}{\delta \pi(t,\mathbf{x})} = \frac{\pi(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \nabla_{\!j} \phi(t,\mathbf{x}), \\
-    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = \nabla_{\!j} \left( \sqrt{|g|} h^{ij} \nabla_{\!i} \phi(t,\mathbf{x}) \right) - \sqrt{|g|} V'(\phi(t,\mathbf{x})).
+    \sum_{i=1}^n g_{ai} \Big(g^{ib} - \tfrac{g^{i0}g^{0b}}{g^{00}}\Big) = (\delta_a^b - g_{a0} g^{0b}) -\big(\underbrace{\delta_a^0}_{=0} - g_{a0} g^{00}\big) \tfrac{g^{0b}}{g^{00}}= \delta_a^b\,.
+\end{align}
+The hamiltonian is $H(t) = \int_\Sigma d^3\mathbf{x}\,\,\, \mathcal{H}(t,\mathbf{x})$.
+The classical hamilton equations are\todotag{check}
+\begin{align}
+    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H(t)}{\delta \pi(t,\mathbf{x})} = \frac{\pi(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \partial_j \phi(t,\mathbf{x}), \\
+    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\pi\Big) - \partial_j \left( \sqrt{|g|} g_{|\Sigma}^{ij} \nabla_i \phi(t,\mathbf{x}) \right) - \sqrt{g} \frac{dV}{d\phi}\,.
 \end{align}
 Combining them gives back the covariant Euler--Lagrange equations
 \begin{align}
-    \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = 0.
+    \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = (\nabla_\mu \nabla^\mu + \partial_\phi V) \phi = 0.
 \end{align}
 %
 \end{mytheorem}
@@ -175,7 +179,7 @@ Combining them gives back the covariant Euler--Lagrange equations
 %
 Consider the space of $\R$-valued (smooth, vanishing at \emph{spatial} infinity) solutions of the Klein-Gordon equation
 \begin{align}\label{eq:real_space_KG_solutions}
-    \mathcal{S} = \{ \phi \in C^\infty_0(\mathcal{M},\R) \mid (\nabla_\mu \nabla^\mu + 2\partial_\phi V + \xi R) \phi = 0 \}.
+    \mathcal{S} = \{ \phi \in C^\infty_0(\mathcal{M},\R) \mid (\nabla_\mu \nabla^\mu + \partial_\phi V + \xi R) \phi = 0 \}.
 \end{align}
 In the free case $V(\phi) = \frac{1}{2} m^2 \phi^2$, this is a real vector space endowed with a symplectic structure $\omega$ defined in a variety of equivalent ways.
 The pair $(\mathcal{S}, \omega)$ is thus the classical phase space of the theory.
