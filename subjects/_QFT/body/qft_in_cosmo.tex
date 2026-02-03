@@ -6,7 +6,7 @@
 %=========================================================
 
 
-\section{Initial consideration \todotag{Finish \& remove sec header}}
+\section{Initial consideration} \todotag{Finish \& remove sec header}
 
 \begin{mytheorem}[How to formulate QFT in curved spacetime?\questiontag{Polish}]
 %
@@ -138,132 +138,200 @@ In this case, we can relate the two Hilbert (resp. classical) spaces and corresp
 
 To fix ideas we consider below the case of quintessence scalar field, but the analysis extends to any field theory in curved spacetime.
 
-\begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
+\begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\todotag{Finish}]
 %
-Consider the action for a scalar field in curved spacetime and choose a foliation $\mathcal{M}\simeq \R\times\Sigma_t$ with coordinates $x^\mu=(t,\mathbf{x})$ 
-\begin{align}
-    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right) = \int dt \underbrace{\int_{\Sigma_t} d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) \right)}_{=\int d\mathbf{x}\sqrt{|g|}\, \mathcal{L}\,\,=  \, L(t)}.
-\end{align}
-The conjugate field in these coordinates is then\footnote{Note for spin fields $\phi^\star_\bullet$ we would have terms $\sim \phi^\star_{\bullet} \Gamma_{0\star}^\bullet$. to extract $\dot{\phi}^\star_\bullet$.}
-{
-\begin{align}
-    &\pi(t,\mathbf{x}) = \frac{\delta L(t)}{\delta \dot{\phi}(t,\mathbf{x})}= \frac{\partial\big(\sqrt{|g|}\, \mathcal{L}(t,\mathbf{x})\big)}{\partial \dot{\phi}(t,\mathbf{x})} = \sqrt{|g|} g^{0\nu} \nabla_\nu \phi(t,\mathbf{x}) = \sqrt{|g|} \left( g^{00} \,\nabla_0\phi(t,\mathbf{x}) + g^{0j} \,\nabla_{\!j} \phi(t,\mathbf{x}) \right)\\
-    & \quad \Rightarrow \quad \dot{\phi}(t,\mathbf{x}) = \frac{1}{\sqrt{|g|} g^{00}} \Big( \pi(t,\mathbf{x}) - \sqrt{|g|} g^{0j} \nabla_{\!j} \phi(t,\mathbf{x}) \Big).
+Choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma$.
+In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the outward normal and the metric induced on spatial leaves $\Sigma$ obey
+{\small
+\begin{align}\label{eq:metric_induced_spatial_leaves_folitation}
+    n^\mu = \frac{g^{0\mu}}{\sqrt{g^{00}}}, \quad \text{and}\quad
+    \begin{pmatrix}
+      n^0 & 0\\
+      n^i & \delta^i_j
+    \end{pmatrix}^T
+    g_{\mu\nu}
+    \begin{pmatrix}
+      n^0 & 0\\
+      n^i & \delta^i_j
+    \end{pmatrix}= \begin{pmatrix}
+      1 & 0\\
+     0 & g_{|\Sigma\, ij}
+    \end{pmatrix}\quad \Rightarrow \quad \sqrt{g} = \frac{1}{n^0}\sqrt{g_{|_\Sigma}}= \sqrt{g^{00}}\sqrt{g_{|_\Sigma}}.
 \end{align}
 }
+The inverse of the spatial metric $g_{|\Sigma}$ can then be written as
+{\small
+\begin{align}\label{eq:inverse_metric_induced_leaves_foliation}
+    g_{|\Sigma}^{ij}= g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}},\quad\text{since}\quad
+    \sum_{i=1}^n \underbrace{g_{ai}}_{=g_{|\Sigma\, ai}} \Big(g^{ib} - \tfrac{g^{i0}g^{0b}}{g^{00}}\Big) = (\delta_a^b - g_{a0} g^{0b}) -\big(\underbrace{\delta_a^0}_{=0} - g_{a0} g^{00}\big) \tfrac{g^{0b}}{g^{00}}= \delta_a^b\,.
+\end{align}}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
+Consider the action for a scalar field, possibly with nonminimal coupling to gravity $\xi\neq0$, and choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma_t$ with adapted coordinates $x^\mu=(t,\mathbf{x})$,
+{\small
+\begin{align}
+    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \xi R \phi^2 \right) = \int dt \underbrace{\int_{\Sigma_t} d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \tfrac{\xi}{2} R \phi^2 \right)}_{=\int d\mathbf{x}\sqrt{|g|}\, \mathcal{L}\,\,=  \, L(t)}.
+\end{align}}
+The conjugate field in these coordinates is then\footnote{Note for spin fields $\phi^\star_\bullet$ we would have terms $\sim \phi^\star_{\bullet} \Gamma_{0\star}^\bullet$. to extract $\dot{\phi}^\star_\bullet$.}
+{\small
+\begin{align}
+    &\pi(t,\mathbf{x}) = \frac{\delta L(t)}{\delta \dot{\phi}(t,\mathbf{x})}= \frac{\partial\big(\sqrt{g}\, \mathcal{L}(t,\mathbf{x})\big)}{\partial \dot{\phi}(t,\mathbf{x})} = \sqrt{|g|} g^{0\nu} \nabla_\nu \phi(t,\mathbf{x}) = \sqrt{|g|} \Big( g^{00} \,\nabla_0\phi(t,\mathbf{x}) + g^{0j} \,\nabla_{\!j} \phi(t,\mathbf{x}) \Big)\\
+    & \quad \Rightarrow \quad \dot{\phi}(t,\mathbf{x}) = \frac{1}{\sqrt{g}\, g^{00}} \Big( \pi(t,\mathbf{x}) - \sqrt{g}\, g^{0j} \partial_j\phi(t,\mathbf{x}) \Big).
+\end{align}}
+Using \eqref{eq:metric_induced_spatial_leaves_folitation} the conjugate field may also be written in terms of the unit normal and induced metric on spatial leaves as
+\begin{align}
+  \pi = \sqrt{g}g^{0\mu}\nabla_\mu\phi= \sqrt{g_{|\Sigma}}\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \nabla_\mu \phi = \sqrt{g_{|\Sigma}}\, n^\mu \nabla_\mu \phi.
+\end{align}
 The hamiltonian \emph{density} is then
+{\small
 \begin{align}
-    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) \\[3pt]
-    &= \frac{1}{\sqrt{g}} \frac{\pi^2}{g^{00}} - \frac{g^{0j}}{g^{00}} \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\partial_j\phi + \sqrt{g}\,V(\phi)
+    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) 
+    = \frac{1}{\sqrt{g}} \frac{\pi^2}{g^{00}} - \frac{g^{0j}}{g^{00}}\, \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\,\partial_j\phi + \sqrt{g}\,V(\phi) + \sqrt{g}\,\tfrac{\xi}{2} R \phi^2,
+\end{align}}
+where note the inverse of the metric \eqref{eq:inverse_metric_induced_leaves_foliation} induced on spatial slices $g_{|\Sigma}^{ij}$ is negative definite in our mostly minus convention.
+The hamiltonian is $\displaystyle H(t) = \int_\Sigma d^n\mathbf{x}\,\,\, \mathcal{H}(t,\mathbf{x})$.
+The classical hamilton equations are
+\begin{align}
+    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H(t)}{\delta \pi(t,\mathbf{x})} = \frac{1}{\sqrt{g} g^{00}}\, \pi - \frac{g^{0j}}{g^{00}}\, \partial_j \phi\,, \\
+    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\pi\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\nabla_i \phi\right) - \sqrt{g}\, \tfrac{dV}{d\phi} - \sqrt{g}\,\xi\,  R \phi\,.
 \end{align}
-Here $g_{|\Sigma}^{ij}= g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}$ is the inverse of the metric induced on spatial slices, negative definite in our mostly minus convention, as confirmed by
+Combining them, recalling $\tfrac{1}{\sqrt{g}}\partial_\mu(\sqrt{g}\, X^\mu)=\nabla_\mu X^\mu$, gives back the covariant Euler--Lagrange equations
 \begin{align}
-    \sum_{i=1}^n g_{ai} \Big(g^{ib} - \tfrac{g^{i0}g^{0b}}{g^{00}}\Big) = (\delta_a^b - g_{a0} g^{0b}) -\big(\underbrace{\delta_a^0}_{=0} - g_{a0} g^{00}\big) \tfrac{g^{0b}}{g^{00}}= \delta_a^b\,.
-\end{align}
-The hamiltonian is $H(t) = \int_\Sigma d^3\mathbf{x}\,\,\, \mathcal{H}(t,\mathbf{x})$.
-The classical hamilton equations are\todotag{check}
-\begin{align}
-    &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H(t)}{\delta \pi(t,\mathbf{x})} = \frac{\pi(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \partial_j \phi(t,\mathbf{x}), \\
-    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\pi\Big) - \partial_j \left( \sqrt{|g|} g_{|\Sigma}^{ij} \nabla_i \phi(t,\mathbf{x}) \right) - \sqrt{g} \frac{dV}{d\phi}\,.
-\end{align}
-Combining them gives back the covariant Euler--Lagrange equations
-\begin{align}
-    \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = (\nabla_\mu \nabla^\mu + \partial_\phi V) \phi = 0.
+    \nabla_\mu \left( \frac{\partial \mathcal{L}}{\partial (\nabla_\mu \phi)} \right) - \frac{\partial \mathcal{L}}{\partial \phi} = (\nabla_\mu \nabla^\mu + \partial_\phi V + \xi R) \phi = 0.
 \end{align}
 %
 \end{mytheorem}
-
 
 
 \begin{mytheorem}[Sympetic structure of the classical phase space]
 %
 Consider the space of $\R$-valued (smooth, vanishing at \emph{spatial} infinity) solutions of the Klein-Gordon equation
 \begin{align}\label{eq:real_space_KG_solutions}
-    \mathcal{S} = \{ \phi \in C^\infty_0(\mathcal{M},\R) \mid (\nabla_\mu \nabla^\mu + \partial_\phi V + \xi R) \phi = 0 \}.
+    \mathcal{S}_\R = \{ \phi \in C^\infty_0(\mathcal{M},\R) \mid (\nabla_\mu \nabla^\mu + \partial_\phi V + \xi R) \phi = 0 \}.
 \end{align}
 In the free case $V(\phi) = \frac{1}{2} m^2 \phi^2$, this is a real vector space endowed with a symplectic structure $\omega$ defined in a variety of equivalent ways.
-The pair $(\mathcal{S}, \omega)$ is thus the classical phase space of the theory.
+The pair $(\mathcal{S}_\R, \omega)$ is thus the classical phase space of the theory.
 
-For any $\phi_1, \phi_2 \in \mathcal{S}$, we have the equivalent definitions
+Namely, for $\phi_1, \phi_2 \in \mathcal{S}_\R$, we have the equivalent definitions
 \begin{align}
     \omega(\phi_1, \phi_2) &= \int_\Sigma \star d\phi_1 \, \phi_2 - \phi_1 \, \star d\phi_2
     =\int_\Sigma \star \big(J^{12}_\mu\, dx^\mu\big) \\
-    &= \int_\Sigma \sqrt{|g|}\, g^{\alpha\beta}\Big(\partial_\beta \phi_1 \phi_2- \phi_1 \partial_\beta \phi_2\Big)\, \epsilon_{\alpha \mu_1\dots\mu_n}\,\frac{1}{n!} dx^{\mu_1}\wedge \cdots \wedge dx^{\mu_n} \\
+    &= \int_\Sigma \sqrt{|g|}\, g^{\alpha\beta}\Big(\partial_\beta \phi_1 \phi_2- \phi_1 \partial_\beta \phi_2\Big)\, \epsilon_{\alpha \mu_1\dots\mu_n}\,\frac{1}{n!}\,\, dx^{\mu_1}\wedge \cdots \wedge dx^{\mu_n} \\
     &= \int_\Sigma i_{J_{{12}}}\Omega_g\\
-    &= \int_\Sigma \Omega_{g_{|\Sigma}}\, n^\mu \Big(\partial_\mu \phi_1 \phi_2- \phi_1 \partial_\mu \phi_2\Big) = \int_\Sigma \underbrace{d^n\mathbf{y}\,\sqrt{g_{|_\Sigma}}}_{\equiv \,\Omega_{g_{|\Sigma}}}\,\, g(n, J_{{12}}),
+    &= \int_\Sigma \Omega_{g_{|\Sigma}}\, n^\mu \Big(\partial_\mu \phi_1 \,\phi_2- \phi_1 \,\partial_\mu \phi_2\Big) = \int_\Sigma \underbrace{d^n\mathbf{x}\,\sqrt{g_{|_\Sigma}}}_{\equiv \,\Omega_{g_{|\Sigma}}}\,\, g(n, J_{{12}}),
 \end{align}
-where it is always intended that the $n$-form is pulled back to the spatial slice $\Sigma^{(n)}$ before integration (except for the last where it is already done) and  $n^\mu$ is the unit outward normal to the spatial slice $\Sigma$. 
+\vspace{-4mm}
 
-The current is defined as
-\begin{align}
-    (J_{12})_\mu \, dx^\mu= \nabla \phi_1 \, \phi_2 - \phi_1 \, \nabla \phi_2 = \big(d\phi_1\phi_2 - \phi_1 d\phi_2\big), \quad \nabla_\mu J^\mu_{12} = 0,
-\end{align}
-and is conserved since both fields satisfy the \emph{free}\footnote{It is indeed crucial that $V(\phi)=a+b\phi+c\phi^2$ for the cancellation to occur bewteen the two fields.} Klein--Gordon equation \eqref{eq:real_space_KG_solutions}.
-
-The symplectic form is independent of the choice of Cauchy surface $\Sigma_t$ thanks to current conservation and Gauss theorem
-\begin{align}
-    \int_{\Sigma_{t_1}}\star J - \int_{\Sigma_{t_2}} \star J 
-    = \int_{\partial\big([t_1,t_2]\times \Sigma\big)} \!\!\!\!\!\!\star J
-    = \int_{[t_1,t_2]\times \Sigma} d \star J =0.
-\end{align}
-
-In a frame $x^\mu = (t,\mathbf{x})$ adapted to the foliation $\mathcal{M}\simeq \R\times \Sigma$ i.e. $\Sigma_t=\{x^0=t\}$, we have $n^{\mu}= g^{\mu 0}/\sqrt{g^{00}}$ and the symplectic form takes the familiar form in terms of conjugate fields
+\noindent
+where $n^\mu$ is the unit outward normal to the spatial slice $\Sigma^{(n)}$ and it is always intended that the $n$-form is pulled back to $\Sigma^{(n)}$ before integration (except for the last case, where it is already done explicitly). 
+Using \eqref{eq:metric_induced_spatial_leaves_folitation}, the symplectic form then takes the familiar form in terms of conjugate fields
+{\small
 \begin{align}
     \omega(\phi_1, \phi_2) &= 
-    \int_\Sigma \!\!\! d^n\mathbf{x}\,\,\sqrt{g_{|_\Sigma}}\,\,\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \left( \partial_\mu \phi_1(t,\mathbf{x}) \phi_2(t,\mathbf{x}) - \phi_1(t,\mathbf{x}) \partial_\mu \phi_2(t,\mathbf{x}) \right)\\
-    &=\int_\Sigma \!\!d^n\mathbf{x} \big( \pi_1(t,\mathbf{x})\phi_2(t,\mathbf{x}) - \phi_1(t,\mathbf{x}) \pi_2(t,\mathbf{x}) \big), \quad\text{for}\quad \pi(t,\mathbf{x})=\frac{\delta L(t)}{\delta (\partial_t\phi)} = \sqrt{|g|}\, \,g^{0\mu}\, \partial_\mu \phi(t,\mathbf{x}).
+    \int_\Sigma \!\!\! d^n\mathbf{x}\,\,\sqrt{g_{|_\Sigma}}\,\,\, \tfrac{g^{0\mu}}{\sqrt{g^{00}}} \Big( \partial_\mu \phi_1(t,\mathbf{x}) \,\phi_2(t,\mathbf{x}) - \phi_1(t,\mathbf{x})\, \partial_\mu \phi_2(t,\mathbf{x}) \Big)\\
+    &=\int_\Sigma \!\!d^n\mathbf{x}\, \,\Big( \pi_1(t,\mathbf{x})\,\phi_2(t,\mathbf{x}) - \phi_1(t,\mathbf{x})\, \pi_2(t,\mathbf{x}) \Big), \quad\text{for}\quad \pi(t,\mathbf{x})=\frac{\delta L(t)}{\delta (\partial_t\phi)} = \sqrt{g}\, \,g^{0\mu}\, \partial_\mu \phi(t,\mathbf{x}).
+\end{align}}
+
+The \emph{conserved} current is defined as
+\begin{align}
+    J^{12}_\mu \, dx^\mu:= \nabla \phi_1 \, \phi_2 - \phi_1 \, \nabla \phi_2 = \big(d\phi_1\phi_2 - \phi_1 d\phi_2\big), \quad \nabla_\mu J^\mu_{12} = 0\,,
 \end{align}
-The symplectic space is naturally promoted to a Poisson space by defining the Poisson bracket between two functionals $F_1, F_2: \mathcal{S} \to \R$ as
+and is conserved since both fields satisfy the \emph{free}\footnote{It is indeed crucial the theory is free $V(\phi)=a+b\phi+c\phi^2$ for the cancellation to occur bewteen the two fields.} Klein--Gordon equation \eqref{eq:real_space_KG_solutions}.
+This follows from $\nabla_\mu big(\nabla^\mu \phi_1 \, \phi_2 - \phi_1 \, \nabla^\mu \phi_2\big)=0$, and the explicit expression for the Hodge dual or the expression via (co)-differentials for the Laplace operator $\nabla_\mu\nabla^\mu=\Box = d\delta + \delta d \equiv \delta d$ for the Laplace operator on 0-forms
+\begin{align}
+  &\star J = \sqrt{g}\, J^\mu \,\epsilon_{\mu\alpha_1\dots\alpha_n} \,\frac{1}{n!} \,dx^{\alpha_1}\wedge \cdots \wedge dx^{\alpha_n} \quad \Rightarrow \quad d\star J = \partial_\nu(\sqrt{g} J^\nu)\,d^{n+1}\!x  =  \nabla_\nu J^\nu\,\sqrt{g}\, d^{n+1}\!x =0,\\[3pt]
+  &d \star J = d \star d\phi_1 \, \phi_2 - d \star d\phi_2 \, \phi_1 = \star\!\!\!\!\!\!\!\!\!\underbrace{\delta d\,\phi_1}_{=(\delta d+d\delta)\phi = \Box \phi_1}\!\!\!\!\!\!\!\!\!\phi_2 -\phi_1\,\, \star\delta d\phi_2 =0\\
+\end{align}
+\vspace{-7mm}
+
+\noindent
+The symplectic form is then independent of the choice of Cauchy surface $\Sigma_t$ thanks to current conservation and Gauss theorem
+\begin{align}
+    \int_{\Sigma_{t_1}}\!\!\!\!\star J \,\,- \int_{\Sigma_{t_2}}\!\!\!\! \star J 
+    = \int_{\partial\big([t_1,t_2]\times \Sigma\big)} \!\!\!\!\!\!\star J
+    = \int_{[t_1,t_2]\times \Sigma} d \!\star\! J =0.
+\end{align}
+
+The symplectic space is naturally promoted to a Poisson space by defining the Poisson bracket of two functionals $F_1, F_2: \mathcal{S}_\R \to \R$ as
 \begin{align}
     \{F_1, F_2\} = \omega(X_{F_1}, X_{F_2}),
 \end{align}
 where the hamiltonian vector field $X_F$ associated to a functional $F$ is defined by enforcing
 \begin{align}
-    \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \quad \forall\, Y \in T_\phi \mathcal{S} \simeq \mathcal{S}.
+    \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \quad \forall\, Y \in T_\phi \mathcal{S}_\R \simeq \mathcal{S}_\R.
 \end{align}
 
-Finally we complexify the space of solutions to
+Finally we complexify the space of solutions 
 \begin{align}
     \mathcal{S}_\C = \{ \phi \in C^\infty_0(\mathcal{M},\C) \mid (\nabla_\mu \nabla^\mu + 2\partial_\phi V + \xi R) \phi = 0 \} = \mathcal{S} \otimes_\R \C
 \end{align}
 and promote the symplectic form to a hermitian sesquilinear form by 
 \begin{align}
-  \langle \psi_1, \psi_2\rangle := i \omega(\psi^*_1, \psi_2) = i\int_\Sigma \star d\psi_1^* \, \psi_2 - \psi_1^* \, \star d\psi_2
+  \langle \psi_1, \psi_2\rangle := -i \,\omega(\psi^*_1, \psi_2) = -i\int_\Sigma \star d\psi_1^* \, \psi_2 - \psi_1^* \, \star d\psi_2
   \quad \forall\, \psi_1, \psi_2 \in \mathcal{S}_\C, \qquad \langle \psi_1, \psi_2\rangle = \langle \psi_2, \psi_1\rangle^*.
 \end{align}
-This is again written in terms of a \emph{complex} \emph{conserved} current, now associated to the global $U(1)$ symmetry $\psi \mapsto e^{i\alpha} \psi$ of the complex Klein--Gordon lagrangian,
+This is again written in terms of a \emph{complex} \emph{conserved} current, now associated to the global $U(1)$-symmetry $\psi \mapsto e^{i\alpha} \psi$ of the complex Klein--Gordon lagrangian,
 \begin{align}
     \langle \psi_1, \psi_2\rangle \equiv \int_\Sigma \star J_{12}\,,\quad\text{for}\quad
-    J_{12}= i\big(d\psi_1^* \psi_2 - \psi_1^* d\psi_2\big)\quad \text{with} \quad J_{12}^* = J_{21}, \quad \nabla_\mu J^\mu_{12} = 0.
+    J_{12}= -i\big(d\psi_1^* \psi_2 - \psi_1^* d\psi_2\big)\quad \text{with} \quad J_{12}^* = J_{21}, \quad \nabla_\mu J^\mu_{12} = 0.
 \end{align}
-Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\pm1$ by constuction, since it arises from a symplectic (real antisymmetric) form and thus
+Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\pm1$ by construction, since it arises from a symplectic (real antisymmetric) form and thus
 \begin{align}\label{eq:signature_pm_hermitian_product_phase_space}
     \langle \psi^*,\chi^*\rangle := i\, \omega(\psi, \chi^*) = -i\, \omega(\chi^*, \psi) =: -\langle \chi, \psi \rangle^* = -\langle \psi, \chi \rangle.
 \end{align}
 
-Sylvester theorem ensures the existence of a basis of $\{u_n, v_n, z_n\}_{n}$ of $\mathcal{S}_\C$ such that the hermitian form decomposes orthogonally as
+Sylvester theorem ensures the existence of a basis of $\{u_n, v_n, z_n\}_{n}$ of $\mathcal{S}_\C$ such that the hermitian form decomposes orthogonally wrt this product as
 \begin{align}
-    \langle u_n, u_m \rangle = +\delta_{nm}, \,\,\, \langle v_n, v_m \rangle = -\delta_{nm}, \,\,\, \langle u_n, v_m \rangle = 0, \,\,\, \langle z_n, \cdot \rangle = 0, \quad \mathcal{S}_\C = \mathcal{S}_\C^+ \oplus^\perp \mathcal{S}_\C^- \oplus^\perp \mathcal{S}_\C^0,
+    \langle u_n, u_m \rangle = +\delta_{nm}, \,\,\, \langle v_n, v_m \rangle = -\delta_{nm}, \,\,\, \langle u_n, v_m \rangle = 0, \,\,\, \langle z_n, \cdot \rangle = 0, \quad \mathcal{S}_\C = \mathcal{S}_\C^+ \oplus^\perp \mathcal{S}_\C^- \oplus^\perp \mathcal{S}_\C^0\,.
 \end{align}
-Because of \eqref{eq:signature_pm_hermitian_product_phase_space}, we can (and will) actually arrange the basis so that $*:\mathcal{S}_\C^+ \to \mathcal{S}_\C^-$ is an isomorphism and $v_n \equiv u_n^*$, and then remove the ghost modes $z_n$ upon quotienting $\mathcal{S}_C/\mathcal{S}_\C^0$.
+Because of \eqref{eq:signature_pm_hermitian_product_phase_space}, we can and will actually arrange the basis so that $*:\mathcal{S}_\C^+ \to \mathcal{S}_\C^-$ is an isomorphism and $v_n \equiv u_n^*$, and we also remove the ghost modes $z_n$ upon quotienting $\mathcal{S}_C/\mathcal{S}_\C^0$.
 Equivalently Darboux theorem for sympletic forms ensures the existence of a basis $\{\phi_n, \, \pi_n, z_n\}_n$ of $\mathcal{S}_\R$ such that
+{\small
 \begin{align}
     \omega = \begin{pmatrix}
     0 & \mathbb{I} &0\\
     -\mathbb{I} & 0 & 0\\
     0 & 0 & 0
     \end{pmatrix}
-    \quad\text{i.e.}\quad
-    \omega(\phi_n, \phi_m) = 0, \quad \omega(\pi_n, \pi_m) = 0, \quad \omega(\phi_n, \pi_m) = \delta_{nm}, \quad \omega(z_n, \cdot) = 0,
-\end{align}
-which is related to the previous basis $\{u_n, u_n^*\}$ simply by
-\begin{align}
-    \phi_n= \frac{u_n-u_n^*}{i\sqrt{2}}, \quad \pi_n = \frac{u_n+u_n^*}{\sqrt{2}}.
-\end{align}
-The index $n$ can be discrete with Kronecker delta or continuous with Dirac delta depending on the spatial topology and boundary conditions.
-In any case the bases are complete and yield a resolution of the identity (and similarly for $\mathcal{S}_\R$)
+    \,\,\text{i.e.}\,\,
+    \begin{array}{l}
+    \omega(\phi_n, \phi_m) = 0, \quad \omega(\pi_n, \pi_m) = 0,\\[2pt]
+    \omega(\phi_n, \pi_m) = \delta_{nm}, \quad \omega(z_n, \cdot) = 0,
+    \end{array}\,\,\,\text{simply related by}\,\,\,
+    \phi_n= \frac{u_n+u_n^*}{i\sqrt{2}}, \,\,\pi_n = \frac{u_n-u_n^*}{\sqrt{2}}.
+\end{align}}
+%
+The index $n$ can be discrete with Kronecker deltas, or continuous with Dirac deltas, depending on the spatial topology and boundary conditions.
+In any case, the bases are complete and yield a resolution of the identity (and similarly for $\mathcal{S}_\R$)
 \begin{align}
     \sum_n |u_n\rangle \langle u_n| - \sum_n |v_n\rangle \langle v_n| = \mathbb{I}_{\mathcal{S}_\C}.
+\end{align}
+%
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Phase space in static spacetimes\todotag{Finish}]
+A particularly important case is that of static spacetimes i.e. spacetimes admitting a global timelike Killing vector field $K$ orthogonal to the spatial slices of the foliation $\mathcal{M}\simeq \R\times \Sigma$.
+In adapted coordinates $x^\mu=(t,\mathbf{x})$ the metric reads\footnote{Beware the existence of a global timelike v.f. is not enough, since there might still be cross terms $g_{0j}(\mathbf{x})\neq0$ that cannot be removed by a change of coordinates.}
+\begin{align}
+    ds^2 = g_{\mu\nu} dx^\mu dx^\nu = g_{00}(\mathbf{x}) dt^2 + g_{ij}(\mathbf{x}) dx^i dx^j.
+\end{align}
+The Chrsitoffel symbols obey $\Gamma^\mu_{\mu0}=0$ and $\Gamma^\mu_{\mu j} = \bar{\Gamma}^i_{ij}$ where $\bar{\Gamma}^i_{jk}$ are the Christoffel symbols associated to the (postive definite) spatial metric $\bar{g}_{ij}:=-g_{|\Sigma}\equiv -g_{ij}$ induced on leaves $\Sigma$.
+The D'Alambert operator then reads in terms the spatial Laplacian $\bar{\nabla}_j\bar{\nabla}^j$ associated to $\bar{g}$
+\begin{align}
+  \nabla_\mu\nabla^\mu \phi = g^{00}(\mathbf{x}) \partial_t^2 \phi - \bar{\nabla}_j\bar{\nabla}^j\phi\,.
+\end{align}
+%
+If $\{\chi_n(\mathbf{x})\}_n$ is a complete orthonormal set of eigenfunctions of the spatial operator $\tfrac{1}{g^{00}(\mathbf{x})}\big(-\bar{\nabla}_j\bar{\nabla}^j + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$ so that
+\begin{align}
+  \int_\Sigma d^n\mathbf{x}\, \sqrt{\bar{g}(\mathbf{x})}\,\, \chi_n(\mathbf{x}) \chi_m(\mathbf{x}) = \delta_{nm}, \quad
+\end{align}
+the functions below are a complete set of solutions to the Klein--Gordon equation, and form a basis of $\mathcal{S}_\C$ with the desired orthogonality properties
+\begin{align}
+    u_n^+(t,\mathbf{x}) = \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}), \quad u_n^-(t,\mathbf{x}) = \big(u_n^+\big)^* = \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x})\,.
 \end{align}
 %
 \end{mytheorem}
