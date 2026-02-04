@@ -86,10 +86,11 @@ The following is just a somewhat redundant but often-used piece of terminology.
 Definition 1.11. (Faithful representation) A representation $R: G \rightarrow \mathrm{GL}(V)$ is called faithful iff it is one-to-one, or, equivalently, iff $\operatorname{Ker}(R)=\{e\}$.
 
 
-
+%-----------------------------------------------
 %==================================================
 \section{Finite groups}
 %==================================================
+%--------------------------------------------
 
 \begin{theorem}
 %
@@ -109,8 +110,190 @@ obeys that $\chi_{R^{dual}}(g)=\overline{\chi_{R}(g)}$ for all $g \in G$ since..
 
 
 
+%======================================================
+\subsection{Examples}
+%======================================================
+
+%----------------------------------------------
+\subsubsection*{Quaternion group $Q_{8}$}
+%------------------------------------------------
+
+The conjugacy classes and characters of quaternions are
+
+\noindent
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\begin{tabular}{|r||c|c|c|c|}
+\hline
+$g$ & $\pm 1$ & $\pm i$ & $\pm j$ & $\pm k$ \\
+\hline\hline
+$R_{1}$ & 1 & 1 & 1 & 1 \\
+\hline
+$R_{i}$ & 1 & 1 & -1 & -1 \\
+\hline
+$R_{j}$ & 1 & -1 & 1 & -1 \\
+\hline
+$R_{k}$ & 1 & -1 & -1 & 1 \\
+\hline
+$R_{2}$ & $\pm \mathbb{I}_{2}$ & $\pm \sigma_i$ & $\pm \sigma_j$ & $\pm \sigma_k$ \\
+\hline
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+ & $C_{1}$ & $C_{-1}$ & $C_{i}$ & $C_{j}$ & $C_{k}$ \\
+\hline
+\# elements & 1 & 1 & 2 & 2 & 2 \\
+\hline\hline
+$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 \\
+\hline
+$\chi_{i}$ & 1 & 1 & 1 & -1 & -1 \\
+\hline
+$\chi_{j}$ & 1 & 1 & -1 & 1 & -1 \\
+\hline
+$\chi_{k}$ & 1 & 1 & -1 & -1 & 1 \\
+\hline
+$\chi_{2}$ & 2 & -2 & 0 & 0 & 0 \\
+\hline
+\end{tabular}
+\end{minipage}
+for the (rearranged) choice of Pauli matrices 
+\begin{align}
+\begin{aligned}
+  \sigma_{i}=\begin{pmatrix}
+        0 & i \\
+        i & 0
+    \end{pmatrix} , \quad
+    \sigma_{j}=\begin{pmatrix}
+        0 & 1 \\
+        -1 & 0
+    \end{pmatrix} , \quad
+    \sigma_k=\begin{pmatrix}
+        -i & 0 \\
+        0 & i
+    \end{pmatrix},\quad \sigma_\alpha\sigma_\beta =-\delta_{\alpha\beta}\mathbb{1}+ \epsilon_{\alpha\beta\gamma}\sigma_\gamma , \quad \epsilon_{ijk}=1 .
+\end{aligned}
+\end{align}
+
+
+
+
+\begin{mytheorem}[Example:Yukawa model building for fermion masses with finite groups]
+As a model building application, consider a Yukawa term of the form.
+\begin{align}\label{eq:yukawa_coupling_fermion_masses}
+\begin{aligned}
+    \lambda_{i j} H \bar{\psi}_{L}^{i} \psi_{R}^{j} \subset \mathcal{L}_{\text{Yukawa}} \, ,
+\end{aligned}
+\end{align}
+where $H$ is a complex scalar field and $\psi_{L}^{i}, \psi_{R}^{i}$ are left- and right-handed fermions and $i=1,2,3$ is a family index.
+(Details of the structure of these fields will be discussed later, in the section on the Lorentz group, but this will not be important for the present discussion.)
+The fields might be the quarks, $\left(\psi_{L}^{i}, \psi_{R}^{i}\right)=\left(u_{L}^{i}, u_{R}^{i}\right)$ or $\left(d_{L}^{i}, d_{R}^{i}\right)$ or the leptons $\left(\psi_{L}^{i}, \psi_{R}^{i}\right)=\left(e_{L}^{i}, e_{R}^{i}\right)$.
+The Yukawa couplings times the vacuum expectation value of the field $H$ (the Higgs field) lead to a mass matrix, $M_{i j}=\lambda_{i j}\langle H\rangle$, which determines the masses (and mixings) of the particles.
+
+One avenue of model building, aiming at an explanation of fermion masses and mixings, is to constrain the couplings \eqref{eq:yukawa_coupling_fermion_masses} by imposing a discrete symmetry under which $H, \psi_{L}^{i}$ and $\psi_{R}^{i}$ transform.
+Without any ambition of producing a realistic model, we would like to illustrate how this works in principle, using the quaternion group $\mathbb{H}$.
+
+From its character table it is easy to extract the Clebsch--Gordan decompositions.
+\begin{align}
+\begin{aligned}
+    R_{x} \otimes R_{x}=R_{1}
+    \qquad
+    R_{i} \otimes R_{j}=R_{k} \text{ and cyclic}
+    \qquad
+    R_{x} \otimes R_{2}=R_{2}
+    \qquad
+    R_{2} \otimes R_{2}=R_{1} \oplus R_{i} \oplus R_{j} \oplus R_{k} ,
+\end{aligned}
+\end{align}
+where $x=i,j,k$, and this information is the basis for building a model.
+To be specific, assume the following assignment of representations.
+\begin{align}
+\begin{aligned}
+    H \sim R_{i}, \quad \bar{\psi}_{L}^{3} \sim R_{j}, \quad \psi_{R}^{3} \sim R_{k}, \quad \bar{\chi}_{L}:=\left(\psi_{L}^{1}, \psi_{L}^{2}\right) \sim R_{2}, \quad \chi_{R}:=\left(\psi_{R}^{1}, \psi_{R}^{2}\right) \sim R_{2} .
+\end{aligned}
+\end{align}
+
+In other words, we arrange the first two families, for both left- and right-handed fields, into the two-dimensional representations and all other fields into one-dimensional ones.
+(There are of course many other ways to do this.)
+With this assignment we should only keep the terms in Eq.~\eqref{eq:yukawa_coupling_fermion_masses} which are $\mathbb{H}$-invariant.
+Since $H \bar{\psi}_{L}^{3} \chi_{R} \sim R_{i} \otimes R_{j} \otimes R_{2}=R_{2}$ we learn immediately that $\lambda_{31}=\lambda_{32}=0$.
+For similar reasons, $\lambda_{13}=\lambda_{23}=0$.
+So right away, the Yukawa matrix is restricted to.
+\begin{align}
+\begin{aligned}
+    \lambda=\begin{pmatrix}
+        \star & \star & 0 \\
+        \star & \star & 0 \\
+        0 & 0 & \star
+    \end{pmatrix} ,
+\end{aligned}
+\end{align}
+where the $\star$ indicates a potentially non-zero entry.
+In fact, the $\lambda_{33}$ entry is allowed since $R_{i} \otimes R_{j} \otimes R_{k}=R_{1}$.
+What about the $2 \times 2$ block?
+First note that the 2x2 identity and Pauli matrices (or better the rearranged form used for the $R_2$ representation) plus  form a basis of the space of $2 \times 2$ complex matrices.
+The 2x2 Yukawa block can then be written as $\lambda_{2 \times 2}=\sum_{\alpha=0, i, j, k} c_{\alpha} \sigma_{\alpha}$ with complex coefficients.
+Since $H \sim R_{i}$ only the representation $R_{i} \in R_{2} \otimes R_{2}= R_0\oplus R_i \oplus R_j \oplus R_k$ is allowed, and we should choose $\lambda$ so as to extract this subspace.
+Namely, the matrix $\lambda$ make the 2x2 block transform as
+\begin{align}
+  \bar{\psi}_L^i\lambda_{ij}\psi_R^j\mapsto \bar{\psi}_L^a (\sigma_g^*)^i_a\lambda_{ij}(\sigma_g)^j_b \psi_R^b = \bar{\psi}_L^a (\sigma_g^\dagger \lambda \sigma_g)_{ij} \psi_R^j,
+\end{align}
+and we should impose this matches the $R_i$ representation
+\begin{align}
+  \sigma_g^\dagger \lambda \sigma_g = \begin{cases}
+  \lambda & \text{if } g=\pm1, \pm i \\[2pt]
+  -\lambda & \text{if } g=\pm j,\pm k
+  \end{cases}
+\end{align}
+Using that $\sigma^dagger_g=-sigma_g$ for $g=\pm i, \pm j, \pm k$ and the algebra of the $\sigma$ matrices, we find that only $\lambda \propto\, \sigma_j$ obey the condition.
+Hence, the final form of the Yukawa matrix is.
+\begin{align}
+\begin{aligned}
+    \lambda=\begin{pmatrix}
+        0 & \lambda_{1} & 0 \\
+        -\lambda_{1} & 0 & 0 \\
+        0 & 0 & \lambda_{3}
+    \end{pmatrix} .
+\end{aligned}
+\end{align}
+\end{mytheorem}
+
+
+
+
+
 %--------------------------------------------
 %==========================================
 \section{Lie groups \& Lie algebras}
 %=============================================
 %----------------------------------------------
+
+
+
+(1) Is it always true that the tangent map at $e$ of a group homomorphism (a representation)
+
+(2) Are all Lie algebra homomorphisms tangent maps at $e$ of group homomorphisms?
+
+(3) Can the Lie group be "recovered" from the Lie algebra?
+
+This essentially follows from the Frobenius theorem.
+Indeed, if $f \colon T_{e}G \to T_{e}H$ is a Lie algebra homomorphism, then $\operatorname{im} f \le T_{e}H$ is closed under the Lie bracket, because $[f(x),f(y)] = f([x,y])$.
+For each $h \in H$ define the subspace
+\begin{align}
+\begin{aligned}
+    \mathcal{D}_{h} := d(l_{h})_{e}\big(\operatorname{im} f\big) \le T_{h}H .
+\end{aligned}
+\end{align}
+Then $\mathcal{D} := \bigcup_{h\in H} \mathcal{D}_{h} \le TH$ is a left-invariant distribution, and it is involutive (closed under brackets of local sections).
+By Frobenius, through $e \in H$ there exists an immersed connected submanifold $N \le H$ such that $T_{e}N = \operatorname{im} f$ and $TN = \mathcal{D}\!\mid_{N}$.
+
+Now define a map $\phi \colon G \to H$ locally near $e$ by
+\begin{align}
+\begin{aligned}
+    \phi\big(\exp_{G}(x)\big) := \exp_{H}\big(f(x)\big) .
+\end{aligned}
+\end{align}
+The Lie algebra properties ensure that $\phi$ is (locally) a group homomorphism.
+One then extends $\phi$ to the whole identity component of $G$ using the group property.
