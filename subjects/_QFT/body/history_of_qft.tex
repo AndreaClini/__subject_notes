@@ -201,6 +201,55 @@ In particular, it makes it easier to see how classical observables correspond to
 \end{mytheorem}
 
 
+\begin{mytheorem}[Ehrenfest theorem.\todotag{Check \& finish}]
+The Ehrenfest theorem establishes a connection between the quantum mechanical expectation values of observables and their classical counterparts.
+It states that the time evolution of the expectation value of an operator \(\hat{O}\) in a quantum state \(|\psi(t)\rangle\) is the same as the classical equation of motion for the corresponding observable \(O\), provided that the operator \(\hat{O}\) does not explicitly depend on time.
+Mathematically, the Ehrenfest theorem is expressed as
+\begin{equation}
+    \frac{d}{dt} \langle \hat{O} \rangle = \frac{1}{i\hbar} \langle [\hat{O}, \hat{H}] \rangle + \Big\langle \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}} \Big\rangle,
+\end{equation}
+where \(\langle \hat{O} \rangle = \langle \psi(t) | \hat{O} | \psi(t) \rangle\) is the expectation value of the operator \(\hat{O}\) in the state \(|\psi(t)\rangle\), and \(\hat{H}\) is the Hamiltonian operator of the system.
+In particular, applying the Ehrenfest theorem to the position and momentum operators \(\hat{q}_i\) and \(\hat{p}_i\), we obtain
+\begin{align}
+    \frac{d}{dt} \langle \hat{q}_i \rangle = \frac{1}{m} \langle \hat{p}_i \rangle, \quad
+    \frac{d}{dt} \langle \hat{p}_i \rangle = - \langle \frac{\partial V}{\partial q_i} \rangle,
+\end{align}
+which resemble the classical equations of motion for a particle in a potential \(V(q)\).
+The Ehrenfest theorem thus provides a bridge between quantum mechanics and classical mechanics, showing that the average behavior of quantum systems follows classical laws under certain conditions.
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[Stone-von Neumann theorem.\todotag{Finish \& Check (cf. Kempf QFT 13)}]
+%
+By the postulate, the Hilbert space of quantum mechanics are required to be separable.
+In particular any two such space are unitarily isomorphic
+\begin{align}
+    U::\mathcal{H}_1 \to \mathcal{H}_2, \quad U^\dagger U = \mathbb{I}_{\mathcal{H}_1}, \quad U U^\dagger = \mathbb{I}_{\mathcal{H}_2}.
+\end{align}  
+The Stone-von Neumann theorem states that, if the number of degrees of freedom is finite, then up to unitary isomorphisms, there is a unique irreducible representation of the canonical commutation relations (CCR) for the DoFs of the system.
+That is, denoting the DoFs of the system as $\{q^a_i, p^a_i\}_{i=1}^N$ for $a=1,2$, any two irreducible representations of the CCR 
+\begin{align}
+    [\hat{q}^a_i, \hat{p}^a_j] = i\hbar \delta_{ij}, \quad [\hat{q}^a_i, \hat{q}^a_j] = 0, \quad [\hat{p}^a_i, \hat{p}^a_j] = 0,
+\end{align}
+acting on separable Hilbert spaces $\mathcal{H}_a$, are unitarily isomorphic.
+This means that the unitary operator above \(U: \mathcal{H}_1 \to \mathcal{H}_2\) can be taken so that
+\begin{align}
+    U \hat{q}^1_i U^\dagger = \hat{q}^2_i, \quad U \hat{p}^1_i U^\dagger = \hat{p}^2_i.
+\end{align}
+This theorem ensures that the physical predictions of Quantum Mechanics are independent of the specific representation chosen for the operators, as long as the number of degrees of freedom is finite.
+
+The theorem \emph{does not hold} when the number of degrees of freedom is infinite, as in Quantum Field Theory.
+In typical cases, we can impose IR regularization, making the DoFs countable discrete, and UV regularization, making the DoFs finite, thus recovering the theorem.
+This regularizatin procedure might however fail in particular circumstances, leading to unitarily inequivalent representations of the CCR.
+For example
+\begin{itemize}
+    \item if a (weird) theory does not enjoy a proper separation of scales, so that low energy physics is sensitive to the UV completion and the physical predictions depend on the UV regularization scheme;
+    \item in the context of phase transitions, where different phases of the system can be described by unitarily inequivalent representations of the CCR, reflecting the distinct physical properties of each phase. Indeed, by the Lee-Yang theorem, phase transitions can only occur in the thermodynamic limit where the space is \emph{truly} infinite and thus the number of DoFs is uncountable infinite.
+\end{itemize}
+%
+\end{mytheorem}
+
 
 %-------------------------------------------------------------
 %=========================================================

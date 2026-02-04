@@ -90,19 +90,19 @@ Indeed the \emph{classical} hamilton equations in the chosen coordinates $(t,\ma
   &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H_F}{\delta \pi_F(t,\mathbf{x})}, \quad
   \frac{\partial \pi_F(t,\mathbf{x})}{\partial t} = -\frac{\delta H_F}{\delta \phi(t,\mathbf{x})},\quad\text{and more generally }\quad \frac{\partial \mathcal{O}}{\partial t} = \{\mathcal{O}, H_F\}\quad \forall\,\, \text{field}\,\,\mathcal{O}.
 \end{align}
-Or at the quantum level, replacing $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$ and time-evolving operators in Heisenberg picture
+At the quantum level, replacing $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$ and time-evolving operators in the Heisenberg picture
 \begin{equation}
   \frac{\partial \hat{\mathcal{O}}}{\partial t} = -\frac{i}{\hbar} [\hat{\mathcal{O}}(t), \hat{H}_F]\quad \forall \,\,\text{field operator}\,\, \hat{\mathcal{O}}.
 \end{equation}
-In both classical and quantum cases, this shows that $H_F$ is the generator of the time evolution operator parametrized wrt the chosen coordinate time $t$
+In both classical and quantum cases, this shows that $H_F$ is the generator of the time evolution operator parametrized wrt the chosen coordinate time $t$, that is
 \begin{align}
   &U(t,t_0) = \mathcal{T}\exp\left(-\frac{i}{\hbar}\int_{t_0}^t \!\! dt' H_F(t')\right)\,.
 \end{align}
 A different choice $\tilde{F}$ of coordinates and foliation  $\mathcal{M}\simeq \R\times \tilde{\Sigma}$ yields a different hamiltonian $H_{\tilde{F}}$ generating time translations along the corresponding time $\tilde{t}\equiv \tilde{x}^0$.
 
-If the two foliations are equivalent i.e. fixed-time leaves are mapped into each other by the change of coordinates, \todotag{Not sure what if $\tilde{t}=\tilde{t}(t,\mathbf{x})$ i.e. leaves not map into each other?}
+If the two foliations are \emph{equivalent}, i.e. fixed-time leaves are mapped into each other by the change of coordinates, \todotag{Not sure what if $\tilde{t}=\tilde{t}(t,\mathbf{x})$ i.e. leaves not map into each other?}
 \begin{align}
-  \R\times \Sigma \simeq\mathcal{M}\simeq  \tilde{\R}\times \tilde{\Sigma} \quad \text{via}\quad (t,\mathbf{x}) \mapsto (\tilde{t}(t), \tilde{\mathbf{x}}(t,\mathbf{x})),
+  \R\times \Sigma \simeq\mathcal{M}\simeq  \tilde{\R}\times \tilde{\Sigma} \quad \text{via}\quad (t,\mathbf{x}) \mapsto (\tilde{t}(t), \tilde{\mathbf{x}}(t,\mathbf{x})), \quad \text{so that}\quad \Sigma_t \mapsto \tilde{\Sigma}_{\tilde{t}(t)},
 \end{align}
 the Hilbert spaces $\mathcal{H}=\bigotimes_n L^2(\Sigma,\C)^{\otimes^n}$ of the two quantum theories are isomorphic (resp. the fixed-time function spaces $\mathcal{C}(\Sigma_t,\R)$ in the classical case) and so must be the time evolution of their states and operators, provided we evolve across corresponding time intervals $[t_1,t_2]$ and $[\tilde{t}_1,\tilde{t}_2]$ with $\tilde{t}_j:=\tilde{t}(t_j)$.
 If $\chi_t: \mathcal{H}_F \to \mathcal{H}_{\tilde{F}}$ is the isomorphism between the two Hilbert spaces (resp. classical spaces) induced by the coordinate change $\mathbf{x}\mapsto \tilde{\mathbf{x}}(t,\mathbf{x})$ at time $t$, the corresponding time evolutions obey
@@ -114,18 +114,18 @@ If $\chi_t: \mathcal{H}_F \to \mathcal{H}_{\tilde{F}}$ is the isomorphism betwee
   = U_{\tilde{F}}(\tilde{t}_2,\tilde{t}_1)\,.
 \end{equation}
 }
-If the coordinate change does not mix time and space $(t,\mathbf{x})\mapsto (\tilde{t}(t),\tilde{\mathbf{x}}(\mathbf{x}))$, the isomorphism bewteen Hilberts (resp. classical) spaces $\chi_t\equiv \chi$ is time-independent, and we can take it to be the identity upon changing space coordinates in one frame yielding the same leaves $\Sigma_t=\tilde{\Sigma}_{\tilde{t}(t)}$ at all times.
+If the coordinate change does not mix time and space $(t,\mathbf{x})\mapsto (\tilde{t}(t),\tilde{\mathbf{x}}(\mathbf{x}))$, the isomorphism bewteen Hilbert (resp. classical) spaces $\chi_t\equiv \chi$ is time-independent, and we can thus take it to be the identity upon changing spatial coordinates in one frame, so that we have the same leaves $\Sigma_t=\tilde{\Sigma}_{\tilde{t}(t)}$ at all times.
 The two hamiltonians and time evolutions then act on the \emph{same} Hilbert space, and we simply have a time change relation
 {\small
 \begin{align}
   H_F(t) = \tfrac{d\tilde{t}}{dt} H_{\tilde{F}}(\tilde{t}(t)), \quad
-  U_F(t_2,t_1) = \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{t_1}^{t_2} dt' H_F(t')\right)
-  = \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{\tilde{t}(t_1)}^{\tilde{t}(t_2)} d\tilde{t}' H_{\tilde{F}}(\tilde{t}')\right)
+  U_F(t_2,t_1) = \mathcal{T}\exp\bigg( -\frac{i}{\hbar}\int_{t_1}^{t_2} dt' H_F(t')\bigg)
+  = \mathcal{T}\exp\bigg( -\frac{i}{\hbar}\int_{\tilde{t}(t_1)}^{\tilde{t}(t_2)} d\tilde{t}' H_{\tilde{F}}(\tilde{t}')\bigg)
   = U_{\tilde{F}}(\tilde{t}_2,\tilde{t}_1).
 \end{align}
 }
 
-Finally, the above analysis allow for a temporary period where two foliations $F$ and $\tilde{F}$ are inequivalent, e.g. during a gravitational collapse or other highly dynamical spacetime process, as long as spacetime is asymptotically stationary in the past and future.
+Finally, the above analysis also allows for a temporary period where the two foliations $F$ and $\tilde{F}$ are inequivalent, e.g. during a gravitational collapse or other highly dynamical spacetime process, as long as spacetime is asymptotically stationary in the past and future.
 That is the coordinate change $(t,\mathbf{x})\mapsto \tilde{t}=\tilde{t}(t,\mathbf{x})$ does not map leaves of the foliations into each other for some time interval $[t_i,t_f]$, but does so asymptotically for $t\to \pm\infty$.
 In this case, we can relate the two Hilbert (resp. classical) spaces and corresponding time evolutions via the isomorshisms $\chi_t$ as above only in the asymptotic regions $t<t_i$ and $t>t_f$, and define $S$-matrix like operators mapping states (resp. classical configurations) from one foliation to the other across the dynamical period.
 \end{mytheorem}
@@ -141,7 +141,7 @@ To fix ideas we consider below the case of quintessence scalar field, but the an
 \begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\todotag{Finish}]
 %
 Choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma$.
-In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the outward normal and the metric induced on spatial leaves $\Sigma$ obey
+In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the outward (positive-time oriented) normal $n^\mu$ and the metric induced on spatial leaves $\Sigma$ obey
 {\small
 \begin{align}\label{eq:metric_induced_spatial_leaves_folitation}
     n^\mu = \frac{g^{0\mu}}{\sqrt{g^{00}}}, \quad \text{and}\quad
@@ -165,6 +165,7 @@ The inverse of the spatial metric $g_{|\Sigma}$ can then be written as
     g_{|\Sigma}^{ij}= g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}},\quad\text{since}\quad
     \sum_{i=1}^n \underbrace{g_{ai}}_{=g_{|\Sigma\, ai}} \Big(g^{ib} - \tfrac{g^{i0}g^{0b}}{g^{00}}\Big) = (\delta_a^b - g_{a0} g^{0b}) -\big(\underbrace{\delta_a^0}_{=0} - g_{a0} g^{00}\big) \tfrac{g^{0b}}{g^{00}}= \delta_a^b\,.
 \end{align}}
+Beware that $g_{|\Sigma}^{ij}$ is negative definite in our mostly minus signature convention.
 \end{mytheorem}
 
 
@@ -174,15 +175,18 @@ Consider the action for a scalar field, possibly with nonminimal coupling to gra
 \begin{align}
     S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \xi R \phi^2 \right) = \int dt \underbrace{\int_{\Sigma_t} d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \tfrac{\xi}{2} R \phi^2 \right)}_{=\int d\mathbf{x}\sqrt{|g|}\, \mathcal{L}\,\,=  \, L(t)}.
 \end{align}}
-The conjugate field in these coordinates is then\footnote{Note for spin fields $\phi^\star_\bullet$ we would have terms $\sim \phi^\star_{\bullet} \Gamma_{0\star}^\bullet$. to extract $\dot{\phi}^\star_\bullet$.}
+\vspace{-4mm}
+
+\noindent
+The conjugate field in these coordinates is then\footnote{Note for spin fields $\phi^\star_\bullet$ we would need to subtract terms $\sim \phi^\star_{\bullet} \Gamma_{0\star}^\bullet \subset $ to extract $\dot{\phi}^\star_\bullet\subset \nabla_0\phi$.}
 {\small
 \begin{align}
     &\pi(t,\mathbf{x}) = \frac{\delta L(t)}{\delta \dot{\phi}(t,\mathbf{x})}= \frac{\partial\big(\sqrt{g}\, \mathcal{L}(t,\mathbf{x})\big)}{\partial \dot{\phi}(t,\mathbf{x})} = \sqrt{|g|} g^{0\nu} \nabla_\nu \phi(t,\mathbf{x}) = \sqrt{|g|} \Big( g^{00} \,\nabla_0\phi(t,\mathbf{x}) + g^{0j} \,\nabla_{\!j} \phi(t,\mathbf{x}) \Big)\\
     & \quad \Rightarrow \quad \dot{\phi}(t,\mathbf{x}) = \frac{1}{\sqrt{g}\, g^{00}} \Big( \pi(t,\mathbf{x}) - \sqrt{g}\, g^{0j} \partial_j\phi(t,\mathbf{x}) \Big).
 \end{align}}
-Using \eqref{eq:metric_induced_spatial_leaves_folitation} the conjugate field may also be written in terms of the unit normal and induced metric on spatial leaves as
+Using \eqref{eq:metric_induced_spatial_leaves_folitation} the conjugate field may also be written in terms of the unit time-oriented normal and induced metric on spatial leaves as
 \begin{align}
-  \pi = \sqrt{g}g^{0\mu}\nabla_\mu\phi= \sqrt{g_{|\Sigma}}\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \nabla_\mu \phi = \sqrt{g_{|\Sigma}}\, n^\mu \nabla_\mu \phi.
+  \pi = \sqrt{g}\,g^{0\mu}\,\nabla_\mu\phi= \sqrt{g_{|\Sigma}}\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \nabla_\mu \phi = \sqrt{g_{|\Sigma}}\, n^\mu \nabla_\mu \phi.
 \end{align}
 The hamiltonian \emph{density} is then
 {\small
@@ -190,7 +194,7 @@ The hamiltonian \emph{density} is then
     \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) 
     = \frac{1}{\sqrt{g}} \frac{\pi^2}{g^{00}} - \frac{g^{0j}}{g^{00}}\, \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\,\partial_j\phi + \sqrt{g}\,V(\phi) + \sqrt{g}\,\tfrac{\xi}{2} R \phi^2,
 \end{align}}
-where note the inverse of the metric \eqref{eq:inverse_metric_induced_leaves_foliation} induced on spatial slices $g_{|\Sigma}^{ij}$ is negative definite in our mostly minus convention.
+where the inverse metric $g_{|\Sigma}^{ij}$ induced on spatial slices \eqref{eq:inverse_metric_induced_leaves_foliation} is negative definite in our convention, thus contributing positive kinetic energy to the hamiltonian.
 The hamiltonian is $\displaystyle H(t) = \int_\Sigma d^n\mathbf{x}\,\,\, \mathcal{H}(t,\mathbf{x})$.
 The classical hamilton equations are
 \begin{align}
@@ -211,10 +215,12 @@ Consider the space of $\R$-valued (smooth, vanishing at \emph{spatial} infinity)
 \begin{align}\label{eq:real_space_KG_solutions}
     \mathcal{S}_\R = \{ \phi \in C^\infty_0(\mathcal{M},\R) \mid (\nabla_\mu \nabla^\mu + \partial_\phi V + \xi R) \phi = 0 \}.
 \end{align}
-In the free case $V(\phi) = \frac{1}{2} m^2 \phi^2$, this is a real vector space endowed with a symplectic structure $\omega$ defined in a variety of equivalent ways.
-The pair $(\mathcal{S}_\R, \omega)$ is thus the classical phase space of the theory.
+In the free case $V(\phi) = \frac{1}{2} m^2 \phi^2$ this is a real vector space, and we can naturally endow it with a symplectic form $\omega$ making $(\mathcal{S}_\R, \omega)$ the classical phase space of the theory.
 
-Namely, for $\phi_1, \phi_2 \in \mathcal{S}_\R$, we have the equivalent definitions
+
+Fix a foliation $\mathcal{M}\simeq \R\times \Sigma$ with adapted coordinates $x^\mu=(t,\mathbf{x})$.
+The symplectic form is defined in several equivalent ways, independent of \emph{equivalent} spacetime foliations\footnote{This is crucial, since the solution space $\mathcal{S}_\R$ is fully covariant, and thus the symplectic form should not depend on the coordinates.} and the specific time of the Cauchy surface $\Sigma_t$ chosen to evaluate it.
+Namely, for $\phi_1, \phi_2 \in \mathcal{S}_\R$, we have the following equivalent definitions
 \begin{align}
     \omega(\phi_1, \phi_2) &= \int_\Sigma \star d\phi_1 \, \phi_2 - \phi_1 \, \star d\phi_2
     =\int_\Sigma \star \big(J^{12}_\mu\, dx^\mu\big) \\
@@ -225,7 +231,7 @@ Namely, for $\phi_1, \phi_2 \in \mathcal{S}_\R$, we have the equivalent definiti
 \vspace{-4mm}
 
 \noindent
-where $n^\mu$ is the unit outward normal to the spatial slice $\Sigma^{(n)}$ and it is always intended that the $n$-form is pulled back to $\Sigma^{(n)}$ before integration (except for the last case, where it is already done explicitly). 
+where $n^\mu$ is the unit outward (positive-time oriented) normal to the spatial slice $\Sigma^{(n)}$ and it is always intended that the $n$-form is pulled back to $\Sigma^{(n)}$ before integration (except for the last case, where it is already done explicitly). 
 Using \eqref{eq:metric_induced_spatial_leaves_folitation}, the symplectic form then takes the familiar form in terms of conjugate fields
 {\small
 \begin{align}
@@ -247,12 +253,14 @@ This follows from $\nabla_\mu big(\nabla^\mu \phi_1 \, \phi_2 - \phi_1 \, \nabla
 \vspace{-7mm}
 
 \noindent
-The symplectic form is then independent of the choice of Cauchy surface $\Sigma_t$ thanks to current conservation and Gauss theorem
+The \textbf{symplectic form} is \textbf{independent of \emph{equivalent} foliations}, that is $\mathcal{M}\simeq \R\times \Sigma \simeq \tilde{\R}\times \tilde{\Sigma}$ with coordinate change $(t,\mathbf{x})\mapsto (\tilde{t}(t), \tilde{\mathbf{x}}(t,\mathbf{x}))$ mapping leaves into each other, and the specific time $t$ of the Cauchy surface $\Sigma_t$ chosen to evaluate it.
+Indeed by current conservation and Gauss theorem
 \begin{align}
     \int_{\Sigma_{t_1}}\!\!\!\!\star J \,\,- \int_{\Sigma_{t_2}}\!\!\!\! \star J 
     = \int_{\partial\big([t_1,t_2]\times \Sigma\big)} \!\!\!\!\!\!\star J
     = \int_{[t_1,t_2]\times \Sigma} d \!\star\! J =0.
 \end{align}
+More generally, for equivalent foliations $\mathcal{M}\simeq \R\times \Sigma \simeq \tilde{\R}\times \tilde{\Sigma}$ and two times $t_1$ and $\tilde{t}_2=\tilde{t}(t_2)$ we proceed the same considering the spacetime region bounded by $\Sigma_{t_1}$ and $\tilde{\Sigma}_{\tilde{t}_2}$.
 
 The symplectic space is naturally promoted to a Poisson space by defining the Poisson bracket of two functionals $F_1, F_2: \mathcal{S}_\R \to \R$ as
 \begin{align}
@@ -283,7 +291,7 @@ Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\
 \end{align}
 
 Sylvester theorem ensures the existence of a basis of $\{u_n, v_n, z_n\}_{n}$ of $\mathcal{S}_\C$ such that the hermitian form decomposes orthogonally wrt this product as
-\begin{align}
+\begin{align}\label{eq:orthogonality_bogoliubov_basis_complex_phase_space}
     \langle u_n, u_m \rangle = +\delta_{nm}, \,\,\, \langle v_n, v_m \rangle = -\delta_{nm}, \,\,\, \langle u_n, v_m \rangle = 0, \,\,\, \langle z_n, \cdot \rangle = 0, \quad \mathcal{S}_\C = \mathcal{S}_\C^+ \oplus^\perp \mathcal{S}_\C^- \oplus^\perp \mathcal{S}_\C^0\,.
 \end{align}
 Because of \eqref{eq:signature_pm_hermitian_product_phase_space}, we can and will actually arrange the basis so that $*:\mathcal{S}_\C^+ \to \mathcal{S}_\C^-$ is an isomorphism and $v_n \equiv u_n^*$, and we also remove the ghost modes $z_n$ upon quotienting $\mathcal{S}_C/\mathcal{S}_\C^0$.
@@ -307,6 +315,17 @@ The index $n$ can be discrete with Kronecker deltas, or continuous with Dirac de
 In any case, the bases are complete and yield a resolution of the identity (and similarly for $\mathcal{S}_\R$)
 \begin{align}
     \sum_n |u_n\rangle \langle u_n| - \sum_n |v_n\rangle \langle v_n| = \mathbb{I}_{\mathcal{S}_\C}.
+\end{align}
+%
+
+Finally, suppose we have two complete bases $\{u_n, u_n^*\}_n$ satisfying \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space}, and we pass to another basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ of $\mathcal{S}_\C$ related by a Bogoliubov transformation\todotag{Fix}
+\begin{align}
+    \tilde{u}_m = \sum_i \alpha_{mi} u_i + \beta_{mi} u_i^*.
+\end{align}
+Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonality properties \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space} requires the Bogoliubov coefficient satisfy
+\begin{align}
+    &\langle \tilde{u}_m, \tilde{u}_{n} \rangle = \delta_{mn} \quad \Rightarrow \quad (\alpha \alpha^\dagger- \beta\beta^\dagger)_{nm}=\sum_i \alpha_{mi}^* \alpha_{ni} - \beta_{mi}^* \beta_{ni}^* = \delta_{mn},\\
+    &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}\sum_i -\alpha_{mi} \beta_{ni} + \beta_{mi} \alpha_{ni} = 0.
 \end{align}
 %
 \end{mytheorem}
@@ -345,10 +364,18 @@ In particular EoM for the fields and equal-time CCR read
 \begin{align}
     &\frac{\partial \hat{\phi}(t,\mathbf{x})}{\partial t} = \frac{1}{i\hbar} [\hat{\phi}(t,\mathbf{x}), \hat{H}(t)] = \frac{\hat{\pi}(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \nabla_{\!j} \hat{\phi}(t,\mathbf{x}), \\
     &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = \frac{1}{i\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = \nabla_{\!j} \left( \sqrt{|g|} h^{ij} \nabla_{\!i} \hat{\phi}(t,\mathbf{x}) \right) - \sqrt{|g|} V'(\hat{\phi}(t,\mathbf{x})), \\
-    &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}(\mathbf{x}-\mathbf{y}).
+    &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}(\mathbf{x}-\mathbf{y}). \label{eq:CCR_curved_spacetime}
 \end{align}
 We now want to solve this theory.
 The strategy is to mimick the flat spacetime approach and expand the field operator in terms of mode solutions to the Klein--Gordon equation in curved spacetime...
+
+\textbf{Since} the \textbf{symplectic structure} of the classical phase space is \textbf{independent of the chosen foliation} (as long as they are equivalent), the \textbf{CCR} for the field operators are also \textbf{independent of the foliation} chosen for canonical quantization (as long as they are equivalent).
+In particular the CCR \eqref{eq:CCR_curved_spacetime} between two fields at spacetime points $x^\mu_1, x^\mu_2$ hold not only when they have the same time coordinate $x^0_1=x^0_2=t$ in the foliation $\mathcal{M}\simeq \R\times \Sigma$ used for quantization, but more generally whenever they are spacelike separated (i.e. the geodesic between them is spacelike) since we can always find an equivalent foliation $\mathcal{M}\simeq \tilde{\R}\times \tilde{\Sigma}$ where they lie on the same leaf $\tilde{\Sigma}_{\tilde{t}}$.
+That is\todotag{fix $\delta_3$ make it covariant}
+\begin{align}
+    [\hat{\phi}(x_1), \hat{\phi}(x_2)] = 0, \quad [\hat{\pi}(x_1), \hat{\pi}(x_2)] = 0, \quad [\hat{\phi}(x_1), \hat{\pi}(x_2)] = i\hbar\, \delta_\Sigma^{(3)}(\mathbf{x}_1 - \mathbf{x}_2),\quad \text{if}\quad (x_1 - x_2)^2 < 0,
+\end{align}
+where it is understood that the delta function is to hold on a Cauchy hypersurface containing both $x_1$ and $x_2$, that is coordinates such that $x^0_1 = x^0_2 = t$.
 \end{mytheorem}
 
 
