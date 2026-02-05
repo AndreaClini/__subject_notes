@@ -7,10 +7,84 @@
 
 
 
-%============================================================
-\section{Recombination and CMB Anisotropies}
-%============================================================
+%--------------------------------------------------------
+%=========================================================
+\section{Recombination}\todotag{Finish}
+%=========================================================
+%------------------------------------------------------------
 
+The main process affecting recombination
+\begin{align}\label{eq:interactions_relevant_recombination}
+    &e^- + p \leftrightarrow H + \gamma \quad \text{ionization/recombination}\\
+    & e^- + \gamma \leftrightarrow e^- + \gamma \quad \text{electron Compton-Thomson scattering}\\
+    & {\color{gray} p + \gamma \leftrightarrow p + \gamma\quad \text{proton Compton-Thomson scattering}}\\
+    & e^-+p \leftrightarrow e^- + p (+  \gamma )\quad \text{Coulomb scattering (+Bremsstrahlung)}
+\end{align}
+Note that at temperatures relevant for recombination both proton and electron are highly nonrelativistic, the Compton cross-section $\sigma_X \propto \, m_X^{-2}$ for proton-photon scattering is thus suppressed by a factor $(m_e/m_p)^2 \sim 10^{-6}$ wrt electron-photon scattering and thus nonnegligible.
+It is the electron-photon scattering that keeps photons and electrons tightly coupled before recombination. 
+On the other hand, Coulomb scattering is highly effeicient to keep electrons and protons tightly coupled, forming a single photon-baryon fluid.
+
+Beware there is no vanilla ``recombination'' process, and other should be considered.
+In fact the naive recombination directly into the ground state is highly inefficient since the high-energy photon emitted would immediately ionize another hydrogen atom.
+One solution is to emit two photons in the recombination process $e^- + p \to H + \gamma + \gamma$, but this is a higher order process, and thus suppressed with much smaller rate.
+Alternatively, hydrogen could recombine into excited states $H^*$ and then emit another Lyman-$\alpha$ photon to reach the ground state.
+In formulas
+\begin{align}\label{eq:interactions_relevant_recombination_excited_states}
+    &e^- + p \to H + \gamma + \gamma \text{(two photon emission)}\\
+    &e^-+p \Leftrightarrow H^* + \gamma \leftrightarrow H + \gamma + \gamma\\
+    &H^* \leftrightarrow H + \gamma \quad \text{(Lyman-$\alpha$ transition)}\,,
+\end{align}
+Moreover we should consider processes involving the nonnegligible fraction of helium, also including intermediate steps with excited states,
+\begin{align}\label{eq:interactions_relevant_recombination_helium}
+    & e^- + He^{++} \leftrightarrow He^{+} + \gamma\\
+    & e^- + He^{+} \leftrightarrow He + \gamma\,.
+\end{align}
+
+The famous Peebles equations \cite{} take into account all these processes to accurately describe recombination, but ultimately give the same qualitative picture
+\begin{align}
+    ....
+\end{align}
+
+The background level Boltzmann equation for the $e^- + p \leftrightarrow H + \gamma$ process reads
+\begin{align}\label{eq:boltzmann_eq_recombination}
+    \frac{dn_e}{dt} + 3 H n_e = - \langle \sigma v \rangle \left( n_e n_p - n_H n_\gamma \frac{n_e^{\text{eq}} n_p^{\text{eq}}}{n_H^{\text{eq}} n_\gamma^{\text{eq}}} \right)\,,
+\end{align}
+where $n_e$, $n_p$ and $n_H$ are the number densities of free electrons, protons and neutral hydrogen atoms respectively, and $\langle \sigma v \rangle$ is the thermally averaged recombination cross-section times velocity.
+
+In the Saha approximation we assume that the reaction \eqref{eq:interactions_relevant_recombination} is strong enough $\Gamma \gtrsim H$ to maintain equilibrium, so that the rhs of \eqref{eq:boltzmann_eq_recombination} vanishes and we have
+\begin{align}\label{eq:saha_equation}
+    \frac{n_en_p}{n_H n_\gamma} \simeq \frac{n_e^{\text{eq}} n_p^{\text{eq}}}{n_H^{\text{eq}} n_\gamma^{\text{eq}}}.
+\end{align}
+To proceed further we assume
+\begin{align}
+    &\text{charge neutrality}\quad n_e = n_p\,,\\
+    &\text{baryon number conservation}\quad n_b = n_p + n_H\,,\\
+    &\text{photons follow the equilibrium distribution}\quad n_\gamma = n_\gamma^{\text{eq}}\,.
+\end{align}
+The latter assumption is justified since photons are still tightly coupled to electrons via Compton scattering and the ratio of phtons to baryyons is very huge $\eta_b = \frac{n_\gamma}{n_b} \sim 10^{9}$, so that the photon distribution is not significantly affected by the much less numerous baryons.
+At recombination temperatures $T\sim 1eV$ everything is nonrelativistic, so that we can use nonrelativistic equilibrium number densities with Boltzmann sppression factor.
+Finally we use 
+\begin{align}
+    &\text{photon number is not conserved}\quad \mu_\gamma=0\\
+    &\text{chemical equilibrium}\quad \mu_H =\mu_H+\mu_\gamma= \mu_p + \mu_e\,,\\
+    &\text{binding energy}\quad \epsilon_0 := m_p + m_e - m_H = 13.6 eV\,.
+\end{align}
+Defining the ionization fraction $X_e = n_e/n_b$, from \eqref{eq:saha_equation} we then obtain the Saha equation for the ionization fraction
+\begin{align}\label{eq:saha_equation_ionization_fraction}
+    \frac{1 - X_e}{X_e^2} = \frac{4 \sqrt{2} \zeta(3)}{\sqrt{\pi}} \left( \frac{m_e T}{2 \pi} \right)^{3/2} \frac{e^{- \epsilon_0/T}}{n_b}\,.
+\end{align}
+
+We can understand qualitatively recombination from \eqref{eq:saha_equation_ionization_fraction}.
+At high temperatures $T \gg \epsilon_0$ the exponential suppression is negligible and the rhs is very small due to the huge photon-to-baryon ratio, so that $X_e \simeq 1$ and the universe is fully ionized.
+As the temperature drops below the hydrogen binding energy $T \lesssim \epsilon_0$ the exponential suppression becomes important and the rhs grows large, so that $X_e \ll 1$ and the universe recombines.
+However, due to the huge photon-to-baryon ratio, recombination is delayed down to temperatures $T_{\text{rec}} \sim 0.3 eV  \sim \tfrac{1}{40}\epsilon_0$ since the high-energy tail of the photon distribution is still able to ionize hydrogen atoms.
+
+When the temperature drops further, the reaction rate $\Gamma$ becomes smaller than the Hubble expansion rate $H$ and the Saha approximation breaks down.
+To accurately describe recombination in this regime we need to solve the full Boltzmann equation \eqref{eq:boltzmann_eq_recombination}, taking into account all the relevant processes.
+With the same manipulations and assumptions as above, we can rewrite the Boltzmann equation in terms of the ionization fraction
+\begin{align}\label{eq:boltzmann_eq_ionization_fraction}
+    \frac{dX_e}{dt} = - \langle \sigma v \rangle n_b \left( X_e^2 - (1 - X_e) \frac{n_e^{\text{eq}} n_p^{\text{eq}}}{n_H^{\text{eq}} n_\gamma^{\text{eq}}} \right)\,.
+\end{align}
 
 
 
