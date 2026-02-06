@@ -327,6 +327,7 @@ Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonali
     &\langle \tilde{u}_m, \tilde{u}_{n} \rangle = \delta_{mn} \quad \Rightarrow \quad (\alpha \alpha^\dagger- \beta\beta^\dagger)_{nm}=\sum_i \alpha_{mi}^* \alpha_{ni} - \beta_{mi}^* \beta_{ni}^* = \delta_{mn},\\
     &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i -\alpha_{mi} \beta_{ni} + \beta_{mi} \alpha_{ni} = 0.
 \end{align}
+Similar `rotations' can be applied to the real basis of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure, which shows the above bases are far from unique and in fact there exists an infinite family of them related by Bogoliubov transformations.
 %
 \end{mytheorem}
 
@@ -420,33 +421,32 @@ Using $\dot{\mathcal{H}}+\mathcal{H}^2 = \ddot{a}/a$, the equation of motion for
 We traded the friction term for a standard oscillator $\partial^2$ with a time-dependent mass term $m^2 a^2 - \tfrac{\ddot{a}}{a}$,  which might turn negative and lead to tachyonic instabilities e.g. during inflation.
 The conjugate field and hamiltonian density are
 \begin{align}
-    \pi_\chi = \frac{\delta L}{\delta \dot{\chi}} = \dot{\chi} - \mathcal{H} \chi\,, \quad \mathcal{H}_\chi = \pi_\chi \dot{\chi} - L = \frac{1}{2} \pi_\chi^2 + \frac{1}{2} (\nabla \chi)^2 + \frac{1}{2}\Big(m^2 a^2 - \frac{\ddot{a}}{a}\Big) \chi^2 + a^4 V(\chi/a).
+    \pi_\chi = \frac{\delta L}{\delta \dot{\chi}} = \dot{\chi} - \mathcal{H} \chi\,, \quad 
+    \mathcal{H}_\chi = \pi_\chi \dot{\chi} - L = \tfrac{1}{2} \pi_\chi^2 +\mathcal{H}\pi_\chi\chi + \tfrac{1}{2} (\nabla \chi)^2 + \tfrac{1}{2}m^2 a^2\,\chi^2 + a^4 V(\chi/a).
 \end{align}
-The Hamilton equations give back the Euler--Lagrange equations
+The Hamilton equations again give back the corresponding Euler--Lagrange equations for $\chi$
 \begin{align}
-    &\frac{\partial \chi}{\partial t} = \frac{\delta H_\chi}{\delta \pi_\chi} = \pi_\chi = \dot{\chi} - \mathcal{H} \chi, \quad \text{with}\quad \partial_t \pi_\chi = \ddot{\chi} - \mathcal{H} \dot{\chi} - \dot{\mathcal{H}} \chi, \\
-    &\frac{\partial \pi_\chi}{\partial t} = -\frac{\delta H_\chi}{\delta \chi} = \nabla^2 \chi - \Big(m^2 a^2 - \tfrac{\ddot{a}}{a}\Big) \chi - a^4 \partial_\chi V \quad \Rightarrow \quad \ddot{\chi} + \Big(m^2 a^2 - \tfrac{\ddot{a}}{a}\Big) \chi + a^4 \,\partial_\chi\! V = 0.
+    &\frac{\partial \chi}{\partial t} = \frac{\delta H_\chi}{\delta \pi_\chi} = \pi_\chi + \mathcal{H} \chi, \quad \text{with}\quad \partial_t\pi_\chi = \ddot{\chi} - \mathcal{H} \dot{\chi} - \dot{\mathcal{H}} \chi = \ddot{\chi}-\mathcal{H}\big(\pi_\chi+ \mathcal{H} \chi\big) - \dot{\mathcal{H}} \chi,\\
+    &\frac{\partial \pi_\chi}{\partial t} = -\frac{\delta H_\chi}{\delta \chi} = -\mathcal{H}\pi_\chi + \nabla^2 \chi - m^2 a^2\,\chi - a^4 \partial_\chi V  \quad\Rightarrow\quad  \ddot{\chi} + (m^2 a^2 - \tfrac{\ddot{a}}{a})\chi + a^4 \,\partial_\chi V = 0.
 \end{align}
 
 Note the conjugate fields and hamiltonian densities are different in the two cases, but of course they ultimately yield the same equations of motion.
 Namely we have
 \begin{align}
-    &\pi_\chi = \frac{\delta L}{\delta \dot{\chi}} = \frac{\delta L}{\delta \dot{\phi}} \frac{\delta \dot{\phi}}{\delta \dot{\chi}} = a^2 \dot{\phi} \frac{1}{a} = a \pi_\phi,\\
-    &\mathcal{H}_\chi = \pi_\chi \dot{\chi} - \sqrt{g} \mathcal{L} = a \pi_\phi (a \dot{\phi} + \mathcal{H} a \phi) - a^4 \Big( \frac{1}{2a^2}\partial_\mu\phi \eta^{\mu\nu}\partial_\nu\phi - \tfrac12 m^2 \phi^2-V(\phi) \Big) = a^2 \mathcal{H}_\phi + a^3 \mathcal{H} (\pi_\phi \phi).
+    &\chi=a\phi,\quad \pi_\chi = \dot{\chi} - \mathcal{H} \chi = a \dot{\phi} = \tfrac{1}{a} \pi_\phi,\quad \mathcal{H}_\chi= \mathcal{H}_\phi + \mathcal{H} \pi_\chi \chi = \mathcal{H}_\phi + \mathcal{H} \pi_\phi \phi.
 \end{align}
-Since we used the same coordinates, both Hamiltonians must generate the same time evolution wrt the parameter $x^0=\tau$ and it might seem puzzling we have two different hamiltonians.
-The puzzle is solved by recalling that, both in the classical and quantum case, the time evolution of a field/operator is given by the Poisson bracket/commutator with the hamiltonian plus any explicit time-dependence of the operator itself
+Since we used the same coordinates $x^\mu$, both hamiltonians must generate the same time evolution wrt the parameter $x^0=\tau$, and it might seem puzzling we have two different hamiltonians.
+The puzzle is solved recalling that, both in the classical and quantum case, the time evolution of a field (resp.operator) operator is given by the Poisson bracket (resp. commutator) with the hamiltonian expressed in terms of the chosen canonical variables/DoFs plus any additional explicit time-dependence of the operator itself not captured by the time evolution of the canonical variables, that is
 \begin{align}
     \frac{d\hat{O}}{dt} = \frac{\partial \hat{O}}{\partial t} + \{\hat{O}, \hat{H}\}.
 \end{align}
-For example, we can see the time evolution of the field $\chi=a\phi$ are generated solely by $\mathcal{H}_\chi$ or by $\mathcal{H}_\phi$ with additional explicit time-dependence
+For example, we can see the time evolution of the field $\chi(t)=a(t)\phi(t)$ as due to the sole evolution of $\chi$ or the evolution of $\phi$ plus the additional explicit time-dependence of the scale factor
 \begin{align}
   \chi(t) &= e^{\tfrac{i}{h}H_\chi t} \chi(0) e^{-\tfrac{i}{h}H_\chi t} =a(t)\phi(t)= a(t) e^{\tfrac{i}{h}H_\phi t} \phi(0) e^{-\tfrac{i}{h}H_\phi t}.
 \end{align}
-In turn we have
+In any case
 \begin{align}
-\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t} + \{\chi, H_\phi\} = \mathcal{H} a \phi + a \dot{\phi} = \pi_\chi,\\
-\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t} + \{\chi, H_\chi\} = 0 + \pi_\chi =\pi_\chi.
+\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t} + \{\chi, H_\phi\} = \mathcal{H} a \phi + a \dot{\phi} = \pi_\chi = 0+ \pi_\chi = \frac{\partial \chi}{\partial t} + \{\chi, H_\chi\}\,.
 \end{align}
 The same holds for $\pi_\chi$, $\phi$ and $\pi_\phi$, viewing their time dependence as due to either hamiltonian plus the needed explicit time-dependence.
 
