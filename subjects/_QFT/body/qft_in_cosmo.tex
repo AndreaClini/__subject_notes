@@ -131,6 +131,24 @@ In this case, we can relate the two Hilbert (resp. classical) spaces and corresp
 \end{mytheorem}
 
 
+\begin{mytheorem}[Semiclassical approach to QFT in curved spacetime\todotag{Finish}]
+%
+We managed to quantize field theories in curved spacetime, but we are not yet able to quantize gravity itself, or at least not entirely since gravitational waves can be quantized perturbatively.
+How to proceed?
+
+The easiest approach is to treat gravity as a classical background and quantize matter fields on it, ignoring the quantum nature of spacetime, and then either
+\begin{itemize}
+  \item completely ignore the backreaction of quantum matter on the spacetime geometry and consider a fixed background;
+  \item include it at the semiclassical level by coupling the classical Einstein equations to the expectation value of the quantum stress tensor of matter fields in a physically meaningful state $|\Omega\rangle$ of the quantum theory, that is
+\begin{align}
+  G_{\mu\nu}(x) = 8\pi G \,\langle \Omega |\,  \hat{T}_{\mu\nu}(x) | \Omega \rangle. 
+\end{align}
+\end{itemize}
+Beware the uncertainty principle forbids localizing the energy density of quantum matter with arbitrary precision at a point $x^\mu$.
+The above expression should be smeared over some spacetime region of size $\gtrsim G^{1/2}\simeq \ell_{UV}$ to be meaningful.
+In fact, renormalization is already needed to tame infinities arising in the product of field operators at the same point.
+\end{mytheorem}
+
 
 %==================================================================================
 \subsection{Canonical quantization of the Klein-Gordon field}
@@ -156,7 +174,7 @@ In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the out
     \end{pmatrix}= \begin{pmatrix}
       1 & 0\\
      0 & g_{|\Sigma\, ij}
-    \end{pmatrix}\quad \Rightarrow \quad \sqrt{g} = \frac{1}{n^0}\sqrt{g_{|_\Sigma}}= \sqrt{g^{00}}\sqrt{g_{|_\Sigma}}.
+    \end{pmatrix}\quad \Rightarrow \quad \sqrt{g} = \frac{1}{n^0}\sqrt{g_{|_\Sigma}}= \frac{1}{\sqrt{g^{00}}}\sqrt{g_{|_\Sigma}}.
 \end{align}
 }
 The inverse of the spatial metric $g_{|\Sigma}$ can then be written as
@@ -192,14 +210,14 @@ The hamiltonian \emph{density} is then
 {\small
 \begin{align}
     \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) 
-    = \frac{1}{\sqrt{g}} \frac{\pi^2}{g^{00}} - \frac{g^{0j}}{g^{00}}\, \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\,\partial_j\phi + \sqrt{g}\,V(\phi) + \sqrt{g}\,\tfrac{\xi}{2} R \phi^2,
+    = \frac{1}{\sqrt{g} g^{00}} \frac{\pi^2}{2} - \frac{g^{0j}}{g^{00}}\, \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\,\partial_j\phi + \sqrt{g}\,V(\phi) + \sqrt{g}\,\tfrac{\xi}{2} R \phi^2,
 \end{align}}
 where the inverse metric $g_{|\Sigma}^{ij}$ induced on spatial slices \eqref{eq:inverse_metric_induced_leaves_foliation} is negative definite in our convention, thus contributing positive kinetic energy to the hamiltonian.
 The hamiltonian is $\displaystyle H(t) = \int_\Sigma d^n\mathbf{x}\,\,\, \mathcal{H}(t,\mathbf{x})$.
 The classical hamilton equations are
-\begin{align}
+\begin{align}\label{eq:hamilton_equation_classical_klein_gordon_field}
     &\frac{\partial \phi(t,\mathbf{x})}{\partial t} = \frac{\delta H(t)}{\delta \pi(t,\mathbf{x})} = \frac{1}{\sqrt{g} g^{00}}\, \pi - \frac{g^{0j}}{g^{00}}\, \partial_j \phi\,, \\
-    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\pi\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\nabla_i \phi\right) - \sqrt{g}\, \tfrac{dV}{d\phi} - \sqrt{g}\,\xi\,  R \phi\,.
+    &\frac{\partial \pi(t,\mathbf{x})}{\partial t} = -\frac{\delta H(t)}{\delta \phi(t,\mathbf{x})} = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\pi\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\partial_i \phi\right) - \sqrt{g}\, \tfrac{dV}{d\phi} - \sqrt{g}\,\xi\,  R \phi\,.
 \end{align}
 Combining them, recalling $\tfrac{1}{\sqrt{g}}\partial_\mu(\sqrt{g}\, X^\mu)=\nabla_\mu X^\mu$, gives back the covariant Euler--Lagrange equations
 \begin{align}
@@ -289,8 +307,12 @@ Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\
 \begin{align}\label{eq:signature_pm_hermitian_product_phase_space}
     \langle \psi^*,\chi^*\rangle := i\, \omega(\psi, \chi^*) = -i\, \omega(\chi^*, \psi) =: -\langle \chi, \psi \rangle^* = -\langle \psi, \chi \rangle.
 \end{align}
+\end{mytheorem}
 
-Sylvester theorem ensures the existence of a basis of $\{u_n, v_n, z_n\}_{n}$ of $\mathcal{S}_\C$ such that the hermitian form decomposes orthogonally wrt this product as
+
+
+\begin{mytheorem}[Bogoliubov bases of the Klein--Gordon symplectic space]
+Sylvester theorem ensures the existence of a basis $\{u_n, v_n, z_n\}_{n}$ of $\mathcal{S}_\C$ decomposing orthogonally wrt the hermitian product induced by $\omega$ as
 \begin{align}\label{eq:orthogonality_bogoliubov_basis_complex_phase_space}
     \langle u_n, u_m \rangle = +\delta_{nm}, \,\,\, \langle v_n, v_m \rangle = -\delta_{nm}, \,\,\, \langle u_n, v_m \rangle = 0, \,\,\, \langle z_n, \cdot \rangle = 0, \quad \mathcal{S}_\C = \mathcal{S}_\C^+ \oplus^\perp \mathcal{S}_\C^- \oplus^\perp \mathcal{S}_\C^0\,.
 \end{align}
@@ -313,21 +335,64 @@ Equivalently Darboux theorem for sympletic forms ensures the existence of a basi
 %
 The index $n$ can be discrete with Kronecker deltas, or continuous with Dirac deltas, depending on the spatial topology and boundary conditions.
 In any case, the bases are complete and yield a resolution of the identity (and similarly for $\mathcal{S}_\R$)
-\begin{align}
+\begin{align}\label{eq:completeness_symplectic_basis}
     \sum_n |u_n\rangle \langle u_n| - \sum_n |v_n\rangle \langle v_n| = \mathbb{I}_{\mathcal{S}_\C}.
 \end{align}
 %
 
-Finally, suppose we have two complete bases $\{u_n, u_n^*\}_n$ satisfying \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space}, and we pass to another basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ of $\mathcal{S}_\C$ related by a Bogoliubov transformation\todotag{Fix}
+Suppose we have an orthonormal basis $\{u_n, u_n^*\}_n$ satisfying \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space}, and we pass to another basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ of $\mathcal{S}_\C$ related by a transformation
 \begin{align}
     \tilde{u}_m = \sum_i \alpha_{mi} u_i + \beta_{mi} u_i^*.
 \end{align}
 Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonality properties \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space} requires the Bogoliubov coefficient satisfy
+{\small
 \begin{align}
     &\langle \tilde{u}_m, \tilde{u}_{n} \rangle = \delta_{mn} \quad \Rightarrow \quad (\alpha \alpha^\dagger- \beta\beta^\dagger)_{nm}=\sum_i \alpha_{mi}^* \alpha_{ni} - \beta_{mi}^* \beta_{ni}^* = \delta_{mn},\\
     &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i -\alpha_{mi} \beta_{ni} + \beta_{mi} \alpha_{ni} = 0.
+\end{align}}
+Similar `rotations' can be applied to real bases $\{\phi_n,\pi_n\}$ of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure.
+This shows the above bases are far from unique and in fact there exists an infinite family of them related by Bogoliubov transformations.
+
+Since $\{u_n, u_n^*\}_n$ is a complete basis of $\mathcal{S}_\C$, any solution $\phi\in \mathcal{S}_\C$ can be expanded as
+\begin{align}\label{eq:expansion_mode_function_phi_classical}
+    \phi = \sum_n a_n u_n + b_n u_n^*,\quad \text{with}\quad a_n = \langle u_n, \phi \rangle, \quad b_n = -\langle u_n^*, \phi \rangle. 
 \end{align}
-Similar `rotations' can be applied to the real basis of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure, which shows the above bases are far from unique and in fact there exists an infinite family of them related by Bogoliubov transformations.
+Recalling $\langle \eta|\theta\rangle^* = \langle \theta|\eta\rangle = -\langle \eta|\theta\rangle$, the reality condition $\phi^*=\phi\in \mathcal{S}_\R$ is simply equivalent to $b_n = a_n^*$.
+The conjugate field $\pi_\phi$ is in turn expanded as
+\begin{align}\label{eq:expansion_mode_function_pi_classical}
+    \pi_\phi = \sqrt{g} g^{0\mu}\partial_\mu \phi = \sum_n a_n \sqrt{g} \,g^{0\mu}\,\partial_\mu u_n + b_n \sqrt{g}\, g^{0\mu}\,\partial_\mu u_n^* = \sum_n a_n \pi_{u_n} + b_n\, \pi_{u_n}^*.
+\end{align}
+Since both $u_n, u_n^*$ are solutions of the Klein--Gordon equation, the above expansion ensures the hamilton equations \eqref{eq:hamilton_equation_classical_klein_gordon_field} are automatically satisfied.
+
+Finally we explicitate the completeness relation \eqref{eq:completeness_symplectic_basis} in terms of a foliation $\mathcal{M}\simeq \R\times \Sigma_t$ with adapted coordinates $x^\mu=(x^0,\mathbf{x})$.
+For any $f\in \mathcal{S}_\C$, any $y=(y^0,\mathbf{y})\in \mathcal{M}$ and any time $t\in\R$ for the leaf $\Sigma_t$ over which to evaluate the symplectic form 
+{\small
+\begin{align}
+  f(y) &= \sum_n u_n(y) \langle u_n| f \rangle - \sum_n u_n^*(y) \langle u_n^*|f \rangle\\
+  &= -i \sum_n  \int_{\Sigma_t} \!\!d^n\mathbf{x}\, \sqrt{g(x)}\, g^{0\mu}(x) \Big( \partial_\mu u_n^*(x) f(x) - u_n^*(x) \partial_\mu f(x)\Big)\, u_n(y) - \big(u_n \leftrightarrow u_n^*\big)\\ 
+  &= \!-i \int_{\Sigma_t} \!\!\!d^n\mathbf{x}\, \sqrt{g(x)}\, g^{0\mu}(x) \bigg[\!\Big( \sum_n \partial_\mu u_n^*(x) u_n(y)-\partial_\mu u_n(x) u_n^*(y) \Big) f(x)
+  + \!\Big( \sum_n u_n(x) u_n^*(y) \!-\! u_n^*(x) u_n(y)\Big) \partial_\mu f(x)\bigg]
+\end{align}}
+Since spacetime is globally hyperbolic, given any time $t\in\R$ and any function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ there exists a (unique) solution $f\in \mathcal{S}_\C$ of the Klein--Gordon equation with initial conditions at this time $t$ given by
+\begin{align}
+  &f(t,\mathbf{x}) = b(\mathbf{x}),\,\,\,\,
+  \sqrt{g(t,\mathbf{x})} \,\,g^{0\mu}(t,\mathbf{x}) \,\,\partial_\mu f(t,\mathbf{x}) = 0 \qquad \forall \mathbf{x}\in \Sigma_t.
+\end{align} 
+The point $y=(y^0,\mathbf{y})\in\mathcal{M}$ is arbitrary and independent of the chosen $t$.
+Fixing also $y^0=t$ and taking the solution of this Cauchy problem, the above condition reads
+{\small
+\begin{align}
+  b(\mathbf{y}) &= \sum_n u_n(t,\mathbf{y}) \langle u_n| f \rangle - \sum_n u_n^*(t,\mathbf{y}) \langle u_n^*|f \rangle\\
+  &= -i\! \int_{\Sigma_{t}}\! \!\!d^n\mathbf{x}\, \sqrt{g(x)}\, g^{0\mu}(x) \bigg[\Big( \sum_n \partial_\mu u_n^*(x) u_n(y)-\partial_\mu u_n(x) u_n^*(y) \Big) b(\mathbf{x})
+  \!+\! \graycancel{\Big( \sum_n u_n(x) u_n^*(y) - u_n^*(x) u_n(y)\Big) \partial_\mu f(x)}\bigg]\\
+\end{align}}
+Since the time $t$ and the function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ are arbitary, we thus identify
+{\small
+\begin{align}\label{eq:completeness_relation_bogoliubov_basis_explicit}
+  i\delta^{(n)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}) &\equiv \sqrt{g(t,\mathbf{x})}\, g^{0\mu}(t,\mathbf{x}) \Big( \sum_n \partial_\mu u_n^*(t,\mathbf{x}) u_n(t,\mathbf{y})-\partial_\mu u_n(t,\mathbf{x}) u_n^*(t,\mathbf{y}) \Big)\quad \forall t\in\R\,\,\, \forall \mathbf{x},\mathbf{y}\in \Sigma_t.
+\end{align}}
+It is worth noticing the number of mode functions must be infinite (possibly countable).
+Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, the mode functions are smooth functions on $\mathcal{M}$ and we cannot obtain the delta distribution as a \emph{finite} sum of such functions.
 %
 \end{mytheorem}
 
@@ -360,23 +425,53 @@ the functions below are a complete set of solutions to the Klein--Gordon equatio
 \begin{mytheorem}[Canonical quantization of scalar field in curved spacetime\todotag{Finish}]
 %
 We now proceed to canonical quantization following Heinsenberg procedure.
-We promote the classical fields $\phi(t,\mathbf{x})$ and $\pi(t,\mathbf{x})$ to \emph{self-adjoint} operators $\hat{\phi}(t,\mathbf{x})$ and $\hat{\pi}(t,\mathbf{x})$ acting on a Hilbert space $\mathcal{H}$ and the equations are left unchanged upon replacing Poisson brackets with commutators $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$.
-In particular EoM for the fields and equal-time CCR read
-\begin{align}
-    &\frac{\partial \hat{\phi}(t,\mathbf{x})}{\partial t} = \frac{1}{i\hbar} [\hat{\phi}(t,\mathbf{x}), \hat{H}(t)] = \frac{\hat{\pi}(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \nabla_{\!j} \hat{\phi}(t,\mathbf{x}), \\
-    &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = \frac{1}{i\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = \nabla_{\!j} \left( \sqrt{|g|} h^{ij} \nabla_{\!i} \hat{\phi}(t,\mathbf{x}) \right) - \sqrt{|g|} V'(\hat{\phi}(t,\mathbf{x})), \\
-    &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}(\mathbf{x}-\mathbf{y}). \label{eq:CCR_curved_spacetime}
+We promote the classical fields $\phi(t,\mathbf{x})$ and $\pi(t,\mathbf{x})$ to \emph{self-adjoint} operators $\hat{\phi}(t,\mathbf{x})$ and $\hat{\pi}(t,\mathbf{x})$ acting on a Hilbert space $\mathcal{F}$, and leave all the equations formally unchanged upon replacing Poisson brackets with commutators $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$.
+The equations of motion become
+{\small
+\begin{align}\label{eq:EoM_quantized_curved_spacetim_klein_gordon}
+    &\frac{\partial \hat{\phi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\phi}(t,\mathbf{x}), \hat{H}(t)] = \frac{\hat{\pi}(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \partial_j \hat{\phi}(t,\mathbf{x}), \\[3pt]
+    &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\hat{\pi}\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\partial_i \hat{\phi}\right) - \sqrt{g}\, \frac{dV}{d\hat{\phi}} - \sqrt{g}\,\xi\,  R \hat{\phi}\,.
 \end{align}
-We now want to solve this theory.
-The strategy is to mimick the flat spacetime approach and expand the field operator in terms of mode solutions to the Klein--Gordon equation in curved spacetime...
+}
+and the equal-time canonical commutation relations (CCR) 
+\begin{align}\label{eq:CCR_fields_curved_spacetime}
+    &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}). 
+\end{align}
+As usual it is sufficient to impose the CCR at some fixed time, since time evolution is unitary $U(t,t_0) = \mathcal{T} e^{-\frac{i}{\hbar}\int_{t_0}^t H(s) ds}\in U(\mathcal{F})$ and thus preserves the CCR at all times.
 
-\textbf{Since} the \textbf{symplectic structure} of the classical phase space is \textbf{independent of the chosen foliation} (as long as they are equivalent), the \textbf{CCR} for the field operators are also \textbf{independent of the foliation} chosen for canonical quantization (as long as they are equivalent).
-In particular the CCR \eqref{eq:CCR_curved_spacetime} between two fields at spacetime points $x^\mu_1, x^\mu_2$ hold not only when they have the same time coordinate $x^0_1=x^0_2=t$ in the foliation $\mathcal{M}\simeq \R\times \Sigma$ used for quantization, but more generally whenever they are spacelike separated (i.e. the geodesic between them is spacelike) since we can always find an equivalent foliation $\mathcal{M}\simeq \tilde{\R}\times \tilde{\Sigma}$ where they lie on the same leaf $\tilde{\Sigma}_{\tilde{t}}$.
+\textbf{Since} the \textbf{symplectic structure} of the classical phase space is \textbf{independent of the chosen foliation} (as long as they are equivalent), also the \textbf{CCR} are \textbf{independent of the} (equivalent) \textbf{foliation} chosen for canonical quantization.
+In particular the CCR \eqref{eq:CCR_curved_spacetime} between two fields at spacetime points $x^\mu_1, x^\mu_2$ hold not only when they have the same time coordinate $x^0_1=x^0_2=t$ in the foliation $\mathcal{M}\simeq \R\times \Sigma$ used for quantization, but more generally whenever they are spacelike separated (i.e. the geodesic between them is spacelike) since we can always find an equivalent foliation $\tilde{\R}\times \tilde{\Sigma}\simeq \tilde{R}\times\tilde{\Sigma}$ where they lie on the same leaf $\tilde{\Sigma}_{\tilde{t}}$.
 That is\todotag{fix $\delta_3$ make it covariant}
 \begin{align}
     [\hat{\phi}(x_1), \hat{\phi}(x_2)] = 0, \quad [\hat{\pi}(x_1), \hat{\pi}(x_2)] = 0, \quad [\hat{\phi}(x_1), \hat{\pi}(x_2)] = i\hbar\, \delta_\Sigma^{(3)}(\mathbf{x}_1 - \mathbf{x}_2),\quad \text{if}\quad (x_1 - x_2)^2 < 0,
 \end{align}
-where it is understood that the delta function is to hold on a Cauchy hypersurface containing both $x_1$ and $x_2$, that is coordinates such that $x^0_1 = x^0_2 = t$.
+where it is understood that the delta function is to hold on a Cauchy hypersurface containing both $x_1$ and $x_2$, that is passing to (equivalent) coordinates such that $x^0_1 \equiv x^0_2$.
+
+
+We now want to solve the theory.
+We mimick the flat-spacetime strategy and expand the field operator in terms of mode functions i.e. a Bogoliubov basis of solutions to the Klein--Gordon equation.
+Inserting the expansion \eqref{eq:expansion_mode_function_phi_classical}-\eqref{eq:expansion_mode_function_pi_classical} into the \emph{classical} Hamiltonian, we recognize a sum (over the mode function indices) of independent harmonic oscillators and proceed to canonical quantization by promoting the coefficients $a_n$ to operators satisfyng the CCR
+\begin{align}\label{eq:CCR_ladder_operators}
+    [\hat{a}_n, \hat{a}_m] = 0, \quad [\hat{a}_n^\dagger, \hat{a}_m^\dagger] = 0, \quad [\hat{a}_n, \hat{a}_m^\dagger] = \delta_{nm}.
+\end{align}
+The field operators then read
+\begin{align}\label{eq:expansion_mode_function_phi_pi_quantum}
+    \hat{\phi}(t,\mathbf{x}) = \sum_n \hat{a}_n u_n(t,\mathbf{x}) + \hat{a}_n^\dagger u_n^*(t,\mathbf{x})\,,\quad 
+    \hat{\pi}(t,\mathbf{x}) = \sqrt{g} g^{0\mu}\partial_\mu \hat{\phi} = \sum_n \hat{a}_n \sqrt{g} \,g^{0\mu}\,\partial_\mu u_n + \hat{a}_n^\dagger \sqrt{g}\, g^{0\mu}\,\partial_\mu u_n^*.
+\end{align}
+The Hamiltonian becomes a sum of independent (quantized) harmonic oscillators\todotag{Check}
+\begin{align}
+    \hat{H} = \sum_n \hbar \omega_n \Big(\hat{a}_n^\dagger \hat{a}_n + \tfrac{1}{2}\Big).
+\end{align}
+
+We verify the self-adjointness conditions, the EoM and the CCR are indeed satified with this ansatz.
+The self-adjointness conditions $\hat{\phi}^\dagger = \hat{\phi}$ and $\hat{\pi}^\dagger = \hat{\pi}$ hold by construction having chosen a Bogoliubov basis with $v_n = u_n^*$.
+Similarly, the EoM are satisfied since the mode functions $u_n$ are solutions of the Klein--Gordon equation and we enforced the expression for $\pi$ to obey the first Hamilton equation.
+Finally the CCR for the fields \eqref{eq:CCR_fields_curved_spacetime} follow from the ladder operators' CCR and the explicit expression \eqref{eq:completeness_relation_bogoliubov_basis_explicit} for completeness of mode functions $u_n$, namely
+\begin{align}
+    &[\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = \sum_{n,m} [\hat{a}_m, \hat{a}_n^\dagger] u_m(x) \sqrt{g(y)} g^{0\mu}(y)\partial_\mu u_n^*(y) + [\hat{a}_m^\dagger, \hat{a}_n] u_m^*(x) \sqrt{g(y)} g^{0\mu}(y)\partial_\mu u_n(y)\\
+    &= \sum_{n} u_n(x) \sqrt{g(y)} g^{0\mu}(y)\partial_\mu u_n^*(y) - \sum_{n} u_n^*(x) \sqrt{g(y)} g^{0\mu}(y)\partial_\mu u_n(y) = i\hbar\, \delta^{(3)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}).
+\end{align}
 \end{mytheorem}
 
 
@@ -430,34 +525,47 @@ The Hamilton equations again give back the corresponding Euler--Lagrange equatio
     &\frac{\partial \pi_\chi}{\partial t} = -\frac{\delta H_\chi}{\delta \chi} = -\mathcal{H}\pi_\chi + \nabla^2 \chi - m^2 a^2\,\chi - a^4 \partial_\chi V  \quad\Rightarrow\quad  \ddot{\chi} + (m^2 a^2 - \tfrac{\ddot{a}}{a})\chi + a^4 \,\partial_\chi V = 0.
 \end{align}
 
-Note the conjugate fields and hamiltonian densities are different in the two cases, but of course they ultimately yield the same equations of motion.
+Note the conjugate fields and hamiltonians are different in the two cases, but of course they ultimately yield the same equations of motion.
 Namely we have
 \begin{align}
     &\chi=a\phi,\quad \pi_\chi = \dot{\chi} - \mathcal{H} \chi = a \dot{\phi} = \tfrac{1}{a} \pi_\phi,\quad \mathcal{H}_\chi= \mathcal{H}_\phi + \mathcal{H} \pi_\chi \chi = \mathcal{H}_\phi + \mathcal{H} \pi_\phi \phi.
 \end{align}
-Since we used the same coordinates $x^\mu$, both hamiltonians must generate the same time evolution wrt the parameter $x^0=\tau$, and it might seem puzzling we have two different hamiltonians.
-The puzzle is solved recalling that, both in the classical and quantum case, the time evolution of a field (resp.operator) operator is given by the Poisson bracket (resp. commutator) with the hamiltonian expressed in terms of the chosen canonical variables/DoFs plus any additional explicit time-dependence of the operator itself not captured by the time evolution of the canonical variables, that is
+Since we used the same coordinates $x^\mu$, both hamiltonians must generate the same time evolution wrt $x^0=\tau$, and it might thus look puzzling we have two different expressions.
+The solution is that, both in the classical and quantum case, the time evolution of a field (resp.operator) operator is given by the Poisson bracket (resp. commutator) with the hamiltonian expressed in terms of the chosen canonical variables/DoFs plus any additional time-dependence of the operator itself, not captured by the evolution of the canonical variables,
 \begin{align}
-    \frac{d\hat{O}}{dt} = \frac{\partial \hat{O}}{\partial t} + \{\hat{O}, \hat{H}\}.
+    \frac{d\hat{O}}{dt} = \frac{\partial \hat{O}}{\partial t} + \{\hat{O}, \hat{H}\} \quad \left(\text{resp.}\quad \{\,,\}\mapsto -\tfrac{i}{\hbar}[\,,\,]\right).
 \end{align}
-For example, we can see the time evolution of the field $\chi(t)=a(t)\phi(t)$ as due to the sole evolution of $\chi$ or the evolution of $\phi$ plus the additional explicit time-dependence of the scale factor
+For example, we can see the time evolution $\chi(t)=a(t)\phi(t)$ as due to the sole evolution of $\chi$, or the evolution of $\phi$ plus the additional explicit time-dependence of the scale factor
 \begin{align}
-  \chi(t) &= e^{\tfrac{i}{h}H_\chi t} \chi(0) e^{-\tfrac{i}{h}H_\chi t} =a(t)\phi(t)= a(t) e^{\tfrac{i}{h}H_\phi t} \phi(0) e^{-\tfrac{i}{h}H_\phi t}.
+  e^{\tfrac{i}{h}H_\chi t} \chi(0) e^{-\tfrac{i}{h}H_\chi t} = \chi(t)\equiv a(t)\, \phi(t)= a(t) e^{\tfrac{i}{h}H_\phi t} \phi(0) e^{-\tfrac{i}{h}H_\phi t}.
 \end{align}
-In any case
+In any case, using the 
 \begin{align}
-\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t} + \{\chi, H_\phi\} = \mathcal{H} a \phi + a \dot{\phi} = \pi_\chi = 0+ \pi_\chi = \frac{\partial \chi}{\partial t} + \{\chi, H_\chi\}\,.
+\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t}_{|\phi,\pi_\phi}\!\!\! + \{\chi, H_\phi\} = \dot{a}\phi + a\underbrace{\{\phi, H_\phi\}}_{=a^{-2}\pi_\phi=\dot{\phi}}  = \mathcal{H} a \phi + a \dot{\phi} = \mathcal{H}\, \chi +\pi_\chi = \underbrace{\frac{\partial \chi}{\partial t}_{|\chi,\pi_\chi}}_{=0} + \{\chi, H_\chi\}\,.
 \end{align}
-The same holds for $\pi_\chi$, $\phi$ and $\pi_\phi$, viewing their time dependence as due to either hamiltonian plus the needed explicit time-dependence.
+The same holds for $\pi_\chi$, $\phi$, $\pi_\phi$ and any other operator, viewing their time dependence as due to $\chi,\pi_\chi$ evolved with $H_\chi$, or $\phi,\pi_\phi$ evolved with $H_\phi$, plus any additional explicit time-dependence.
 
-What is the physically meaningful hamiltonian then?
-We should rather look at the 00 component of the stress-energy tensor which will identify $H_\phi$ ats the physical hamiltonian, and $H_\chi$ as a convenient auxiliary hamiltonian that generates the same time evolution but is not directly related to the energy of the system.
-
-Also note that in a runaway scenario the equation for $\chi$ would read something like
+What is the physically meaningful hamiltonian representing the energy of the system?
+To answer this, we should look at the stress-energy tensor\footnote{We use the mostly minus convention.}
 \begin{align}
-  \ddot{\chi}=\frac{\ddot{a}}{a}\chi \quad\Rightarrow\quad \chi(t)\propto a(t) \quad\text{and}\quad \phi(t) = \frac{\chi(t)}{a(t)} = \text{constant}\Rightarrow \text{freezing of oscillations superhorizon}
+  T_{\mu\nu}= \frac{2}{\sqrt{g}} \frac{\delta S}{\delta g^{\mu\nu}} = \partial_\mu \phi \partial_\nu \phi - g_{\mu\nu} \Big( \tfrac12 \partial_\alpha \phi g^{\alpha\beta} \partial_\beta \phi - \tfrac12 m^2 \phi^2 - V(\phi) \Big).
 \end{align}
-However note this is the equation for the full field, not the fluctuations. We shuld rather look at $\delta\chi$.
+In curved spacetimes it is indeed the variation of the action wrt the metric that enters Einstein equations and identifies Noether charges corresponding to energy and momentum of the system in presence of spacetime symmetries, while the hamiltonian formalism is highly dependent on coordinates.
+The energy density of the system is then by definition\footnote{Note we must multiply by the density factor $\sqrt{g}$ to get a density.}
+\begin{align}
+  \sqrt{g}\,T^0_0 = \tfrac12 a^2\dot{\phi}^2 + \tfrac12 a^2(\nabla \phi)^2 + m^2 a^4 \phi^2 + a^4 V(\phi) \overset{!}{=} \mathcal{H}_\phi,
+\end{align}
+The physical hamiltonian is thus $H_\phi$, while $H_\chi$ is a convenient auxiliary hamiltonian that generates the same time evolution but is not directly related to the energy of the system.
+
+Finally we anticipate that in a runaway situation $\ddot{a}/a\gg a^2m^2>0$ the field $\chi$ would be effectively tachyonic and grow exponentially, while the \emph{physical} field $\phi$ would remain frozen at a constant value since $\phi=\chi/a$.
+Indeed, considering constant inflation $(da/dt)/a=H_*\approx\mathrm{const}$ for simplicity, we have $\dot{a}=\frac{da}{d\tau}=a \frac{da}{dt}=a^2H_*$ and $\ddot{a} = 2 a^3 H_*^2$, and finally
+\begin{align}
+    \ddot{\chi} \approx \frac{\ddot{a}}{a}\chi = 2 a^2 H_*^2 \chi \quad \Rightarrow \quad \chi(\tau) \approx a(\tau)\chi_{in}, \,\, \phi(\tau)\equiv \phi_{in}.
+\end{align}
+Beware that in a realistic scenario we should rather consider the fluctuations $\delta\chi$ and $\delta\phi$ around background solutions, but the qualitative picture is the same.
+
+
+
 
 %--------------------------------------------------------
 %=========================================================
