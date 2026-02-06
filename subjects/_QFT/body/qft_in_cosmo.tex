@@ -380,7 +380,84 @@ where it is understood that the delta function is to hold on a Cauchy hypersurfa
 
 
 
+%--------------------------------------------------------
+%=========================================================
+\subsubsection{Quantization in FLRW spacetime}
+%=========================================================
+%------------------------------------------------------------
 
+As working example, consider the case of spatially flat FLRW spacetime with conformal time $x^0=\tau$,
+\begin{align}
+    ds^2 = dt^2 - a(t)^2 d\mathbf{x}^2 = a(\tau)^2 (d\tau^2 - d\mathbf{x}^2)\,.
+\end{align}
+The Klein--Gordon action for a scalar field $\phi$ 
+\begin{align}
+    S&=\int\!\! d^4x \sqrt{g} \Big(\tfrac12 \partial_\mu\phi g^{\mu\nu}\partial_\nu\phi - \tfrac12 m^2 \phi^2-V(\phi) \Big)=\int\!\! d^4x \, a^4 \Big(\tfrac{1}{2a^2}\partial_\mu\phi \eta^{\mu\nu}\partial_\nu\phi - \tfrac12 m^2 \phi^2-V(\phi) \Big)\,.
+\end{align}
+Either from the general formula $\big(\nabla_\mu \nabla^\mu + m^2 + \partial_\phi V\big) \phi = \tfrac{1}{\sqrt{g}}\partial_\mu \big(\sqrt{g} g^{\mu\nu} \partial_\nu \phi\big) + m^2 \phi + \partial_\phi V$ or by direct variation $\phi\mapsto \phi + \delta \phi$ of the action, we get equation of motion for $\phi$ 
+\begin{align}
+     \eta^{\mu\nu}\partial_\mu \partial_\nu \phi + 2 \mathcal{H} \dot{\phi} + m^2 a^2 \phi + a^2 \partial_\phi V = 0.
+\end{align}
+The conjugate field and the hamiltonian density are
+\begin{align}
+    \pi_\phi = \frac{\delta L}{\delta \dot{\phi}} = a^2 \dot{\phi}\,, \quad \mathcal{H}_\phi = \pi_\phi \dot{\phi} - \sqrt{g} \mathcal{L} = \frac{\pi_\phi^2}{2a^2} + \frac{a^2}{2} (\nabla \phi)^2 + \frac{a^4}{2} m^2 \phi^2 + a^4 V(\phi).
+\end{align}
+The Hamilton equations consistently give back the Euler--Lagrange equations
+\begin{align}
+    &\frac{\partial \phi}{\partial t} = \frac{\delta H_\phi}{\delta \pi_\phi} = \frac{\pi_\phi}{a^2} = \dot{\phi}, \quad \text{with}\quad \partial_t\pi_\phi = a^2 \ddot{\phi} + 2\mathcal{H} a^2 \dot{\phi}, \\
+    &\frac{\partial \pi_\phi}{\partial t} = -\frac{\delta H_\phi}{\delta \phi} = a^2 \nabla^2 \phi - a^4 m^2 \phi - a^4 \partial_\phi V \quad \Rightarrow \quad \ddot{\phi} + 2\mathcal{H} \dot{\phi} - \nabla^2 \phi + a^2 m^2 \phi + a^2 \partial_\phi V = 0.
+\end{align}
+%
+A friction term like $2\mathcal{H} \dot{\phi}$ is often due to coupling with other systems, in this case the spacetime itself.
+It can be removed by rescaling the field $\chi = a \phi$, so that the action reads
+\begin{align}
+    S = \int d^4x \Big( \tfrac{1}{2}\eta^{\mu\nu} \partial_\mu \chi \partial_\nu \chi -\mathcal{H}\dot{\chi}\chi\,+ \tfrac12\mathcal{H}^2\chi^2- \tfrac{1}{2} m^2 a^2 \chi^2 - a^4 V(\chi/a) \Big).
+\end{align}
+Using $\dot{\mathcal{H}}+\mathcal{H}^2 = \ddot{a}/a$, the equation of motion for the \emph{equivalent} degree of freedom $\chi$ now read
+\begin{align}
+    \eta^{\mu\nu} \partial_\mu \partial_\nu \chi + \Big(m^2 a^2 - \tfrac{\ddot{a}}{a}\Big) \chi + a^4 \,\partial_\chi\! V = 0.
+\end{align}
+We traded the friction term for a standard oscillator $\partial^2$ with a time-dependent mass term $m^2 a^2 - \tfrac{\ddot{a}}{a}$,  which might turn negative and lead to tachyonic instabilities e.g. during inflation.
+The conjugate field and hamiltonian density are
+\begin{align}
+    \pi_\chi = \frac{\delta L}{\delta \dot{\chi}} = \dot{\chi} - \mathcal{H} \chi\,, \quad \mathcal{H}_\chi = \pi_\chi \dot{\chi} - L = \frac{1}{2} \pi_\chi^2 + \frac{1}{2} (\nabla \chi)^2 + \frac{1}{2}\Big(m^2 a^2 - \frac{\ddot{a}}{a}\Big) \chi^2 + a^4 V(\chi/a).
+\end{align}
+The Hamilton equations give back the Euler--Lagrange equations
+\begin{align}
+    &\frac{\partial \chi}{\partial t} = \frac{\delta H_\chi}{\delta \pi_\chi} = \pi_\chi = \dot{\chi} - \mathcal{H} \chi, \quad \text{with}\quad \partial_t \pi_\chi = \ddot{\chi} - \mathcal{H} \dot{\chi} - \dot{\mathcal{H}} \chi, \\
+    &\frac{\partial \pi_\chi}{\partial t} = -\frac{\delta H_\chi}{\delta \chi} = \nabla^2 \chi - \Big(m^2 a^2 - \tfrac{\ddot{a}}{a}\Big) \chi - a^4 \partial_\chi V \quad \Rightarrow \quad \ddot{\chi} + \Big(m^2 a^2 - \tfrac{\ddot{a}}{a}\Big) \chi + a^4 \,\partial_\chi\! V = 0.
+\end{align}
+
+Note the conjugate fields and hamiltonian densities are different in the two cases, but of course they ultimately yield the same equations of motion.
+Namely we have
+\begin{align}
+    &\pi_\chi = \frac{\delta L}{\delta \dot{\chi}} = \frac{\delta L}{\delta \dot{\phi}} \frac{\delta \dot{\phi}}{\delta \dot{\chi}} = a^2 \dot{\phi} \frac{1}{a} = a \pi_\phi,\\
+    &\mathcal{H}_\chi = \pi_\chi \dot{\chi} - \sqrt{g} \mathcal{L} = a \pi_\phi (a \dot{\phi} + \mathcal{H} a \phi) - a^4 \Big( \frac{1}{2a^2}\partial_\mu\phi \eta^{\mu\nu}\partial_\nu\phi - \tfrac12 m^2 \phi^2-V(\phi) \Big) = a^2 \mathcal{H}_\phi + a^3 \mathcal{H} (\pi_\phi \phi).
+\end{align}
+Since we used the same coordinates, both Hamiltonians must generate the same time evolution wrt the parameter $x^0=\tau$ and it might seem puzzling we have two different hamiltonians.
+The puzzle is solved by recalling that, both in the classical and quantum case, the time evolution of a field/operator is given by the Poisson bracket/commutator with the hamiltonian plus any explicit time-dependence of the operator itself
+\begin{align}
+    \frac{d\hat{O}}{dt} = \frac{\partial \hat{O}}{\partial t} + \{\hat{O}, \hat{H}\}.
+\end{align}
+For example, we can see the time evolution of the field $\chi=a\phi$ are generated solely by $\mathcal{H}_\chi$ or by $\mathcal{H}_\phi$ with additional explicit time-dependence
+\begin{align}
+  \chi(t) &= e^{\tfrac{i}{h}H_\chi t} \chi(0) e^{-\tfrac{i}{h}H_\chi t} =a(t)\phi(t)= a(t) e^{\tfrac{i}{h}H_\phi t} \phi(0) e^{-\tfrac{i}{h}H_\phi t}.
+\end{align}
+In turn we have
+\begin{align}
+\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t} + \{\chi, H_\phi\} = \mathcal{H} a \phi + a \dot{\phi} = \pi_\chi,\\
+\frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t} + \{\chi, H_\chi\} = 0 + \pi_\chi =\pi_\chi.
+\end{align}
+The same holds for $\pi_\chi$, $\phi$ and $\pi_\phi$, viewing their time dependence as due to either hamiltonian plus the needed explicit time-dependence.
+
+What is the physically meaningful hamiltonian then?
+We should rather look at the 00 component of the stress-energy tensor which will identify $H_\phi$ ats the physical hamiltonian, and $H_\chi$ as a convenient auxiliary hamiltonian that generates the same time evolution but is not directly related to the energy of the system.
+
+Also note that in a runaway scenario the equation for $\chi$ would read something like
+\begin{align}
+  \ddot{\chi}=\frac{\ddot{a}}{a}\chi \quad\Rightarrow\quad \chi(t)\propto a(t) \quad\text{and}\quad \phi(t) = \frac{\chi(t)}{a(t)} = \text{constant}\Rightarrow \text{freezing of oscillations superhorizon}
+\end{align}
+However note this is the equation for the full field, not the fluctuations. We shuld rather look at $\delta\chi$.
 
 %--------------------------------------------------------
 %=========================================================
