@@ -620,10 +620,11 @@ where the first expression is \emph{not} summed over indices, while the latter t
 
 The Hodge dual is the map
 \begin{align}
-    \star: \Lambda^\bullet (M) &\to \Lambda^{n-\bullet} (M) \quad \mid \quad \theta \mapsto \Omega_g(\theta^{\#}, \cdots),
+    \star: \Lambda^k (M) &\to \Lambda^{n-k} (M) \quad \mid \quad \theta \mapsto \tfrac{1}{k!}\Omega_g(\theta^{\#}, \cdots),
 \end{align}
-where \(\theta^{\#}\) is the tensor of rank $(\bullet,0)$ obtained by raising all indices of $\theta$ with the metric.
-That is, transform a $k$-form into a $(k,0)$-tensor and then feed it to the first $k$ slots of the volume form to get a $(n-k)$ form.
+where \(\theta^{\#}\) is the tensor of rank $(k,0)$ obtained by raising all indices of $\theta$ with the metric.
+That is, transform a $k$-form into a $(k,0)$-tensor and then feed it to the first $k$ slots of the volume form to get a $(n-k)$ form and divide by symmetry factors.
+The factor $1/k!$ is inserted to avoid overcounting, since both $\theta$ and $\Omega$ are totally antisymmetric in all indices, so that $\star\star = (-1)^{k(n-k)}$ up to signs.
 %
 Explicitly, with the index convention \eqref{eq:indices_bookkeeping_differential_forms} for {\small $j_1<\cdots<j_k$} ordered and {\small $\mu_1\cdots\mu_k$} arbitrary, the form $\theta$ is
 {\small
@@ -632,16 +633,22 @@ Explicitly, with the index convention \eqref{eq:indices_bookkeeping_differential
 \end{align}
 }
 The Hodge dual of the \(k\)-form \(\theta\) is then 
+{\small
+\begin{align}\label{eq:hodge_dual_first_exp}
+    \star \theta &:= \tfrac{1}{k!}\Omega_g(\theta^{\#}, \cdots)
+    = \tfrac{1}{k!}\sqrt{|g|}\epsilon_{\beta_1\dots \beta_n} dx^{\beta_1} \otimes \cdots \otimes dx^{\beta_n} \left( g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} \partial_{\alpha_1}\otimes \partial_{\alpha_k}, \cdots \right)
+    \\
+    &= \tfrac{1}{k!}\sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \otimes \cdots \otimes dx^{\beta_n}
+    \\
+    &= \frac{1}{k!(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}\,.
+\end{align}}
+The factor $1/k!$ is precisely inserted since both $\theta_{\mu_1 \dots \mu_k}$ and $\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}$ are totally antisymmetric, so that the sum over unordered indices $\mu_\ell$ and $\alpha_\ell$ gives $k!$ equal contributions, and we could equivalently enforce one set of indices is ordered $j_1 < \cdots < j_k$ and avoid the $1/k!$ factor, that is
+{\small
 \begin{align}
-    \star \theta &:= \Omega_g(\theta^{\#}, \cdots)
-    = \sqrt{|g|}\epsilon_{\beta_1\dots \beta_n} dx^{\beta_1} \otimes \cdots \otimes dx^{\beta_n} \left( g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} \partial_{\alpha_1}\otimes \partial_{\alpha_k}, \cdots \right)
-    \\
-    &= \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \otimes \cdots \otimes dx^{\beta_n}
-    \\
-    &= \frac{1}{(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} \theta^{\alpha_1 \dots \alpha_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}.
-\end{align}
-
-\noindent
+    \star \theta &= \frac{1}{(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{j_1 \alpha_1} \cdots g^{j_k \alpha_k} \theta_{j_1 \dots j_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}\\
+    &= \frac{1}{(n-k)!} \sqrt{|g|}\epsilon_{j_1\dots j_k\beta_{k+1}\dots \beta_n} g^{\mu_1 j_1} \cdots g^{\mu_k j_k} \theta_{\mu_1\dots\mu_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}.
+\end{align}}
+%
 \todotag{Check signs etc}
 The Hodge dual obeys the following important properties.
 \begin{itemize}
@@ -667,8 +674,45 @@ The Hodge dual obeys the following important properties.
     The inner derivative $i_{\beta^{\#}}$ of a $j$-form with respect to the  $(\ell,0)$-tensor $\beta^\sharp$ means contracting the first $\ell$ slots of the form with the tensor, and gives zero if $\ell>j$. That is when $p+q>n$.
     %
 \end{itemize}
-
 \end{mytheorem}
+\begin{proof}
+We prove the idempotency property. Raising indices of \eqref{eq:hodge_dual_first_exp} we get
+{\small
+\begin{align}
+\big(\star\theta\big)^\#= \tfrac{1}{k!}\sqrt{g}\,\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} \Big(\prod_{a=1}^k g^{\mu_a \alpha_a}\Big) \theta_{\mu_1 \dots \mu_k} \Big(\prod_{b=k+1}^n g^{\beta_b\nu_b}\Big) \partial_{\nu_{k+1}}\otimes \cdots \otimes \partial_{\nu_n}.
+\end{align}}
+Apllying the Hodge dual and permuting indices of the second $\epsilon$ symbol we get 
+{\small
+\begin{align}
+\star\star\theta &= \tfrac{1}{(n-k)!}\Omega_g\Big(\big(\star\theta\big)^\#, \cdots\Big)\\
+&= \tfrac{1}{k!(n-k)!}\big(\sqrt{|g|}\big)^2\,\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}\,\theta_{\mu_1 \dots \mu_k} \Big(\prod_{a=1}^k g^{\mu_a \alpha_a}\prod_{b=k+1}^n g^{\beta_b\nu_b}\Big) \epsilon_{\nu_{k+1}\dots \nu_n\gamma_1\dots \gamma_k} dx^{\gamma_1} \otimes \cdots \otimes dx^{\gamma_k}\\
+&= \tfrac{(-1)^{k(n-k)}}{k!(n-k)!}\big|\!\det{g_{\mu\nu}}\!\big|\,\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}\,\theta_{\mu_1 \dots \mu_k} \Big(\prod_{a=1}^k g^{\mu_a \alpha_a}\prod_{b=k+1}^n g^{\beta_b\nu_b}\Big) \epsilon_{\gamma_1\dots \gamma_k\nu_{k+1}\dots \nu_n} dx^{\gamma_1} \otimes \cdots \otimes dx^{\gamma_k}.
+\end{align}}
+Since both $\theta$ and the two instances of $\epsilon$ are totally antisymmetric, the sum over unordered indices $\alpha_a, \mu_a$ and $\beta_b,\nu_b$ yield $k!$ and $(n-k)!$ equal contributions respectively.
+We thus remove the symmetry factor and order indices $\mu_1\dots\mu_k\mapsto i_1<\cdots < i_k$ and $\nu_{k+1}\dots \nu_n\mapsto j_{k+1}<\cdots < j_n$ to get
+{\small
+\begin{align}
+\star\star\theta &= (-1)^{k(n-k)}(-1)^s\det(g_{\mu\nu})\theta_{i_1 \dots i_k} \epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}\Big(\prod_{a=1}^k g^{i_a \alpha_a}\prod_{b=k+1}^n g^{j_b\beta_b}\Big) \epsilon_{\gamma_1\dots \gamma_k j_{k+1}\dots j_n} dx^{\gamma_1} \otimes \cdots \otimes dx^{\gamma_k},
+\end{align}}
+for the metric signature $s$.
+The symbol $\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}$ yield a generic permutation of $\{1\dots n\}$ so that
+{\small
+\begin{align}
+\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}\Big(\prod_{a=1}^k g^{i_a \alpha_a}\prod_{b=k+1}^n g^{j_b\beta_b}\Big) = \begin{cases}
+    \sum_\sigma\epsilon_{\sigma_1\dots\sigma_n}\prod_{c=1}^n g^{\sigma_c \sigma_c} = \det(g^{\mu\nu})& \text{if } \{i_1\dots i_k\} \cap \{j_{k+1}\dots j_n\} = \emptyset\\[3pt]
+    0 & \text{otherwise}.
+\end{cases}
+\end{align}}
+On the other hand, if $\{i_1\dots i_k\} \cap \{j_{k+1}\dots j_n\} = \emptyset$ then $\epsilon_{\gamma_1\dots \gamma_k j_{k+1}\dots j_n}\neq0$ only if $\{\gamma_1\dots \gamma_k\} = \{i_1\dots i_k\}$.
+Since both $i_a$ and $j_b$ are ordered, the sign of $\epsilon_{\gamma_1\dots \gamma_k j_{k+1}\dots j_n}$ can be absorbed into $\theta_{\gamma_1\dots \gamma_k}$ with the usual convention that $\theta$ is antisymmetric in unordered indices, so that we eventually get
+{\small
+\begin{align}
+\star\star\theta &= (-1)^{k(n-k)}(-1)^s\,\cancel{\det(g_{\mu\nu})}\,\cancel{\det(g^{\mu\nu})}\,\theta_{\gamma_1\dots \gamma_k} dx^{\gamma_1} \otimes \cdots \otimes dx^{\gamma_k} = (-1)^{k(n-k)+s} \theta.
+\end{align}}
+
+
+
+\end{proof}
 
 
 \begin{mytheorem}[The Hodge scalar product on differential forms.\todotag{Finish this}]
