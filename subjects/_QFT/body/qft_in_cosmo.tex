@@ -507,6 +507,35 @@ The IR procedure might also fail if we are interested in the thermodynamic limit
 \end{mytheorem}
 
 
+\begin{mytheorem}[Bogoliubov transformations at the quantum level\todotag{Finish \& polish}]
+Assume the Stone--von Neumann theorem applies and decompose the quantum field in terms of two different sets of mode functions $\{u_n, u_n^*\}_n$ and $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ related by a Bogoliubov transformation $\tilde{u}_m=\alpha_{mj} u_j + \beta_{mj} u_j^*$.
+Equating the two expressions, we find ladder operators are related 
+{\small
+\begin{align}
+    \hat{\phi}=\sum_j u_ja_j+u_j^*a_j^\dagger=\sum_m\tilde{u}_m\tilde{a}_m+\tilde{u}_m^* \tilde{a}_m^\dagger = \sum_j \Big(\sum_m \alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger\Big) u_j + \Big(\sum_m \beta_{mj} \tilde{a}_m + \alpha_{mj}^* \tilde{a}_m^\dagger\Big) u_j^*
+    \quad\Rightarrow\quad a_j= \sum_m \alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger.
+\end{align}}
+That is concisely
+\begin{align}
+    \tilde{u}=\alpha u + \beta u^* \quad\Rightarrow\quad a= \alpha^T \tilde{a} + \beta^\dagger \tilde{a}^\dagger.
+\end{align}
+We now relate Fock states of the two theories defined by ladder operators.
+The vacuum of the first theory will be expressible as a suitable superposition of multi-particle states of the second theory $|0\rangle =f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ will indeed be independent of annihilation operators $\tilde{a}$ since they annihilate the vacuum $|\tilde{0}\rangle$ and we may commute them to the right upon changing the form of the $f$.}
+The $\tilde{a}_m^\dagger$ operators commute with each other, while acting with $\tilde{a}_m$ is equivalent to taking a derivative $[\tilde{a}_m,f\big(\{\tilde{u}^\dagger_n\}_n\big)] = \tfrac{\partial f}{\partial \tilde{a}_m^\dagger}$.
+Imposing the vacuum condition in the first theory we thus get
+\begin{align}
+     0=a_j|0\rangle = (\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger) |0\rangle
+     = (\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger) f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle = \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big)|\tilde{0}\rangle.
+\end{align}
+Since this must hold for arbitrary $j$ we get a set of differential equations for $f$
+\begin{align}
+    \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big) = 0 \quad \forall j \quad \text{i.e.}\quad \nabla_{\tilde{a}^\dagger}f = -(\alpha^T)^{-1}\beta^\dagger \tilde{a}^\dagger f.
+\end{align}
+Now symmetrizing the PDE we get\todotag{Finish}
+%
+\end{mytheorem}
+
+
 %--------------------------------------------------------
 %=========================================================
 \subsection{Quantization in FLRW spacetime}
@@ -606,6 +635,42 @@ Indeed, considering constant inflation $(da/dt)/a=H_*\approx\mathrm{const}$ for 
 \end{align}
 Beware in a realistic scenario we should rather consider the fluctuations $\delta\chi$ and $\delta\phi$ around background solutions, but the qualitative picture is the same.
 
+
+
+%==========================================================
+\subsubsection*{Quantization}
+%========================================================
+
+Let us now quantize the field following the above procedure\todotag{Check everything}
+\begin{align}
+    \hat{\phi}(\tau,\mathbf{x})=\sum_n u_n(\tau,\mathbf{x}) b_n + u_n^*(\tau,\mathbf{x}) b_n^\dagger.
+\end{align}
+Alternatively we quantize the rescaled field $\chi$ directly in Fourier space, imposing the reality condition $\chi_k^*=\chi_{-k}$ 
+\begin{align}
+    \chi_k(t)=\tfrac{1}{\sqrt{2}}\Big(v_k^*(\tau) a_k + v_k(\tau)\, a_{-k}^\dagger\Big).
+\end{align}
+The two expansions are related by\todotag{Check}
+\begin{align}
+    u_n(\tau,\mathbf{x}) = \frac{1}{a(\tau)} \frac{e^{i\mathbf{k}\cdot \mathbf{x}}}{(2\pi)^{3/2}} v_k(\tau), \quad b_n = a_k/\sqrt{2}.
+\end{align}
+The wronskian condition for wave function normalization now reads
+\begin{align}
+    v_k \dot{v}_k^* - \dot{v}_k v_k^* = 2i.
+\end{align}
+This is a 1-dimensional \emph{real} constraint, in the 4-dimensional space of solutions to the Klein--Gordon equation (2nd order complex ODE) and thus selects a 3-dimensional submanifold of solutions, which is the space of mode functions $u_n$.
+
+Let us see how to implement Bogoliubov transformations in this case.
+For simplicity consider the case we do not mix different Fourier modes, that is we only consider Bogoliubov transformations of the form $\tilde{v}_k = \alpha_k v_k + \beta_k v_k^*$.
+The Bogoliubov coefficients must only satisfy $|\alpha_k|^2 - |\beta_k|^2 = 1$ to preserve the wronskian condition, while the condition $\alpha\beta^T-\beta\alpha^T=0$ is automatically satisfied since we are not mixing different modes.
+
+In turn we relate the ladder operators of the two theories as
+\begin{align}
+    a_k = \alpha_k \tilde{a}_k + \beta_k^* \tilde{a}_k^\dagger.
+\end{align}
+The vacuum of the first theory is then a squeezed state of the second theory, that is
+\begin{align}
+    |0\rangle = \prod_k \frac{1}{\sqrt{|\alpha_k|}} \exp\Big(-\frac{\beta_k^*}{2\alpha_k^*} \tilde{a}_k^\dagger \tilde{a}_{-k}^\dagger\Big) |\tilde{0}\rangle.
+\end{align}
 
 
 
