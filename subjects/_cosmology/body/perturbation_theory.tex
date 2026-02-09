@@ -1,0 +1,229 @@
+% !TeX root = ../cosmology_main.tex
+%=========================================================
+%=========================================================
+\chapter{Perturbation theory in Cosmology}\label{ch:perturbation_theory}
+%========================================================
+%=========================================================
+
+
+\begin{mytheorem}[Metric perturbations remain small]
+%
+Treating metric perturbations to linear order is justified since they remain very small, even when energy-density perturbations become extremely non-linear.
+For example, compare the (dimensionless) gravitational potential\footnote{Identified with the Newtonian-gauge potential $\Phi$} $\phi\sim \frac{GM}{R}$ and the density contrast $\delta\rho/\bar\rho$, relative to the cosmic average matter density today, for various astrophysical objects:
+\begin{itemize}
+    \item Earth: $\phi\sim 10^{-9}, \quad \tfrac{\delta\rho}{\rho}\sim 10^{30}$
+    \item Sun: $\phi\sim 10^{-6}, \quad \tfrac{\delta\rho}{\rho}\sim 10^{28}$
+    \item Milky Way: $\phi\sim 10^{-6}, \quad \tfrac{\delta\rho}{\rho}\sim 10^{6}$
+    \item Galaxy cluster: $\phi\sim 10^{-5}, \quad \tfrac{\delta\rho}{\rho}\sim 10^{3}$
+    \item Black hole at Schwarzschild radius $R_S=2GM$: $\phi\sim \tfrac{1}{2}, \quad \tfrac{\delta\rho}{\rho}\sim \infty$.
+\end{itemize}
+\end{mytheorem}
+
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Gauge fixing}
+%=========================================================
+%------------------------------------------------------------
+
+
+We will mainly follow the standard notation from \cite{MaBertschinger_CosmologicalPerturbationTheorySynchronousConformalNewtonianGauges_1995}.
+The metric has signature $-+++$.
+The conformal time is denoted by $\ct$ and differentiation with respect to it is denoted by $\dot{f}$.
+The proper time (of a comoving observer) is denoted by $t$, is related to conformal time by $dt=a \,d\tau$ and differentiation with respect to it is denoted by $f'$.
+We use natural units $c=1$, $\hbar=1$ and $\kappa_B=1$.
+
+The perturbation to a homogeneous isotropic FLRW metric is written in full generality as
+\begin{equation} \label{eq:metric_general_form}
+-\mathrm{d} s^{2}:=g_{\mu\nu}dx^\mu dx^\nu=a^{2}(\tau)\left[-(1+2 A) \,\mathrm{d} \tau^{2}+2 B_{i} \mathrm{~d} x^{i} \mathrm{~d} \tau+\left((1+2C)\delta_{ij}+2E_{ij}\right) \mathrm{d} x^{i} \,\mathrm{~d} x^{j}\right],
+\end{equation}
+with SVT decomposition
+\begin{equation*}
+\underbrace{A,\, C}_{\text {scalar }}, \quad
+B_{i}=\underbrace{\partial_{i} \tilde{B}}_{\text {scalar }}+\underbrace{\hat{B}_{i}}_{\text {vector }},\quad E_{i j}=\underbrace{\partial_{\langle i} \partial_{j\rangle} \tilde{E}}_{\text {scalar }}+\underbrace{\partial_{(i} \hat{E}_{j)}}_{\text {vector }}+\underbrace{\bar{E}_{i j}}_{\text {tensor }},
+\end{equation*}
+where we use the shorthand
+\begin{align*}
+\partial_{\langle i} \partial_{j\rangle} \tilde{E} \equiv\left(\partial_{i} \partial_{j}-\frac{1}{3} \delta_{i j} \nabla^{2}\right) \tilde{E},\qquad
+\partial_{(i} \hat{E}_{j)}\equiv \frac{1}{2}\left(\partial_{i} \hat{E}_{j}+\partial_{j} \hat{E}_{i}\right).
+\end{align*}
+
+
+
+%==============================================================================
+\subsubsection*{Newtonian Gauge}
+%===============================================================================
+
+We consider the \emph{conformal newtonian} gauge.
+In this gauge, vector and tensor modes are excluded from the beginning $\hat{B}=\hat{E}=\bar{E}=0$, and the residual gauge freedom is used to kill the non-diagonal scalar terms $\tilde{B}=\tilde{E}=0$.
+The metric is conventionally\footnote{Beware of different conventions in the literature, swapping $\phi \leftrightarrow \psi$ or their signs. Here we adopt the convention of Baumann \cite{Baumann_Cosmology_2022}, \texttt{CLASS} \cite{Lesgourgues_CosmicLinearAnisotropySolvingSystemCLASSIOverview_2011} and \cite{MaBertschinger_CosmologicalPerturbationTheorySynchronousConformalNewtonianGauges_1995} so that $\psi\approx \phi$ in the absence of anisotropic stress.
+Dodelson \cite{DodelsonSchmidt_ModernCosmology_2025} uses $\phi\mapsto -\phi$.} written by calling $A=\psi$, $C=-\phi$
+\begin{equation} \label{eq:metric_newtonian_gauge}
+    -\mathrm{d} s^{2}:=g_{\mu\nu}dx^\mu dx^\nu = a^2(\tau)\left[
+        -(1 + 2\psi)\, d\ct^2
+        +(1 - 2\phi)\, \delta_{ij}\, dx^i dx^j
+    \right].
+\end{equation}
+This gauge has a simple physical interpretation: in the Newtonian limit $\psi$ plays the role of the gravitational potential, while $\phi$ is interpreted as a local perturbation to the scale factor.
+Upon ignoring anisotropic stress, Einstein equations will imply that $\psi\simeq \phi$.
+
+The Christoffel symbols in this gauge (to linear order)
+\begin{align}\label{eq:christoffel_newtonian_gauge}
+    \begin{aligned}[t]
+    \Gamma_{00}^{0} & =\mathcal{H}+\dot\psi,  \\
+    \Gamma_{0 i}^{0} & =\partial_{i} \psi,  \\
+    \Gamma_{00}^{i} & = \partial_{i} \psi,
+    \end{aligned}
+    \qquad
+    \begin{aligned}[t]
+    \Gamma_{i j}^{0} & =\mathcal{H} \delta_{i j}-\left[\dot\phi+2 \mathcal{H}(\phi+\psi)\right] \delta_{i j}, \\
+    \Gamma_{j 0}^{i} & =\mathcal{H} \delta_{ij}-\dot\phi \delta_{ij}, \\
+    \Gamma_{j k}^{i} & = -\partial_j \phi\, \delta_{ki} - \partial_k \phi\,\delta_{ji} + \partial_i \phi\,\delta_{jk}.
+    \end{aligned}
+\end{align}
+
+
+
+
+
+%---------------------------------------------------------
+%========================================================================================
+\section{Relativistic kinematics and the Boltzmann equation}
+\label{eq:relativistic_kinemtics_Boltzmann_equations}
+%======================================================================================
+%---------------------------------------------------------------------------------
+
+%---------------------invariant volumes------------------------------------
+We set the notation for relativistic kinematics and the Boltzmann equations.
+The covariant $4$-momentum is $P^\mu=\frac{dx^\mu}{d\lambda}$ where $d\lambda$ is an affine parameter with $[\lambda]=E^{-2}$ \emph{defined} so that the geodesic equation $\frac{d P^\mu}{d\lambda}=\Gamma_{\alpha\beta}^\mu P^\alpha P^\beta$ holds\footnote{For massive particles it is simply $d\lambda=\frac{ds}{m}$.}.
+We have the invariant volumes in position and/or momentum space
+\begin{equation}
+    \sqrt{-g}\,d^4x^\mu,\quad \sqrt{-g}\,d^4P^\mu,\quad \frac{d^4P_\mu}{\sqrt{-g}}, \quad d^4\,x^\mu d^4P_\mu.
+\end{equation}
+Enforcing the on-shell condition, we have the invariant volume in momentum space
+\begin{equation}
+    \frac{d^4 P_\mu}{\sqrt{-g}}\,\delta_+(P^\alpha P_\alpha+m^2)=\frac{d^3 P_i}{\sqrt{-g}}\frac{1}{2P^0},
+\end{equation}
+and in turn the invariant volume in phase space
+\begin{equation}
+    \sqrt{-g}\,d^4x^\mu \frac{d^3 P_i}{\sqrt{-g}}\frac{1}{2P^0}= d^4\,x^\mu \frac{d^3 P_i}{2P^0}.
+\end{equation}
+
+%----------------physical comoving quantities-------------------------------
+Define the physical $3$-momentum $\vec{p}$ measured by a comoving observer, by enforcing $p^{2} := g_{i j} P^i P^j$ with direction $\hat{p}^{i} \,\propto\, P^{i}$ normalized such that $\hat{p}^{i} \hat{p}^{j} \delta_{i j}=1$.
+We have $g_{\mu\nu}P^\mu P^\nu=-m^2$ and enforce the relativistic energy relation $E=\sqrt{p^{2}+m^{2}}$, so that
+\begin{equation}\label{eq:relativistic_energy_relation}
+    \quad E^2=-g_{00}(P^0)^2-2g_{0i}P^0P^i, \quad P^0_{\pm}=\frac{g_{0i}P^i\pm\sqrt{(-g_{00})E^2+(g_{0i}P^i)^2}}{(-g_{00})},
+\end{equation}
+where $P^0=P^0_+$ always denotes the positive sign solution.
+Solving to linear order in the metric perturbations \eqref{eq:metric_general_form} we relate covariant and physical quantities
+\begin{equation}\label{eq:comoving_energy_momentum}
+    P^i=\frac{p}{a}\left(1-C-E_{mn}\,\hat p^m \hat p^n\right)\hat{p}^i,\quad P^0_{\pm}=\pm\frac{E}{a}(1-A)+\frac{p}{a}B_i\,\hat p^i.
+\end{equation}
+Finally, for any metric parametrized as in \eqref{eq:metric_general_form}, using \eqref{eq:relativistic_energy_relation} we recover the usual invariant momentum volume element
+\begin{equation}
+    \frac{d^3 P_i}{\sqrt{-g}}\frac{1}{2P^0}=\frac{d^3\vec{p}}{2E}.
+\end{equation}
+
+%--------------------geodesic euations in newtonian gauge-----------------------
+%-------------------------------------------------------
+\subsubsection*{Geodesic equation in Newtonian gauge}
+%-------------------------------------------------------------------
+In the newtonian gauge \eqref{eq:metric_newtonian_gauge} we have $A=\psi$, $B=E=0$, $C=-\phi$ and thus
+\begin{equation}
+\label{eq:comoving_energy_momentum_newtonian_gauge}
+P^i=\frac{p}{a}(1+\phi)\hat{p},\quad P^0=\frac{E}{a}(1-\psi).
+\end{equation}
+The metric potentials then obey (to first order in metric perturbations)
+\begin{align}
+\begin{aligned}
+    \frac{d \psi}{d\lambda}=\frac{E}{a}\dot\psi +\frac{p}{a}\hat{p}^j\partial_j\psi,
+    \qquad
+    \frac{d\phi}{d\lambda}=\frac{E}{a}\dot\phi +\frac{p}{a}\hat{p}^j\partial_j\phi.
+\end{aligned}
+\end{align}
+Using the Christoffel symbols \eqref{eq:christoffel_newtonian_gauge} we have the geodesic equations:
+\begin{align}\label{eq:geodesic_equation_covariant_momentum_newtonian}
+\begin{aligned}
+    \frac{d P^0}{d\lambda}
+    &= -\frac{E^2}{a^2}\left(\mathcal{H}(1-2\psi)+\dot\psi\right)-2\frac{Ep}{a^2}\hat{p}^j\partial_j\psi-\frac{p^2}{a^2}\left(\mathcal{H}(1-2\psi)+\dot\phi\right),
+    \\
+    \frac{dP^k}{d\lambda}&=-\frac{E^2}{a^2}\partial_k\psi-\frac{Ep}{a^2}\hat{p}^k\,2\left(\mathcal{H}(1-\psi+\phi)-\dot\phi\right)-\frac{p^2}{a^2}\left(\partial_k\phi-2\hat{p}^k\hat{p}^j\partial_j\phi\right).
+\end{aligned}
+\end{align}
+Using the above relations, we obtain corresponding evolution equations for the physical quantities, already expressed in conformal time $\tau$:
+\begin{align}\label{eq:geodesic_equation_physical_momentum_newtonian}
+\begin{aligned}
+    \frac{d E}{d\ct}&=-\frac{p^2}{E}(\mathcal{H}-\dot\phi)-\hat{p}^j\partial_j\psi,
+    \\
+    \frac{d p}{d\ct}&=-p(\mathcal{H}-\dot\phi)-\frac{E}{p}\hat{p}^j\partial_j\psi,
+    \\
+    \frac{d\hat{p}^i}{d\ct}&=\big(\hat{p}^i\hat{p}^j-\delta^{ij}\big)\left(\frac{E}{p}\partial_j\psi+\frac{p}{E}\partial_j\phi\right).
+\end{aligned}
+\end{align}
+
+
+%====================================================================================
+\subsection{Boltzmann equation}
+%=====================================================================================
+
+%------------------Bolztmann distribution function --------------------------------------
+The phase space distribution $f_{s}(\tau,\vec{x},P^{\mu})$ describes the probability of finding a particle, in a big collection of a given species $s$, with (on-shell) covariant momentum $P^\mu$ at spacetime location $(\tau,\bar{x})$.
+The relativistic Boltzmann equation (BE) describes the evolution of this distribution
+\begin{equation}\label{eq:boltzmann_eq_covariant_momentum}
+   \frac{d f}{d\lambda} = \frac{\partial f}{\partial \tau} P^0
++ \frac{\partial f}{\partial x^i} P^i
++ \frac{\partial f}{\partial P^\mu} \frac{dP^\mu}{d\lambda}
+ = C[f],
+\end{equation}
+where $\lambda$ is the affine parameter for the geodesic equation and the collision term $C[f]$ accounts for the interactions of the species $s$.
+%Since we will not be interested in quantitities depending on internal degrees of freedom, we use the convation of absorbing any possible degeneracy $g_s$ in the distribution itself, that is $f_s:=g_s f_s$.
+
+For a general interaction between species $a_i$, $b_j$ of the schematic form
+\begin{equation}
+    \label{eq:general_interaction}
+    a_1 + a_2 + \dots + a_m \leftrightarrow b_1 + b_2 + \dots + b_n,
+\end{equation}
+the corresponding contribution to the collision term $C[f]$ is given by
+\begin{align*}
+C[f_{a_1}](\vec{p}_1) &= \frac{1}{2}
+\int \left[ \prod_{i=2}^{m} \frac{d^3 p_i}{(2\pi)^3 2E_i} \right]
+\left[ \prod_{j=1}^{n} \frac{d^3 p_j'}{(2\pi)^3 2E_j'} \right] \ \times (2\pi)^4 \,\delta^{(4)}_D\!\!\left( \sum_{i=1}^{m} p_i-\sum_{j=1}^{n} p_j' \right)
+\, |\mathcal{M}|^2  \\
+&\,\,\,\,\qquad \times \left[
+f_{b_1} \dots f_{b_n} \prod_{i=1}^{m} (1 \pm f_{a_i})
+-
+f_{a_1} f_{a_2} \dots f_{a_m} \prod_{j=1}^{n} (1 \pm f_{b_j})
+\right],
+\end{align*}
+where $\mathcal{M}$ is the Feynman amplitude of the process, and we assumed crossing symmetry.
+
+
+%====================================================================================
+\subsubsection{Boltzmann equation in Newtonian gauge}
+%=====================================================================================
+
+It is convenient to rewrite everything in terms of physical comoving variables $f=f(\ct,x^i,E,\hat p^i)$ in Newtonian gauge.
+Using formulas \eqref{eq:geodesic_equation_physical_momentum_newtonian}, the left-hand side of the Boltzmann equation \eqref{eq:boltzmann_eq_covariant_momentum} becomes (to first order in metric perturbation, but fully exact otherwise)
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge}
+\begin{aligned}
+    \frac{d f}{d \lambda}
+    %
+    &=
+    %
+    P^{0}\left[\frac{\partial f}{\partial \tau}+\frac{\partial f}{\partial x^{i}} \frac{P^{i}}{P^{0}}+\frac{\partial f}{\partial E} \frac{1}{P^{0}} \frac{d E}{d \lambda}+\frac{\partial f}{\partial \hat{p}^{i}} \frac{1}{P^{0}} \frac{d \hat{p}^{i}}{d \lambda}\right]
+    %
+    \\&=
+    %
+    \frac{E}{a}\!\left[\frac{\partial f}{\partial \ct}(1-\psi)
+    \!+\!\left(\hat{p}^j\partial_jf\right) \frac{p}{E}(1\!+\!\phi)
+    -\frac{\partial f}{\partial E}\frac{p^2}{E}\left(\mathcal{H}(1\!-\!\psi)-\dot\phi\right)
+    -\frac{\partial f}{\partial \bar{p}^j}\partial_j\psi \,E
+    \!+\!\left(\frac{\partial f}{\partial p} \hat{p}^j-\frac{\partial f}{\partial \bar{p}^j}\right)\partial_j\phi\,\frac{p^2}{E}\right].
+\end{aligned}
+\end{align}
+}
+In the formula above we included derivatives both versus $\vec{p}_j$ and the sole direction $\hat{p}_j$, since this writing will turn useful when taking moments.
