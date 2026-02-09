@@ -54,18 +54,27 @@ Photons retain local equilibrium with a blackbody distribution at all time\todot
 \begin{equation}\label{eq:local_temp_photons}
     f(\ct, x^i, E, \hat{p}^i) = \frac{1}{\exp\left(\frac{E}{T(\ct, x^i)}\right) - 1}, \quad T=\bar{T}(\tau)(1+\Theta(\tau, x^i, p, \hat{p}^i))=\bar{T}+\delta T.
 \end{equation}}
-In fact, the argument below hold more generally assuming the distribution is some function $f(E/T)$ of the ratio $E/T$ to some \emph{local} temperature.
-At late times collisions with baryons are essentially low-energy elastic Compton scatterings, which do not change the momenetum of photons but only the direction.
-To good approximation we can assume $\Theta=\Theta(\tau, x^i, \hat{p}^i)$, i.e. the temperature perturbation is independent of the photon energy.
-We can then expand the Boltzmann distribution and its derivatives as\todotag{Ceck}
-\begin{align}
+More generally, assuming the distribution is some function $f(E/T)$ of the ratio $E/T$ to some \emph{local} temperature $T$, we Taylor expand and trucate to linear order in perturbations
+\begin{align}\label{eq:photon_distribution_expansion}
 \begin{aligned}
     f= \bar{f}+\frac{\partial f}{\partial T}\delta T = \bar{f}-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\Theta,\\
-    \frac{\partial f}{\partial E}=\frac{\partial \bar{f}}{\partial E}-\frac{\partial^2 \bar{f}}{\partial E^2}\frac{E}{T}\Theta-\frac{\partial \bar{f}}{\partial E}\frac{1}{T}\Theta,\\
-    \frac{\partial f}{\partial p}=\frac{\partial \bar{f}}{\partial p}-\frac{\partial^2 \bar{f}}{\partial p^2}\frac{p}{T}\Theta-\frac{\partial \bar{f}}{\partial p}\frac{1}{T}\Theta,\\
-    \frac{\partial f}{\partial \hat{p}^i}=-\frac{\partial^2 \bar{f}}{\partial p^2}\frac{p}{T}\Theta\hat{p}^i-\frac{\partial \bar{f}}{\partial p}\frac{1}{T}\Theta\hat{p}^i-\frac{\partial \bar{f}}{\partial p}\frac{1}{T}\frac{\partial \Theta}{\partial \hat{p}^i}.
+    \frac{\partial f}{\partial E}=\frac{\partial \bar{f}}{\partial E}-\frac{\partial^2 \bar{f}}{\partial E^2}\frac{E}{T}\Theta-\frac{\partial \bar{f}}{\partial E}\frac{1}{T}\Theta -\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\cancel{\frac{\partial\Theta}{\partial E}},\\
+    \frac{\partial f}{\partial \tau}=-\frac{\partial \bar{f}}{\partial E}\frac{E}{\bar{T}^2}\frac{\partial \bar{T}}{\partial \tau}+\frac{\partial \bar{f}}{\partial E}\frac{E}{\bar{T}^2}\frac{\partial \bar{T}}{\partial \tau}\Theta-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\frac{\partial \Theta}{\partial \tau},\\
+    \frac{\partial f}{\partial \hat{p}^i}=-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\frac{\partial \Theta}{\partial \hat{p}^i},\\
+    \frac{\partial f}{\partial x^i}=-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\frac{\partial \Theta}{\partial x^i}.
 \end{aligned}
 \end{align}
+At late times collisions with baryons are essentially low-energy Compton scatterings.
+To good approximation, these scatterings do not change the energy of photons but only the direction of their momentum and we can thus assume $\Theta=\Theta(\tau, x^i, \hat{p}^i)$, i.e. the temperature perturbation is independent of the photon energy.
+Pluggin \eqref{eq:photon_distribution_expansion} into the LHS of Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge_photon} and collecting zeroth and first order terms, we find\todotag{Check}
+\begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_photon_expanded}
+\begin{aligned}
+    &\frac{\partial \bar{T}}{\tau}=-\mathcal{H}\bar{T},\\
+    &\frac{\partial \Theta}{\partial \tau}-\hat{p}^j\partial_j\Theta+\frac{\partial \bar{T}}{\partial \tau}\frac{\Theta}{\bar{T}}+\hat{p}^j\partial_j\psi+\dot\phi = \frac{1}{\partial_E \bar{f}}\frac{1}{E}\mathcal{C}[f].
+\end{aligned}
+\end{align}
+Next we need an expression for the collision term $\mathcal{C}[f]$.
+
 
 
 
