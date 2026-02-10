@@ -91,6 +91,46 @@ To good approximation, these scatterings do not change the energy of photons but
 We need to compute the collision term $C[f]$ for Compton scatterings, which we do in the next section.
 
 
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{The photon-baryon fluid}
+%=========================================================
+%------------------------------------------------------------
+
+The relevant interactions for the photon-baryon fluid are
+\begin{align}
+    e^-+p \leftrightarrow e^-+p, \quad \text{(Coulomb scattering)}\\
+    e^-+\gamma \leftrightarrow e^-+\gamma, \quad \text{(Thomson scattering:=low-energy Compton scattering)}\\
+    p+\gamma \leftrightarrow p+\gamma, \quad \text{(Thomson scattering:=low-energy Compton scattering)}
+\end{align}
+Coulomb scattering is extremely efficient at keeping electrons and protons tightly coupled at \emph{all times}, allowing to treat them as a single baryon fluid with common bulk quantities to extreme accuracy
+\begin{align}
+    \delta_e=\delta_p=\delta_b, \quad \vec{u}_e=\vec{u}_p=\vec{u}_b.
+\end{align}
+The second keeps photons tightly coupled to electrons, and thus to protons, making sense of the photon-baryon fluid picture at early times.
+The last is negligible since the Thompson cross-section $\sigma_T \propto m^{-2}$ and thus for protons is suppressed by a factor $(m_e/m_p)^2$.
+
+
+Thompson scattering does not change number density, but does exchange momentum between photons and baryons, and thus appears as a source term in the Euler equations of the two fluids, with opposite signs to ensure total momentum conservation.
+That is, the conservation equations read
+\begin{align}
+    \nabla_\mu T^\mu_{(\gamma)\,0}=\nabla_\mu T^\mu_{(b)\,0}=0\quad \text{while}\quad \nabla_\mu T^\mu_{(\gamma)\,j}=-\nabla_\mu T^\mu_{(b)\,j}=:Q_j\neq 0.
+\end{align}
+Regardless of the interaction, the RHS for the Euler equations is written in terms of the velocity $v_j=\frac{1}{(\rho+p)}T^0_{\;j}$.
+Therefore if we know the RHS of either the photon or baryon Euler equation, we can immediately get the RHS of the other by
+{\small
+\begin{align}
+    \frac{\partial v_\gamma^j}{\partial \tau}+\ldots = \frac{1}{(\rho_\gamma+p_\gamma)} Q_j=:X\quad\Rightarrow\quad \frac{\partial v_b^j}{\partial \tau}+\ldots = -\frac{1}{(\rho_b+p_b)} Q_j = -\frac{(\rho_\gamma+p_\gamma)}{(\rho_b+p_b)} \frac{1}{(\rho_\gamma+p_\gamma)} Q_j = -\frac{4}{3} \frac{\rho_\gamma}{\rho_b} X.
+\end{align}}
+
+
+
+
+
+
+
 %--------------------------------------------------------
 %=========================================================
 \section{CMB Lensing}
