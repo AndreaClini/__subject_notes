@@ -201,9 +201,9 @@ f_{a_1} f_{a_2} \dots f_{a_m} \prod_{j=1}^{n} (1 \pm f_{b_j})
 where $\mathcal{M}$ is the Feynman amplitude of the process, and we assumed crossing symmetry.
 
 
-%====================================================================================
+%-----------------------------------------------------------------------------
 \subsubsection{Boltzmann equation in Newtonian gauge}
-%=====================================================================================
+%------------------------------------------------------------------------------
 
 It is convenient to rewrite everything in terms of physical comoving variables $f=f(\ct,x^i,E,\hat p^i)$ in Newtonian gauge.
 Using formulas \eqref{eq:geodesic_equation_physical_momentum_newtonian}, the left-hand side of the Boltzmann equation \eqref{eq:boltzmann_eq_covariant_momentum} becomes (to first order in metric perturbation, but fully exact otherwise)
@@ -227,3 +227,348 @@ Using formulas \eqref{eq:geodesic_equation_physical_momentum_newtonian}, the lef
 \end{align}
 }
 In the formula above we included derivatives both versus $\vec{p}_j$ and the sole direction $\hat{p}_j$, since this writing will turn useful when taking moments.
+
+
+
+
+%=======================================================================
+\subsection{Moments of the Boltzmann equation}
+%===================================================================
+
+
+The complete behavior of the species $s$ in phase space is entirely described by the distribution $f_s$, which in turn is completely specified by the Boltzmann equation.
+In principle, we should solve the full system of Boltzmann equations, one for each species $s$, coupled through the mutual collision terms and the metric potentials, and Einstein equations, sourced by the energy-momentum of the species themselves.
+This task is extremely difficult, even numerically.
+
+%------------------------ perturbation theory----------------------------------------
+In perturbation theory, we can still make great progress by considering moments of the distribution function and the corresponding evolution equations obtained taking the same moments of the Boltzmann equation.
+In general, we define the bulk average of a quantity of interest $Q$ for the fluid\footnote{To simplify the notation, we do not indicate internal degrees of freedom. The quantities considered here are almost always independent of these. If this is the case, we implicitly include a suitable degeneracy factor $g_s$ in the definition of $f_s$.} by
+\begin{equation}\label{eq:bulk_averages}
+    \langle Q\rangle:=\left(\int\!\!\frac{d^3p}{(2\pi)^3}{f_s}\right)^{-1}\int\!\!\frac{d^3p}{(2\pi)^3}\,Q\,f_s.
+\end{equation}
+In particular, the covariant energy-momentum tensor is given by
+\begin{equation}\label{eq:energy_momentum_tensor_from_distribution}
+    T^{\mu}_{(s)\,\nu}=\int\!\!\frac{d^3P_i}{\sqrt{-g}(2\pi)^3}\,g_s\,\frac{P^\mu P_\nu}{2P^0}\, f_s=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,g_s\,\frac{P^\mu P_\nu}{2E} f_s.
+\end{equation}
+In turn, number density, energy density and pressure are obtained as 
+{\small
+\begin{equation}\label{eq:number_energy_density}
+    n:=\int\!\!\frac{d^3p}{(2\pi)^3}\,f_s,\quad \rho_s= T^0_0=\int\!\!\frac{d^3p}{(2\pi)^3} E\,f_s,\quad P=\tfrac13 T^i_i=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{3E} f_s.
+\end{equation}}
+Similarly the bulk velocity of the fluid, already introduced below equation \eqref{eq:em_tensor_perturbed_single_species}, is obtained as
+\begin{equation}\label{eq:bulk_velocity}
+    \vec{u}:=\left\langle \frac{\vec{p}}{E}\right\rangle:=\left(\int\!\!\frac{d^3p}{(2\pi)^3}{f_s}\right)^{-1}\int\!\!\frac{d^3p}{(2\pi)^3}\,\frac{\vec{p}}{E}\,f_s,
+\end{equation}
+and the stress-tensor of the fluid is obtained as 
+\begin{equation}\label{eq:shear_stress_tensor}
+    n\,\sigma^{ij}:=\left\langle \frac{p^ip^j}{E^2}\right\rangle-\left\langle \frac{p^i}{E}\right\rangle\left\langle \frac{p^j}{E}\right\rangle.
+\end{equation}
+
+%----------------- Boltzmann hyerarchy-------------------------------------------
+Taking moments of the Boltzmann equation generates the well-known Boltzmann hierarchy, where the evolution of a moment $\sim\left(\frac{\vec{p}}{E}\right)^n$ depends on higher moments $\sim\left(\frac{\vec{p}}{E}\right)^{n+1}$.
+In the next section we will consider \emph{cold} matter.
+In this case $p\ll E \sim m$ and it will be sufficient to truncate this hierarchy at some order in $\frac{p}{E}$, typically $n=2$.
+The treatment for radiation is far more delicate: in this case $p\sim E$, the above truncation argument is completely inadequate\footnote{In some cases, like for the photon-baryon fluid in the tight coupling regime this is actually still good.} and one has to account for the full hierarchy.
+This is a well-studied (and well-resolved) problem and we refer to pedagogical treatments in \cite{Baumann_Cosmology_2022,MaBertschinger_CosmologicalPerturbationTheorySynchronousConformalNewtonianGauges_1995,DodelsonSchmidt_ModernCosmology_2025}.
+
+
+
+
+
+
+%===================================================================================
+\subsubsection{Velocity averages for cold matter}
+\label{sec:velocity_averages_cold_matter}
+%=====================================================================================
+
+%----------- splitting of the distribution function and moments------------------------------
+Finally we clear a subtlety regarding statistical averages of powers $\frac{p_{i_1}}{E}\dots\frac{p_{i_n}}{E}$ for cold matter, in order to correctly identify perturbations of the same order in the next section.
+We will use the shorthand $v_i=\frac{p_i}{E}$ with modulus $v=\frac{p}{E}$. These quantities are not observable, they are just `free' variables that need to be integrated against $f$, while we reserve the notation $\vec{u}$ for the (bulk) velocity of the fluid \eqref{eq:bulk_velocity}.
+
+Following the notation in \cite{MaBertschinger_CosmologicalPerturbationTheorySynchronousConformalNewtonianGauges_1995}, the distribution function is split as 
+\begin{equation}\label{eq:distrbution_function_splitting}
+    f(\tau,x,\vec{p})=:\bar{f}(\tau,p)\left(1+\Psi(\tau,x,\vec{p})\right)=:\bar{f}(\tau,p)+\delta f(\tau,x,\vec{p}),
+\end{equation}
+where the zeroth-order term is independent of position $\vec{x}$ and direction $\hat{p}$ of momentum, due to isotropy and homogeneity of the background.
+The function $\Psi$, or equivalently $\delta f$, describes the small perturbations about the unperturbed solution. 
+
+From isotropy of the background, to order zero in field perturbations we have 
+{\small
+\begin{equation}\label{eq:bulk_velocities_order_0}
+    \big\langle v_{i_1}\dots v_{i_n}\big\rangle:=\left(\int\!\!\frac{d^3p}{(2\pi)^3}f\right)^{-1}\!\!\int\!\!\frac{d^3p}{(2\pi)^3}\frac{p}{E}\hat{p}_{i_1}\dots\frac{p}{E}\hat{p}_{i_n}\,f \overset{\text{ order 0}}{\equiv}\begin{cases}
+        \langle v^{2j}\rangle_0\left(\delta^{\text{Kr.}}_{i_1i_2}\dots \delta^{\text{Kr.}}_{i_{2j-1}i_{2j}}\!\!+\text{perm.}\right) &n=2j,
+        \\
+        0 &n=2j+1,
+    \end{cases}
+\end{equation}
+}
+where $\langle\dots \rangle_0$ denotes averages taken with respect to the \emph{background} distribution \begin{equation}\label{eq:background_averages}
+    \langle Q\rangle_0:=\left(\int\!\!\frac{d^3p}{(2\pi)^3}\bar{f}\right)^{-1}\int\!\!\frac{d^3p}{(2\pi)^3}\,Q\,\bar{f}.
+\end{equation}
+
+\begin{remark}
+The background distribution is centered around $\vec{v}=0$ with some thermal spread, say a Boltzmann distribution centered around zero with finite temperature.
+In the cold matter approximation $T_{\text{CDM}}\to 0$ we have a Dirac delta in momentum space
+\[
+\bar{f}=\bar{n}(t)\,(2\pi)^3\delta^{(3)}(\vec{q}),
+\]
+so that even all the norm averages $\langle v^{\ell}\rangle_0$ vanish.
+In any case, these background averages would be negligibly small, since they only arise from thermal spread around zero and redshift as $\langle v^{n}\rangle_0\propto \, a^{-n}$.
+\end{remark}
+%
+Perturbations to the distribution $\delta f(\tau,x,p,\hat{p})$ allow for nonisotropic averages $\big\langle v_{i_1}\dots v_{i_n}\big\rangle\neq0$.
+Similarly to above, we could approximate $f_s$ as the full space density $n_s(x,\tau)$ times some thermal spread around a \emph{nonzero} peculiar velocity $\vec{u}_s(x,\tau)$, namely the bulk velocity of the fluid s.
+In the cold limit $T_{\text{CDM}}\to 0$ we now have 
+\[
+    f_s = n_s(x,\tau)(2\pi)^3 \delta^{(3)}(\vec{q}-m_s \vec{u}_s(x,\tau)),
+\]
+so that all reduced moments vanish and we have 
+\begin{equation}\label{eq:moments_peculiar_velocity_cold_limit}
+    \big\langle v_{i_1}\dots v_{i_n}\big\rangle\simeq u_{i_1}\dots u_{i_n}.
+\end{equation}
+\begin{remark}
+In linear theory the peculiar velocity $u(x,t)\,\propto\, \dot \delta \propto \dot D_+=\mathcal{H}\, \textbf{f}\, D_+$ grows in time (e.g. in EdS approximation $u\,\propto\, a^{\nicefrac{1}{2}}$) and the full distribution $f$ is centered around it in momentum space, regardless of the thermal spread being zero or not.
+Therefore, regardless of integrating over directions $\hat{v}$ and anisotropy, averages of $\frac{p}{E}$ are dominated by the peculiar velocity, in the sense that 
+\begin{equation}\label{eq:peculiar_velocity_dominates_spread_background_velocity}
+    \fint \frac{d^3q}{(2\pi)^3}\bar{f}\, v^\ell \propto\, T_{CDM}^{\frac{\ell}{2}}\propto \,a^{-\ell}\ll \fint\frac{d^3q}{(2\pi)^3}f\, v^{\ell} \sim \,|u(x,t)|^\ell\propto \left(\mathcal{H}\textbf{f}D_+\right)^\ell.
+\end{equation}
+\end{remark}
+
+In summary, we have two small parameters to expand with:
+\begin{enumerate}
+    \item the perturbations $\delta f$, or better to the derive fields like $\delta_s$ and $\vec{u}_s$;
+    \item  the thermal spread of matter characterized e.g. by the non-vanishing of \emph{reduced} moments like $\langle v_i v_j\rangle -\langle v_i\rangle \langle v_j\rangle $, or equivalently, since the thermal spread of $\bar f$ and of $f$ should be of the same order, by the magnitude of \emph{background} averages  $\langle\left(\frac{p}{E}\right)^\ell\rangle_0=\langle v^\ell\rangle_0$.
+\end{enumerate} 
+Following the standard EFT approach \cite{baumann2012cosmologicalEffectiveFluid}, we first expand in field perturbations and only then add back also the thermal spread with \emph{effective} terms accounting for the microphysics we could not describe exactly.
+
+Retaining powers $\langle \frac{p^2}{E^2}\rangle \sim u^2$ in our perturbative expansion is necessary because the contributions of a decay interaction to the RHS of the continuity and Euler equations beyond linear order are of the form $ \Gamma\,\psi\, \delta_m$ and $\langle v^2\rangle \Gamma$ and these terms are essentially of the same order (cf. next section).
+Indeed, from the Poisson equation in the subhorizon limit $\delta_m\sim \frac{k^2}{\mathcal{H}^2}\psi$ and from the Euler equation \eqref{eq:euler_dcdm_second_order} to leading order $\vec{u} \sim \frac{\vec{k}}{\mathcal{H}} \psi$, so that we have
+\begin{align}\label{eq:order_magnitude_comparison}
+\begin{aligned}
+    \langle \frac{p^2}{E^2}\rangle\sim|u(x,t)|^2 \sim\frac{k^2}{\mathcal{H}^2} \psi^2 \sim \psi\, \delta_m.
+\end{aligned}
+\end{align}
+
+In conclusion, we remark again that retaining powers $\langle \frac{p^2}{E^2}\rangle$ is not directly related to the order at which we truncate the Boltzmann hierarchy.
+Indeed, we will still close the continuity--Euler system by assuming no velocity dispersion 
+\begin{equation}\label{eq:no_velocity_dispersion}
+    \frac{1}{n}\sigma_{ij}=\langle v_i v_j\rangle- \langle v_i\rangle \langle v_j\rangle\,\propto\, \,\text{thermal spread}\,\simeq 0.
+\end{equation}
+Only afterwards, during renormalization, will we introduce back effective terms like
+\begin{equation}\label{eq:closed_expression_velocity_dispersion}
+    \langle v_i v_j\rangle- \langle v_i\rangle \langle v_j\rangle=\delta_{ij}\, c_s^2\,\delta_{m}+\dots
+\end{equation}
+In fact, in the same spirit, we might be forced to add back the corrections to $\Gamma\langle v^2\rangle=\Gamma u^2(1+\dots)$.
+
+
+
+
+%================================================================================
+\subsection{The continuity and Euler equations}
+\label{sec:continuity_euler_equations}
+%=========================================================================
+%
+We now take the zeroth and first moments of the of the Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} to obtain the continuity and Euler equations.
+After some tedious but elementary passages, the continuity equation reads (to first order in metric perturbations, fully exact otherwise)
+{\small
+\begin{align}\label{eq:continuity_exact_newton_gauge}
+\begin{aligned}
+    \int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}\frac{d f}{d\lambda}
+    &=\frac{1}{a}\left[(1-\psi)\frac{\partial n}{\partial \ct}
+    +(1+\phi)\,\partial_j\!\left(n\,u_j\right) 
+    +3 \,n \left(\mathcal{H}(1-\psi)-\dot\phi\right)
+    +n\,u_j\left(\partial_j\psi-2\partial_j\phi\right)\right]\\ &= \int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}C[f;f_{\text{other}}].
+\end{aligned}
+\end{align}}
+In the absence of number-changing interactions, the RHS of the continuity equation vanishes.
+At order zero we find the usual Hubble dilution 
+\begin{equation}\label{eq:conitnuity_equation_zero_order}
+    \frac{\partial \bar{n}_\chi}{\partial \ct}
+    +3 \,\bar{n}_\chi \mathcal{H}
+    =
+    a\,\bigg[\int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}C[f]\bigg]_{0}
+\end{equation}
+Ww then split the density as $n=\bar{n}(1+\delta)$ and get the perturbed continuity equation (to first order in metric perturbations, fully exact otherwise)\todotag{Do it}
+{\small
+\begin{align}\label{eq:perturbed_continuity_exact_newton_gauge}
+\begin{aligned}
+    ...
+\end{aligned}
+\end{align}}
+%
+Similarly, integrating by parts and using \eqref{eq:continuity_exact_newton_gauge} to simplify the $\partial_{\tau}n$ term, we obtain the Euler equation (to first order in metric, fully exact otherwise)
+\begin{align}\label{eq:Euler_LHS_exact_newton_gauge}
+\begin{aligned}
+    \int\frac{d^3\bar{p}}{(2\pi)^3}\frac{1}{E}\frac{d f}{d\lambda}\frac{p\hat{p}_i}{E}
+    =\frac{1}{a}&\bigg\{
+    (1-\psi)n\frac{\partial u_i}{\partial \ct}
+    +(1+\phi)\,n\,u_j \,\partial_j u_i
+    \\
+    &+(1+\phi)\partial_j\Big[n\big(\langle v_iv_j\rangle-\langle v_i\rangle \langle v_j\rangle\big)\Big]
+    \\
+    &+\Big[\mathcal{H}(1-\psi)-\dot\phi\Big]\, n\,\left(\langle v_i\rangle-\langle v_iv^2\rangle\right)
+    \\
+    &+n \big[\delta^{ij}-\langle v_i\rangle\langle v_j\rangle\big]\,\partial_j\psi+ n\big[\delta^{ij}\langle v^2\rangle-3\langle v_i v_j\rangle+2\langle v_i\rangle\langle v_j\rangle\big]\partial_j\phi
+    \\
+    &+a\,\langle v_i\rangle\, \int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}C[f,f_{\text{other}}]\bigg\} = \int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}C[f,f_{\text{other}}]\frac{p\hat{p}_i}{E}.
+\end{aligned}
+\end{align}
+where we used the shorthand $v_i=\frac{p_i}{E}$.
+Note that the last term $a\,\langle v_i\rangle\, \int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}C[f,f_{\text{other}}]$ at the LHS appeared since we used \eqref{eq:continuity_exact_newton_gauge} to simplify the $\partial_{\tau}n$ term.
+It will cancel up to some order in $\langle(\frac{p}{E})^\ell\rangle$ with corresponding terms at the RHS when expanding in powers $\langle\frac{p}{E}\rangle$ for cold matter.
+%
+We remark that $\langle v_i\rangle \equiv u_i$ exactly by definition of bulk velocity \eqref{eq:bulk_velocity}, while the identification $\langle v_iv_j\rangle\simeq u_i u_j$ holds with the caveats of Section \ref{sec:velocity_averages_cold_matter}.
+Multiplying by $1+\psi$, dropping second orders in metric perturbations and third orders $\sim \langle v\rangle ^3$ and $\sim \phi \,\langle v\rangle ^2$, and dividing by the density $n$ yield the familiar Euler equation for cold matter (now correct to second order in $\langle v\rangle$, and to first order in metric perturbations)
+\begin{align}\label{eq:euler_equation_perturbed_up_to_second_order}
+    \frac{\partial u_i}{\partial \ct}
+    +\,u_j \,\partial_j u_i
+    %
+    +\frac{1}{n}\partial_j\Big[n\big(\langle v_iv_j\rangle-\langle v_i\rangle \langle v_j\rangle\big)\Big]
+    %
+    +\Big[\mathcal{H}-\dot\phi\Big]\, u_i
+    %
+    +\partial_i\psi
+    %
+    =\text{(interactions)}+ O\big(\langle v^3\rangle\big).
+\end{align}
+%
+----------------------------------------------------------------------------------------------------------------------------
+
+In conclusion, we drop leftover order $\geq3$ terms and separate linear and quadratic terms in the fields to get the final versions of the \todotag{Fix from here below} continuity and Euler equation (correct to second order in perturbations, upon ignoring terms $\sim \phi^2$):
+\begin{align}\label{eq:continuity_dcdm_second_order_final_version}
+    \dot{\delta}_{\chi}
+    \!+\!\partial_j u_{\chi}^j
+    {\color{orange}-3 \dot\phi}
+    %
+    \,{\color{lightblue} +\,\psi\, a\, \Gamma}
+    %
+    &=
+    -\partial_j\big(\delta_\chi\,u_{\chi}^j\big)
+    %
+    {\color{red}+3 \dot\phi \delta_{\chi}}
+    %
+    {\color{forestgreen}-(\phi\!+\!\psi)\partial_j u_{\chi}^j
+    -u_{\chi}^j\left(\partial_j\psi\!-\!2\partial_j\phi\right)}
+    %
+    {\color{blue}
+    -\psi\,\delta_{\chi}\,a\,\Gamma+\frac{1}{2}\langle v_{\chi}^2\rangle\, a\,\Gamma},
+    %
+    \\
+    %
+    \label{eq:euler_dcdm_second_order_final_version}
+    %
+    \dot{u}_{\chi}^i+\mathcal{H}u_{\chi}^i +\partial_i\psi
+    &=
+    -\,u_{\chi}^j \,\partial_j u_{\chi}^i
+    %
+    {\color{myyellow}-\frac{1}{n_{\chi}}\partial_j\Big[n_{\chi}\big(\langle v_{\chi}^iv_{\chi}^j\rangle-\langle v_{\chi}^i\rangle \langle v_{\chi}^j\rangle\big)\Big]}
+    %
+    {\color{red}+\dot\phi\, u_{\chi}^i}.
+\end{align}
+Taking the divergence of the Euler equation,  with the usual notation $\nabla\cdot u=:\theta$, finally yields
+\begin{align}\label{eq:divergence_euler_dcdm_final_version}
+\begin{aligned}
+\dot{\theta}_{\chi} + \mathcal{H}\,\theta_{\chi} + \nabla^2 \psi
+    &=
+    -\,\partial_i\!\left(u_{\chi}^j \,\partial_j u_{\chi}^i\right)
+    -\frac{1}{n_{\chi}}\,\partial_i \partial_j\Big[n_{\chi}\big(\langle v_{\chi}^i v_{\chi}^j\rangle-\langle v_{\chi}^i\rangle \langle v_{\chi}^j\rangle\big)\Big]
+    + \partial_i\left(\dot\phi\, u_{\chi}^i\right) .
+\end{aligned}
+\end{align}
+%
+\begin{remark}\label{remark:color_coding}
+We comment on the color coding in the above equations, a full analysis is postoponed to Section \ref{sec:order_magnitude_analysis}.
+The black parts are the usual equations for higher order perturbation theory in a $\Lambda$CDM universe.
+The term {\color{orange}$3\dot{\phi}$} is a linear term already present in a $\Lambda$CDM universe, but typically dropped in the subhorizon limit.
+The decay will somewhat enhance the growth over time of this term and reduce its subhorizon suppression.
+The term ${\color{lightblue}\,\psi\, a\, \Gamma}$ is the linear correction from dcdm.
+We will argue that it is of the same order of {\color{orange}$3\dot{\phi}$}.
+Thus, if we want to see explicit linear corrections from dcdm beyond the pure background effect, we need to keep both terms and cannot invoke the subhorizon limit completely.
+
+The situation is analogous at second order.
+The green terms  {\color{forestgreen}$\sim \phi\,\partial_j u$} are quadratic terms already present in a $\Lambda$CDM universe, again typically dropped since metric perturbations are much smaller than matter ones.
+These are genuinely suppressed in the subhorizon limit, regardless of the presence of decay.
+The red terms  {\color{red} $\sim \dot\phi\,\delta\,,\,\,\dot\phi\,u$} are other quadratic terms already present in a $\Lambda$CDM universe and again typically dropped in the subhorizon limit.
+As for the orange term above, the decay will enhance the growth over time of these terms and reduce the suppression.
+Finally the blue terms are the quadratic corrections from dcdm.
+Similarly to above, we will argue that {\color{blue}these quadratic term from dcdm} are of the same order as the {\color{red} red ones}.
+Thus if we want to see genuine quadratic corrections from dcdm, we must to keep both types of terms.
+
+Finally we have the {\color{myyellow} velocity dispersion term.}
+Neglecting this term does not depend on the subhorizon limit, rather it is small due to the thermal spread of cold matter.
+We already discussed that we will initially take this term to be zero, and only then add back effective corrections accounting for the microphysics we could not capture exactly.
+\end{remark}
+
+%---------------- stable matter----------------------------------
+Finally we discuss baryons and `standard' non-decaying CDM.
+If we consider times well after recombination so that baryon perturbations have already caught up with CDM ones, we can treat baryons and stable CDM as a single fluid (stable matter, denoted s).
+The only difference from the above analysis for dcdm is the absence of the decay term.
+In this case, the perturbed continuity and Euler equations are simply (correct to second order in perturbations, upon ignoring terms $\sim \phi^2$)
+\begin{align}\label{eq:continuity_baryons_cdm_stable_second_order_final_version}
+    \dot{\delta}_{s}
+    +\partial_j u_{s}^j
+    {\color{orange}-3 \dot\phi}
+    %
+    &=
+    -\partial_j\big(\delta_s\,u_{s}^j\big)
+    %
+    {\color{red}+3 \dot\phi \delta_{s}}
+    %
+    {\color{forestgreen}-(\phi+\psi)\partial_j u_{s}^j
+    -u_{s}^j\left(\partial_j\psi-2\partial_j\phi\right)},
+    %
+    \\
+    \label{eq:euler_baryons_cdm_stable_second_order_final_version}
+    %
+    \dot{u}_{s}^i+\mathcal{H}u_{s}^i +\partial_i\psi
+    &=
+    -\,u_{s}^j \,\partial_j u_{s}^i
+    %
+    {\color{myyellow}-\frac{1}{n_{s}}\partial_j\Big[n_{s}\big(\langle v_{s}^iv_{s}^j\rangle-\langle v_{s}^i\rangle \langle v_{s}^j\rangle\big)\Big]}
+    %
+    {\color{red}+\dot\phi\, u_{s}^i},
+\end{align}
+with the same considerations on the colored terms as above.
+
+
+
+
+
+
+
+
+
+
+
+
+
+%-----------------------------------------------------------------------------
+%==============================================================================
+\section{Energy-momentum tensor \& Bianchi identities}
+%==============================================================================
+%------------------------------------------------------------------------------
+
+
+%------- em tensor and solving the full Einstein-Boltzmann system-------------------------------------
+The complete behavior of the species $s$ is described by the distribution $f_s$.
+In particular, the energy-momentum tensor is given by
+\begin{equation}\label{eq:energy_momentum_tensor_from_distribution}
+    T^{\mu}_{(s)\,\nu}=\int\!\!\frac{d^3P_i}{\sqrt{-g}(2\pi)^3}\,\frac{P^\mu P_\nu}{2P^0}\, f_s=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{P^\mu P_\nu}{2E} f_s.
+\end{equation}
+In principle, we should solve the full system of Boltzmann equations, one for each species $s$, coupled through the mutual collision terms and the metric potentials, and Einstein equations, sourced by the energy-momentum of the species themselves.
+This task is extremely difficult, even numerically.
+
+
+%-----------------------------------------------------------------------------
+%==============================================================================
+\section{Einstein--Boltzmann system}
+%==============================================================================
+%------------------------------------------------------------------------------
+
+
+
+%-----------------------------------------------------------------------------
+%==============================================================================
+\section{Higher-order perturbation theory}
+%==============================================================================
+%------------------------------------------------------------------------------

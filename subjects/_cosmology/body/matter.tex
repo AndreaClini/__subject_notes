@@ -1,0 +1,319 @@
+% !TeX root = ../cosmology_main.tex
+%=========================================================
+%=========================================================
+\chapter{Dark Matter \& Baryons}\label{ch:matter}
+%========================================================
+%=========================================================
+
+
+
+%-----------------------------------
+%=========================================================
+\section{Equation of motion \& phase space distribution}\todotag{Complete}
+%=========================================================
+%--------------------------------------------------------
+
+We report the newtonian-gauge geodesic equation \eqref{eq:geodesic_equation_covariant_momentum_newtonian}-\eqref{eq:geodesic_equation_physical_momentum_newtonian} 
+{\small
+\begin{align}\label{eq:geodesic_equations_matter_newtonian}
+\begin{aligned}
+    \frac{d E}{d\ct}&=-\frac{p^2}{E}(\mathcal{H}-\dot\phi)-\hat{p}^j\partial_j\psi,
+    \\
+    \frac{d p}{d\ct}&=-p(\mathcal{H}-\dot\phi)-\frac{E}{p}\hat{p}^j\partial_j\psi,
+    \\
+    \frac{d\hat{p}^i}{d\ct}&=\big(\hat{p}^i\hat{p}^j-\delta^{ij}\big)\left(\frac{E}{p}\partial_j\psi+\frac{p}{E}\partial_j\phi\right).
+\end{aligned}
+\end{align}}
+At the background level, the second one integrates to $p\propto a^{-1}$, giving the usual redshift of momenta.
+In turn the first one integrates to dispersion relation
+{\small
+\begin{align}
+    \frac{dE^2}{d\tau}= -2p^2\mathcal{H}= \frac{d}{d\tau}a^{-2} \quad \Rightarrow \quad E^2=m^2+\frac{p_0^2}{a^2}.
+\end{align}}
+The Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} is also reported (to second order in metric, exact otherwise)
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_matter}
+\begin{aligned}
+    C[f]=\frac{d f}{d \lambda}
+    %
+    &=
+    %
+    P^{0}\left[\frac{\partial f}{\partial \tau}+\frac{\partial f}{\partial x^{i}} \frac{P^{i}}{P^{0}}+\frac{\partial f}{\partial E} \frac{1}{P^{0}} \frac{d E}{d \lambda}+\frac{\partial f}{\partial \hat{p}^{i}} \frac{1}{P^{0}} \frac{d \hat{p}^{i}}{d \lambda}\right]
+    %
+    \\&=
+    %
+    \frac{E}{a}\!\left[\frac{\partial f}{\partial \ct}(1-\psi)
+    \!+\!\left(\hat{p}^j\partial_jf\right) \frac{p}{E}(1\!+\!\phi)
+    -\frac{\partial f}{\partial E}\frac{p^2}{E}\left(\mathcal{H}(1\!-\!\psi)-\dot\phi\right)
+    -\frac{\partial f}{\partial \bar{p}^j}\partial_j\psi \,E
+    \!+\!\left(\frac{\partial f}{\partial p} \hat{p}^j-\frac{\partial f}{\partial \bar{p}^j}\right)\partial_j\phi\,\frac{p^2}{E}\right].
+\end{aligned}
+\end{align}}
+We can now take moments and expand in powers of $p/m$.... \todotag{cf. my thesis \& whint L11 \& dodelson 12}
+
+
+
+
+
+
+
+%================================================================================
+\subsection{The continuity and Euler equations}
+\label{sec:continuity_euler_equations}
+%=========================================================================
+%
+We now take the zeroth and first moments of the LHS of the Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge_matter} to obtain the LHS of the continuity and Euler equations.
+After some tedious but elementary passages, the continuity equation reads (to first order in metric perturbations, fully exact otherwise)
+\begin{align}\label{eq:continuity_LHS_exact_newton_gauge}
+\begin{aligned}
+    \int\frac{d^3\vec{p}}{(2\pi)^3}\frac{1}{E}\frac{d f}{d\lambda}
+    =\frac{1}{a}\left[(1-\psi)\frac{\partial n}{\partial \ct}
+    +(1+\phi)\,\partial_j\!\left(n\,u_j\right) 
+    +3 \,n \left(\mathcal{H}(1-\psi)-\dot\phi\right)
+    +n\,u_j\left(\partial_j\psi-2\partial_j\phi\right)\right].
+\end{aligned}
+\end{align}
+%
+Combining with the RHS from \eqref{eq:continuity_RHS_dcdm} the continuity equation reads (again to first order in metric perturbations, fully exact otherwise)
+\begin{align}\label{eq:continuity_matter_exact}
+\begin{aligned}
+    \frac{\partial n}{\partial \ct}
+    +\big(1+\phi+\psi\big)\,\partial_j\!\left(n\,u_j\right) 
+    +3 \,n \left(\mathcal{H}-\dot\phi\right)
+    +n\,u_j\left(\partial_j\psi-2\partial_j\phi\right)
+    =
+    -a\,n\,\langle\Gamma\rangle (1+\psi).
+\end{aligned}
+\end{align}
+Similarly, integrating by parts and using \eqref{eq:continuity_matter_exact} to simplify the $\partial_{\tau}n$ term, we obtain the LHS of the Euler equation (to first order in metric, fully exact otherwise)
+\begin{align}\label{eq:Euler_LHS_exact_newton_gauge}
+\begin{aligned}
+    \int\frac{d^3\bar{p}}{(2\pi)^3}\frac{1}{E}\frac{d f}{d\lambda}\frac{p\hat{p}_i}{E}
+    =\frac{1}{a}&\bigg\{
+    (1-\psi)n\frac{\partial u_i}{\partial \ct}
+    +(1+\phi)\,n\,u_j \,\partial_j u_i
+    \\
+    &+(1+\phi)\partial_j\Big[n\big(\langle v_iv_j\rangle-\langle v_i\rangle \langle v_j\rangle\big)\Big]
+    \\
+    &+\Big[\mathcal{H}(1-\psi)-\dot\phi\Big]\, n\,\left(\langle v_i\rangle-\langle v_iv^2\rangle\right)
+    \\
+    &+n \big[\delta^{ij}-\langle v_i\rangle\langle v_j\rangle\big]\,\partial_j\psi+ n\big[\delta^{ij}\langle v^2\rangle-3\langle v_i v_j\rangle+2\langle v_i\rangle\langle v_j\rangle\big]\partial_j\phi
+    \\
+    &-a\,\langle v_i\rangle\, n \,\langle \Gamma \rangle\bigg\},
+\end{aligned}
+\end{align}
+where we used the shorthand $v_i=\frac{p_i}{E}$.
+Note that the last term $-a\,\langle v_i\rangle\, n \,\langle \Gamma \rangle$ appeared since we used \eqref{eq:continuity_dcdm_exact} to simplify the $\partial_{\tau}n$ term and it will cancel with the corresponding RHS up to second order in $\langle\frac{p}{E}\rangle$ included.
+%
+Namely, equating \eqref{eq:euler_RHS_dcdm_expanded} and \eqref{eq:Euler_LHS_exact_newton_gauge}, we have 
+\begin{align}\label{eq:euler_dcdm_second_order}
+\begin{aligned}
+    \bluecancel{-a\,n\,\langle \vec{v}\rangle\,\Gamma\Big(1-\frac{1}{2}\langle v^2\rangle\Big)}\!+O\big(\langle v^3\rangle\big)
+    %
+    =&\bluecancel{-a\,\langle v_i\rangle\, n \,\langle \Gamma \rangle}
+    %
+    \\
+    &+
+    (1-\psi)\,n\,\frac{\partial u_i}{\partial \ct}
+    +(1+\phi)\,n\,u_j \,\partial_j u_i
+    %
+    \\
+    &+(1+\phi)\,\,\partial_j\Big[n\,\big(\langle v_iv_j\rangle-\langle v_i\rangle \langle v_j\rangle\big)\Big]
+    \\
+    &+\Big[\mathcal{H}(1-\psi)-\dot\phi\Big]\, n\,\left(\langle v_i\rangle-\langle v_iv^2\rangle\right)
+    \\
+    &+n \Big(\delta^{ij}\!\!-\langle v_i\rangle\langle v_j\rangle\Big)\partial_j\psi\!+ \!n\Big(\!\delta^{ij}\langle v^2\rangle\!-\!3\,\langle v_i v_j\rangle\!+\!2\langle v_i\rangle\langle v_j\rangle\Big)\partial_j\phi.
+\end{aligned}
+\end{align}
+Finally, multiplying by $1+\psi$, dropping second orders in metric perturbations and third orders $\sim \langle v\rangle ^3$ and $\sim \phi \,\langle v\rangle ^2$, and dividing by the density $n$ yield the Euler equation (now correct to second order in $\langle v\rangle$, and to first order in metric perturbations)
+\begin{align}\label{eq:euler_equation_perturbed_up_to_second_order}
+    \frac{\partial u_i}{\partial \ct}
+    +\,u_j \,\partial_j u_i
+    %
+    +\frac{1}{n}\partial_j\Big[n\big(\langle v_iv_j\rangle-\langle v_i\rangle \langle v_j\rangle\big)\Big]
+    %
+    +\Big[\mathcal{H}-\dot\phi\Big]\, u_i
+    %
+    +\partial_i\psi
+    %
+    =0+ O\big(\langle v^3\rangle\big).
+\end{align}
+%
+We remark that $\langle v_i\rangle \equiv u_i$ exactly by definition of bulk velocity \eqref{eq:bulk_velocity}, while the identification $\langle v_iv_j\rangle\simeq u_i u_j$ holds with the caveats of Section \ref{sec:velocity_averages_cold_matter}.
+
+We now split the density $n=\bar{n}(1+\delta)$ and in turn split \eqref{eq:continuity_dcdm_exact} into background and perturbation part.
+As we anticipated in \eqref{eq:continuity_eq_dcdm_dr}, the zeroth order continuity equation is
+\begin{equation}\label{eq:conitnuity_equation_zero_order}
+    \frac{\partial \bar{n}_\chi}{\partial \ct}
+    +3 \,\bar{n}_\chi \mathcal{H}
+    =
+    -a\,\bar{n}_\chi\bar{\Gamma}.
+\end{equation}
+Using the expansion \eqref{eq:continuity_RHS_dcdm_expanded}, the perturbed continuity equation reads (now correct to second order in $\langle v\rangle$, and to first order in metric perturbations)
+\begin{align}\label{eq:conitnuity_equation_perturberd_up_tp_second_order}
+\begin{aligned}
+    \dot{\delta_{\chi}}
+    +\big(1+\phi+\psi\big)\,\partial_j\big[(1+\delta)\,u_{\chi}^j\big]
+    -3 \dot\phi (1+\delta_{\chi})
+    +u_{\chi}^j\left(\partial_j\psi-2\partial_j\phi\right)
+    =
+    -\psi(1+\delta_{\chi})\,a\,\Gamma+\frac{1}{2}\langle v_{\chi}^2\rangle \,a\,\Gamma.
+\end{aligned}
+\end{align}
+In conclusion, we drop leftover order $\geq3$ terms and separate linear and quadratic terms in the fields to get the final versions of the continuity and Euler equation (correct to second order in perturbations, upon ignoring terms $\sim \phi^2$):
+\begin{align}\label{eq:continuity_dcdm_second_order_final_version}
+    \dot{\delta}_{\chi}
+    \!+\!\partial_j u_{\chi}^j
+    {\color{orange}-3 \dot\phi}
+    %
+    \,{\color{lightblue} +\,\psi\, a\, \Gamma}
+    %
+    &=
+    -\partial_j\big(\delta_\chi\,u_{\chi}^j\big)
+    %
+    {\color{red}+3 \dot\phi \delta_{\chi}}
+    %
+    {\color{forestgreen}-(\phi\!+\!\psi)\partial_j u_{\chi}^j
+    -u_{\chi}^j\left(\partial_j\psi\!-\!2\partial_j\phi\right)}
+    %
+    {\color{blue}
+    -\psi\,\delta_{\chi}\,a\,\Gamma+\frac{1}{2}\langle v_{\chi}^2\rangle\, a\,\Gamma},
+    %
+    \\
+    %
+    \label{eq:euler_dcdm_second_order_final_version}
+    %
+    \dot{u}_{\chi}^i+\mathcal{H}u_{\chi}^i +\partial_i\psi
+    &=
+    -\,u_{\chi}^j \,\partial_j u_{\chi}^i
+    %
+    {\color{myyellow}-\frac{1}{n_{\chi}}\partial_j\Big[n_{\chi}\big(\langle v_{\chi}^iv_{\chi}^j\rangle-\langle v_{\chi}^i\rangle \langle v_{\chi}^j\rangle\big)\Big]}
+    %
+    {\color{red}+\dot\phi\, u_{\chi}^i}.
+\end{align}
+Taking the divergence of the Euler equation,  with the usual notation $\nabla\cdot u=:\theta$, finally yields
+\begin{align}\label{eq:divergence_euler_dcdm_final_version}
+\begin{aligned}
+\dot{\theta}_{\chi} + \mathcal{H}\,\theta_{\chi} + \nabla^2 \psi
+    &=
+    -\,\partial_i\!\left(u_{\chi}^j \,\partial_j u_{\chi}^i\right)
+    -\frac{1}{n_{\chi}}\,\partial_i \partial_j\Big[n_{\chi}\big(\langle v_{\chi}^i v_{\chi}^j\rangle-\langle v_{\chi}^i\rangle \langle v_{\chi}^j\rangle\big)\Big]
+    + \partial_i\left(\dot\phi\, u_{\chi}^i\right) .
+\end{aligned}
+\end{align}
+%
+\begin{remark}\label{remark:color_coding}
+We comment on the color coding in the above equations, a full analysis is postoponed to Section \ref{sec:order_magnitude_analysis}.
+The black parts are the usual equations for higher order perturbation theory in a $\Lambda$CDM universe.
+The term {\color{orange}$3\dot{\phi}$} is a linear term already present in a $\Lambda$CDM universe, but typically dropped in the subhorizon limit.
+The decay will somewhat enhance the growth over time of this term and reduce its subhorizon suppression.
+The term ${\color{lightblue}\,\psi\, a\, \Gamma}$ is the linear correction from dcdm.
+We will argue that it is of the same order of {\color{orange}$3\dot{\phi}$}.
+Thus, if we want to see explicit linear corrections from dcdm beyond the pure background effect, we need to keep both terms and cannot invoke the subhorizon limit completely.
+
+The situation is analogous at second order.
+The green terms  {\color{forestgreen}$\sim \phi\,\partial_j u$} are quadratic terms already present in a $\Lambda$CDM universe, again typically dropped since metric perturbations are much smaller than matter ones.
+These are genuinely suppressed in the subhorizon limit, regardless of the presence of decay.
+The red terms  {\color{red} $\sim \dot\phi\,\delta\,,\,\,\dot\phi\,u$} are other quadratic terms already present in a $\Lambda$CDM universe and again typically dropped in the subhorizon limit.
+As for the orange term above, the decay will enhance the growth over time of these terms and reduce the suppression.
+Finally the blue terms are the quadratic corrections from dcdm.
+Similarly to above, we will argue that {\color{blue}these quadratic term from dcdm} are of the same order as the {\color{red} red ones}.
+Thus if we want to see genuine quadratic corrections from dcdm, we must to keep both types of terms.
+
+Finally we have the {\color{myyellow} velocity dispersion term.}
+Neglecting this term does not depend on the subhorizon limit, rather it is small due to the thermal spread of cold matter.
+We already discussed that we will initially take this term to be zero, and only then add back effective corrections accounting for the microphysics we could not capture exactly.
+\end{remark}
+
+%---------------- stable matter----------------------------------
+Finally we discuss baryons and `standard' non-decaying CDM.
+If we consider times well after recombination so that baryon perturbations have already caught up with CDM ones, we can treat baryons and stable CDM as a single fluid (stable matter, denoted s).
+The only difference from the above analysis for dcdm is the absence of the decay term.
+In this case, the perturbed continuity and Euler equations are simply (correct to second order in perturbations, upon ignoring terms $\sim \phi^2$)
+\begin{align}\label{eq:continuity_baryons_cdm_stable_second_order_final_version}
+    \dot{\delta}_{s}
+    +\partial_j u_{s}^j
+    {\color{orange}-3 \dot\phi}
+    %
+    &=
+    -\partial_j\big(\delta_s\,u_{s}^j\big)
+    %
+    {\color{red}+3 \dot\phi \delta_{s}}
+    %
+    {\color{forestgreen}-(\phi+\psi)\partial_j u_{s}^j
+    -u_{s}^j\left(\partial_j\psi-2\partial_j\phi\right)},
+    %
+    \\
+    \label{eq:euler_baryons_cdm_stable_second_order_final_version}
+    %
+    \dot{u}_{s}^i+\mathcal{H}u_{s}^i +\partial_i\psi
+    &=
+    -\,u_{s}^j \,\partial_j u_{s}^i
+    %
+    {\color{myyellow}-\frac{1}{n_{s}}\partial_j\Big[n_{s}\big(\langle v_{s}^iv_{s}^j\rangle-\langle v_{s}^i\rangle \langle v_{s}^j\rangle\big)\Big]}
+    %
+    {\color{red}+\dot\phi\, u_{s}^i},
+\end{align}
+with the same considerations on the colored terms as above.
+
+
+
+
+
+
+
+
+
+
+%==================================================
+\subsection{Baryons}
+%=====================================================
+
+
+
+%-----------------------------------
+%=========================================================
+\section{Dark Matter Production}
+%=========================================================
+%--------------------------------------------------------
+
+There are various mechanisms to produce dark matter in the early universe. We can broadly classify them into thermal and non-thermal mechanisms as follows:\todotag{Redo}
+\begin{itemize}
+    \item \textbf{Thermal mechanisms}: In these scenarios, dark matter particles were once in thermal equilibrium with the Standard Model particles in the early universe. As the universe expanded and cooled, the interaction rates dropped below the Hubble expansion rate, leading to a "freeze-out" of dark matter particles. The relic abundance of dark matter is determined by the annihilation cross-section and mass of the dark matter particles. A classic example of this mechanism is the Weakly Interacting Massive Particle (WIMP) paradigm.
+    \item \textbf{Non-thermal mechanisms}: In these scenarios, dark matter particles were never in thermal equilibrium with the Standard Model particles. Instead, they were produced through processes such as the decay of heavier particles, phase transitions, or other non-equilibrium processes. The relic abundance in these cases depends on the specifics of the production mechanism rather than thermal freeze-out. An example of this mechanism is the production of axions through the misalignment mechanism.
+\end{itemize}
+
+
+\begin{mytheorem}[Back of the envelope estimates for DM production]
+%
+Even without the full machinery of Boltzmann equations, we can get rough estimates for the relic abundance of dark matter produced via thermal and non-thermal mechanisms by considering the relevant interaction rates and the expansion rate of the universe.
+\end{mytheorem}
+
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\subsection{Thermal mechanisms}
+%=========================================================
+%------------------------------------------------------------
+
+
+%===========================================================
+\subsubsection{Freeze-out}
+%===========================================================
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\subsection{Non-thermal mechanisms}
+%=========================================================
+%------------------------------------------------------------
+
+
+%===========================================================
+\subsubsection{Freeze-in}
+%===========================================================
+
+

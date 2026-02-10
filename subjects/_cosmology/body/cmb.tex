@@ -13,7 +13,7 @@
 %=========================================================
 %------------------------------------------------------------
 
-We specialize the newtonian-gauge geodesic equations \eqref{eq:geodesic_equation_covariant_momentum_newtonian}-\eqref{eq:geodesic_equation_physical_momentum_newtonian} and the Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} to the case of photons $p=E$. 
+We report the newtonian-gauge geodesic equations \eqref{eq:geodesic_equation_covariant_momentum_newtonian}-\eqref{eq:geodesic_equation_physical_momentum_newtonian} and Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge}, which simplify for photons since $E=p$.
 We have 
 \begin{align}\label{eq:geodesic_equations_photon_newtonian}
 \begin{aligned}
@@ -33,7 +33,7 @@ Similarly, the Boltzmann equation for photons becomes
 {\small
 \begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_photon}
 \begin{aligned}
-    \frac{d f}{d \lambda}
+    C[f]=\frac{d f}{d \lambda}
     %
     &=
     %
@@ -54,33 +54,41 @@ Photons retain local equilibrium with a blackbody distribution at all time\todot
 \begin{equation}\label{eq:local_temp_photons}
     f(\ct, x^i, E, \hat{p}^i) = \frac{1}{\exp\left(\frac{E}{T(\ct, x^i)}\right) - 1}, \quad T=\bar{T}(\tau)(1+\Theta(\tau, x^i, p, \hat{p}^i))=\bar{T}+\delta T.
 \end{equation}}
-More generally, assuming the distribution is some function $f(E/T)$ of the ratio $E/T$ to some \emph{local} temperature $T$, we Taylor expand and trucate to linear order in perturbations
+More generally, assuming the full distribution is still a function $f(\nicefrac{E}{T})$ of the ratio $\nicefrac{E}{T}$ to some \emph{local} temperature $T$, we Taylor expand around the background $\bar{f}(\tau,E)=\bar{f}(\nicefrac{E}{\bar{T}(\tau)})$ to get
+{\small
+\begin{align}
+    f&= \bar{f}+\frac{\partial f}{\partial T}\delta T = \bar{f}-\frac{\partial \bar{f}}{\partial E}E\Theta = \bar{f}-\frac{d \bar{f}}{d (\nicefrac{E}{\bar{T}})} \frac{E}{\bar{T}}\Theta,\qquad\qquad \text{with}\quad \frac{d \bar{f}}{d (\nicefrac{E}{\bar{T}})}=\frac{\partial \bar{f}}{\partial E}_{|\tau}\bar{T}=-\frac{\partial \bar{f}}{\partial \bar{T}}_{|E}\frac{\bar{T}^2}{E}.
+\end{align}}
+In turn we compute the various derivatives appearing in the LHS of Boltzmann equation 
+{\small
 \begin{align}\label{eq:photon_distribution_expansion}
 \begin{aligned}
-    f= \bar{f}+\frac{\partial f}{\partial T}\delta T = \bar{f}-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\Theta,\\
-    \frac{\partial f}{\partial E}=\frac{\partial \bar{f}}{\partial E}-\frac{\partial^2 \bar{f}}{\partial E^2}\frac{E}{T}\Theta-\frac{\partial \bar{f}}{\partial E}\frac{1}{T}\Theta -\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\cancel{\frac{\partial\Theta}{\partial E}},\\
-    \frac{\partial f}{\partial \tau}=-\frac{\partial \bar{f}}{\partial E}\frac{E}{\bar{T}^2}\frac{\partial \bar{T}}{\partial \tau}+\frac{\partial \bar{f}}{\partial E}\frac{E}{\bar{T}^2}\frac{\partial \bar{T}}{\partial \tau}\Theta-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\frac{\partial \Theta}{\partial \tau},\\
-    \frac{\partial f}{\partial \hat{p}^i}=-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\frac{\partial \Theta}{\partial \hat{p}^i},\\
-    \frac{\partial f}{\partial x^i}=-\frac{\partial \bar{f}}{\partial E}\frac{E}{T}\frac{\partial \Theta}{\partial x^i}.
+    \frac{\partial f}{\partial \tau}&= -\frac{d\bar{f}}{d(\nicefrac{E}{\bar{T}})}\frac{E}{\bar{T}^2}\frac{d\bar{T}}{d\tau}+ \frac{d^2\bar{f}}{d(\nicefrac{E}{\bar{T}})^2} \frac{E^2}{\bar{T}^3}\frac{d\bar{T}}{d\tau}\Theta+\frac{d \bar{f}}{d(\nicefrac{E}{\bar{T}})}\frac{E}{\bar{T}^2}\frac{d\bar{T}}{d\tau}\Theta-\frac{d \bar{f}}{d (\nicefrac{E}{\bar{T}})} \frac{E}{\bar{T}}\frac{\partial \Theta}{\partial \tau}\\
+    &= \frac{\partial \bar{f}}{\partial E}\frac{E}{\bar{T}}\frac{d\bar{T}}{d\tau}+\frac{\partial^2 \bar{f}}{\partial E^2}\frac{E^2}{\bar{T}}\frac{d\bar{T}}{d\tau}\Theta+\frac{\partial \bar{f}}{\partial E}\frac{E}{\bar{T}}\frac{d\bar{T}}{d\tau}\Theta-\frac{\partial \bar{f}}{\partial E}E\frac{\partial \Theta}{\partial \tau},
+    \\
+    \frac{\partial f}{\partial E}&=\frac{\partial \bar{f}}{\partial E}-\frac{\partial^2 \bar{f}}{\partial E^2}E\Theta-\frac{\partial \bar{f}}{\partial E}\Theta-\frac{\partial \bar{f}}{\partial E}E\frac{\partial \Theta}{\partial E},\\
+    \frac{\partial f}{\partial \hat{p}^i}&=-E\frac{\partial \bar{f}}{\partial E}\frac{\partial \Theta}{\partial \hat{p}^i},\\
+    \frac{\partial f}{\partial x^i}&=-E\frac{\partial \bar{f}}{\partial E}\frac{\partial \Theta}{\partial x^i}.
 \end{aligned}
-\end{align}
-At late times collisions with baryons are essentially low-energy Compton scatterings.
-To good approximation, these scatterings do not change the energy of photons but only the direction of their momentum and we can thus assume $\Theta=\Theta(\tau, x^i, \hat{p}^i)$, i.e. the temperature perturbation is independent of the photon energy.
-Pluggin \eqref{eq:photon_distribution_expansion} into the LHS of Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge_photon} and collecting zeroth and first order terms, we find\todotag{Check}
-\begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_photon_expanded}
+\end{align}}
+Plugging \eqref{eq:photon_distribution_expansion} into the LHS of Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge_photon} at zero order we get the redshift $T\propto a^{-1}$ of photon temperature
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_photon_zero_order}
 \begin{aligned}
-    &\frac{\partial \bar{T}}{\tau}=-\mathcal{H}\bar{T},\\
-    &\frac{\partial \Theta}{\partial \tau}-\hat{p}^j\partial_j\Theta+\frac{\partial \bar{T}}{\partial \tau}\frac{\Theta}{\bar{T}}+\hat{p}^j\partial_j\psi+\dot\phi = \frac{1}{\partial_E \bar{f}}\frac{1}{E}\mathcal{C}[f].
+    &\cancel{\tfrac{E}{a}E\partial_E\bar{f}}\bigg[\tfrac{1}{\bar{T}}\tfrac{d\bar{T}}{d\tau}+\mathcal{H}\bigg]=0 \quad \Rightarrow \quad \bar{T}\propto \frac{1}{a}.\\[3pt]
 \end{aligned}
-\end{align}
-Next we need an expression for the collision term $\mathcal{C}[f]$.
+\end{align}}
+At first order, replacing $\frac{\dot{T}}{T}=-\mathcal{H}$, we get
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_photon_first_order_newtonian}
+\begin{aligned}
+    &-\tfrac{E}{a}E\partial_E\bar{f}\bigg[\frac{\partial\Theta}{\partial \tau}+\hat{p}^j\frac{\partial\Theta}{\partial x^j}-\mathcal{H}E\cancel{\frac{\partial \Theta}{\partial E}}+\hat{p}^j\frac{\partial\psi}{\partial x^j}-\frac{\partial \phi}{\partial\tau}\bigg] = C[f].
+\end{aligned}
+\end{align}}
+At late times collisions with baryons are essentially low-energy Compton scatterings.
+To good approximation, these scatterings do not change the energy of photons but only the direction of their momentum, and we can thus assume $\Theta=\Theta(\tau, x^i, \hat{p}^i)$, i.e. the temperature perturbation is independent of the photon energy.
 
-
-
-
-
-
-
+We need to compute the collision term $C[f]$ for Compton scatterings, which we do in the next section.
 
 
 %--------------------------------------------------------
