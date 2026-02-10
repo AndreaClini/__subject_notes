@@ -13,8 +13,7 @@
 %=========================================================
 %------------------------------------------------------------
 
-We report the newtonian-gauge geodesic equations \eqref{eq:geodesic_equation_covariant_momentum_newtonian}-\eqref{eq:geodesic_equation_physical_momentum_newtonian} and Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge}, which simplify for photons since $E=p$.
-We have 
+We report the newtonian-gauge geodesic equations \eqref{eq:geodesic_equation_covariant_momentum_newtonian}-\eqref{eq:geodesic_equation_physical_momentum_newtonian} fot photons, which simplify since $E=p$,
 \begin{align}\label{eq:geodesic_equations_photon_newtonian}
 \begin{aligned}
     \frac{d P^0}{d\lambda}
@@ -22,14 +21,35 @@ We have
     \\
     \frac{dP^k}{d\lambda}&=-\frac{E^2}{a^2}\partial_k\psi-\frac{Ep}{a^2}\hat{p}^k\,2\left(\mathcal{H}(1-\psi+\phi)-\dot\phi\right)-\frac{p^2}{a^2}\left(\partial_k\phi-2\hat{p}^k\hat{p}^j\partial_j\phi\right).
     \\
-    \frac{d E}{d\ct}&=-\frac{p^2}{E}(\mathcal{H}-\dot\phi)-\hat{p}^j\partial_j\psi,
-    \\
-    \frac{d p}{d\ct}&=-p(\mathcal{H}-\dot\phi)-\frac{E}{p}\hat{p}^j\partial_j\psi,
+    \frac{d E}{d\ct}&=-\frac{E^2}{p}(\mathcal{H}-\dot\phi)-p\hat{p}^j\partial_j\psi = -E\mathcal{H}+E\frac{d\phi}{d\tau}-p\hat{p}^j(\partial_j\phi+\partial_j\psi),
     \\
     \frac{d\hat{p}^i}{d\ct}&=\big(\hat{p}^i\hat{p}^j-\delta^{ij}\big)\left(\frac{E}{p}\partial_j\psi+\frac{p}{E}\partial_j\phi\right).
 \end{aligned}
 \end{align}
-Similarly, the Boltzmann equation for photons becomes
+The last equation implies that to zeroth order in metric perturbations, photons travel along straight lines, while at first order they are deflected by the gravitational potentials $\psi$ and $\phi$.
+The third equation encodes the change in energy along the trajectory.
+It is convenient to rewrite it trading partial with total time derivatives $\frac{\partial \phi}{\partial \tau}=\frac{d\phi}{d\tau}-\frac{\partial \phi}{\partial x^j}\frac{dx^j}{d\tau}$ to get
+{\small
+\begin{align}
+    \frac{d \log E}{d\tau}&= -\mathcal{H}+\frac{d\phi}{d\tau}-\hat{p}^j(\partial_j\phi+\partial_j\psi).
+\end{align}}
+To order zero it encode the expected redshift behavior $E=p=\propto\, a^{-1}$.
+The perturbed part implies energy is red-blueshifted by the gravitational potentials via the istantaneous and integrated Sachs-Wolf effect.
+Since the change in $\hat{p}^j$ along the trajectory is already first order, we can integrate it to get
+{\small
+\begin{align}
+    \log \Big(\frac{E_f}{E_i}\Big) &= \int_{\tau_i}^{\tau_f} d\tau\,\, -\mathcal{H} + \frac{d\phi}{d\tau} - \hat{p}^j(\partial_j\phi+\partial_j\psi) \, d\tau\\
+    &= \log \Big(\frac{a_i}{a_f}\Big) + \underbrace{\big(\phi(\tau_f,x_f)-\phi(\tau_i,x_i)\big)}_{\text{instantaneous SW (aka gravitational redshift)}} - \int_{\tau_i}^{\tau_f} \underbrace{d\tau\,\, \hat{p}^j(\partial_j\phi+\partial_j\psi)}_{\text{integrated Sachs-Wolfe effect}}.
+\end{align}}
+Writing $E = \bar{E}(1+\Theta)$ with $\bar{E}\propto \, a^{-1}$ so that $\bar{E}_ia_i=\bar{E}_fa_f$ to remove the background redshift, we get the expected Sachs-Wolfe formula for the observed temperature anisotropies
+{\small
+\begin{align}
+    \Theta_f(\hat{p})-\Theta_i(\hat{p})\simeq \log\left(\frac{1+\Theta_f(\hat{p})}{1+\Theta_i(\hat{p})}\right) 
+    = \phi(\tau_f,x_f)-\phi(\tau_i,x_i) - \int_{\tau_i}^{\tau_f} d\tau\,\, \hat{p}^j(\partial_j\phi+\partial_j\psi).
+\end{align}}
+
+
+We report the Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} for photons becomes (second order in metric perturbations, exact otherwise)
 {\small
 \begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_photon}
 \begin{aligned}
