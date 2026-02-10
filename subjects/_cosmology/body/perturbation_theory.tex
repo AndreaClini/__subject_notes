@@ -153,12 +153,12 @@ Using the Christoffel symbols \eqref{eq:christoffel_newtonian_gauge} we have the
     \frac{dP^k}{d\lambda}&=-\frac{E^2}{a^2}\partial_k\psi-\frac{Ep}{a^2}\hat{p}^k\,2\left(\mathcal{H}(1-\psi+\phi)-\dot\phi\right)-\frac{p^2}{a^2}\left(\partial_k\phi-2\hat{p}^k\hat{p}^j\partial_j\phi\right).
 \end{aligned}
 \end{align}
-Using the above relations, we obtain corresponding evolution equations for the physical quantities, already expressed in conformal time $\tau$:
+Using the above relations, we obtain corresponding evolution equations for the physical quantities, already expressed in conformal time $\tau$ \todotag{Check}
 \begin{align}\label{eq:geodesic_equation_physical_momentum_newtonian}
 \begin{aligned}
-    \frac{d E}{d\ct}&=-\frac{p^2}{E}(\mathcal{H}-\dot\phi)-\hat{p}^j\partial_j\psi,
+    \frac{d E}{d\ct}&=-\frac{p^2}{E}(\mathcal{H}-\dot\phi)-p\hat{p}^j\partial_j\psi,
     \\
-    \frac{d p}{d\ct}&=-p(\mathcal{H}-\dot\phi)-\frac{E}{p}\hat{p}^j\partial_j\psi,
+    \frac{d p}{d\ct}&=-p(\mathcal{H}-\dot\phi)-E\hat{p}^j\partial_j\psi,
     \\
     \frac{d\hat{p}^i}{d\ct}&=\big(\hat{p}^i\hat{p}^j-\delta^{ij}\big)\left(\frac{E}{p}\partial_j\psi+\frac{p}{E}\partial_j\phi\right).
 \end{aligned}
@@ -206,7 +206,7 @@ where $\mathcal{M}$ is the Feynman amplitude of the process, and we assumed cros
 %------------------------------------------------------------------------------
 
 It is convenient to rewrite everything in terms of physical comoving variables $f=f(\ct,x^i,E,\hat p^i)$ in Newtonian gauge.
-Using formulas \eqref{eq:geodesic_equation_physical_momentum_newtonian}, the left-hand side of the Boltzmann equation \eqref{eq:boltzmann_eq_covariant_momentum} becomes (to first order in metric perturbation, but fully exact otherwise)
+Using formulas \eqref{eq:geodesic_equation_physical_momentum_newtonian}, the left-hand side of the Boltzmann equation \eqref{eq:boltzmann_eq_covariant_momentum} becomes (to first order in metric perturbation, but fully exact otherwise)\todotag{check}
 {\small
 \begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge}
 \begin{aligned}
