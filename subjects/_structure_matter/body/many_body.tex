@@ -5,3 +5,136 @@
 \label{ch:many_body_systems}
 %=========================================================
 %=========================================================
+
+
+\section{Second quantization (Fock space and many-body operators).}
+\subsection{Fock space and creation/annihilation operators.}
+Let $\mathcal{H}$ be the one-particle Hilbert space. 
+The (unsymmetrized) Fock space is
+\begin{align}
+\begin{aligned}
+\mathcal{F}=\bigoplus_{N=0}^{\infty}\mathcal{H}^{\otimes N}.
+\end{aligned}
+\end{align}
+The symmetrized/antisymmetrized Fock space is
+\begin{align}
+\begin{aligned}
+\mathcal{F}_{\pm}=\bigoplus_{N=0}^{\infty}\mathcal{H}^{\otimes_{\pm} N}.
+\end{aligned}
+\end{align}
+We denote by $S(N)$ the (anti)symmetrization operator on $\mathcal{H}^{\otimes N}$. 
+For $u,u_1,\dots,u_N\in\mathcal{H}$, the creation operator $c_u^\dagger$ acts as
+\begin{align}
+\begin{aligned}
+c_u^\dagger\,S(N)\ket{u_1,\dots,u_N}=\sqrt{N+1}\,S(N+1)\ket{u,u_1,\dots,u_N}.
+\end{aligned}
+\end{align}
+The annihilation operator $c_u$ is defined as the adjoint of $c_u^\dagger$. 
+Its action on $N$-particle (anti)symmetrized states is
+\begin{align}
+\begin{aligned}
+c_u\,S(N)\ket{u_1,\dots,u_N}=\frac{1}{\sqrt{N}}\sum_{j=1}^{N}(\pm 1)^{j-1}\braket{u|u_j}\,S(N-1)\ket{u_1,\dots,\widehat{u_j},\dots,u_N}.
+\end{aligned}
+\end{align}
+In particular,
+\begin{align}
+\begin{aligned}
+c_u\ket{0}=0.
+\end{aligned}
+\end{align}
+
+\subsection{Action on normalized occupation-number states.}
+Let $\{\ket{r}\}_{r=1}^{M}$ be an orthonormal basis of $\mathcal{H}$, and define mode operators $b_r^\dagger,b_r$ (bosons) and $a_r^\dagger,a_r$ (fermions). 
+For bosons,
+\begin{align}
+\begin{aligned}
+b_r^\dagger\ket{n_1,\dots,n_r,\dots,n_M}=\sqrt{n_r+1}\,\ket{n_1,\dots,n_r+1,\dots,n_M},
+\end{aligned}
+\end{align}
+\begin{align}
+\begin{aligned}
+b_r\ket{n_1,\dots,n_r,\dots,n_M}=\sqrt{n_r}\,\ket{n_1,\dots,n_r-1,\dots,n_M}.
+\end{aligned}
+\end{align}
+For fermions (with $n_r\in\{0,1\}$),
+\begin{align}
+\begin{aligned}
+a_r^\dagger\ket{n_1,\dots,n_r,\dots,n_M}=
+\begin{cases}
+0, & n_r=1,\\
+(-1)^{n_1+\cdots+n_{r-1}}\ket{n_1,\dots,1,\dots,n_M}, & n_r=0,
+\end{cases}
+\end{aligned}
+\end{align}
+\begin{align}
+\begin{aligned}
+a_r\ket{n_1,\dots,n_r,\dots,n_M}=
+\begin{cases}
+0, & n_r=0,\\
+(-1)^{n_1+\cdots+n_{r-1}}\ket{n_1,\dots,0,\dots,n_M}, & n_r=1.
+\end{cases}
+\end{aligned}
+\end{align}
+The orthonormal occupation-number basis can be generated from the vacuum as
+\begin{align}
+\begin{aligned}
+\ket{n_1,\dots,n_M}=\frac{1}{\sqrt{n_1!\cdots n_M!}}\,(b_1^\dagger)^{n_1}\cdots(b_M^\dagger)^{n_M}\ket{0}\qquad\text{(bosons)},
+\end{aligned}
+\end{align}
+\begin{align}
+\begin{aligned}
+\ket{n_1,\dots,n_M}=(a_1^\dagger)^{n_1}\cdots(a_M^\dagger)^{n_M}\ket{0}\qquad\text{(fermions)}.
+\end{aligned}
+\end{align}
+
+\subsection{Change of basis and canonical transformations.}
+Let $\{\ket{r}\}$ and $\{\ket{s}\}$ be two orthonormal bases of $\mathcal{H}$, and define
+\begin{align}
+\begin{aligned}
+M_{rs}=\braket{r|s}.
+\end{aligned}
+\end{align}
+Then the corresponding creation/annihilation operators transform as
+\begin{align}
+\begin{aligned}
+a_r^\dagger=\sum_{s}M_{rs}\,a_s^\dagger,\qquad a_r=\sum_{s}M_{rs}^*\,a_s,
+\end{aligned}
+\end{align}
+and similarly for bosons $(b_r^\dagger,b_r)$. 
+If both bases are orthonormal then $M$ is unitary, and the transformation is canonical. 
+
+\section{Commutation rules and useful composition formulas.}
+\subsection{(Anti)commutation relations.}
+For any $u,v\in\mathcal{H}$ (not necessarily from an orthonormal basis), the bosonic operators satisfy
+\begin{align}
+\begin{aligned}
+[b_u,b_v]=0,\qquad [b_u^\dagger,b_v^\dagger]=0,\qquad [b_u,b_v^\dagger]=\braket{u|v}.
+\end{aligned}
+\end{align}
+The fermionic operators satisfy
+\begin{align}
+\begin{aligned}
+\{a_u,a_v\}=0,\qquad \{a_u^\dagger,a_v^\dagger\}=0,\qquad \{a_u,a_v^\dagger\}=\braket{u|v}.
+\end{aligned}
+\end{align}
+For fermions there is a hole-particle symmetry: swapping creation and annihilation operators leaves the CAR form-invariant. 
+A standard example of canonical transformation is the Bogoliubov transformation. 
+
+\subsection{Useful rewriting formulas (moving operators inside symmetrized states).}
+From the action of $c_u$ on $S(N)\ket{u_1,\dots,u_N}$, one gets the composition identity
+\begin{align}
+\begin{aligned}
+c_u^\dagger c_v\,S(N)\ket{u_1,\dots,u_N}=\sum_{j=1}^{N}(\pm 1)^{j-1}\braket{v|u_j}\,S(N)\ket{u,u_1,\dots,\widehat{u_j},\dots,u_N}.
+\end{aligned}
+\end{align}
+Equivalently, the created vector $u$ can be moved into the position of the annihilated one (useful e.g.\ when rewriting one-body operators). 
+Similarly, for two-body structures one can iterate the same idea to obtain identities with double sums over the removed slots (useful when rewriting two-body operators). 
+
+\subsection{Occupation number operators.}
+Define number operators
+\begin{align}
+\begin{aligned}
+\hat n_r=b_r^\dagger b_r\qquad\text{(bosons)},\qquad \hat n_r=a_r^\dagger a_r\qquad\text{(fermions)}.
+\end{aligned}
+\end{align}
+They commute among themselves, and their eigenvalues on $\ket{n_1,\dots,n_M}$ are $n_r$. 
