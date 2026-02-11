@@ -1,0 +1,135 @@
+% !TeX root = ../cosmology_main.tex
+%=========================================================
+%=========================================================
+\chapter{Neutrinos in Cosmology}
+%========================================================
+%=========================================================
+
+The treatment of neutrios is almost identical to that of photons, since they can be treated as a relativistic fluid down to very late times.
+We still assume they retain local thermal equilibrium with a Fermi-Dirac distribution with temperature constrast $\mathcal{N}$, that is
+\begin{align}
+    f_\nu(\tau, \vec{x}, \vec{p}) = \frac{1}{e^{(E-\mu)/T_\nu}+1}, \quad T_\nu=\bar{T}_\nu(\tau)(1+\mathcal{N}(\tau, \vec{x}, \hat{p}, E)).
+\end{align}
+The main differences are the following.
+\begin{itemize}
+    \item Neutrino temperature is lower than the photon temperature $\bar{T}_\nu\simeq (4/11)^{1/3} \bar{T}_\gamma$, since neutrinos decouple before electron-positron annihilation, which heats up photons but not neutrinos.
+    The treatment is however unchanged, since the Boltzmann equation only depends on the temperature contrast $\delta T/T$, not on the absolute value.
+    \item Neutrinos are fermions, thus following Fermi-Dirac distribution, while photons are bosons, thus with Bose-Einstein distribution. Again this difference is neglible.
+    \item Neutrino have no interactions after decoupling, and the RHS of the Boltzmann equation is thus zero.
+    In particular they free-stream and develop non-negligible anisotropic stress (Legendre multipole $\mathcal{N}_2$ and possibly higher ones) already at early times, while photons are driven towards the first two multipoles $\Theta_0$, $\Theta_1$ by Thomson scattering until recombination and develop anisotropic stress only after decoupling.
+    Neutrino anisotropic stress has a non-negligible effect on the evolution of metric perturbations, and thus on the CMB power spectrum and other observables.
+    \item Neutrino are actually massive, and become non-relativistic at late times, while photons are always relativistic. This affects the background evolution of the universe, and thus the expansion history and the growth of structure at late times.
+\end{itemize}
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Geodesic \& Boltzmann Equations for neutrinos}
+%=========================================================
+%------------------------------------------------------------
+
+
+The geodesic equations \label{eq:geodesic_equation_physical_momentum_newtonian} are unchanged, again with $E=p$ to good approximation down to very late times,
+{\small
+\begin{align}\label{eq:geodesic_equations_neutrino_newtonian}
+\begin{aligned}
+    \frac{d E}{d\ct}&=-\frac{p^2}{E}(\mathcal{H}-\dot\phi)-p\hat{p}^j\partial_j\psi,
+    \\
+    \frac{d p}{d\ct}&=-p(\mathcal{H}-\dot\phi)-E\hat{p}^j\partial_j\psi,
+    \\
+    \frac{d\hat{p}^i}{d\ct}&=\big(\hat{p}^i\hat{p}^j-\delta^{ij}\big)\left(\frac{E}{p}\partial_j\psi+\frac{p}{E}\partial_j\phi\right).
+\end{aligned}
+\end{align}}
+The last equation implies that to zeroth order in metric perturbations, neutrinos travel along straight lines, while at first order they are deflected by the gravitational potentials $\psi$ and $\phi$.
+The first two equations encode the change in energy and momentum along the trajectory.
+It is convenient to rewrite it trading partial with total time derivatives $\frac{\partial \phi}{\partial \tau}=\frac{d\phi}{d\tau}-\frac{\partial \phi}{\partial x^j}\frac{dx^j}{d\tau}$ to get, in the relativistic limit $E=p$,
+{\small
+\begin{align}
+    \frac{d \log E}{d\tau}&= -\mathcal{H}+\frac{d\phi}{d\tau}-\hat{p}^j(\partial_j\phi+\partial_j\psi).
+\end{align}}
+To order zero it encode the expected redshift behavior $E=p=\propto\, a^{-1}$.
+The perturbed part implies energy is red-blueshifted by the gravitational potentials via the istantaneous and integrated Sachs-Wolf effect.
+Since the change in $\hat{p}^j$ along the trajectory is already first order, we can integrate it to get
+{\small
+\begin{align}
+    \log \Big(\frac{E_f}{E_i}\Big) &= \int_{\tau_i}^{\tau_f} d\tau\,\, -\mathcal{H} + \frac{d\phi}{d\tau} - \hat{p}^j(\partial_j\phi+\partial_j\psi) \, d\tau\\
+    &= \log \Big(\frac{a_i}{a_f}\Big) + \underbrace{\big(\phi(\tau_f,x_f)-\phi(\tau_i,x_i)\big)}_{\text{instantaneous SW (aka gravitational redshift)}} - \int_{\tau_i}^{\tau_f} \underbrace{d\tau\,\, \hat{p}^j(\partial_j\phi+\partial_j\psi)}_{\text{integrated Sachs-Wolfe effect}}.
+\end{align}}
+Writing $E = \bar{E}(1+\mathcal{N})$ with $\bar{E}\propto \, a^{-1}$ so that $\bar{E}_ia_i=\bar{E}_fa_f$ to remove the background redshift, we get the expected Sachs-Wolfe formula for the observed temperature anisotropies
+{\small
+\begin{align}
+    \mathcal{N}_f(\hat{p})-\mathcal{N}_i(\hat{p})\simeq \log\left(\frac{1+\mathcal{N}_f(\hat{p})}{1+\mathcal{N}_i(\hat{p})}\right) 
+    = \phi(\tau_f,x_f)-\phi(\tau_i,x_i) - \int_{\tau_i}^{\tau_f} d\tau\,\, \hat{p}^j(\partial_j\phi+\partial_j\psi).
+\end{align}}
+
+
+The Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} for neutrinoes is again (second order in metric perturbations, exact otherwise)
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_neutrino}
+\begin{aligned}
+    C[f]&=\frac{d f}{d \lambda}
+    =
+    %
+    P^{0}\left[\frac{\partial f}{\partial \tau}+\frac{\partial f}{\partial x^{i}} \frac{P^{i}}{P^{0}}+\frac{\partial f}{\partial E} \frac{1}{P^{0}} \frac{d E}{d \lambda}+\frac{\partial f}{\partial \hat{p}^{i}} \frac{1}{P^{0}} \frac{d \hat{p}^{i}}{d \lambda}\right]
+    \\
+    &=\frac{E}{a}\!\left[\frac{\partial f}{\partial \ct}(1-\psi)
+    \!+\!\left(\hat{p}^j\partial_jf\right) \frac{p}{E}(1\!+\!\phi)
+    -\frac{\partial f}{\partial E}\frac{p^2}{E}\left(\mathcal{H}(1\!-\!\psi)-\dot\phi\right)
+    -\frac{\partial f}{\partial \bar{p}^j}\partial_j\psi \,E
+    \!+\!\left(\frac{\partial f}{\partial p} \hat{p}^j-\frac{\partial f}{\partial \bar{p}^j}\right)\partial_j\phi\,\frac{p^2}{E}\right].
+\end{aligned}
+\end{align}}
+
+Neutrinos retain local equilibrium with a Fermi-Dirac distribution down to late times\todotag{Discuss}, simply with a time and momentum dependent temperature, 
+{\small
+\begin{equation}\label{eq:local_temp_neutrinos}
+    f(\ct, x^i, E, \hat{p}^i) = \frac{1}{\exp\left(\frac{E}{T_\nu}\right) + 1}, \quad T_\nu=\bar{T}_\nu(\tau)(1+\mathcal{N}(\tau, x^i, p, \hat{p}^i))=\bar{T}_\nu+\delta T_\nu.
+\end{equation}}
+More generally, assuming the full distribution is still a function $f(\nicefrac{E}{T})$ of the ratio $\nicefrac{E}{T}$ to some \emph{local} temperature $T$, we Taylor expand the distribution function and its derivative just like for photons \label{eq:photon_distribution_expansion} and rewrite the Boltzmann equation.
+At zero order we get the redshift $T\propto a^{-1}$ of neutrino temperature
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_neutrino_zero_order}
+\begin{aligned}
+    &\cancel{\tfrac{E}{a}E\partial_E\bar{f}}\bigg[\tfrac{1}{\bar{T}}\tfrac{d\bar{T}}{d\tau}+\mathcal{H}\bigg]=0 \quad \Rightarrow \quad \bar{T}_\nu\propto \frac{1}{a}.\\[3pt]
+\end{aligned}
+\end{align}}
+At first order, replacing $\frac{\dot{T}}{T}=-\mathcal{H}$, we get
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_neutrino_first_order_newtonian}
+\begin{aligned}
+    &-\tfrac{E}{a}E\partial_E\bar{f}\bigg[\frac{\partial\mathcal{N}}{\partial \tau}+\hat{p}^j\frac{\partial\mathcal{N}}{\partial x^j}-\mathcal{H}E\cancel{\frac{\partial \mathcal{N}}{\partial E}}+\hat{p}^j\frac{\partial\psi}{\partial x^j}-\frac{\partial \phi}{\partial\tau}\bigg] = 0.
+\end{aligned}
+\end{align}}
+Note there is indeed no right-hand side, since neutrinos have no sizable interactions after decoupling.
+
+
+
+
+%=====================================================================
+\subsection*{Passing to multipoles}
+%====================================================================
+We can now pass to Fourier space and decompose the angular dependence of $\mathcal{N}$ in multipoles to get a hierarchy of coupled ODEs for the multipole moments $\mathcal{N}_\ell$.
+Passing to Fourier space in \eqref{eq:Boltzmann_LHS_neutrino_first_order_newtonian}, we get\todotag{Fix RHS}
+{\small
+\begin{align}\label{eq:Boltzmann_LHS_neutrino_first_order_newtonian_Fourier}
+\begin{aligned}
+    &\bigg[\frac{\partial\mathcal{N}}{\partial \tau}+i\vec{k}\cdot\hat{p}\,\mathcal{N}-\mathcal{H}E\cancel{\frac{\partial \mathcal{N}}{\partial E}}+i\hat{p}\cdot\vec{k}\,\psi-\frac{\partial \phi}{\partial\tau}\bigg] = 0.
+\end{aligned}
+\end{align}}
+The dependence on $\vec{k}$ only enter via the modulus $k$ and the angle $\mu:=\hat{k}\cdot\hat{p}$, so we can decompose the angular dependence in Legendre polynomials $P_\ell(\mu)$ as
+{\small
+\begin{align}
+    \mathcal{N}(\tau, k, \mu) = \sum_{\ell=0}^\infty (-i)^\ell (2\ell+1) \mathcal{N}_\ell(\tau, k) P_\ell(\mu).
+\end{align}}
+The multipole moments $\mathcal{N}_\ell$ are given by the inverse transform
+{\small
+\begin{align}
+    \mathcal{N}_\ell(\tau, k) = \frac{i^\ell}{2}\int_{-1}^1 d\mu\, P_\ell(\mu) \mathcal{N}(\tau, k, \mu).
+\end{align}}
+The first three multipoles have a simple physical interpretation: up to numerical factors, $\mathcal{N}_0$ is the monopole i.e. the average temperature perturbation; $\mathcal{N}_1$ is the dipole i.e. the bulk velocity of the neutrino fluid; $\mathcal{N}_2$ is the quadrupole i.e. the anisotropic stress of the neutrino fluid.
+Higher multipoles $\mathcal{N}_\ell$ with $\ell\geq 3$ encode higher-order angular correlations of the temperature perturbation, and are generated by free-streaming of neutrinos after decoupling.
+The Boltzmann equation then becomes a hierarchy of coupled ODEs for the multipole moments $\mathcal{N}_\ell$, which can be solved numerically to get\todotag{Write eq}
+{\small
+\begin{align}
+    ...
+\end{align}}
