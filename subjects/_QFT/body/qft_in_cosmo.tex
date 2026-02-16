@@ -358,13 +358,13 @@ Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonali
     &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i -\alpha_{mi} \beta_{ni} - \beta_{mi} \alpha_{ni} = 0.
 \end{align}}
 Enforcing the second bases is also complete, we invert the relation by inserting a completeness in the $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ basis and recalling the property $\langle x,y\rangle^* = \langle x^*,y^*\rangle$ of the symplectic hermitian product, we find 
-\begin{align}\label{eq:inverse_transformation_bogoliubov_modes}
+{\small\begin{align}\label{eq:inverse_transformation_bogoliubov_modes}
     u_i= \sum_m \alpha_{mi}^* \tilde{u}_m - \beta_{mi} \tilde{u}_m^*,\quad \text{with}\quad
     \begin{array}{c}
     \langle u_i, u_j \rangle = \delta_{ij} \quad \Rightarrow \quad (\alpha^\dagger \alpha - \beta^T \beta^*)_{ij} = \sum_m \alpha_{mi}^* \alpha_{mj} - \beta_{mi} \beta_{mj}^* = \delta_{ij},\\[2pt]
     \langle u_i^*, u_j \rangle = 0 \quad \Rightarrow \quad (\alpha^\dagger \beta - \beta^T \alpha^*)_{ij} = \sum_m \alpha_{mi}^* \beta_{mj} - \beta_{mi} \alpha_{mj}^* = 0.
     \end{array}
-\end{align}
+\end{align}}
 More concisely, in matrix form, demanding both are simplectic (orthogonal complete) bases imposes\todotag{check}
 {\small
 \begin{align}\label{eq:bogol_transform_mode_function_matrix_form_classical}
@@ -374,10 +374,10 @@ More concisely, in matrix form, demanding both are simplectic (orthogonal comple
     \begin{pmatrix}u_j\\u_j^*\end{pmatrix}
     = \begin{pmatrix}\alpha^\dagger & -\beta^T\\-\beta^\dagger & \alpha^T \end{pmatrix}
     \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix},
-    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0 \\[2pt]
-    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\, \alpha^\dagger \beta - \beta^T \alpha^* = 0
+    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\,\, \alpha\beta^T - \beta\alpha^T = 0, \\[2pt]
+    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\,\, \alpha^\dagger \beta - \beta^T \alpha^* = 0.
     \end{array}
-\end{align}
+\end{align}}
 Similar `rotations' can be applied to real bases $\{\phi_n,\pi_n\}$ of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure.
 This shows the above bases are far from unique and in fact there exists an infinite family of them related by Bogoliubov transformations.
 
@@ -556,7 +556,7 @@ More concisely, in matrix form, demanding both are simplectic bases enforces\tod
     \begin{pmatrix}u_j\\u_j^*\end{pmatrix}
     = \begin{pmatrix}\alpha^\dagger & -\beta^T\\-\beta^\dagger & \alpha^T \end{pmatrix}
     \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix},
-    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0 \\[2pt]
+    \quad\text{with}\quad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0 \\[2pt]
     \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\, \alpha^\dagger \beta - \beta^T \alpha^* = 0
     \end{array}
 \end{align}
@@ -578,32 +578,55 @@ Equating the two expressions for $\hat{\phi}$ we get
     \begin{pmatrix}\alpha & \beta\\\beta^* & \alpha^* \end{pmatrix}
     \begin{pmatrix}u_j\\ u_j^*\end{pmatrix}
     \,\,\Rightarrow\,\,
-    \begin{pmatrix}\tilde{a}_m\\ \tilde{a}_m^\dagger \end{pmatrix} 
+     \begin{pmatrix} a_j\\ a_j^\dagger \end{pmatrix}
     = \begin{pmatrix} \alpha^T & \beta^\dagger\\ \beta^T & \alpha^\dagger\end{pmatrix}
-    \begin{pmatrix} a_j\\ a_j^\dagger \end{pmatrix}.
+    \begin{pmatrix}\tilde{a}_m\\ \tilde{a}_m^\dagger \end{pmatrix}.
 \end{align}
 }
 We now relate the Fock spaces defined by ladder operators of the two theories, since under the Stone--von Neumann assumption these are unitarily equivalent via a transformation mapping the quantum DoFs of the theories into each other.
-In particular, the vacuum of the first theory must be expressible as a suitable superposition of multi-particle states of the second theory $|0\rangle =f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ will indeed be independent of annihilation operators $\tilde{a}$ since they annihilate the vacuum $|\tilde{0}\rangle$ and we may commute them to the right upon changing the form of the $f$.}
-The $\tilde{a}_m^\dagger$ operators commute with each other, while acting with $\tilde{a}_m$ is equivalent to taking a derivative $[\tilde{a}_m,f\big(\{\tilde{u}^\dagger_n\}_n\big)] = \tfrac{\partial f}{\partial \tilde{a}_m^\dagger}$.
-Imposing the vacuum condition in the first theory we thus get
+In particular, the vacuum of either theory must be expressible as a suitable superposition of multi-particle states of the other $|\tilde{0}\rangle =f\big(\{{a}^\dagger_j\}_n\big)|0\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ will indeed be independent of annihilation operators ${a}_j$ since they annihilate the vacuum $|0\rangle$ and we may commute them to the right upon changing the form of the $f$.}
+The ${a}_j^\dagger$ operators commute with each other, while acting with $a_j$ is equivalent to taking a derivative $[a_j,f\big(\{a^\dagger_i\}_i\big)] = \tfrac{\partial f}{\partial a_j^\dagger}$.
+Imposing the vacuum condition in the other theory we thus get
 {\small
 \begin{align}
-     0=a_j|0\rangle = \Big(\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger\Big) |0\rangle
-     = \Big(\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger\Big) f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle = \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big)|\tilde{0}\rangle.
+     0=\tilde{a}_m|\tilde{0}\rangle
+     = \Big(\sum_j \alpha_{mj}^* a_j - \beta_{mj}^* a_j^\dagger\Big) f\big(\{a_i\}_i\big)|0\rangle = \sum_m \Big(\alpha_{mj}^* \frac{\partial f}{\partial a_j^\dagger} - \beta_{mj}^* a_j^\dagger f\Big)|\tilde{0}\rangle.
 \end{align}}
-Since this must hold for arbitrary $j$ we get a set of differential equations for $f$
+Since this must hold for arbitrary $m$ we get a set of differential equations for $f$
 \begin{align}
-    \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big) = 0 \quad \forall j \quad \text{i.e.}\quad \nabla_{\tilde{a}^\dagger}f = -(\alpha^T)^{-1}\beta^\dagger \tilde{a}^\dagger f
-    \,\,\Rightarrow\,\, f\big(\tilde{a})\, \propto\,  \exp\Big(-\tfrac{1}{2} \tilde{a}^\dagger_m \big[(\alpha^T)^{-1}\beta^\dagger\big]_{mn} \tilde{a}^\dagger_n\Big).
+    \sum_m \Big(\alpha_{mj}^* \frac{\partial f}{\partial a_j^\dagger} - \beta_{mj}^* a_j^\dagger f\Big) = 0 \quad \forall m \quad \text{i.e.}\quad \nabla_{a^\dagger}f = (\alpha^*)^{-1}\beta^* a^\dagger f
+    \,\,\Rightarrow\,\, f\big(a)\, \propto\,  \exp\Big(\tfrac{1}{2} a^\dagger_i \big[(\alpha^*)^{-1}\beta^*\big]_{ij} a^\dagger_j\Big).
 \end{align}
-Beware the matrix $(\alpha^T)^{-1}\beta^\dagger=\beta^*\alpha^{-1}$ is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces $\beta^T\alpha^*-\alpha^\dagger\beta=0$.
+Beware the matrix $(\alpha^*)^{-1}\beta^*=\big[(\alpha^*)^{-1}\beta^*\big]^T =\beta^\dagger (\alpha^\dagger)^{-1}$ is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces $\alpha\beta^T-\beta\alpha^T=0$.
+
+We next normalize the vacuum just like for squeezed states.
+First note the hermitian conjugate matrix $\big[(\alpha^*)^{-1}\beta^*\big]^\dagger \equiv \big[\beta^\dagger (\alpha^\dagger)^{-1}\big]^\dagger = (\alpha)^{-1}\beta$ is of course again symmetric, namely $\big[(\alpha)^{-1}\beta\big]=\big[(\alpha)^{-1}\beta\big]^T= \beta^T (\alpha^T)^{-1}$.
+Next note that
+\begin{align}
+    \exp\Big(-\tfrac{1}{2} a_p\big[\alpha^{-1}\beta\big]_{pq}a_q\Big)|\tilde{0}\rangle
+    = \Big(1+ aa+\dots\Big) |0\rangle = |0\rangle.
+\end{align}
+Therefore we add this operator in between $f(a^\dagger)$ and $|0\rangle$ without changing the state.
+Crucially the commutator of the two operators in the exponentials is a c-number thanks to \eqref{eq:bogol_transform_mode_function_matrix_form_quantum}, namely\todotag{Do it}
+{\small\begin{align}
+    \Big[a_p\big(\alpha^{-1}\beta\big)_{pq}a_q\,,\,\,a^\dagger_i \big((\alpha^*)^{-1}\beta^*\big)_{ij} a^\dagger_j\Big]
+    &= \big(\alpha^{-1}\beta\big)_{pq}\big((\alpha^*)^{-1}\beta^*\big)_{ij} \Big(a_pa_j^\dagger \delta_{qi}+a_pa_i^\dagger \delta_{qj}+ a^\dagger_i a_q \delta_{pj}+a^\dagger_j a_q \delta_{pi}\Big)\\
+    &= ...
+\end{align}}
+Next use the Baker--Campbell--Hausdorff formula to get
+{\small
+\begin{align}
+   \exp\Big(\tfrac{1}{2} a^\dagger_i \big[(\alpha^*)^{-1}\beta^*\big]_{ij} a^\dagger_j\Big)
+   \exp\Big(-\tfrac{1}{2} a_p\big[\alpha^{-1}\beta\big]_{pq}a_q\Big)
+    = 
+    \exp\Big(\tfrac{1}{2} a^\dagger_i \big[(\alpha^*)^{-1}\beta^*\big]_{ij} a^\dagger_j-\tfrac{1}{2} a_p\big[\alpha^{-1}\beta\big]_{pq}a_q\Big) + \exp\Big(\textcolor{red}{??}\Big).
+\end{align}}
 Normalizing the vacuum states we find\todotag{fnish}
 {\small
 \begin{align}
-    |0\rangle = \frac{1}{|\det(\alpha)|^{\tfrac12}} e^{-\frac{1}{2} \tilde{a}^\dagger (\alpha^T)^{-1}\beta^\dagger \tilde{a}^\dagger} |\tilde{0}\rangle.
+    ....
 \end{align}}
-More generally, using the Baker--Campbell--Hausdorff formula we can express any state of the first theory as a suitable superposition of states of the second theory, namely
+More generally, using the Baker--Campbell--Hausdorff formula we can express any state of the theory as a suitable superposition of states of the other theory, namely
 {\small
 \begin{align}
     ...
