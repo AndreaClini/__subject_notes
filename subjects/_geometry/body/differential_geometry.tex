@@ -1808,7 +1808,16 @@ The connection form on the tangent bundle $\omega_{TM}$ must then take values in
 \begin{align}
     \nabla_\cdot e_j &=: \omega_{TM}(\cdot) e_j =: e_i \otimes \omega^i_{\, j}(\cdot)\,.
 \end{align}
-We extend the connection $\nabla$ on the cotangent bundle $T^0_1M$ via the ajoint representation of $\mathfrak{g}$, and to all tensor bundles $T^h_k M$ via the tensor product of (adjoint) representations.
+It is automatic to extend the connection $\nabla$ on the cotangent bundle $T^0_1M$ via the ajoint representation of $\mathfrak{g}$, and to all tensor bundles $T^h_k M$ via the tensor product of (adjoint) representations.
+Since the ajoint and tensor representations of $G$ acts as
+\begin{align}
+    F^*\ni \varphi \mapsto \varphi\circ P_\gamma(t)^{-1}= \varphi_i\big(P_\gamma^{-1}\big)^i_j\quad  T^h_k F \ni T \mapsto P_\gamma(t) \circ T \circ P_\gamma(t)^{-1} = T^a_b \big(P_\gamma(t)\big)^c_a \big(P_\gamma^{-1}(t)\big)^b_d,
+\end{align}
+recalling that $P_\gamma(0)=\mathbb{I}$, $\frac{d(P_\gamma)^i_j}{dt}_{\mid t=0} = \omega^i_{\, j}$, and $\frac{d(P_\gamma^{-1})^i_j}{dt}_{\mid t=0} = - \omega^i_{\, j}$, we recover the familiar expressions for the connection 1-form (i.e. the associated Lie algebra representation) on adjoint and tensor representations
+\begin{align}
+    \nabla_\cdot \theta^i &=: \omega_{T^0_1M}(\cdot) \theta^i=: -\theta^j \otimes \omega^i_{\, j}(\cdot),\\
+    \nabla_\cdot \big(e_a\otimes \theta^b\big) &=: \omega_{T^h_k M}(\cdot) \big(e_a\otimes \theta^b\big) =: e_c \otimes \theta^d \otimes \omega^{\binom{c}{d}}_{T^h_k M\, \binom{a}{b}}(\cdot) = e_c \otimes \theta^d \otimes \left( \omega^c_{\, a}(\cdot) \delta^b_d -\omega^b_{\, d}(\cdot) \delta^c_a\right).
+\end{align}
 
 Given an arbitrary fiber bundle $E_F\to M$ with the same structure group $G$ as the tangent bundle i.e. fiber $F$ transforming under some representation $G\curvearrowright F$ with corresponding Lie algebra representation $\mathfrak{g}\curvearrowright F$, we can also naturally induce a connection on $E_F\to M$.
 Indeed, regardless of the specific representation, the connection 1-form on the tangent bundle can be seen as taking values in the \emph{abstract} Lie algebra
@@ -1963,12 +1972,12 @@ Using linearity of the 2-form, we prove it on a coordinate induced basis $\parti
 \begin{mytheorem}[Bianchi identities in the tetrad formalism\answerinline{ok}]
 %
 The Bianchi identities in a tetrad $\{f_i,\,\phi^i\}_i$ are concisely expressed via the exterior covariant derivative $d_\nabla$ as
-\begin{align}
-    d_\nabla T &= \Omega_{\, j} \wedge \phi^j\qquad \text{i.e.}\quad d_\nabla T:=d_\nabla(f_i\otimes T^i) = f_i\otimes\big( \Omega^i_{\, j} \wedge \phi^j\big),
+{\small\begin{align}
+    &d_\nabla T:=d_\nabla(f_i\otimes T^i) = f_i\otimes\big( \Omega^i_{\, j} \wedge \phi^j\big)=:\Omega_j\wedge \phi^j\qquad \text{i.e.}\quad dT^i= \Omega^i_{\, j} \wedge \phi^j - \omega^i_{\, j} \wedge T^j,
     \\
-    d \Omega^i_{\, j} &= 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, j}:=d_\nabla\Big(f_i \otimes \Omega^i_{\, j}\Big) = f_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + \underbrace{d \Omega_{\, j}^i}_{=0}\Big) = f_i \otimes\omega_k^i\wedge \Omega^k_j\,.
-\end{align}
-Beware the 2nd identity says the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ vanish, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
+    &d_\nabla\Omega_{\, j}:=d_\nabla\Big(f_i \otimes \Omega^i_{\, j}\Big) = f_i \otimes \Big(\omega_k^i\wedge \Omega^k_j + d \Omega_{\, j}^i\Big) = f_i \otimes \Omega^i_{\, k} \wedge \omega^k_{\, j}=:\Omega_k \wedge \omega^k_{\, j} \quad \text{i.e.}\quad d\Omega^i_j = \omega^i_k\wedge \Omega^k_j - \Omega^i_k \wedge \omega^k_{\, j}.
+\end{align}}
+Beware he exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ does NOT vanish, but rather it takes the form specified above.
 The \textbf{Bianchi identities} essentially express \textbf{symmetry contraints} that follow \textbf{from the very definition} of torsion and curvature.
 In particular, in absence of torsion $T=0$ the first Bianchi identity reduces to
 \begin{equation}
@@ -1995,10 +2004,10 @@ For the second equation, renaming dummy indices, expressing $\Omega^i_{\, j}$ in
     \\
     &= \big(\Omega^i_k-\omega^i_\ell\wedge \omega^\ell_k\big)\wedge \omega^k_{\, j} - \omega^i_{\, k} \wedge \big(\Omega_j^k-\omega^k_\ell\wedge \omega^\ell_j\big)
     \\
-    & = \underbrace{\Omega^i_k \wedge \omega^k_{\, j} - \omega^i_{\, \ell}\wedge \Omega^\ell_j}_{=0}
+    & = \Omega^i_k \wedge \omega^k_{\, j} - \omega^i_{\, \ell}\wedge \Omega^\ell_j
     \,\,\,\,\underbrace{-\omega^i_\ell\wedge \omega^\ell_k\wedge \omega^k_{\, j}
     + \omega^i_{\, k} \wedge \omega^k_\ell\wedge \omega^\ell_j}_{=0}
-    = 0.
+    = \Omega^i_k \wedge \omega^k_{\, j} - \omega^i_{\, \ell}\wedge \Omega^\ell_j.
 \end{align}
 The rest follows from the definition of the exterior covariant derivative.
 \end{proof}
@@ -2194,12 +2203,13 @@ Since the identity are tensorial, we can prove them by direct computation using 
 %
 The Bianchi identities on the tangent bundle are unchanged from a general fiber bundle and so is the proof.
 In a tetrad $\{e_a,\theta^a\}_a$ of $TM\to M$ they read
+{\small
 \begin{align}
-    &d_\nabla T :=d_\nabla\big(e_a\otimes T^a\big) = \Omega_{\, b} \wedge \theta^b\qquad \text{i.e.}\quad \omega_b^a\wedge T^b +d T^a = \Omega^a_{\, b} \wedge \theta^b,
+    &d_\nabla T :=d_\nabla\big(e_a\otimes T^a\big)= e_a\otimes \big(\Omega^a_b \wedge \theta^b\big) = \Omega_{\, b} \wedge \theta^b\qquad \text{i.e.}\quad dT^a = -\omega_b^a\wedge T^b +\Omega^a_{\, b} \wedge \theta^b,
     \\
-    &d \Omega^a_{\, b} = 0\qquad \text{i.e.}\quad d_\nabla \Omega_{\, b} :=d_\nabla (e_a \otimes \Omega^a_{\, b})= e_a \otimes \Big(\omega_c^a\wedge \Omega^c_b + \underbrace{d \Omega_{\, b}^a}_{=0}\Big) = e_a \otimes\omega_c^a\wedge \Omega^c_b\,.
-\end{align}
-Beware the 2nd identity says the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ vanish, \emph{not} that the exterior covariant derivative of the $(1,0)$-tensor valued 2-form $\Omega_{\, j}$ vanishes!
+    &d_\nabla \Omega_{\, b} :=d_\nabla (e_a \otimes \Omega^a_{\, b})= e_a \!\otimes\! \Big(\omega_c^a\wedge \Omega^c_b + d \Omega_{\, b}^a\Big) = e_a \!\otimes\! \Big(\Omega^a_{\, c} \wedge \omega^c_{\, b}\Big) =: \Omega_c \wedge \omega^c_{\, b} \,\, \text{i.e.}\,\, d\Omega^a_b = -\omega^a_c\wedge \Omega^c_b + \Omega^a_c \wedge \omega^c_{\, b}.
+\end{align}}
+Beware the exterior derivative of the $\R$-valued 2-forms $\Omega^i_{\, j}$ does NOT vanish, but rather it takes the form specified above.
 The \textbf{Bianchi identities} essentially express \textbf{symmetry contraints} that follow \textbf{from the very definition} of torsion and curvature.
 In particular, \textbf{in absence of torsion} $T=0$ the \textbf{first Bianchi identity becomes}
 \begin{equation}
@@ -2244,17 +2254,22 @@ The coefficients originally obtained from the metric are now obtained via the pr
 \begin{align}
     B_i^\mu\, \Longrightarrow \theta^i\,\Longrightarrow C_{ij}^k\, \Longrightarrow \Gamma_{ij}^k\, \Longrightarrow \omega_j^k\, \Longrightarrow \Omega_j^k\,.
 \end{align}
-To express the Einstein equations in this formalism, it wil be convenient to define a (0,2) tensor valued 2-form\todotag{Check def \& name}
+To express the Einstein equations in this formalism, it is convenient to define (0,2)-tensor valued 2-forms and (0,3)-tensor valued 1-form\todotag{check}
 \begin{align}
-    H_{\alpha\beta} \theta^\alpha\otimes \theta^\beta,\quad H_{\alpha\beta}:= \star\Big(\theta^\alpha \wedge \theta^\beta\Big) = \tfrac{1}{2} \underbrace{\sqrt{|g|}}_{=1}\,\epsilon_{\alpha\beta\gamma\delta} \,\, \theta^\gamma \wedge \theta^\delta,
+    H^{(2)}= \theta^a \otimes \theta^b \otimes H^{ab},\quad H^{(3)} = \theta^a \otimes \theta^b \otimes \theta^c \otimes H^{abc},
 \end{align}
-and a (0,3)-tensor valued 1-form 
+where the coefficient p-forms are defined by
 \begin{align}
-    H_{\alpha\beta\gamma} \theta^\alpha\otimes \theta^\beta \otimes \theta^\gamma,\quad H_{\alpha\beta\gamma} := \star\Big(\theta^\alpha \wedge \theta^\beta \wedge \theta^\gamma\Big) = \underbrace{\sqrt{|g|}}_{=1}\, \epsilon_{\alpha\beta\gamma\delta} \,\, \theta^\delta.
+    &H^{ab} := \star\Big(\theta^a \wedge \theta^b\Big) = \sqrt{g}\, g^{ia} g^{jb}\, \epsilon_{ijk\ell}\, \theta^k \otimes \theta^\ell = \sqrt{g}\, g^{ia} g^{jb}\, \tfrac12 \epsilon_{ijk\ell}\, \theta^k \wedge \theta^\ell,\\[3pt]
+    &H^{abc} := \star\Big(\theta^a \wedge \theta^b \wedge \theta^c\Big) = \sqrt{g}\, g^{ia} g^{jb} g^{kc}\, \epsilon_{ijk\ell}\,\theta^\ell\,.
 \end{align}
-Note they are antisymmetric in all the indices, regardless of whch are considered to be part of the form or part of the tensor.
+Note the coefficient p-forms are antisymmetric in all the indices, regardless of whch are considered to be part of the form or part of the tensor.
 
-We now want to express the Eintein equations in this formalisms...
+We now want to express the Eintein equations in this formalisms...\todotag{finish}
+It holds that 
+\begin{align}
+    \sqrt{g} \, R d^4x = \star R = H_{ab}\wedge \Omega^{ab},
+\end{align}
 
 %First note that the Einstein_Hilbert action can be expressed as
 % \begin{align}
@@ -2284,24 +2299,24 @@ Since the tetrad formalism is completely equivalent to the metric formalism, we 
 
 \bigskip
 {
-\color{red}
 From Kempf GR L10 and then L15 missing:
 \begin{itemize}
-    \item connection $\mathfrak{g}$-valued 1-form [ANY FIBER]
-    \item change of cohordinates $dA A^{-1}+ A\omega A^{-1}$ for connection 1-form [ANY FIBER]
-    \item curvature $T^1_1F$-valued 2-form [ANY FIBER]
-    \item torsion $T^1_0M$-valued 2-form [ONLY TM]
-    \item Cartan structure equations
-    \item Bianchi identities
-    \item metric compatibility in arbitrary fiber bundle [ANY FIBER WITH METRIC]
-    \item Christoffel symbols for metric connection on tangent bundle via structure constants [ONLY TM]
-    \item Riemann curvature tensor components in tetrad frame [ONLY TM]
+    \item connection $\mathfrak{g}$-valued 1-form [ANY FIBER] \textcolor{blue}{Ok}
+    \item change of cohordinates $dA A^{-1}+ A\omega A^{-1}$ for connection 1-form [ANY FIBER] \textcolor{blue}{Ok}
+    \item curvature $T^1_1F$-valued 2-form [ANY FIBER] \textcolor{blue}{Ok}
+    \item torsion $T^1_0M$-valued 2-form [ONLY TM] \textcolor{blue}{Ok}
+    \item Cartan structure equations \textcolor{blue}{Ok}
+    \item Bianchi identities \textcolor{blue}{Ok}
+    \item metric compatibility in arbitrary fiber bundle [ANY FIBER WITH METRIC] \textcolor{blue}{Ok}
+    \item Christoffel symbols for metric connection on tangent bundle via structure constants [ONLY TM] \textcolor{red}{check}
+    \item Riemann curvature tensor components in tetrad frame [ONLY TM] \textcolor{red}{check}
+    \item einstein tensors and equation varying wrt tetrad fields [ONLY TM] \textcolor{red}{MISSING}
 \end{itemize}
 }
 \bigskip
 
 \noindent
-\textbf{INDEX OF SECTION}
+\textbf{INDEX OF SECTION}\todotag{Ceck \& cross out}
 \begin{enumerate}
     \item general intro Ok
     \item advantages of the tetrad formalism Ok
