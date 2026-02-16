@@ -13,6 +13,7 @@
 %---------------------------------------------------------------------
 
 
+
 \subsubsection*{Spherical harmonics}
 
 Start from the decomposition
@@ -86,6 +87,8 @@ To pursue this further, let us also work out the raising and lowering operators 
 \end{aligned}
 \end{align}
 
+\includegraphics[width=\textwidth]{images/spherical_harmonics.png}
+
 
 
 \subsection{Legendre polynomials}
@@ -96,7 +99,7 @@ Legendre polynomials are simply defined as spherical harmonics with $m=0$ up to 
     P_{\ell}(\cos \theta) = \sqrt{\frac{4\pi}{2\ell + 1}} Y_{\ell 0}(\theta, \phi).
 \end{align}
 Since spherical harmonics are eigenfunctions of the angular momentum operators, Legendre polynomials are also eigenfunctions of the $L^2$ operator.
-Since $\{Y_{\ell m}\}$ form a \mathrm{CONS} of $L^2(S^2)$, the set $\{P_{\ell}\}$ also form a \mathrm{CONS} of the subspace of $L^2(S^2)$ consisting of functions independent of $\phi$ or equivalently of $L^2([-1, 1], d\cos \theta)$.
+Since $\{Y_{\ell m}\}$ form a CONS of $L^2(S^2)$, the set $\{P_{\ell}\}$ also form a CONS of the subspace of $L^2(S^2)$ consisting of functions independent of $\phi$ or equivalently of $L^2([-1, 1], d\cos \theta)$.
 Since $Y_{\ell,m}^*=(-1)^m Y_{\ell,-m}$, Legendre polynomials are real $P_{\ell}^* = P_{\ell}$.
 From the orthonormality of spherical harmonics $\int_{S^2} Y_{\ell m}^* Y_{\ell' m'} d\phi d\cos\theta = \delta_{\ell \ell'} \delta_{m m'}$ we derive the orthogonality relation for Legendre polynomials:
 \begin{align}
