@@ -357,9 +357,26 @@ Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonali
     &\langle \tilde{u}_m, \tilde{u}_{n} \rangle = \delta_{mn} \quad \Rightarrow \quad (\alpha \alpha^\dagger- \beta\beta^\dagger)_{nm}=\sum_i \alpha_{mi}^* \alpha_{ni} - \beta_{mi}^* \beta_{ni}^* = \delta_{mn},\\
     &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i -\alpha_{mi} \beta_{ni} - \beta_{mi} \alpha_{ni} = 0.
 \end{align}}
-In this case, inverting the relation by inserting a completeness in the $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ basis and recalling the property $\langle x,y\rangle^* = \langle x^*,y^*\rangle$ of the symplectic hermitian product, we find 
+Enforcing the second bases is also complete, we invert the relation by inserting a completeness in the $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ basis and recalling the property $\langle x,y\rangle^* = \langle x^*,y^*\rangle$ of the symplectic hermitian product, we find 
 \begin{align}\label{eq:inverse_transformation_bogoliubov_modes}
-    u_i= \sum_m \alpha_{mi}^* \tilde{u}_m - \beta_{mi} \tilde{u}_m^*.
+    u_i= \sum_m \alpha_{mi}^* \tilde{u}_m - \beta_{mi} \tilde{u}_m^*,\quad \text{with}\quad
+    \begin{array}{c}
+    \langle u_i, u_j \rangle = \delta_{ij} \quad \Rightarrow \quad (\alpha^\dagger \alpha - \beta^T \beta^*)_{ij} = \sum_m \alpha_{mi}^* \alpha_{mj} - \beta_{mi} \beta_{mj}^* = \delta_{ij},\\[2pt]
+    \langle u_i^*, u_j \rangle = 0 \quad \Rightarrow \quad (\alpha^\dagger \beta - \beta^T \alpha^*)_{ij} = \sum_m \alpha_{mi}^* \beta_{mj} - \beta_{mi} \alpha_{mj}^* = 0.
+    \end{array}
+\end{align}
+More concisely, in matrix form, demanding both are simplectic (orthogonal complete) bases imposes\todotag{check}
+{\small
+\begin{align}\label{eq:bogol_transform_mode_function_matrix_form_classical}
+    &\begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix}
+    = \begin{pmatrix}\alpha & \beta\\\beta^* & \alpha^* \end{pmatrix}
+    \begin{pmatrix}u_j\\ u_j^*\end{pmatrix},\quad
+    \begin{pmatrix}u_j\\u_j^*\end{pmatrix}
+    = \begin{pmatrix}\alpha^\dagger & -\beta^T\\-\beta^\dagger & \alpha^T \end{pmatrix}
+    \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix},
+    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0 \\[2pt]
+    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\, \alpha^\dagger \beta - \beta^T \alpha^* = 0
+    \end{array}
 \end{align}
 Similar `rotations' can be applied to real bases $\{\phi_n,\pi_n\}$ of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure.
 This shows the above bases are far from unique and in fact there exists an infinite family of them related by Bogoliubov transformations.
@@ -530,80 +547,68 @@ Equating the two expressions and using these relations we get
         a_j = \sum_m \alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger.
     \end{array}
 \end{align}}
-More concisely, in matrix form
+More concisely, in matrix form, demanding both are simplectic bases enforces\todotag{redo it}
 {\small
+\begin{align}\label{eq:bogol_transform_mode_function_matrix_form_quantum}
+    &\begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix}
+    = \begin{pmatrix}\alpha & \beta\\\beta^* & \alpha^* \end{pmatrix}
+    \begin{pmatrix}u_j\\ u_j^*\end{pmatrix},\quad
+    \begin{pmatrix}u_j\\u_j^*\end{pmatrix}
+    = \begin{pmatrix}\alpha^\dagger & -\beta^T\\-\beta^\dagger & \alpha^T \end{pmatrix}
+    \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix},
+    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0 \\[2pt]
+    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\, \alpha^\dagger \beta - \beta^T \alpha^* = 0
+    \end{array}
+\end{align}
+Equating the two expressions for $\hat{\phi}$ we get
 \begin{align}
-    \tilde{u}&=\alpha u + \beta u^* \,\,\Rightarrow\,\, \hat{\phi} = \tilde{a}^T \tilde{u} + c.c. = \tilde{a}^T (\alpha u + \beta u^*) + c.c. = \big(\alpha^T\tilde{a}+\beta^\dagger \tilde{a}^\dagger\big)^T u + c.c. \,\,\Rightarrow\,\,  a = \alpha^T \tilde{a} + \beta^\dagger \tilde{a}^\dagger\\[3pt]
-    u&= \alpha^\dagger \tilde{u}-\beta^T\tilde{u}^*\,\,\Rightarrow\,\, \hat{\phi} = a^T u + c.c. = a^T (\alpha^\dagger \tilde{u}-\beta^T\tilde{u}^*) + c.c. = \big(\alpha^* a - \beta^* a^\dagger\big)^T \tilde{u} + c.c. \,\,\Rightarrow\,\,  \tilde{a} = \alpha^* a - \beta^* a^\dagger.
-\end{align}}
-Or again\todotag{redo it}
-{\small
-\begin{align}
-    \begin{pmatrix}
-        u_j\\
-        u_j^*
-    \end{pmatrix}= \begin{pmatrix}
-        \alpha^\dagger & -\beta^T\\
-        -\beta^\dagger & \alpha^T
-    \end{pmatrix}
-    \begin{pmatrix}
-        \tilde{u}_m\\
-        \tilde{u}_m^*
-    \end{pmatrix}\,\,\Rightarrow\,\, \hat{\phi} = \begin{pmatrix}
-        a_j & a_j^\dagger
-    \end{pmatrix} \begin{pmatrix}
-        u_j\\
-        u_j^*
-    \end{pmatrix} = \begin{pmatrix}
-        a_j & a_j^\dagger
-    \end{pmatrix} \begin{pmatrix}
-        \alpha^\dagger & -\beta^T\\
-        -\beta^\dagger & \alpha^T
-    \end{pmatrix}
-    \begin{pmatrix}
-        \tilde{u}_m\\
-        \tilde{u}_m^*
-    \end{pmatrix} = \begin{pmatrix}
-        \tilde{a}_m & \tilde{a}_m^\dagger
-    \end{pmatrix} \begin{pmatrix}
-        \tilde{u}_m\\
-        \tilde{u}_m^*
-    \end{pmatrix}\,\,\Rightarrow\,\, \begin{pmatrix}
-        \tilde{a}_m\\
-        \tilde{a}_m^\dagger
-    \end{pmatrix} = \begin{pmatrix}
-        \alpha^* & -\beta^*\\
-        -\beta^\dagger & \alpha^T
-    \end{pmatrix}\begin{pmatrix}
-        a_j\\
-        a_j^\dagger
-    \end{pmatrix}.
+    \hat{\phi} &= \begin{pmatrix}a_j & a_j^\dagger\end{pmatrix}
+    \begin{pmatrix} u_j\\ u_j^*\end{pmatrix}
+     = \begin{pmatrix}a_j & a_j^\dagger \end{pmatrix} 
+     \begin{pmatrix}\alpha^\dagger & -\beta^T\\ -\beta^\dagger & \alpha^T\end{pmatrix}
+    \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix} 
+    \,\,\Rightarrow\,\, 
+    \begin{pmatrix} \tilde{a}_m\\ \tilde{a}_m^\dagger\end{pmatrix} 
+    = \begin{pmatrix}\alpha^* & -\beta^*\\ -\beta & \alpha\end{pmatrix}
+    \begin{pmatrix} a_j\\ a_j^\dagger \end{pmatrix}
+    \\[3pt]
+    &= \begin{pmatrix} \tilde{a}_m & \tilde{a}_m^\dagger \end{pmatrix}
+    \begin{pmatrix} \tilde{u}_m\\ \tilde{u}_m^* \end{pmatrix}
+    = \begin{pmatrix} \tilde{a}_m & \tilde{a}_m^\dagger \end{pmatrix}
+    \begin{pmatrix}\alpha & \beta\\\beta^* & \alpha^* \end{pmatrix}
+    \begin{pmatrix}u_j\\ u_j^*\end{pmatrix}
+    \,\,\Rightarrow\,\,
+    \begin{pmatrix}\tilde{a}_m\\ \tilde{a}_m^\dagger \end{pmatrix} 
+    = \begin{pmatrix} \alpha^T & \beta^\dagger\\ \beta^T & \alpha^\dagger\end{pmatrix}
+    \begin{pmatrix} a_j\\ a_j^\dagger \end{pmatrix}.
 \end{align}
 }
-We now relate Fock states of the two theories defined by ladder operators.
-The vacuum of the first theory will be expressible as a suitable superposition of multi-particle states of the second theory $|0\rangle =f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ will indeed be independent of annihilation operators $\tilde{a}$ since they annihilate the vacuum $|\tilde{0}\rangle$ and we may commute them to the right upon changing the form of the $f$.}
+We now relate the Fock spaces defined by ladder operators of the two theories, since under the Stone--von Neumann assumption these are unitarily equivalent via a transformation mapping the quantum DoFs of the theories into each other.
+In particular, the vacuum of the first theory must be expressible as a suitable superposition of multi-particle states of the second theory $|0\rangle =f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ will indeed be independent of annihilation operators $\tilde{a}$ since they annihilate the vacuum $|\tilde{0}\rangle$ and we may commute them to the right upon changing the form of the $f$.}
 The $\tilde{a}_m^\dagger$ operators commute with each other, while acting with $\tilde{a}_m$ is equivalent to taking a derivative $[\tilde{a}_m,f\big(\{\tilde{u}^\dagger_n\}_n\big)] = \tfrac{\partial f}{\partial \tilde{a}_m^\dagger}$.
 Imposing the vacuum condition in the first theory we thus get
+{\small
 \begin{align}
-     0=a_j|0\rangle = (\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger) |0\rangle
-     = (\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger) f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle = \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big)|\tilde{0}\rangle.
-\end{align}
+     0=a_j|0\rangle = \Big(\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger\Big) |0\rangle
+     = \Big(\sum_m\alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger\Big) f\big(\{\tilde{a}^\dagger_n\}_n\big)|\tilde{0}\rangle = \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big)|\tilde{0}\rangle.
+\end{align}}
 Since this must hold for arbitrary $j$ we get a set of differential equations for $f$
 \begin{align}
     \sum_m \Big(\alpha_{mj} \frac{\partial f}{\partial \tilde{a}_m^\dagger} + \beta_{mj}^* \tilde{a}_m^\dagger f\Big) = 0 \quad \forall j \quad \text{i.e.}\quad \nabla_{\tilde{a}^\dagger}f = -(\alpha^T)^{-1}\beta^\dagger \tilde{a}^\dagger f
-    \,\,\Rightarrow\,\, f\big(\tilde{a})\propto e^{-\frac{1}{2} \tilde{a}^\dagger (\alpha^T)^{-1}\beta^\dagger \tilde{a}^\dagger}.
+    \,\,\Rightarrow\,\, f\big(\tilde{a})\, \propto\,  \exp\Big(-\tfrac{1}{2} \tilde{a}^\dagger_m \big[(\alpha^T)^{-1}\beta^\dagger\big]_{mn} \tilde{a}^\dagger_n\Big).
 \end{align}
-where we used that the above matrix is already symmetric since we have \todotag{redo}
-\begin{align}
-    \alpha\beta^T-\beta\alpha^T=0\,\Rightarrow\, (\beta^T)^{-1}\alpha^{-1} = (\alpha^T)^{-1}\beta^{-1}, \quad \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I} \,\,\Rightarrow\,\, \alpha \alpha^\dagger = \mathbb{I}+\beta\beta^dagger\\
-    (\beta^T)^{-1}\alpha^\dagger = {\color{blue}(\beta^T)^{-1}\alpha^{-1}}(\alpha \alpha^\dagger) = {\color{blue}(\alpha^T)^{-1}\beta^{-1}}\big(\mathbb{I}+\beta\beta^\dagger) = (\alpha^T)^{-1}\beta^{-1} + (\alpha^T)^{-1}\beta^\dagger 
-\end{align}
-Normalizing the vacuum states we find\todotag{fix}
+Beware the matrix $(\alpha^T)^{-1}\beta^\dagger=\beta^*\alpha^{-1}$ is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces $\beta^T\alpha^*-\alpha^\dagger\beta=0$.
+Normalizing the vacuum states we find\todotag{fnish}
 {\small
 \begin{align}
     |0\rangle = \frac{1}{|\det(\alpha)|^{\tfrac12}} e^{-\frac{1}{2} \tilde{a}^\dagger (\alpha^T)^{-1}\beta^\dagger \tilde{a}^\dagger} |\tilde{0}\rangle.
 \end{align}}
-
+More generally, using the Baker--Campbell--Hausdorff formula we can express any state of the first theory as a suitable superposition of states of the second theory, namely
+{\small
+\begin{align}
+    ...
+\end{align}}
+The same holds swapping the two theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
 %
 \end{mytheorem}
 
@@ -671,7 +676,7 @@ For example, we can see the time evolution $\chi(t)=a(t)\phi(t)$ as due to the s
 \begin{align}
   e^{\tfrac{i}{h}H_\chi t} \chi(0) e^{-\tfrac{i}{h}H_\chi t} = \chi(t)\equiv a(t)\, \phi(t)= a(t) e^{\tfrac{i}{h}H_\phi t} \phi(0) e^{-\tfrac{i}{h}H_\phi t}.
 \end{align}
-In any case, using the 
+In any case, using the corresponding Hamiltonian for the time evolution,
 \begin{align}
 \frac{d\chi}{dt} &= \frac{\partial \chi}{\partial t}_{|\phi,\pi_\phi}\!\!\! + \{\chi, H_\phi\} = \dot{a}\phi + a\underbrace{\{\phi, H_\phi\}}_{=a^{-2}\pi_\phi=\dot{\phi}}  = \mathcal{H} a \phi + a \dot{\phi} = \mathcal{H}\, \chi +\pi_\chi = \underbrace{\frac{\partial \chi}{\partial t}_{|\chi,\pi_\chi}}_{=0} + \{\chi, H_\chi\}\,.
 \end{align}
@@ -683,7 +688,7 @@ To answer this, we should look at the stress-energy tensor\footnote{We use the m
   T_{\mu\nu}= \frac{2}{\sqrt{g}} \frac{\delta S}{\delta g^{\mu\nu}} = \partial_\mu \phi \partial_\nu \phi - g_{\mu\nu} \Big( \tfrac12 \partial_\alpha \phi g^{\alpha\beta} \partial_\beta \phi - \tfrac12 m^2 \phi^2 - V(\phi) \Big).
 \end{align}
 In curved spacetimes it is indeed the variation of the action wrt the metric that enters Einstein equations and identifies Noether charges corresponding to energy and momentum of the system in presence of spacetime symmetries, while the hamiltonian formalism is highly dependent on coordinates.
-The energy density of the system is then by definition\footnote{Note we must multiply by the density factor $\sqrt{g}$ to get a density.}
+The energy density of the system is then by definition\footnote{Note we must multiply by the volume factor $\sqrt{g}$ to get an actual density i.e. a 4-form upon integrating against $d^4x$.}
 \begin{align}
   \sqrt{g}\,T^0_0 = \tfrac12 a^2\dot{\phi}^2 + \tfrac12 a^2(\nabla \phi)^2 + m^2 a^4 \phi^2 + a^4 V(\phi) \overset{!}{=} \mathcal{H}_\phi,
 \end{align}
