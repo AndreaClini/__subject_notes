@@ -22,6 +22,7 @@ The main differences are the following.
 \end{itemize}
 
 
+
 %--------------------------------------------------------
 %=========================================================
 \section{Geodesic \& Boltzmann Equations for neutrinos}
@@ -29,7 +30,7 @@ The main differences are the following.
 %------------------------------------------------------------
 
 
-The geodesic equations \label{eq:geodesic_equation_physical_momentum_newtonian} are unchanged, again with $E=p$ to good approximation down to very late times,
+The geodesic equations in newtonian gauge \label{eq:geodesic_equation_physical_momentum_newtonian} are unchanged
 {\small
 \begin{align}\label{eq:geodesic_equations_neutrino_newtonian}
 \begin{aligned}
@@ -40,9 +41,14 @@ The geodesic equations \label{eq:geodesic_equation_physical_momentum_newtonian} 
     \frac{d\hat{p}^i}{d\ct}&=\big(\hat{p}^i\hat{p}^j-\delta^{ij}\big)\left(\frac{E}{p}\partial_j\psi+\frac{p}{E}\partial_j\phi\right).
 \end{aligned}
 \end{align}}
+Beware taking $E=p$ is a perfect approximation down to times/temperatures $T_\nu \sim 1\, \text{eV} \simeq 1.6\times 10^4 \text{ K}$, but will eventually break down at later times.
+Also recall neutrinos' temperature is related to photons by $T_\nu=\big(\tfrac{4}{11}\big)^{1/3} T_\gamma$.
+Ineed from neutrino oscillations we know that at leaste one neutrino mass $m_\nu \gtrsim 0.05$ eV, while from cosmological bounds we know that the sum of neutrino masses $\sum m_\nu \lesssim 0.1 \text{eV}$.
+
 The last equation implies that to zeroth order in metric perturbations, neutrinos travel along straight lines, while at first order they are deflected by the gravitational potentials $\psi$ and $\phi$.
 The first two equations encode the change in energy and momentum along the trajectory.
-It is convenient to rewrite it trading partial with total time derivatives $\frac{\partial \phi}{\partial \tau}=\frac{d\phi}{d\tau}-\frac{\partial \phi}{\partial x^j}\frac{dx^j}{d\tau}$ to get, in the relativistic limit $E=p$,
+
+Conidering the relativistic limit $E=p$ for simplicity it is convenient to trade partial with total time derivatives $\frac{\partial \phi}{\partial \tau}=\frac{d\phi}{d\tau}-\frac{\partial \phi}{\partial x^j}\frac{dx^j}{d\tau}$ to get, 
 {\small
 \begin{align}
     \frac{d \log E}{d\tau}&= -\mathcal{H}+\frac{d\phi}{d\tau}-\hat{p}^j(\partial_j\phi+\partial_j\psi).
@@ -61,9 +67,9 @@ Writing $E = \bar{E}(1+\mathcal{N})$ with $\bar{E}\propto \, a^{-1}$ so that $\b
     \mathcal{N}_f(\hat{p})-\mathcal{N}_i(\hat{p})\simeq \log\left(\frac{1+\mathcal{N}_f(\hat{p})}{1+\mathcal{N}_i(\hat{p})}\right) 
     = \phi(\tau_f,x_f)-\phi(\tau_i,x_i) - \int_{\tau_i}^{\tau_f} d\tau\,\, \hat{p}^j(\partial_j\phi+\partial_j\psi).
 \end{align}}
+The above formulas are exact in the relativistic limit, but nedd to be adjusted using the geodesic equations \eqref{eq:geodesic_equations_neutrino_newtonian} with $E\neq p$ to get the effect of neutrino masses at late times.
 
-
-The Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} for neutrinoes is again (second order in metric perturbations, exact otherwise)
+The Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} for neutrinoes, accounting for masses, is again (second order in metric perturbations, exact otherwise)
 {\small
 \begin{align}\label{eq:Boltzmann_LHS_exact_newton_gauge_neutrino}
 \begin{aligned}
@@ -79,11 +85,10 @@ The Boltzmann equation \eqref{eq:Boltzmann_LHS_exact_newton_gauge} for neutrinoe
     \!+\!\left(\frac{\partial f}{\partial p} \hat{p}^j-\frac{\partial f}{\partial \bar{p}^j}\right)\partial_j\phi\,\frac{p^2}{E}\right].
 \end{aligned}
 \end{align}}
-
-Neutrinos retain local equilibrium with a Fermi-Dirac distribution down to late times\todotag{Discuss}, simply with a time and momentum dependent temperature, 
+Neutrinos retain local equilibrium with a Fermi-Dirac distribution down to late times\todotag{Discuss}, simply with a time and momentum dependent temperature, and the chemical potential is negligible\todotag{discuss}
 {\small
 \begin{equation}\label{eq:local_temp_neutrinos}
-    f(\ct, x^i, E, \hat{p}^i) = \frac{1}{\exp\left(\frac{E}{T_\nu}\right) + 1}, \quad T_\nu=\bar{T}_\nu(\tau)(1+\mathcal{N}(\tau, x^i, p, \hat{p}^i))=\bar{T}_\nu+\delta T_\nu.
+    f(\ct, x^i, E, \hat{p}^i) = \frac{1}{\exp\left(\frac{E}{T_\nu}\right) + 1}, \quad T_\nu=\bar{T}_\nu(\tau)(1+\mathcal{N}(\tau, x^i, p, \hat{p}^i))=\bar{T}_\nu+\delta T_\nu, \quad \mu\sim 0.
 \end{equation}}
 More generally, assuming the full distribution is still a function $f(\nicefrac{E}{T})$ of the ratio $\nicefrac{E}{T}$ to some \emph{local} temperature $T$, we Taylor expand the distribution function and its derivative just like for photons \label{eq:photon_distribution_expansion} and rewrite the Boltzmann equation.
 At zero order we get the redshift $T\propto a^{-1}$ of neutrino temperature
@@ -97,39 +102,134 @@ At first order, replacing $\frac{\dot{T}}{T}=-\mathcal{H}$, we get
 {\small
 \begin{align}\label{eq:Boltzmann_LHS_neutrino_first_order_newtonian}
 \begin{aligned}
-    &-\tfrac{E}{a}E\partial_E\bar{f}\bigg[\frac{\partial\mathcal{N}}{\partial \tau}+\hat{p}^j\frac{\partial\mathcal{N}}{\partial x^j}-\mathcal{H}E\cancel{\frac{\partial \mathcal{N}}{\partial E}}+\hat{p}^j\frac{\partial\psi}{\partial x^j}-\frac{\partial \phi}{\partial\tau}\bigg] = 0.
+    &-\tfrac{E}{a}E\partial_E\bar{f}\bigg[\frac{\partial\mathcal{N}}{\partial \tau}+\hat{p}^j\frac{\partial\mathcal{N}}{\partial x^j}-\mathcal{H}E\frac{\partial \mathcal{N}}{\partial E}+\hat{p}^j\frac{\partial\psi}{\partial x^j}-\frac{\partial \phi}{\partial\tau}\bigg] = 0.
 \end{aligned}
 \end{align}}
 Note there is indeed no right-hand side, since neutrinos have no sizable interactions after decoupling.
-
-
+On the other hand, we cannot drop the term $\mathcal{H}E\frac{\partial \mathcal{N}}{\partial E}$ as we did for photons, since neutrinos masses will eventually make $\mathcal{N}$ depend on $E$ at late times.
 
 
 %=====================================================================
-\subsection*{Passing to multipoles}
+\subsection{Passing to multipoles}
 %====================================================================
-We can now pass to Fourier space and decompose the angular dependence of $\mathcal{N}$ in multipoles to get a hierarchy of coupled ODEs for the multipole moments $\mathcal{N}_\ell$.
-Passing to Fourier space in \eqref{eq:Boltzmann_LHS_neutrino_first_order_newtonian}, we get\todotag{Fix RHS}
+We now pass to Fourier space and decompose the angular dependence of $\mathcal{N}$ in multipoles to get a hierarchy of coupled ODEs for the multipole moments $\mathcal{N}_\ell$.
+Passing to Fourier space in \eqref{eq:Boltzmann_LHS_neutrino_first_order_newtonian}, we get
 {\small
 \begin{align}\label{eq:Boltzmann_LHS_neutrino_first_order_newtonian_Fourier}
 \begin{aligned}
-    &\bigg[\frac{\partial\mathcal{N}}{\partial \tau}+i\vec{k}\cdot\hat{p}\,\mathcal{N}-\mathcal{H}E\cancel{\frac{\partial \mathcal{N}}{\partial E}}+i\hat{p}\cdot\vec{k}\,\psi-\frac{\partial \phi}{\partial\tau}\bigg] = 0.
+    &\bigg[\frac{\partial\mathcal{N}}{\partial \tau}+i\vec{k}\cdot\hat{p}\,\mathcal{N}-\mathcal{H}E\frac{\partial \mathcal{N}}{\partial E}+i\hat{p}\cdot\vec{k}\,\psi-\frac{\partial \phi}{\partial\tau}\bigg] = 0.
 \end{aligned}
 \end{align}}
 The dependence on $\vec{k}$ only enter via the modulus $k$ and the angle $\mu:=\hat{k}\cdot\hat{p}$, so we can decompose the angular dependence in Legendre polynomials $P_\ell(\mu)$ as
 {\small
 \begin{align}
-    \mathcal{N}(\tau, k, \mu) = \sum_{\ell=0}^\infty (-i)^\ell (2\ell+1) \mathcal{N}_\ell(\tau, k) P_\ell(\mu).
-\end{align}}
-The multipole moments $\mathcal{N}_\ell$ are given by the inverse transform
-{\small
-\begin{align}
+    \mathcal{N}(\tau, k, \mu) = \sum_{\ell=0}^\infty \frac{2\ell+1}{i^\ell} \mathcal{N}_\ell(\tau, k) P_\ell(\mu)\,,\quad
     \mathcal{N}_\ell(\tau, k) = \frac{i^\ell}{2}\int_{-1}^1 d\mu\, P_\ell(\mu) \mathcal{N}(\tau, k, \mu).
 \end{align}}
 The first three multipoles have a simple physical interpretation: up to numerical factors, $\mathcal{N}_0$ is the monopole i.e. the average temperature perturbation; $\mathcal{N}_1$ is the dipole i.e. the bulk velocity of the neutrino fluid; $\mathcal{N}_2$ is the quadrupole i.e. the anisotropic stress of the neutrino fluid.
 Higher multipoles $\mathcal{N}_\ell$ with $\ell\geq 3$ encode higher-order angular correlations of the temperature perturbation, and are generated by free-streaming of neutrinos after decoupling.
-The Boltzmann equation then becomes a hierarchy of coupled ODEs for the multipole moments $\mathcal{N}_\ell$, which can be solved numerically to get\todotag{Write eq}
+
+Recall Legendre multipoles are orthogonal, satisfy a recursion relation and the first 3 are
 {\small
 \begin{align}
-    ...
+    \int_{-1}^1 \!\!\!\!d\mu\, P_\ell(\mu) P_{\ell'}(\mu) = \tfrac{2}{2\ell+1} \delta_{\ell \ell'},\,\,
+    \mu P_\ell(\mu) = \tfrac{\ell+1}{2\ell + 1} P_{\ell+1}(\mu) + \tfrac{\ell}{2\ell + 1} P_{\ell-1}(\mu),\,\,
+    P_0(\mu) = 1, \,\, P_1(\mu) = \mu, \,\, P_2(\mu) = \frac{3\mu^2 - 1}{2}.
 \end{align}}
+Multiplying the equation by $\frac{i^\ell}{2}P_\ell(\mu)$ and integrating over $\mu$, using the orthogonality and recursion relations, and the fact that $\psi$ and $\phi$ are independent of $\mu$, we get
+{\small
+\begin{align}
+    \frac{\partial \mathcal{N}_\ell}{\partial \tau} + k\left(\frac{\ell+1}{2\ell + 1} \mathcal{N}_{\ell+1} - \frac{\ell}{2\ell + 1} \mathcal{N}_{\ell-1}\right) - \mathcal{H}E\frac{\partial \mathcal{N}_\ell}{\partial E} -\tfrac13 k\psi \delta_{\ell 1} - \frac{\partial \phi}{\partial\tau} \delta_{\ell 0} = 0.
+\end{align}}
+The Boltzmann equation becomes a hierarchy of coupled differential equations for multipole moments $\mathcal{N}_\ell$, which can be solved numerically to get the evolution of neutrino perturbations.
+Notably, because of masses we retain the energy terms $E\frac{\partial \mathcal{N}_\ell}{\partial E}$ and we get linear first-order PDEs instead of ODEs as for photons.
+We could then Fourier transform the energy dependence and solve the resulting system of ODEs for each value of the Fourier variable, albeit computationally expensive.
+Another approach is to average over the energy dependence to get a system of ODEs for the energy-averaged multipoles, which is computationally cheaper but less accurate at late times (cf. \cite{MaBertschinger_CosmologicalPerturbationTheorySynchronousConformalNewtonianGauges_1995} for details).
+
+The hierarchy is anyway infinite and thus needs to be truncated at some $\ell_\text{max}$ just like for photons, \questiontag{Shorten \& refer to $\gamma$ section}albeit with a higher $\ell_\text{max}$ since neutrinos free-stream and develop higher multipoles already at early times, while photons are driven towards the first two multipoles by Thomson scattering until recombination and develop higher multipoles only after decoupling.
+A convenient way is to impose some boundary condition at $\ell_\text{max}$, for example ${\mathcal{N}}_{\ell_\text{max}+1} = {\mathcal{N}}_{\ell_\text{max}}$ or ${\mathcal{N}}_{\ell_\text{max}+1} = 0$, which is a good approximation since higher multipoles are generated by free-streaming and thus are suppressed by powers of $k/\mathcal{H}$ at early times when the hierarchy is sourced\todotag{write eq from Whinter}
+\begin{align}
+    ...
+\end{align}
+
+Passing to variable $\log a$ to highlight dominant terms in the super(sub)-ubhorizon regime $k/\mathcal{H}\ll1$ we get
+{\small\begin{align}
+\begin{aligned}
+    \frac{\partial \mathcal{N}_0}{\partial \log a} - E{\frac{\partial {\mathcal{N}}_0}{\partial E}}- \frac{\partial \phi}{\partial\log a}+ \frac{k}{\mathcal{H}} {\mathcal{N}}_1 &= 0,\\
+    \frac{\partial {\mathcal{N}}_1}{\partial \log a} -E{\frac{\partial {\mathcal{N}}_1}{\partial E}}+ \tfrac{2}{3} \frac{k}{\mathcal{H}} {\mathcal{N}}_2 -\tfrac13 \frac{k}{\mathcal{H}}{\mathcal{N}}_0- \tfrac{1}{3} \frac{k}{\mathcal{H}} \psi &= 0,\\
+    \frac{\partial {\mathcal{N}}_2}{\partial \log a} -E{\frac{\partial {\mathcal{N}}_2}{\partial E}}+ \tfrac{3}{5} \frac{k}{\mathcal{H}} {\mathcal{N}}_3 - \tfrac{2}{5} \frac{k}{\mathcal{H}} {\mathcal{N}}_1 &= 0,\\
+    \frac{\partial {\mathcal{N}}_\ell}{\partial \log a} -E{\frac{\partial {\mathcal{N}}_\ell}{\partial E}}+ \frac{k}{\mathcal{H}}\left(\tfrac{\ell+1}{2\ell + 1} {\mathcal{N}}_{\ell+1} - \tfrac{\ell}{2\ell + 1} {\mathcal{N}}_{\ell-1}\right) &= 0, \quad \ell\geq 3.
+\end{aligned}
+\end{align}}
+Note only the first 2 equations for ${\mathcal{N}}_0, {\mathcal{N}}_1$ are sourced (by metric potentials), while the 3rd one describe the evolution of the neutrino anisotropic stress ${\mathcal{N}}_2$ which is nonnegligible (for accuracy below 10\%) on small scales even at early times.
+
+Recalling that ${\mathcal{N}}_0= \frac{\delta T_\nu}{T_\nu}= \tfrac14 \delta_\nu$ as confirmed by $\rho_\nu \propto T_\nu^4$ and ${\mathcal{N}}_1 = -\tfrac13 v_\nu$, we see the first 2 equations are simply the continuity and Euler equations for neutrinos, while the last one is the evolution equation for neutrino \todotag{Check \& finish}anisotropic stress
+\begin{align}
+    ...
+\end{align}
+
+
+
+%--------------------------------------------------------------
+%=====================================================================
+\section{Neutrino masses}
+%====================================================================
+%---------------------------------------------------------------
+
+
+%==========================================================
+\subsection{Other bounds}
+%========================================================
+
+
+%---------------------------------------------------------
+\subsubsection{Lower bound from neutrino oscillations.}
+%----------------------------------------------------------
+Neutrino oscillation experiments determine \emph{mass-squared differences}
+\(\Delta m^2_{21} \equiv m_2^2 - m_1^2\) and \(\Delta m^2_{31} \equiv m_3^2 - m_1^2\)
+(and the mixing angles), but they do \emph{not} fix the absolute mass scale.
+(i.e.\ they are insensitive to adding a common mass to all eigenstates).
+Nevertheless, since the measured splittings are nonzero, at least one neutrino mass eigenvalue must satisfy
+\begin{align}
+\begin{aligned}
+	m_\text{heavy} \;\gtrsim\; \sqrt{|\Delta m^2_{31}|}
+	\;\sim\; 0.05 \text{eV},
+\end{aligned}
+\end{align}
+so neutrinos cannot all be massless.
+Using the oscillation data and taking the lightest mass to zero gives a robust \emph{minimum} for the sum of masses:
+\begin{align}
+\begin{aligned}
+	\Sigma m_\nu \equiv m_1 + m_2 + m_3 \;\gtrsim\;
+	\begin{cases}
+		0.058\ \text{eV}, & \text{normal ordering (NO)},\\
+		0.098\ \text{eV}, & \text{inverted ordering (IO)}.
+	\end{cases}
+\end{aligned}
+\end{align}
+
+
+
+
+%==========================================================
+\subsection{Bounds from cosmology}
+%========================================================
+%
+We can get bound on neutrino masses from cosmology quite easily.
+For example, since neutrino eventually become nonrelativistic matter, they contribute to the matter density today and we must have
+\begin{align}
+    \Omega_\nu =\frac{\rho_\nu}{\rho_{c0}}\simeq \frac{m_\nu n_\nu}{\rho_{c0}} \leq \Omega_m \simeq 0.3
+\end{align}
+The approximation $\rho_\nu \simeq m_\nu n_\nu$ is valid at late times $T_\nu\ll m_\nu$ and can be made more precise integrating the Fermi-Dirac distribution and expanding in $T_\nu/m_\nu$ to get
+\begin{align}
+    \rho_\nu = m_\nu n_\nu \left(1 + \frac32 \frac{T_\nu}{m_\nu} + O\Big(\frac{T_\nu^2}{m_\nu^2}\Big)\right).
+\end{align}
+Since neutrinos decouple around $T_\nu=T_\gamma \simeq 1\, \text{MeV}$, their number density just dilute as $n_\nu \propto a^{-3}$ afterward, and we later get $T_\nu= (4/11)^{1/3} T_\gamma$ due to electron-positron annihilation heating up photons but not neutrinos, so that\footnote{The factor $\tfrac34$ is from Fermi vs Bose statistics of neutrinos and photons, while the factor $\tfrac32$ is from 3 neutrino flavors vs 2 photon polarizations.}
+\begin{align}
+    n_\nu(a_0) = \tfrac34 \tfrac32\Big(\frac{T_\nu}{T_\gamma}\Big)^3 n_\gamma(a_0) = \tfrac34 \tfrac32 \tfrac{3}{11}n_\gamma(a_0) = \frac{27}{88} \frac{2\zeta(3)}{\pi^2} T_{\gamma 0}^3.
+\end{align}
+Up to numerical factors of $O(1)$, after plugging in numbers, we get
+\begin{align}
+     m_\nu \lesssim \frac{\Omega_m \rho_{c0}}{n_{\nu0}} \sim \frac{\Omega_{m0}\frac{3H_0^2}{8\pi G}}{\tfrac{1}{10} T_{\gamma 0}^3} \quad \Rightarrow \quad m_\nu \lesssim 0.5\, \text{eV}.
+\end{align}
+This is just a rough estimate, but more careful analyses using CMB and LSS data give a bound of $\sum m_\nu \lesssim 0.1$ eV on the sum of neutrino masses, which is already quite close to the lower bound from oscillation experiments.

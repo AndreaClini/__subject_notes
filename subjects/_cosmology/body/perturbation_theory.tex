@@ -134,7 +134,7 @@ Finally, for any metric parametrized as in \eqref{eq:metric_general_form}, using
 In the newtonian gauge \eqref{eq:metric_newtonian_gauge} we have $A=\psi$, $B=E=0$, $C=-\phi$ and thus
 \begin{equation}
 \label{eq:comoving_energy_momentum_newtonian_gauge}
-P^i=\frac{p}{a}(1+\phi)\hat{p},\quad P^0=\frac{E}{a}(1-\psi).
+P^i=\frac{p}{a}(1+\phi)\hat{p},\quad P^0=\frac{E}{a}(1-\psi), \quad P_0=-a(1+\psi)E,\quad P_i=a(1-\phi)p\hat{p}_i.
 \end{equation}
 The metric potentials then obey (to first order in metric perturbations)
 \begin{align}
@@ -553,10 +553,54 @@ with the same considerations on the colored terms as above.
 The complete behavior of the species $s$ is described by the distribution $f_s$.
 In particular, the energy-momentum tensor is given by
 \begin{equation}\label{eq:energy_momentum_tensor_from_distribution}
-    T^{\mu}_{(s)\,\nu}=\int\!\!\frac{d^3P_i}{\sqrt{-g}(2\pi)^3}\,\frac{P^\mu P_\nu}{2P^0}\, f_s=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{P^\mu P_\nu}{2E} f_s.
+    T^{\mu}_{(s)\,\nu}=\int\!\!\frac{d^3P_i}{\sqrt{-g}(2\pi)^3}\,\frac{P^\mu P_\nu}{P^0}\, f_s=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{P^\mu P_\nu}{E} f_s.
 \end{equation}
-In principle, we should solve the full system of Boltzmann equations, one for each species $s$, coupled through the mutual collision terms and the metric potentials, and Einstein equations, sourced by the energy-momentum of the species themselves.
-This task is extremely difficult, even numerically.
+The form of the energy-momentum tensor is justified since \todotag{Finish or move to GR}
+
+Using formulas \eqref{eq:comoving_energy_momentum_newtonian_gauge} we compute
+{\small\begin{align}\label{eq:energy_momentum_component_newt_gauge}
+\begin{aligned}
+    T^0_0=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3} E\,f_s,
+    \quad
+    T^0_i=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3} (1-\phi-\psi)\,p\hat{p}^i\,f_s,
+    \quad
+    T^i_j=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} f_s.
+\end{aligned}
+\end{align}}
+%
+We now insert an equilibrium distribution with local temperature\todotag{Write the general case (cf. decaying)}
+{\small 
+\begin{equation}\label{eq:local_temp_photons}
+    f(\ct, x^i, E, \hat{p}^i) = f(\tfrac{E}{T}), \quad T=\bar{T}(\tau)(1+\Theta(\tau, x^i, p, \hat{p}^i))=\bar{T}+\delta T\quad \Rightarrow \quad f\simeq \bar{f}-\frac{\partial \bar{f}}{\partial E}E\Theta +O(2).
+\end{equation}}
+
+
+In the case of photons, taking $E=p$ and assuming $\Theta$ independent of $E$ for simplicity we get
+Then we compute \todotag{Finish}
+\begin{align}\label{eq:energy_momentum_tensor_perturbed_newtonian_gauge}
+\begin{aligned}
+    T^0_0&=-\int\!\!\frac{d^3\vec{p}}{(2\pi)^3} E\,\bar{f}+\int\!\!\frac{d^3\vec{p}}{(2\pi)^3} E^2\frac{\partial \bar{f}}{\partial E}\Theta = -\bar{\rho}-\bar{\rho}\Theta_0,
+    \\
+    T^0_i&=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3} (1-\phi-\psi)\,p\hat{p}^i\,\bar{f}-\int\!\!\frac{d^3\vec{p}}{(2\pi)^3} (1-\phi-\psi)\,p\hat{p}^i\,E\frac{\partial \bar{f}}{\partial E}\Theta = -4\bar{\rho} i\hat{k}^i\Theta_1 = -\tfrac13 (\bar{\rho}+\bar{p}) i\hat{k}^i \Theta_1,
+    \\
+    T^i_j&=\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} \bar{f}-\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} E\frac{\partial \bar{f}}{\partial E}\Theta.
+\end{aligned}
+\end{align}
+Comparing with the perturbed perfect fluid energy-momentum tensor
+\begin{align}
+    &T^\mu_\nu = u^\mu u_\nu (\rho+P) + P \delta^\mu_\nu + \Sigma^\mu_\nu\\[3pt]
+    &T^0_0 = -\bar{\rho} - \delta \rho, \quad T^0_i = -(\bar{\rho} + \bar{P}) v_i, \quad T^i_j = (\bar{P} + \delta P) \delta^i_j + \Sigma^i_j
+\end{align}
+we find
+\begin{align}
+    \delta_\gamma = \frac{\delta \rho}{\bar{\rho}} = 4 \Theta_0, \quad v_i = -\frac{3}{4} \int \frac{d^3\vec{p}}{(2\pi)^3} p \hat{p}_i E \frac{\partial \bar{f}}{\partial E} \Theta, \quad \Sigma^i_j = -\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} E\frac{\partial \bar{f}}{\partial E}\Theta.
+\end{align}
+
+
+
+
+
+
 
 
 %-----------------------------------------------------------------------------
