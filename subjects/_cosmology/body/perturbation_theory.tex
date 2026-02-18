@@ -600,27 +600,31 @@ we find
 \begin{align}
     \delta_\gamma = \frac{\delta \rho}{\bar{\rho}} = 4 \Theta_0, \quad v_i = -\frac{3}{4} \int \frac{d^3\vec{p}}{(2\pi)^3} p \hat{p}_i E \frac{\partial \bar{f}}{\partial E} \Theta, \quad \Sigma^i_j = -\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} E\frac{\partial \bar{f}}{\partial E}\Theta.
 \end{align}
-
-
-It is convenient to split the \emph{scalar} part of the (i,j)-component of the stress tensor into the trace part and a traceless part, so as to separate the 2 scalar degrees of freedom.
-Namely using 
+%
+It is convenient to isolate the 2 \emph{scalar} degrees of freedom of the (i,j)-component of the stress-tensor and split them into trace and traceless part.
+Namely we project\footnote{Note $P^i_j$ is not really a projector in the sense of $\R^3$ but rather in the SVT decomposition sense.} the scalar part using
 \begin{align}
-    P=\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}, \quad (T^i_j)_{\text{scalar}}= \tfrac13 \delta^i_j T^k_k + \left(\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}\right) F,\quad F=\tfrac32 \left(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\right)T^i_j,
+    P^i_j:=\tfrac{k^ik_j}{k^2}-\tfrac13 \delta^{ij}, \,\,\, \delta^i_jP^j_i=0,\,\, P^i_j P^j_i=\tfrac23\, \, \Rightarrow\,\, (T^i_j)_{\text{scalar}}= \tfrac13 \delta^i_j \, T^k_k + \left(\tfrac{k^ik_j}{k^2}-\tfrac13 \delta^{ij}\right) \bigg[\tfrac32 \left(\tfrac{k^b k_a}{k^2}-\tfrac13 \delta^{b}_{a}\right)T^a_b\bigg]
 \end{align}
-We have
+Isotropy of the backround implies 
 \begin{align}
     \int\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} \bar{f}= \int\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \tfrac13 \delta^i_j \bar{f} = \delta^i_j \bar{P}
 \end{align}
-We find\todotag{finish}
+Explicitly we have
 \begin{align}
-    \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)T^i_j = \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} f 
-    = \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \big(\mu^2-\tfrac13\big) \Big(\bar{f}-\Theta E\frac{\partial \bar{f}}{\partial E}\Big)
+    \tfrac13 d^j_iT^i_j =\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{3E} \Big(\bar{f}-\Theta E\frac{\partial \bar{f}}{\partial E}\Big) = \bar{P} + \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{3} \Theta \frac{\partial \bar{f}}{\partial E} = \bar{P} + \tfrac43 \bar{\rho} \Theta_0 = \bar{P} + \delta P \,\,\Rightarrow \delta P = \tfrac43 \bar{\rho} \Theta_0 = \tfrac13 \bar{\rho} \delta_\gamma.
 \end{align}
-The latter integrates to 
+As confirmed by $\int d\mu (\mu^2-\tfrac13)=0$ the traceless part of the background vanishes and integrating by parts we get
 \begin{align}
-     -\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \big(\mu^2-\tfrac13\big) \Theta E\frac{\partial \bar{f}}{\partial E} = 4 \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,p \bar{f}\frac{1}{(4\pi)}\int d\Omega\, \tfrac23 \big(\tfrac{3\mu^2-1}{2}\big) \Theta = 4\bar{\rho}\, = 4\bar{\rho} \Big(-\tfrac23\Theta_2\Big).
+    \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)T^i_j &= \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} f 
+    = \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \big(\mu^2-\tfrac13\big) \Big(\cancel{\bar{f}}-\Theta E\frac{\partial \bar{f}}{\partial E}\Big)\\
+    &=
+    4 \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,p \bar{f}\frac{1}{(4\pi)}\int d\Omega\, \tfrac23 \big(\tfrac{3\mu^2-1}{2}\big) \Theta = 4\bar{\rho}\, = 4\bar{\rho} \Big(-\tfrac23\Theta_2\Big).
 \end{align}
-
+In conclusion we have
+\begin{align}
+    (T^i_j)_{\text{scalar}} = \delta^i_j \bigg(\bar{P} + \tfrac43 \bar{\rho} \Theta_0\bigg) - 4\bigg(\tfrac{k^ik_j}{k^2}-\tfrac13 \delta^{ij}\bigg) \bar{\rho} \Theta_2.
+\end{align}
 
 
 
