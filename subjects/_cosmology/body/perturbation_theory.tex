@@ -602,7 +602,16 @@ we find
 \end{align}
 
 
-
+It is convenient to split the \emph{scalar} part of the (i,j)-component of the stress tensor into the trace part and a traceless part, so as to separate the 2 scalar degrees of freedom.
+Namely using 
+\begin{align}
+    P=\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}, \quad (T^i_j)_{\text{scalar}}= \tfrac13 \delta^i_j T^k_k + \left(\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}\right) \left(T^i_j - \tfrac13 \delta^i_j T^k_k\right).
+\end{align}
+We find\todotag{finish}
+\begin{align}
+    \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)T^i_j = \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} f 
+    = \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} f \big(\mu^2-\tfrac13\big)
+\end{align}
 
 
 
@@ -613,6 +622,10 @@ we find
 \section{Einstein--Boltzmann system}
 %==============================================================================
 %------------------------------------------------------------------------------
+
+
+The Einstein equation for $\psi-\phi\propto\, k^{-2}\Theta_2$ seems to suggest anisotropic stress is relevant for making $\psi\neq \phi$ only on large scales since it is suppressed by $k^{-2}$ and that it is also relevant at ealry times since then radiation dies off as $a^{-4}$ and matter grows as $a^{-3}$, so that the ratio of radiation to matter energy density is larger at early times.
+In particular anisotropic stress may lead $\psi\neq\phi$ only due to anisotropic stress of neutrinos and then around recombination due to anisotropic stress of photons that develop a nonnegligible quadrupole moment $\Theta_2$.\todotag{do it}
 
 
 
