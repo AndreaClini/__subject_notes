@@ -605,12 +605,20 @@ we find
 It is convenient to split the \emph{scalar} part of the (i,j)-component of the stress tensor into the trace part and a traceless part, so as to separate the 2 scalar degrees of freedom.
 Namely using 
 \begin{align}
-    P=\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}, \quad (T^i_j)_{\text{scalar}}= \tfrac13 \delta^i_j T^k_k + \left(\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}\right) \left(T^i_j - \tfrac13 \delta^i_j T^k_k\right).
+    P=\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}, \quad (T^i_j)_{\text{scalar}}= \tfrac13 \delta^i_j T^k_k + \left(\tfrac{k^ik^j}{k^2}-\tfrac13 \delta^{ij}\right) F,\quad F=\tfrac32 \left(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\right)T^i_j,
+\end{align}
+We have
+\begin{align}
+    \int\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} \bar{f}= \int\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \tfrac13 \delta^i_j \bar{f} = \delta^i_j \bar{P}
 \end{align}
 We find\todotag{finish}
 \begin{align}
     \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)T^i_j = \Big(\tfrac{k^jk_i}{k^2}-\tfrac13 \delta^{j}_{i}\Big)\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2\hat{p}^i\hat{p}^j}{E} f 
-    = \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} f \big(\mu^2-\tfrac13\big)
+    = \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \big(\mu^2-\tfrac13\big) \Big(\bar{f}-\Theta E\frac{\partial \bar{f}}{\partial E}\Big)
+\end{align}
+The latter integrates to 
+\begin{align}
+     -\int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,\frac{p^2}{E} \big(\mu^2-\tfrac13\big) \Theta E\frac{\partial \bar{f}}{\partial E} = 4 \int\!\!\frac{d^3\vec{p}}{(2\pi)^3}\,p \bar{f}\frac{1}{(4\pi)}\int d\Omega\, \tfrac23 \big(\tfrac{3\mu^2-1}{2}\big) \Theta = 4\bar{\rho}\, = 4\bar{\rho} \Big(-\tfrac23\Theta_2\Big).
 \end{align}
 
 
