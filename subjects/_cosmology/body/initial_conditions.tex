@@ -4,3 +4,153 @@
 \chapter{Inflation \& Initial Conditions}
 %========================================================
 %=========================================================
+
+
+%------------------------------------------------------
+%=========================================================
+\section{Problems solved by inflations}
+%=========================================================
+%-----------------------------------------------------------
+
+
+Inflation is a period of accelerated expansion in the early universe, characterized by nearly exponential growth of the scale factor with Hubble parameter $H$ approximately constant,
+\begin{align}
+    H=\frac{\tfrac{da}{dt}}{a}\approx\text{const}, \quad \mathcal{H}=aH=He^{Ht}=-\tfrac{1}{\tau},\quad a(t)\simeq e^{H_*t}= -\tfrac{1}{H\tau}\quad \text{with}\quad t\in\R,\,\,\tau\in(-\infty,0).
+\end{align}
+Conformal time $\tau$ is negative during inflation approaching zero as $t\to\infty$.
+Notably the comoving Hubble radius $d_\mathcal{H}:=\frac{1}{\mathcal{H}}= a^{-1}\frac{1}{H}$ shrinks over time.
+Beware the comoving particle horizon $d_\text{hor}$ grows even during inflation, albeit approaching a constant value as $a\to\infty$, while the physical particle horizon grows to infinity in any case as physically expected,
+{\small
+\begin{align}
+    d_\text{hor}(a)=\int_{\tau_{in}}^\tau c\, d\tau = \int_{a_{in}}^a\frac{da}{a^2H}= \frac{1}{H}\left(\frac{1}{a_{in}}-\frac{1}{a}\right)\to \frac{1}{H}\frac{1}{a_{in}},\quad d_\text{hor}^\text{phys}=a\,d_\text{hor}=\frac{1}{H}\left(\frac{a}{a_{in}}-1\right)\to\infty\quad \text{as}\quad a\to\infty.
+\end{align}}
+Inflation solves several problems of the standard Big Bang cosmology.
+\begin{itemize}
+    \item The exponential expansion  drives the universe towards flatness, thus solving the flatness problem.
+    \item Exponential expansion also dilutes any unwanted relics, such as magnetic monopoles, that may be produced at the high energies of the early universe, thus solving the monopole problem.
+    \item The shrining of the Hubble radius during inflation allows regions that are currently causally disconnected to have been in causal contact before inflation, thus solving the horizon problem.
+    \item Similarly, quantum fluctuations are strectched to super-horizon scales due to the shrinking Hubble radius, undergoing decoherence and becoming the classical perturbations that seed structure formation in the universe.
+    \item This mechanism not only provides a way to generate primordial density perturbations, but also naturally predicts the nearly scale-invariant power spectrum with Gaussian statistics and the adiabatic feature of initial conditions experimentally observed in the CMB and LSS data.
+\end{itemize}
+
+
+%========================================================
+\subsection{The horizon problem}
+%========================================================
+
+Assuming standard big bang cosmology with a radiation-dominated early universe we find the angle subtended by the particle horizon at the last scattering surface
+\begin{align}
+    \theta_\text{hor}=\frac{d_\text{hor}(t_\text{ls})}{d_A(t_\text{ls})}= \frac{a_{ls}\int_0^{a_ls}\!\!cd\tau}{a_{ls}\int_{a_{ls}}^{a_0}\!\!cd\tau}=\frac{\int_0^{a_{ls}}\frac{da}{a\mathcal{H}}}{\int_{a_{ls}}^{a_0}\frac{da}{a\mathcal{H}}}\simeq 
+    \frac{\tfrac{a_{eq}}{H_0\sqrt{\Omega_{r0}}}+\tfrac{2}{H_0\sqrt{\Omega_{m0}}}\big(a_{ls}^{1/2}-a_{eq}^{1/2}\big)}{\tfrac{2}{H_0\sqrt{\Omega_{m0}}}\big(a_{0}^{1/2}-a_{ls}^{1/2}\big)}\simeq 2^\circ.
+\end{align}
+This poses a serious problem since the CMB temperature is observed to be isotropic to order $10^{-5}$ across the entire sky.
+How could photons be thermalized across $360^\circ \gg 2^\circ$ if they were never in causal contact with each other?
+
+If instead we assume a period of accelerated expansion from $a_i\simeq 0$ to some time $a_{r}$ before radiation era, the above computation is modified to
+\begin{align}\label{eq:causal_angle_with_inflation_lss}
+    \theta_\text{hor}=...=\frac{\int_0^{a_{ls}}\frac{da}{a\mathcal{H}}}{\int_{a_{ls}}^{a_0}\frac{da}{a\mathcal{H}}}\simeq 
+    \frac{\int^{a_{r}}_{a_i}cd\tau+\tfrac{a_{eq}-a_r}{H_0\sqrt{\Omega_{r0}}}+\tfrac{2}{H_0\sqrt{\Omega_{m0}}}\big(a_{ls}^{1/2}-a_{eq}^{1/2}\big)}{\tfrac{2\big(a_{0}^{1/2}-a_{ls}^{1/2}\big)}{H_0\sqrt{\Omega_{m0}}}}.
+\end{align}
+Recalling $H_\approx H_*=\text{const}$ and assuming inflation lasts long enough $a_r\gg a_i$, we compute
+\begin{align}
+    \int_{a_i}^{a_r}\frac{da}{a\mathcal{H}}= \frac{1}{a_rH_*}\Big(\frac{a_r}{a_i}-1\Big)\simeq \frac{1}{a_rH_*}\frac{a_r}{a_i} = \frac{1}{a_rH_*}e^{N_e},
+\end{align}
+where $N_e$ is \emph{defined} as the number of e-folds of inflation.
+The first term in \eqref{eq:causal_angle_with_inflation_lss} dominates, and we simply enforce the causal angle at the last scattering surface to be larger than $2\pi=360^\circ$ to get a lower bound on the number of inflation e-folds 
+\begin{align}\label{eq:causal_angle_with_inflation_lss_bound}
+    \theta_\text{hor}=\simeq 
+    \frac{\int^{a_{r}}_{a_i}cd\tau}{\tfrac{2\big(a_{0}^{1/2}-a_{ls}^{1/2}\big)}{H_0\sqrt{\Omega_{m0}}}} \simeq \frac{\frac{1}{a_rH_*}e^{N_e}}{\tfrac{2\big(a_{0}^{1/2}-a_{ls}^{1/2}\big)}{H_0\sqrt{\Omega_{m0}}}}\overset{!}{\geq} 2\pi \quad \Rightarrow \quad e^{N_e}\gtrsim 4\pi\, (a_rH_*)\frac{\big(a_{0}^{1/2}-a_{ls}^{1/2}\big)}{H_0\sqrt{\Omega_{m0}}}.
+\end{align}
+To get actual numbers we can assume inflation ends roughly at the GUT scale $H_*\simeq 10^{16}\text{GeV}$, and that reheating is efficient enough that radiation dominated era starts immediately afterwards.
+We then estimate the reheating temperature $T_{r}$ from the Friedmann equation at the end of inflation
+\begin{align}
+    H^2\simeq\frac{8\pi G}{3}\rho\simeq \frac{8\pi G}{3}\frac{\pi^2}{30}g_*T^4\quad \Rightarrow \quad T_{\text{r}}\simeq \left(\frac{g_*90}{\pi^3}\right)^{\tfrac14}\left(H_*M_\text{Pl}\right)^{\tfrac12}\simeq 10^{18}\text{GeV}.
+\end{align}
+Since radiation temperature always scales as $T\propto a^{-1}$, we estimate
+\begin{align}
+    a_r\simeq a_0\,\frac{T_0}{T_{r}} \simeq \frac{2.7K}{10^{18}\text{GeV}}\sim 10^{-30}.
+\end{align}
+Plugging numbers into \eqref{eq:causal_angle_with_inflation_lss_bound}, recalling $H_0\simeq 10^{-42}\text{GeV}$, $\Omega_{m0}\simeq 0.3$, $a_{ls}\simeq 10^{-3}$, we find the minimum number of e-folds required
+\begin{align}
+    e^{N_e}\gtrsim 4\pi\, (a_rH_*)\frac{\big(a_{0}^{1/2}-a_{ls}^{1/2}\big)}{H_0\sqrt{\Omega_{m0}}}\sim 10^{30}\quad \Rightarrow \quad N_e\gtrsim 60-70.
+\end{align}
+
+
+%========================================================
+\subsection{The flatness problem}
+%========================================================
+
+Consider the density parameters of species relative to the time-dependent critical density $\rho_c(t)=\frac{3H^2(t)}{8\pi G}$,
+\begin{align}
+    \Omega_r(a)=\frac{\Omega_{r0}}{H^2a^4},\quad \Omega_m(a)=\frac{\Omega_{m0}}{H^2a^3},\quad \Omega_\Lambda(a)=\frac{\Omega_{\Lambda0}}{H^2},\quad \Omega_k(a)=\frac{\Omega_{k0}}{H^2a^2}=-\frac{k}{H^2a^2}.
+\end{align}
+The currenlty measured value for $\Omega_{k0}=0.0007\pm0.0019$ is consistent with a spatially flat universe.
+When a species $x$ dominates we have $H^2\propto a^{-3(1+w_x)}$, and curvature density parameter goes like $\Omega_k(a)\propto a^{1+3w_x}$ over different epochs.
+Ignoring vacuum energy only relevant at late times, we find that $\Omega_k(a)$ has always been growing over time up to the tiny value $\Omega_{k0}$ observed today.
+Either the universe is exactly flat $\Omega_{k0}\equiv0$, which seems to require some explanation, or it must have started with an extremely small value of $\Omega_k(a)\sim a^{1+3w_x}\Omega_{k0}$ in the early universe so as to match the present value, which similarly requires estreme fine tuning.
+
+If instead a species with $w_x<-1/3$ dominated the early universe, we have accelerated expansion, the Hubble radius shrinks and the curvature density parameter $\Omega_k(a)$ decreases over time, solving the flateness problem.
+In the case of approximately de Sitter expansion $H\simeq \text{const}$, i.e. $w_x\sim -1$, we find
+\begin{align}
+    \Omega_{k}(a)=\frac{\Omega_{k0}}{H^2a^2}\simeq \frac{\Omega_{k0}}{H^2}e^{-2Ht} \to 0\quad \text{as}\quad t\to\infty.
+\end{align}
+
+
+
+%========================================================
+\subsection{The exotic monopole problem}
+%========================================================
+
+Grand Unified Theories generically predict the production of topologically stable magnetic monopoles during symmetry-breaking phase transitions in the early universe via the Kibble mechanism. 
+Since these objects are massive and behave as non-relativistic matter, their energy density scales as $\rho\propto a^{-3}$ and their energy density would rapidly dominate the universe, leading to a relic abundance vastly exceeding observational bounds. 
+In standard Big Bang cosmology this constitutes the monopole problem. 
+If instead a period of accelerated expansion occurs before or during monopole production, the exponential growth of the scale factor dilutes their number density as $n_M\propto e^{-3N_e}$, rendering their present abundance negligibly small and thereby solving the monopole problem.
+
+
+
+%========================================================
+\subsection{Seeding primordial perturbations: scale invariance, Gaussianity, and adiabaticity}
+%========================================================
+
+\subsubsection*{Adiabatic initial conditions with single clock inflation}
+
+This assumption, motivated by inflation, ensures that any departure between species arises only from their subsequent dynamics rather than from different initial phases. 
+Concretely, adiabatic perturbations enforce that the local state of matter (determined for example by energy density and pressure) at some spacetime point ($\tau,\bar{x}$) of the perturbed universe is the same as in the background universe at some slightly different time $\tau+\delta\tau(\bar x)$, that is
+\begin{equation*}
+    \delta \rho_{\ell}(\tau, \boldsymbol{x}) \equiv \bar{\rho}_{\ell}(\tau+\delta \tau(\boldsymbol{x}))-\bar{\rho}_{\ell}(\tau)=\dot{\bar{\rho}}_{\ell} \,\delta \tau(\boldsymbol{x}),
+\end{equation*}
+where the local time shift $\delta\tau(x)$ is the same for all species, and analogously for $\delta P$ and similar quantities.
+Then, introducing the fractional density contrast $\delta_{\ell} \equiv \frac{\delta \rho_{\ell}}{\bar{\rho}_{\ell}}$, this implies that  
+\begin{equation}\label{eq:adiabatic_ic_relation}
+\delta\tau(x)=\frac{\bar{\rho}_\ell}{\dot{\bar\rho}_\ell}\,\delta_{\ell} =\frac{\bar{\rho}_{\ell'}}{\dot{\bar\rho}_{\ell'}}\,\delta_{\ell'} 
+\quad \text { for all species } \ell \text { and } \ell'.
+\end{equation}
+In particular, for species $x,x'$ whose energy density separetely conserved $\nabla_\mu T_{(x)\,0}^\mu=\nabla_\mu T_{(x')\,0}^\mu=0$ we get the relation
+\begin{equation}\label{eq:adiabatic_initial_condition_conserved_species_vs_other}
+    \frac{\delta_{x}}{1+w_{x}}=\frac{\delta_{x'}}{1+w_{x'}}=\frac{\bar{\rho}_\ell}{\dot{\bar\rho}_\ell}\,\delta_{\ell}\quad \text {for all other species } \ell.
+\end{equation}
+Crucially, for adiabatic fluctuations the total density perturbation is dominated at any time by the species dominating the background
+\begin{equation}\label{eq:total_overdensity_dominated_by_dominant_species}
+\delta \rho_{\mathrm{tot}}:=\bar{\rho}_{\mathrm{tot}} \delta_{\mathrm{tot}}=\sum_{\ell} \bar{\rho}_{\ell} \delta_{\ell} \sim \bar{\rho}_{\mathrm{dom}} \delta_{\mathrm{dom}} \quad \text { for adiabatic fluctuations,}
+\end{equation}
+since by \eqref{eq:adiabatic_initial_condition_conserved_species_vs_other} all the $\delta_{\ell}$ are comparable.
+
+
+%-----------------------------------------------------
+%=============================================================
+\section{Decoherence of quantum fluctuations during inflation}\todotag{finish}
+%=============================================================
+%-------------------------------------------------------
+
+We now explicitly derive the EoM for the inflaton and its perturbations, and show how the quantum fluctuations of the inflaton field are stretched to super-horizon scales during inflation, undergoing decoherence and becoming the classical perturbations that seed structure formation in the universe.
+
+
+
+%-----------------------------------------------------
+%=============================================================
+\section{Initial conditions for the Einstein-Boltzmann system}\todotag{finish}
+%=============================================================
+%-------------------------------------------------------
+
+
+We now explicitly derive the initial conditions for the Einstein-Boltzmann system of equations from the conservation of the comoving curvature perturbation $\mathcal{R}$ on super-horizon scales and a suitable analysis of the equations in the superhorizon limit \todotag{finish cf Whinter 16 \& baumann book}
