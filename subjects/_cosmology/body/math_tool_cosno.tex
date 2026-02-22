@@ -6,6 +6,58 @@
 %=========================================================
 
 
+
+%------------------------------------------------------------
+%=======================================================================
+\section{Gaussian random fields}\todotag{Check \& finish}
+%=================================================================
+%---------------------------------------------------------------------
+
+A Gaussian random field is a stochastic process
+\begin{align}
+    X:\Omega\times U \to F\,\mid \omega,u\mapsto X(\omega,u),
+\end{align}
+such that for any finite collection of parameters $u_1,\dots,u_n\in U$ the random vector $(X(\cdot,u_1),\dots,X(\cdot,u_n))$ is Gaussian distributed in $F^n$.
+Crucially, the elements of a gaussian random vectors are independent if and only if they are uncorrelated, i.e. if the off-diagonal elements of the covariance matrix vanish.
+
+Quantum mechanical processes naturally induce nearly Gaussian random fields, since free quantum fields are a collection of independent harmonic oscillators and interactions are small perturbations thereof.
+The wave function of each oscillator is a Gaussian times Hermite polynomials, or simply a Gaussian for the ground state, so that the field wave function is simply the product of these wave functions, which is again a Gaussian up to polynomial factors.
+
+Another key feature is that a Gaussian random field is always ergodic, since the covariance function decays to zero at large distances, so that the law of large numbers applies and ensemble averages can be replaced with parameter averages.
+
+A key feature of Gaussian random fields is that they are completely determined by their mean and covariance functions.
+In particular, all reduced n-point functions vanish and all n-point functions can be expressed in terms of the 2-point function via Wick's theorem.
+\begin{align}
+    \langle X(\cdot,u_1)\cdots X(\cdot,u_n)\rangle_\Omega = \sum_{\text{pairings}} \prod_{\text{pairs }(i,j)} \langle X(\cdot,u_i)X(\cdot,u_j)\rangle_\Omega.
+\end{align}
+In particular homogeneity requires the mean function is constant $\langle X(\cdot,u)\rangle_\Omega = \mu$, and isotropy further requires the covariance function depends only on the distance $|u-u'|$ between parameters $\langle X(\cdot,u)X(\cdot,u')\rangle_\Omega = \xi(|u-u'|)$.
+For simplicity we subtract off the constant mean $\mu$ and consider real field $\delta\in\mathbb{R}$ in the discussion below.
+
+A Gaussian random field in real space is a Gaussian random field in Fourier space and viceversa.
+Notably, if the correlation function in real space is homogeneous $\xi(x,y)=\xi(x-y)$, then the Fourier modes are independent, i.e. the covariance function in Fourier space is always diagonal 
+{\small\begin{align}
+    \langle \delta_{\vec{k}} \delta_{\vec{k}'}\rangle_\Omega = (2\pi)^3 \delta^{(3)}(\vec{k}+\vec{k}') P(\vec{k}), \quad \text{where}\quad P(\vec{k}) := \int d^3\vec{x}e^{-i\vec{k}\cdot\vec{x}} \xi(\vec{x}).
+\end{align}}
+This is simply expressing the general fact that spatial homogeneity implies total momentum conservation.
+The probability distibution of a single mode is a \emph{complex} Gaussian, since linear combination of Gaussians remain Gaussian, with variance given by the power spectrum $P(\vec{k})$ and \emph{uniformly distributed} random phase
+\begin{align}
+    \mathbb{P}(\delta_{\vec{k}})\, d^2_{\mathbb{C}}\!\delta_{\vec{k}}
+    &= \frac{1}{\sqrt{2\pi P(\vec{k})}} \exp\left(-\frac{|\delta_{\vec{k}}|^2}{2P(\vec{k})}\right) d^2_{\mathbb{C}}\!\delta_{\vec{k}} \\
+    &= \frac{|\delta_{\vec{k}}|}{\sqrt{2\pi P(\vec{k})}} \exp\left(-\frac{|\delta_{\vec{k}}|^2}{2P(\vec{k})}\right) d|\delta_{\vec{k}}|\, d\!\arg(\delta_{\vec{k}}).
+\end{align}
+Since the field $\delta(\vec{x})$ is real then $\delta_{\vec{k}}^* = \delta_{-\vec{k}}$.
+The probability distribution of a given set of Fourier modes is just the product of the single mode distributions
+{\small\begin{align}\begin{aligned}
+    \mathbb{P}(\delta_{\vec{k}_1}\dots \vec{k}_n) \prod_{j=1}^n d^2_\mathbb{C}\!\delta_{\vec{k}_j} &= \prod_{j=1}^n \mathbb{P}(\delta_{\vec{k}_j})\, d^2_\mathbb{C}\!\delta_{\vec{k}_j} 
+    \\
+    &= \prod_{i=1}^n \frac{1}{\sqrt{2\pi P(k_i)}} \exp\left(-\frac{|\delta_{\vec{k}_i}|^2}{2P(k_i)}\right) d^2_\mathbb{C}\!\delta_{\vec{k}_i} = \prod_{i=1}^n \frac{1}{\sqrt{2\pi P(k_i)}} \exp\left(-\frac{|\delta_{\vec{k}_i}|^2}{2P(k_i)}\right) k_i^2 dk_i d\Omega_i.
+\end{aligned}\end{align}}
+If isotropy also holds i.e. $\xi(x,y)=\xi(|x-y|)$, the joint law of Fourier modes $\delta_{\vec{k}}$ only depend on the magnitude of momenta $k=|\vec k|$ and $P(\vec{k})\equiv P(k)$ is independent of the direction $\hat{k}$. 
+This is the case in Cosmology.
+
+
+
+
 %------------------------------------------------------------
 %=======================================================================
 \section{Spherical harmonics \& Legendre polynomials}
@@ -13,6 +65,18 @@
 %---------------------------------------------------------------------
 
 
+
+\begin{mytheorem}[Angular scale of variation of spherical harmonics\todotag{Finish}]
+%
+Tha spherical harmonic $Y_{\ell m}(\theta, \phi)$ has an angular scale of variation $\Delta \theta \sim \pi/\ell$ in the $\theta$ direction and $\Delta \phi \sim 2\pi/m$ in the $\phi$ direction.
+The latter is immediately understood since the $\phi$ dependence is of the form $Y_{\ell m}(\theta, \phi) = F_{\ell m}(\theta) e^{i m \phi}$, so that the function is periodic in $\phi$ with period $2\pi/m$.
+The former is less trivial, it can be understood by looking at the explicit form of $Y_{\ell m}(\theta, \phi)$ in terms of associated Legendre polynomials $P_{\ell}^m(\cos \theta)$, which are polynomials of degree $\ell$ in $\cos \theta$ and thus have $\ell$ roots in the interval $[-1,1]$, corresponding to $\ell$ zeros of $Y_{\ell m}(\theta, \phi)$ in the interval $\theta\in[0,\pi]$, so that the typical distance between zeros is $\pi/\ell$.
+Alternatively focus on the higher harmonics $Y_{\ell \ell}=(\sin\theta)^\ell e^{i\ell\phi}$, so that
+\begin{align}
+    \frac{1}{Y_{\ell\ell}}\frac{\partial Y_{\ell\ell}}{\partial \theta}\Delta\theta = \ell \cot\theta \Delta\theta,
+\end{align}
+so that the angular scale of variation in the $\theta$ direction is $\Delta \theta \sim 1/(\ell \cot\theta)$, which is of order $\pi/\ell$ for $\theta$ not too close to $0$ or $\pi$.
+\end{mytheorem}
 
 \subsubsection*{Spherical harmonics}
 

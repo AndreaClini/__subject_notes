@@ -1,9 +1,130 @@
 % !TeX root = ../cosmology_main.tex
 %=========================================================
 %=========================================================
-\chapter{Observations \& State of the Research}\label{ch:observations}
+\chapter{Generalities, Observations \& State of the Research}\label{ch:miscellaneous}
 %========================================================
 %=========================================================
+
+
+
+%------------------------------------------------------------
+%=======================================================================
+\section{General Principles of Cosmological Data Analysis}
+%=================================================================
+%---------------------------------------------------------------------
+
+
+%========================================================
+\subsection{Ergodic princple \& Cosmic variance}
+%===================================================
+
+
+\begin{mytheorem}[Ergodic principle]
+%
+The typical theoretical observable in Physics is a stochastic process
+\begin{align}\label{eq:stochastic_process}
+    X:\Omega\times U \to F\,\mid \omega,u\mapsto X(\omega,u),
+\end{align}
+where $(\Omega,\mathbb{P})$ is the probability space of possible realizations, $(U,\mu_U)$ is the space of parameters endowed with some measure $\mu_U$, and $F$ is the phase space for possible values of the observable. 
+The space $U$ is typically the spacetime manifold, or a subset of it like a spatial or temporal slice, and the measure $\mu_U$ is typically the Lebesgue measure.
+
+Theory predicts the law of the stochastic process i.e. the probability distribution induced on maps $U\to F$ by $X$, while experiments can only access a single realization of the process, i.e. a single map $U\to F$.
+
+To compare theory and experiments, we must either repeat the experiment several times (i.e. draw several realizations of the process) or we must assume a single realization of the process is enough to explore the whole phase space, so that we can replace ensemble averages with averages over (a subset of) the parameter space $U$ like spatial or temporal averages. 
+
+The ergodic principle indeed postulates that ensemble averages are independent of the process parameters $u$ and are equal to averages over the parameter space, 
+\begin{align}\label{eq:ergodic_principle}
+    \mathbb{E}_\Omega\big[X(\cdot,u_*)\big]=\langle X(\cdot,u_*)\rangle_\Omega \overset{!}{=} \int_Ud\mu_U \,\,X(\omega_*,u), \quad \forall u_*\in U, \omega_*\in \Omega.
+\end{align}
+The parameter space is often just space or time depending on the context, and parameter averages are spatial or temporal averages.
+For example in Cosmology we only consider spatial averages, since laws of observables do vary over time and in any case temporal variations would not be observable over the lifetime of man kind.
+On the other hand in statistical mechanics we only consider temporal averages, since laws of microphysical processes do not change over time and we can observe temporal variations thereof.
+In any case, for the ergodic principle to hold, it is necessary the stochastic process be stationary, i.e. the law of $X(\cdot,u)$ does not depend on $u$, and sufficiently uncorrelated on large scales, i.e. 
+\begin{align}\label{eq:uncorrelated_large_scales}
+    \lim_{|u-u'|\to\infty}\langle X(\cdot,u)X(\cdot,u')\rangle_\Omega = \langle X(\cdot,u)\rangle_\Omega\,\, \langle X(\cdot,u')\rangle_\Omega, \quad \forall u,u'\in U.
+\end{align}
+One can prove this assumption is always satisfied for stationary Gaussian processes.
+However nonlinearities of the theory will drive Gaussian initial conditions towards non-gaussian distributions which might fail the assumptions.
+For example in Cosmology gravity will eventually talk across the Universe and make far away regions correlated.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Cosmic variance]
+%
+Cosmic variance is the statistical uncertainty inherent to the fact that we replace ensemble averages with parameter averages of a single realization, pretending that $X(\omega_*,u)$ and $X(\omega_*,u')$ are uncorrelated for sufficiently large $|u-u'|$ and invoking the law of large numbers.
+This approximation is more accurate the higher the number of almost uncorrelated samples $X(\omega_*,u)$ we can fit in the parameter space $U$, i.e. essentially the larger the parameter space $U$ and the smaller the correlation length (be it spatial or temporal) of the process are.
+
+Consider first a toy model.
+Suppose theory predicts a given observable $O$ is uniformly distributed in the interval $[0,1]$ and we can measure only $5$ values of $O$ say
+{\small
+\begin{align}
+    O(\omega_*,u_1)=0.2, \quad O(\omega_*,u_2)=0.6, \quad O(\omega_*,u_3)=0.3, \quad O(\omega_*,u_4)=0.4, \quad O(\omega_*,u_5)=0.5.
+\end{align}}
+By the ergodic principle we would estimate the mean of $O$ as $\langle O\rangle_\Omega \approx 0.4$ and the variance as $\sigma_O^2 \approx 0.025$, whereas theory predicts $\langle O\rangle_\Omega = 0.5$ and $\sigma_O^2 = 1/12 \approx 0.083$.
+
+Now consider realistic cosmological observables such as CMB multipoles or galaxy clustering.
+Theory predicts the spherical harmonic coefficients $\{a_{\ell m}\}_{m=-\ell\dots\ell}$ of CMB temperature contrast be i.i.d. for fixed $\ell$ with a certain probability distribution.
+However we only measure $2\ell+1$ such values $a_{\ell m}^{\text{obs}}=a_{\ell m}(\omega_*)$ for the given realization $\omega^*$ of our universe, and then estimate CMB multipoles as
+\begin{align}
+    C_\ell^{\text{theory}}:=\langle |a_{\ell m}^{\text{theory}}|^2\rangle_\Omega \approx \frac{1}{2\ell+1}\sum_{m=-\ell}^\ell |a_{\ell m}^{\text{obs}}|^2=:C_\ell^{\text{obs}}.
+\end{align}
+Similarly theory predicts a given stationary isotropic probability distribution for the matter overdensity field $\delta(\cdot, \vec{x})$ and define the correlation function as $\xi(r):=\langle \delta(\vec{x})\delta(\vec{x}+\vec{r})\rangle_\Omega$.
+However we only measure $\delta(\omega_*,\vec{x})$ for the given realization $\omega^*$ of our universe, and then estimate the correlation function as
+\begin{align}
+    \xi^{\text{theory}}(r):=\langle \delta(\cdot,\vec{x})\delta(\cdot,\vec{x}+\vec{r})\rangle_\Omega \approx \frac{1}{V}\int_V \!\!d^3x\,\,\delta(\omega_*,\vec{x})\delta(\omega_*,\vec{x}+\vec{r})=: \xi^{\text{obs}}(r).
+\end{align}
+In both cases, the variance of the estimator is inversely proportional to the number of almost uncorrelated samples we can fit in the parameter space
+\begin{align}
+     \text{Var}(C_\ell^{\text{obs}})\propto 1/(2\ell+1)\,,\qquad \text{Var}(\xi^{\text{obs}}(r))\propto 1/V.
+\end{align}
+The question is then "how many azimuthal modes $m$ can you fit in the sky for a given $\ell$?" or "how many meters can you fit in the universe for a given correlation length $r$?".
+\end{mytheorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %------------------------------------------------------------
@@ -19,3 +140,15 @@ Despite its many predictions and successes, $\Lambda$ CDM cosmology still exhibi
 %=================================================================
 \subsection{The $H_0$ tensions}
 %=================================================================
+
+
+
+%------------------------------------------------------------
+%=======================================================================
+\section{Past, current \& upcoming probes}
+%=================================================================
+%---------------------------------------------------------------------
+
+
+
+
