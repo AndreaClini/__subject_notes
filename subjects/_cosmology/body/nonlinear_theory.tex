@@ -13,6 +13,58 @@
 %------------------------------------------------------------
 
 
+Consider two points in the universe separated by a cmoving distance $\chi$.
+The source emits an electromagnetic signal with frequency $\omega_e$ and wavelength $\lambda_e$.
+The signal is observed with frequency $\omega_o$ and wavelength $\lambda_o$.
+If the two observers are comoving i.e. fixed comoving coordinates, the comoving distance travelled by the photon stays constant.
+Since the photon travels along a null geodesic $ad\chi=dt$, therefore we find
+\begin{align}
+    \chi=\int_{\chi_e}^{\chi_o}d\chi=\int_{t_e}^{t_o}\frac{dt}{a(t)} = \int_{t_e+\Delta t_e}^{t_o+\Delta t_o}\frac{dt}{a(t)} \quad \Rightarrow \quad \int_{t_e}^{t_e+\Delta t_e}\frac{dt}{a(t)}=\int_{t_o}^{t_o+\Delta t_o}\frac{dt}{a(t)}.
+\end{align}
+If the time intervals $\Delta t_e$ and $\Delta t_o$ are small, we can approximate $a(t)$ as constant over these intervals, and we find
+\begin{align}
+    \frac{\Delta t_o}{a(t_o)}=\frac{\Delta t_e}{a(t_e)} \quad \Rightarrow \quad \frac{\omega_o}{\omega_e}=\frac{\lambda_e}{\lambda_o}=\frac{a(t_e)}{a(t_o)}=:1+z.
+\end{align}
+More generally, for $1+z:=\frac{a_{_*}}{a}$ with $a_*=1$ today, we have 
+\begin{align}
+    d\chi=\frac{dt}{a}=\frac{da}{a^2H(a)}=-\frac{dz}{H(z)}, \quad 
+    \chi = \int_{t_e}^{t_o}\frac{dt}{a(t)} = \int_{a_e}^{a_o}\frac{da}{a^2H(a)} = \int_{z_o}^{z_e}\frac{dz}{H(z)} = \int_{z_o}^{z_e}\frac{dz}{H(z)}.
+\end{align}
+If $H(z)$ varies slowly with $z$ between $z_o$ and $z_e$, we find back Hubble's law $\Delta z\simeq H(z_o)\chi$.
+
+Now consider a source moving with peculiar velocity $\vec{v}$.
+The observed redshift is then given by a combination of the cosmological redshift and the Doppler shift, which are multiplicative simply because $\lambda_2/\lambda_0 = (\lambda_2/\lambda_1)(\lambda_1/\lambda_0)$,
+\begin{align}
+    1+z = (1+z_{\text{c}})(1+z_{\text{d}}) = 1+z_{\text{c}} + (1+z_{\text{c}})z_{\text{d}}.
+\end{align}
+For small velocities $\beta\ll1$, regardless of the relative angle between the velocity vector and the line of sight $\hat{n}$, the relativistic Doppler shift is approximated to first order as 
+\begin{align}
+    \frac{\lambda_o}{\lambda_e}=\frac{\omega_e}{\omega_o}=\frac{1}{\gamma\,\,(1-\beta \hat{v}\cdot \hat{n})}\approx 1+\frac{\vec{v}\cdot\hat{n}}{c} + O(\beta^2).
+\end{align}
+The actual comoving distance $\chi$ in real space and the inferred comoving distance $\chi_s$ in redshift space are then related by
+\begin{align}
+    \chi_s = \int_0^{z} \frac{dz}{H(z)} = \int_0^{z_{\text{c}}} \frac{dz}{H(z)} + \int_{z_{\text{c}}}^{z_c+(1+z_\text{c})z_d} \frac{dz}{H(z)} \approx \chi + \frac{(1+z_c)z_{\text{d}}}{H(z_c)} \approx \chi + \frac{(1+z_c)}{H(z_c)}\frac{\vec{v}\cdot\hat{n}}{c}.
+\end{align}
+For present times comoving and physical distance coincide since $a_0=1$, so that we can replace $\chi$ with $r$ and write
+\begin{align}
+    \vec{r}_s = \vec{r} + \frac{(1+z)}{H(z)}\frac{\vec{v}\cdot\hat{n}}{c}\hat{n}.
+\end{align}
+
+Let us now relate the density contrast in redshift space $\delta_s$ to the density contrast in real space $\delta$.
+Since total number of galaxies is conserved and the backround density $\bar{\rho}$ is homogeneous, we have
+\begin{align}
+    \bar{n}(1+\delta_s(\vec{r}_s))d^3\vec{r}_s = \bar{n}(1+\delta(\vec{r}))d^3\vec{r} \quad \Rightarrow \quad 1+\delta_s(\vec{r}_s) = (1+\delta(\vec{r}))\left|\frac{\partial \vec{r}}{\partial \vec{r}_s}\right|.
+\end{align}
+We now compute...\todotag{Finish}
+
+
+
+
+
+
+
+
+
 
 %--------------------------------------------------------
 %=========================================================
