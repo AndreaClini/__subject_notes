@@ -210,7 +210,7 @@ The conjugate field in these coordinates is then\footnote{Note for spin fields $
     & \quad \Rightarrow \quad \dot{\phi}(t,\mathbf{x}) = \frac{1}{\sqrt{g}\, g^{00}} \Big( \pi(t,\mathbf{x}) - \sqrt{g}\, g^{0j} \partial_j\phi(t,\mathbf{x}) \Big).
 \end{align}}
 Using \eqref{eq:metric_induced_spatial_leaves_folitation} the conjugate field may also be written in terms of the unit time-oriented normal and induced metric on spatial leaves as
-\begin{align}
+\begin{align}\label{eq:conjugate_field_vs_normal_spatial_slice}
   \pi = \sqrt{g}\,g^{0\mu}\,\nabla_\mu\phi= \sqrt{g_{|\Sigma}}\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \nabla_\mu \phi = \sqrt{g_{|\Sigma}}\, n^\mu \nabla_\mu \phi.
 \end{align}
 The hamiltonian \emph{density} is then
@@ -257,7 +257,7 @@ Namely, for $\phi_1, \phi_2 \in \mathcal{S}_\R$, we have the following equivalen
 
 \noindent
 where $n^\mu$ is the unit outward (positive-time oriented) normal to the spatial slice $\Sigma^{(n)}$ and it is always intended that the $n$-form is pulled back to $\Sigma^{(n)}$ before integration (except for the last case, where it is already done explicitly). 
-Using \eqref{eq:metric_induced_spatial_leaves_folitation}, the symplectic form then takes the familiar form in terms of conjugate fields
+Using \eqref{eq:conjugate_field_vs_normal_spatial_slice}, the symplectic form takes the familiar form in terms of conjugate fields
 {\small
 \begin{align}
     \omega(\phi_1, \phi_2) &= 
@@ -269,11 +269,11 @@ The \emph{conserved} current is defined as
 \begin{align}
     J^{12}_\mu \, dx^\mu:= \nabla \phi_1 \, \phi_2 - \phi_1 \, \nabla \phi_2 = \big(d\phi_1\phi_2 - \phi_1 d\phi_2\big), \quad \nabla_\mu J^\mu_{12} = 0\,,
 \end{align}
-and is conserved since both fields satisfy the \emph{free}\footnote{It is indeed crucial the theory is free $V(\phi)=a+b\phi+c\phi^2$ for the cancellation to occur bewteen the two fields.} Klein--Gordon equation \eqref{eq:real_space_KG_solutions}.
-This follows from $\nabla_\mu big(\nabla^\mu \phi_1 \, \phi_2 - \phi_1 \, \nabla^\mu \phi_2\big)=0$, and the explicit expression for the Hodge dual or the expression via (co)-differentials for the Laplace operator $\nabla_\mu\nabla^\mu=\Box = d\delta + \delta d \equiv \delta d$ for the Laplace operator on 0-forms
+and is conserved since both fields satisfy the \emph{free}\footnote{It is indeed crucial the theory is free $V(\phi)=a+b\phi+c\phi^2$ for the cancellation to occur bewteen the two fields.} Klein--Gordon equation \eqref{eq:real_space_KG_solutions} so that $\nabla_\mu \big(\nabla^\mu \phi_1 \, \phi_2 - \phi_1 \, \nabla^\mu \phi_2\big)=0$.
+Then $d\star J=0$ follows either from the explicit expression for the Hodge dual, or from the expression via (co)-differentials for the Laplace operator $\nabla_\mu\nabla^\mu=\Box = d\delta + \delta d$ and $\delta =0$ on 0-forms, that is
 \begin{align}
   &\star J = \sqrt{g}\, J^\mu \,\epsilon_{\mu\alpha_1\dots\alpha_n} \,\frac{1}{n!} \,dx^{\alpha_1}\wedge \cdots \wedge dx^{\alpha_n} \quad \Rightarrow \quad d\star J = \partial_\nu(\sqrt{g} J^\nu)\,d^{n+1}\!x  =  \nabla_\nu J^\nu\,\sqrt{g}\, d^{n+1}\!x =0,\\[3pt]
-  &d \star J = d \star d\phi_1 \, \phi_2 - d \star d\phi_2 \, \phi_1 = \star\!\!\!\!\!\!\!\!\!\underbrace{\delta d\,\phi_1}_{=(\delta d+d\delta)\phi = \Box \phi_1}\!\!\!\!\!\!\!\!\!\phi_2 -\phi_1\,\, \star\delta d\phi_2 =0\\
+  &d \star J = d \star d\phi_1 \, \phi_2 - d \star d\phi_2 \, \phi_1 = \star\!\!\!\!\!\!\!\!\!\underbrace{\delta d\,\phi_1}_{=(\delta d+d\delta)\phi = \Box \phi_1}\!\!\!\!\!\!\!\!\!\phi_2 -\phi_1\,\, \star\delta d\phi_2 =0.\\
 \end{align}
 \vspace{-7mm}
 
@@ -285,20 +285,17 @@ Indeed by current conservation and Gauss theorem
     = \int_{\partial\big([t_1,t_2]\times \Sigma\big)} \!\!\!\!\!\!\star J
     = \int_{[t_1,t_2]\times \Sigma} d \!\star\! J =0.
 \end{align}
-More generally, for equivalent foliations $\mathcal{M}\simeq \R\times \Sigma \simeq \tilde{\R}\times \tilde{\Sigma}$ and two times $t_1$ and $\tilde{t}_2=\tilde{t}(t_2)$ we proceed the same considering the spacetime region bounded by $\Sigma_{t_1}$ and $\tilde{\Sigma}_{\tilde{t}_2}$.
+More generally, for equivalent foliations $\mathcal{M}\simeq \R\times \Sigma \simeq \tilde{\R}\times \tilde{\Sigma}$ and two times $t_1$ and $\tilde{t}_2=\tilde{t}(t_2)$, the argument is the same by considering the spacetime region bounded by $\Sigma_{t_1}$ and $\tilde{\Sigma}_{\tilde{t}_2}$.
 
 The symplectic space is naturally promoted to a Poisson space by defining the Poisson bracket of two functionals $F_1, F_2: \mathcal{S}_\R \to \R$ as
 \begin{align}
-    \{F_1, F_2\} = \omega(X_{F_1}, X_{F_2}),
+    \{F_1, F_2\} = \omega(X_{F_1}, X_{F_2}),\quad\text{with}\quad \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \quad \forall\, Y \in T_\phi \mathcal{S}_\R \simeq \mathcal{S}_\R,
 \end{align}
-where the hamiltonian vector field $X_F$ associated to a functional $F$ is defined by enforcing
-\begin{align}
-    \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \quad \forall\, Y \in T_\phi \mathcal{S}_\R \simeq \mathcal{S}_\R.
-\end{align}
+where the hamiltonian vector field $X_F$ associated to a functional $F$ is defined raising the index of the functional derivative $dF_{|\phi}(Y) = \int_\Sigma \frac{\delta F}{\delta \phi} Y$ with the symplectic form $\omega$.
 
 Finally we complexify the space of solutions 
 \begin{align}
-    \mathcal{S}_\C = \{ \phi \in C^\infty_0(\mathcal{M},\C) \mid (\nabla_\mu \nabla^\mu + 2\partial_\phi V + \xi R) \phi = 0 \} = \mathcal{S} \otimes_\R \C
+    \mathcal{S}_\C = \{ \phi \in C^\infty_0(\mathcal{M},\C) \mid (\nabla_\mu \nabla^\mu + \partial_\phi V + \xi R) \phi = 0 \} = \mathcal{S} \otimes_\R \C\,,
 \end{align}
 and promote the symplectic form to a hermitian sesquilinear form by 
 \begin{align}
@@ -312,7 +309,7 @@ This is again written in terms of a \emph{complex} \emph{conserved} current, now
 \end{align}
 Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\pm1$ by construction, since it arises from a symplectic (real antisymmetric) form and thus
 \begin{align}\label{eq:signature_pm_hermitian_product_phase_space}
-    \langle \psi^*,\chi^*\rangle := i\, \omega(\psi, \chi^*) = -i\, \omega(\chi^*, \psi) =: -\langle \chi, \psi \rangle^* = -\langle \psi, \chi \rangle.
+    \langle \psi^*,\chi^*\rangle := -i\, \omega(\psi, \chi^*) = i\, \omega(\chi^*, \psi) =: -\langle \chi, \psi \rangle = -\langle \psi, \chi\rangle^*.
 \end{align}
 \end{mytheorem}
 
@@ -324,7 +321,7 @@ Sylvester theorem ensures the existence of a basis $\{u_n, v_n, z_n\}_{n}$ of $\
     \langle u_n, u_m \rangle = +\delta_{nm}, \,\,\, \langle v_n, v_m \rangle = -\delta_{nm}, \,\,\, \langle u_n, v_m \rangle = 0, \,\,\, \langle z_n, \cdot \rangle = 0, \quad \mathcal{S}_\C = \mathcal{S}_\C^+ \oplus^\perp \mathcal{S}_\C^- \oplus^\perp \mathcal{S}_\C^0\,.
 \end{align}
 Because of \eqref{eq:signature_pm_hermitian_product_phase_space}, we can and will actually arrange the basis so that $*:\mathcal{S}_\C^+ \to \mathcal{S}_\C^-$ is an isomorphism and $v_n \equiv u_n^*$, and we also remove the ghost modes $z_n$ upon quotienting $\mathcal{S}_C/\mathcal{S}_\C^0$.
-Equivalently Darboux theorem for sympletic forms ensures the existence of a basis $\{\phi_n, \, \pi_n, z_n\}_n$ of $\mathcal{S}_\R$ such that
+Equivalently Darboux theorem for real sympletic forms ensures the existence of a basis $\{\phi_n, \, \pi_n, z_n\}_n$ of $\mathcal{S}_\R$ such that
 {\small
 \begin{align}
     \omega = \begin{pmatrix}
@@ -340,22 +337,22 @@ Equivalently Darboux theorem for sympletic forms ensures the existence of a basi
     \phi_n= \frac{u_n+u_n^*}{i\sqrt{2}}, \,\,\pi_n = \frac{u_n-u_n^*}{\sqrt{2}}.
 \end{align}}
 %
-The index $n$ can be discrete with Kronecker deltas, or continuous with Dirac deltas, depending on the spatial topology and boundary conditions.
-In any case, the bases are complete and yield a resolution of the identity (and similarly for $\mathcal{S}_\R$)
+The index $n$ can be discrete with Kronecker deltas, or continuous with Dirac deltas, depending on spatial topology and boundary conditions.
+In any case, the bases are complete and yield corresponding resolutions of the identity 
 \begin{align}\label{eq:completeness_symplectic_basis}
-    \sum_n |u_n\rangle \langle u_n| - \sum_n |v_n\rangle \langle v_n| = \mathbb{I}_{\mathcal{S}_\C}.
+    \sum_n |u_n\rangle \langle u_n| - \sum_n |v_n\rangle \langle v_n| = \mathbb{I}_{\mathcal{S}_\C},\qquad 
+    \sum_n |\pi_n\rangle \langle \phi_n| - \sum_n |\phi_n\rangle \langle \pi_n| = \mathbb{I}_{\mathcal{S}_\R}.
 \end{align}
 %
 
-Suppose we have an orthonormal basis $\{u_n, u_n^*\}_n$ satisfying \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space}, and we pass to another basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ of $\mathcal{S}_\C$ related by a transformation
+Suppose we have an orthonormal basis $\{u_i, u_i^*\}_i$ satisfying \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space}, and we pass to another basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ of $\mathcal{S}_\C$ related by a transformation
 \begin{align}\label{eq:transformation_bogoliubov_modes}
     \tilde{u}_m = \sum_i \alpha_{mi} u_i + \beta_{mi} u_i^*\,,\quad \alpha_{mi}=\langle u_i, \tilde{u}_m\rangle, \quad \beta_{mi} = -\langle u_i^*, \tilde{u}_m\rangle.
 \end{align}
 Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonality properties \eqref{eq:orthogonality_bogoliubov_basis_complex_phase_space} requires the Bogoliubov coefficient satisfy
-{\small
-\begin{align}\label{eq:orthogonality_condition_bogoliubov_coefficients}
+{\small\begin{align}\label{eq:orthogonality_condition_bogoliubov_coefficients}
     &\langle \tilde{u}_m, \tilde{u}_{n} \rangle = \delta_{mn} \quad \Rightarrow \quad (\alpha \alpha^\dagger- \beta\beta^\dagger)_{nm}=\sum_i \alpha_{mi}^* \alpha_{ni} - \beta_{mi}^* \beta_{ni}^* = \delta_{mn},\\
-    &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i -\alpha_{mi} \beta_{ni} - \beta_{mi} \alpha_{ni} = 0.
+    &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i \alpha_{mi} \beta_{ni} - \beta_{mi} \alpha_{ni} = 0.
 \end{align}}
 Enforcing the second bases is also complete, we invert the relation by inserting a completeness in the $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ basis and recalling the property $\langle x,y\rangle^* = \langle x^*,y^*\rangle$ of the symplectic hermitian product, we find 
 {\small\begin{align}\label{eq:inverse_transformation_bogoliubov_modes}
@@ -365,7 +362,7 @@ Enforcing the second bases is also complete, we invert the relation by inserting
     \langle u_i^*, u_j \rangle = 0 \quad \Rightarrow \quad (\alpha^\dagger \beta - \beta^T \alpha^*)_{ij} = \sum_m \alpha_{mi}^* \beta_{mj} - \beta_{mi} \alpha_{mj}^* = 0.
     \end{array}
 \end{align}}
-More concisely, in matrix form, demanding both are simplectic (orthogonal complete) bases imposes\todotag{check}
+More concisely, in matrix form, demanding both are simplectic (orthogonal complete) bases imposes the two bases transform as\todotag{check}
 {\small
 \begin{align}\label{eq:bogol_transform_mode_function_matrix_form_classical}
     &\begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix}
@@ -374,11 +371,36 @@ More concisely, in matrix form, demanding both are simplectic (orthogonal comple
     \begin{pmatrix}u_j\\u_j^*\end{pmatrix}
     = \begin{pmatrix}\alpha^\dagger & -\beta^T\\-\beta^\dagger & \alpha^T \end{pmatrix}
     \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix},
-    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\,\, \alpha\beta^T - \beta\alpha^T = 0, \\[2pt]
-    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\,\, \alpha^\dagger \beta - \beta^T \alpha^* = 0.
+    \quad\text{with}\qquad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\,\, \alpha\beta^T - \beta\alpha^T = 0, \\[2.5pt]
+    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\,\, \alpha^\dagger \beta - \beta^T \alpha^* = 0,
     \end{array}
 \end{align}}
-Similar `rotations' can be applied to real bases $\{\phi_n,\pi_n\}$ of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure.
+One indeed verifies these transformations preserve the hermitian form passing to the second basis
+{\small\begin{align}
+\begin{pmatrix} 1 & 0\\0 & -1\end{pmatrix} \overset{!}{=}
+\left\langle \begin{pmatrix} \tilde{u}\,\,\\\tilde{u}^*\end{pmatrix}, \begin{pmatrix} \tilde{u}& \tilde{u}^*\end{pmatrix}\right\rangle 
+= \begin{pmatrix}\alpha^* & \beta^*\\\beta & \alpha \end{pmatrix}
+\underbrace{\left\langle \begin{pmatrix} u\\ u^*\end{pmatrix}, \begin{pmatrix} u & u^*\end{pmatrix}\right\rangle}_{\tiny =
+\begin{pmatrix} 1 & 0\\0 & -1\end{pmatrix}}
+\begin{pmatrix}\alpha^T & \beta^\dagger\\\beta^T & \alpha^\dagger \end{pmatrix}
+\,\,\,\text{iff}\,\,\,
+\begin{array}{c}\alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\\[2pt] \alpha\beta^T - \beta\alpha^T = 0.\end{array}
+\end{align}}
+\vspace{-7mm}
+
+\noindent
+and similarly passing to the first basis
+{\small\begin{align}
+\begin{pmatrix} 1 & 0\\0 & -1\end{pmatrix} \overset{!}{=}
+\left\langle \begin{pmatrix} u\,\,\\ u^*\end{pmatrix}, \begin{pmatrix} u & u^*\end{pmatrix}\right\rangle 
+=\begin{pmatrix}\alpha^T & -\beta^\dagger\\-\beta^T & \alpha^\dagger \end{pmatrix}
+\underbrace{\left\langle \begin{pmatrix} \tilde{u}\,\,\\\tilde{u}^*\end{pmatrix}, \begin{pmatrix} \tilde{u}& \tilde{u}^*\end{pmatrix}\right\rangle}_{\tiny =
+\begin{pmatrix} 1 & 0\\0 & -1\end{pmatrix}}
+\begin{pmatrix}\alpha^* & -\beta^*\\-\beta & \alpha \end{pmatrix}
+\,\,\,\text{iff}\,\,\,
+\begin{array}{c}\alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\\[2pt] \alpha^\dagger \beta - \beta^T \alpha^* = 0.\end{array}
+\end{align}}
+Analogous `rotations' can be applied to real bases $\{\phi_n,\pi_n\}$ of $\mathcal{S}_\R$ preserving the Darboux form of the symplectic structure.
 This shows the above bases are far from unique and in fact there exists an infinite family of them related by Bogoliubov transformations.
 
 Since $\{u_n, u_n^*\}_n$ is a complete basis of $\mathcal{S}_\C$, any solution $\phi\in \mathcal{S}_\C$ can be expanded as
@@ -407,17 +429,18 @@ Since spacetime is globally hyperbolic, given any time $t\in\R$ and any function
   \sqrt{g(t,\mathbf{x})} \,\,g^{0\mu}(t,\mathbf{x}) \,\,\partial_\mu f(t,\mathbf{x}) = 0 \qquad \forall \mathbf{x}\in \Sigma_t.
 \end{align} 
 The point $y=(y^0,\mathbf{y})\in\mathcal{M}$ is arbitrary and independent of the chosen $t$.
-Taking also $y^0=t$ and taking the solution of the Cauchy problem above, the formula becomes
+Taking also $y^0=t$ and inserting the solution of the Cauchy problem above, the formula becomes
 {\small
 \begin{align}
   b(\mathbf{y}) &= \sum_n u_n(t,\mathbf{y}) \langle u_n| f \rangle - \sum_n u_n^*(t,\mathbf{y}) \langle u_n^*|f \rangle\\
   &= -i\! \int_{\Sigma_{t}}\!\! \!\!d^n\mathbf{x}\, \sqrt{g(x)}\, g^{0\mu}(x) \bigg[\Big( \sum_n \partial_\mu u_n^*(x) u_n(y)-\partial_\mu u_n(x) u_n^*(y) \Big) b(\mathbf{x})
   \!+\! \graycancel{\Big( \sum_n u_n(x) u_n^*(y) - u_n^*(x) u_n(y)\Big) \partial_\mu f(x)}\bigg].
 \end{align}}
-Since the time $t$ and the function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ are arbitary, we thus identify
+Since the time $t$ and the function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ are arbitary, recalling also \eqref{eq:metric_induced_spatial_leaves_folitation}, we thus identify
 {\small
 \begin{align}\label{eq:completeness_relation_bogoliubov_basis_explicit}
-  i\delta^{(n)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}) &\equiv \sqrt{g(t,\mathbf{x})}\, g^{0\mu}(t,\mathbf{x}) \Big( \sum_n \partial_\mu u_n^*(t,\mathbf{x}) u_n(t,\mathbf{y})-\partial_\mu u_n(t,\mathbf{x}) u_n^*(t,\mathbf{y}) \Big)\quad \forall t\in\R\,\,\, \forall \mathbf{x},\mathbf{y}\in \Sigma_t.
+  i\delta^{(n)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}) &\equiv \sqrt{g(t,\mathbf{x})}\, g^{0\mu}(t,\mathbf{x}) \Big( \sum_n \partial_\mu u_n^*(t,\mathbf{x}) u_n(t,\mathbf{y})-\partial_\mu u_n(t,\mathbf{x}) u_n^*(t,\mathbf{y}) \Big)\quad \forall t\in\R\,\,\, \forall \mathbf{x},\mathbf{y}\in \Sigma_t\\
+  &=\sqrt{g_{|\Sigma}}\,\, n^\mu(t,\mathbf{x}) \Big( \sum_n \partial_\mu u_n^*(t,\mathbf{x}) u_n(t,\mathbf{y})-\partial_\mu u_n(t,\mathbf{x}) u_n^*(t,\mathbf{y}) \Big).
 \end{align}}
 It is worth noticing the number of mode functions must be infinite (possibly countable).
 Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, the mode functions are smooth functions on $\mathcal{M}$ and we cannot obtain the delta distribution as a \emph{finite} sum of such functions.
@@ -426,7 +449,7 @@ Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, t
 
 
 
-\begin{mytheorem}[Phase space in static spacetimes\todotag{Finish}]
+\begin{mytheorem}[Phase space in static spacetimes\todotag{Fix!!}]
 A particularly important case is that of static spacetimes i.e. spacetimes admitting a global timelike Killing vector field $K$ orthogonal to the spatial leaves of the foliation $\mathcal{M}\simeq \R\times \Sigma$, for some n-manifold $\Sigma$.
 In adapted coordinates $x^\mu=(t,\mathbf{x})$ the metric reads\footnote{Beware the existence of a global timelike v.f. is not enough, since there might still be cross terms $g_{0j}(\mathbf{x})\neq0$ that cannot be removed by a change of coordinates.}
 \begin{align}
@@ -435,7 +458,7 @@ In adapted coordinates $x^\mu=(t,\mathbf{x})$ the metric reads\footnote{Beware t
 The Chrsitoffel symbols obey $\Gamma^\mu_{\mu0}=0$ and $\Gamma^\mu_{\mu j} = \bar{\Gamma}^i_{ij}$ where $\bar{\Gamma}^i_{jk}$ are the Christoffel symbols associated to the (postive definite) spatial metric $\bar{g}_{ij}:=-g_{|\Sigma}\equiv -g_{ij}$ induced on leaves $\Sigma$.
 The D'Alambert operator then reads in terms the spatial Laplacian $\bar{\nabla}_j\bar{\nabla}^j$ associated to $\bar{g}$
 \begin{align}
-  \nabla_\mu\nabla^\mu \phi = g^{00}(\mathbf{x}) \partial_t^2 \phi - \bar{\nabla}_j\bar{\nabla}^j\phi\,.
+  \nabla_\mu\nabla^\mu \phi = \frac{1}{g_{00}(\mathbf{x})} \partial_t^2 \phi + \tfrac12  \frac{1}{g_{00}(\mathbf{x})} \bar{g}^{ij}\partial_i g_{00}(\mathbf{x})\partial_j\phi  +\bar{\nabla}_j\bar{\nabla}^j\phi\,.
 \end{align}
 %
 Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions\todotag{Chek if $R=\bar{R}$} of the spatial operator $\tfrac{1}{g^{00}(\mathbf{x})}\big(-\bar{\nabla}_j\bar{\nabla}^j + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $d^n\mathbf{x}\, \tfrac{\sqrt{\bar{g}(\mathbf{x})}}{\sqrt{g_{00}(\mathbf{x})}}$, that is\todotag{Check the measure for orthogonality}
