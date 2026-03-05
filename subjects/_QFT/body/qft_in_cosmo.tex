@@ -433,7 +433,7 @@ Taking also $y^0=t$ and inserting the solution of the Cauchy problem above, the 
 {\small
 \begin{align}
   b(\mathbf{y}) &= \sum_n u_n(t,\mathbf{y}) \langle u_n| f \rangle - \sum_n u_n^*(t,\mathbf{y}) \langle u_n^*|f \rangle\\
-  &= -i\! \int_{\Sigma_{t}}\!\! \!\!d^n\mathbf{x}\, \sqrt{g(x)}\, g^{0\mu}(x) \bigg[\Big( \sum_n \partial_\mu u_n^*(x) u_n(y)-\partial_\mu u_n(x) u_n^*(y) \Big) b(\mathbf{x})
+  &= -i\! \int_{\Sigma_{t}}\!\! \!\!d^n\mathbf{x}\,\underbrace{ \sqrt{g(x)}\, g^{0\mu}(x)}_{=\sqrt{g_{\Sigma}}\, n^\mu} \bigg[\Big( \sum_n \partial_\mu u_n^*(x) u_n(y)-\partial_\mu u_n(x) u_n^*(y) \Big) b(\mathbf{x})
   \!+\! \graycancel{\Big( \sum_n u_n(x) u_n^*(y) - u_n^*(x) u_n(y)\Big) \partial_\mu f(x)}\bigg].
 \end{align}}
 Since the time $t$ and the function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ are arbitary, recalling also \eqref{eq:metric_induced_spatial_leaves_folitation}, we thus identify
@@ -442,6 +442,7 @@ Since the time $t$ and the function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ are 
   i\delta^{(n)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}) &\equiv \sqrt{g(t,\mathbf{x})}\, g^{0\mu}(t,\mathbf{x}) \Big( \sum_n \partial_\mu u_n^*(t,\mathbf{x}) u_n(t,\mathbf{y})-\partial_\mu u_n(t,\mathbf{x}) u_n^*(t,\mathbf{y}) \Big)\quad \forall t\in\R\,\,\, \forall \mathbf{x},\mathbf{y}\in \Sigma_t\\
   &=\sqrt{g_{|\Sigma}}\,\, n^\mu(t,\mathbf{x}) \Big( \sum_n \partial_\mu u_n^*(t,\mathbf{x}) u_n(t,\mathbf{y})-\partial_\mu u_n(t,\mathbf{x}) u_n^*(t,\mathbf{y}) \Big).
 \end{align}}
+Beware we always intend the Dirac delta as $\int_\Sigma\!\! d^nx \delta^{(n)}_\Sigma(x-y)=1$ with no metric, not as $\int_\Sigma \!\!d^nx\sqrt{g_\Sigma}\delta^{(n)}_\Sigma(x-y)=1$.
 It is worth noticing the number of mode functions must be infinite (possibly countable).
 Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, the mode functions are smooth functions on $\mathcal{M}$ and we cannot obtain the delta distribution as a \emph{finite} sum of such functions.
 %
@@ -490,10 +491,11 @@ and the equal-time canonical commutation relations (CCR)
     &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}). 
 \end{align}
 As usual it is sufficient to impose the CCR at some fixed time, since unitary time evolution $U(t,t_0) = \mathcal{T} e^{-\frac{i}{\hbar}\int_{t_0}^t H(s) ds}\in U(\mathcal{F})$ preserves the CCR at all times.
+Indeed, the CCR are de-facto the conserved Noether charged associated to the global unitary symmetry of the theory.
 
 \textbf{Since} the \textbf{symplectic structure} of the classical phase space is \textbf{independent of the chosen foliation} (as long as they are equivalent), also the \textbf{CCR} are \textbf{independent of the} (equivalent) \textbf{foliation} chosen for canonical quantization.
 In particular the CCR \eqref{eq:CCR_fields_curved_spacetime} between two fields at spacetime points $x^\mu_1, x^\mu_2$ not only hold when they have the same time coordinate $x^0_1=x^0_2=t$ in the foliation $\mathcal{M}\simeq \R\times \Sigma$ used for quantization, but more generally whenever they are spacelike separated (i.e. the geodesic between them is spacelike) since we can always find an equivalent foliation $\tilde{\R}\times \tilde{\Sigma}\simeq \tilde{R}\times\tilde{\Sigma}$ where they lie on the same leaf $\tilde{\Sigma}_{\tilde{t}}$.
-That is\todotag{fix $\delta_3$ make it covariant}
+That is
 \begin{align}
     [\hat{\phi}(x_1), \hat{\phi}(x_2)] = 0, \quad [\hat{\pi}(x_1), \hat{\pi}(x_2)] = 0, \quad [\hat{\phi}(x_1), \hat{\pi}(x_2)] = i\hbar\, \delta_\Sigma^{(3)}(\mathbf{x}_1 - \mathbf{x}_2),\quad \text{if}\quad (x_1 - x_2)^2 < 0,
 \end{align}

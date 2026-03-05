@@ -2235,9 +2235,8 @@ Hence Cartan equations imply the Bianchi identities in the absence of torsion.
 
 
 %================================================================
-\subsection{Einstein equations in the tetrad formalism}
+\subsubsection{Einstein equations in the tetrad formalism}
 %================================================================
-
 Let us now assume $\nabla$ is the Levi-Civita connection of a Lorentzian metric $g$ on $M$ with vanishing torsion $T\equiv 0$.
 The Cartan and Bianchi equations in the absence of torsion reduce to \eqref{eq:cartan_bianchi_no_torsion}.
 In the following we only consider orthonormal tetrads $e_i$.
@@ -2315,6 +2314,60 @@ Finally, defining the Einstein (0,1)-tensor valued 1-form $G= \theta^a\otimes G_
 \end{align}
 the Einstein equations can then be concisely expressed as $G_a = 8\pi G\, T_a$.
 
+
+
+
+%-------------------------------------------------
+%=====================================================
+\subsection{General Relativity as a gauge theory}\todotag{huge fix needed}
+%====================================================
+%------------------------------------------------
+%
+Curved spacetime can be seen as a gauge theory of the Lorentz group $SO(1,3)$, with the connection 1-forms $\omega^a_{\, b}$ playing the role of gauge fields for Lorentz transformation.
+In fact also of the full Poincaré group $ISO(1,3)$ if we also include the tetrad fields $\theta^a$ as gauge fields for translations.
+The curvature 2-forms $\Omega^a_{\, b}$ are then the field strengths of these gauge fields, and the Einstein-Hilbert action can be expressed in terms of these curvature 2-forms and the tetrad fields.
+In this picture, the tetrad fields $\theta^a$ can be seen as a kind of "square root" of the metric, and they play a crucial role in coupling gravity to matter fields, especially spinor fields which require an orthonormal frame to be defined.
+
+Let us first recall the general picture for non-abelian gauge theories in a flat or curved spacetime $(\mathcal{M},g)$.
+Let $G$ be some Lie group with Lie algebra $\mathfrak{g}$, generators $T_a$ and structure constants $f_{ab}^c$.
+Consider a field $\psi$ on spacetime transforming under some representation $r$ of $G$ as $\psi \to U \psi$, where $U(x) = e^{e\,\alpha^a(x) T_a^{(r)}}$ is a local gauge transformation and $T_a^{(r)}$ are the generators in the representation $r$.
+That is $\psi$ is a section of the associated vector bundle $E = P \times_r F \to \mathcal{M}$, where $P\to \mathcal{M}$ is a principal $G$-bundle and $F$ is the representation space of $r$ i.e. the fiber.
+To define a gauge covariant derivative $D_\mu$ acting on $\psi$, we introduce a connection 1-form $A_\mu = A_\mu^a T_a$ taking values in the Lie algebra $\mathfrak{g}$, which transforms under gauge transformations as $A_\mu \big(\to U A_\mu -\tfrac{1}{e} \nabla_\mu \big)U^{-1}$, and then define $D_\mu \psi = (\nabla_\mu - e A_\mu)\psi$ so that
+\begin{align}
+    \tilde{\nabla}_\mu U\psi = U \nabla_\mu \psi.
+\end{align}
+This is nothing else than requiring the transformations induced by the group $G$ are indeed compatibe with the atlas.\todotag{Explain, diagram \& fix}
+Note this holds regardless of the spacetime being flat $\nabla\equiv \partial$ or curved $\nabla$ being the Levi-Civita connection of $g$.
+It is more accurate to look at $A^a=A^a_\mu dx^\mu$ as a $\mathfrak{g}$-valued 1-form on the spacetime manifold.
+The field strength of the gauge field $A_\mu$ is then given by
+\begin{align}
+    F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + [A_\mu, A_\nu] = dA +  A \wedge A\,.
+\end{align}
+The latter expression should ring a bell since it matches the expression for the curvature 2-form $\Omega$ in terms of the connection 1-form $\omega$ in the Cartan structure equations.
+
+Let us now see how this picture applies to General Relativity.
+Start from a flat spacetime with standard Minkowski metric $\eta_{ab}$ and global Lorentz symmetry $SO(1,3)$ and `flat' derivatives $\partial_\mu$.
+To make the Lorentz symmetry local, we similary introduce a connection 1-form $\omega^a_{\, b}$ taking values in the Lie algebra of $SO(1,3)$, which transforms under local Lorentz transformations as $\omega \to \Lambda \omega \Lambda^{-1} - d\Lambda \Lambda^{-1}$, and then define a covariant derivative $D_\mu$ acting on fields transforming under some representation of $SO(1,3)$ as $D = d +\omega $ so that $D \to \Lambda D \Lambda^{-1}$.
+To fix ideas consider the case of a vector $X^\alpha$ transforming in the fundamental representation of $SO(1,3)$ as $X^\alpha \to \Lambda^\alpha_{\, \beta} X^\beta$.
+Then we have
+\begin{align}
+    \tilde{\nabla}_\mu \tilde{X}^\alpha = \tilde{\nabla}_\mu \big(\Lambda^\alpha_{\, \beta} X^\beta\big) 
+    = \partial_\mu \Lambda^\alpha_{\, \beta} X^\beta + \Lambda^\alpha_{\, \beta} \partial_\mu X^\beta + \tilde{\omega}^\alpha_{\,\beta}(e_\mu) \Lambda^\beta_{\, \gamma} X^\gamma
+    \overset{!}{=}\Lambda^\alpha_{\, \beta} \nabla_\mu X^\beta := \partial_\mu X^\alpha + \omega(e_\mu)^\alpha_{\, \beta} X^\beta,
+\end{align}
+provided the connection 1-form transforms as $\tilde{\omega} = \Lambda \omega \Lambda^{-1} - d\Lambda \Lambda^{-1}$.
+The field strength of the gauge field $\omega$ is then given by
+\begin{align}
+    \Omega = d\omega + \omega \wedge \omega,
+\end{align}
+which is nothing else than the curvature 2-form of the connection $\omega$.
+The Einstein-Hilbert action can then be expressed in terms of the curvature 2-form $\Omega$ and the tetrad fields $\theta^a$ as
+\begin{align}
+    S_{EH} = \frac{1}{16\pi G}\int_M H_{ab}\wedge \Big( \Omega^{ab} - \Lambda \theta^a \wedge \theta^b\Big).
+\end{align}
+It is worth noticing that the Einstein-Hilbert action is linear in the curvature 2-form $\Omega$, while usual gauge theories have an action quadratic in the field strength $F$.
+The explanation for this is that the Einstein-Hilbert action is not the most general action we can write down in terms of $\Omega$ and $\theta$, but rather it is the unique action which leads to second order equations of motion for the tetrad fields $\theta^a$ and thus for the metric $g$.
+This is also relatd to Sakarov conditions.\todotag{check \& fix}
 
 
 \newpage
