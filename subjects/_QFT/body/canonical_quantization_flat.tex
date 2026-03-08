@@ -381,8 +381,15 @@ The full expression for $|\alpha\rangle$ also yields an alternative formula for 
     = \left(\frac{d}{d\alpha} + \frac{\alpha^*}{2}\right) |\alpha\rangle.
 \end{align}}
 
-
-Coherent states are overcomplete in the sense they are not orthonormal yield a resolution of the identify
+Coherent states are not orthogonal, but the overlap of two states expnentially decays with the distance $|\alpha-\beta|$ in the complex plane of eigenvalues of $a$ up to a phase $i\text{Im}(\alpha^*\beta)$
+\begin{align}
+    \langle \alpha|\beta\rangle = e^{-\frac{1}{2}(|\alpha|^2 + |\beta|^2)} e^{\alpha^*\beta} = e^{-\frac{1}{2}|\alpha-\beta|^2 +\tfrac12(\alpha^*\beta - \alpha\beta^*)}.
+\end{align}
+Coherent states are overcomplete: they are not orthogonal but yield a resolution of the identity in the form
+\begin{align}
+    \int_\C \frac{d^2\alpha}{\pi} |\alpha\rangle \langle \alpha| = \mathbb{I}_\mathcal{H}.
+\end{align}
+The identity is most easily checked by inserting two resolutions of the identity in terms of Fock states $|n\rangle$ to the left and to the right, and using the integral identity $\int_\C\frac{d^2z}{\pi} e^{-|z|^2}\frac{(z^*)^mz^n}{\sqrt{m!\,n!}}=\delta_{m,n}$.
 
 Coherent states also warn us about the identification of ladder operators as creating/destroying a particle.
 This identification is indeed justified only on states with a definite number of particles like Fock states $|n\rangle$ i.e. eigenstates of the number operator $N = a^\dagger a$.
@@ -503,7 +510,7 @@ where we define
 \end{align}
 In particular the Heisenberg hamiltonian is independent of time outside the interval $[t_i, t_f]$, albeit different from the Schrödinger one at all times $t\geq t_i$,
 \begin{align}
-    H_H(t,t_0)= \hbar \omega \left(a_{\mathrm{in}}^\dagger a_{\mathrm{in}} + \tfrac{1}{2}\right)\equiv H_S(t)\,\,\quad t < t_i, \qquad H_H(t,t_0) = \hbar \omega \left(a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2}\right)\,\,\quad t > t_f.
+    H_H(t,t_0)= \hbar \omega \left(a_{\mathrm{in}}^\dagger a_{\mathrm{in}} + \tfrac{1}{2}\right)\equiv H_S(t)\,\,\quad t < t_i, \qquad H_H(t,t_0) = \hbar \omega \left(a_{\mathrm{out}}^\dagger a_{\mathrm{out}} + \tfrac{1}{2}\right)\neq H_S(t)\,\,\,\quad t > t_f.
 \end{align}
 It is thus convenient to choose bases of the Hilbert space diagonalizing the hamiltonian either at early or late times, namely the in- and out-Fock states, since they will remain eigenstates of the hamiltonian for earlier resp. later times and evolve trivially in time with a simple phase factor.
 
@@ -563,6 +570,12 @@ This is confirmed acting explicitly with $a_{\mathrm{out}}$ and using $[a_{\math
     a_{\mathrm{out}} |0\rangle_{\mathrm{in}} &= \frac{d}{d a_{\mathrm{out}}^\dagger} \left(e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}\right)
     = J_0 e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = J_0 |0\rangle_{\mathrm{in}}.
 \end{align}
+More generally the `scattering operator' $\mathcal{S}=\exp\left(J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}\right)$ is the unitary operator relating the Fock spaces and ladder operators as
+\begin{align}
+    a_{\mathrm{out}} &= \mathcal{S} a_{\mathrm{in}} \mathcal{S}^\dagger, \quad |n\rangle_{\mathrm{out}} = \mathcal{S} |n\rangle_{\mathrm{in}}.
+\end{align}
+The above identity is most easily verified by defining $G=J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}$ and then solving the evolution equation
+
 More generally the in-vacuum have overlaps and transition amplitudes to out-states given by
 {\small
 \begin{align}
