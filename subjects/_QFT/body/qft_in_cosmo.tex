@@ -565,39 +565,21 @@ The IR procedure might also fail if we are interested in the thermodynamic limit
 
 
 \begin{mytheorem}[Bogoliubov transformations at the quantum level\todotag{Finish \& polish}]
-Assume the Stone--von Neumann theorem applies and decompose the quantum field in terms of two different sets of mode functions $\{u_n, u_n^*\}_n$ and $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ related by a Bogoliubov transformation \eqref{eq:transformation_bogoliubov_modes}-\eqref{eq:inverse_transformation_bogoliubov_modes}, that is
-\begin{align}
-    \tilde{u}_m = \sum_i \alpha_{mi} u_i + \beta_{mi} u_i^*\,,\quad u_j= \sum_m \alpha_{mj}^* \tilde{u}_m - \beta_{mj} \tilde{u}_m^*, \quad \alpha_{mi}=\langle u_i, \tilde{u}_m\rangle, \quad \beta_{mi} = -\langle u_i^*, \tilde{u}_m\rangle.
-\end{align}
-Equating the two expressions and using these relations we get
-{\small
-\begin{align}
-    \begin{array}{c}
-        \displaystyle    \hat{\phi}=\sum_j u_ja_j+u_j^*a_j^\dagger= \sum_m \Big(\sum_j \alpha_{mj}^* a_j - \beta_{mj}^* a_j^\dagger\Big) \tilde{u}_m + \Big(\sum_j \alpha_{mj} a_j^\dagger - \beta_{mj} a_j\Big) \tilde{u}_m^*\\[3pt]
-        \displaystyle    \qquad=\sum_m \tilde{u}_m \tilde{a}_m + \tilde{u}_m^* \tilde{a}_m^\dagger= \sum_j \Big(\sum_m \alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger\Big) u_j + \Big(\sum_m \alpha_{mj}^* \tilde{a}_m^\dagger + \beta_{mj} \tilde{a}_m\Big) u_j^*
-    \end{array}\Rightarrow
-    \begin{array}{c}
-        \displaystyle
-        \tilde{a}_m = \sum_j \alpha_{mj}^* a_j - \beta_{mj}^* a_j^\dagger,\\[3pt]
-        \displaystyle
-        a_j = \sum_m \alpha_{mj} \tilde{a}_m + \beta_{mj}^* \tilde{a}_m^\dagger.
-    \end{array}
-\end{align}}
-More concisely, in matrix form, demanding both are simplectic bases enforces\todotag{redo it}
-{\small
-\begin{align}\label{eq:bogol_transform_mode_function_matrix_form_quantum}
+Assume the Stone--von Neumann theorem applies and decompose the quantum field in terms of two different sets of mode functions $\{u_n, u_n^*\}_n$ and $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ related by a Bogoliubov transformation \eqref{eq:transformation_bogoliubov_modes}-\eqref{eq:inverse_transformation_bogoliubov_modes}.
+For convenience we report the relations satisfied by the Bogoliubov coefficients $\alpha_{mi}=\langle u_i, \tilde{u}_m\rangle, \beta_{mi} = -\langle u_i^*, \tilde{u}_m\rangle$ in matrix form
+{\small\begin{align}\label{eq:bogol_transform_mode_function_matrix_form_quantum}
     &\begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix}
     = \begin{pmatrix}\alpha & \beta\\\beta^* & \alpha^* \end{pmatrix}
     \begin{pmatrix}u_j\\ u_j^*\end{pmatrix},\quad
     \begin{pmatrix}u_j\\u_j^*\end{pmatrix}
     = \begin{pmatrix}\alpha^\dagger & -\beta^T\\-\beta^\dagger & \alpha^T \end{pmatrix}
     \begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix},
-    \quad\text{with}\quad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0 \\[2pt]
-    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\, \alpha^\dagger \beta - \beta^T \alpha^* = 0
+    \quad \begin{array}{c} \alpha\alpha^\dagger - \beta \beta^\dagger = \mathbb{I},\, \alpha\beta^T - \beta\alpha^T = 0, \\[2.5pt]
+    \alpha^\dagger \alpha - \beta^T \beta^* = \mathbb{I},\, \alpha^\dagger \beta - \beta^T \alpha^* = 0.
     \end{array}
-\end{align}
-Equating the two expressions for $\hat{\phi}$ we get
-\begin{align}
+\end{align}}
+Equating the two expressions for the quantum field $\hat{\phi}$ we get
+{\small\begin{align}
     \hat{\phi} &= \begin{pmatrix}a_j & a_j^\dagger\end{pmatrix}
     \begin{pmatrix} u_j\\ u_j^*\end{pmatrix}
      = \begin{pmatrix}a_j & a_j^\dagger \end{pmatrix} 
@@ -617,10 +599,9 @@ Equating the two expressions for $\hat{\phi}$ we get
      \begin{pmatrix} a_j\\ a_j^\dagger \end{pmatrix}
     = \begin{pmatrix} \alpha^T & \beta^\dagger\\ \beta^T & \alpha^\dagger\end{pmatrix}
     \begin{pmatrix}\tilde{a}_m\\ \tilde{a}_m^\dagger \end{pmatrix}.
-\end{align}
-}
-We now relate the Fock spaces defined by ladder operators of the two theories, since under the Stone--von Neumann assumption these are unitarily equivalent via a transformation mapping the quantum DoFs of the theories into each other.
-In particular, the vacuum of either theory must be expressible as a suitable superposition of multi-particle states of the other $|\tilde{0}\rangle =f\big(\{{a}^\dagger_j\}_n\big)|0\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ will indeed be independent of annihilation operators ${a}_j$ since they annihilate the vacuum $|0\rangle$ and we may commute them to the right upon changing the form of the $f$.}
+\end{align}}
+Under the Stone--von Neumann assumptions, the Fock spaces of the two theories are unitarily equivalent via a transformation mapping the corresponding quantum DoFs into each other.
+In particular, the vacuum of either theory must be expressible as a suitable superposition of multi-particle states of the other $|\tilde{0}\rangle =f\big(\{{a}^\dagger_j\}_n\big)|0\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ can be taken independent of annihilation operators ${a}_j$ since they annihilate the vacuum $|0\rangle$ and we may commute them to the right upon changing the form of the $f$.}
 The ${a}_j^\dagger$ operators commute with each other, while acting with $a_j$ is equivalent to taking a derivative $[a_j,f\big(\{a^\dagger_i\}_i\big)] = \tfrac{\partial f}{\partial a_j^\dagger}$.
 Imposing the vacuum condition in the other theory we thus get
 {\small
@@ -628,51 +609,26 @@ Imposing the vacuum condition in the other theory we thus get
      0=\tilde{a}_m|\tilde{0}\rangle
      = \Big(\sum_j \alpha_{mj}^* a_j - \beta_{mj}^* a_j^\dagger\Big) f\big(\{a_i\}_i\big)|0\rangle = \sum_m \Big(\alpha_{mj}^* \frac{\partial f}{\partial a_j^\dagger} - \beta_{mj}^* a_j^\dagger f\Big)|\tilde{0}\rangle.
 \end{align}}
-Since this must hold for arbitrary $m$ we get a set of differential equations for $f$
-\begin{align}
-    \sum_m \Big(\alpha_{mj}^* \frac{\partial f}{\partial a_j^\dagger} - \beta_{mj}^* a_j^\dagger f\Big) = 0 \quad \forall m \quad \text{i.e.}\quad \nabla_{a^\dagger}f = (\alpha^*)^{-1}\beta^* a^\dagger f
-    \,\,\Rightarrow\,\, f\big(a)\, \propto\,  \exp\Big(\tfrac{1}{2} a^\dagger_i \big[(\alpha^*)^{-1}\beta^*\big]_{ij} a^\dagger_j\Big).
-\end{align}
-Beware the matrix $(\alpha^*)^{-1}\beta^*=\big[(\alpha^*)^{-1}\beta^*\big]^T =\beta^\dagger (\alpha^\dagger)^{-1}$ is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces $\alpha\beta^T-\beta\alpha^T=0$.
-
-We next normalize the vacuum just like for squeezed states.
-First note the hermitian conjugate matrix $\big[(\alpha^*)^{-1}\beta^*\big]^\dagger \equiv \big[\beta^\dagger (\alpha^\dagger)^{-1}\big]^\dagger = (\alpha)^{-1}\beta$ is of course again symmetric, namely $\big[(\alpha)^{-1}\beta\big]=\big[(\alpha)^{-1}\beta\big]^T= \beta^T (\alpha^T)^{-1}$.
-Next note that
-\begin{align}
-    \exp\Big(-\tfrac{1}{2} a_p\big[\alpha^{-1}\beta\big]_{pq}a_q\Big)|\tilde{0}\rangle
-    = \Big(1+ aa+\dots\Big) |0\rangle = |0\rangle.
-\end{align}
-Therefore we add this operator in between $f(a^\dagger)$ and $|0\rangle$ without changing the state.
-Crucially the commutator of the two operators in the exponentials is a c-number thanks to \eqref{eq:bogol_transform_mode_function_matrix_form_quantum}, namely using the symmetry of the matrix $M^*_{ij}=(\alpha^*)^{-1}\beta^*$ we have 
+Since this holds for arbitrary $m$ and the matrix $\alpha$ is invertible, we readily solve this set of differential equations for $f$ to get
 {\small\begin{align}
-    \Big[\tfrac12 a_p\big(\alpha^{-1}\beta\big)_{pq}a_q\,,\,\tfrac12 \,a^\dagger_i \big((\alpha^*)^{-1}\beta^*\big)_{ij} a^\dagger_j\Big]
-    &= \tfrac12  a_p a^\dagger_i (M M^*)_{pi}+ \tfrac12 a_i^\dagger a_p (MM^*)_{pi}
-    &= ...
+    \sum_m \Big(\alpha_{mj}^* \frac{\partial f}{\partial a_j^\dagger} - \beta_{mj}^* a_j^\dagger f\Big) = 0 \quad \forall m \quad \text{i.e.}\quad \nabla_{a^\dagger}f = (\alpha^{-1}\beta)^* a^\dagger f
+    \,\,\Rightarrow\,\, f\big(a)\, \propto\,  \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big).
 \end{align}}
-Next use the Baker--Campbell--Hausdorff formula to get
-{\small
-\begin{align}
-   \exp\Big(\tfrac{1}{2} a^\dagger_i \big[(\alpha^*)^{-1}\beta^*\big]_{ij} a^\dagger_j\Big)
-   \exp\Big(-\tfrac{1}{2} a_p\big[\alpha^{-1}\beta\big]_{pq}a_q\Big)
-    = 
-    \exp\Big(\tfrac{1}{2} a^\dagger_i \big[(\alpha^*)^{-1}\beta^*\big]_{ij} a^\dagger_j-\tfrac{1}{2} a_p\big[\alpha^{-1}\beta\big]_{pq}a_q\Big) + \exp\Big(\textcolor{red}{??}\Big).
+Beware the matrix {\small$(\alpha^{-1}\beta)^*\overset{!}{=}\big[(\alpha^{-1}\beta)^*\big]^T =\beta^\dagger (\alpha^\dagger)^{-1}$} is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces {\small$\alpha\beta^T-\beta\alpha^T=0$}.
+
+We next normalize the vacuum $|\tilde{0}\rangle \propto f(a^\dagger)|0\rangle$ similarly to squeezed states.
+{\small\begin{align}\label{eq:bogoliubov_vacuum_normalization}
+    \langle& 0| f^*(a) f(a^\dagger) |0\rangle = \langle 0| \exp\Big(\tfrac{1}{2} a_i (\alpha^{-1}\beta)_{ij} a_j\Big) \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle = |\det\alpha|\\[3pt]
+    &\quad\Rightarrow\quad |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
 \end{align}}
-Normalizing the vacuum states we find\todotag{fnish}
-{\small
-\begin{align}
-    ....
-\end{align}}
-More generally, using the Baker--Campbell--Hausdorff formula we can express any state of the theory as a suitable superposition of states of the other theory, namely
-{\small
-\begin{align}
-    ...
-\end{align}}
+
 The same holds swapping the two theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
 %
 \end{mytheorem}
 
 
-%--------------------------------------------------------
+%-----------------------------
+---------------------------
 %=========================================================
 \subsection{Quantization in FLRW spacetime}
 %=========================================================
