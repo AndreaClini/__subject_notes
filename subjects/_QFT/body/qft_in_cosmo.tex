@@ -600,7 +600,9 @@ Equating the two expressions for the quantum field $\hat{\phi}$ we get
     = \begin{pmatrix} \alpha^T & \beta^\dagger\\ \beta^T & \alpha^\dagger\end{pmatrix}
     \begin{pmatrix}\tilde{a}_m\\ \tilde{a}_m^\dagger \end{pmatrix}.
 \end{align}}
-Under the Stone--von Neumann assumptions, the Fock spaces of the two theories are unitarily equivalent via a transformation mapping the corresponding quantum DoFs into each other.
+Under the Stone--von Neumann assumptions, we can relate the Fock spaces of the two theories via unitary transformation mapping the corresponding quantum DoFs into each other. We consider the transformation mapping $\mathcal{F}\mapsto\tilde{F}$ and $a\mapsto \tilde{a}$.
+Virtually identical formulas holds swapping the roles of the theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
+
 In particular, the vacuum of either theory must be expressible as a suitable superposition of multi-particle states of the other $|\tilde{0}\rangle =f\big(\{{a}^\dagger_j\}_n\big)|0\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ can be taken independent of annihilation operators ${a}_j$ since they annihilate the vacuum $|0\rangle$ and we may commute them to the right upon changing the form of the $f$.}
 The ${a}_j^\dagger$ operators commute with each other, while acting with $a_j$ is equivalent to taking a derivative $[a_j,f\big(\{a^\dagger_i\}_i\big)] = \tfrac{\partial f}{\partial a_j^\dagger}$.
 Imposing the vacuum condition in the other theory we thus get
@@ -615,18 +617,43 @@ Since this holds for arbitrary $m$ and the matrix $\alpha$ is invertible, we rea
     \,\,\Rightarrow\,\, f\big(a)\, \propto\,  \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big).
 \end{align}}
 Beware the matrix {\small$(\alpha^{-1}\beta)^*\overset{!}{=}\big[(\alpha^{-1}\beta)^*\big]^T =\beta^\dagger (\alpha^\dagger)^{-1}$} is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces {\small$\alpha\beta^T-\beta\alpha^T=0$}.
-
 We next normalize the vacuum $|\tilde{0}\rangle \propto f(a^\dagger)|0\rangle$ similarly to squeezed states.
 {\small\begin{align}\label{eq:bogoliubov_vacuum_normalization}
     \langle& 0| f^*(a) f(a^\dagger) |0\rangle = \langle 0| \exp\Big(\tfrac{1}{2} a_i (\alpha^{-1}\beta)_{ij} a_j\Big) \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle = |\det\alpha|\\[3pt]
     &\quad\Rightarrow\quad |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
 \end{align}}
+The \textbf{scattering operator} is the unitary operator relating the Fock spaces and ladder operators as
+\begin{align}\label{eq:scattering_operator_bogoliubov_curved}
+    \mathcal{S}:=&\exp\left(\tfrac12 a_i^\dagger (\alpha^{-1}\beta)^*_{ij}a_j^\dagger - \tfrac12 a_i(\alpha^{-1}\beta)_{ij}a_j\right)\equiv \exp\left(\tfrac12\tilde{a}_i^\dagger((\alpha^\dagger)^{-1}\beta^T)^*_{ij}\tilde{a}_j^\dagger - \tfrac12\tilde{a}_i((\alpha^\dagger)^{-1}\beta^T)_{ij}\tilde{a}_j\right),\\[3pt]
+    &\tilde{a}_\ell = \mathcal{S} a_\ell \mathcal{S}^\dagger, \quad |\{\tilde{n}_i\}\rangle = \mathcal{S} |\{n_i\}_i\rangle.
+\end{align}
+The second expression for the scattering operators immediately follows from swapping the roles of the two theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
+The above identities are most easily proved by unitarily rotating ladder operators in both theories so that the matrices $\alpha$, $\beta$ are diagonal and the complex symmetric matrix $Z:=\alpha^{-1}\beta$ is diagonal with strictly positive entries.
+Indeed there exist $U,V\in \mathcal{U}(\mathcal{F})$ and $\Xi=\text{diag}(\xi_i)$ with $\xi_i>0$ real such that
+{\small\begin{align}
+    Z:= \alpha^{-1}\beta = V \Xi V^T, \quad \alpha = U \left(\mathbb{I}-\Xi^2\right)^{-\tfrac12} V^\dagger,\quad  \beta= U \Xi \left(\mathbb{I}-\Xi^2\right)^{-\tfrac12} V^T, \\[3pt]
+    \mathcal{S}:=\exp\left(\tfrac12a_i^\dagger(V\Xi V^T)_{ij}^* a_j^\dagger - \tfrac12a_i(V\Xi V^T)_{ij}a_j\right)\equiv \exp\left(\tfrac12\tilde{a}_i^\dagger((\alpha^\dagger)^{-1}\beta^T)^*_{ij}\tilde{a}_j^\dagger - \tfrac12\tilde{a}_i((\alpha^\dagger)^{-1}\beta^T)_{ij}\tilde{a}_j\right)
+\end{align}}
+Defining unitarily rotated ladder operators $b= V^T a$ and $\tilde{b}:= U^T\tilde{a}$, still obeying the CCR, we thus find
+{\small\begin{align}
+    \mathcal{S}:=\exp\left(\tfrac12a^\dagger_i(V\Xi V^T)^*_{ij} a_j^\dagger - \tfrac12a_i(V\Xi V^T)_{ij}a_j\right)=\exp\left(\tfrac12 b_i^\dagger \xi_i b_i^\dagger - \tfrac12 b_i \xi_i b_i\right)\\
+    =\exp\left(\tfrac12\tilde{a}^\dagger_i(U\Xi U^T)^*_{ij} \tilde{a}_j^\dagger - \tfrac12\tilde{a}_i(U\Xi U^T)_{ij}\tilde{a}_j\right)=\exp\left(\tfrac12 \tilde{b}_i^\dagger \xi_i  \tilde{b}_i^\dagger - \tfrac12  \tilde{b}_i \xi_i  \tilde{b}_i\right)
+\end{align}}
+In this rotated bases the Bogoliubov coefficients read $\alpha'_{ij}=(1-\xi^2)^{-\tfrac12}\delta_{ij}$ and $\beta_{ij}=\xi(1-\xi^2)^{-\tfrac12}\delta_{ij}$ with $(1-\xi^2)^{-\tfrac12}=\cosh(y),\, \xi(1-\xi^2)^{-\tfrac12}=\sinh(y)$ for $y=\tfrac12 \log\left(\tfrac{1+\xi}{1-\xi}\right)$.
+We verify the above relations by considering the antihermitian operator $G= -\tfrac12 b_i^\dagger \xi_i b_i^\dagger + \tfrac12 b_i \xi_i b_i = -\tfrac12 \tilde{b}_i^\dagger \xi_i  \tilde{b}_i^\dagger + \tfrac12  \tilde{b}_i \xi_i  \tilde{b}_i$ so that $\mathcal{S}= e^{-G}$ and solving the differential equation
+{\small\begin{align}
+    \begin{cases}
+    \frac{d}{d\lambda} e^{-\lambda G} b_\ell e^{\lambda G} = e^{-\lambda G} [b_\ell,G] e^{\lambda G} = -\xi_\ell e^{-\lambda G} b_\ell^\dagger e^{\lambda G}, \quad (e^{-\lambda G} b_\ell e^{\lambda G})_{|\lambda=0}= b_\ell,\\[3pt]
+    \frac{d}{d\lambda} e^{-\lambda G} b^\dagger_\ell e^{\lambda G} = e^{-\lambda G} [b^\dagger_\ell,G] e^{\lambda G} = -\xi_\ell e^{-\lambda G} b_\ell e^{\lambda G}, \quad (e^{-\lambda G} b^\dagger_\ell e^{\lambda G})_{|\lambda=0}= b^\dagger_\ell,
+    \end{cases}\quad
+    \text{i.e.} \quad \frac{d^2}{d\lambda^2}e^{-\lambda G} b_\ell e^{\lambda G} = \xi^2 e^{-\lambda G} b_\ell e^{\lambda G}
+\end{align}}
+Enforcing the initial conditions at $\lambda=0$ in the general solution $e^{-\lambda G} b_\ell e^{\lambda G} = C_1 \cosh(\xi\lambda)+C_2\sinh(\xi\lambda)$ and evaluating at $\lambda=1$ we get 
 
-The same holds swapping the two theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
-%
 \end{mytheorem}
 
 
+%
 %-----------------------------
 ---------------------------
 %=========================================================
