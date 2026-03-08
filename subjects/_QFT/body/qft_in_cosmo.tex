@@ -155,14 +155,6 @@ In fact, renormalization is already needed to tame infinities arising in the pro
 
 
 
-%-----------------------------------------------------------------------------
-%==================================================================================
-\section{Canonical quantization of the Klein-Gordon field}
-%==================================================================================
-%-----------------------------------------------------------------------------------
-
-To fix ideas we consider below the case of quintessence scalar field, but the analysis extends to any field theory in curved spacetime.
-
 \begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\todotag{Finish}]
 %
 Choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma$.
@@ -194,6 +186,18 @@ Beware that $g_{|\Sigma}^{ij}$ is negative definite in our mostly minus signatur
 \end{mytheorem}
 
 
+%-----------------------------------------------------------------------------
+%==================================================================================
+\section{Canonical quantization of the Klein-Gordon field}
+%==================================================================================
+%-----------------------------------------------------------------------------------
+
+To fix ideas we consider below the case of quintessence scalar field, but the analysis extends to any field theory in curved spacetime.
+
+%==================================================================================
+\subsection{Classical Hamiltonian formulation}
+%==================================================================================
+%
 \begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
 Consider the action for a scalar field, possibly with nonminimal coupling to gravity $\xi\neq0$, and choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma_t$ with adapted coordinates $x^\mu=(t,\mathbf{x})$,
 {\small
@@ -475,23 +479,27 @@ The functions below are then a complete set of solutions to the Klein--Gordon eq
 \end{mytheorem}
 
 
+%==================================================================================
+\subsection{Heisenberg quantization}
+%==================================================================================
+
 \begin{mytheorem}[Canonical quantization of scalar field in curved spacetime\todotag{Finish}]
 %
-We now proceed to canonical quantization following Heinsenberg procedure.
+We now proceed to canonical quantization following Heinsenberg prescription.
 We promote the classical fields $\phi(t,\mathbf{x})$ and $\pi(t,\mathbf{x})$ to \emph{self-adjoint} operators $\hat{\phi}(t,\mathbf{x})$ and $\hat{\pi}(t,\mathbf{x})$ acting on a Hilbert space $\mathcal{F}$, and leave all the equations formally unchanged upon replacing Poisson brackets with commutators $\{\,,\,\}\mapsto -\frac{i}{\hbar}[\,,\,]$.
 The equations of motion become
 {\small
 \begin{align}\label{eq:EoM_quantized_curved_spacetim_klein_gordon}
     &\frac{\partial \hat{\phi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\phi}(t,\mathbf{x}), \hat{H}(t)] = \frac{\hat{\pi}(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \partial_j \hat{\phi}(t,\mathbf{x}), \\[3pt]
-    &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\hat{\pi}\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\partial_i \hat{\phi}\right) - \sqrt{g}\, \frac{dV}{d\hat{\phi}} - \sqrt{g}\,\xi\,  R \hat{\phi}\,,
+    &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\hat{\pi}\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\partial_i \hat{\phi}\right) - \sqrt{g}\, \frac{dV}{d\phi} - \sqrt{g}\,\xi\,  R \hat{\phi}\,,
 \end{align}
 }
 and the equal-time canonical commutation relations (CCR) 
 \begin{align}\label{eq:CCR_fields_curved_spacetime}
     &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}). 
 \end{align}
-As usual it is sufficient to impose the CCR at some fixed time, since unitary time evolution $U(t,t_0) = \mathcal{T} e^{-\frac{i}{\hbar}\int_{t_0}^t H(s) ds}\in U(\mathcal{F})$ preserves the CCR at all times.
-Indeed, the CCR are de-facto the conserved Noether charged associated to the global unitary symmetry of the theory.
+As usual it is sufficient to impose the CCR at some fixed time, since these are preserved under unitary time evolution $U(t,t_0) = \mathcal{T} e^{-\frac{i}{\hbar}\int_{t_0}^t H(s) ds}\in U(\mathcal{F})$.
+In fact, the CCR are the conserved Noether charged associated to the global unitary symmetry of the theory.
 
 \textbf{Since} the \textbf{symplectic structure} of the classical phase space is \textbf{independent of the chosen foliation} (as long as they are equivalent), also the \textbf{CCR} are \textbf{independent of the} (equivalent) \textbf{foliation} chosen for canonical quantization.
 In particular the CCR \eqref{eq:CCR_fields_curved_spacetime} between two fields at spacetime points $x^\mu_1, x^\mu_2$ not only hold when they have the same time coordinate $x^0_1=x^0_2=t$ in the foliation $\mathcal{M}\simeq \R\times \Sigma$ used for quantization, but more generally whenever they are spacelike separated (i.e. the geodesic between them is spacelike) since we can always find an equivalent foliation $\tilde{\R}\times \tilde{\Sigma}\simeq \tilde{R}\times\tilde{\Sigma}$ where they lie on the same leaf $\tilde{\Sigma}_{\tilde{t}}$.
@@ -499,8 +507,7 @@ That is
 \begin{align}
     [\hat{\phi}(x_1), \hat{\phi}(x_2)] = 0, \quad [\hat{\pi}(x_1), \hat{\pi}(x_2)] = 0, \quad [\hat{\phi}(x_1), \hat{\pi}(x_2)] = i\hbar\, \delta_\Sigma^{(3)}(\mathbf{x}_1 - \mathbf{x}_2),\quad \text{if}\quad (x_1 - x_2)^2 < 0,
 \end{align}
-where it is understood that the delta function is to hold on a Cauchy hypersurface containing both $x_1$ and $x_2$, that is passing to (equivalent) coordinates such that $x^0_1 \equiv x^0_2$.
-
+where it is understood that the Dirac delta is to hold on a Cauchy hypersurface containing both $x_1$ and $x_2$, that is in (equivalent) coordinates such that $x^0_1 \equiv x^0_2$.
 
 We now want to solve the theory.
 We mimick the flat-spacetime strategy and expand the fields in terms of mode functions i.e. a Bogoliubov basis of solutions to the Klein--Gordon equation.
@@ -513,7 +520,7 @@ The field operators then read
     \hat{\phi}(t,\mathbf{x}) = \sum_n \hat{a}_n u_n(t,\mathbf{x}) + \hat{a}_n^\dagger u_n^*(t,\mathbf{x})\,,\quad 
     \hat{\pi}(t,\mathbf{x}) = \sqrt{g} g^{0\mu}\partial_\mu \hat{\phi} = \sum_n \hat{a}_n \sqrt{g} \,g^{0\mu}\,\partial_\mu u_n + \hat{a}_n^\dagger \sqrt{g}\, g^{0\mu}\,\partial_\mu u_n^*.
 \end{align}
-The Hamiltonian becomes a sum of independent (quantized) harmonic oscillators\todotag{Check}
+The Hamiltonian becomes a sum of independent (quantized) harmonic oscillators\todotag{Check \& explain}
 \begin{align}
     \hat{H} = \sum_n \hbar \omega_n \Big(\hat{a}_n^\dagger \hat{a}_n + \tfrac{1}{2}\Big).
 \end{align}
@@ -534,17 +541,21 @@ Finally the CCR for the fields \eqref{eq:CCR_fields_curved_spacetime} follow fro
 %
 The quantization procedure depends on the choice of a Bogoliubov basis $\{u_n, u_n^*\}_n$ of $\mathcal{S}_\C$ and corresponding ladder operators $\hat{a}_n$ acting on some Fock space $\mathcal{F}$.
 At the classical level, different bases ultimately yield the same space and mode functions are related by Bogoliubov transformations.
-Do different Bogoliubov bases also yield equivalent quantizations?\questiontag{Probably should move to general intro}
+Do different Bogoliubov bases also yield equivalent quantizations?
 
-If the number of modes if finite, the Stone--von Neumann theorem ensures they are indeed equivalent, in the sense that there exists a unitary transformation $U$ relating the two Fock spaces $\mathcal{F}$ and $\tilde{\mathcal{F}}$ and mapping the ladder operators of one basis to the other, that is
+If the number of modes if finite, the Stone--von Neumann theorem ensures they are indeed equivalent, in the sense that there exists a unitary transformation relating the two Fock spaces and mapping the ladder operators of one basis to the other,
 \begin{align}
-    U \hat{a}_n U^\dagger = \tilde{\hat{a}}_n = \sum_i \alpha_{ni} \hat{a}_i + \beta_{ni} \hat{a}_i^\dagger.
+    U:\mathcal{F} \to \tilde{\mathcal{F}},\qquad
+    U a_n U^\dagger = \tilde{a}_n \quad \forall n.
 \end{align}
-In such case we can pretend different ladder operators act on the same Fock space $\mathcal{F}\simeq \tilde{\mathcal{F}}$ and are related by the same Bogoliubov transformations as the mode functions in $\mathcal{S}_\C$.
+In such case both sets of ladder operators act on the same Fock space up to unitary isomorphism $\mathcal{F}\simeq \tilde{\mathcal{F}}$ and will be related by the same Bogoliubov coefficients $\alpha_{ni}, \beta_{ni}$ as the mode functions in $\mathcal{S}_\C$.
 
-The unitary transformation $U$ might not exist if the Bogoliubov transformation is `too large', that is if the Bogoliubov coefficients $\alpha_{ni}, \beta_{ni}$ do not satisfy the Shale--Stinespring condition $\sum_{n,i} |\beta_{ni}|^2 < \infty$.
-In this case the two quantizations are unitarily inequivalent, and the two Fock spaces $\mathcal{F}$ and $\tilde{\mathcal{F}}$ are different Hilbert spaces.
-This is a peculiarity of infinite-dimensional systems, and in particular of quantum field theories, since for finite-dimensional systems all Bogoliubov transformations are indeed always unitarily implementable and thus all quantizations are equivalent.
+The unitary transformation $U$ might not exist if the Bogoliubov transformation is `too large', that is if the Bogoliubov coefficients do not satisfy the \textbf{Shale--Stinespring condition}
+\begin{align}\label{eq:shale_stinespring_condition}
+     \sum_{n,i} |\beta_{ni}|^2 < \infty.
+\end{align}
+In this case the two quantizations are not unitarily equivalent, the spaces $\mathcal{F}$ and $\tilde{\mathcal{F}}$ are unrelated and yield different physics.
+This is a peculiarity of infinite-dimensional systems, and in particular of quantum field theories, since for finite-dimensional systems all Bogoliubov transformations are indeed always unitarily implementable and thus all quantizations are equivalent.\todotag{add short explanation}
 
 In practice, if the theory has an infinite number of modes but is well-behaved in the IR and UV limits, we impose IR and UV regularizations to make the number of modes finite, Stone--von Neumann applies and all quantizations are equivalent.
 The UV regularization might fail if the theory is patological and the low-energy behavior does depend on the UV completion without a clear separation of scales.
@@ -632,10 +643,10 @@ Next note that
     = \Big(1+ aa+\dots\Big) |0\rangle = |0\rangle.
 \end{align}
 Therefore we add this operator in between $f(a^\dagger)$ and $|0\rangle$ without changing the state.
-Crucially the commutator of the two operators in the exponentials is a c-number thanks to \eqref{eq:bogol_transform_mode_function_matrix_form_quantum}, namely\todotag{Do it}
+Crucially the commutator of the two operators in the exponentials is a c-number thanks to \eqref{eq:bogol_transform_mode_function_matrix_form_quantum}, namely using the symmetry of the matrix $M^*_{ij}=(\alpha^*)^{-1}\beta^*$ we have 
 {\small\begin{align}
-    \Big[a_p\big(\alpha^{-1}\beta\big)_{pq}a_q\,,\,\,a^\dagger_i \big((\alpha^*)^{-1}\beta^*\big)_{ij} a^\dagger_j\Big]
-    &= \big(\alpha^{-1}\beta\big)_{pq}\big((\alpha^*)^{-1}\beta^*\big)_{ij} \Big(a_pa_j^\dagger \delta_{qi}+a_pa_i^\dagger \delta_{qj}+ a^\dagger_i a_q \delta_{pj}+a^\dagger_j a_q \delta_{pi}\Big)\\
+    \Big[\tfrac12 a_p\big(\alpha^{-1}\beta\big)_{pq}a_q\,,\,\tfrac12 \,a^\dagger_i \big((\alpha^*)^{-1}\beta^*\big)_{ij} a^\dagger_j\Big]
+    &= \tfrac12  a_p a^\dagger_i (M M^*)_{pi}+ \tfrac12 a_i^\dagger a_p (MM^*)_{pi}
     &= ...
 \end{align}}
 Next use the Baker--Campbell--Hausdorff formula to get

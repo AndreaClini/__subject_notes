@@ -31,8 +31,7 @@ Rewrite the conjugate variables in terms of adimensional ones to match the two p
 The Hamiltonian becomes
 \begin{align}
     H &= \hbar \omega \tfrac{1}{2}\left( {\tilde{p}}^2 + {\tilde{q}}^2 \right)
-    \\
-    &\overset{!}{=}\hbar \omega \left[
+    \overset{!}{=}\hbar \omega \left[
         \tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right)
         \cdot \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right)
     \right],
@@ -45,7 +44,7 @@ Following Heisenberg canonical quantization procedure, promote the classical the
     %
     \item Poisson brackets are replaced by commutators according to the rule $\displaystyle \{A, B\} \mapsto \frac{1}{i\hbar} [\hat{A}, \hat{B}]$.
     %
-    \item The equations of motion are left formally unchanged, but now refer to evolving operators.
+    \item All the equations are left formally unchanged, but now refer to evolving operators.
 \end{itemize}
 %
 The Hamiltonian operator is given by
@@ -54,11 +53,11 @@ The Hamiltonian operator is given by
 \end{equation}
 The Poisson brackets turn into the canonical commutation relations
 \begin{align}
-    [q,p]=i\hbar \delta_{ij} ,
+    [q,p]=i\hbar \delta_{ij} ,\quad [q,q]=[p,p]=0,
     \qquad
-    [\tilde{q}, \tilde{p}] = i \delta_{ij}.
+    [\tilde{q}, \tilde{p}] = i \delta_{ij},\quad [\tilde{q}, \tilde{q}] = [\tilde{p}, \tilde{p}] = 0.
 \end{align}
-We cannot use the previous factorization since now $\tilde{p}$ and $\tilde{q}$ do not commute anymore.
+We cannot use the previous factorization since $\tilde{p}$ and $\tilde{q}$ do not commute anymore.
 We have instead
 \begin{align}
     \hat{H} &=     
@@ -71,12 +70,10 @@ We have instead
     = \hbar \omega \left( a^{\dagger} a + \tfrac{1}{2} \right),
 \end{align}
 for the creation and annihilation operators
-{
-\begin{align}\label{eq:ordinary_QM_harmonic_oscillator}
+{\small\begin{align}\label{eq:ordinary_QM_harmonic_oscillator}
     a^\dagger &= \tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left(\sqrt{m\omega} \,q - \tfrac{i}{\sqrt{m\omega}} p \right), \,\,
     a = \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left( \sqrt{m\omega}\, q + \tfrac{i}{\sqrt{m\omega}} p \right),\,\, [a, a^\dagger] = 1.
-\end{align}
-}
+\end{align}}
 %
 The energy eigenvalues of the quantum harmonic oscillator are
 \begin{equation}
@@ -109,7 +106,7 @@ In general relativity, all forms of energy will instead source the energy-moment
   %\includegraphics[width=0.30\textwidth,height=5cm,keepaspectratio]{images/lake_fourier.png}
   \caption{\small Wave functions of the quantum oscillator. The classically allowed region $\xi^2=\alpha^2 x^2\leq 2n+1$ for energies $E_n=\hbar \omega (n+\frac{1}{2})$ is indicated by the dashed lines.}
 \end{wrapfigure}
-It is fundamental to understand how the \emph{fixed} frequency $\omega$ of the oscillator determines the likelyhood of finding the system at a given elongation from equilibrium i.e. the amplitude of oscillation.
+It is fundamental to understand how the \emph{fixed} frequency $\omega$ of the oscillator determines the likelyhood of finding the system at a given elongation from equilibrium i.e. the amplitude of oscillations.
 Indeed, all wave functions are proportional to a Gaussian factor, multiplied by suitable Hermite polynomials and normalization constants
 {\small
 \begin{align}
@@ -119,8 +116,7 @@ Indeed, all wave functions are proportional to a Gaussian factor, multiplied by 
 }
 Higher wave functions are more likely found at larger elongations, but the Gaussian envelope always dominates at large $|q|$.
 Crucially, the smaller is the frequency $\omega$, the wider is the Gaussian envelope and in turn the higher the probability of finding the oscillator at large elongations from equilibrium i.e. of observing large amplitudes of oscillation.
-This is already familiar from Electrodynamics: it is very unlikely to find high-frequency electromagnetic waves with large amplitudes, whereas low-frequency waves are easily found with large amplitudes.
-%
+This is already familiar from Electrodynamics: it is very unlikely to find high-frequency electromagnetic waves with large amplitudes, whereas low-frequency waves (e.g. radio waves) are easily found with large amplitudes.
 \end{mytheorem}
 
 
@@ -128,25 +124,25 @@ This is already familiar from Electrodynamics: it is very unlikely to find high-
 \begin{mytheorem}[Identifying ladder operators\todotag{check}]
 %
 Ladder operators are a convenient way deal with harmonic oscillators: they diagonalize the Hamiltonian and yield a single \emph{complex} DoF tracking both canonical variables $q$ and $p$. 
-The definition of ladder operators can be obtained by direct inspection of the Hamiltonian after rescaling the canonical variables to adimensional ones as done above.
+The definition of ladder operators can be obtained \textbf{by direct inspection of the Hamiltonian} after rescaling the canonical variables to adimensional ones as done above.
 However, this procedure somewhat hides the arbitrariness in their definition, which is source of profound physical consequences for QFT in curved spacetime.
 
 Let us proceed more generally, simply defining a complex operator $\hat{a}$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$
-\begin{align}\label{eq:ladder_operator_heuristics_1D}
+{\small\begin{align}\label{eq:ladder_operator_heuristics_1D}
     a = \alpha\, q + i \,\beta \,p \quad \text{for arbitrary }\, \alpha,\, \beta \in \mathbb{R}
     \quad \Longleftrightarrow \quad \begin{cases}
         q = \frac{1}{2\alpha}(a + a^\dagger)\,,\\[4pt]
         p = \frac{-i}{2\beta}(a - a^\dagger)\,{\color{gray}= -i\,\alpha\hbar\,(a-a^\dagger).}
     \end{cases}
-\end{align}
+\end{align}}
 We first choose $\beta=\beta(\alpha)$ to enforce convenient CCR for $a$ and $a^\dagger$, and then fix $\alpha$ to make (somebody's) Hamiltonian as simple as possible.
 Namely we choose
 \begin{align}
     [a, a^\dagger] &= [\alpha q + i \beta p, \alpha q - i \beta p] = 2 \alpha \beta \hbar \quad \Rightarrow\quad \beta = \frac{1}{2\alpha \hbar}\,.
 \end{align}
-The original Hamiltonian can then be expressed as
-\begin{align}
-    H&= \frac{1}{2m}p^2+\frac{m\omega^2}{2}q^2 +Jq + Kp\\
+The original Schrodringer Hamiltonian can then be expressed as\footnote{We specify Schrodringer Hamiltonian since time-dependence of $J(t),K(t)$ makes the Heinseberg $H_H(t):=U(t,t_0)^\dagger H_S(t)U(t,t_0)$ and Schrodringer Hamiltonians different in general since $[H_S(t),H_S(s)]\neq0$ so that $H_S(t')$ do not commute with $U(t,s)$. }
+{\small\begin{align}
+    H_S(t)&= \frac{1}{2m}p^2+\frac{m\omega^2}{2}q^2 +Jq + Kp\\
     &= -\frac{\alpha^2\hbar^2}{2m}\,(a-a^\dagger)^2
     \;+\;\frac{m\omega^2}{8\alpha^2}\,(a+a^\dagger)^2
     \;+\;\frac{J}{2\alpha}(a+a^\dagger)
@@ -156,22 +152,24 @@ The original Hamiltonian can then be expressed as
     +\left(\frac{m\omega^2}{8\alpha^2}+\frac{\alpha^2\hbar^2}{2m}\right)\,\underbrace{(a^\dagger a+a a^\dagger)}_{=2a^\dagger a +1}
     +\frac{J}{2\alpha}(a+a^\dagger)
     - iK\alpha\hbar\,(a-a^\dagger).  
-\end{align}
+\end{align}}
 The expression dramatically simplifies upon choosing
+{\small
 \begin{align}\label{eq:choosing_alpha_ladder_op}
     \alpha = \sqrt{\frac{m\omega}{2\hbar}} \quad \Longrightarrow \quad \beta = \frac{1}{\sqrt{2 m \omega \hbar}}\,.
-\end{align}
-The final expressions are
+\end{align}}
+The final expressions 
 \begin{align}\label{eq:oscillator_hamiltonian_written_ladder_operators}
-    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\
-    H &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
+    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\[2.5pt]
+    H_S(t) &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
 \end{align}
 If $J$ and $K$ are independent of the canonical variables, this form yields convenient equations of motion for $a$ (we might also further shift $a$ to absorb the linear terms).
 On the other hand, if $J$ or $K$ do depend on $q,\,p$, this suggests it might be more \textbf{convenient to define ladder operators in some other way!}
 
-In case $J,\,K$ are indepndent of the canonical variables, the equations of motion for $a$ read
+Denote the time-evolution operator $U(t,s)=\mathcal{T}\exp\left(\int_s^t\!\!dt'H_S(t')\,\right)$.
+If $J(t),K(t)$ are independent of the canonical variables, the Heisenberg equation of motion for $a(t)=U(t,t_0)^\dagger aU(t,t_0)$ reads
 \begin{align}\label{eq:1d_oscillator_ladder_operator_time_evolution}
-    &i\hbar\,\partial_t a= [a, H] = \hbar \omega a + \sqrt{\frac{\hbar}{2 m \omega}} J + i \sqrt{\frac{m \omega \hbar}{2}} K\\
+    &i\hbar\,\partial_t a(t)= U(t,t_0)^\dagger [a, H_s(t)] U(t,t_0)= \hbar \omega a(t) + \sqrt{\frac{\hbar}{2 m \omega}} J(t) + i \sqrt{\frac{m \omega \hbar}{2}} K(t)\\
     &\Longrightarrow \quad a(t) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}.
 \end{align}
 For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i, t_f]$, we have
@@ -186,7 +184,7 @@ For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i
 
 
 
-\begin{mytheorem}[Rotated harmonic oscillator\questiontag{Check}]
+\begin{mytheorem}[Rotated harmonic oscillators]
 %
 Consider an isotropic\footnote{\label{fn:isotropic_oscillator}for simplicity, otherwise diagonalize the frequency matrix} harmonic oscillator in dimension $n$
 \begin{align}
@@ -231,7 +229,7 @@ All choices lead to the same Hamiltonian in terms of complex variables
 \begin{align}\label{eq:complex_harmonic_oscillator}
     H = \tfrac{1}{m} p_z p_z^{\dagger} + m \omega^2 q_z q_z^{\dagger}\,\quad \text{with}\quad \{q_z, p_z^{(\dagger)}\} = 1\,.
 \end{align}
-In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation, and then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing complex position (resp. momentum) as combination of real positions (resp. momenta) as
+In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation, and then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing the complex position (resp. momentum) as combination of real positions (resp. momenta) as
 \begin{align}
     &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
     q_y=-i\frac{q_z - q_z^\dagger}{\sqrt{2}},\quad p_y =\pm i \frac{p_z - p_z^\dagger}{\sqrt{2}}.
@@ -355,16 +353,16 @@ Coherent states $|\alpha\rangle$ of the quantum harmonic oscillator are defined 
 \begin{align}
     a |\alpha\rangle = \alpha |\alpha\rangle \quad\text{or equivalently}\quad \langle \alpha|a^\dagger = \alpha^* \langle \alpha|, \quad \alpha \in \mathbb{C}.
 \end{align}
-Note it is not assured they exist since $a$ is not a \emph{normal} operator!
+Note it's not assured\footnote{A normal operator $A$ is always diagonalizable since $A+A^\dagger$ and $i(A-A^\dagger)$ are hermitian and commute, so they can be diagonalized simultaneously.} they exist since $a$ is not a \emph{normal} operator!
 We construct them explictly for arbitrary $\alpha\in \C$ as
-\begin{align}
+{\small\begin{align}
     |\alpha\rangle \,\propto \, \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} |n\rangle = \sum_{n=0}^\infty \frac{(\alpha a^\dagger)^n}{n!} |0\rangle
     = e^{\alpha a^\dagger} |0\rangle\quad \Rightarrow\quad a|\alpha\rangle = a e^{\alpha a^\dagger} |0\rangle = \frac{d}{da^\dagger} e^{\alpha a^\dagger} |0\rangle = \alpha e^{\alpha a^\dagger} |0\rangle = \alpha |\alpha\rangle.
-\end{align}
+\end{align}}
 To find the normalization it is first convenient to note that
-\begin{align} 
+{\small\begin{align} 
     e^{\beta a}|0\rangle = 1+\beta a + \frac{\beta^2}{2} a^2 + \ldots = |0\rangle\, \quad \forall \beta \in \C\,.
-\end{align}
+\end{align}}
 We can thus insert $e^{-\alpha^*a}$ next to $|0\rangle$ without changing anything and then use the BCH formula to find 
 \begin{align}
     |\alpha\rangle &\,\propto\, e^{\alpha a^\dagger} |0\rangle = e^{\alpha a^\dagger} e^{-\alpha^* a} |0\rangle
@@ -376,12 +374,15 @@ Therefore $e^{\alpha a^\dagger - \alpha^* a} |0\rangle$ has norm one and the nor
     |\alpha\rangle = e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}|0\rangle =  e^{-\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger}e^{-\alpha^* a}|0\rangle = e^{\alpha a^\dagger - \alpha^* a} |0\rangle.
 \end{align}
 The full expression for $|\alpha\rangle$ also yields an alternative formula for the action of the adjoint operator
-\begin{align}
+{\small\begin{align}
     a^\dagger |\alpha\rangle = a^\dagger e^{-\tfrac{1}{2}|\alpha|^2}e^{\alpha a^\dagger} |0\rangle
     = e^{-\tfrac{1}{2}|\alpha|^2} \frac{d}{d\alpha} e^{\alpha a^\dagger} |0\rangle
     = \frac{d}{d\alpha}\left(e^{-\tfrac{1}{2}|\alpha|^2} \frac{d}{d\alpha} e^{\alpha a^\dagger}\right)|0\rangle
     = \left(\frac{d}{d\alpha} + \frac{\alpha^*}{2}\right) |\alpha\rangle.
-\end{align}
+\end{align}}
+
+
+Coherent states are overcomplete in the sense they are not orthonormal yield a resolution of the identify
 
 Coherent states also warn us about the identification of ladder operators as creating/destroying a particle.
 This identification is indeed justified only on states with a definite number of particles like Fock states $|n\rangle$ i.e. eigenstates of the number operator $N = a^\dagger a$.

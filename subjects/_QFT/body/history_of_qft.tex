@@ -27,6 +27,21 @@ Some of the key discoveries are the following.
 \end{mytheorem}
 
 
+\begin{mytheorem}[The price of noncommutativity.\notetag{Check}]
+If we demand that observables are represented by noncommuting operators, we have to pay a price: such observable must be operators acting on some vector space $\mathcal{H}$, i.e. they must be matrices, since standard numbers commute.
+Furthermore, taking the trace of the canonical commutation relations we have
+\begin{align}
+    [\hat{q}_i, \hat{p}_j] = i\hbar\delta_{ij} \Longrightarrow 0=\text{Tr}([\hat{q}_i, \hat{p}_j]) = i\hbar \,\text{Tr}(\delta_{ij}) = i \hbar \cdot \dim(\mathcal{H}).
+\end{align}
+The only way to resolve this absurdity is to have $\dim(\mathcal{H}) = \infty$ so that the trace is not well-defined and the above equality is meaningless.
+The take home is that such operators must act on an \emph{infinite}-dimensional Hilbert space.
+Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\delta(x-y)$ in the above equality, which is even more ill-defined and infinite.
+
+Incidentally, note that this is not necessarily the case for all quantum systems: for instance, spin systems have a finite number of DoFs and can be described by finite-dimensional Hilbert spaces.
+The primary example is the spin-$\frac{1}{2}$ system, whose Hilbert space is just $\mathbb{C}^2$ with Pauli matrices as operators obeying $[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k$.
+\end{mytheorem}
+
+
 \begin{mytheorem}[The fall of Quantum Mechanics. \questiontag{Check \& improve}]
 Despite its successes, Quantum Mechanics soon after faced several challenges that progressively highlighted its limitations, up to making it untenable, and paved the way for the development of Quantum Field Theory.
 %
@@ -43,24 +58,14 @@ Despite its successes, Quantum Mechanics soon after faced several challenges tha
 \end{mytheorem}
 
 
-\begin{mytheorem}[The price of noncommutativity.\notetag{Check}]
-If we demand that observables are represented by noncommuting operators, we have to pay a price: such observable must be operators acting on some vector space $\mathcal{H}$, i.e. they must be matrices, since standard numbers commute.
-Furthermore, taking the trace of the canonical commutation relations we have
-\begin{align}
-    [\hat{q}_i, \hat{p}_j] = i\hbar\delta_{ij} \Longrightarrow 0=\text{Tr}([\hat{q}_i, \hat{p}_j]) = i\hbar \,\text{Tr}(\delta_{ij}) = i \hbar \cdot \dim(\mathcal{H}).
-\end{align}
-The only way to resolve this absurdity is to have $\dim(\mathcal{H}) = \infty$ so that the trace is not well-defined and the above equality is meaningless.
-The take home is that such operators must act on an \emph{infinite}-dimensional Hilbert space.
-Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\delta(x-y)$ in the above equality, which is even more ill-defined and infinite.
-
-Incidentally, note that this is not necessarily the case for all quantum systems: for instance, spin systems have a finite number of DoFs and can be described by finite-dimensional Hilbert spaces.
-The primary example is the spin-$\frac{1}{2}$ system, whose Hilbert space is just $\mathbb{C}^2$ with Pauli matrices as operators obeying $[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k$.
+\begin{mytheorem}[A first (failed) attempt: relativistic quantum mechanics.\todotag{Finish. See Matheus 1.3}]
+%
+A first attempt to address the limitations of Quantum Mechanics was the development of relativistic quantum mechanics, which aimed to combine the principles of quantum mechanics with special relativity.
+The idea is simply to promote the Schr\"odinger equation to a relativistic equation, such as the Klein-Gordon or Dirac equations, without enforcing the second quantization procedure i.e. the wave function is still a c-number and not an operator.
+While this approach successfully incorporated relativistic effects and predicted phenomena such as antimatter, it still faced significant challenges, including the interpretation of negative energy solutions and the inability to account for particle creation and annihilation processes.
+These issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. \todotag{Insert scheme cf Matheus 1.3}
 \end{mytheorem}
 
-
-\begin{mytheorem}[The idea of second quantization.\todotag{finish}]
-At some point people started wondering: in quantum mechanics everything is subject to fluctuations, so why not the very number of particles themselves? That is to say, why not to promote the wave function to an opertor itself?
-\end{mytheorem}
 
 
 \begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is \emph{always} the answer. \questiontag{Check \& improve}]
@@ -104,6 +109,11 @@ Several approaches were attempted, ultimately depending on the spin of the parti
     \end{equation}
 \end{itemize}
 All these equations ultimately obey the Klein-Gordon equation, as it should be since it encodes the relativistic energy-momentum relation \(E^2 = p^2 + m^2\) that all particles must satisfy.
+\end{mytheorem}
+
+
+\begin{mytheorem}[The idea of second quantization: from relativistic QM to quantum field theory\todotag{finish}]
+At some point people started wondering: in quantum mechanics everything is subject to fluctuations, so why not the very number of particles themselves? That is to say, why not to promote the wave function to an opertor itself?
 \end{mytheorem}
 
 
@@ -222,10 +232,10 @@ The Ehrenfest theorem thus provides a bridge between quantum mechanics and class
 
 \begin{mytheorem}[Stone-von Neumann theorem.\todotag{Finish \& Check (cf. Kempf QFT 13)}]
 %
-By the postulate, the Hilbert space of quantum mechanics are required to be separable.
-In particular any two such space are unitarily isomorphic
+By the postulates, the Hilbert space of quantum mechanics are required to be separable.
+In particular, any two spaces with the same number of DoFs, finite or countable infinite, are always unitarily isomorphic
 \begin{align}
-    U::\mathcal{H}_1 \to \mathcal{H}_2, \quad U^\dagger U = \mathbb{I}_{\mathcal{H}_1}, \quad U U^\dagger = \mathbb{I}_{\mathcal{H}_2}.
+    U:\mathcal{H}_1 \to \mathcal{H}_2, \quad U^\dagger U = \mathbb{I}_{\mathcal{H}_1}, \quad U U^\dagger = \mathbb{I}_{\mathcal{H}_2}.
 \end{align}  
 The Stone-von Neumann theorem states that, if the number of degrees of freedom is finite, then up to unitary isomorphisms, there is a unique irreducible representation of the canonical commutation relations (CCR) for the DoFs of the system.
 That is, denoting the DoFs of the system as $\{q^a_i, p^a_i\}_{i=1}^N$ for $a=1,2$, any two irreducible representations of the CCR 
