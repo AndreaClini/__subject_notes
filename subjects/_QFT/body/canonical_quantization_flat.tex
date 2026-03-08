@@ -553,7 +553,7 @@ The driving force pumps energy into the oscillator, increasing its average energ
 \smallskip
 
 \noindent
-\textbf{Eigenstates \& Bogoliubov transforms.}
+\textbf{Eigenstates \& Bogoliubov transformations.}
 How are in- and out-Fock states related? How the number of quanta (particles) is changed by the driving force i.e. what is the probability of transitioning from some initial state ike the in-vacuum $|0\rangle_{\mathrm{in}}$ to some excited out-state $|n\rangle_{\mathrm{out}}$?
 
 We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|0\rangle_{\mathrm{in}}$ defined by $a_{\mathrm{in}} |0\rangle_{\mathrm{in}} = 0$, but rather 
@@ -570,13 +570,18 @@ This is confirmed acting explicitly with $a_{\mathrm{out}}$ and using $[a_{\math
     a_{\mathrm{out}} |0\rangle_{\mathrm{in}} &= \frac{d}{d a_{\mathrm{out}}^\dagger} \left(e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}\right)
     = J_0 e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = J_0 |0\rangle_{\mathrm{in}}.
 \end{align}
-More generally the `scattering operator' $\mathcal{S}=\exp\left(J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}\right)$ is the unitary operator relating the Fock spaces and ladder operators as
-\begin{align}
+More generally the \textbf{scattering operator} is the unitary operator relating the Fock spaces and ladder operators as
+\begin{align}\label{eq:scattering_operator_harmonic_oscillator_1d}
+    \mathcal{S}:=\exp\left(J_0^* a_{\mathrm{out}}-J_0 a_{\mathrm{out}}^\dagger \right)\equiv \exp\left(J_0^* a_{\mathrm{in}}-J_0 a_{\mathrm{in}}^\dagger \right),\quad
     a_{\mathrm{out}} &= \mathcal{S} a_{\mathrm{in}} \mathcal{S}^\dagger, \quad |n\rangle_{\mathrm{out}} = \mathcal{S} |n\rangle_{\mathrm{in}}.
 \end{align}
-The above identity is most easily verified by defining $G=J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}$ and then solving the evolution equation
+The identities are easily verified recalling $a_{\mathrm{out}}=a_{\mathrm{in}}+J_0$, defining $G=J_0^* a_{\mathrm{out}}-J_0 a_{\mathrm{out}}^\dagger\equiv J_0^* a_{\mathrm{in}}-J_0 a_{\mathrm{in}}^\dagger$ so that $\mathcal{S}=e^G$ and then solving the differential equation
+{\small\begin{align}
+    \frac{d}{d\lambda} e^{-\lambda G} a_{\mathrm{out}} e^{\lambda G} = e^{-\lambda G} [a_{\mathrm{out}},G] e^{\lambda G} = -J_0\,\, \Rightarrow \,\, e^{-\lambda G} a_{\mathrm{out}} e^{\lambda G} = a_{\mathrm{out}} - \lambda J_0 \,\, \overset{\lambda=1}{\Rightarrow} \,\,e^{-G} a_{\mathrm{out}} e^{G} = a_{\mathrm{out}} + J_0 =: a_{\mathrm{in}}.
+\end{align}}
 
-More generally the in-vacuum have overlaps and transition amplitudes to out-states given by
+We can then compute overlaps with in- and out-states using the scattering operator or even by hand.
+Fro example, the in-vacuum have overlaps and transition amplitudes to out-states given by
 {\small
 \begin{align}
     {}_{\mathrm{out}}\langle n |0\rangle_{\mathrm{in}} &=  {}_{\mathrm{out}}\langle 0 | \frac{a_{\mathrm{out}}^n}{\sqrt{n!}} e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}}
