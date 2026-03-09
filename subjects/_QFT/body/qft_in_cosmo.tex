@@ -652,31 +652,37 @@ Enforcing the initial conditions at $\lambda=0$ in the general solution $e^{-\la
 \begin{align}
     \mathcal{S} b_\ell \mathcal{S}^\dagger = e^{-\lambda G} b_\ell e^{\lambda G}\mid_{\lambda=1} = b_\ell \cosh(\xi) - b_\ell^\dagger \sinh(\xi) = b_\ell (1-\xi^2)^{-\tfrac12} - b_\ell^\dagger \xi (1-\xi^2)^{-\tfrac12} 
 \end{align}
-\textcolor{red}{If instead the scattering operator had $\xi \mapsto \text{arctgh}(xi)$ then it would work. Note the action n the vacuum would be the same se chatgpt.}
+\textcolor{red}{If instead the scattering operator had $\xi \mapsto \text{arctgh}(\xi)$ then it would work. Note the action on the vacuum would be the same as with chatgpt.}
 \end{mytheorem}
 
-
-
-
-
-
-\begin{mytheorem}[Takagi identity\todotag{Finish \& polish}]
+\begin{mytheorem}[Alegbra of Bogoliubov transfromation]
 %
-If $Z$ is a complex symmetric matrix, there exists a unitary matrix $V\in\mathcal{U}(\mathcal{F})$ and a diagonal matrix $\Xi=\diag(\xi_i)$ such that $Z=V\Xi V^T$ and the real non-negative entries $\xi\in\R^+_0$ are precisely the singular values of $Z$ in the SVD decomposition sense, that is $Z= Q \Xi R^\dagger$ for some $Q,R\in \mathcal{U}(\mathcal{F})$.
+After having diagonalized the Bogoliubov transformations we are left with exponentials of the following operators $A=\tfrac12 b^2$, $C=\tfrac12 (b^\dagger)^2$ and $M=\tfrac12 (b^\dagger b+b b^\dagger)=b^\dagger b +\tfrac12$.
+This operators satisfy the algebra
+\begin{align}
+    &[A,C] = M, \quad [M,A] = -2A, \quad [M,C] = 2C.
+\end{align} 
+The unitary scattering matrix exponential $\exp(\zeta^* C - \zeta A)$ can then be factorized using the BCH formula since the above is essentially the $SU(1,1)$ algebra.\todotag{Finish with chatpgt} 
+
+\end{mytheorem}
+
+\begin{mytheorem}[Takagi identity\todotag{Check \& polish}]
+%
+If $Z$ is a complex symmetric matrix, there exists a unitary matrix $V\in\mathcal{U}(\mathcal{F})$ and a diagonal matrix $\Xi=\text{diag}(\xi_i)$ such that $Z=V\Xi V^T$ and the real non-negative entries $\xi_i\in\R^+_0$ are precisely the singular values of $Z$ in the SVD decomposition sense, that is $Z= Q \Xi R^\dagger$ for some $Q,R\in \mathcal{U}(\mathcal{F})$.
 \end{mytheorem}
 \begin{proof}  
 We prove the statement by induction on $n$.
 For $n=1$ the result is immediate: if $A=(a)$ with $a\neq 0$, write
-\begin{align}
+{\small\begin{align}
     a = e^{i\theta}|a| = U D U^T \quad\text{with}\quad U = \bigl(e^{i\theta/2}\bigr),
     \quad
     D = (|a|).
-\end{align}
+\end{align}}
 Assume now that the theorem holds in dimension $n-1$, and let $A \in M_n(\mathbb{C})$ be invertible and symmetric.
 
 \noindent
-\textbf{Step 1: existence of a Takagi vector} i.e. a nonzero $u_1\in\mathbb{C}^n$ s.t. $Au_1 =\lambda u_1^*$ and $\lambda \in\mathbb{R}^+$.
-Since the unit sphere of $\mathbb{C}^n$ is compact the continuous function $f(z) = |z^T A z|^2$ attains a maximum at some unit vector $z$.
+\textbf{Step 1: existence of a Takagi vector}: a nonzero $u_1\in\mathbb{C}^n$ s.t. $Au_1^* =\lambda_1 u_1$ and $\lambda_1 \in\mathbb{R}^+$.
+Since the unit sphere of $\mathbb{C}^n$ is compact, the continuous function $f(z) = |z^T A z|^2$ attains a maximum at some unit vector $z$.
 Namely, inserting a lagrange multiplier
 {\small\begin{align}
     f_\lambda(z) &= \tfrac14|z^T A z|^2 +\tfrac12 \lambda(|z|^2-1)\\
@@ -685,76 +691,59 @@ Namely, inserting a lagrange multiplier
 and imposing the differential vanish we get
 \begin{align}
     \partial_\lambda f_\lambda = |z|^2-1=0,\\
-    \partial_xf_\lambda = \tfrac12 (z^T A z)^* Az +\tfrac12 (z^T A z) A^*z^*-\lambda x=0\\
-    \partial_yf_\lambda = i\tfrac12 (z^T A z)^* Az -i\tfrac12 (z^T A z) A^*z^*-\lambda y=0\\
+    \partial_xf_\lambda = \tfrac12 (z^T A z)^* Az +\tfrac12 (z^T A z) A^*z^*-\lambda x=0,\\
+    \partial_yf_\lambda = i\tfrac12 (z^T A z)^* Az -i\tfrac12 (z^T A z) A^*z^*-\lambda y=0.\\
 \end{align}
-The first line implies $|z|^2=1$  and combining the last two we get
+The first line ensures $|z|^2=1$, and combining the last two we get
 \begin{align}
     \partial_x f_\lambda -i \partial_yf_\lambda = (z^T A z)^* Az-\lambda z^*=0 \quad \Rightarrow\quad Az = \frac{\lambda}{(z^T A z)^*}\, z^*.
 \end{align}
-Note that multiplying on the left by $z^T$ gives $\lambda>0$ strictly, unless $A$ is identically zero since $z$ is supposed to be a maximum of $f_\lambda$,
+Note that multiplying on the left by $z^T$ gives $\lambda>0$ strictly, indeed $\lambda=-0$ only is $A\equiv 0$ identically since $z$ is supposed to be a maximum of $f_\lambda$,
 \begin{align}
     |z^TAz|^2=(z^T A z)^* (z^TAz) = \lambda z^Tz^*= \lambda |z|^2 \quad \Rightarrow\quad \lambda\geq0.
 \end{align}
-Finally, up to rotating by a phase $z\mapsto e^{-i\varphi/2}z$ we can assume $(z^T A z)^*\in\mathbb{R}^+$.
+Finally, up to rotating $z$ by a phase we can assume $(z^T A z)^*\in\mathbb{R}^+$.
 Indeed if $(z^T A z)^*= e^{i\varphi}|z^T A z|$ we simply define $z:= e^{i\varphi/2}w$ and the above identity becomes
 \begin{align}
-    \cancel{e^{i\varphi}}Aw = \frac{\lambda}{\cancel{e^{-i2\varphi}}(w^T A w)^*}\, \cancel{e^{-i\varphi}}w^* \quad \Rightarrow\quad Aw= \underbrace{\frac{\lambda}{(w^T A w)^*}}_{\in\mathbb{R}^+}\, w^*.
+    \cancel{e^{i\varphi/2}}Aw = \frac{\lambda}{\cancel{e^{-i\varphi}}(w^T A w)^*}\, \cancel{e^{-i\varphi/2}}w^* \quad \Rightarrow\quad Aw= \underbrace{\frac{\lambda}{(w^T A w)^*}}_{\in\mathbb{R}^+}\, w^*.
 \end{align}
+Then we simply define $u_1 := w^*$ and $\lambda/(w^T A w)^* =: \lambda_1$ to get the desired relation.
 
 \noindent
 \textbf{Step 2: invariance of the orthogonal complement.}
-Let $u_1$ be a Takagi vector for $A$ with eigenvalue $\lambda\in\mathbb{R}^+$ and consider the orthogonal linear subspace
+Let $u_1$ be a Takagi vector for $A$ with eigenvalue $\lambda_1\in\mathbb{R}^+$ and consider the orthogonal linear subspace
 \begin{align}
-    W := u_1^\perp = \{ z \in \mathbb{C}^n : z^\dagger u_1^*= 0 \}.
+    W := u_1^\perp = \{ z \in \mathbb{C}^n : z^\dagger u_1= (z^T u_1)^*=0 \}.
 \end{align}
 Define the \emph{antilinear} map
 \begin{align}
     z\mapsto T(z)=A z^*.
 \end{align}
-We claim that $W$ is invariant under $T$. Indeed if $z \in W$, then using $A^T = A$ and $A$
+We claim that $W$ is invariant under $T$. Indeed if $z \in W$, using $A^T = A$ and $A u_1^* = \lambda_1 u_1$, we confirm that $T(z) \in W$ by
 \begin{align}
-    \Big((Az^*)^\dagger u_1\Big)^*=
-    (Az^*)^T u_1^* = z^\dagger A^T u_1^* = z^\dagger A u_1^* = \lambda z^\dagger u_1=0
+    (Az^*)^T u_1^*= z^\dagger A^T u_1^* = z^\dagger A u_1^* = \lambda_1 z^\dagger u_1=0.
 \end{align}
-Since $A u_1 = \lambda u_1$, it follows that
-\begin{align}
-    u_1^* T(z) = \lambda z^* u_1 = 0.
-\end{align}
-Thus $T(z) \in W$ whenever $z \in W$. 
 
 \paragraph{Step 3: induction on the restriction.}
-Choose an orthonormal basis of $W$, say $v_2,\dots,v_n$. Relative to this basis, the restricted antilinear map $T|_W$ is represented by some matrix $B \in M_{n-1}(\mathbb{C})$.
-We show that $B$ is again (complex) symmetric.
-Indeed since the basis $v_2,\dots,v_n$ is orthonormal and $A=A^T$ we have, for $i,j \ge 2$,
+Choose any orthonormal basis  $v_2,\dots,v_n$ of $W$.
+Since the basis is orthonormal, the restricted antilinear map $T|_W:z\mapsto Az^*$ is represented by some matrix $B \in M_{n-1}(\mathbb{C})$ with entries 
 \begin{align}
-    B_{ij} = v_i^\dagger A v_j^* = v_i^{*(m)} A_{mn}v_j^{*(m)} = v_i^{*(m)} A_{nm}v_j^{*(m)} =  v_j^\dagger A v_i^* = B_{ji}\quad \text{i.e.}\quad B=B^T.
+    B_{ij} = v_i^\dagger A v_j^* = v_i^{*(m)} A_{mn}v_j^{*(n)} \overset{A=A^T}{=} v_i^{*(m)} A_{nm}v_j^{*(n)} =  v_j^\dagger A v_i^* = B_{ji}\quad \text{i.e.}\quad B=B^T.
 \end{align}
-Because $A$ is invertible and $W$ is $T$-invariant, the restriction $T|_W$ is injective and thus invertible since $W$ is finite-dimensional. The matrix $B$ is then complex symmetric invertible and thus respect the inductive hypothesis.
+Because $A$ is invertible and $W$ is $T$-invariant and finite dimensional, the restriction $T|_W$ is injective and thus invertible. The matrix $B$ is then complex symmetric invertible and thus respect the inductive hypothesis.
 By the induction hypothesis, there exist an orthonormal basis $u_2,\dots,u_n$ of $W$ made of Takagi vectors with positive numbers $\lambda_2,\dots,\lambda_n$ such that
 \begin{align}
-    A u_j = \lambda_j u^*_j,\qquad j = 2,\dots,n.
+    A u_j^* = \lambda_j u_j,\qquad j = 2,\dots,n.
 \end{align}
 
 \noindent
 \textbf{Step 4: assembly of the factorization.}
-Let
-\begin{align}
-    U := \begin{pmatrix} u_1 & \cdots & u_n \end{pmatrix}
-\end{align}
-be the unitary matrix whose columns are the orthonormal Takagi vectors $u_j$, and let
-\begin{align}
-    \Lambda := \operatorname{diag}(\lamba_1,\dots,\lambda_n).
-\end{align}
+Let $U := \begin{pmatrix} u_1 & \cdots & u_n \end{pmatrix}$ be the unitary matrix whose columns are the orthonormal Takagi vectors $u_j$, and let $\Lambda := \operatorname{diag}(\lambda_1,\dots,\lambda_n)$.
 The relations $A u^*_j = \lambda_j u_j$ are equivalent to
 \begin{align}
-    A U^* = U \Lambda.
+    A U^* = U \Lambda \quad \text{that is}\quad A = U \Lambda U^T,
 \end{align}
-Since $U$ is unitary we thus multiplying on the right by $U^T$ we get
-\begin{align}
-    A = U \Lambda U^T.
-\end{align}
-This proves the Takagi factorization.
+since $U$ is unitary. This proves the Takagi factorization.
 
 \noindent
 \textbf{Step 5: identification of diagonal entries with SVD singular values.}
