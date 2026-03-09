@@ -622,12 +622,15 @@ We next normalize the vacuum $|\tilde{0}\rangle \propto f(a^\dagger)|0\rangle$ s
     \langle& 0| f^*(a) f(a^\dagger) |0\rangle = \langle 0| \exp\Big(\tfrac{1}{2} a_i (\alpha^{-1}\beta)_{ij} a_j\Big) \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle = |\det\alpha|\\[3pt]
     &\quad\Rightarrow\quad |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
 \end{align}}
-The \textbf{scattering operator} is the unitary operator relating the Fock spaces and ladder operators as\todotag{No, it seems it is $\text{arctgh}(Z)$ instead of $Z$}
+\todotag{Fix from here to the end}{\color{red}
+This formula is easily proved when the operators are diagonal (cf. below).
+The full \textbf{scattering operator} is the unitary operator relating the Fock spaces and ladder operators as\todotag{No,  it is $\text{arctgh}(Z)$ instead of $Z$ see below}
 \begin{align}\label{eq:scattering_operator_bogoliubov_curved}
     \mathcal{S}:=&\exp\left(\tfrac12 a_i^\dagger (\alpha^{-1}\beta)^*_{ij}a_j^\dagger - \tfrac12 a_i(\alpha^{-1}\beta)_{ij}a_j\right)\equiv \exp\left(\tfrac12\tilde{a}_i^\dagger((\alpha^\dagger)^{-1}\beta^T)^*_{ij}\tilde{a}_j^\dagger - \tfrac12\tilde{a}_i((\alpha^\dagger)^{-1}\beta^T)_{ij}\tilde{a}_j\right),\\[3pt]
     &\tilde{a}_\ell = \mathcal{S} a_\ell \mathcal{S}^\dagger, \quad |\{\tilde{n}_i\}\rangle = \mathcal{S} |\{n_i\}_i\rangle.
 \end{align}
 The second expression for the scattering operators immediately follows from swapping the roles of the two theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
+
 The above identities are most easily proved by unitarily rotating ladder operators in both theories so that the matrices $\alpha$, $\beta$ are diagonal and the complex symmetric matrix $Z:=\alpha^{-1}\beta$ is diagonal with strictly positive entries.
 Indeed there exist $U,V\in \mathcal{U}(\mathcal{F})$ and $\Xi=\text{diag}(\xi_i)$ with $\xi_i>0$ real such that
 {\small\begin{align}
@@ -651,24 +654,93 @@ We verify the above relations by considering the antihermitian operator $G= -\tf
 Enforcing the initial conditions at $\lambda=0$ in the general solution $e^{-\lambda G} b_\ell e^{\lambda G} = C_1 \cosh(\xi\lambda)+C_2\sinh(\xi\lambda)$ and evaluating at $\lambda=1$ we get 
 \begin{align}
     \mathcal{S} b_\ell \mathcal{S}^\dagger = e^{-\lambda G} b_\ell e^{\lambda G}\mid_{\lambda=1} = b_\ell \cosh(\xi) - b_\ell^\dagger \sinh(\xi) = b_\ell (1-\xi^2)^{-\tfrac12} - b_\ell^\dagger \xi (1-\xi^2)^{-\tfrac12} 
-\end{align}
+\end{align}}
 \textcolor{red}{If instead the scattering operator had $\xi \mapsto \text{arctgh}(\xi)$ then it would work. Note the action on the vacuum would be the same as with chatgpt.}
 \end{mytheorem}
 
-\begin{mytheorem}[Alegbra of Bogoliubov transfromation]
+
+\begin{mytheorem}[Disentangling the Bogoliubov scattering operator \& $\mathfrak{su}(1,1)$ algebra]
 %
-After having diagonalized the Bogoliubov transformations we are left with exponentials of the following operators $A=\tfrac12 b^2$, $C=\tfrac12 (b^\dagger)^2$ and $M=\tfrac12 (b^\dagger b+b b^\dagger)=b^\dagger b +\tfrac12$.
-This operators satisfy the algebra
+After diagonalizing the Bogoliubov transformations we are left with exponentials of the following operators
 \begin{align}
-    &[A,C] = M, \quad [M,A] = -2A, \quad [M,C] = 2C.
-\end{align} 
-The unitary scattering matrix exponential $\exp(\zeta^* C - \zeta A)$ can then be factorized using the BCH formula since the above is essentially the $SU(1,1)$ algebra.\todotag{Finish with chatpgt} 
+\begin{aligned}
+    A=\frac12 b^2,\quad C=\frac12 (b^\dagger)^2,\quad M=b^\dagger b+\frac12, \qquad \text{with}\qquad A^\dagger=C,\quad M^\dagger=M.
+\end{aligned}\end{align}
+They satisfy the commutation algebra
+\begin{align}
+\begin{aligned}
+    [A,C]=M,\qquad [M,A]=-2A,\qquad [M,C]=2C.
+\end{aligned}\end{align}
+Notably these generators realize the $\mathfrak{su}(1,1)$ algebra after the standard identification
+\begin{align}
+\begin{aligned}
+    K_-:=A,\quad K_+:=C,\quad K_0:=\frac12 M,
+    \qquad [K_-,K_+]=2K_0,\quad [K_0,K_\pm]=\pm K_\pm.
+\end{aligned}
+\end{align}
+We showed the vacua of the two theories are related, up to a normalization factor, by 
+\begin{align}
+\begin{aligned}
+    |\tilde{0}\rangle \propto e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle.
+\end{aligned}\end{align}
+This operator is not unitary so it cannot be the full scattering operator relating the two theories.
+Indeed, it is natural to consider the folowing ansatz for the scattering operator, which is unitary by construction, for a suitable $\eta$ to be determined in terms of $\xi$,
+\begin{align}
+\begin{aligned}
+    S(\eta):=\exp(\eta^*C-\eta A).
+\end{aligned}\end{align}
+To make contact with the expression found for the vacua of the theories, we would like to factorize it as
+\begin{align}
+\begin{aligned}
+    S(\eta)=e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}.
+\end{aligned}\end{align}
+Indeed, since $A|0\rangle=0$ and $M|0\rangle=\tfrac12 |0\rangle$, we can freely add such exponential factors to the right of $e^{\xi^* C}$ without changing its action on the vacuum, 
+\begin{align}
+\begin{aligned}
+   e^{-\mu M}|0\rangle = e^{-\tfrac12\mu} |0\rangle,\quad e^{-\zeta A}|0\rangle = |0\rangle =|0\rangle, \quad \text{and}\quad e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle = e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}|0\rangle.
+\end{aligned}\end{align}
+We now determine $\xi$, $\mu$, and $\zeta$ in terms of $\eta$.
+Take the $2\times2$ representation of this algebra
+\begin{align}
+\begin{aligned}
+    A=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+    C=\begin{pmatrix}0&0\\ -1&0\end{pmatrix},\quad
+    M=\begin{pmatrix}-1&0\\0&1\end{pmatrix}, \quad \text{so that}\quad \eta^*C-\eta A=\begin{pmatrix}0&-\eta\\-\eta^*&0\end{pmatrix}.
+\end{aligned}\end{align}
+Since its square is $(\eta^*C-\eta A)^2=|\eta|^2\,\mathbf 1$, we find
+{\small
+\begin{align}
+\begin{aligned}
+    S(\eta)=e^{\eta^*C-\eta A}=\cosh |\eta|\,\mathbf 1+\frac{\sinh |\eta|}{|\eta|}(\eta^*C-\eta A)=\begin{pmatrix}\cosh |\eta| & -\tfrac{\sinh |\eta|}{|\eta|}\eta\\[1mm]-\tfrac{\sinh |\eta|}{|\eta|}\eta^* & \cosh \end{pmatrix}. 
+\end{aligned}\end{align}}
+Now compute the ansatz $e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}$ term by term.
+Since $A^2=C^2=0$ in this representation, we get
+{\small\begin{align}
+\begin{aligned}
+    &e^{\xi^* C}=\begin{pmatrix}1&0\\-\xi^*&1\end{pmatrix},\quad
+    e^{-\zeta A}=\begin{pmatrix}1&-\zeta\\0&1\end{pmatrix},\quad
+    e^{-\mu M}=\begin{pmatrix}e^\mu&0\\0&e^{-\mu}\end{pmatrix}\\[3pt]
+    &\quad\Rightarrow\quad e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}=
+    \begin{pmatrix}e^\mu & -e^\mu\zeta\\-\xi^* e^\mu & \xi^* e^\mu\zeta + e^{-\mu}\end{pmatrix}.
+\end{aligned}\end{align}}
+Matching to the above expression for $S(\eta)$ we find a unique solution
+{\small\begin{align}
+\begin{aligned}
+    \zeta=\xi=\frac{\tanh|\eta|}{|\eta|}\eta,\quad |\xi|=\tanh|\eta|,\quad\eta = \frac{\xi}{|\xi|}\,\operatorname{arctgh}|\xi|,\quad \mu=\ln(\cosh|\eta|)=-\tfrac12\ln(1-|\xi|^2).
+\end{aligned}\end{align}}
+The only factorization of the scattering operator in the ansatz form is then
+\begin{align}
+\begin{aligned}
+    S(\eta)=e^{\eta^*C-\eta A}=e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A} = e^{\xi^* C}\,e^{\frac12\ln(1-|\xi|^2)M}\,e^{-\xi A}, \quad \xi=\tfrac{\tanh|\eta|}{|\eta|}\eta.
+\end{aligned}\end{align}
 
 \end{mytheorem}
 
 \begin{mytheorem}[Takagi identity\todotag{Check \& polish}]
 %
-If $Z$ is a complex symmetric matrix, there exists a unitary matrix $V\in\mathcal{U}(\mathcal{F})$ and a diagonal matrix $\Xi=\text{diag}(\xi_i)$ such that $Z=V\Xi V^T$ and the real non-negative entries $\xi_i\in\R^+_0$ are precisely the singular values of $Z$ in the SVD decomposition sense, that is $Z= Q \Xi R^\dagger$ for some $Q,R\in \mathcal{U}(\mathcal{F})$.
+If $Z$ is a complex symmetric matrix, there exists a unitary matrix $V\in\mathcal{U}(\mathcal{F})$ and a diagonal matrix $\Xi=\text{diag}(\xi_i)$ such that $Z=V\Xi V^T$. 
+The real non-negative entries $\xi_i\in\R^+_0$ are precisely the singular values of $Z$ in the SVD decomposition sense, that is $Z= Q \Xi R^\dagger$ for some $Q,R\in \mathcal{U}(\mathcal{F})$.
+Finally $|\det Z| = \det \Xi$ since $\det V=\det V^T\in\mathcal{U}(1)$ is a pure phase.
 \end{mytheorem}
 \begin{proof}  
 We prove the statement by induction on $n$.
