@@ -1,7 +1,7 @@
 % !TeX root = ../QFT_main.tex
 %=========================================================
 %=========================================================
-\chapter{Canonical Quantization in Flat Spacetime}
+\chapter{Canonical Quantization in Flat Spacetime}\todotag{Move to separate chapter `QM basics'}
 %========================================================
 %=========================================================
 
@@ -9,7 +9,8 @@
 
 %--------------------------------------------------------
 %=========================================================
-\section{Classical \& Quantum Harmonic Oscillators}\label{sec:harmonic_oscillators}
+\section{Classical \& Quantum Harmonic Oscillators}
+\label{sec:harmonic_oscillators}
 %=========================================================
 %------------------------------------------------------------
 
@@ -618,7 +619,30 @@ See Section \ref{sec:kg_field_particles_coherent_interactions} for more details.
 \end{mytheorem}
 
 
+%=========================================================
+\subsection{Path integral formulation of the harmonic oscillator\todotag{FINISH!}}
+%=========================================================
+%
+We now consider the path integral formulation for the driven harmonic oscillator, in increasing level of accuracy:
+\begin{itemize}
+    \item with wishy washy boundary conditions and canonical variables $q,p$, using naive asusmptions on the effect of sources and introducing somewhat ad hoc the Feynman $i\epsilon$ prescription to make the path integral well-defined, which will lead to the correct result but without a clear understanding of the underlying physics and mathematical subtleties,
+    \item in the harmonic phase space with coherent state variables and well-defined boundary conditions, which will clarify the Feynman prescription is simply demanding $\alpha(-T)=0$ and $\alpha^*(T)=0$ that is we start from vacuum and we end up in vacuum
+    \item in the Wick rotated Euclidean time and then sending $\beta\to\infty$ to project onto the vacuum, which will give a rigorous derivation of the Feynman prescription 
+\end{itemize}
+This will give invaluable insight into the boundary conditions.
+It will also showcase the role of sources in the generating functional before turning to QFT.
 
+
+
+%=========================================================
+\subsection{Fermionic harmonic oscillator\todotag{FINISH!}}
+%=========================================================
+%
+We now quickly repeat the above analysis for a fermionic harmonic oscillator, defined by the Hamiltonian
+\begin{align}
+    H = \hbar \omega \left(c^\dagger c - \tfrac{1}{2}\right), \quad \{c, c^\dagger\} = 1, \quad c^2 = (c^\dagger)^2 = 0.
+\end{align}
+We repeat all the step including the path integral formulation.
 
 
 
@@ -628,7 +652,6 @@ See Section \ref{sec:kg_field_particles_coherent_interactions} for more details.
 \section{The Klein-Gordon Field}
 %=========================================================
 %------------------------------------------------------------
-
 
 \begin{mytheorem}[Towards the Klein-Gordon Lagrangian\todotag{Improve}]
 %
