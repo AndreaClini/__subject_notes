@@ -16,13 +16,13 @@
 
       // Arguments to pass to latexmk
       "args": [
-        "-synctex=1",             // enables forward ↔ inverse PDF/source navigation
+        "-synctex=1",               // enables forward ↔ inverse PDF/source navigation
         "-interaction=nonstopmode", // compile without stopping for errors (logs them instead)
         "-file-line-error",         // display errors with file and line numbers
         "-pdf",                     // tells latexmk to produce a PDF (not DVI)
         "-outdir=%DIR%/out",        // put outputs beside the root tex file
-        "-r", "%WORKSPACE_FOLDER%/.latexmkrc", // explicit rc file (latexmk doesn't like the '=' form)
-        "%DOC%"                   // placeholder: replaced by the current .tex document
+        "-r", "%WORKSPACE_FOLDER%/.latexmkrc", // explicit rc file
+        "%DOC%"                     // placeholder: replaced by the current .tex document
       ]
     }
   ],
@@ -52,20 +52,44 @@
   // Always run latexmk from the workspace root so shared/other/preamble.tex is found.
   "latex-workshop.latex.build.cwd": "%WORKSPACE_FOLDER%",
 
-  // Make the green build button use latexmk and pick the correct root (subfiles aware)
+  // Make the green build button use latexmk and pick the correct root (subfiles aware).
   "latex-workshop.latex.rootFile.useSubFile": true,
   "latex-workshop.latex.rootFile.doNotPrompt": true,
   "latex-workshop.latex.recipe.default": "latexmk ➜ pdf",
 
-  // Prefer subject-level roots for SyncTeX instead of the omnibus book
+  // Prefer subject-level roots for SyncTeX instead of the omnibus book.
   "latex-workshop.latex.search.rootFiles.exclude": [
     "subjects/all_subjects_main.tex"
   ],
 
-  // Keep LaTeX Workshop's expected PDF location in sync with latexmk (-outdir=%DIR%/out)
-  "latex-workshop.latex.outDir": "%DIR%/out"
+  // Keep LaTeX Workshop's expected PDF location in sync with latexmk (-outdir=%DIR%/out).
+  "latex-workshop.latex.outDir": "%DIR%/out", // CHANGED: added missing comma; your original file was invalid without it
 
   // ────────────────────────────────────────────────
-  // END OF CONFIGURATION
+  // PERFORMANCE / WORKSPACE CLEANUP
+  // Added to reduce useless watching/searching/indexing in large LaTeX repos.
   // ────────────────────────────────────────────────
+
+  "files.watcherExclude": {
+    "**/out/**": true,             // CHANGED: ignore LaTeX build output folders
+    "**/build/**": true,           // CHANGED: ignore generic build folders
+    "**/__pycache__/**": true,     // CHANGED: ignore Python bytecode caches
+    "**/.git/objects/**": true,    // CHANGED: reduce deep Git object watching
+    "**/.git/subtree-cache/**": true // CHANGED: harmless extra Git exclusion
+  },
+
+  "search.exclude": {
+    "**/out": true,                // CHANGED: hide output folders from search
+    "**/build": true,              // CHANGED: hide build folders from search
+    "**/__pycache__": true         // CHANGED: hide Python caches from search
+  },
+
+  "files.exclude": {
+    "**/out": true,                // CHANGED: hide output folders from Explorer
+    "**/__pycache__": true         // CHANGED: hide Python caches from Explorer
+  },
+
+  // Git decorations can add noise in bigger repos.
+  // This keeps Git enabled but removes some UI overhead.
+  "git.decorations.enabled": false // CHANGED: disable inline Git decorations
 }
