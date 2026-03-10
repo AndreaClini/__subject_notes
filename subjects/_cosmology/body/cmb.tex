@@ -213,13 +213,131 @@ Therefore if we know the RHS of either the photon or baryon Euler equation, we c
 \end{align}}
 
 
-
-
-
-
-
 %--------------------------------------------------------
 %=========================================================
 \section{CMB Lensing}
 %=========================================================
 %------------------------------------------------------------
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{CMB Power spectrum}
+%=========================================================
+%------------------------------------------------------------
+
+
+
+We expand $\Theta(\vec{x}, \hat{p}, t)$ in spherical harmonics and Fourier components
+{\small\begin{align}
+\begin{aligned}
+    a_{\ell m}(\vec{x}, t)=\int d \Omega_{\hat{p}}\, Y_{\ell m}^{*}(\hat{p}) \Theta(\vec{x}, \hat{p}, t) )=\int \frac{d^{3} k}{(2 \pi)^{3}} e^{i \vec{k} \cdot \vec{x}} \int d \Omega_{\hat{p}} Y_{\ell m}^{*}(\hat{p}) \Theta(\vec{k}, \hat{p}, t).
+\end{aligned}
+\end{align}}
+Inflation predicts that the initial perturbations (like $\mathcal{R}$) form a random field that is very close to Gaussian.
+Consequently $\Theta$ and the $a_{\ell m}$ will also form a Gaussian random field with mean zero and some variance $C_{\ell}$, i.e.
+{\small\begin{align}
+\begin{aligned}
+    \langle a_{\ell m} a^{*}_{\ell' m'}\rangle = \delta_{\ell\ell'}\delta_{mm'} C_{\ell}
+\end{aligned}
+\end{align}}
+where the brackets denote an ensemble average (average over many different realizations of our Universes).
+And since it is Gaussian all the statistical information about $\Theta$ is contained in $C_{\ell}$ (in practice there will be some deviations from pure Gaussianity depending on the model of inflation so higher order moments do potentially contain interesting information).
+For a fixed $\ell$, each $a_{\ell m}$ has the same variance and for each value of $\ell$ there are $2\ell+1$ possible values of $m$.
+Thus in an experiment after measuring the $a_{\ell m}$'s we can estimate the power-spectrum as
+{\small\begin{align}
+\begin{aligned}
+    \hat{C}_{\ell}=\frac{1}{2\ell+1}\sum_{m=-\ell}^{\ell} |a_{\ell m}|^{2}
+\end{aligned}
+\end{align}}
+There is an important difference with what we measure and what the theory says.
+The theory is formulated in terms of an ensemble average (average of many Universes) whereas we only have one Universe to measure in.
+This is where the ergodic assumption comes into play, which tells us that as long as we have enough modes the mean of these will be the same as the ensemble average.
+This means that for large $\ell$'s we have enough statistical power to accurately estimate $C_{\ell}$, while for very low $\ell$ we will run into cosmic variance: we have very few $m$'s to estimate $C_{\ell}$ from so there is a fundamental uncertainty that is due to us only having one single Universe to measure this in that we cannot get around.
+Since $\hat{C}_\ell$ is the sum of squared Gaussians it follows a $\chi^2$ distribution with uncertainty given by
+{\small\begin{align}
+\begin{aligned}
+    \frac{\mathrm{Var}(\hat{C}_{\ell})}{C_{\ell}^{2}}=\frac{2}{2\ell+1}, \quad\text{with}\quad \hat{C}_{\ell}=\frac{1}{2\ell+1}\sum_{m}|a_{\ell m}|^{2} \sim \,\,\chi^2 \text{ distributed}
+\end{aligned}
+\end{align}}
+This uncertainty is what is depicted by the green shaded region (and the large red error-bars) for low $\ell$ in Figure 1 and shows that our current measurements for temperature fluctuations are close to as good as we can get.
+
+To derive an expression for $C_{\ell}$ we expand $\Theta$ in multipoles
+{\small\begin{align}
+\begin{aligned}
+    a_{\ell m}(\vec{x}, t)=\sum_{\ell_{1}} (2\ell_{1}+1)(-i)^{\ell_{1}} \int \frac{d^{3}k}{(2\pi)^{3}} e^{i\vec{k}\cdot \vec{x}} \int d\Omega_{\hat{p}}\, Y_{\ell m}^{*}(\hat{p}) P_{\ell_{1}}(\mu)\Theta_{\ell_{1}}(\vec{k}, t)
+\end{aligned}
+\end{align}}
+where $\mu=\hat{p}\cdot \hat{k}$ which gives us
+{\small\begin{align}
+\begin{aligned}
+    a_{\ell m}a_{\ell' m'}^{*}=\sum_{\ell_{1},\ell_{2}} &(2\ell_{1}+1)(2\ell_{2}+1)(-i)^{\ell_{1}-\ell_{2}} \int \frac{d^{3}k\, d^{3}k'}{(2\pi)^{6}} e^{i(\vec{k}-\vec{k}')\cdot \vec{x}}\\
+    &\int d\Omega_{\hat{p}} d\Omega_{\hat{p}'}Y_{\ell m}^{*}(\hat{p})Y_{\ell' m'}(\hat{p}')P_{\ell_{1}}(\mu)P_{\ell_{2}}(\mu')\Theta_{\ell_{1}}(\vec{k}, t)\Theta_{\ell_{2}}^{*}(\vec{k}', t).
+\end{aligned}
+\end{align}}
+Now remember that when we solve this numerically we put $\Theta_{\ell}(\vec{k}, t)=\Theta_{\ell}^{\mathrm{code}}(k, t)\mathcal{R}_{\mathrm{ini}}(\vec{k})$ where the initial value of the curvature perturbation $\mathcal{R}_{\mathrm{ini}}\propto \Psi$ was set to unity, i.e. we factored out the common initial condition from inflation before solving (which is perfectly fine since the equation system is linear).
+We must now put it back in.
+When we take the ensemble average of the above this will lead to a term
+{\small\begin{align}
+\begin{aligned}
+    \langle \mathcal{R}_{\mathrm{ini}}(\vec{k})\mathcal{R}_{\mathrm{ini}}^{*}(\vec{k}')\rangle =(2\pi)^{3}\delta(\vec{k}-\vec{k}')P(k)
+\end{aligned}
+\end{align}}
+where the primordial power-spectrum is given by
+{\small\begin{align}
+\begin{aligned}
+    P(k)=\frac{2\pi^{2}}{k^{3}}\mathcal{P}_{\mathcal{R}}(k), \qquad \mathcal{P}_{\mathcal{R}}(k)=A_{s}(k/k_{\mathrm{pivot}})^{n_{s}-1}\,.
+\end{aligned}
+\end{align}}
+The delta-function will enforce $\vec{k}=\vec{k}'$ taking care of one of the integrals and
+{\small\begin{align}
+\begin{aligned}
+    \langle a_{\ell m}a_{\ell' m'}^{*}\rangle =\sum_{\ell_{1},\ell_{2}}& (2\ell_{1}+1)(2\ell_{2}+1)(-i)^{\ell_{1}-\ell_{2}} \int \frac{d^{3}k}{(2\pi)^{3}} \int d\Omega_{\hat{p}} d\Omega_{\hat{p}'}\\
+    &\cdot Y_{\ell m}^{*}(\hat{p})Y_{\ell' m'}(\hat{p}')P_{\ell_{1}}(\mu)P_{\ell_{2}}(\mu')\Theta_{\ell_{1}}^{\mathrm{code}}(k, t)\Theta_{\ell_{2}}^{\mathrm{code}*}(k, t)\frac{2\pi^{2}\mathcal{P}_{\mathcal{R}}(k)}{k^{3}}
+\end{aligned}
+\end{align}}
+For the next step we need
+{\small\begin{align}
+\begin{aligned}
+    \int d\Omega_{\hat{p}}\, P_{\ell}(\mu)Y_{\ell' m}^{*}(\hat{p})=\delta_{\ell\ell'}\frac{4\pi}{2\ell+1}Y_{\ell m}^{*}(\hat{k})
+\end{aligned}
+\end{align}}
+which takes care of two of the integrals (and the two Kronecker deltas kill both of the sums) leaving us with
+{\small\begin{align}
+\begin{aligned}
+    \langle a_{\ell m}a_{\ell' m'}^{*}\rangle =\delta_{\ell\ell'}(4\pi)^{2}\int \frac{d^{3}k}{(2\pi)^{3}}\, Y_{\ell m}(\hat{k})Y_{\ell m'}^{*}(\hat{k})|\Theta_{\ell}^{\mathrm{code}}(k, t)|^{2}\frac{2\pi^{2}\mathcal{P}_{\mathcal{R}}(k)}{k^{3}}
+\end{aligned}
+\end{align}}
+Finally splitting the $k$-integral into an integral over angles ($\Omega_{\hat{k}}$ now means over the angles of $k$) using that
+{\small\begin{align}
+\begin{aligned}
+    \int d\Omega_{\hat{k}}\, Y_{\ell m}(\hat{k})Y_{\ell m'}^{*}(\hat{k})=\delta_{mm'}
+\end{aligned}
+\end{align}}
+we get
+{\small\begin{align}
+\begin{aligned}
+    \langle a_{\ell m}a_{\ell' m'}^{*}\rangle =\delta_{\ell\ell'}\delta_{mm'}4\pi \int \frac{dk}{k}\,\mathcal{P}_{\mathcal{R}}(k)|\Theta_{\ell}^{\mathrm{code}}(k, t)|^{2}
+\end{aligned}
+\end{align}}
+so
+{\small\begin{align}
+\begin{aligned}
+    C_{\ell}=4\pi \int \mathcal{P}_{\mathcal{R}}(k)|\Theta_{\ell}^{\mathrm{code}}(k)|^{2}\frac{dk}{k}
+\end{aligned}
+\end{align}}
+where the time is taken to be today (which is the time when we observe the CMB, so $\Theta_{\ell}^{\mathrm{code}}(k)=\Theta_{\ell}^{\mathrm{code}}(k, t=t_{\mathrm{today}})$).
+The difference with respect to what is in Chapter 8.5.2 in Dodelson is that he expresses this in terms of
+{\small\begin{align}
+\begin{aligned}
+    P(k)=\frac{2\pi^{2}}{k^{3}}\mathcal{P}_{\mathcal{R}}(k)
+\end{aligned}
+\end{align}}
+which gives us the equivalent formulation
+{\small\begin{align}
+\begin{aligned}
+    C_{\ell}=\frac{2}{\pi}\int k^{2}P(k)|\Theta_{\ell}^{\mathrm{code}}(k)|^{2}dk
+\end{aligned}
+\end{align}}
+The expression above tells us how to go from the stuff we computed numerically, the temperature multipoles $\Theta_{\ell}$, to the theoretical prediction for the CMB angular power-spectrum.
+This can be directly compared to the equivalent quantity measured in experiments.
