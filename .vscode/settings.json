@@ -63,7 +63,7 @@
   ],
 
   // Keep LaTeX Workshop's expected PDF location in sync with latexmk (-outdir=%DIR%/out).
-  "latex-workshop.latex.outDir": "%DIR%/out", // CHANGED: added missing comma; your original file was invalid without it
+  "latex-workshop.latex.outDir": "%DIR%/out",
 
   // ────────────────────────────────────────────────
   // PERFORMANCE / WORKSPACE CLEANUP
@@ -71,25 +71,39 @@
   // ────────────────────────────────────────────────
 
   "files.watcherExclude": {
-    "**/out/**": true,             // CHANGED: ignore LaTeX build output folders
-    "**/build/**": true,           // CHANGED: ignore generic build folders
-    "**/__pycache__/**": true,     // CHANGED: ignore Python bytecode caches
-    "**/.git/objects/**": true,    // CHANGED: reduce deep Git object watching
-    "**/.git/subtree-cache/**": true // CHANGED: harmless extra Git exclusion
+    "**/out/**": true,
+    "**/build/**": true,
+    "**/__pycache__/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true
   },
 
   "search.exclude": {
-    "**/out": true,                // CHANGED: hide output folders from search
-    "**/build": true,              // CHANGED: hide build folders from search
-    "**/__pycache__": true         // CHANGED: hide Python caches from search
+    "**/out": true,
+    "**/build": true,
+    "**/__pycache__": true
   },
 
   "files.exclude": {
-    "**/out": true,                // CHANGED: hide output folders from Explorer
-    "**/__pycache__": true         // CHANGED: hide Python caches from Explorer
+    "**/out": true,
+    "**/__pycache__": true
   },
 
   // Git decorations can add noise in bigger repos.
   // This keeps Git enabled but removes some UI overhead.
-  "git.decorations.enabled": false // CHANGED: disable inline Git decorations
+  "git.decorations.enabled": false,
+
+  // ────────────────────────────────────────────────
+  // LANGUAGE DETECTION / FILE ASSOCIATIONS
+  // NEW: helps VS Code stop wasting time guessing LaTeX-like files.
+  // ────────────────────────────────────────────────
+
+  "workbench.editor.languageDetection": false, // NEW: disables automatic language guessing
+
+  "files.associations": {
+    "*.tex": "latex",   // NEW: force .tex files to open as LaTeX
+    "*.sty": "latex",   // NEW: force .sty files to open as LaTeX
+    "*.cls": "latex",   // NEW: force .cls files to open as LaTeX
+    "*.bib": "bibtex"   // NEW: force .bib files to open as BibTeX
+  }
 }
