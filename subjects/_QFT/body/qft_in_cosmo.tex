@@ -683,7 +683,7 @@ Notably this is precisely the $\mathfrak{su}(1,1)$ algebra upon the standard ide
 We showed the vacua of the two theories are related, up to a normalization factor, by 
 \begin{align}
 \begin{aligned}
-    |\tilde{0}\rangle \,\propto\, e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle.
+    |\tilde{0}\rangle \,\,\propto\,\, e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle.
 \end{aligned}\end{align}
 This operator is not unitary, and thus it cannot be the full scattering operator relating the two theories.
 Indeed, it is natural to consider the folowing ansatz for the scattering operator, which is unitary by construction, for some $\eta$ to be determined in terms of $\xi$,
@@ -739,12 +739,15 @@ The only factorization of the scattering operator in the ansatz form is then
 \begin{aligned}
     S(\eta)=e^{\eta^*C-\eta A}=e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A} = e^{\xi^* C}\,e^{\frac12\ln(1-|\xi|^2)M}\,e^{-\xi A}, \quad \xi=\tfrac{\tanh|\eta|}{|\eta|}\eta.
 \end{aligned}\end{align}
-
+%
 \end{mytheorem}
 
-\begin{mytheorem}[Takagi identity\todotag{Check \& polish}]
+\begin{mytheorem}[Takagi identity]
 %
-If $Z$ is a complex symmetric matrix, there exists a unitary matrix $V\in\mathcal{U}(\mathcal{F})$ and a diagonal matrix $\Xi=\text{diag}(\xi_i)$ such that $Z=V\Xi V^T$. 
+If $Z$ is a complex symmetric matrix, there exists a unitary matrix $V\in\mathcal{U}(\mathcal{F})$ and a diagonal matrix $\Xi$ such that 
+\begin{align}\label{eq:takagi_identity}
+    Z=V\Xi V^T, \quad \Xi = \operatorname{diag}(\xi_i), \quad \xi_i\in\R^+, \quad V\in \mathcal{U}(\mathcal{F}).
+\end{align}
 The real non-negative entries $\xi_i\in\R^+_0$ are precisely the singular values of $Z$ in the SVD decomposition sense, that is $Z= Q \Xi R^\dagger$ for some $Q,R\in \mathcal{U}(\mathcal{F})$.
 Finally $|\det Z| = \det \Xi$ since $\det V=\det V^T\in\mathcal{U}(1)$ is a pure phase.
 \end{mytheorem}
@@ -759,24 +762,30 @@ For $n=1$ the result is immediate: if $A=(a)$ with $a\neq 0$, write
 Assume now that the theorem holds in dimension $n-1$, and let $A \in M_n(\mathbb{C})$ be invertible and symmetric.
 
 \noindent
-\textbf{Step 1: existence of a Takagi vector}: a nonzero $u_1\in\mathbb{C}^n$ s.t. $Au_1^* =\lambda_1 u_1$ and $\lambda_1 \in\mathbb{R}^+$.
+\textbf{Step 1: existence of a Takagi vector} i.e. a nonzero $u_1\in\mathbb{C}^n$ s.t. $Au_1^* =\lambda_1 u_1$ and $\lambda_1 \in\mathbb{R}^+$.
 Since the unit sphere of $\mathbb{C}^n$ is compact, the continuous function $f(z) = |z^T A z|^2$ attains a maximum at some unit vector $z$.
-Namely, inserting a lagrange multiplier
+Namely, inserting a lagrange multiplier and imposing the differential vanish we get
 {\small\begin{align}
-    f_\lambda(z) &= \tfrac14|z^T A z|^2 +\tfrac12 \lambda(|z|^2-1)\\
-    &= \tfrac14 \Big((x+iy)^TA(x+iy)\Big)\Big((x-iy)^TA^*(x-iy)\Big) +\tfrac12 \lambda(x^2+y^2-1).
+\begin{alignedat}{2}
+f_\lambda(z)
+&= \frac14\lvert z^\top A z\rvert^2 + \frac12\lambda\bigl(\lvert z\rvert^2-1\bigr),
+\qquad z=x+iy
+\qquad&
+\partial_\lambda f_\lambda &= \lvert z\rvert^2-1=0,\\[1mm]
+&= \frac14\Bigl((x+iy)^\top A(x+iy)\Bigr)\Bigl((x-iy)^\top A^*(x-iy)\Bigr)
+\qquad&
+\partial_x f_\lambda &= \frac12 (z^\top A z)^*Az + \frac12 (z^\top A z)A^*z^* - \lambda x=0,\\
+&\quad + \frac12\lambda\bigl(x^\top x+y^\top y-1\bigr)
+\qquad&
+\partial_y f_\lambda &= \frac{i}{2}(z^\top A z)^*Az - \frac{i}{2}(z^\top A z)A^*z^* - \lambda y=0.
+\end{alignedat}
 \end{align}}
-and imposing the differential vanish we get
-\begin{align}
-    \partial_\lambda f_\lambda = |z|^2-1=0,\\
-    \partial_xf_\lambda = \tfrac12 (z^T A z)^* Az +\tfrac12 (z^T A z) A^*z^*-\lambda x=0,\\
-    \partial_yf_\lambda = i\tfrac12 (z^T A z)^* Az -i\tfrac12 (z^T A z) A^*z^*-\lambda y=0.\\
-\end{align}
+%
 The first line ensures $|z|^2=1$, and combining the last two we get
 \begin{align}
     \partial_x f_\lambda -i \partial_yf_\lambda = (z^T A z)^* Az-\lambda z^*=0 \quad \Rightarrow\quad Az = \frac{\lambda}{(z^T A z)^*}\, z^*.
 \end{align}
-Note that multiplying on the left by $z^T$ gives $\lambda>0$ strictly, indeed $\lambda=-0$ only is $A\equiv 0$ identically since $z$ is supposed to be a maximum of $f_\lambda$,
+Multiplying on the left by $z^T$ gives $\lambda>0$ strictly, indeed $\lambda=-0$ only is $A\equiv 0$ identically since $z$ is supposed to be a maximum of $f_\lambda$,
 \begin{align}
     |z^TAz|^2=(z^T A z)^* (z^TAz) = \lambda z^Tz^*= \lambda |z|^2 \quad \Rightarrow\quad \lambda\geq0.
 \end{align}
@@ -789,7 +798,7 @@ Then we simply define $u_1 := w^*$ and $\lambda/(w^T A w)^* =: \lambda_1$ to get
 
 \noindent
 \textbf{Step 2: invariance of the orthogonal complement.}
-Let $u_1$ be a Takagi vector for $A$ with eigenvalue $\lambda_1\in\mathbb{R}^+$ and consider the orthogonal linear subspace
+Let $u_1$ be a Takagi vector for $A$ with eigenvalue $\lambda_1\in\mathbb{R}^+$, that is $Au_1^*=\lambda_1u_1$, and consider the orthogonal linear subspace
 \begin{align}
     W := u_1^\perp = \{ z \in \mathbb{C}^n : z^\dagger u_1= (z^T u_1)^*=0 \}.
 \end{align}
@@ -808,7 +817,7 @@ Since the basis is orthonormal, the restricted antilinear map $T|_W:z\mapsto Az^
 \begin{align}
     B_{ij} = v_i^\dagger A v_j^* = v_i^{*(m)} A_{mn}v_j^{*(n)} \overset{A=A^T}{=} v_i^{*(m)} A_{nm}v_j^{*(n)} =  v_j^\dagger A v_i^* = B_{ji}\quad \text{i.e.}\quad B=B^T.
 \end{align}
-Because $A$ is invertible and $W$ is $T$-invariant and finite dimensional, the restriction $T|_W$ is injective and thus invertible. The matrix $B$ is then complex symmetric invertible and thus respect the inductive hypothesis.
+Because $A$ is invertible and $W$ is $T$-invariant and finite dimensional, the restriction $T|_W$ is injective and thus invertible. The matrix $B$ is then complex symmetric invertible and thus respects the inductive hypothesis.
 By the induction hypothesis, there exist an orthonormal basis $u_2,\dots,u_n$ of $W$ made of Takagi vectors with positive numbers $\lambda_2,\dots,\lambda_n$ such that
 \begin{align}
     A u_j^* = \lambda_j u_j,\qquad j = 2,\dots,n.
@@ -833,30 +842,28 @@ Thus $A^\dagger A$ is unitarily similar to $\Lambda^2$ via $U^*$ and its eigenva
 \end{proof}
 
 
-
-
-\begin{mytheorem}[Bloch-Messiah decomposition of Bogoliubov coefficients\todotag{Finish \& polish}]
+\begin{mytheorem}[Bloch-Messiah decomposition of Bogoliubov coefficients]
 %
 We consider a bosonic Bogoliubov transformation
 \begin{align}
-    \tilde{a} = \alpha^* a - \beta^* a^\dagger ,quad  \text{with} \quad \alpha \alpha^\dagger - \beta \beta^\dagger = I , \quad \alpha \beta^T = \beta \alpha^T .
+    \tilde{a} = \alpha^* a - \beta^* a^\dagger ,\quad  \text{with} \quad \alpha \alpha^\dagger - \beta \beta^\dagger = I , \quad \alpha \beta^T = \beta \alpha^T .
 \end{align}
-Assume $\alpha$ is invertible and define the symmetric ratio of Bogoliubov coefficient $Z := \alpha^{-1} \beta$.
-Note $Z$ is indeed (complex) symmetric since
+Assume $\alpha$ is invertible and define the symmetric ratio of Bogoliubov coefficients $Z := \alpha^{-1} \beta$.
+Note $Z$ is indeed (complex) symmetric thanks to the second Bogoliuobov orthonormality relation,
 \begin{align}
     \alpha \beta^T = \beta \alpha^T\qquad \Longrightarrow \qquad Z^T = Z.
 \end{align}
-By the Takagi factorization there exists a unitary $V\in\mathcal{U}(\mathcal{F})$ and a diagonal $\Xi=\text{diag}(\xi_i)$ with $\xi_i> 0$ real such that
+By the Takagi factorization there exists a unitary $V\in\mathcal{U}(\mathcal{F})$ and a diagonal $\Xi=\text{diag}(\xi_i)$ with $\xi_i> 0$ real, such that
 \begin{align}
     Z = V \Xi V^T.
 \end{align}
-From the first Bogoliubov relation we have 
+From the first Bogoliubov relation and unitarity of $V$ we have 
 \begin{align}
-    I= \alpha \alpha^\dagger - \beta \beta^\dagger 
+    I= \alpha \alpha^\dagger - \beta \beta^\dagger= 
     \alpha (I - Z Z^\dagger) \alpha^\dagger = \alpha V(I - \Xi^2) V^\dagger \alpha^\dagger.
 \end{align}
 This implies that $\alpha V (I - \Xi^2)^{1/2}=: U \in\mathcal{U}(\mathcal{F})$ is a unitary matrix.
-We thus find
+Hence we find
 \begin{align}
     \alpha = U \underbrace{(I - \Xi^2)^{-1/2}}_{=:\,D_\alpha} V^\dagger, \quad \beta = \alpha Z = U \underbrace{\Xi (I - \Xi^2)^{-1/2}}_{=:\,D_\beta} V^T,
 \end{align}
@@ -871,7 +878,7 @@ We now define new ladder operators by the unitary changes of basis
 \begin{align}
     b = V^T a,\quad a = V^* b,\quad \text{and}\quad \tilde{b} = U^T \tilde{a}, \quad \tilde{a} = U^* \tilde{b}.
 \end{align}
-For the creation operators, one has
+Note for the creation operators we have
 \begin{align}
     b^\dagger = V^\dagger a^\dagger, \quad a^\dagger = V b^\dagger, \quad \text{and}\quad \tilde{b}^\dagger = U^\dagger \tilde{a}^\dagger, \quad \tilde{a}^\dagger = U^T \tilde{b}.
 \end{align}
