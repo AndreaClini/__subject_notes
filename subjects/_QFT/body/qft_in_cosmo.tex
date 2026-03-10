@@ -673,7 +673,7 @@ They satisfy the commutation algebra
 \begin{aligned}
     [A,C]=M,\qquad [M,A]=-2A,\qquad [M,C]=2C.
 \end{aligned}\end{align}
-Notably these generators realize the $\mathfrak{su}(1,1)$ algebra after the standard identification
+Notably this is precisely the $\mathfrak{su}(1,1)$ algebra upon the standard identification
 \begin{align}
 \begin{aligned}
     K_-:=A,\quad K_+:=C,\quad K_0:=\frac12 M,
@@ -683,10 +683,10 @@ Notably these generators realize the $\mathfrak{su}(1,1)$ algebra after the stan
 We showed the vacua of the two theories are related, up to a normalization factor, by 
 \begin{align}
 \begin{aligned}
-    |\tilde{0}\rangle \propto e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle.
+    |\tilde{0}\rangle \,\propto\, e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle.
 \end{aligned}\end{align}
-This operator is not unitary so it cannot be the full scattering operator relating the two theories.
-Indeed, it is natural to consider the folowing ansatz for the scattering operator, which is unitary by construction, for a suitable $\eta$ to be determined in terms of $\xi$,
+This operator is not unitary, and thus it cannot be the full scattering operator relating the two theories.
+Indeed, it is natural to consider the folowing ansatz for the scattering operator, which is unitary by construction, for some $\eta$ to be determined in terms of $\xi$,
 \begin{align}
 \begin{aligned}
     S(\eta):=\exp(\eta^*C-\eta A).
@@ -696,20 +696,24 @@ To make contact with the expression found for the vacua of the theories, we woul
 \begin{aligned}
     S(\eta)=e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}.
 \end{aligned}\end{align}
-Indeed, since $A|0\rangle=0$ and $M|0\rangle=\tfrac12 |0\rangle$, we can freely add such exponential factors to the right of $e^{\xi^* C}$ without changing its action on the vacuum, 
+Indeed, since $A|0\rangle=0$ and $M|0\rangle=\tfrac12 |0\rangle$, we can freely add these exponential factors to the right of $e^{\xi^* C}$ without changing its action on the vacuum, 
 \begin{align}
 \begin{aligned}
    e^{-\mu M}|0\rangle = e^{-\tfrac12\mu} |0\rangle,\quad e^{-\zeta A}|0\rangle = |0\rangle =|0\rangle, \quad \text{and}\quad e^{\frac12 \xi^* b^2} |0\rangle = e^{\xi^* C} |0\rangle = e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}|0\rangle.
 \end{aligned}\end{align}
+This is precisely how we disentangled coherent states in \eqref{eq:disentangle_scattering_operator_coherent_states} and the scattering operator of the driven harmonic oscillator in \eqref{eq:disentangle_scattering_operator_driven_harmonic_oscillator_1d}.
+The only difference is that now the algebra is more complicated, since the commutator of $A$ and $C$ is not a c-number but the operator $M$.
+
 We now determine $\xi$, $\mu$, and $\zeta$ in terms of $\eta$.
-Take the $2\times2$ representation of this algebra
+It is convenient to consider the $2\times2$ representation of the algebra 
 \begin{align}
 \begin{aligned}
     A=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
     C=\begin{pmatrix}0&0\\ -1&0\end{pmatrix},\quad
     M=\begin{pmatrix}-1&0\\0&1\end{pmatrix}, \quad \text{so that}\quad \eta^*C-\eta A=\begin{pmatrix}0&-\eta\\-\eta^*&0\end{pmatrix}.
 \end{aligned}\end{align}
-Since its square is $(\eta^*C-\eta A)^2=|\eta|^2\,\mathbf 1$, we find
+Since this is an algebra isomorphism and the $\exp$ map is locally invertible, we can use this representation to determine the parameters $\xi$, $\mu$, and $\zeta$.
+From $(\eta^*C-\eta A)^2=|\eta|^2\,\mathbf 1$, we readily find
 {\small
 \begin{align}
 \begin{aligned}
@@ -725,7 +729,7 @@ Since $A^2=C^2=0$ in this representation, we get
     &\quad\Rightarrow\quad e^{\xi^* C}\,e^{-\mu M}\,e^{-\zeta A}=
     \begin{pmatrix}e^\mu & -e^\mu\zeta\\-\xi^* e^\mu & \xi^* e^\mu\zeta + e^{-\mu}\end{pmatrix}.
 \end{aligned}\end{align}}
-Matching to the above expression for $S(\eta)$ we find a unique solution
+Matching to the above expression for $S(\eta)$ we find a \emph{unique}\footnote{As expected, since the $\exp$ map is a local diffeomorphism.} solution
 {\small\begin{align}
 \begin{aligned}
     \zeta=\xi=\frac{\tanh|\eta|}{|\eta|}\eta,\quad |\xi|=\tanh|\eta|,\quad\eta = \frac{\xi}{|\xi|}\,\operatorname{arctgh}|\xi|,\quad \mu=\ln(\cosh|\eta|)=-\tfrac12\ln(1-|\xi|^2).

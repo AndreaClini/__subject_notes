@@ -365,7 +365,7 @@ To find the normalization it is first convenient to note that
     e^{\beta a}|0\rangle = 1+\beta a + \frac{\beta^2}{2} a^2 + \ldots = |0\rangle\, \quad \forall \beta \in \C\,.
 \end{align}}
 We can thus insert $e^{-\alpha^*a}$ next to $|0\rangle$ without changing anything and then use the BCH formula to find 
-\begin{align}
+\begin{align}\label{eq:disentangle_scattering_operator_coherent_states}
     |\alpha\rangle &\,\propto\, e^{\alpha a^\dagger} |0\rangle = e^{\alpha a^\dagger} e^{-\alpha^* a} |0\rangle
     = e^{\frac{1}{2} |\alpha|^2} e^{\alpha a^\dagger - \alpha^* a} |0\rangle\,,\qquad e^{\alpha a^\dagger - \alpha^* a}\in U(\mathcal{H}).
 \end{align}
@@ -563,7 +563,7 @@ We see that $a_{\mathrm{out}}$ operators do not annihilate the initial vacuum $|
 \end{align}
 The initial vacuum is thus a \emph{coherent} state of the out-oscillator, i.e. an excited state with a Poissonian distribution of particle number.
 Namely we can rewrite
-\begin{align}
+\begin{align}\label{eq:disentangle_scattering_operator_driven_harmonic_oscillator_1d}
     |0\rangle_{\mathrm{in}} = e^{-\frac{1}{2} |J_0|^2} e^{J_0 a_{\mathrm{out}}^\dagger} |0\rangle_{\mathrm{out}} = e^{J_0 a_{\mathrm{out}}^\dagger - J_0^* a_{\mathrm{out}}} |0\rangle_{\mathrm{out}}.
 \end{align}
 This is confirmed acting explicitly with $a_{\mathrm{out}}$ and using $[a_{\mathrm{out}},J_0]=0$,
