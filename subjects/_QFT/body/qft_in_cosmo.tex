@@ -537,13 +537,13 @@ Finally the CCR for the fields \eqref{eq:CCR_fields_curved_spacetime} follow fro
 
 
 
-\begin{mytheorem}[On the equivalence of Bogoliubov bases\todotag{Finish \& polish}]
+\begin{mytheorem}[On the equivalence of Bogoliubov bases\questiontag{Polish}]
 %
 The quantization procedure depends on the choice of a Bogoliubov basis $\{u_n, u_n^*\}_n$ of $\mathcal{S}_\C$ and corresponding ladder operators $\hat{a}_n$ acting on some Fock space $\mathcal{F}$.
-At the classical level, different bases ultimately yield the same space and mode functions are related by Bogoliubov transformations.
+At the classical level, different bases ultimately yield the same function space and mode functions are related by Bogoliubov transformations.
 Do different Bogoliubov bases also yield equivalent quantizations?
 
-If the number of modes if finite, the Stone--von Neumann theorem ensures they are indeed equivalent, in the sense that there exists a unitary transformation relating the two Fock spaces and mapping the ladder operators of one basis to the other,
+If the number of modes if finite, the Stone--von Neumann theorem ensures they are indeed equivalent, in the sense that there exists a unitary transformation, often called \textbf{scattering operator}, relating the two Fock spaces and mapping the ladder operators of one basis to the other,
 \begin{align}
     U:\mathcal{F} \to \tilde{\mathcal{F}},\qquad
     U a_n U^\dagger = \tilde{a}_n \quad \forall n.
@@ -552,10 +552,16 @@ In such case both sets of ladder operators act on the same Fock space up to unit
 
 The unitary transformation $U$ might not exist if the Bogoliubov transformation is `too large', that is if the Bogoliubov coefficients do not satisfy the \textbf{Shale--Stinespring condition}
 \begin{align}\label{eq:shale_stinespring_condition}
-     \sum_{n,i} |\beta_{ni}|^2 < \infty.
+     \sum_{n,i}^N |\beta_{ni}|^2 < \infty.
 \end{align}
-In this case the two quantizations are not unitarily equivalent, the spaces $\mathcal{F}$ and $\tilde{\mathcal{F}}$ are unrelated and yield different physics.
-This is a peculiarity of infinite-dimensional systems, and in particular of quantum field theories, since for finite-dimensional systems all Bogoliubov transformations are indeed always unitarily implementable and thus all quantizations are equivalent.\todotag{add short explanation}
+In this case the two quantizations are not unitarily equivalent and do yield different physics.
+This is characteristic of infinite-dimensional systems, i.e. quantum field theories.
+Indeed Bogoliubov transformations of finite dimensional systems are always unitarily implementable and all quantizations are equivalent since the \eqref{eq:shale_stinespring_condition} is always satisfied for finite sums $N<\infty$.
+In this case we simply define the unitary transfrmation by demanding it map Fock states into Fock states with the same occupation numbers in the two bases,
+\begin{align}
+    U|n_1, n_2, \dots\rangle = |\tilde{n}_1, \tilde{n}_2, \dots\rangle, \qquad \text{with}\quad n_i = \tilde{n}_i \quad \forall i,
+\end{align}
+and we automatically have $U a_n U^\dagger = \tilde{a}_n$ for all $n<N$.
 
 In practice, if the theory has an infinite number of modes but is well-behaved in the IR and UV limits, we impose IR and UV regularizations to make the number of modes finite, Stone--von Neumann applies and all quantizations are equivalent.
 The UV regularization might fail if the theory is patological and the low-energy behavior does depend on the UV completion without a clear separation of scales.

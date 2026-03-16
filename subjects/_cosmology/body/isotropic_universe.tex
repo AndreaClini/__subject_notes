@@ -305,5 +305,18 @@ With the same manipulations and assumptions as above, we can rewrite the Boltzma
 
 
 %==========================================================
-\subsubsection{Optical depth \& visibility function}
+\subsection{Optical depth \& visibility function}\todotag{Finish}
 %==========================================================
+%
+The optical depth $\tau$ is defined as the integral of the scattering rate along the line of sight
+\begin{align}
+    \tau(z) = \int_0^z dz' \frac{dt}{dz'} n_e(z') \sigma_T c\,,
+\end{align}
+where $\sigma_T$ is the Thomson cross-section.
+The visibility function $g(z)$ is defined as the probability density that a photon last scattered at redshift $z$, and is given by
+\begin{align}
+    g(z) = e^{-\tau(z)} \frac{d\tau}{dz}.
+\end{align}
+The visibility function peaks at the redshift of recombination $z_{\text{rec}} \sim 1100$, and its width $\Delta z$ gives the thickness of the last scattering surface, which is about $\Delta z \sim 100$.
+The visibility function also includes the effect of reionization at later times, which creates a second peak at $z_{\text{reion}} \sim 10$ with much smaller amplitude.
+The normalization of the visibility function is such that $\int_0^\infty g(z) dz = 1$, so that it can be interpreted as a probability density function for the last scattering redshift of CMB photons.
