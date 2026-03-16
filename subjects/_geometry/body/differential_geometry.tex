@@ -1615,7 +1615,7 @@ Given a point \(p \in M\) and a 2-dimensional subspace \(\sigma \subseteq T_p M\
 
 The tetrad formalism amounts to allowing arbitrary frames for the tangent $\{e_i(x)\}_i$ and cotangent  $\{\theta^i(x)\}_i$ bundles, not necessarily induced by a coordinate system.
 It is the natural generalization to the framework needed for arbitrary fiber bundles $E_F\to M$.
-The only typical requirement is that the two frame be dual to each other i.e. $\theta^i (e_j) = \delta^i_j$.
+The only typical requirement is the two frame be dual to each other i.e. $\theta^i (e_j) = \delta^i_j$.
 In the literature, tetrads are also called \emph{vierbeins} (4-legs) in 4 dimensions or more generally \emph{vielbeins} (n-legs) in n dimensions.
 
 To fix the notation, we reserve Greek letters $\mu,\nu,\rho\dots$ for coordinate indices and Latin letters $a,b,i,j,\dots$ for tetrad indices.
@@ -2234,17 +2234,16 @@ Hence Cartan equations imply the Bianchi identities in the absence of torsion.
 \end{mytheorem}
 
 
-%================================================================
-\subsubsection{Einstein equations in the tetrad formalism}
-%================================================================
+\begin{mytheorem}[Recasting information from the metric into the tetrad\answerinline{OK}]
+%
 Let us now assume $\nabla$ is the Levi-Civita connection of a Lorentzian metric $g$ on $M$ with vanishing torsion $T\equiv 0$.
 The Cartan and Bianchi equations in the absence of torsion reduce to \eqref{eq:cartan_bianchi_no_torsion}.
 In the following we only consider orthonormal tetrads $e_i$.
-In particular we have connection 1-forms are antisymmetric in the fiber indices, 
+In particular the connection 1-forms are antisymmetric in the fiber indices, 
 \begin{align}
     \omega_{jk}=-\omega_{kj}\quad \text{where}\quad \omega_{jk}:=\eta_{j a} \omega^a_{\, k}\,.
 \end{align}
-If the tetrad is related to some coordinate system $x^\mu$ by $e_i = B_i^\mu \partial_\mu$, we can express the Crhsitoffel symbols as
+If the tetrad is related to some coordinate system $x^\mu$ by $e_i = B_i^\mu \partial_\mu$, we can express the Christoffel symbols as
 \begin{align}
 \begin{aligned}
     \omega_j^k(e_i)\equiv \Gamma_{ij}^k=&\tfrac{1}{2} \eta^{k\ell} \Big( \eta_{m \ell} C^m_{ij} - \eta_{m j} C^m_{i \ell} - \eta_{m i} C^m_{j \ell} \Big)\quad \text{where}\quad C_{ij}^k= (B^{-1})^k_\nu \left( B_i^\mu \partial_\mu B_j^\nu - B_j^\mu \partial_\mu B_i^\nu \right).
@@ -2255,8 +2254,15 @@ The coefficients originally obtained from the metric are now obtained via the pr
 \begin{align}
     B_i^\mu\, \Longrightarrow \theta^i\,\Longrightarrow C_{ij}^k\, \Longrightarrow \Gamma_{ij}^k\, \Longrightarrow \omega_j^k\, \Longrightarrow \Omega_j^k\,.
 \end{align}
+\end{mytheorem}
 
-To express the Einstein equations in this formalism, it is convenient to define (2,0)-tensor valued 2-forms and (3,0)-tensor valued 1-forms as
+
+%================================================================
+\subsubsection{Einstein equations in the tetrad formalism}
+%================================================================
+%
+We now recast the Einstein equations in the tetrad formalism.
+It is convenient to define (2,0)-tensor valued 2-forms and (3,0)-tensor valued 1-forms as
 \begin{align}
     H^{(2)}= e_a\otimes e_b \otimes H^{ab},\quad H^{(3)} = e_a\otimes  e_b \otimes e_c \otimes H^{abc},
 \end{align}
@@ -2267,14 +2273,14 @@ where the coefficient p-forms are defined by
 \end{align}
 Note these tensor valued forms are antisymmetric in both groups of indices, upper and lower.
 This is totally akin to the connection 1-form $\omega^a_{\, b}$ and curvature 2-form $\Omega^a_{\, b}$, which can be seen as (1,1)-tensor valued 1-form and 2-form respectively.
-Then, upon raising the fiber indices, we have 
+Upon raising the fiber indices, these can be written as
 \begin{align}
     \omega:= e_a \otimes e_b \otimes \omega^{ab},\quad \Omega = e_a \otimes e_b \otimes \Omega^{ab},
 \end{align}
 with coefficient 1-forms $\omega^{ab}$ and 2-forms $\Omega^{ab}$ antisymmetric in the upper indices $a,b$.
 
 We now express Eintein equations in this formalism.
-First note that the Einstein-Hilbert action can be written as
+First the Einstein-Hilbert action can be written as
 \begin{align}
     S_{EH}[g] = \frac{1}{16\pi G}\int_M \Omega_g\,\,(R-2\Lambda) 
     = \frac{1}{16\pi G}\int_M \star (R-2\Lambda) 
@@ -2283,7 +2289,7 @@ We can then express the Einstein-Hilbert form as\todotag{Check for $\Lambda$}
 \begin{align}
     \Omega_g R = \star R = \sqrt{g} R d^4\theta\, = H_{ab}\wedge \Omega^{ab},\quad \Omega_g 2\Lambda = \star 2\Lambda = \sqrt{g}\, 2\,\Lambda d^4\theta = H_{ab}\wedge \Big( \Lambda \theta^a \wedge \theta^b\Big),
 \end{align}
-where tensorial indices $ab$ are raised/lowered with the metric and summed over.
+where tensorial indices $a,b$ are raised/lowered with the metric and summed over.
 Indeed we have
 \begin{align}
     H_{ab}\wedge \Omega^{ab} &= \Big( \sqrt{g}\, \tfrac12 \epsilon_{abk\ell}\, \theta^k \wedge \theta^\ell\Big) \wedge \Big( \tfrac{1}{2} R^{ab}_{\,mn} \theta^m \wedge \theta^n\Big)\\
@@ -2296,23 +2302,23 @@ The Einstein-Hilbert action is then expressed as a functional of the tetrad fiel
 \begin{align}
     S_{EH}[\theta] = \frac{1}{16\pi G}\int_M H_{ab}\wedge \Big( \Omega^{ab} - \Lambda \theta^a \wedge \theta^b\Big).
 \end{align}
-The variation of this action wrt the tetrad field reads\todotag{Add proof}
+Using the Cartan and Bianchi identities \eqref{eq:cartan_bianchi_no_torsion} we show the variation of this action wrt an \emph{orthonormal} tetrad reads\todotag{Add proof}
 \begin{align}
-    \delta\Big(\star (R-2\Lambda) \Big)= \delta \theta^a \wedge H_{abc}\wedge \Big( \Omega^{bc} - \Lambda \,\theta^b \wedge \theta^c\Big) + \underbrace{d\Big( \delta \theta^a \wedge H_{ab} \wedge \omega^b_{\, c} \theta^c\Big)}_{\text{total derivative}}.
+    \delta\big(\star (R-2\Lambda) \big)= \delta \theta^a \wedge H_{abc}\wedge \Big( \Omega^{bc} - \Lambda \,\theta^b \wedge \theta^c\Big) + \underbrace{d\Big( \delta \theta^a \wedge H_{abc} \wedge \omega^{bc}\Big)}_{\text{total derivative}}.
 \end{align}
-We also define the energy-momentum 1-form $T_a$ via the variation of the matter action with respect to the tetrad fields as
+We also define the energy-momentum 1-form $T_a$, i.e. the tensor valued form $T=\theta^a\otimes T_a$, via the variation of the matter action with respect to the tetrad as
 \begin{align}
     \delta S_{matter}=:\int_M \delta\theta^a \wedge \big(\star\, T_a\big).
 \end{align}
-Varying the total action $S=S_{EH}+S_{matter}$ with respect to the tetrad, the Einstein equations in the tetrad formalism finally read
+Varying the total action $S=S_{EH}+S_{matter}$ wrt the tetrad, the Einstein equations in the tetrad formalism finally read
 \begin{align}
     -\tfrac12 H_{abc}\wedge \Big( \Omega^{bc} - \Lambda \,\theta^b \wedge \theta^c\Big) = 8\pi G\, \star T_a.
 \end{align}
-Finally, defining the Einstein (0,1)-tensor valued 1-form $G= \theta^a\otimes G_a$ by
+Finally, defining the Einstein (0,1)-tensor valued 1-form $G= \theta^a\otimes G_a$ by enforcing
 \begin{align}
     \star G_a := -\tfrac12 H_{abc}\wedge \Big( \Omega^{bc} - \Lambda \,\theta^b \wedge \theta^c\Big),
 \end{align}
-the Einstein equations can then be concisely expressed as $G_a = 8\pi G\, T_a$.
+the Einstein equations are concisely expressed in the more familiar form $G_a = 8\pi G\, T_a$.
 
 
 
@@ -2384,7 +2390,7 @@ From Kempf GR L10 and then L15 missing:
     \item metric compatibility in arbitrary fiber bundle [ANY FIBER WITH METRIC] \textcolor{blue}{Ok}
     \item Christoffel symbols for metric connection on tangent bundle via structure constants [ONLY TM] \textcolor{red}{check}
     \item Riemann curvature tensor components in tetrad frame [ONLY TM] \textcolor{red}{check}
-    \item einstein tensors and equation varying wrt tetrad fields [ONLY TM] \textcolor{red}{MISSING}
+    \item einstein tensors and equation varying wrt tetrad fields [ONLY TM] \textcolor{red}{check}
 \end{itemize}
 }
 \bigskip
