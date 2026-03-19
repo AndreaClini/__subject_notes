@@ -481,11 +481,20 @@ The functions below are then a complete set of solutions to the Klein--Gordon eq
     u_n^+(t,\mathbf{x}) = \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}), \quad u_n^-(t,\mathbf{x}) = \big(u_n^+\big)^* = \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x})\,.
 \end{align}
 %
+{\color{red}We also remark that static spacetimes is precisely the case where the Hamiltonian is time-independent, its Heinsenberg evolution matches the Schrodringer hamiltonian at all times and thus if we choose mode functions so as to diagonalize the Hamiltonian at some time, they will diagonalize it at all times and thus define a natural notion of particles and \emph{stable} vacuum state.}\todotag{Polish this part}
 \end{mytheorem}
 
 
 \begin{mytheorem}[Basic example:mode functions in Minkowski spacetime\todotag{Finish!!}]
-    hhdhdh
+This is an immediate application of the previous analysis to the case of Minkowski spacetime $\mathcal{M}=\R^{1,3}$ with metric $ds^2 = dt^2 - d\mathbf{x}^2$.
+The Klein--Gordon equation reads $\big(\partial_t^2 - \nabla^2 + m^2\big)\phi = 0$ and the symplectic form is
+\begin{align}
+    \omega(\phi_1, \phi_2) = \int_{\Sigma_t} d^3\mathbf{x}\, \big(\partial_t \phi_1 \phi_2 - \phi_1 \partial_t \phi_2\big).
+\end{align}
+The mode functions are the plane waves labelled by the wavevector $\mathbf{k}\in \R^3$ and read
+\begin{align}
+    % u_\mathbf{k}^+(t,\mathbf{x}) = \frac{e^{-i\omega_\mathbf{k} t + i\mathbf{k}\cdot \mathbf{x}}{\sqrt{2\omega_\mathbf{k}}}, \quad u_\mathbf{k}^-(t,\mathbf{x}) = \big(u_\mathbf{k}^+\big)^* = \frac{e^{+i\omega_\mathbf{k} t - i\mathbf{k}\cdot \mathbf{x}}{\sqrt{2\omega_\mathbf{k}}}, \quad \text{with}\quad \omega_\mathbf{k} = \sqrt{\mathbf{k}^2 + m^2}.
+\end{align}
 \end{mytheorem}
 
 
@@ -502,8 +511,7 @@ The equations of motion become
 \begin{align}\label{eq:EoM_quantized_curved_spacetim_klein_gordon}
     &\frac{\partial \hat{\phi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\phi}(t,\mathbf{x}), \hat{H}(t)] = \frac{\hat{\pi}(t,\mathbf{x})}{\sqrt{|g|} g^{00}} - \frac{g^{0j}}{g^{00}} \partial_j \hat{\phi}(t,\mathbf{x}), \\[3pt]
     &\frac{\partial \hat{\pi}(t,\mathbf{x})}{\partial t} = -\frac{i}{\hbar} [\hat{\pi}(t,\mathbf{x}), \hat{H}(t)] = -\partial_j \Big(\tfrac{g^{0j}}{g^{00}}\hat{\pi}\Big) - \partial_j \left( \sqrt{g}\,\big(g^{ij}-\tfrac{g^{i0}g^{j0}}{g^{00}}\big)\partial_i \hat{\phi}\right) - \sqrt{g}\, \frac{dV}{d\phi} - \sqrt{g}\,\xi\,  R \hat{\phi}\,,
-\end{align}
-}
+\end{align}}
 and the equal-time canonical commutation relations (CCR) 
 \begin{align}\label{eq:CCR_fields_curved_spacetime}
     &[\hat{\phi}(t,\mathbf{x}), \hat{\phi}(t,\mathbf{y})] = 0, \quad [\hat{\pi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = 0, \quad [\hat{\phi}(t,\mathbf{x}), \hat{\pi}(t,\mathbf{y})] = i\hbar\, \delta^{(3)}_{\Sigma_t}(\mathbf{x}-\mathbf{y}). 
@@ -693,7 +701,7 @@ Evaluating at $\lambda=1$ and recalling $\eta:=\operatorname{arctg}(\xi)$ we get
 \end{proof}
 
 
-\begin{mytheorem}[Physical interpretation of Bogoliubov transformation \& Hawking radiation]
+\begin{mytheorem}[Physical interpretation of Bogoliubov transformation \& Hawking radiation\todotag{Fnish Kempf 15}]
 It is enlightening to consider the operator \eqref{eq:bogoliubov_vacuum_normalization}  relating the two vacua
 {\small\begin{align}
     |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
@@ -707,6 +715,13 @@ If we consider a spacetime with a well-defined notion of momentum we would index
 The case of the \emph{real} KG field is also somewhat misleading, since particles coincide with antiparticles and thus the created pairs are indistinguishable.
 If we considered a complex KG field then we would see creation operators enter in the scattering operator always in pair of particle and antipartcile i.e. $\beta_{ij}^* c_i^\dagger d_j^\dagger$ so as to respect the needed quantum numbers.
 
+It is also worth mentioning that the Hawking radiation interpretation i.e. as two (anti)particles being created near the horizon of a black hole and one of them escaping to infinity while the other falls into the black hole, is somewhat misleading since
+\begin{itemize}
+    \item the pair creation process is nonlocal and occurs everywhere in spacetime, not just near the horizon,
+    \item in any case the tyical wavelength of the created particles is of the order of the black hole radius, and thus they are not created and localized in a small region near the horizon but rather in a large region around it.
+\end{itemize} 
+
+Finally we remark the above interpretation of pair creations of field excitations hold more generally even when the concept of particles fades away and such excitations cannot be identified with `particles', e.g. in the case of interacting fields or in a run-away situation when the harmonic oscillator turns upside down e.g. during inflation.
 \end{mytheorem}
 
 
@@ -965,6 +980,7 @@ We choose the mode functions so as to minimize the energy of the vacuum, that is
 In this case the Hamiltonian is time independent: hence the Heinsenberg evolved Hamiltonian is the same as the Schr\"odinger Hamiltonian and the vacuum is stable in the sense it is the lowest energy state of the theory at all times.
 Correspondingly we find that the mode functions that minimize the energy of the Hamiltonian at two times $t_1<t_2$ are the same up to a phase, and thus the Bogoliubov transformation relating the two theories is trivial, that is $\alpha = e^{i\theta} I$ and $\beta=0$.
 \end{mytheorem}
+----------------------------------------------------------------------------
 \bigskip
 
 
