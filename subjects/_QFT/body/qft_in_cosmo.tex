@@ -453,6 +453,11 @@ Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, t
 \end{mytheorem}
 
 
+\begin{mytheorem}[On the space of solutions of the Klein--Gordon equation \& Bogoliubov transformations]\todotag{Finish cf. Kempf 15}
+The KG equation is a linear second order hyperbolic PDE with smooth coefficients, the space of real (complex) solutions $\mathcal{S}_\R$ ($\mathcal{S}_\C$) is thus a real (complex) vector space of infinite dimension.
+For each Fourier mode $n$, the KG equation projected onto this mode is a second order ODE in time, thus the space of solutions is two-dimensional (real or complex dimensions, respectively) and we can choose a basis $\{u_n, u_n^*\}$ of complex conjugate solutions.
+The actual sapce of mode functions is not a vector space, because the mode functions are further required to obey the orthonormality condition \eqref{eq:completeness_relation_bogoliubov_basis_explicit}, which is a nonlinear real\footnote{The conjugate equation coincides with the equation itself.} equation, thereby reducing the mode function space from a vector space of complex dimension 2 (i.e. real dimension 4) to a manifold of real dimension 3. 
+\end{mytheorem}
 
 \begin{mytheorem}[Phase space in static spacetimes\todotag{Fix!!}]
 A particularly important case is that of static spacetimes i.e. spacetimes admitting a global timelike Killing vector field $K$ orthogonal to the spatial leaves of the foliation $\mathcal{M}\simeq \R\times \Sigma$, for some n-manifold $\Sigma$.
@@ -476,6 +481,11 @@ The functions below are then a complete set of solutions to the Klein--Gordon eq
     u_n^+(t,\mathbf{x}) = \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}), \quad u_n^-(t,\mathbf{x}) = \big(u_n^+\big)^* = \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x})\,.
 \end{align}
 %
+\end{mytheorem}
+
+
+\begin{mytheorem}[Basic example:mode functions in Minkowski spacetime\todotag{Finish!!}]
+    hhdhdh
 \end{mytheorem}
 
 
@@ -644,41 +654,42 @@ The normalization of the vacuum $|\tilde{0}\rangle \propto f(a^\dagger)|0\rangle
     \langle& 0| f^*(a) f(a^\dagger) |0\rangle = \langle 0| \exp\Big(\tfrac{1}{2} a_i (\alpha^{-1}\beta)_{ij} a_j\Big) \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle = |\det\alpha|\\[3pt]
     &\quad\Rightarrow\quad |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
 \end{align}}
-We remark this computation is extremely nontrivial for general Bogoliubov transformations, while much easier for diagonal ones.
+We remark the computation is extremely nontrivial for general Bogoliubov transformations, while much easier for diagonal ones.
 
-The \textbf{scattering operator} is found by tweaking the operator relating the two vacua into a unitary one which is then disentangled using the algebra of ladder operators as discussed below, and reads
+The \textbf{scattering operator} is found by tweaking the operator relating the two vacua into a unitary one and then disentagling it using the algebra of ladder operators as discussed below, and reads
 {\small\begin{align}
-    \mathcal{S}:=\exp\left(\tfrac12a^\dagger_i(V\operatorname{arctgh}\Xi\, V^T)^*_{ij} a_j^\dagger - \tfrac12a_i(V\operatorname{arctgh}\Xi\, V^T)_{ij}a_j\right)=\exp\left(\tfrac12  \operatorname{arctgh}\Xi^* (b_i^\dagger)^2 - \tfrac12 \operatorname{arctgh}(\xi_j) (b_j)^2\right)\\
-    =\exp\left(\tfrac12\tilde{a}^\dagger_i(U\operatorname{arctgh}\Xi\, U^T)^*_{ij} \tilde{a}_j^\dagger - \tfrac12\tilde{a}_i(U\operatorname{arctgh}\Xi\, U^T)_{ij}\tilde{a}_j\right)
-    \exp\left(\tfrac12  \operatorname{arctgh}(\xi_j) (\tilde{b}_j^\dagger)^2 - \tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j)^2\right)
+    \mathcal{S}:=\exp\left(\tfrac12a_i(V\operatorname{arctgh}\Xi\, V^T)_{ij}a_j-\tfrac12a^\dagger_i(V\operatorname{arctgh}\Xi\, V^T)^*_{ij} a_j^\dagger\right)=\exp\left(\tfrac12 \operatorname{arctgh}(\xi_j) (b_j)^2-\tfrac12 \operatorname{arctgh}(\xi_j)^* (b_j^\dagger)^2\right)\\
+    =\exp\left(\tfrac12\tilde{a}_i(U\operatorname{arctgh}\Xi\, U^T)_{ij}\tilde{a}_j-\tfrac12\tilde{a}^\dagger_i(U\operatorname{arctgh}\Xi\, U^T)^*_{ij} \tilde{a}_j^\dagger\right)
+    \exp\left(\tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j)^2-\tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j^\dagger)^2\right)
 \end{align}}
-The equalities in the second line follow swapping the roles of the two theories with the replacements $\mathcal{S}\leftrightarrow \mathcal{S}^\dagger$, $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$, in particular $\xi_j \leftrightarrow -\xi_j$ for diagonal Bogoliubov transformations.
-It maps ladder operators and in turn any Fock stats with a given number of excitations into the corresponding ones with the same number of excitations in the other theory, 
+The equalities in the second line follow swapping the roles of the two theories with the replacements $\mathcal{S}\leftrightarrow \mathcal{S}^\dagger$, $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$, in particular $\xi_j \leftrightarrow -\xi_j$ for diagonal transformations.
+The scattering operator maps ladder operators of the two theories into each other, and thus sends Fock states with a given number of excitations into the corresponding ones with the same number of excitations,
 {\small\begin{align}\label{eq:scattering_operator_bogoliubov_curved}
     &\tilde{a}_\ell = \mathcal{S} a_\ell \mathcal{S}^\dagger, \quad |\{\tilde{n}^a_i\}\rangle = \mathcal{S} |\{n^a_i\}_i\rangle, \qquad 
     \tilde{b}_\ell = \mathcal{S} b_\ell \mathcal{S}^\dagger, \quad |\{\tilde{n}^b_i\}\rangle = \mathcal{S} |\{n^b_i\}_i\rangle\,.
 \end{align}}
 \end{mytheorem}
-{\color{red}
 \begin{proof}
-We proof the above identities in the diagonal basis.
+The diagonalization of the Bogoliubov transformation is discussed below.
+Here we prove the above identities in the diagonal basis.\todotag{Insert proof of vacuum normalization}
+{\color{red}
 The normalization of the vacuum is found by direct computation and then using the Taylor series
 \begin{align}
     ...\textcolor{red}{\text{See from chatgpt or redo it}}
-\end{align}
-The intuition and the rigorous procedure to disentangle the scattering operator is discussed below.
+\end{align}}
+The intuition for the scattering operator and the rigorous procedure to disentangle it is discussed below.
 Here we just show it works.
 Define the antihermitian operator $G= \tfrac12 (b_j)^2\eta_j-\tfrac12 (b_j^\dagger)^2\eta^*_j$ for $\eta_j:=\operatorname{arctgh}(\xi_j)$ so that $\mathcal{S}= e^{-G}$ and solving the differential equation
 {\small\begin{align}
     &\frac{d}{d\lambda} e^{-\lambda G} b e^{\lambda G} = e^{-\lambda G} [b,G] e^{\lambda G} = -\eta e^{-\lambda G} b^\dagger e^{\lambda G}, \qquad (e^{-\lambda G} b e^{\lambda G})_{|\lambda=0}= b,\quad \frac{d}{d\lambda}(e^{-\lambda G} b e^{\lambda G})_{|\lambda=0}= -\eta b^\dagger,\\[3pt]
     &\frac{d^2}{d\lambda^2}e^{-\lambda G} b e^{\lambda G} = -\eta \frac{d}{d\lambda} e^{-\lambda G} b^\dagger e^{\lambda G} =-\eta e^{-\lambda G} [b^\dagger,G] e^{\lambda G}=\eta^2 e^{-\lambda G} b e^{\lambda G}.
 \end{align}}
-Enforcing the initial conditions at $\lambda=0$, the unique solution $e^{-\lambda G} b e^{\lambda G} = b \cosh(\eta\lambda)-b^\dagger \sinh(\eta\lambda)$.
-Evaluating at $\lambda=1$ we get the desired result
+Enforcing the initial conditions at $\lambda=0$, the unique solution is $e^{-\lambda G} b e^{\lambda G} = b \cosh(\eta\lambda)-b^\dagger \sinh(\eta\lambda)$.
+Evaluating at $\lambda=1$ and recalling $\eta:=\operatorname{arctg}(\xi)$ we get the desired result
 \begin{align}
     \mathcal{S} b \mathcal{S}^\dagger = e^{-\lambda G} b e^{\lambda G}\mid_{\lambda=1} = b \cosh(\eta) - b^\dagger \sinh(\eta) = b (1-\xi^2)^{-\tfrac12} - b^\dagger \xi (1-\xi^2)^{-\tfrac12}.
 \end{align}
-\end{proof}}
+\end{proof}
 
 
 \begin{mytheorem}[Bloch-Messiah diagonalization of Bogoliubov coefficients]
