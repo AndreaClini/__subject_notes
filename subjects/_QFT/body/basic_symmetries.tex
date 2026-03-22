@@ -23,6 +23,412 @@
 
 %--------------------------------------------------------
 %=========================================================
-\section{Conservation of Energy, Momentum and Angular Momentum}
+\section{Energy, Momentum and Angular Momentum}
 %=========================================================
 %------------------------------------------------------------
+
+Conservation of energy and momentum is a consequence of invariance under spacetime translations $x^\mu\mapsto x^\mu + a^\mu$.
+The associated conserved currents are the components of the energy-momentum tensor $T^{\mu\nu}$, which is a symmetric rank-2 tensor that can be derived from the Lagrangian density $\mathcal{L}$ via the Noether procedure.
+The conserved charges are the total energy and total mometum 
+\begin{align}
+E = \int d^3 x\, T^{00}, \quad \mathbf{P} = \int d^3 x\, T^{0i}.
+\end{align}
+
+The total energy often coincides with the Hamiltonian $H$ of the system, which generates time evolution, albeit one has to be careful in curved spacetime since several hamiltonian operators can be defined depending on the choice of time coordinate and associated foliation of spacetime, while in the presence of a timelike Killing vector field thee will be a well-defined notion of energy which coincides only with the Hamiltonian defined with respect to the time coordinate adapted to the Killing vector field, thus singling out a preferred foliation of spacetime and a preferred Hamiltonian operator and notion of time evolution.
+
+
+%==================================================================
+\subsection{Many-body systems, total momentum, center-of-mass splitting, and finite temperature}\todotag{Fix \& Polish}
+%==================================================================
+This note summarizes the main points of the discussion about a many-body Hamiltonian $H$ commuting with the total momentum operator $\mathbf{P}$, the possibility of choosing states with zero total momentum, the explicit center-of-mass transformation, the decomposition $H=H_{\text{cm}}+H_{\text{rel}}$, and the extension to variable particle number and finite temperature.
+
+\subsubsection*{1. What follows from $[H,\mathbf{P}]=0$}
+If
+{\small\begin{align}
+\begin{aligned}
+    [H,\mathbf{P}]=0,
+\end{aligned}
+\end{align}}
+then one can choose common eigenstates of $H$ and $\mathbf{P}$:
+{\small\begin{align}
+\begin{aligned}
+    H\ket{E,\mathbf{K}}=E(\mathbf{K})\ket{E,\mathbf{K}},\qquad \mathbf{P}\ket{E,\mathbf{K}}=\mathbf{K}\ket{E,\mathbf{K}}.
+\end{aligned}
+\end{align}}
+However, \emph{this alone does not imply} that the ground state must have $\mathbf{P}=0$.
+The statement that the minimum energy occurs at zero total momentum requires more structure, typically Galilean invariance or an explicit decoupling of the center-of-mass motion.
+In the standard non-relativistic situation, the energy takes the form
+{\small\begin{align}
+\begin{aligned}
+    E(\mathbf{K})=E_{\mathrm{int}}+\frac{\mathbf{K}^2}{2M},
+\end{aligned}
+\end{align}}
+so the minimum is indeed at $\mathbf{K}=0$.
+
+\subsubsection*{2. Explicit center-of-mass operator and momentum-shifting unitary}
+For $N$ particles of masses $m_i$, define
+{\small\begin{align}
+\begin{aligned}
+    M=\sum_{i=1}^N m_i,\qquad \mathbf{P}=\sum_{i=1}^N \mathbf{P}_i,\qquad \mathbf{X}_{\text{cm}}=\frac{1}{M}\sum_{i=1}^N m_i\,\mathbf{X}_i.
+\end{aligned}
+\end{align}}
+Then
+{\small\begin{align}
+\begin{aligned}
+    [X_{\text{cm},a},P_b]=i\delta_{ab}.
+\end{aligned}
+\end{align}}
+The unitary that shifts the total momentum is
+{\small\begin{align}
+\begin{aligned}
+    U(\mathbf{K})=e^{-i\mathbf{K}\cdot \mathbf{X}_{\text{cm}}}.
+\end{aligned}
+\end{align}}
+Using the Baker-Campbell-Hausdorff formula,
+{\small\begin{align}
+\begin{aligned}
+    U(\mathbf{K})^\dagger\mathbf{P}\,U(\mathbf{K})=\mathbf{P}-\mathbf{K}.
+\end{aligned}
+\end{align}}
+Equivalently,
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{P}\,U(\mathbf{K})=U(\mathbf{K})(\mathbf{P}-\mathbf{K}).
+\end{aligned}
+\end{align}}
+Therefore, if
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{P}\ket{\psi_{\mathbf{K}}}=\mathbf{K}\ket{\psi_{\mathbf{K}}},
+\end{aligned}
+\end{align}}
+then the transformed state
+{\small\begin{align}
+\begin{aligned}
+    \ket{\psi_{\mathrm{rest}}}:=U(\mathbf{K})\ket{\psi_{\mathbf{K}}}
+\end{aligned}
+\end{align}}
+obeys
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{P}\ket{\psi_{\mathrm{rest}}}=0.
+\end{aligned}
+\end{align}}
+So $U(\mathbf{K})$ removes the center-of-mass momentum.
+
+\subsubsection*{3. Why this changes the center-of-mass energy}
+If the center-of-mass Hamiltonian is
+{\small\begin{align}
+\begin{aligned}
+    H_{\text{cm}}=\frac{\mathbf{P}^2}{2M},
+\end{aligned}
+\end{align}}
+then $\mathbf{X}_{\text{cm}}$ does not commute with $H_{\text{cm}}$:
+{\small\begin{align}
+\begin{aligned}
+    [X_{\text{cm},a},H_{\text{cm}}]=\left[X_{\text{cm},a},\frac{\mathbf{P}^2}{2M}\right]=\frac{iP_a}{M}.
+\end{aligned}
+\end{align}}
+This is precisely why the unitary generated by $\mathbf{X}_{\text{cm}}$ can change the center-of-mass energy.
+Indeed,
+{\small\begin{align}
+\begin{aligned}
+    U(\mathbf{K})^\dagger H_{\text{cm}}U(\mathbf{K})=\frac{(\mathbf{P}-\mathbf{K})^2}{2M}.
+\end{aligned}
+\end{align}}
+So if
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{P}\ket{\psi_{\mathbf{K}}}=\mathbf{K}\ket{\psi_{\mathbf{K}}},
+\end{aligned}
+\end{align}}
+then
+{\small\begin{align}
+\begin{aligned}
+    H_{\text{cm}}\,U(\mathbf{K})\ket{\psi_{\mathbf{K}}}=0.
+\end{aligned}
+\end{align}}
+More explicitly, if
+{\small\begin{align}
+\begin{aligned}
+    H_{\text{cm}}\ket{\psi_{\mathbf{K}}}=\frac{\mathbf{K}^2}{2M}\ket{\psi_{\mathbf{K}}},
+\end{aligned}
+\end{align}}
+then after the transformation the center-of-mass energy becomes zero.
+
+\subsubsection*{4. Splitting the free many-body Hamiltonian}
+Consider now a free gas of identical particles of mass $m$ in second quantization:
+{\small\begin{align}
+\begin{aligned}
+    H=\sum_{\mathbf{K}}\frac{\mathbf{K}^2}{2m}\,c_{\mathbf{K}}^\dagger c_{\mathbf{K}}.
+\end{aligned}
+\end{align}}
+Define also the total number operator and total momentum operator:
+{\small\begin{align}
+\begin{aligned}
+    \hat N=\sum_{\mathbf{K}} c_{\mathbf{K}}^\dagger c_{\mathbf{K}},\qquad \mathbf{P}=\sum_{\mathbf{K}} \mathbf{K}\,c_{\mathbf{K}}^\dagger c_{\mathbf{K}}.
+\end{aligned}
+\end{align}}
+Write $n_{\mathbf{K}}:=c_{\mathbf{K}}^\dagger c_{\mathbf{K}}$.
+Then
+{\small\begin{align}
+\begin{aligned}
+    H=\sum_{\mathbf{K}}\frac{\mathbf{K}^2}{2m}\,n_{\mathbf{K}},\qquad \mathbf{P}=\sum_{\mathbf{K}}\mathbf{K}\,n_{\mathbf{K}}.
+\end{aligned}
+\end{align}}
+Inside a sector of fixed particle number $N$, one may write
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{K}=\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)+\frac{\mathbf{P}}{N},
+\end{aligned}
+\end{align}}
+and hence
+{\small\begin{align}
+\begin{aligned}
+    \sum_{\mathbf{K}}\mathbf{K}^2 n_{\mathbf{K}}=\sum_{\mathbf{K}}\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)^2 n_{\mathbf{K}}+2\frac{\mathbf{P}}{N}\cdot \sum_{\mathbf{K}}\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)n_{\mathbf{K}}+\frac{\mathbf{P}^2}{N^2}\sum_{\mathbf{K}}n_{\mathbf{K}}.
+\end{aligned}
+\end{align}}
+Now
+{\small\begin{align}
+\begin{aligned}
+    \sum_{\mathbf{K}}\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)n_{\mathbf{K}}=\sum_{\mathbf{K}}\mathbf{K}\,n_{\mathbf{K}}-\frac{\mathbf{P}}{N}\sum_{\mathbf{K}}n_{\mathbf{K}}=\mathbf{P}-\frac{\mathbf{P}}{N}N=0,
+\end{aligned}
+\end{align}}
+and also
+{\small\begin{align}
+\begin{aligned}
+    \sum_{\mathbf{K}}n_{\mathbf{K}}=N.
+\end{aligned}
+\end{align}}
+Therefore,
+{\small\begin{align}
+\begin{aligned}
+    \sum_{\mathbf{K}}\mathbf{K}^2 n_{\mathbf{K}}=\sum_{\mathbf{K}}\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)^2 n_{\mathbf{K}}+\frac{\mathbf{P}^2}{N},
+\end{aligned}
+\end{align}}
+so that
+{\small\begin{align}
+\begin{aligned}
+    H=\frac{\mathbf{P}^2}{2mN}+\sum_{\mathbf{K}}\frac{\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)^2}{2m}\,n_{\mathbf{K}}.
+\end{aligned}
+\end{align}}
+This is the desired decomposition
+{\small\begin{align}
+\begin{aligned}
+    H=H_{\text{cm}}+H_{\text{rel}},
+\end{aligned}
+\end{align}}
+with
+{\small\begin{align}
+\begin{aligned}
+    H_{\text{cm}}=\frac{\mathbf{P}^2}{2M},\qquad M=Nm,
+\end{aligned}
+\end{align}}
+and
+{\small\begin{align}
+\begin{aligned}
+    H_{\text{rel}}=\sum_{\mathbf{K}}\frac{\left(\mathbf{K}-\frac{\mathbf{P}}{N}\right)^2}{2m}\,c_{\mathbf{K}}^\dagger c_{\mathbf{K}}.
+\end{aligned}
+\end{align}}
+Thus, at fixed $N$,
+{\small\begin{align}
+\begin{aligned}
+    E_{N,\alpha}(\mathbf{K})=E^{\text{rel}}_{N,\alpha}+\frac{\mathbf{K}^2}{2mN},
+\end{aligned}
+\end{align}}
+so the minimum in total momentum is attained at $\mathbf{K}=0$.
+
+\subsubsection*{5. First-quantized version}
+For $N$ identical particles,
+{\small\begin{align}
+\begin{aligned}
+    H=\sum_{i=1}^N \frac{\mathbf{P}_i^2}{2m},\qquad \mathbf{P}=\sum_{i=1}^N \mathbf{P}_i.
+\end{aligned}
+\end{align}}
+Define the relative momenta
+{\small\begin{align}
+\begin{aligned}
+    \boldsymbol{\pi}_i:=\mathbf{P}_i-\frac{\mathbf{P}}{N}.
+\end{aligned}
+\end{align}}
+Then
+{\small\begin{align}
+\begin{aligned}
+    \sum_{i=1}^N \boldsymbol{\pi}_i=0,
+\end{aligned}
+\end{align}}
+and
+{\small\begin{align}
+\begin{aligned}
+    \sum_{i=1}^N \mathbf{P}_i^2=\sum_{i=1}^N\left(\boldsymbol{\pi}_i+\frac{\mathbf{P}}{N}\right)^2=\sum_{i=1}^N \boldsymbol{\pi}_i^2+\frac{\mathbf{P}^2}{N}.
+\end{aligned}
+\end{align}}
+Therefore,
+{\small\begin{align}
+\begin{aligned}
+    H=\frac{\mathbf{P}^2}{2mN}+\sum_{i=1}^N\frac{\boldsymbol{\pi}_i^2}{2m}.
+\end{aligned}
+\end{align}}
+This is the same center-of-mass/relative splitting in a more elementary form.
+For $N=2$, with
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{K}=\mathbf{K}_1+\mathbf{K}_2,\qquad \mathbf{q}=\frac{\mathbf{K}_1-\mathbf{K}_2}{2},
+\end{aligned}
+\end{align}}
+one has
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{K}_1=\frac{\mathbf{K}}{2}+\mathbf{q},\qquad \mathbf{K}_2=\frac{\mathbf{K}}{2}-\mathbf{q},
+\end{aligned}
+\end{align}}
+and therefore
+{\small\begin{align}
+\begin{aligned}
+    \frac{\mathbf{K}_1^2}{2m}+\frac{\mathbf{K}_2^2}{2m}=\frac{\mathbf{K}^2}{4m}+\frac{\mathbf{q}^2}{m}.
+\end{aligned}
+\end{align}}
+Again, the first term is the center-of-mass kinetic energy and the second is the relative one.
+
+\subsubsection*{6. Variable particle number and Fock-space decomposition}
+If the Hamiltonian commutes both with the total momentum and with the particle number,
+{\small\begin{align}
+\begin{aligned}
+    [H,\mathbf{P}]=0,\qquad [H,\hat N]=0,
+\end{aligned}
+\end{align}}
+then the Fock space decomposes into sectors of fixed $N$,
+{\small\begin{align}
+\begin{aligned}
+    \mathcal F=\bigoplus_{N=0}^{\infty}\mathcal H_N,
+\end{aligned}
+\end{align}}
+and one may choose common eigenstates of $H$, $\mathbf{P}$, and $\hat N$:
+{\small\begin{align}
+\begin{aligned}
+    H\ket{N,\alpha,\mathbf{K}}=E_{N,\alpha}(\mathbf{K})\ket{N,\alpha,\mathbf{K}},
+\end{aligned}
+\end{align}}
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{P}\ket{N,\alpha,\mathbf{K}}=\mathbf{K}\ket{N,\alpha,\mathbf{K}},\qquad \hat N\ket{N,\alpha,\mathbf{K}}=N\ket{N,\alpha,\mathbf{K}}.
+\end{aligned}
+\end{align}}
+Inside each sector with $N\geq 1$, the center-of-mass splitting still holds:
+{\small\begin{align}
+\begin{aligned}
+    E_{N,\alpha}(\mathbf{K})=E^{\text{rel}}_{N,\alpha}+\frac{\mathbf{K}^2}{2mN}.
+\end{aligned}
+\end{align}}
+Hence, for each fixed $N$, the minimum in total momentum occurs at $\mathbf{K}=0$.
+However, if one minimizes the bare Hamiltonian $H$ over the entire Fock space, the result can be trivial.
+For the free gas,
+{\small\begin{align}
+\begin{aligned}
+    H=\sum_{\mathbf{K}}\frac{\mathbf{K}^2}{2m}c_{\mathbf{K}}^\dagger c_{\mathbf{K}}\geq 0,
+\end{aligned}
+\end{align}}
+and the vacuum has zero energy, so the global ground state of $H$ is simply the vacuum:
+{\small\begin{align}
+\begin{aligned}
+    \ket{0},\qquad \hat N\ket{0}=0,\qquad \mathbf{P}\ket{0}=0.
+\end{aligned}
+\end{align}}
+So the physically interesting many-body problem is usually either the fixed-$N$ problem or the grand-canonical one.
+A careful operator-level way to write the center-of-mass piece on the whole Fock space is sector by sector:
+{\small\begin{align}
+\begin{aligned}
+    H_{\text{cm}}=\sum_{N\geq 1}\Pi_N\frac{\mathbf{P}^2}{2mN}\Pi_N,
+\end{aligned}
+\end{align}}
+with $H_{\text{cm}}\ket{0}=0$.
+Here $\Pi_N$ denotes the projector onto the $N$-particle sector.
+
+\subsubsection*{7. Finite temperature and the grand-canonical point of view}
+At finite temperature, the main object is no longer a single ground state but a thermal density matrix.
+If $N$ is fixed, one uses the canonical ensemble,
+{\small\begin{align}
+\begin{aligned}
+    \rho_N=\frac{e^{-\beta H^{(N)}}}{Z_N}.
+\end{aligned}
+\end{align}}
+If $N$ is allowed to fluctuate, the natural object is the grand-canonical ensemble,
+{\small\begin{align}
+\begin{aligned}
+    \rho=\frac{e^{-\beta(H-\mu \hat N)}}{\Xi}.
+\end{aligned}
+\end{align}}
+The operator that matters is then
+{\small\begin{align}
+\begin{aligned}
+    K:=H-\mu \hat N.
+\end{aligned}
+\end{align}}
+Inside the sector with fixed $N$,
+{\small\begin{align}
+\begin{aligned}
+    K^{(N)}=H^{(N)}-\mu N,
+\end{aligned}
+\end{align}}
+so the eigenvalues take the form
+{\small\begin{align}
+\begin{aligned}
+    E^{(K)}_{N,\alpha}(\mathbf{K})=E^{\text{rel}}_{N,\alpha}+\frac{\mathbf{K}^2}{2mN}-\mu N.
+\end{aligned}
+\end{align}}
+Again, for every fixed $N$, the minimum in total momentum occurs at
+{\small\begin{align}
+\begin{aligned}
+    \mathbf{K}=0.
+\end{aligned}
+\end{align}}
+What changes is which particle-number sector is thermodynamically favored: this is determined by the competition between the internal energy and the term $-\mu N$.
+In equilibrium, unless a macroscopic flow is imposed, one typically has
+{\small\begin{align}
+\begin{aligned}
+    \langle \mathbf{P}\rangle=0,
+\end{aligned}
+\end{align}}
+not because each pure state in the thermal mixture has zero momentum, but because the thermal weights are symmetric and the lowest-energy contribution in each fixed-$N$ sector lies at zero total momentum.
+
+\subsubsection*{8. Final summary}
+The main logical points are the following.
+\begin{itemize}
+    \item From $[H,\mathbf{P}]=0$ alone, one may choose common eigenstates of $H$ and $\mathbf{P}$, but one cannot conclude by pure algebra that the ground state must have zero momentum.
+    \item In Galilean-invariant non-relativistic systems, the center-of-mass coordinate
+    {\small\begin{align}
+    \begin{aligned}
+        \mathbf{X}_{\text{cm}}=\frac{1}{M}\sum_i m_i\,\mathbf{X}_i
+    \end{aligned}
+    \end{align}}
+    generates momentum shifts via
+    {\small\begin{align}
+    \begin{aligned}
+        U(\mathbf{K})=e^{-i\mathbf{K}\cdot \mathbf{X}_{\text{cm}}},
+    \end{aligned}
+    \end{align}}
+    and this maps a state of total momentum $\mathbf{K}$ to one of total momentum zero.
+    \item When the Hamiltonian splits as
+    {\small\begin{align}
+    \begin{aligned}
+        H=H_{\text{cm}}+H_{\text{rel}}=\frac{\mathbf{P}^2}{2M}+H_{\text{rel}},
+    \end{aligned}
+    \end{align}}
+    the energy is
+    {\small\begin{align}
+    \begin{aligned}
+        E(\mathbf{K})=E_{\text{rel}}+\frac{\mathbf{K}^2}{2M},
+    \end{aligned}
+    \end{align}}
+    so the minimum is at $\mathbf{K}=0$.
+    \item In second quantization, the splitting holds cleanly inside each sector of fixed particle number $N$:
+    {\small\begin{align}
+    \begin{aligned}
+        H=\frac{\mathbf{P}^2}{2mN}+H_{\text{rel}}.
+    \end{aligned}
+    \end{align}}
+    \item If the particle number is allowed to vary, the global ground state of the free Hamiltonian $H$ is just the vacuum.
+    The physically relevant finite-density problem is either fixed-$N$ or grand canonical, where the relevant operator is $H-\mu\hat N$.
+    \item At finite temperature, the correct object is the thermal density matrix, not a single ground state.
+    Still, in each fixed-$N$ sector, the energetically preferred total momentum remains zero.
+\end{itemize}

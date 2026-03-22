@@ -155,6 +155,11 @@ In fact, renormalization is already needed to tame infinities arising in the pro
 
 
 
+%======================================================================
+\subsection{Geometric preliminaries}
+%===========================================================================
+For convenience we collect some geometric results that will be useful in the following.
+
 \begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\questiontag{Polish}]
 %
 Choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma$.
@@ -210,6 +215,74 @@ Therefore by metric compatibility we also have
 \end{align}}
 This proves that $g_{\lambda \lambda}(\lambda,\mathbf{x})=1$ and $g_{\lambda i}(\lambda,\mathbf{x})=0$ for all $\lambda$ and $\mathbf{x}$, so that indeed $g_{00}=1$ and $g_{0i}=0$ in these coordinates.
 \end{mytheorem}
+
+
+\begin{mytheorem}[Timlike Killing vector fields, static \& ultrastatic spacetimes]
+%
+Assume spacetime admits a global timelike Killing vector field $K$, that is
+{\small\begin{align}
+    0=\mathcal{L}_K g_{\mu\nu} =K(g_{\mu\nu})-g([K,\partial_\mu],\partial_\nu)-g(\partial_\mu,[K,\partial_\nu]), \qquad g(K,K)>0.
+\end{align}}
+By Frobenius theorem we can choose coordinates $x^\mu=(x^0,\mathbf{x})$ adapted to the flow of $K$ such that $K=\partial_t$.
+In such coordinates $[K,\partial_\mu]\equiv0$ and the condition above reads $\partial_t g_{\mu\nu}=0$, so the metric is time-independent.
+Beware the existence of a global timelike v.f. does not prevent nonzero cross terms $g_{0j}(\mathbf{x})\neq0$ that cannot be removed by a change of coordinates
+
+If we further assume that $K$ is orthogonal to the spatial leaves of a foliation $\mathcal{M}\simeq \R\times \Sigma$, for some n-manifold $\Sigma$, in adapted coordinates 
+\begin{align}
+    ds^2 = g_{\mu\nu} dx^\mu dx^\nu = g_{00}(\mathbf{x}) dt^2 + g_{ij}(\mathbf{x}) dx^i dx^j.
+\end{align}
+Beware this condition is not enough to find coordinates such that $g_{00}(\mathbf{x})\equiv1$.
+This is possible only in the `ultrastatic' case where $g_{00}(\mathbf{x})$ is already constant.
+Indeed if we try to normalize the timelike coordinate as above, we might generare time-dependence in the spatial metric $g_{ij}$, thus losing the static condition.
+
+A notable example is the Schwarzschild metric outside the horizon
+{\small\begin{align}
+    ds^2 = \left(1-\frac{2M}{r}\right) dt^2 - \left(1-\frac{2M}{r}\right)^{-1} dr^2 - r^2 d\Omega^2.
+\end{align}}
+The metric is static (time indpendent without cross-terms) but and there is no coordinate change preserving staticity that sends $g_{00}\mapsto 1$ identically.
+
+For static spacetimes the (postive definite) spatial metric induced on leaves $\Sigma$ is simply $\bar{g}_{ij}:=-g_{|\Sigma}\equiv -g_{ij}$.
+The only non-vanishing Christoffel symbols are
+{\small\begin{align}
+    \Gamma^0_{0j} = \frac{1}{2g_{00}}\,\partial_j g_{00},
+    \qquad
+    \Gamma^i_{00} = -\frac12 g^{ij}\partial_j g_{00} = \frac12  g^{ij}_\Sigma\partial_j g_{00},
+    \qquad
+    \Gamma^i_{jk}=\bar\Gamma^i_{jk}.
+\end{align}}
+We also have
+{\small\begin{align}
+    \Gamma^\mu_{\mu 0}=0,
+    \qquad
+    \Gamma^\mu_{\mu j}=\Gamma^0_{0j}+\Gamma^i_{ij}
+    =\frac{1}{2g_{00}}\,\partial_j g_{00}+\bar\Gamma^i_{ij}.
+\end{align}}
+For scalar fields it os easiest to reexpress the D'Alambert operator then reads in terms the spatial Laplacian $\bar{\nabla}_j\bar{\nabla}^j$ associated to $g_\Sigma$
+{\small\begin{align}
+  \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)\\
+  &= \frac{1}{g_{00}}\,\partial_t^2\phi- \frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,(g_\Sigma)^{ij}\partial_i\phi\Big)\\
+  &= g^{00} \partial_t^2 \phi +\tfrac12\tfrac{\partial_jg_{00}}{g_{00}} g^{ij} \partial_i \phi +\tfrac{1}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_\Sigma} \bar{g}^{ij}\partial_i \phi\Big)\\
+  &=\tfrac{1}{g_{00}} \partial_t^2 \phi +\tfrac12 \tfrac{\partial_jg_{00}}{g_{00}} g^{ij} \partial_i \phi -\bar{\nabla}_j\bar{\nabla}^j\phi\,.
+\end{align}}
+The second expression makes it manifest the operator
+{\small\begin{align}
+    O
+    = -\frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}
+    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,(g_\Sigma)^{ij}\partial_i\Big)
+\end{align}}
+is therefore formally self-adjoint with respect to the measure
+{\small\begin{align}
+    d\mu = d^3x\,\sqrt{g_{00}}\sqrt{g_\Sigma}=d^3x\,\sqrt{|g|},
+\end{align}}
+but not, in general, with respect to the unweighted spatial measure \(d^3x\,\sqrt{g_\Sigma}\).
+%
+\end{mytheorem}
+
+
+
+
+
+
 
 %-----------------------------------------------------------------------------
 %==================================================================================
