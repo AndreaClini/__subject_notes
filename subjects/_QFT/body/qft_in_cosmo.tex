@@ -155,7 +155,7 @@ In fact, renormalization is already needed to tame infinities arising in the pro
 
 
 
-\begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\todotag{Finish}]
+\begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\questiontag{Polish}]
 %
 Choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma$.
 In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the outward (positive-time oriented) normal $n^\mu$ and the metric induced on spatial leaves $\Sigma$ obey
@@ -186,6 +186,31 @@ Beware that $g_{|\Sigma}^{ij}$ is negative definite in our mostly minus signatur
 \end{mytheorem}
 
 
+\begin{mytheorem}[Adapted coordinates without space-time cross terms $g_{0i}=0$ and $g_{00}\equiv 1$\questiontag{Polish}]
+Albeit not needed for the results below, it is useful to choose local coordinates where the metric has no cross terms $g_{0i}=0$ between time and space, i.e.
+{\small\begin{align}\label{eq:adapted_nocross_coordinates}
+    ds^2 = g_{00}(t,x) dt^2 + g_{ij}(t,x) dx^i dx^j, \quad \text{with}\quad g_{00}>0, \quad g_{ij} = g_{|\Sigma\, ij}.
+\end{align}}
+In fact, we can awlays find local coordinates such that $g_{00}(t,x)\equiv1$.
+The simplest way to find such coordinates is considering the flow of timelike geodesics orthogonal to a spacelike surface.
+
+Namely, given a spacelike surface $\Sigma_{t_0}$ with adapted coordinates $x^\mu=(t_0,\mathbf{x})$, denote its normal vector $n^\mu(\mathbf{x})$ and define a chart $\varphi:\mathbb{\R}_\lambda\times \Sigma_{t_0}\to\mathcal{M}$ by $\varphi(\lambda,\mathbf{x})=\exp_{\Sigma_{t_0}(\mathbf{x})}(\lambda n^\mu)$, where $\exp_p(v)$ is the exponential map and $\Sigma_{t_0}(\mathbf{x})$ is the point of $\Sigma_{t_0}$ with coordinates $\mathbf{x}$.
+Since $\lambda \mapsto \varphi(\lambda,\mathbf{x})$ is a constant length geodesic we have $\nabla_\lambda \partial_\lambda \varphi = 0$.
+Moreover by construction we have
+{\small\begin{align}
+    &g(\lambda,\mathbf{x})(\partial_\lambda\varphi,\partial_\lambda \varphi) = g(0,\mathbf{x})(n,n) = 1 \,\,\forall\lambda,\mathbf{x}, \quad g(0,\mathbf{x})(\partial_\lambda\varphi, \partial_i \varphi) = g(0,\mathbf{x})(n, \partial_i \varphi) = 0\,\,\forall\mathbf{x},\\[3pt]
+    & 0\equiv \partial_\lambda g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)\,\,\forall\lambda,\mathbf{x}, \quad 0\equiv \partial_j g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)\,\,\forall\lambda,\mathbf{x}, 
+    \quad 0\equiv \partial_j g(0,\mathbf{x})(\partial_\lambda\varphi, \partial_i \varphi) \equiv 0 \,\,\forall\mathbf{x}.
+\end{align}}
+Since torsion vanishes we have $\nabla_\lambda \partial_i \varphi = \nabla_i \partial_\lambda \varphi$.
+Therefore by metric compatibility we also have
+{\small
+\begin{align}
+    &\partial_\lambda g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_i \varphi) = g(\lambda,\mathbf{x})(\underbrace{ \nabla_\lambda \partial_\lambda \varphi}_{=0},\partial_i \varphi)+ g(\lambda,\mathbf{x})(\partial_\lambda \varphi,\underbrace{\nabla_\lambda \partial_i \varphi}_{=\nabla_i\partial_\lambda\varphi})  = \tfrac{1}{2} \partial_i \underbrace{g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)}_{\equiv 1} = 0.
+\end{align}}
+This proves that $g_{\lambda \lambda}(\lambda,\mathbf{x})=1$ and $g_{\lambda i}(\lambda,\mathbf{x})=0$ for all $\lambda$ and $\mathbf{x}$, so that indeed $g_{00}=1$ and $g_{0i}=0$ in these coordinates.
+\end{mytheorem}
+
 %-----------------------------------------------------------------------------
 %==================================================================================
 \section{Canonical quantization of the Klein-Gordon field}
@@ -198,7 +223,7 @@ To fix ideas we consider below the case of quintessence scalar field, but the an
 \subsection{Classical Hamiltonian formulation}
 %==================================================================================
 %
-\begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime\todotag{Finish}]
+\begin{mytheorem}[Hamiltonian formulation of scalar field in curved spacetime]
 Consider the action for a scalar field, possibly with nonminimal coupling to gravity $\xi\neq0$, and choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma_t$ with adapted coordinates $x^\mu=(t,\mathbf{x})$,
 {\small
 \begin{align}
@@ -218,12 +243,12 @@ Using \eqref{eq:metric_induced_spatial_leaves_folitation} the conjugate field ma
   \pi = \sqrt{g}\,g^{0\mu}\,\nabla_\mu\phi= \sqrt{g_{|\Sigma}}\, \frac{g^{0\mu}}{\sqrt{g^{00}}} \nabla_\mu \phi = \sqrt{g_{|\Sigma}}\, n^\mu \nabla_\mu \phi.
 \end{align}
 The hamiltonian \emph{density} is then
-{\small
-\begin{align}
-    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) 
-    = \frac{1}{\sqrt{g} g^{00}} \frac{\pi^2}{2} - \frac{g^{0j}}{g^{00}}\, \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\,\partial_j\phi + \sqrt{g}\,V(\phi) + \sqrt{g}\,\tfrac{\xi}{2} R \phi^2,
+{\small\begin{align}\label{eq:hamiltonian_density_curved_spacetime_KG}
+    \mathcal{H}(t,\mathbf{x}) &= \pi(t,\mathbf{x}) \dot{\phi}(t,\mathbf{x}) - \sqrt{g}\,\,\mathcal{L}(t,\mathbf{x}) = \sqrt{g}\left(\tfrac12 g^{00}(\partial_0\phi)^2-\tfrac12 g^{ij}\partial_i\phi\,\partial_j\phi + V(\phi) + \tfrac{\xi}{2} R \phi^2\right) 
+    \\[3pt]
+    &= \frac{1}{\sqrt{g} g^{00}} \frac{\pi^2}{2} - \frac{g^{0j}}{g^{00}}\, \pi\, \partial_j\phi - \frac{\sqrt{g}}{2} \Big(\underbrace{g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}}}_{=\, g_{|\Sigma}^{ij}}\Big)\partial_i\phi\,\partial_j\phi + \sqrt{g}\,V(\phi) + \sqrt{g}\,\tfrac{\xi}{2} R \phi^2,
 \end{align}}
-where the inverse metric $g_{|\Sigma}^{ij}$ induced on spatial slices \eqref{eq:inverse_metric_induced_leaves_foliation} is negative definite in our convention, thus contributing positive kinetic energy to the hamiltonian.
+where both $g^{ij}$ and the inverse metric $g_{|\Sigma}^{ij}$ induced on spatial slices \eqref{eq:inverse_metric_induced_leaves_foliation} are negative definite in our convention, thus contributing positive kinetic energy to the hamiltonian.
 The hamiltonian is $\displaystyle H(t) = \int_\Sigma d^n\mathbf{x}\,\,\, \mathcal{H}(t,\mathbf{x})$.
 The classical hamilton equations are
 \begin{align}\label{eq:hamilton_equation_classical_klein_gordon_field}
@@ -358,7 +383,7 @@ Demanding the basis $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ also obey the orthogonali
     &\langle \tilde{u}_m, \tilde{u}_{n} \rangle = \delta_{mn} \quad \Rightarrow \quad (\alpha \alpha^\dagger- \beta\beta^\dagger)_{nm}=\sum_i \alpha_{mi}^* \alpha_{ni} - \beta_{mi}^* \beta_{ni}^* = \delta_{mn},\\
     &\langle \tilde{u}_m^*, \tilde{u}_{n} \rangle = 0 \quad \Rightarrow \quad (\alpha\beta^T-\beta\alpha^T)_{nm}=\sum_i \alpha_{mi} \beta_{ni} - \beta_{mi} \alpha_{ni} = 0.
 \end{align}}
-Enforcing the second bases is also complete, we invert the relation by inserting a completeness in the $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ basis and recalling the property $\langle x,y\rangle^* = \langle x^*,y^*\rangle$ of the symplectic hermitian product, we find 
+Enforcing the second bases is also complete, inverting the relation by inserting a completeness in the $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ basis and recalling the property $\langle x,y\rangle^* = \langle x^*,y^*\rangle$ of the symplectic hermitian product, we find 
 {\small\begin{align}\label{eq:inverse_transformation_bogoliubov_modes}
     u_i= \sum_m \alpha_{mi}^* \tilde{u}_m - \beta_{mi} \tilde{u}_m^*,\quad \text{with}\quad
     \begin{array}{c}
@@ -366,7 +391,7 @@ Enforcing the second bases is also complete, we invert the relation by inserting
     \langle u_i^*, u_j \rangle = 0 \quad \Rightarrow \quad (\alpha^\dagger \beta - \beta^T \alpha^*)_{ij} = \sum_m \alpha_{mi}^* \beta_{mj} - \beta_{mi} \alpha_{mj}^* = 0.
     \end{array}
 \end{align}}
-More concisely, in matrix form, demanding both are simplectic (orthogonal complete) bases imposes the two bases transform as\todotag{check}
+In summary, demanding both bases are simplectic (i.e. orthogonal and complete) imposes the Bogoliubov coefficients satisfy the following conditions, concisely written in matrix form,
 {\small
 \begin{align}\label{eq:bogol_transform_mode_function_matrix_form_classical}
     &\begin{pmatrix}\tilde{u}_m\\ \tilde{u}_m^*\end{pmatrix}
@@ -590,7 +615,7 @@ The IR procedure might also fail if we are interested in the thermodynamic limit
 \end{mytheorem}
 
 
-\begin{mytheorem}[Bogoliubov transformations at the quantum level\todotag{Finish \& polish}]
+\begin{mytheorem}[Bogoliubov transformations at the quantum level]
 Assume the Stone--von Neumann theorem applies and decompose the quantum field in terms of two different sets of mode functions $\{u_n, u_n^*\}_n$ and $\{\tilde{u}_m, \tilde{u}_m^*\}_m$ related by a Bogoliubov transformation \eqref{eq:transformation_bogoliubov_modes}-\eqref{eq:inverse_transformation_bogoliubov_modes}.
 For convenience we report the relations satisfied by the Bogoliubov coefficients $\alpha_{mi}=\langle u_i, \tilde{u}_m\rangle, \beta_{mi} = -\langle u_i^*, \tilde{u}_m\rangle$ in matrix form
 {\small\begin{align}\label{eq:bogol_transform_mode_function_matrix_form_quantum}
@@ -621,14 +646,14 @@ Equating the two expressions for the quantum field $\hat{\phi}$ we get
     = \begin{pmatrix} \tilde{a}_m & \tilde{a}_m^\dagger \end{pmatrix}
     \begin{pmatrix}\alpha & \beta\\\beta^* & \alpha^* \end{pmatrix}
     \begin{pmatrix}u_j\\ u_j^*\end{pmatrix}
-    \,\,\Rightarrow\,\,
+    \quad\Rightarrow\,\,
      \begin{pmatrix} a_j\\ a_j^\dagger \end{pmatrix}
     = \begin{pmatrix} \alpha^T & \beta^\dagger\\ \beta^T & \alpha^\dagger\end{pmatrix}
     \begin{pmatrix}\tilde{a}_m\\ \tilde{a}_m^\dagger \end{pmatrix}.
 \end{align}}
-Under the Stone--von Neumann assumptions, we can relate the Fock spaces of the two theories via unitary transformation mapping the corresponding quantum DoFs into each other. Below we consider the transformation mapping $\mathcal{F}\mapsto\tilde{F}$ and $a\mapsto \tilde{a}$, but completely symmetric formulas holds swapping the roles of the theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
+Under the Stone--von Neumann assumptions, we can relate the Fock spaces of the two theories via unitary transformation mapping the corresponding quantum DoFs into each other. Below we consider the transformation mapping $\mathcal{F}\mapsto\tilde{F}$ and $a\mapsto \tilde{a}$, but symmetric formulas holds swapping the roles of the theories with the replacements $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$.
 
-In particular, the vacuum of either theory must be expressible as a suitable superposition of multi-particle states of the other $|\tilde{0}\rangle =f\big(\{{a}^\dagger_j\}_n\big)|0\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ can be taken independent of annihilation operators ${a}_j$ since they annihilate the vacuum $|0\rangle$ and we may commute them to the right upon changing the form of the $f$.}
+In particular, the vacuum of either theory must be expressible as a superposition of multi-particle states of the other $|\tilde{0}\rangle =f\big(\{{a}^\dagger_j\}_n\big)|0\rangle$ for a suitable function $f$ of creation operators.\footnote{Note $f$ can be taken independent of annihilation operators ${a}_j$ since they annihilate the vacuum $|0\rangle$ and we may commute them to the right upon changing the form of the $f$.}
 The ${a}_j^\dagger$ operators commute with each other, while acting with $a_j$ is equivalent to taking a derivative $[a_j,f\big(\{a^\dagger_i\}_i\big)] = \tfrac{\partial f}{\partial a_j^\dagger}$.
 Imposing the vacuum condition in the other theory we thus get
 {\small
@@ -644,22 +669,23 @@ Since this holds for arbitrary $m$ and the matrix $\alpha$ is invertible, we get
 Beware the matrix {\small$(\alpha^{-1}\beta)^*\overset{!}{=}\big[(\alpha^{-1}\beta)^*\big]^T =\beta^\dagger (\alpha^\dagger)^{-1}$} is indeed symmetric since \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} enforces {\small$\alpha\beta^T-\beta\alpha^T=0$}.
 
 The idea is now to mimick the treatment of coherent states \eqref{eq:disentangle_scattering_operator_coherent_states} and of the driven harmonic oscillator in \eqref{eq:disentangle_scattering_operator_driven_harmonic_oscillator_1d}.
-Namely, we normalize the vacuum $|\tilde{0}\rangle$ and then tweak the operator $\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big)$ relating the two vacua into a unitary operator $\mathcal{S}$ relating all Fock states using the algebra of ladder operators and the identities satisfied by the Bogoliubov coefficients.
+Namely, we normalize the vacuum $|\tilde{0}\rangle$ and then tweak the operator $\exp\big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\big)$ relating the two vacua into a unitary operator $\mathcal{S}$ relating all Fock states using the algebra of ladder operators and the identities satisfied by the Bogoliubov coefficients.
 
-The final results are still somewhat intuitive, but the computations are nearly imposible for general Bogoliubov transformations.
-It is much cleaner to first unitarily rotate ladder operators of both theories so that the matrices $\alpha$, $\beta$ are diagonal with real entries.
-Indeed there exist $U,V\in \mathcal{U}(\mathcal{F})$ and $\Xi=\text{diag}(\xi_i)$ with $\xi_i\in(-1,1)$ real, such that\todotag{check  $\xi\in(-1,1)$ below}
+The final formulas are somewhat intuitive, but the computations are nearly imposible for general Bogoliubov transformations.
+It is much cleaner to first unitarily rotate ladder operators of both theories so that the matrices $\alpha$ and $\beta$ are diagonal with real entries.
+Indeed there exist $U,V\in \mathcal{U}(\mathcal{F})$ and $\Xi=\text{diag}(\xi_i)$ with $\xi_i\in(-1,1)$ real, such that
 {\small\begin{align}
     Z:= \alpha^{-1}\beta = V \Xi V^T, \quad \alpha = U \left(\mathbb{I}-\Xi^2\right)^{-\tfrac12} V^\dagger,\quad  \beta= U \Xi \left(\mathbb{I}-\Xi^2\right)^{-\tfrac12} V^T,\quad |\det\alpha| = \prod_i (1-\xi_i^2)^{-\tfrac12}.
 \end{align}}
-Hence if we define unitarily rotated ladder operators $b= V^T a$ and $\tilde{b}= U^T\tilde{a}$, the Bogoliubov transformation becomes diagonal
+Hence, defining unitarily rotated ladder operators $b= V^T a$ and $\tilde{b}= U^T\tilde{a}$, the Bogoliubov transformation becomes diagonal and can be written in terms of hyperbolic functions
 {\small\begin{align}
-    &\tilde{b}_j =  (1-\xi_j)^{-1/2} b_j - \xi_j (I - \xi_j^2)^{-1/2} b^\dagger_\ell, \quad \forall\ell\,\\[2.5pt]
-    &\alpha\mapsto (1-\Xi^2)^{-1/2}, \quad \beta\mapsto \Xi (1-\Xi^2)^{-1/2}, \quad Z\mapsto \Xi
+    &\tilde{b}_j =  (1-\xi_j)^{-1/2} b_j - \xi_j (I - \xi_j^2)^{-1/2} b^\dagger_\ell \quad \forall\ell,\qquad
+    \alpha\mapsto (1-\Xi^2)^{-1/2}, \quad \beta\mapsto \Xi (1-\Xi^2)^{-1/2}, \quad Z\mapsto \Xi,\\[3pt]
+    &\cosh(\eta_j)= (1-\xi_j^2)^{-1/2},
+     \quad \sinh(\eta_j) = \xi_j (1-\xi_j^2)^{-1/2},\quad \eta_j = \operatorname{arctgh}\xi_j= \tfrac12 \log\left(\tfrac{1+\xi_j}{1-\xi_j}\right),\quad \xi_j\in(-1,1).
 \end{align}}
-Note that $\xi\in(-1,1)$ implies we can write $(1-\xi_j^2)^{-\tfrac12}=\cosh(\eta),\, \xi(1-\xi^2)^{-\tfrac12}=\sinh(\eta)$ for $\eta=\operatorname{arctgh}\xi=\tfrac12 \log\left(\tfrac{1+\xi}{1-\xi}\right)$.
 
-The normalization of the vacuum $|\tilde{0}\rangle \propto f(a^\dagger)|0\rangle$ is found by direct computation
+The normalization of the vacuum $|\tilde{0}\rangle \,\propto\, f(a^\dagger)|0\rangle$ is found by direct computation
 {\small\begin{align}\label{eq:bogoliubov_vacuum_normalization}
     \langle& 0| f^*(a) f(a^\dagger) |0\rangle = \langle 0| \exp\Big(\tfrac{1}{2} a_i (\alpha^{-1}\beta)_{ij} a_j\Big) \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle = |\det\alpha|\\[3pt]
     &\quad\Rightarrow\quad |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
@@ -670,10 +696,10 @@ The \textbf{scattering operator} is found by tweaking the operator relating the 
 {\small\begin{align}
     \mathcal{S}:=\exp\left(\tfrac12a_i(V\operatorname{arctgh}\Xi\, V^T)_{ij}a_j-\tfrac12a^\dagger_i(V\operatorname{arctgh}\Xi\, V^T)^*_{ij} a_j^\dagger\right)=\exp\left(\tfrac12 \operatorname{arctgh}(\xi_j) (b_j)^2-\tfrac12 \operatorname{arctgh}(\xi_j)^* (b_j^\dagger)^2\right)\\
     =\exp\left(\tfrac12\tilde{a}_i(U\operatorname{arctgh}\Xi\, U^T)_{ij}\tilde{a}_j-\tfrac12\tilde{a}^\dagger_i(U\operatorname{arctgh}\Xi\, U^T)^*_{ij} \tilde{a}_j^\dagger\right)
-    \exp\left(\tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j)^2-\tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j^\dagger)^2\right)
+    \exp\left(\tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j)^2-\tfrac12 \operatorname{arctgh}(\xi_j) (\tilde{b}_j^\dagger)^2\right).
 \end{align}}
-The equalities in the second line follow swapping the roles of the two theories with the replacements $\mathcal{S}\leftrightarrow \mathcal{S}^\dagger$, $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$, in particular $\xi_j \leftrightarrow -\xi_j$ for diagonal transformations.
-The scattering operator maps ladder operators of the two theories into each other, and thus sends Fock states with a given number of excitations into the corresponding ones with the same number of excitations,
+The second line follows swapping the roles of the two theories with the replacements $\mathcal{S}\leftrightarrow \mathcal{S}^\dagger$, $\alpha \leftrightarrow \alpha^\dagger$ and $\beta \leftrightarrow -\beta^T$, and in particular $\xi_j \leftrightarrow -\xi_j$ for diagonal transformations.
+The scattering operator maps ladder operators of the two theories into each other, and thus also Fock states with a given number of excitations into the corresponding ones with the same number of excitations,
 {\small\begin{align}\label{eq:scattering_operator_bogoliubov_curved}
     &\tilde{a}_\ell = \mathcal{S} a_\ell \mathcal{S}^\dagger, \quad |\{\tilde{n}^a_i\}\rangle = \mathcal{S} |\{n^a_i\}_i\rangle, \qquad 
     \tilde{b}_\ell = \mathcal{S} b_\ell \mathcal{S}^\dagger, \quad |\{\tilde{n}^b_i\}\rangle = \mathcal{S} |\{n^b_i\}_i\rangle\,.
@@ -681,15 +707,18 @@ The scattering operator maps ladder operators of the two theories into each othe
 \end{mytheorem}
 \begin{proof}
 The diagonalization of the Bogoliubov transformation is discussed below.
-Here we prove the above identities in the diagonal basis.\todotag{Insert proof of vacuum normalization}
-{\color{red}
-The normalization of the vacuum is found by direct computation and then using the Taylor series
-\begin{align}
-    ...\textcolor{red}{\text{See from chatgpt or redo it}}
+Here we prove the identities in the diagonal basis.
+The normalization of the vacuum is found by direct computation, using the Taylor expansion $(1-x^2)^{-1/2} = \sum_{n} \frac{(2n-1)!!}{2^{n}n!} x^{2n}=\sum_{n} \frac{(2n)!}{2^{2n}(n!)^2} x^{2n}$ and the definition of Bogoliubov matrix $\alpha$,
+{\small\begin{align}
+    \langle 0| \exp\Big(\tfrac{1}{2} \xi_ib_i^2\Big) \exp\Big(\tfrac{1}{2} \xi_j^* b_j^{\dagger2}\Big) |0\rangle
+    &= \sum_{\mathbf{m},\mathbf{n}}\frac{\xi^{\mathbf{m}}\xi^{*\mathbf{n}}}{2^{\mathbf{m}+\mathbf{n}}\mathbf{m}!\mathbf{n}!}\langle 0| b^{2\mathbf
+    m} b_j^{\dagger2\mathbf{n}}|0\rangle \\
+    &= \sum_{\mathbf{m},\mathbf{n}}\frac{\xi^{\mathbf{m}}\xi^{*\mathbf{n}}\sqrt{2\mathbf{m}!2\mathbf{n}!}}{2^{\mathbf{m}+\mathbf{n}}\mathbf{m}!\mathbf{n}!}\delta_{\mathbf{m},\mathbf{n}} = \sum_{\mathbf{n}}\frac{|\xi|^{2\mathbf{n}}2\mathbf{n}!}{2^{2\mathbf{n}}(\mathbf{n}!)^2} = \prod_i (1-|\xi_i|^2)^{-\tfrac12} = |\det\alpha|.
 \end{align}}
 The intuition for the scattering operator and the rigorous procedure to disentangle it is discussed below.
 Here we just show it works.
-Define the antihermitian operator $G= \tfrac12 (b_j)^2\eta_j-\tfrac12 (b_j^\dagger)^2\eta^*_j$ for $\eta_j:=\operatorname{arctgh}(\xi_j)$ so that $\mathcal{S}= e^{-G}$ and solving the differential equation
+Define the antihermitian operator $G= \tfrac12 (b_j)^2\eta_j-\tfrac12 (b_j^\dagger)^2\eta^*_j$ for $\eta_j:=\operatorname{arctgh}(\xi_j)$ so that $\mathcal{S}= e^{-G}$.
+Consider the differential equation
 {\small\begin{align}
     &\frac{d}{d\lambda} e^{-\lambda G} b e^{\lambda G} = e^{-\lambda G} [b,G] e^{\lambda G} = -\eta e^{-\lambda G} b^\dagger e^{\lambda G}, \qquad (e^{-\lambda G} b e^{\lambda G})_{|\lambda=0}= b,\quad \frac{d}{d\lambda}(e^{-\lambda G} b e^{\lambda G})_{|\lambda=0}= -\eta b^\dagger,\\[3pt]
     &\frac{d^2}{d\lambda^2}e^{-\lambda G} b e^{\lambda G} = -\eta \frac{d}{d\lambda} e^{-\lambda G} b^\dagger e^{\lambda G} =-\eta e^{-\lambda G} [b^\dagger,G] e^{\lambda G}=\eta^2 e^{-\lambda G} b e^{\lambda G}.
@@ -702,27 +731,29 @@ Evaluating at $\lambda=1$ and recalling $\eta:=\operatorname{arctg}(\xi)$ we get
 \end{proof}
 
 
-\begin{mytheorem}[Physical interpretation of Bogoliubov transformation \& Hawking radiation\todotag{Fnish Kempf 15}]
-It is enlightening to consider the operator \eqref{eq:bogoliubov_vacuum_normalization}  relating the two vacua
+\begin{mytheorem}[Physical interpretation of Bogoliubov transformation \& Hawking radiation]
+The physical meaning of Bogoliubov transformation is already clear from the simplified operator \eqref{eq:bogoliubov_vacuum_normalization} relating the two vacua
 {\small\begin{align}
-    |\tilde{0}\rangle = |\det\alpha|^{-\tfrac12}\exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
+    |\tilde{0}\rangle \propto\, \exp\Big(\tfrac{1}{2} a^\dagger_i (\alpha^{-1}\beta)^*_{ij} a^\dagger_j\Big) |0\rangle.
 \end{align}}
-First of all, as expected, if $\beta\equiv 0$ the transformation is trivial since $\alpha$ is unitary: ladder operators are thus unitarily related and the two vacua coincide $|\tilde{0}\rangle \simeq |0\rangle$ up to a phase.
-More interestingly, if $\beta\neq 0$ the vacuum of one theory is a superposition of multi-particle states of the other, and thus the two theories have different particle content.
-In particular, we see the creation of particles always occurs in pairs since the operator is quadratic in creation operators.
+First, if $\beta\equiv 0$ then $\alpha$ is unitary by \eqref{eq:bogol_transform_mode_function_matrix_form_quantum} and the trasformation is trivial: ladder operators are thus unitarily related and the two vacua coincide $|\tilde{0}\rangle \simeq |0\rangle$ up to a phase.
+This is expected, since when $\beta=0$ there is no mixing between creation and annihilation operators so that the particle content of the two theories is the same.
 
-If we consider a spacetime with a well-defined notion of momentum we would index mode functions by the momenta $\mathbf{k}$ and we would see that pair creation always occurs with opposite momenta $\mathbf{k}$ and $-\mathbf{k}$, as expected from momentum conservation, i.e. $\beta_{\mathbf{k},\mathbf{k}'}\propto \delta(\mathbf{k}+\mathbf{k}')$.
+When $\beta\neq 0$ the vacuum of one theory is a superposition of multi-particle states of the other, and the two theories do have different particle content.
+Notably, the creation of particles always occurs in pairs since the scattering operator $\mathcal{S}\propto Z_{ij}a_i^\dagger a_j^\dagger+\operatorname{cc}$ is quadratic in creations (resp. annihilation) perators.
 
-The case of the \emph{real} KG field is also somewhat misleading, since particles coincide with antiparticles and thus the created pairs are indistinguishable.
-If we considered a complex KG field then we would see creation operators enter in the scattering operator always in pair of particle and antipartcile i.e. $\beta_{ij}^* c_i^\dagger d_j^\dagger$ so as to respect the needed quantum numbers.
+In fact, the case of the \emph{real} KG field is somewhat misleading, since particles and antiparticles coincide, so that the created pairs are indistinguishable.
+If we considered a charged field, e.g. a complex KG field, then ladder operators would enter in the scattering operator always in particle-antiparticle pairs i.e. $\mathcal{S}\propto\, Z_{ij}^* c_i^\dagger d_j^\dagger + \operatorname{cc}$ so as to preserve all the conserved quantum numbers.
 
-It is also worth mentioning that the Hawking radiation interpretation i.e. as two (anti)particles being created near the horizon of a black hole and one of them escaping to infinity while the other falls into the black hole, is somewhat misleading since
-\begin{itemize}
-    \item the pair creation process is nonlocal and occurs everywhere in spacetime, not just near the horizon,
-    \item in any case the tyical wavelength of the created particles is of the order of the black hole radius, and thus they are not created and localized in a small region near the horizon but rather in a large region around it.
-\end{itemize} 
+If we consider a spacetime with a well-defined notion of momentum, we can further index mode functions by their momenta $\mathbf{k}$ on top of other suitable quantum numbers.
+In this case, pair creation/annihilation always occurs with opposite momenta $\pm\mathbf{k}$ i.e. $Z_{\mathbf{p}i,\mathbf{q}j}\propto \delta(\mathbf{p}+\mathbf{q})$ so that $\mathcal{S}\propto\, Z_{ij,\mathbf{k}}^* c_{i,\mathbf{k}}^\dagger d_{j,-\mathbf{k}}^\dagger + \operatorname{cc}$, as expected from momentum conservation.
 
-Finally we remark the above interpretation of pair creations of field excitations hold more generally even when the concept of particles fades away and such excitations cannot be identified with `particles', e.g. in the case of interacting fields or in a run-away situation when the harmonic oscillator turns upside down e.g. during inflation.
+This picture of particle-antiparticle pairs created out of nowehere with opposite momenta and then ripped apart by black hole horizons or by the universe expansion is the standard interpretation of Bogoliubov transformations and the heart of Hawking radiation. 
+However, understanding Hawking radiation as two (anti)particles being created near the horizon of a black hole, with one escaping to infinity and the other falling into the black hole, is somewhat misleading.
+Indeed the tyical wavelength of the created particles is of the order of the black hole radius, and thus they are not created and localized in a small region near the horizon but rather spread all around of it.
+Analogous considerations apply to pair creation in an expanding universe.
+ 
+Finally the above interpretation of pair creations of field excitations holds more generally even when the concept of particles fades away and such excitations cannot be identified with `particles', e.g. for strongly interacting fields or in run-away tachyonic situations where the harmonic oscillator turns upside down such as during inflation.
 \end{mytheorem}
 
 
@@ -1114,6 +1145,80 @@ The vacuum of the first theory is then a squeezed state of the second theory, th
 \begin{align}
     |0\rangle = \prod_k \frac{1}{\sqrt{|\alpha_k|}} \exp\Big(-\frac{\beta_k^*}{2\alpha_k^*} \tilde{a}_k^\dagger \tilde{a}_{-k}^\dagger\Big) |\tilde{0}\rangle.
 \end{align}
+
+
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Path integral formulation in curved spacetime}
+%=========================================================
+%------------------------------------------------------------
+
+\begin{mytheorem}[Wick rotation in curved spacetime\todotag{Finish}]
+%
+Consider for simplicity a real Klein--Gordon field $\phi$ in a curved spacetime.
+Under Wick rotation $t\mapsto -it_E$ the metric transforms as
+{\small\begin{align}\label{eq:wick_rotation_metric}
+    ds^2 = g_{00} dt^2 + 2 g_{0i} dt dx^i + g_{ij} dx^i dx^j \\,\, \xrightarrow{t\mapsto -it_E}\\,\, -g_{00} dt_E^2 - 2 i g_{0i} dt_E dx^i + g_{ij} dx^i dx^j =:-(g_E)_{\mu\nu} dx^\mu dx^\nu\,=: -ds_E^2.
+\end{align}}
+where we insert a minus sign to get the \emph{positive} Euclidean metric $g_E$ because of the mostly minus convention.
+Moreover $\sqrt{|g|}\equiv \sqrt{|g_E|}$ and $d^4x\mapsto -i d^4x_E$ so that the action becomes
+{\small\begin{align}
+    iS=i\int_{\mathcal{M}}\!\!\!\!\!d^4x \sqrt{g} \Big(\tfrac12 \partial_\mu\phi g^{\mu\nu}\partial_\nu\phi - \tfrac12 m^2 \phi^2-V(\phi) \Big)\,\,\xrightarrow{t\mapsto -it_E}\,\, -\int_{\mathcal{M}_E}\!\!\!\!\!\!d^4x_E \sqrt{g_E} \Big(\tfrac12 \partial_\mu\phi g_E^{\mu\nu}\partial_\nu\phi + \tfrac12 m^2 \phi^2+V(\phi) \Big)=: -S_E.
+\end{align}}
+This shows the Euclidean theory is a statistical field theory with partition function given in terms of the Euclidean action $S_E$ as
+\begin{align}
+    Z_E = \int \mathcal{D}\phi\, e^{-S_E},
+\end{align}
+In adapted coordinates \eqref{eq:adapted_nocross_coordinates} where $g_{0i}=0$ the Wick rotated lagrangian, i.e. the Euclidean lagrangian, coincides with the hamiltonian \eqref{eq:hamiltonian_density_curved_spacetime_KG} of the lorentzian theory in these coordinates.
+Indeed we have $g_E^{00}=g^{00}$, $g_E^{0i}=0$ and $g_E^{ij}=-g^{ij}$, so that 
+{\small\begin{align}
+    \sqrt{g_E}\mathcal{L}_E&= \sqrt{g_E} \Big(\tfrac12 \partial_\mu\phi g_E^{\mu\nu}\partial_\nu\phi + \tfrac12 m^2 \phi^2+V(\phi) \Big) \\
+    &= \sqrt{g} \Big(\tfrac12 g^{00}\partial_{t_E}\phi\partial_{t_E}\phi-\tfrac12 g^{ij}\partial_i\phi\partial_j\phi + \tfrac12 m^2 \phi^2+V(\phi) \Big) = \mathcal{H}(\phi(x_E^\mu),\pi_\phi(x_E^\mu)),
+\end{align}}
+where note the fields are evaluated at the Wick rotated coordinates $x_E^\mu$.
+
+Virtually identical results hold for spin fields, taking care of Wick rotating the given representation of the Lorentz group in which the field transforms.
+For example, for spin-$\tfrac12$, the Lorentzian $\gamma$ matrices obey $\{\gamma_\mu,\gamma_\nu\}=2 g_{\mu\nu}$ and the Euclidean ones obey $\{\gamma_\mu^E,\gamma_\nu^E\}=2 g_{\mu\nu}^E$.
+Since the metric transforms as in \eqref{eq:wick_rotation_metric}, we can choose
+{\small\begin{align}\label{eq:wick_rotation_gamma_matrices}
+    \gamma_0^E = i \gamma_0, \quad \gamma_j^E = \gamma_j,
+\end{align}}
+where the sign of $i$ in front of $\gamma_0^E$ is fixed e.g. by demanding the scalar product $\gamma^\mu_E\nabla_\mu^E\equiv \gamma^\mu \nabla_\mu$ be invariant under Wick rotation.
+The transformation of $\gamma$ matrices can also be proved directly by considering an orthonormal tetrad in Euclidean spacetime and repeating the same construction as in the Lorentzian case.
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[Wick rotation in real and Fourier space\todotag{Finish}]
+%
+The Wick rotation in real space $t\mapsto -it_E$ corresponds to a Wick rotation in Fourier space $\omega\mapsto i \omega_E$ to preserve the scalar product $\omega t = \omega_E t_E$.
+The direction of the rotation is no accident at all!
+The Lehman represetation shows that the poles $\omega_*$ in Fourier space of any time-ordered 2-pt. Lorentzian correlator $G_{AB}(\omega)$ obey $\operatorname{sign}(\operatorname{Im}\omega_*) = -\operatorname{sign}(\operatorname{Re}\omega_*)$.
+That is poles in the upper half-plane $\operatorname{Im}\omega>0$ have negative real part $\operatorname{Re}\omega<0$, while the poles in the lower half-plane $\operatorname{Im}\omega<0$ have positive real part $\operatorname{Re}\omega>0$.
+The Wick rotation $\omega\mapsto i \omega_E$ thus rotates counterclockwise by $\pi/2$ in frequency space so as to avoid poles and exploit analytic continuation.
+We have $\operatorname{Re}(\omega_E) = \operatorname{Im}\omega_L$ and $\operatorname{Im}(\omega_E) = -\operatorname{Re}\omega_L$, so that poles of the Euclidean time-ordered correlator $G_{AB}(\omega_E)$ are located off the Euclidean real line in the imaginary upper and lower half-plane, and thus the Euclidean correlator is analytic on the real line.
+
+In real space the Wick rotation $t\mapsto -it_E$ has the opposite clockwise direction by $\pi/2$. 
+The direction is thus fixed to allow analytic continuation under the sign of the Fourier transform, and thus to relate the Euclidean and Lorentzian theories\todotag{Fix}
+{\small\begin{align}
+    G_{AB}(\omega_L) = \int_{-\infty}^{+\infty}\!\!\!\!\! dt\, e^{i\omega_Lt} G_{AB}(t) \overset{\text{Wick rot.}}{=}-i\int_{-\infty}^{+\infty}\!\!\!\!\!dt\, e^{\omega_L t} G_{AB}(-it)\overset{\omega_L=i\omega_E}{=}-i\int_{-\infty}^{+\infty}\!\!\!\!\!dt\, e^{i\omega_E t} G_{AB}(\underbrace{-it}_{=t_E}) = -i G_{AB}(\omega_E).
+\end{align}}
+
+Another crucial reason for the direction of the Wick rotation in real space $t\mapsto -it_E$ is to keep the imaginary-time evolution operator $U=e^{-H t_E}$ bounded albeit no more unitary, and thus ensure the `existence' of the Euclidean theory i.e. the consergence of path integrals correlators etc.
+In the Lorentizan theory, since the Hamiltonian is self-adjoint, we simply have
+{\small\begin{align}
+    \|e^{-i H t}\|^2 =\sup_\psi \frac{\psi ^\dagger U^\dagger(t) U(t) \psi}{\|\psi\|^2}= 1, \quad \forall t\in\mathbb{R}.
+\end{align}}
+In the Euclidean theory $U(t_E,0)=e^{-H t_E}$ is no more unitary, but it is still bounded as long as $\operatorname{Re}(t_E)>0$.
+Indeed, since the Hamiltonian i self-adjoint bounded from below $H\geq E_0 > -\infty$, we find
+{\small\begin{align}
+    \tfrac{\psi^\dagger U^\dagger U \psi}{\|\psi\|^2} = \frac{\psi^\dagger e^{-H t_E^*} e^{-H t_E} \psi}{\|\psi\|^2} = \frac{\psi^\dagger e^{-H (t_E+t_E^*)} \psi}{\|\psi\|^2} = \frac{\psi^\dagger e^{-2\operatorname{Re}(t_E) H} \psi}{\|\psi\|^2} \leq \|e^{-2\operatorname{Re}(t_E) H}\| \leq e^{-2\operatorname{Re}(t_E) E_0} < +\infty, \forall t\geq0.
+\end{align}}
+This argument is in fact the same as the one above, since boundedness of the evolution operator is precisely what ensure analyticity of the time-ordered correlators and thus the possibility of performing a Wick rotation in Fourier space.
+\end{mytheorem}
 
 
 
