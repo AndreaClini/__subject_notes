@@ -217,7 +217,7 @@ This proves that $g_{\lambda \lambda}(\lambda,\mathbf{x})=1$ and $g_{\lambda i}(
 \end{mytheorem}
 
 
-\begin{mytheorem}[Timlike Killing vector fields, static \& ultrastatic spacetimes]
+\begin{mytheorem}[Timlike Killing vector fields, static \& ultrastatic spacetimes\questiontag{Polish}]
 %
 Assume spacetime admits a global timelike Killing vector field $K$, that is
 {\small\begin{align}
@@ -241,40 +241,35 @@ A notable example is the Schwarzschild metric outside the horizon
 \end{align}}
 The metric is static (time indpendent without cross-terms) but and there is no coordinate change preserving staticity that sends $g_{00}\mapsto 1$ identically.
 
-For static spacetimes the (postive definite) spatial metric induced on leaves $\Sigma$ is simply $\bar{g}_{ij}:=-g_{|\Sigma}\equiv -g_{ij}$.
+For static spacetimes the negative definite spatial metric induced on leaves $\Sigma$ is simply $g_{|\Sigma}\equiv g_{ij}$, and we have $\sqrt{g}=\sqrt{g_{00}}\sqrt{g_\Sigma}$.
 The only non-vanishing Christoffel symbols are
 {\small\begin{align}
     \Gamma^0_{0j} = \frac{1}{2g_{00}}\,\partial_j g_{00},
     \qquad
-    \Gamma^i_{00} = -\frac12 g^{ij}\partial_j g_{00} = \frac12  g^{ij}_\Sigma\partial_j g_{00},
+    \Gamma^i_{00} = -\frac12 g^{ij}\partial_j g_{00},
     \qquad
-    \Gamma^i_{jk}=\bar\Gamma^i_{jk}.
+    \Gamma^i_{jk}=\Gamma^i_{\!\!\Sigma\,jk}.
 \end{align}}
-We also have
+Using the general formula $\Gamma^\mu_{\mu\nu}=\partial_\nu \log\sqrt{g}$ we also have
 {\small\begin{align}
-    \Gamma^\mu_{\mu 0}=0,
+    \Gamma^\mu_{\mu 0}=\partial_0\log\sqrt{g}=0,
     \qquad
-    \Gamma^\mu_{\mu j}=\Gamma^0_{0j}+\Gamma^i_{ij}
-    =\frac{1}{2g_{00}}\,\partial_j g_{00}+\bar\Gamma^i_{ij}.
+    \Gamma^\mu_{\mu j}=\partial_j\log\sqrt{g}=\partial_j\log\sqrt{g_{00}}+\partial_j\log\sqrt{g_\Sigma}=\Gamma^0_{0j}+\Gamma^i_{ij}
+    =\frac{1}{2g_{00}}\,\partial_j g_{00}+\Gamma^i_{\!\!\Sigma\, ij}.
 \end{align}}
-For scalar fields it os easiest to reexpress the D'Alambert operator then reads in terms the spatial Laplacian $\bar{\nabla}_j\bar{\nabla}^j$ associated to $g_\Sigma$
+For scalar fields it is immediate to express the D'Alambert operator in terms of the spatial Laplacian ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}$ associated to $g_\Sigma$ as
 {\small\begin{align}
-  \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)\\
-  &= \frac{1}{g_{00}}\,\partial_t^2\phi- \frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,(g_\Sigma)^{ij}\partial_i\phi\Big)\\
-  &= g^{00} \partial_t^2 \phi +\tfrac12\tfrac{\partial_jg_{00}}{g_{00}} g^{ij} \partial_i \phi +\tfrac{1}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_\Sigma} \bar{g}^{ij}\partial_i \phi\Big)\\
-  &=\tfrac{1}{g_{00}} \partial_t^2 \phi +\tfrac12 \tfrac{\partial_jg_{00}}{g_{00}} g^{ij} \partial_i \phi -\bar{\nabla}_j\bar{\nabla}^j\phi\,.
+  \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)= \frac{1}{g_{00}}\,\partial_t^2\phi+ \frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\Big)\\
+  &= g^{00} \partial_t^2 \phi +\tfrac{\partial_jg_{00}}{2g_{00}} g^{ij} \partial_i \phi +\tfrac{1}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_\Sigma}\, g_\Sigma^{ij}\partial_i \phi\Big)=\tfrac{1}{g_{00}} \partial_t^2 \phi + \tfrac{\partial_jg_{00}}{2g_{00}} g^{ij}_\Sigma \partial_i \phi +{\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\phi\,.
 \end{align}}
-The second expression makes it manifest the operator
+Beware the metric induced on spatial leaves is negative due to the mostly minus convention.
+Defining the positive definite spatial metric $\bar{g}_{ij}=-g_{\Sigma\,ij}$ we have $\Gamma^i_{\!\!\Sigma\, jk}\equiv \bar{\Gamma}_{jk}^i$, but ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\equiv - \bar{\nabla}_j \bar{\nabla}^j$ is minus the `Euclidean laplacian' associated to $\bar{g}_{ij}$, which thus has positive spectrum.
+The second expression for the D'Alambertian makes it manifest the operator
 {\small\begin{align}
-    O
-    = -\frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}
-    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,(g_\Sigma)^{ij}\partial_i\Big)
+    O= -\frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}
+    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\Big)
 \end{align}}
-is therefore formally self-adjoint with respect to the measure
-{\small\begin{align}
-    d\mu = d^3x\,\sqrt{g_{00}}\sqrt{g_\Sigma}=d^3x\,\sqrt{|g|},
-\end{align}}
-but not, in general, with respect to the unweighted spatial measure \(d^3x\,\sqrt{g_\Sigma}\).
+is self-adjoint wrt the measure $\int_\Sigma \!\!d^3x\,\sqrt{g_{00}}\sqrt{g_\Sigma}$, but not wrt the unweighted spatial measure $\int_\Sigma \!\!d^3x\,\sqrt{g_\Sigma}$in general.
 %
 \end{mytheorem}
 
@@ -558,6 +553,7 @@ The actual sapce of mode functions is not a vector space, because the mode funct
 \end{mytheorem}
 
 \begin{mytheorem}[Phase space in static spacetimes\todotag{Fix!!}]
+{\color{red}Complete and fix cpying from section 1.1}
 A particularly important case is that of static spacetimes i.e. spacetimes admitting a global timelike Killing vector field $K$ orthogonal to the spatial leaves of the foliation $\mathcal{M}\simeq \R\times \Sigma$, for some n-manifold $\Sigma$.
 In adapted coordinates $x^\mu=(t,\mathbf{x})$ the metric reads\footnote{Beware the existence of a global timelike v.f. is not enough, since there might still be cross terms $g_{0j}(\mathbf{x})\neq0$ that cannot be removed by a change of coordinates.}
 \begin{align}
