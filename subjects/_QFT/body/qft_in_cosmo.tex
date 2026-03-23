@@ -156,7 +156,7 @@ In fact, renormalization is already needed to tame infinities arising in the pro
 
 
 %======================================================================
-\subsection{Geometric preliminaries}
+\subsection{Geometric preliminaries}\label{sec:geometric_preliminaries}
 %===========================================================================
 For convenience we collect some geometric results that will be useful in the following.
 
@@ -241,7 +241,7 @@ A notable example is the Schwarzschild metric outside the horizon
 \end{align}}
 The metric is static (time indpendent without cross-terms) but and there is no coordinate change preserving staticity that sends $g_{00}\mapsto 1$ identically.
 
-For static spacetimes the negative definite spatial metric induced on leaves $\Sigma$ is simply $g_{|\Sigma}\equiv g_{ij}$, and we have $\sqrt{g}=\sqrt{g_{00}}\sqrt{g_\Sigma}$.
+In static spacetimes the negative definite metric induced on spatial leaves $\Sigma$ is simply $g_{|\Sigma}\equiv g_{ij}$, and $\sqrt{g}=\sqrt{g_{00}}\sqrt{g_\Sigma}$.
 The only non-vanishing Christoffel symbols are
 {\small\begin{align}
     \Gamma^0_{0j} = \frac{1}{2g_{00}}\,\partial_j g_{00},
@@ -257,22 +257,25 @@ Using the general formula $\Gamma^\mu_{\mu\nu}=\partial_\nu \log\sqrt{g}$ we als
     \Gamma^\mu_{\mu j}=\partial_j\log\sqrt{g}=\partial_j\log\sqrt{g_{00}}+\partial_j\log\sqrt{g_\Sigma}=\Gamma^0_{0j}+\Gamma^i_{ij}
     =\frac{1}{2g_{00}}\,\partial_j g_{00}+\Gamma^i_{\!\!\Sigma\, ij}.
 \end{align}}
-For scalar fields it is immediate to express the D'Alambert operator in terms of the spatial Laplacian ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}$ associated to $g_\Sigma$ as
+The D'Alambert operator acting on scalar fields is written in terms of the spatial Laplacian ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}$ associated to $g_\Sigma$ as
 {\small\begin{align}
-  \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)= \frac{1}{g_{00}}\,\partial_t^2\phi+ \frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\Big)\\
+  \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)= \frac{1}{g_{00}}\,\Big[\partial_t^2\phi+ \tfrac{\sqrt{g_{00}}}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\Big)\Big]\\
   &= g^{00} \partial_t^2 \phi +\tfrac{\partial_jg_{00}}{2g_{00}} g^{ij} \partial_i \phi +\tfrac{1}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_\Sigma}\, g_\Sigma^{ij}\partial_i \phi\Big)=\tfrac{1}{g_{00}} \partial_t^2 \phi + \tfrac{\partial_jg_{00}}{2g_{00}} g^{ij}_\Sigma \partial_i \phi +{\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\phi\,.
 \end{align}}
 Beware the metric induced on spatial leaves is negative due to the mostly minus convention.
 Defining the positive definite spatial metric $\bar{g}_{ij}=-g_{\Sigma\,ij}$ we have $\Gamma^i_{\!\!\Sigma\, jk}\equiv \bar{\Gamma}_{jk}^i$, but ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\equiv - \bar{\nabla}_j \bar{\nabla}^j$ is minus the `Euclidean laplacian' associated to $\bar{g}_{ij}$, which thus has positive spectrum.
-The second expression for the D'Alambertian makes it manifest the operator
+The second expression for the D'Alambertian makes it manifest the spatial operator
 {\small\begin{align}
-    O= -\frac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}
-    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\Big)
+    -\Delta:= \tfrac{\sqrt{g_{00}}}{\sqrt{g_\Sigma}}
+    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\Big)=-\tfrac{\sqrt{g_{00}}}{\sqrt{\bar{g}}}
+    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{\bar{g}}\,\bar{g}^{ij}\partial_i\Big)
 \end{align}}
-is self-adjoint wrt the measure $\int_\Sigma \!\!d^3x\,\sqrt{g_{00}}\sqrt{g_\Sigma}$, but not wrt the unweighted spatial measure $\int_\Sigma \!\!d^3x\,\sqrt{g_\Sigma}$in general.
-%
-\end{mytheorem}
+is positive definite and self-adjoint wrt the measure $\int_\Sigma\!\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_{\Sigma}}}{\sqrt{g_{00}}}$, but not wrt the spatial measure $\int_\Sigma\!\!\! d^n\mathbf{x}\,\sqrt{g_{\Sigma}}$ in general.
+This is in fact a consequence of the expression for the symplectic form and the fact that the unit normal in this case is $n^\mu(\mathbf{x})=\delta^\mu_0 \tfrac{1}{\sqrt{g_{00}(\mathbf{x})}}$.
 
+For the record, we could also write {\small$\nabla_\mu\nabla^\mu \phi= \tfrac{1}{g_{00}}\partial_t^2\phi+ \tfrac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\big)$} and consider the operator {\small$\tfrac{1}{g_{00}}\Delta=\tfrac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\big)$} which is self adjoint wrt {\small$\int_\Sigma\!\! d^n\mathbf{x}\,\sqrt{g_{00}}\sqrt{g_{\Sigma}}$}.
+However this would not decouple time and space in the D'Alambertian, and in fact is not the natural form of the spatial operator in the hamiltonian formulation descending from the symplectic form.
+\end{mytheorem}
 
 
 
@@ -547,36 +550,74 @@ Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, t
 
 
 \begin{mytheorem}[On the space of solutions of the Klein--Gordon equation \& Bogoliubov transformations]\todotag{Finish cf. Kempf 15}
-The KG equation is a linear second order hyperbolic PDE with smooth coefficients, the space of real (complex) solutions $\mathcal{S}_\R$ ($\mathcal{S}_\C$) is thus a real (complex) vector space of infinite dimension.
+The Klein--Gordon equation is a linear second order hyperbolic PDE with smooth coefficients, the space of real (complex) solutions $\mathcal{S}_\R$ ($\mathcal{S}_\C$) is thus a real (complex) vector space of infinite dimension.
 For each Fourier mode $n$, the KG equation projected onto this mode is a second order ODE in time, thus the space of solutions is two-dimensional (real or complex dimensions, respectively) and we can choose a basis $\{u_n, u_n^*\}$ of complex conjugate solutions.
 The actual sapce of mode functions is not a vector space, because the mode functions are further required to obey the orthonormality condition \eqref{eq:completeness_relation_bogoliubov_basis_explicit}, which is a nonlinear real\footnote{The conjugate equation coincides with the equation itself.} equation, thereby reducing the mode function space from a vector space of complex dimension 2 (i.e. real dimension 4) to a manifold of real dimension 3. 
 \end{mytheorem}
 
 \begin{mytheorem}[Phase space in static spacetimes\todotag{Fix!!}]
-{\color{red}Complete and fix cpying from section 1.1}
-A particularly important case is that of static spacetimes i.e. spacetimes admitting a global timelike Killing vector field $K$ orthogonal to the spatial leaves of the foliation $\mathcal{M}\simeq \R\times \Sigma$, for some n-manifold $\Sigma$.
-In adapted coordinates $x^\mu=(t,\mathbf{x})$ the metric reads\footnote{Beware the existence of a global timelike v.f. is not enough, since there might still be cross terms $g_{0j}(\mathbf{x})\neq0$ that cannot be removed by a change of coordinates.}
+A particularly important case is that of static spacetimes i.e. spacetimes admitting a global timelike Killing vector field $K$ orthogonal to the spatial leaves of some foliation $\mathcal{M}\simeq \R\times \Sigma$.
+In adapted coordinates $x^\mu=(t,\mathbf{x})$ the metric reads\footnote{Beware the existence of a global timelike Killing v.f. is not enough to ensure $g_{0j}=0$. Moreover, even when $K$ is orthogonal to the foliation, i.e. spacetime is indeed static, we cannot find coordinates such that $g_{00}=1$ in general.}
 \begin{align}
     ds^2 = g_{\mu\nu} dx^\mu dx^\nu = g_{00}(\mathbf{x}) dt^2 + g_{ij}(\mathbf{x}) dx^i dx^j.
 \end{align}
-The Chrsitoffel symbols obey $\Gamma^\mu_{\mu0}=0$ and $\Gamma^\mu_{\mu j} = \bar{\Gamma}^i_{ij}$ where $\bar{\Gamma}^i_{jk}$ are the Christoffel symbols associated to the (postive definite) spatial metric $\bar{g}_{ij}:=-g_{|\Sigma}\equiv -g_{ij}$ induced on leaves $\Sigma$.
-The D'Alambert operator then reads in terms the spatial Laplacian $\bar{\nabla}_j\bar{\nabla}^j$ associated to $\bar{g}$\todotag{Fix errors}
-\begin{align}
-  \nabla_\mu\nabla^\mu \phi = \frac{1}{g_{00}(\mathbf{x})} \partial_t^2 \phi + \tfrac12  \frac{1}{g_{00}(\mathbf{x})} \bar{g}^{ij}\partial_i g_{00}(\mathbf{x})\partial_j\phi  +\bar{\nabla}_j\bar{\nabla}^j\phi\,.
-\end{align}
-%
-Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions\todotag{Chek if $R=\bar{R}$} of the spatial operator $\tfrac{1}{g^{00}(\mathbf{x})}\big(-\bar{\nabla}_j\bar{\nabla}^j + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $d^n\mathbf{x}\, \tfrac{\sqrt{\bar{g}(\mathbf{x})}}{\sqrt{g_{00}(\mathbf{x})}}$, that is\todotag{Check the measure for orthogonality}
-\begin{align}
+The negative definite metric induced on spatial leaves $\Sigma$ is simply $g_{|\Sigma}\equiv g_{ij}$, and we have $\sqrt{g}=\sqrt{g_{00}}\sqrt{g_\Sigma}$.
+The D'Alambert operator acting on scalar fields is written in terms of the spatial Laplacian ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}$ associated to $g_\Sigma$ as
+{\small\begin{align}
+  \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)= \frac{1}{g_{00}}\,\Big[\partial_t^2\phi+ \tfrac{\sqrt{g_{00}}}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\Big)\Big]\\
+  &= g^{00} \partial_t^2 \phi +\tfrac{\partial_jg_{00}}{2g_{00}} g^{ij} \partial_i \phi +\tfrac{1}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_\Sigma}\, g_\Sigma^{ij}\partial_i \phi\Big)=\tfrac{1}{g_{00}} \partial_t^2 \phi + \tfrac{\partial_jg_{00}}{2g_{00}} g^{ij}_\Sigma \partial_i \phi +{\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\phi\,.
+\end{align}}
+Beware the metric induced on spatial leaves is negative due to the mostly minus convention.
+Defining the positive definite spatial metric $\bar{g}_{ij}=-g_{\Sigma\,ij}$ we have $\Gamma^i_{\!\!\Sigma\, jk}\equiv \bar{\Gamma}_{jk}^i$, but ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\equiv - \bar{\nabla}_j \bar{\nabla}^j$ is minus the Laplacian of the Eucliden metric $\bar{g}_{ij}$, thus with positive spectrum.
+The second expression for the D'Alambertian makes it manifest the spatial operator
+{\small\begin{align}
+    -\Delta:= \tfrac{\sqrt{g_{00}}}{\sqrt{g_\Sigma}}
+    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\Big)=-\tfrac{\sqrt{g_{00}}}{\sqrt{\bar{g}}}
+    \partial_j\!\Big(\sqrt{g_{00}}\sqrt{\bar{g}}\,\bar{g}^{ij}\partial_i\Big)
+\end{align}}
+is positive definite and self-adjoint wrt the measure $\int_\Sigma\!\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_{\Sigma}}}{\sqrt{g_{00}}}$, but not wrt the spatial measure $\int_\Sigma\!\!\! d^n\mathbf{x}\,\sqrt{g_{\Sigma}}$ in general.
+This is in fact a consequence of the fact that the unit normal is $n^\mu(\mathbf{x})=\delta^\mu_0 \tfrac{1}{\sqrt{g_{00}(\mathbf{x})}}$.
+
+Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions\todotag{Chek if $R=\bar{R}$} of the self-adjoint positive spatial operator $O=\big(-\Delta + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $\int_\Sigma\!\!d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}$, that is\footnote{Recall the convention for the Dirac delta function$\int_\Sigma\!\!\! d^n\mathbf{x}\delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y})=1$ with no metric factors.}
+{\small\begin{align}
+    O \chi_n(\mathbf{x}) = \omega_n^2 \chi_n(\mathbf{x}),\quad
   \sum_n\chi_n(\mathbf{y})\, \chi_n(\mathbf{x}) = \tfrac{\sqrt{g_{00}(\mathbf{x})}}{\sqrt{\bar{g}(\mathbf{x})}} \delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y}), \quad
   \int_\Sigma d^n\mathbf{x}\, \tfrac{\sqrt{\bar{g}(\mathbf{x})}}{\sqrt{g_{00}(\mathbf{x})}}\,\, \chi_n(\mathbf{x}) \chi_m(\mathbf{x}) = \delta_{nm}\,.
-\end{align}
-The functions below are then a complete set of solutions to the Klein--Gordon equation, and form a basis of $\mathcal{S}_\C$ with the desired orthogonality properties
+\end{align}}
+The following functions solve the Klein--Gordon equation and and form a complete orthonormal basis of $\mathcal{S}_\C$ wrt the symplectic hermitian product, i.e. they are Bogoliubov mode functions,
 \begin{align}
     u_n^+(t,\mathbf{x}) = \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}), \quad u_n^-(t,\mathbf{x}) = \big(u_n^+\big)^* = \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x})\,.
 \end{align}
+
 %
-{\color{red}We also remark that static spacetimes is precisely the case where the Hamiltonian is time-independent, its Heinsenberg evolution matches the Schrodringer hamiltonian at all times and thus if we choose mode functions so as to diagonalize the Hamiltonian at some time, they will diagonalize it at all times and thus define a natural notion of particles and \emph{stable} vacuum state.}\todotag{Polish this part}
+{\color{red}We also remark that static spacetimes is precisely the case where the Hamiltonian is time-independent, its Heinsenberg evolution matches the Schrodringer hamiltonian at all times and thus if we choose mode functions so as to diagonalize the Hamiltonian at some time, they will diagonalize it at all times and thus define a natural notion of particles and \emph{stable} vacuum state.
+
+Indeed expand the \emph{real} field as discussed before
+\begin{align}
+    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + a_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + a_^*n \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
+\end{align}
+Inserting this into the Hamiltonian and using the form and the orthonormality properties of the mode functions, 
+\begin{align}
+    H= \int_\Sigma\!\! d^n\mathbf{x}\,\mathcal{H}=\int_\Sigma\!\! d^n\mathbf{x}\, \bigg[\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \tfrac12\Big(\frac{\partial \phi}{\partial t}\Big)^2 + \sqrt{g_\Sigma}\sqrt{g_{00}}\Big( -\tfrac12 g^{ij} \partial_i \phi \partial_j \phi + V(\phi) + \xi R \phi^2\Big)\bigg] = \sum_n \omega_n \tfrac12(a_n^* a_n + a_na_n^*).
+\end{align}
+
+For the record similar expression holds for a charged KG field expanded as 
+\begin{align}
+    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + b_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + b_^*n \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
+\end{align}
+where the complex coefficients $a_n, b_n$ are interpreted as particle and antiparticle modes and the actual expression with conjugate fields for the Hamiltonian that is (note there is no factor $\tfrac12$ since the field is complex)
+\begin{align}
+    H= \int_\Sigma\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \bigg[ \Big|\frac{\partial \phi}{\partial t}\Big|^2 + g^{ij} \partial_i \phi^* \partial_j \phi + V(|\phi|) + \xi R |\phi|^2\bigg] = \sum_n \omega_n (a_n^* a_n + b_n^* b_n).
+\end{align}
+Again note that we avoid commuting ladder operators for the quantum case }\todotag{Finish this}
+
 \end{mytheorem}
+
+
+
+
+
+
 
 
 \begin{mytheorem}[Basic example:mode functions in Minkowski spacetime\todotag{Finish!!}]
