@@ -298,9 +298,9 @@ To fix ideas we consider below the case of quintessence scalar field, but the an
 Consider the action for a scalar field, possibly with nonminimal coupling to gravity $\xi\neq0$, and choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma_t$ with adapted coordinates $x^\mu=(t,\mathbf{x})$,
 {\small
 \begin{align}
-    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \xi R \phi^2 \right) = \int dt \underbrace{\int_{\Sigma_t} d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \tfrac{\xi}{2} R \phi^2 \right)}_{=\int d\mathbf{x}\sqrt{|g|}\, \mathcal{L}\,\,=  \, L(t)}.
+    S[\phi] = \int d^4x\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \tfrac{\xi}{2} R \phi^2 \right) = \int dt \underbrace{\int_{\Sigma_t} d^3\mathbf{x}\, \sqrt{|g|} \left( \frac{1}{2} g^{\mu\nu} \nabla_\mu \phi \nabla_\nu \phi - V(\phi) - \tfrac{\xi}{2} R \phi^2 \right)}_{=\int d\mathbf{x}\sqrt{|g|}\, \mathcal{L}\,\,=  \, L(t)}.
 \end{align}}
-\vspace{-4mm}
+\vspace{-8mm}
 
 \noindent
 The conjugate field in these coordinates is then\footnote{Note for spin fields $\phi^\star_\bullet$ we would need to subtract terms $\sim \phi^\star_{\bullet} \Gamma_{0\star}^\bullet \subset $ to extract $\dot{\phi}^\star_\bullet\subset \nabla_0\phi$.}
@@ -578,39 +578,43 @@ The second expression for the D'Alambertian makes it manifest the spatial operat
 is positive definite and self-adjoint wrt the measure $\int_\Sigma\!\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_{\Sigma}}}{\sqrt{g_{00}}}$, but not wrt the spatial measure $\int_\Sigma\!\!\! d^n\mathbf{x}\,\sqrt{g_{\Sigma}}$ in general.
 This is in fact a consequence of the fact that the unit normal is $n^\mu(\mathbf{x})=\delta^\mu_0 \tfrac{1}{\sqrt{g_{00}(\mathbf{x})}}$.
 
-Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions\todotag{Chek if $R=\bar{R}$} of the self-adjoint positive spatial operator $O=\big(-\Delta + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $\int_\Sigma\!\!d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}$, that is\footnote{Recall the convention for the Dirac delta function$\int_\Sigma\!\!\! d^n\mathbf{x}\delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y})=1$ with no metric factors.}
-{\small\begin{align}
-    O \chi_n(\mathbf{x}) = \omega_n^2 \chi_n(\mathbf{x}),\quad
+Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions\todotag{Chek if $R=\bar{R}$} of the self-adjoint positive spatial operator $O_{\mathrm{KG}}=\big(-\Delta + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $\int_\Sigma\!\!d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}$, that is\footnote{Recall the convention for the Dirac delta function$\int_\Sigma\!\!\! d^n\mathbf{x}\delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y})=1$ with no metric factors.}
+{\small\begin{align}\label{eq:mode_functions_static_spacetime_properties}
+    O_{\mathrm{KG}} \chi_n(\mathbf{x}) = \omega_n^2 \chi_n(\mathbf{x}),\quad
   \sum_n\chi_n(\mathbf{y})\, \chi_n(\mathbf{x}) = \tfrac{\sqrt{g_{00}(\mathbf{x})}}{\sqrt{\bar{g}(\mathbf{x})}} \delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y}), \quad
   \int_\Sigma d^n\mathbf{x}\, \tfrac{\sqrt{\bar{g}(\mathbf{x})}}{\sqrt{g_{00}(\mathbf{x})}}\,\, \chi_n(\mathbf{x}) \chi_m(\mathbf{x}) = \delta_{nm}\,.
 \end{align}}
 The following functions solve the Klein--Gordon equation and and form a complete orthonormal basis of $\mathcal{S}_\C$ wrt the symplectic hermitian product, i.e. they are Bogoliubov mode functions,
-\begin{align}
+\begin{align}\label{eq:mode_functions_static_spacetime_form}
     u_n^+(t,\mathbf{x}) = \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}), \quad u_n^-(t,\mathbf{x}) = \big(u_n^+\big)^* = \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x})\,.
 \end{align}
 
 %
-{\color{red}We also remark that static spacetimes is precisely the case where the Hamiltonian is time-independent, its Heinsenberg evolution matches the Schrodringer hamiltonian at all times and thus if we choose mode functions so as to diagonalize the Hamiltonian at some time, they will diagonalize it at all times and thus define a natural notion of particles and \emph{stable} vacuum state.
+{\color{red}We also remark that static spacetimes is precisely the case where the Hamiltonian is time-independent, its Heinsenberg evolution matches the Schrodringer hamiltonian at all times and thus if we choose mode functions so as to diagonalize the Hamiltonian at some time, they will diagonalize it at all times and thus define a natural notion of particles and \emph{stable} vacuum state.}
 
-Indeed expand the \emph{real} field as discussed before
-\begin{align}
-    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + a_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + a_^*n \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
-\end{align}
-Inserting this into the Hamiltonian and using the form and the orthonormality properties of the mode functions, 
-\begin{align}
-    H= \int_\Sigma\!\! d^n\mathbf{x}\,\mathcal{H}=\int_\Sigma\!\! d^n\mathbf{x}\, \bigg[\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \tfrac12\Big(\frac{\partial \phi}{\partial t}\Big)^2 + \sqrt{g_\Sigma}\sqrt{g_{00}}\Big( -\tfrac12 g^{ij} \partial_i \phi \partial_j \phi + V(\phi) + \xi R \phi^2\Big)\bigg] = \sum_n \omega_n \tfrac12(a_n^* a_n + a_na_n^*).
-\end{align}
 
-For the record similar expression holds for a charged KG field expanded as 
-\begin{align}
-    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + b_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + b_^*n \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
-\end{align}
-where the complex coefficients $a_n, b_n$ are interpreted as particle and antiparticle modes and the actual expression with conjugate fields for the Hamiltonian that is (note there is no factor $\tfrac12$ since the field is complex)
-\begin{align}
-    H= \int_\Sigma\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \bigg[ \Big|\frac{\partial \phi}{\partial t}\Big|^2 + g^{ij} \partial_i \phi^* \partial_j \phi + V(|\phi|) + \xi R |\phi|^2\bigg] = \sum_n \omega_n (a_n^* a_n + b_n^* b_n).
-\end{align}
-Again note that we avoid commuting ladder operators for the quantum case }\todotag{Finish this}
+Indeed, for static spacetimes the Hamiltonian \eqref{eq:hamiltonian_density_curved_spacetime_KG} of a real Klein--Gordon field takes the form
+{\small\begin{align}
+    H= \int_\Sigma\!\! d^n\mathbf{x}\,\mathcal{H}=\int_\Sigma\!\! d^n\mathbf{x}\, \bigg[\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \tfrac12\big(\partial_0 \phi\big)^2 +\tfrac12 \underbrace{\sqrt{g_\Sigma}\sqrt{g_{00}}\big( -g^{ij} \partial_i \phi \partial_j \phi + m^2\phi^2 + \xi R \phi^2\big)}_{{\displaystyle =\int_\Sigma\!\!d^n\mathbf{x}\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}(\phi,O_{\mathrm{KG}}\phi)}}\bigg] 
+\end{align}}
+Inserting the expansion \eqref{eq:expansion_mode_function_phi_classical} of the Klein--Gordon field, where the reality condition is $b_n = a_n$, 
+{\small\begin{align}
+    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + b_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + b_n^* \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
+\end{align}}
+and using the orthonormality properties \eqref{eq:mode_functions_static_spacetime_properties} of static mode functions, after some math, the Hamiltonian simplifies to
+{\small\begin{align}
+    H= \sum_n \tfrac{\omega_n}{2}(a_n^* a_n + a_na_n^*),
+\end{align}}
+where we avoid commuting ladder operators in view of the quantum case.
+Notably it is time independent.
+The Heinsenberg and Schrodringer hamiltonian thus coincide and remain diagonal in the Bogoliubov coefficients at all times.
 
+For the record the Hamiltonian\footnote{note there is no factor $\tfrac12$ since the field is complex} for a charged Klein--Gordon field analogously simplifies to
+{\small\begin{align}
+    H=\int_\Sigma\!\! d^n\mathbf{x}\, \bigg[\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \big|\partial_0 \phi\big|^2 + \underbrace{\sqrt{g_\Sigma}\sqrt{g_{00}}\big( -g^{ij} \partial_i \phi^\dagger \partial_j \phi + m^2|\phi|^2 + \xi R |\phi|^2\big)}_{{\displaystyle =\int_\Sigma\!\!d^n\mathbf{x}\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}(\phi^\dagger,O_{\mathrm{KG}}\phi)}}\bigg] 
+    = \sum_n \tfrac{\omega_n}{2} (a_n^* a_n +a_n a_n^* + b_n^* b_n+b_n b_n^*),
+\end{align}}
+where the complex coefficients $a_n, b_n$ are interpreted as particle and antiparticle modes.
 \end{mytheorem}
 
 
