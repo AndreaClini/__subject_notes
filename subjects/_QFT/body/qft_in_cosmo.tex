@@ -525,8 +525,8 @@ For any $f\in \mathcal{S}_\C$, any $y=(y^0,\mathbf{y})\in \mathcal{M}$ and any t
 \end{align}}
 Since spacetime is globally hyperbolic, given any time $t\in\R$ and any function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ there exists a (unique) solution $f\in \mathcal{S}_\C$ of the Klein--Gordon equation with the following initial conditions at time $t$
 \begin{align}
-  &f(t,\mathbf{x}) = b(\mathbf{x}),\,\,\,\,
-  \sqrt{g(t,\mathbf{x})} \,\,g^{0\mu}(t,\mathbf{x}) \,\,\partial_\mu f(t,\mathbf{x}) = 0 \qquad \forall \mathbf{x}\in \Sigma_t.
+  &f(t,\mathbf{x}) = b(\mathbf{x}),\qquad
+  \,g^{0\mu}(t,\mathbf{x}) \,\,\partial_\mu f(t,\mathbf{x}) = 0 \qquad \forall \mathbf{x}\in \Sigma_t.
 \end{align} 
 The point $y=(y^0,\mathbf{y})\in\mathcal{M}$ is arbitrary and independent of the chosen $t$.
 Taking also $y^0=t$ and inserting the solution of the Cauchy problem above, the formula becomes
@@ -536,6 +536,9 @@ Taking also $y^0=t$ and inserting the solution of the Cauchy problem above, the 
   &= -i\! \int_{\Sigma_{t}}\!\! \!\!d^n\mathbf{x}\,\underbrace{ \sqrt{g(x)}\, g^{0\mu}(x)}_{=\sqrt{g_{\Sigma}}\, n^\mu} \bigg[\Big( \sum_n \partial_\mu u_n^*(x) u_n(y)-\partial_\mu u_n(x) u_n^*(y) \Big) b(\mathbf{x})
   \!+\! \graycancel{\Big( \sum_n u_n(x) u_n^*(y) - u_n^*(x) u_n(y)\Big) \partial_\mu f(x)}\bigg].
 \end{align}}
+\vspace{-5mm}
+
+\noindent
 Since the time $t$ and the function $b(\mathbf{y})\in C^\infty_0(\Sigma_t)$ are arbitary, recalling also \eqref{eq:metric_induced_spatial_leaves_folitation}, we thus identify
 {\small
 \begin{align}\label{eq:completeness_relation_bogoliubov_basis_explicit}
@@ -546,6 +549,12 @@ Beware we always intend the Dirac delta as $\int_\Sigma\!\! d^nx \delta^{(n)}_\S
 It is worth noticing the number of mode functions must be infinite (possibly countable).
 Being solutions of the Klein--Gordon equation, a PDE with smooth coefficients, the mode functions are smooth functions on $\mathcal{M}$ and we cannot obtain the delta distribution as a \emph{finite} sum of such functions.
 %
+\end{mytheorem}
+
+\begin{mytheorem}[Diagonalizing the Hamiltonian at SOME time]\todotag{Finish cf. Kempf 15}
+{\color{red}We can choose mode functions $u_n$ such that the Hamiltonian is diagonal at some time $t_0$, i.e. $H(t_0) = \sum_n \omega_n a_n^\dagger a_n$ with $\omega_n>0$ and $a_n = \langle u_n, \cdot \rangle$.
+This is equivalent to choosing the mode functions $u_n$ to be eigenfunctions of the spatial operator $-\Delta + \partial_\phi V + \xi R$ at time $t_0$.
+Indeed, the Hamiltonian is written in terms of the mode functions as}
 \end{mytheorem}
 
 
@@ -578,36 +587,38 @@ The second expression for the D'Alambertian makes it manifest the spatial operat
 is positive definite and self-adjoint wrt the measure $\int_\Sigma\!\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_{\Sigma}}}{\sqrt{g_{00}}}$, but not wrt the spatial measure $\int_\Sigma\!\!\! d^n\mathbf{x}\,\sqrt{g_{\Sigma}}$ in general.
 This is in fact a consequence of the fact that the unit normal is $n^\mu(\mathbf{x})=\delta^\mu_0 \tfrac{1}{\sqrt{g_{00}(\mathbf{x})}}$.
 
-Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions\todotag{Chek if $R=\bar{R}$} of the self-adjoint positive spatial operator $O_{\mathrm{KG}}=\big(-\Delta + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $\int_\Sigma\!\!d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}$, that is\footnote{Recall the convention for the Dirac delta function$\int_\Sigma\!\!\! d^n\mathbf{x}\delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y})=1$ with no metric factors.}
+Let $\chi_n(\mathbf{x})\in \mathcal{C}(\Sigma)$ be eigenfunctions of the self-adjoint positive spatial operator $O_{\mathrm{KG}}=\big(-\Delta + m^2 + \xi R\big)$ with eigenvalues $\omega_n^2$, complete and orthonormal wrt the measure $\int_\Sigma\!\!d^n\mathbf{x}\, \tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}$, that is\footnote{Recall the convention for the Dirac delta function$\int_\Sigma\!\!\! d^n\mathbf{x}\delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y})=1$ with no metric factors.}
 {\small\begin{align}\label{eq:mode_functions_static_spacetime_properties}
     O_{\mathrm{KG}} \chi_n(\mathbf{x}) = \omega_n^2 \chi_n(\mathbf{x}),\quad
   \sum_n\chi_n(\mathbf{y})\, \chi_n(\mathbf{x}) = \tfrac{\sqrt{g_{00}(\mathbf{x})}}{\sqrt{\bar{g}(\mathbf{x})}} \delta^{(n)}_{\Sigma}(\mathbf{x}-\mathbf{y}), \quad
   \int_\Sigma d^n\mathbf{x}\, \tfrac{\sqrt{\bar{g}(\mathbf{x})}}{\sqrt{g_{00}(\mathbf{x})}}\,\, \chi_n(\mathbf{x}) \chi_m(\mathbf{x}) = \delta_{nm}\,.
 \end{align}}
-The following functions solve the Klein--Gordon equation and and form a complete orthonormal basis of $\mathcal{S}_\C$ wrt the symplectic hermitian product, i.e. they are Bogoliubov mode functions,
+{\color{red}
+For the record, the 4-dimensional Ricci scalar $R$ does not coincide with the Ricci scalar of the 3-dimensional spatial surface $\Sigma$, albeti it does depend on $\mathbf{x}$ only and it is related it by adding pieces involving the spatial derivatives of $g_{00}$.}
+Using the above relations, one checks the following functions solve the Klein--Gordon equation and and form a complete orthonormal basis of $\mathcal{S}_\C$ wrt the symplectic hermitian product, i.e. they are Bogoliubov mode functions,
 \begin{align}\label{eq:mode_functions_static_spacetime_form}
     u_n^+(t,\mathbf{x}) = \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}), \quad u_n^-(t,\mathbf{x}) = \big(u_n^+\big)^* = \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x})\,.
 \end{align}
 
 %
-{\color{red}We also remark that static spacetimes is precisely the case where the Hamiltonian is time-independent, its Heinsenberg evolution matches the Schrodringer hamiltonian at all times and thus if we choose mode functions so as to diagonalize the Hamiltonian at some time, they will diagonalize it at all times and thus define a natural notion of particles and \emph{stable} vacuum state.}
+{\color{red}We also remark that static spacetimes are precisely the case where the Hamiltonian results time-independent. The Heinsenberg and Schrodringer hamiltonian thus coincide at all times, and if we choose mode functions to diagonalize the hamiltonian at some time, they will diagonalize it at all times, thereby defining natural notions of particles and \emph{stable} vacuum state.}
 
-
-Indeed, for static spacetimes the Hamiltonian \eqref{eq:hamiltonian_density_curved_spacetime_KG} of a real Klein--Gordon field takes the form
+Indeed, for static spacetimes the general Hamiltonian \eqref{eq:hamiltonian_density_curved_spacetime_KG} of a real Klein--Gordon field takes the simpler form
 {\small\begin{align}
     H= \int_\Sigma\!\! d^n\mathbf{x}\,\mathcal{H}=\int_\Sigma\!\! d^n\mathbf{x}\, \bigg[\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}\, \tfrac12\big(\partial_0 \phi\big)^2 +\tfrac12 \underbrace{\sqrt{g_\Sigma}\sqrt{g_{00}}\big( -g^{ij} \partial_i \phi \partial_j \phi + m^2\phi^2 + \xi R \phi^2\big)}_{{\displaystyle =\int_\Sigma\!\!d^n\mathbf{x}\tfrac{\sqrt{g_\Sigma}}{\sqrt{g_{00}}}(\phi,O_{\mathrm{KG}}\phi)}}\bigg] 
 \end{align}}
+\vspace{-6mm}
+
 Inserting the expansion \eqref{eq:expansion_mode_function_phi_classical} of the Klein--Gordon field, where the reality condition is $b_n = a_n$, 
 {\small\begin{align}
-    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + b_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + b_n^* \frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
+    \phi(t,\mathbf{x}) = \sum_n a_n u_n^+(t,\mathbf{x}) + b_n^* u_n^-(t,\mathbf{x}) = \sum_n a_n\, \frac{e^{-i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}) + b_n^* \,\frac{e^{+i\omega_n t}}{\sqrt{2\omega_n}} \chi_n(\mathbf{x}),
 \end{align}}
-and using the orthonormality properties \eqref{eq:mode_functions_static_spacetime_properties} of static mode functions, after some math, the Hamiltonian simplifies to
+and using the orthonormality properties \eqref{eq:mode_functions_static_spacetime_properties} of static mode functions, after some math the Hamiltonian simplifies to
 {\small\begin{align}
-    H= \sum_n \tfrac{\omega_n}{2}(a_n^* a_n + a_na_n^*),
+    H= \sum_n \tfrac{\omega_n}{2}(a_n^* a_n + a_na_n^*)\,,
 \end{align}}
-where we avoid commuting ladder operators in view of the quantum case.
-Notably it is time independent.
-The Heinsenberg and Schrodringer hamiltonian thus coincide and remain diagonal in the Bogoliubov coefficients at all times.
+where we avoid commuting ladder operators in view of quantization.
+Crucially it is time independent: Heinsenberg and Schrodringer hamiltonian thus coincide and remain diagonal in the Bogoliubov coefficients at all times.
 
 For the record the Hamiltonian\footnote{note there is no factor $\tfrac12$ since the field is complex} for a charged Klein--Gordon field analogously simplifies to
 {\small\begin{align}
