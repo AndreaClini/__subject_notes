@@ -9,6 +9,70 @@
 
 %--------------------------------------------------------
 %=========================================================
-\section{Experiments}
+\section{CMB basics \& units of measure}
 %=========================================================
 %------------------------------------------------------------
+
+The fact the CMB background is an almost perfect blackbody is indeed strong evidence for the hot big bang model, with all species in thermal equilibrium at early times, and supports the cosmological principle. 
+
+Let us quickly discuss units of measures for the CMB, before ultimately using temperature only.
+The \textbf{surface brightness} is defined as the energy per unit time, per unit area, per unit solid angle, per unit frequency.
+In formulas, where $A$ is the area of the detector, $\Omega$ is the solid angle subtended by the source, and $\nu$ is the frequency, we have
+\begin{equation}
+    B_\nu = \frac{dE}{dt\, dA\, d\Omega\, d\nu} \,.
+\end{equation}
+Integrated over the solid angle we get the flux intensity, which is the energy per unit time, per unit area, per unit frequency:
+\begin{equation}
+    I_\nu = \int d\Omega\, B_\nu \,.
+\end{equation}
+
+Let us plug in some numbers, a blackbody at $T=2.725$ K peaks at $\nu \approx 160$ GHz corresponding to a wavelength of $\lambda \approx 1.9$ mm, and the surface brightness at the peak is $B_\nu \approx 2.5 \times 10^{-18}$ W m$^{-2}$ Hz$^{-1}$ sr$^{-1}$.
+
+Although the CMB blackbody spectrum peaks in the millimetre range, it was first detected by Penzias and Wilson at a much longer wavelength, $\lambda \simeq 7.35\,\mathrm{cm}$ (corresponding to about $4080\,\mathrm{MHz}$), precisely because this still lies on the long-wavelength Rayleigh--Jeans tail of the spectrum.
+
+Indeed in the low-frequency / long-wavelength regime $h\nu \ll k_B T$ (equivalently $hc/\lambda \ll k_B T$), the black body spectrum formulas
+\begin{align}
+    B_\nu &= \frac{2 h \nu^3}{c^2} \frac{1}{e^{h\nu/(k_B T)} - 1} \\
+    B_\lambda &= \frac{2 h c^2}{\lambda^5} \frac{1}{e^{hc/(\lambda k_B T)} - 1}
+\end{align}
+are well approximated by the Rayleigh-Jeans law, which states that
+\begin{equation}
+    B_\nu \approx \frac{2 k_B T \nu^2}{c^2} \,.
+\end{equation}
+This allows to define the \textbf{brightness temperature} $T_B$ as the temperature that a blackbody would need to have in order to produce the observed surface brightness at a given frequency $\nu$:
+\begin{equation}
+    T_B = \frac{c^2}{2 k_B \nu^2} B_\nu \,.
+\end{equation}
+In the Rayleigh-Jeans regime, the brightness temperature coincides with the physical temperature of the blackbody, but in general they are different and the brightness temperature does depend on the frequency.
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Measurement practicalities}
+%=========================================================
+%------------------------------------------------------------
+
+There are various noise sources to be considered that affect the measurement of the tempearture of a given patch of the sky. 
+These include
+\begin{itemize}
+    \item earth atmosphere
+    \item instrumental noise
+    \item foregrounds (galactic and extragalactic)
+\end{itemize}
+To isolate the CMB signal, still including the above sources of noise, we use a switch between the sky and a reference load, which is a blackbody at a known temperature, possibly cooled to the smallest possible temperature.
+Knowing the reference load temperature, and measuring the difference when we switch between the sky and the load, we can infer the temperature of the sky patch we are looking at (cf. image by Bersanelli, lecture 1).
+
+Let us now discuss the key concept of \textbf{antenna temperature} $T_A$, which is the normalized convolution of the brightness temperature with the antenna response function $P(\hat{n})$:   
+\begin{equation}
+    T_A = \Big(\int d\Omega P(\hat{n}) \Big)^{-1} \int d\Omega P(\hat{n}) T_B(\hat{n}) \,.
+\end{equation}
+The actual beam pattern $P(\hat{n})$ is not a delta function, but has a finite width.
+Crucially, it is an experimental aspect that can ideally be measured and calibrated with the desired precision, and it is not a theoretical uncertainty.
+
+
+%-----------------------------------------
+\section{Experimental bounds on phase transitions and energy injections}
+%-----------------------------------------------
+
+By construction the monopole due to a Bose-Einstain distribution is a perfect blackbody, and the CMB spectrum is indeed observed to be a perfect blackbody, with no deviations from the Planck spectrum.
+However, energy injections like 
