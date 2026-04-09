@@ -1,0 +1,24 @@
+# LaTeX build output.
+out/
+
+# LaTeX intermediates.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.out
+
+# Editor and OS clutter.
+*.DS_Store
+*.swp
+*.bak
+*.tmp
+~$*

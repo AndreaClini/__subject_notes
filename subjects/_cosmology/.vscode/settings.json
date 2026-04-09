@@ -1,0 +1,58 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%WORKSPACE_FOLDER%/out",
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk ➜ pdf",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.latex.build.cwd": "%WORKSPACE_FOLDER%",
+  "latex-workshop.latex.rootFile.useSubFile": true,
+  "latex-workshop.latex.rootFile.doNotPrompt": true,
+  "latex-workshop.latex.recipe.default": "latexmk ➜ pdf",
+  "latex-workshop.latex.search.rootFiles.exclude": [
+    "subjects/all_subjects_main.tex"
+  ],
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/out",
+  "files.watcherExclude": {
+    "**/out/**": true,
+    "**/build/**": true,
+    "**/__pycache__/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true
+  },
+  "search.exclude": {
+    "**/out": true,
+    "**/build": true,
+    "**/__pycache__": true
+  },
+  "files.exclude": {
+    "**/out": true,
+    "**/__pycache__": true
+  },
+  "git.decorations.enabled": false,
+  "workbench.editor.languageDetection": false,
+  "files.associations": {
+    "*.tex": "latex",
+    "*.sty": "latex",
+    "*.cls": "latex",
+    "*.bib": "bibtex"
+  }
+}
