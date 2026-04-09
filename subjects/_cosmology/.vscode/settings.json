@@ -27,9 +27,6 @@
   "latex-workshop.latex.rootFile.useSubFile": true,
   "latex-workshop.latex.rootFile.doNotPrompt": true,
   "latex-workshop.latex.recipe.default": "latexmk ➜ pdf",
-  "latex-workshop.latex.search.rootFiles.exclude": [
-    "subjects/all_subjects_main.tex"
-  ],
   "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/out",
   "files.watcherExclude": {
     "**/out/**": true,

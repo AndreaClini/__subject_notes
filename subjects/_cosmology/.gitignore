@@ -17,6 +17,7 @@ out/
 *.out
 
 # Editor and OS clutter.
+.vscode/.texlab
 *.DS_Store
 *.swp
 *.bak
