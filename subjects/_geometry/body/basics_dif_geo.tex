@@ -15,6 +15,16 @@ In this long chapter, we collect various random topics in differential geometry 
 %=========================================================
 %----------------------------------------------------------------------
 
+\begin{mytheorem}[Definitions of tangent space \& non-commutative geometry]
+The tangent space to a manifold can be defined in several equivalent ways:
+\begin{itemize}
+    \item equivalence classes of (germs of) curves;
+    \item coordinate definition (i.e. a vector is what transforms as a vector under change of charts);
+    \item derivations on the algebra of functions (i.e. linear maps obeying the Leibniz rule).
+\end{itemize}
+The latter is the most abstract and generalizes to non-commutative geometry, where the algebra of functions is replaced by a non-commutative algebra, such as the `operator space' of a quantum system (i.e. essentially functions of position $X$ and momentum $P$ operators).
+In this case, the underlying space is not a manifold and the former definitions lose their meaning, while the latter still makes sense and gives a well-defined notion of `tangent space' to a non-commutative space.
+\end{mytheorem}
 
 %========================================================
 \section{Smoothness \& Whitney embedding theorem} \todotag{To be written}
@@ -167,13 +177,14 @@ In general, a (anti)-derivative of degree $(h,k)$ on tensors is a map from a sui
 \begin{equation}
     \delta: T^{\bullet}_{\bullet} (M)\subseteq \mathcal{D} \to T^{\bullet + h}_{\bullet + k} (M)
 \end{equation}
-that is linear and satisfies a Leibniz rule, up to a sign.
-That is 
+that is linear and satisfies a Leibniz rule, up to a sign, 
 \begin{equation}
-    \delta (S \otimes T) = (\delta S) \otimes T + (\pm)^{pq} S \otimes (\delta T),
+    \delta (S^{(p)} \otimes T^{(q)}) = \delta S^{(p)} \otimes T^{(q)} + (\pm)^{p} S^{(p)} \otimes \delta T^{(q)}\,.
 \end{equation}
 We call it \emph{anti}derivative if it changes sign when acting on the two factors of a tensor product.
-For example, the exterior derivative $d$ is an antiderivative of degree $(0,1)$ on  differential forms, and the inner derivative $i_X$ along a vector field $X$ is an antiderivative of degree $(0,-1)$ on differential forms. 
+For example, the exterior derivative $d$ is an antiderivative of degree $(0,1)$ on  differential forms, and the inner derivative $i_X$ along a vector field $X$ is an antiderivative of degree $(0,-1)$ on differential forms.
+Similarly, the Lie derivative $\mathcal{L}_X$ and the covariant derivative $\nabla$ are derivatives of degree $(0,0)$ on tensors.
+
 
 
 \begin{mytheorem}[Uniqueness theorem for derivatives on tensors]
