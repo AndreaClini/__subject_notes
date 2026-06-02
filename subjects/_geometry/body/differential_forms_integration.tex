@@ -383,8 +383,8 @@ For example, on the subspace of 1-froms $\Lambda^1 (M)$, the Hodge product has t
 
 \begin{mytheorem}[The codifferential. \todotag{Finish}]
 %
-The codifferential \(\delta\) is defined as the adjoint of the exterior derivative \(d\) with respect to the Hodge scalar product\footnote{Beware that $\delta$ is sometimes defined as \emph{minus} the adjoint of $d$ to make the D'Alambertian $\Box =\delta d+d\delta$ positive definite rather than negative in the Riemannian case. It is just a convention.}
-\begin{align}
+The codifferential \(\delta\) is defined as the adjoint of the exterior derivative \(d\) wrt the Hodge scalar product\footnote{Beware that $\delta$ is sometimes defined as \emph{minus} the adjoint of $d$ to make the D'Alambertian $\Box =\delta d+d\delta$ positive definite rather than negative in the Riemannian case. It is just a convention.}
+\begin{align}\label{eq:definition_codifferential}
     \langle \delta \alpha, \beta \rangle_{\mathrm{Hodge}} &:= \langle \alpha, d \beta \rangle_{\mathrm{Hodge}} \quad \Rightarrow \quad \delta := (-1)^{\bullet} \star^{-1}d\,\star = (-1)^{n(\bullet-1)+s+1} \star d \,\star\,\,.
 \end{align}
 Indeed for any  $k$-form \(\alpha\) and $k\!-\!1$ form \(\beta\)
@@ -395,7 +395,7 @@ Indeed for any  $k$-form \(\alpha\) and $k\!-\!1$ form \(\beta\)
     = \graycancel{\int_M d(\beta \wedge \star \alpha)} - \int_M (-1)^{|\beta|} \beta \wedge d\star \alpha
     \\
     &=
-    \underbrace{(-1)^{|\beta|+1+(|\alpha|-1)(n-|\alpha|+1)+s}}_{=(-1)^{n(|\alpha|-1)+s}} \int_M  \beta \wedge (\star\star d\star \alpha)
+    \underbrace{(-1)^{|\beta|+1+(|\alpha|-1)(n-|\alpha|+1)+s}}_{=(-1)^{n(|\alpha|-1)+s+1}} \int_M  \beta \wedge (\star\star d\star \alpha)
     \equiv
     (-1)^{n(|\alpha|-1)+s+1} \big\langle\, \star d\,\star \alpha\,, \beta \big\rangle_{\mathrm{H}}.  
 \end{align}
@@ -405,13 +405,11 @@ In a chart we have\todotag{Check formula}
     &= - \nabla^{\nu} \alpha_{\nu \mu_1 \dots \mu_{k-1}} 
     = - \frac{1}{\sqrt{|g|}} \partial_{\nu} \Big(\sqrt{|g|} g^{\nu \rho} \alpha_{\rho \mu_1 \dots \mu_{k-1}}\Big).
 \end{align}
-The codifferential is a linear map of degree \((0,-1)\)
+The codifferential is a linear map of degree \((0,-1)\), but is not an (anti)-derivative since it \textbf{fails the Leibniz rule} 
 \begin{equation}
-    \delta: \Lambda^\bullet (M) \to \Lambda^{\bullet-1} (M),
+    \delta: \Lambda^\bullet (M) \to \Lambda^{\bullet-1} (M)\,, \quad \qquad \delta(\alpha \wedge \beta) \neq \delta \alpha \wedge \beta + (-1)^{|\alpha|} \alpha \wedge \delta \beta.
 \end{equation}
-but it fails the Leibniz rule i.e. it does not respect the wedge product, so it is not an (anti)-derivative.
-
-
+Moreover, while the exterior derivative is completely independent of it, the \textbf{codifferential does encode information about the metric} since it's defined via the Hodge dual \eqref{eq:definition_codifferential}.
 \smallskip
 
 \noindent
