@@ -60,11 +60,62 @@ Despite its successes, Quantum Mechanics soon after faced several challenges tha
 
 \begin{mytheorem}[A first (failed) attempt: relativistic quantum mechanics.\todotag{Finish. See Matheus 1.3}]
 %
-A first attempt to address the limitations of Quantum Mechanics was the development of relativistic quantum mechanics, which aimed to combine the principles of quantum mechanics with special relativity.
-The idea is simply to promote the Schr\"odinger equation to a relativistic equation, such as the Klein-Gordon or Dirac equations, without enforcing the second quantization procedure i.e. the wave function is still a c-number and not an operator.
+A first attempt to address the limitations of Quantum Mechanics was aimed to combine the principles of quantum mechanics with special relativity, namely
+\begin{center}
+\begin{tikzpicture}[
+  font=\small,
+  >=Stealth,
+  block/.style={
+    draw=blue!60!black,
+    rounded corners=2pt,
+    thick,
+    fill=blue!8,
+    text width=4.2cm,
+    align=center,
+    inner sep=5pt
+  },
+  lab/.style={
+    font=\scriptsize,
+    align=center,
+    text=blue!70!black,
+    fill=white,
+    fill opacity=0.9,
+    text opacity=1,
+    inner sep=1.5pt
+  },
+  arr/.style={->, thick, draw=black}
+]
+\matrix (m) [matrix of nodes, row sep=16mm, column sep=28mm, nodes={block}] {
+  |[name=cm]| {Classical Mechanics}
+    & |[name=qm]| {Quantum Mechanics} \\
+  |[name=sr]| {Special Relativity}
+    & |[name=rqm]| {Relativistic Quantum Mechanics?} \\
+};
+\draw[arr] (cm) -- node[lab, above] {$S \sim \hbar$} (qm);
+\draw[arr] (cm) -- node[lab, left] {$v \sim c\,$} (sr);
+\draw[arr] (qm) -- (rqm);
+\draw[arr] (sr) -- (rqm);
+\node[font=\scriptsize, text=red, below=2mm of rqm] {Does it work?};
+\end{tikzpicture}
+\end{center}
+The idea is simply to promote the Schr\"odinger equation to a relativistic equation, such as the Klein-Gordon or Dirac equations, without enforcing the second quantization procedure i.e. the wave function is still a c-number and not an operator, connected with the probability amplitude of finding a particle at a given position and time.
 While this approach successfully incorporated relativistic effects and predicted phenomena such as antimatter, it still faced significant challenges, including the interpretation of negative energy solutions and the inability to account for particle creation and annihilation processes.
-These issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. \todotag{Insert scheme cf Matheus 1.3}
+
+For example, both the Schr\"odinger and Klein-Gordon equations imply a continuity equation $\partial_t\rho=-\nabla\cdot \mathbf{j}$, identifying a probability density $\rho$ and current $\mathbf{j}$, 
+\begin{align}
+    &i\hbar \partial_t \psi = -\frac{\hbar^2}{2m} \nabla^2 \psi \implies
+    \partial_t|\psi|^2 = -\nabla\cdot \Big(\tfrac{i\hbar}{2m}(\psi \nabla \psi^*- \psi^* \nabla \psi)\Big)
+    \\[3pt]
+    &(\Box+m^2)\phi = 0 \implies \partial_t\Big(i(\phi^* \partial_t \phi - \phi \partial_t \phi^*)\Big) = -\nabla\cdot \Big(i(\phi \nabla \phi^* - \phi \nabla \phi)\Big).
+\end{align}
+In the Schr\"odinger case, we find the familiar positive definite probability density $\rho = |\psi|^2$.
+In the Klein-Gordon case, recalling solutions take the form $\phi=N e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ with $E^2 = |\mathbf{k}|^2 + m^2$, we find $\rho = 2E|N|^2$, which is not positive definite since $E$ can be negative.
+
+Crucially, the problem of negative energies is not due to the second-order equation, inevitably involving taking square roots.
+Indeed Dirac came up with his equation, first-order in time and space derivatives to avoid this problem, but still ended up with negative energy solutions, which he interpreted as the existence of antiparticles.
+These issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. 
 \end{mytheorem}
+
 
 
 
@@ -285,4 +336,5 @@ When writing a quantum field theory to model a system we ultimately have two ing
     \item \textbf{The symmetries.} We need to identify the symmetries of the system, which are typically encoded in the transformation properties of the fields under certain symmetry groups.
     Notable examples are invariance under the Galilean or Lorentz group, for non-relativistic and relativistic theories respectively, and gauge invariance or other internal symmetries for theories describing fundamental interactions.
     \item \textbf{The dynamics.} We need to specify the dynamics of the system, which is typically done by writing down a Lagrangian or Hamiltonian for the fields, consistent with the symmetries of the system.
+\end{itemize}
 \end{mytheorem}
