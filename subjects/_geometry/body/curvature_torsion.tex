@@ -1,3 +1,4 @@
+% !TeX root = ../geometry_main.tex
 %==================================================================
 %======================================================================
 \chapter{Curvature \& torsion}\label{sec:curvature_torsion}
@@ -6,21 +7,40 @@
 
 %-----------------------------------------------------------------------
 %======================================================================
-\section{Torsion \& equivalence principle}\todotag{To be written}
+\section{Torsion \& equivalence principle}
 \label{sec:torsion_and_equivalence_principle}
 %========================================================================
 %-------------------------------------------------------------------------
 
-\begin{mytheorem}[Torsion measures the nonclosure of parallelograms]\todotag{Insert pic.}
-Consider a manifold \(M\) with an affine connection \(\nabla\).
+\begin{mytheorem}[Torsion measures the nonclosure of infinitesimal parallelograms]
+Consider a manifold \(M\) with affine connection \(\nabla\).
 Let \(X,Y\) be two vector fields on \(M\).
-Construct the parallelogram starting from a point \(p \in M\) by first following the flow of \(X\) for a parameter distance \(\epsilon\), then the flow of \(Y\) for a parameter distance \(\epsilon\), then the flow of \(-X\) for a parameter distance \(\epsilon\), and finally the flow of \(-Y\) for a parameter distance \(\epsilon\).
-Then, the endpoint of this parallelogram differs from the starting point \(p\) by a vector given, at leading order in \(\epsilon\), by
+Construct a \emph{parallelogram} with vertex \(p \in M\) and parallel axes $X(p), Y(p)$ by first flowing in direction \(X(p)\) and then in the direction parallel to the other axis $Y(p)$, or viceversa.
+For infinitesimal distances, the first curve is approximated by $\gamma_{X}^\epsilon\simeq p+\epsilon X(p)$, but the direction parallel to the other axis is $Y(p+\epsilon X)+\epsilon \nabla_X Y(p)$, and not simply $Y(p+\epsilon X)$, since by definition of parallel transport along $\gamma_X$ 
+{\small\begin{align}
+    \nabla_X Y(p)=\lim_{\epsilon \to 0}\frac{Y(p+\epsilon X)-\tau^\epsilon_{\gamma_X}(Y(p))}{\epsilon}\,.
+\end{align}}
+The two orders give different possible endpoints, namely 
+{\small\begin{align}
+    &p\mapsto p + \epsilon X(p)\mapsto p + \epsilon X(p) + \epsilon \big[Y(p+\epsilon X) + \epsilon \nabla_X Y(p)\big]= p+ \epsilon \big[X(p) + Y(p)\big] + \epsilon^2\Big[X^\mu\partial_\mu Y(p)+ \nabla_X Y(p)\Big],
+    \\[3pt]
+    &p\mapsto p + \epsilon Y(p)\mapsto p + \epsilon Y(p) + \epsilon \big[X(p+\epsilon Y) + \epsilon \nabla_Y X(p)\big]= p+ \epsilon \big[X(p) + Y(p)\big] + \epsilon^2\Big[Y^\mu\partial_\mu X(p)+ \nabla_Y X(p)\Big].
+\end{align}}
+The non-closure of the would-be (infinitesimal) parallelogram is measured by the torsion tensor 
 \begin{equation}
-    \Delta p = \epsilon^2 T(X,Y) + \mathcal{O}(\epsilon^3),
+    \Delta p = \epsilon^2 T(X,Y) + \mathcal{O}(\epsilon^3), \qquad T(X,Y) := \nabla_X Y - \nabla_Y X - [X,Y],
 \end{equation}
-where \(T(X,Y)\) is the torsion tensor evaluated on \(X\) and \(Y\).
+Beware that \emph{finite} parallelograms in general do not close in curved spaces even in absence of torsion\footnote{Just think of a parallelogram on the surface of an apple}, but infinitesimal ones do close in familiar contexts.
+The presence of torsion hence measures this somewhat puzzling aspect.
+In fact, one can avoid this counterintuitive geometric picture and recast torsion as a `fifth force' violating the equivalence principle, so that the interpreation becomes that infinitesimal parallelograms do close, but the presence of an extra force field makes particles deviate from the geodesic.
 \end{mytheorem}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/torsion_parall.png}
+    \caption{Torsion and nonclosure of infinitesimal parallelograms.}
+    \label{fig:torsion-parallelogram}
+\end{figure}
 
 
 \begin{mytheorem}[Why torsion is a tensor?]
@@ -158,7 +178,7 @@ In view of what discssed above, we can interpret the Christoffel symbols and the
 
 
 %======================================================================
-\subsection{What is curvature \& how to quantize it?}\todotag{To be written}
+\subsection{What is curvature \& how to quantize it?}
 %========================================================================
 
 
