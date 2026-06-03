@@ -8,11 +8,11 @@
 
 %-----------------------------------------------------------------------------
 %==========================================================================
-\section{General considerations} \todotag{Finish \& remove sec header}
+\section{General aspects} 
 %===========================================================================
 %-----------------------------------------------------------------------------
 
-\begin{mytheorem}[How to formulate QFT in curved spacetime?\questiontag{Polish}]
+\begin{mytheorem}[How to formulate QFT in curved spacetime?]
 %
 QFT in curved spacetime requires a careful rethinking of our approach.
 Indeed canonical quantization is performed in Hamiltonian formalism, which requires a global time coordinate to define conjugate variables and then equal-time commutation relations.
@@ -86,7 +86,7 @@ The two procedures are summarized in the following diagram.
 \end{mytheorem}
 
 
-\begin{mytheorem}[Hamiltonian as generator of time translations \& different foliations\todotag{Polish \& understand better}]
+\begin{mytheorem}[Hamiltonian as generator of time translations \& different foliations]
 %
 The above analysis clarifies that for any given choice $F$ spacetime foliation $\mathcal{M}\simeq \R\times \Sigma$ with coordinates $x^\mu$, the corresponding hamiltonian $H_F=\int_\Sigma d^3\mathbf{x}\,\mathcal{H}_F$  is the generator of time translations along the chosen time coordinate $t\equiv x^0$.
 Indeed the \emph{classical} hamilton equations in the chosen coordinates $(t,\mathbf{x})$ read
@@ -104,7 +104,7 @@ In both classical and quantum cases, this shows that $H_F$ is the generator of t
 \end{align}
 A different choice $\tilde{F}$ of coordinates and foliation  $\mathcal{M}\simeq \R\times \tilde{\Sigma}$ yields a different hamiltonian $H_{\tilde{F}}$ generating time translations along the corresponding time $\tilde{t}\equiv \tilde{x}^0$.
 
-If the two foliations are \emph{equivalent}, i.e. fixed-time leaves are mapped into each other by the change of coordinates, \todotag{Not sure what if $\tilde{t}=\tilde{t}(t,\mathbf{x})$ i.e. leaves not map into each other?}
+If the two foliations are \emph{equivalent}, i.e. fixed-time leaves are mapped into each other by the change of coordinates, 
 \begin{align}
   \R\times \Sigma \simeq\mathcal{M}\simeq  \tilde{\R}\times \tilde{\Sigma} \quad \text{via}\quad (t,\mathbf{x}) \mapsto (\tilde{t}(t), \tilde{\mathbf{x}}(t,\mathbf{x})), \quad \text{so that}\quad \Sigma_t \mapsto \tilde{\Sigma}_{\tilde{t}(t)},
 \end{align}
@@ -116,8 +116,8 @@ If $\chi_t: \mathcal{H}_F \to \mathcal{H}_{\tilde{F}}$ is the isomorphism betwee
   = \chi_{t_2} \circ \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{t_1}^{t_2} dt' H_F(t')\right)\circ \chi_{t_1}^{-1}
   = \mathcal{T}\exp\left( -\frac{i}{\hbar}\int_{\tilde{t}(t_1)}^{\tilde{t}(t_2)} d\tilde{t}' H_{\tilde{F}}(\tilde{t}')\right)
   = U_{\tilde{F}}(\tilde{t}_2,\tilde{t}_1)\,.
-\end{equation}
-}
+\end{equation}}
+
 If the coordinate change does not mix time and space $(t,\mathbf{x})\mapsto (\tilde{t}(t),\tilde{\mathbf{x}}(\mathbf{x}))$, the isomorphism bewteen Hilbert (resp. classical) spaces $\chi_t\equiv \chi$ is time-independent, and we can thus take it to be the identity upon changing spatial coordinates in one frame, so that we have the same leaves $\Sigma_t=\tilde{\Sigma}_{\tilde{t}(t)}$ at all times.
 The two hamiltonians and time evolutions then act on the \emph{same} Hilbert space, and we simply have a time change relation
 {\small
@@ -126,8 +126,8 @@ The two hamiltonians and time evolutions then act on the \emph{same} Hilbert spa
   U_F(t_2,t_1) = \mathcal{T}\exp\bigg( -\frac{i}{\hbar}\int_{t_1}^{t_2} dt' H_F(t')\bigg)
   = \mathcal{T}\exp\bigg( -\frac{i}{\hbar}\int_{\tilde{t}(t_1)}^{\tilde{t}(t_2)} d\tilde{t}' H_{\tilde{F}}(\tilde{t}')\bigg)
   = U_{\tilde{F}}(\tilde{t}_2,\tilde{t}_1).
-\end{align}
-}
+\end{align}}
+In the opposite case, we remark there is no simple relation when the two foliations are inequivalent, i.e. when $\tilde{t}=\tilde{t}(t,\mathbf{x})$ and leaves of the two foliations do not even map into each other.
 
 Finally, the above analysis also allows for a temporary period where the two foliations $F$ and $\tilde{F}$ are inequivalent, e.g. during a gravitational collapse or other highly dynamical spacetime process, as long as spacetime is asymptotically stationary in the past and future.
 That is the coordinate change $(t,\mathbf{x})\mapsto \tilde{t}=\tilde{t}(t,\mathbf{x})$ does not map leaves of the foliations into each other for some time interval $[t_i,t_f]$, but does so asymptotically for $t\to \pm\infty$.
@@ -135,7 +135,7 @@ In this case, we can relate the two Hilbert (resp. classical) spaces and corresp
 \end{mytheorem}
 
 
-\begin{mytheorem}[Semiclassical approach to QFT in curved spacetime\todotag{Finish}]
+\begin{mytheorem}[Semiclassical approach to QFT in curved spacetime]
 %
 We managed to quantize field theories in curved spacetime, but we are not yet able to quantize gravity itself, or at least not entirely since gravitational waves can be quantized perturbatively.
 How to proceed?
@@ -160,7 +160,7 @@ In fact, renormalization is already needed to tame infinities arising in the pro
 %===========================================================================
 For convenience we collect some geometric results that will be useful in the following.
 
-\begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$\questiontag{Polish}]
+\begin{mytheorem}[Metric induced on spatial leaves $\R\times\Sigma_t$]
 %
 Choose a spacetime foliation $\mathcal{M}\simeq \R\times\Sigma$.
 In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the outward (positive-time oriented) normal $n^\mu$ and the metric induced on spatial leaves $\Sigma$ obey
@@ -181,7 +181,7 @@ In adapted coordinates $x^\mu=(t,\mathbf{x})$ i.e. $\Sigma_t=\{x^0=t\}$, the out
     \end{pmatrix}\quad \Rightarrow \quad \sqrt{g} = \frac{1}{n^0}\sqrt{g_{|_\Sigma}}= \frac{1}{\sqrt{g^{00}}}\sqrt{g_{|_\Sigma}}.
 \end{align}
 }
-The inverse of the spatial metric $g_{|\Sigma}$ can then be written as
+Moreover, the inverse of the spatial metric $g_{|\Sigma}$ can then be written as
 {\small
 \begin{align}\label{eq:inverse_metric_induced_leaves_foliation}
     g_{|\Sigma}^{ij}= g^{ij} - \tfrac{g^{i0}g^{0j}}{g^{00}},\quad\text{since}\quad
@@ -191,20 +191,21 @@ Beware that $g_{|\Sigma}^{ij}$ is negative definite in our mostly minus signatur
 \end{mytheorem}
 
 
-\begin{mytheorem}[Adapted coordinates without space-time cross terms $g_{0i}=0$ and $g_{00}\equiv 1$\questiontag{Polish}]
-Albeit not needed for the results below, it is useful to choose local coordinates where the metric has no cross terms $g_{0i}=0$ between time and space, i.e.
+\begin{mytheorem}[Adapted coordinates without space-time cross terms $g_{0i}=0$ and $g_{00}\equiv 1$]
+Albeit not needed for the results below, it is useful to choose local coordinates where the metric has no cross terms between time and space
 {\small\begin{align}\label{eq:adapted_nocross_coordinates}
-    ds^2 = g_{00}(t,x) dt^2 + g_{ij}(t,x) dx^i dx^j, \quad \text{with}\quad g_{00}>0, \quad g_{ij} = g_{|\Sigma\, ij}.
+    ds^2 = g_{00}(t,x) dt^2 + g_{ij}(t,x) dx^i dx^j, \quad \text{with}\quad g_{00}>0, \quad g_{ij} = g_{|\Sigma\, ij},\quad g_{0i}=0.
 \end{align}}
-In fact, we can awlays find local coordinates such that $g_{00}(t,x)\equiv1$.
-The simplest way to find such coordinates is considering the flow of timelike geodesics orthogonal to a spacelike surface.
+We can always find such local coordinates and we can also ensure that $g_{00}(t,x)\equiv1$.
+Beware this is not related to spacetime being stationary i.e. admitting a timelike Killing vector field $K$, since the entries $g_{ij}(t,x)$ might still depend on time in these coordinates so that $\mathcal{L}_K g\neq0$.
 
+The simplest way to find such coordinates is considering the flow of timelike geodesics orthogonal to a spacelike surface.
 Namely, given a spacelike surface $\Sigma_{t_0}$ with adapted coordinates $x^\mu=(t_0,\mathbf{x})$, denote its normal vector $n^\mu(\mathbf{x})$ and define a chart $\varphi:\mathbb{\R}_\lambda\times \Sigma_{t_0}\to\mathcal{M}$ by $\varphi(\lambda,\mathbf{x})=\exp_{\Sigma_{t_0}(\mathbf{x})}(\lambda n^\mu)$, where $\exp_p(v)$ is the exponential map and $\Sigma_{t_0}(\mathbf{x})$ is the point of $\Sigma_{t_0}$ with coordinates $\mathbf{x}$.
 Since $\lambda \mapsto \varphi(\lambda,\mathbf{x})$ is a constant length geodesic we have $\nabla_\lambda \partial_\lambda \varphi = 0$.
 Moreover by construction we have
 {\small\begin{align}
     &g(\lambda,\mathbf{x})(\partial_\lambda\varphi,\partial_\lambda \varphi) = g(0,\mathbf{x})(n,n) = 1 \,\,\forall\lambda,\mathbf{x}, \quad g(0,\mathbf{x})(\partial_\lambda\varphi, \partial_i \varphi) = g(0,\mathbf{x})(n, \partial_i \varphi) = 0\,\,\forall\mathbf{x},\\[3pt]
-    & 0\equiv \partial_\lambda g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)\,\,\forall\lambda,\mathbf{x}, \quad 0\equiv \partial_j g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)\,\,\forall\lambda,\mathbf{x}, 
+    & 0\equiv \partial_\lambda g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)\equiv \partial_j g(\lambda,\mathbf{x})(\partial_\lambda\varphi, \partial_\lambda \varphi)\,\,\forall\lambda,\mathbf{x}, 
     \quad 0\equiv \partial_j g(0,\mathbf{x})(\partial_\lambda\varphi, \partial_i \varphi) \equiv 0 \,\,\forall\mathbf{x}.
 \end{align}}
 Since torsion vanishes we have $\nabla_\lambda \partial_i \varphi = \nabla_i \partial_\lambda \varphi$.
@@ -217,31 +218,32 @@ This proves that $g_{\lambda \lambda}(\lambda,\mathbf{x})=1$ and $g_{\lambda i}(
 \end{mytheorem}
 
 
-\begin{mytheorem}[Timlike Killing vector fields, static \& ultrastatic spacetimes\questiontag{Polish}]
+\begin{mytheorem}[Timlike Killing vector fields, static \& ultrastatic spacetimes]
 %
-Assume spacetime admits a global timelike Killing vector field $K$, that is
+A spacetime is called \emph{stationary} if it admits a global timelike Killing vector field $K$, that is
 {\small\begin{align}
     0=\mathcal{L}_K g_{\mu\nu} =K(g_{\mu\nu})-g([K,\partial_\mu],\partial_\nu)-g(\partial_\mu,[K,\partial_\nu]), \qquad g(K,K)>0.
 \end{align}}
 By Frobenius theorem we can choose coordinates $x^\mu=(x^0,\mathbf{x})$ adapted to the flow of $K$ such that $K=\partial_t$.
-In such coordinates $[K,\partial_\mu]\equiv0$ and the condition above reads $\partial_t g_{\mu\nu}=0$, so the metric is time-independent.
-Beware the existence of a global timelike v.f. does not prevent nonzero cross terms $g_{0j}(\mathbf{x})\neq0$ that cannot be removed by a change of coordinates
+In such coordinates $[K,\partial_\mu]\equiv0$ and the condition above reads $\partial_t g_{\mu\nu}=0$ i.e. the metric is time-independent.
 
-If we further assume that $K$ is orthogonal to the spatial leaves of a foliation $\mathcal{M}\simeq \R\times \Sigma$, for some n-manifold $\Sigma$, in adapted coordinates 
+Notably, the existence of a global timelike v.f. does not forbid cross terms $g_{0j}(\mathbf{x})\neq0$ that might always be present in any coordinate where $g$ is time-independent.
+On the other hand, a spacetime is called \emph{static} if the timelike Killing field $K$  also orthogonal to the spatial leaves of a foliation $\mathcal{M}\simeq \R\times \Sigma$.
+In this case, in adapted coordinates 
 \begin{align}
     ds^2 = g_{\mu\nu} dx^\mu dx^\nu = g_{00}(\mathbf{x}) dt^2 + g_{ij}(\mathbf{x}) dx^i dx^j.
 \end{align}
-Beware this condition is not enough to find coordinates such that $g_{00}(\mathbf{x})\equiv1$.
-This is possible only in the `ultrastatic' case where $g_{00}(\mathbf{x})$ is already constant.
+Finally beware this condition is not yet enough to find coordinates such that $g_{00}(\mathbf{x})\equiv1$.
+This is possible only for \emph{ultrastatic} spacetimes, where $g_{00}(\mathbf{x})$ is already constant.
 Indeed if we try to normalize the timelike coordinate as above, we might generare time-dependence in the spatial metric $g_{ij}$, thus losing the static condition.
-
 A notable example is the Schwarzschild metric outside the horizon
 {\small\begin{align}
     ds^2 = \left(1-\frac{2M}{r}\right) dt^2 - \left(1-\frac{2M}{r}\right)^{-1} dr^2 - r^2 d\Omega^2.
 \end{align}}
-The metric is static (time indpendent without cross-terms) but and there is no coordinate change preserving staticity that sends $g_{00}\mapsto 1$ identically.
+The metric is static but there is no coordinate change that preserves staticity and sends $g_{00}\mapsto 1$ identically.
 
-In static spacetimes the negative definite metric induced on spatial leaves $\Sigma$ is simply $g_{|\Sigma}\equiv g_{ij}$, and $\sqrt{g}=\sqrt{g_{00}}\sqrt{g_\Sigma}$.
+In static spacetimes the negative-definite metric induced on spatial leaves $\Sigma$ is simply $g_{|\Sigma}\equiv g_{ij}$.
+Moreover $\sqrt{g}=\sqrt{g_{00}}\sqrt{g_\Sigma}$ and the inverse metric is {\small$g^{\mu\nu}=\begin{pmatrix}1/g_{00} & 0\\0 & g^{ij}\end{pmatrix}$}.
 The only non-vanishing Christoffel symbols are
 {\small\begin{align}
     \Gamma^0_{0j} = \frac{1}{2g_{00}}\,\partial_j g_{00},
@@ -257,7 +259,7 @@ Using the general formula $\Gamma^\mu_{\mu\nu}=\partial_\nu \log\sqrt{g}$ we als
     \Gamma^\mu_{\mu j}=\partial_j\log\sqrt{g}=\partial_j\log\sqrt{g_{00}}+\partial_j\log\sqrt{g_\Sigma}=\Gamma^0_{0j}+\Gamma^i_{ij}
     =\frac{1}{2g_{00}}\,\partial_j g_{00}+\Gamma^i_{\!\!\Sigma\, ij}.
 \end{align}}
-The D'Alambert operator acting on scalar fields is written in terms of the spatial Laplacian ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}$ associated to $g_\Sigma$ as
+Since the metric is time-independent, the D'Alambert operator, acting e.g. on scalar fields, is conveniently written in terms of the spatial Laplacian ${\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}$ associated to $g_\Sigma$ as
 {\small\begin{align}
   \nabla_\mu\nabla^\mu \phi &=\tfrac{1}{\sqrt{g}}\partial_\mu\Big(\sqrt{g}\,g^{\mu\nu}\partial_\nu\phi\Big)= \frac{1}{g_{00}}\,\Big[\partial_t^2\phi+ \tfrac{\sqrt{g_{00}}}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\Big)\Big]\\
   &= g^{00} \partial_t^2 \phi +\tfrac{\partial_jg_{00}}{2g_{00}} g^{ij} \partial_i \phi +\tfrac{1}{\sqrt{g_\Sigma}}\partial_j\Big(\sqrt{g_\Sigma}\, g_\Sigma^{ij}\partial_i \phi\Big)=\tfrac{1}{g_{00}} \partial_t^2 \phi + \tfrac{\partial_jg_{00}}{2g_{00}} g^{ij}_\Sigma \partial_i \phi +{\nabla}_{\!\!\Sigma\,j}{\nabla}^j_{\!\!\Sigma}\phi\,.
@@ -271,7 +273,7 @@ The second expression for the D'Alambertian makes it manifest the spatial operat
     \partial_j\!\Big(\sqrt{g_{00}}\sqrt{\bar{g}}\,\bar{g}^{ij}\partial_i\Big)
 \end{align}}
 is positive definite and self-adjoint wrt the measure $\int_\Sigma\!\!\! d^n\mathbf{x}\, \tfrac{\sqrt{g_{\Sigma}}}{\sqrt{g_{00}}}$, but not wrt the spatial measure $\int_\Sigma\!\!\! d^n\mathbf{x}\,\sqrt{g_{\Sigma}}$ in general.
-This is in fact a consequence of the expression for the symplectic form and the fact that the unit normal in this case is $n^\mu(\mathbf{x})=\delta^\mu_0 \tfrac{1}{\sqrt{g_{00}(\mathbf{x})}}$.
+This is in fact a consequence of the expression for the symplectic form and the fact that the unit normal is $n^\mu(\mathbf{x})=\delta^\mu_0 \tfrac{1}{\sqrt{g_{00}(\mathbf{x})}}$.
 
 For the record, we could also write {\small$\nabla_\mu\nabla^\mu \phi= \tfrac{1}{g_{00}}\partial_t^2\phi+ \tfrac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\big)$} and consider the operator {\small$\tfrac{1}{g_{00}}\Delta=\tfrac{1}{\sqrt{g_{00}}\sqrt{g_\Sigma}}\partial_j\big(\sqrt{g_{00}}\sqrt{g_\Sigma}\,g_\Sigma^{ij}\partial_i\phi\big)$} which is self adjoint wrt {\small$\int_\Sigma\!\! d^n\mathbf{x}\,\sqrt{g_{00}}\sqrt{g_{\Sigma}}$}.
 However this would not decouple time and space in the D'Alambertian, and in fact is not the natural form of the spatial operator in the hamiltonian formulation descending from the symplectic form.
