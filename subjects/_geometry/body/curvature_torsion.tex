@@ -7,7 +7,7 @@
 
 %-----------------------------------------------------------------------
 %======================================================================
-\section{Torsion \& equivalence principle}
+\section{Torsion \& the equivalence principle}
 \label{sec:torsion_and_equivalence_principle}
 %========================================================================
 %-------------------------------------------------------------------------
@@ -59,10 +59,54 @@ we see that indeed $T_{\mu,\nu}^{\quad \rho} = 2 \Gamma^{\rho}_{[\mu \nu]}$ tran
 \end{mytheorem}
 
 
+\begin{mytheorem}[Weak, standard and strong equivalence principle]
+There are several inequivalent statements usually referred to as `the equivalence principle', listed below in increasing order of strength.
+Notably, it is possible to \textbf{obey the weak and standard equivalence principle while violating the strong one with fifth forces} (cf. arXiv:2204.08484v4, 	arXiv:2309.11496v2).
+{\scriptsize
+\begin{center}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{c|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}}
+\textbf{Equivalence Principle} & \textbf{Statement} & \textbf{Applies to} & \textbf{Excludes/tests} \\
+\hline
+Weak
+&
+Freely falling test bodies follow the same trajectories independently of composition and internal structure. Equivalently, \(m_{\rm inertial}=m_{\rm gravitational}\).
+&
+Non-self-gravitating matter, treated as test particles.
+&
+Composition-dependent fifth forces; violations of universality of free fall.
+\\
+\hline
+Standard
+&
+Locally in a freely falling lab, all non-gravitational laws reduce to special relativity, independently of velocity and spacetime location.
+&
+All local non-gravitational physics: mechanical experiments, electromagnetism, nuclear physics, atomic clocks, etc.
+&
+Violations of local Lorentz invariance; non-metric couplings of matter.
+\\
+\hline
+Strong
+&
+The above local-free-fall statement also applies to gravitational physics, and self-gravitating bodies fall universally.
+&
+Matter and gravity itself, including planets, stars, black holes and gravitational waves.
+&
+Scalar-tensor effects; varying \(G\); Nordtvedt effect; dependence on gravitational binding energy.
+\end{tabular}
+\end{center}}
+\end{mytheorem}
+
+
+
+
+
+
 \begin{mytheorem}[Torsion \& the equivalence principle]
-The equivalence principle is \emph{completely equivalent} to the vanishing of torsion.
-Indeed, the equivalence principle states that at any point there exists a \emph{local freely falling frame}, i.e. a frame where the Christoffel symbols vanish at that point.
-Physically, we demand the geodesic equation reduce to a straight line
+As far as the metric is concerned, the \emph{standard} equivalence principle is \emph{completely equivalent} to the vanishing of torsion.
+Indeed, the \emph{weak} equivalence principle states that at any point there exists a \emph{local freely falling frame}, i.e. a frame where the symmetric part of the Christoffel symbols vanish at that point.
+Physically, this demands the geodesic equation reduce to a straight line
 \begin{align}
     \nabla_{\dot{x}}\dot{x} = \frac{d^2 x^{\sigma}}{d \lambda^2} + \Gamma^{\sigma}_{\mu \nu} \frac{d x^{\mu}}{d \lambda} \frac{d x^{\nu}}{d \lambda} = 0
     \quad \xrightarrow[\text{local free fall at $p$}]{} \quad
@@ -71,27 +115,27 @@ Physically, we demand the geodesic equation reduce to a straight line
 Imposing this holds for any choice of initial velocity \(\frac{d x^{\mu}}{d \lambda}_{\mid p}\) implies the symmetric part $\Gamma_{(\mu\nu)}^\sigma=0$ at \(p\).
 
 Note that this seems to leave room for torsion--i.e. for nonvanishing antisymmetric part $\Gamma_{[\mu\nu]}^\sigma$.
-However, the equivalence principle actually demands \emph{any} mechanical experiment reduce to the special relativistic one in such local freely falling frames.
+However, the \emph{standard} equivalence principle actually demands \emph{anynon-gravitational experiment} reduce to the special relativistic one in such local freely falling frames, including mechanical ones.
 In particular, it requires that in absence of forces the angular momentum $L$ of spinning bodies stays constant, i.e. it is parallely transported via the connection.
 That is 
 \begin{align}
-    \nabla_{\dot{x}}L = \frac{d L^\sigma}{d \lambda} + \Gamma^{\sigma}_{\mu \nu} \frac{d x^\mu}{d \lambda} L^\nu = 0
+    0=\nabla_{\dot{x}}L = \frac{d L^\sigma}{d \lambda} + \Gamma^{\sigma}_{\mu \nu} \frac{d x^\mu}{d \lambda} L^\nu 
     \quad \xrightarrow[\text{local free fall at $p$}]{} \quad
     \frac{d L^\sigma}{d \lambda}_{\mid p} = 0.
 \end{align}
-Since both vectors $L=L^\sigma \partial_\sigma$ and $x=x^\sigma \partial_\sigma$ are arbitrary at \(p\), all of $\Gamma_{\mu\nu}^\sigma$ must vanish at \(p\).
+Since both vectors $L=L^\sigma \partial_\sigma$ and $\tfrac{dx^\sigma}{d \lambda}\partial_\sigma$ are arbitrary at \(p\), all of $\Gamma_{\mu\nu}^\sigma$ must vanish at \(p\).
 
-In fact, as we mentioned, the vanishing ot torsion not only is needed, but is completely \emph{equivalent} to the existence of such local freely falling frames as we next show.
+In fact, as we mentioned, the vanishing ot torsion not only is needed, but is completely \emph{equivalent} to the existence of such local freely falling frames as we show here below.
 \end{mytheorem}
 
 
 \begin{theorem}
-Let \(M\) be a manifold with an affine connection \(\nabla\).
-Then, the torsion of \(\nabla\) vanishes if and only if for any point \(p \in M\) there exists a local coordinate system \(\{x^{\mu}\}\) around \(p\) such that the connection coefficients vanish \(\Gamma^{\rho}_{\mu \nu} (p) = 0\) at $p$.
+Let \(M\) be a manifold with an affine connection \(\nabla\), not necessarily metric-compatible.
+The torsion of \(\nabla\) vanishes at a point \(p \in M\) if and only if there exists a local coordinate system \(\{x^{\mu}\}\) around \(p\) such that the connection coefficients vanish \(\Gamma^{\rho}_{\mu \nu} (p) = 0\) at $p$.
 \end{theorem}
 \begin{proof}
-The torsion is a tensor, so if it vanishes in one frame it vanishes in all frames and is thus zero.
-Conversely, Riemann normal coordinates--i.e. coordinates obtained via the exponential map at \(p\)--always exist and by construction they are such that the symmetric part $\Gamma^{\rho}_{(\mu \nu)}(p)=0$ vanishes at this point.
+Since torsion is a tensor, if it vanishes in one frame then it vanishes in all frames and is thus identically zero.
+Conversely, Riemann normal coordinates--i.e. coordinates obtained via the exponential map at \(p\)--always exist and by construction they are such that the \emph{symmetric} part $\Gamma^{\rho}_{(\mu \nu)}(p)=0$ vanishes at this point.
 Indeed, in such cohordinates stratight lines $\lambda\mapsto \exp(\lambda v)$ are mapped to geodesics through $p$ in $M$ 
 \begin{equation}
     \graycancel{\frac{d^2}{d \lambda^2} (\lambda v^\sigma)}+ \Gamma^{\sigma}_{\mu \nu} v^\mu v^\nu = 0.
@@ -108,9 +152,26 @@ Therefore, if the metric is quantum fluctuating, it might well be the case that 
 In fact, we have several examples where quantum fuctuations violate classical constraints.
 An example is quantum tunnelling, where  particles can cross classically forbidden regions.
 Another one is the nonvanishing of correlators between spacelike separated operators in quantum field theory, violating classical causality.
-In this second case, the `rules' of classical general relativity are restored by the fact that these acausal correlators are exponentially suppressed at scales larger than the Compton wavelength of the particles involved.
+In this second case, the `rules' of classical general relativity are restored by the fact that these a-causal correlators are exponentially suppressed at scales larger than the Compton wavelength of the particles involved.
 Furthermore, the analogous contributions from particles and antiparticles cancel each other in the actually observable correlator.
 \end{mytheorem}
+
+
+
+\begin{mytheorem}[Torsion may not be forbidden, just Wilson-suppressed]
+The reason why we do not see torsion at accessible energies might be different, and deeper in a sense, than just advocating the equivalence principle. 
+Instead of viewing torsion only as forbidden by the equivalence principle, we can view it as an additional field i.e. a possible fifth force.
+Namely, given a metric-compatible connection with torsion, we split it into Levi-Civita connection and torsion tensor as $\Gamma^\rho_{\mu\nu} = \bar{\Gamma}^{\rho}_{\mu\nu} + T^{\rho}_{\mu\nu}$.
+The effect of torsion is then moved to the right-hand side of Einstein equations
+\begin{equation}
+    \bar{G}_{\mu\nu}=8\pi G \left(T_{\mu\nu}^{\rm matter} + T_{\mu\nu}^{\rm torsion}\right),
+\end{equation}
+and interpreted as extra matter-like sources, or as fifth-force interactions
+
+In the Wilsonian framework however, unless protected by a symmetry, such a field will be integrated out at low energies.
+Indeed, naive power-counting suggests that having 3-indices torsion will generate non-renormizable interactions, much more suppressed by some heavy scale \(M_T\) at low energies than the 2-indices metric interactions.
+\end{mytheorem}
+
 
 
 \begin{mytheorem}[The Levi-Civita torsion-fixed metric connection.]
@@ -155,7 +216,9 @@ In view of what discssed above, we can interpret the Christoffel symbols and the
     This antisymmetric part can \emph{not} be absorbed into (the symmetric part of) the energy-momentum tensor, since this must indeed match the \emph{symmetric} Einstein tensor.
     The presence of torsion thus genuinely corresponds to `extra forces' beyond standard gravity.
     %
-    \item The symmetric part of the Christoffel symbols corresponds to `standard pseudoforces', like Coriolis force, that can be eliminated by going to a freely falling frame.
+    \item The symmetric part of the Christoffel symbols corresponds to `standard gravity' and `standard pseudoforces', like Coriolis force, that can be eliminated by going to a freely falling frame.
+    Indeed nonzero Christoffel symbols also appears in flat spacetime when using curved coordinates, like spherical coordinates.
+
     Notably, the choice of what to attribute to gravity and what to inertial forces is \emph{conventional} and depends on the choice of connection.
     Indeed, the difference of two connections $\nabla,\tilde{\nabla}$ is indeed a $(1,2)$-tensor since Christoffel symbols transform as
     \begin{align}\label{eq:difference_connection_is_tensor}
@@ -163,7 +226,7 @@ In view of what discssed above, we can interpret the Christoffel symbols and the
     \end{align}
     If both of them are symmetric in the lower indices, their difference is also symmetric and can thus be interpreted as a field contributing to the energy-momentum tensor at the rhs of Einstein's equations.
     %
-    \item Finally, the derivatives of the Christoffel symbols measure curvature, that is tidal forces that cannot be eliminated even when going to a freely falling frame.
+    \item Finally, derivatives of Christoffel symbols measure curvature, that is tidal forces that cannot be eliminated even when switching to a freely falling frame.
     Indeed, a freely falling frame is `exactly freely falling' only at a single point, but as soon as we depart from it infinitesimal tidal forces start to act.
     Curvature--i.e. essentially the Riemann tensor $R\sim \partial \Gamma$--therefore measures how much nearby freely falling frames deviate from each other.
 \end{itemize}
