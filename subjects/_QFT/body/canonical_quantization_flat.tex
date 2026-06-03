@@ -1855,7 +1855,7 @@ However, even though it is not immediately obvious from the Heisenberg evolution
 Before discussing the particle interpretation of field excitations, we must clarify the Lorenz invariance of the theory, since particles are ultimately defined as irreducible representations of the Poincaré group.
 
 
-\begin{mytheorem}[Relativistically normalized states \& Lorentz covariance of the scalar field]
+\begin{mytheorem}[Relativistically normalized states \& Lorentz covariance of the Klein-Gordon field]
 States created by acting on the vacuum with ladder operators are not normalized in a Lorentz-invariant way.
 Indeed, due to the commutation relation we have overlap
 \begin{align}
@@ -1894,7 +1894,7 @@ Notably, this immediately allows to recast the field decomposition \eqref{eq:tim
 \end{align}
 It is then immeadiate to verify that the field operator indeed transforms as a scalar under the action of the Poincar\'e group.
 For translations we have
-\begin{align}
+\begin{align}\label{eq:poincare_translation_transformation_operator}
     U(T_c) \hat{\phi}(x) U(T_c)^\dagger &= \int \frac{d^3\bar{k}}{(2\pi)^32E_k}\left( \sqrt{2E_k} a_k e^{-ik(x+c)} + \sqrt{2E_k} a_k^\dagger e^{ik(x+c)} \right) = \hat{\phi}(x+c).
 \end{align}
 For Lorentz transformations, using the invariance of the measure $\tfrac{d^3\bar{k}}{2E_k}=\tfrac{d^3\Lambda k}{2E_{\Lambda k}}$ and the inner product $k^\mu \eta_{\mu\nu} x^\nu =(\Lambda k)^\mu \eta_{\mu\nu} (\Lambda x)^\nu$, we have
@@ -1905,16 +1905,19 @@ For Lorentz transformations, using the invariance of the measure $\tfrac{d^3\bar
     &= \int \frac{d^3\Lambda k}{(2\pi)^32E_{\Lambda k}}\left( \sqrt{2E_{\Lambda k}} a_{\Lambda k} e^{-i \Lambda k \cdot\Lambda x} + \sqrt{2E_{\Lambda k}} a_{\Lambda k}^\dagger e^{i \Lambda k \cdot \Lambda x} \right)
     = \hat{\phi}(\Lambda x).
 \end{align}}
+Finally we stress that spin-fields will transform as in \eqref{eq:poincare_translation_transformation_operator} under translations, but will involve a matrix part for Lorentz transformations according to their representation of the Lorentz group.
+For example (m,n)-tensor fields
+{\small\begin{align}
+    \hat{T}^{\mu_*}_{\nu_\bullet}(x) = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2E_k}} \Big( \epsilon^{\mu_*}_{\nu_\bullet}(k)\,b^{\mu_*}_{\nu_\bullet,k} e^{-ikx} + \epsilon^{\mu_*}_{\nu_\bullet}(k)^\dagger\,b^{\mu_*, \, \dagger}_{\nu_\bullet,k} e^{ikx} \Big)
+    \mapsto U(\Lambda)\hat{T}(x)U(\Lambda)^\dagger = \Lambda^{\mu_*}_{\alpha_*} \Lambda_{\nu_\bullet}^{\beta_\bullet} \,\,\hat{T}^{\alpha_*}_{\beta_\bullet}(\Lambda x)\,,
+\end{align}}
+and spin-$\tfrac12$ fields
+{\small\begin{align}
+    \hat{\psi}(x) = \int \frac{d^3\bar{k}}{(2\pi)^3} \frac{1}{\sqrt{2E_k}}\sum_r \Big( u_r(k)c_r(k) e^{-ikx} + v_r(k)d_r^{\dagger}(k) e^{ikx} \Big)
+    \mapsto U(\Lambda)\hat{\psi}(x)U(\Lambda)^\dagger = S(\Lambda)\,\,\hat{\psi}(\Lambda x)\,.
+\end{align}}
 %
 \end{mytheorem}
-
-
-
-
-
-
-
-
 
 
 
