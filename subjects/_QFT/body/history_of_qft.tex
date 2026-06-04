@@ -111,15 +111,21 @@ For example, both the Schr\"odinger and Klein-Gordon equations imply a continuit
 In the Schr\"odinger case, we find the familiar positive definite probability density $\rho = |\psi|^2$.
 In the Klein-Gordon case, recalling solutions take the form $\phi=N e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ with $E^2 = |\mathbf{k}|^2 + m^2$, we find $\rho = 2E|N|^2$, which is not positive definite since $E$ can be negative.
 
-Crucially, the problem of negative energies is not due to the second-order equation, inevitably involving taking square roots.
-Indeed Dirac came up with his equation, first-order in time and space derivatives to avoid this problem, but still ended up with negative energy solutions, which he interpreted as the existence of antiparticles.
+Crucially, the problem of negative energies is not due to the second-order equation, inevitably involving square roots.
+Indeed Dirac came up with his equation, first-order in time and space derivatives to avoid this problem,
+\begin{align}
+    (i\gamma^\mu \partial_\mu - m)\psi = 0\implies \partial_t(\psi^\dagger \psi) = -\nabla_j\cdot (\psi^\dagger \gamma^0 \gamma^j \psi).
+\end{align}
+The Dirac equation does avoid negative probability density $\rho = \psi^\dagger \psi\geq0$ in the continuity equation, but still predicts negative energy solutions.
+In fact, the two solutions are positive $u(k)e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ and negative-energy spinors $v(k)e^{iEt+i\mathbf{k}\cdot \mathbf{x}}$ with $E^2 = |\mathbf{k}|^2 + m^2$, which he interpreted as antiparticles.
+
 These issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. 
 \end{mytheorem}
 
 
 
 
-\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is \emph{always} the answer. \questiontag{Check \& improve}]
+\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is \emph{always} the answer. \questiontag{Polish}]
 %
 Several attempts were made to formulate a relativistic version of the Schr\"odinger equation.
 The Schr\"odinger equation is first-order in time and second-order in space derivatives, and enforces a non-relativistic energy-momentum relation
@@ -135,11 +141,21 @@ Several approaches were attempted, ultimately depending on the spin of the parti
     \end{equation}
     This is second-order in both time and space derivatives and respects the relativistic energy-momentum relation \(E^2 = p^2 + m^2\).
     However, it faced challenges in interpreting negative energy solutions and the associated probability density.
-    \item \textbf{Dirac Equation.} For spin-$\tfrac{1}{2}$ particles, Dirac proposed a `square root' of the Klein-Gordon equation that would be first-order in both time and space derivatives:
+    \item \textbf{Dirac Equation.} For spin-$\tfrac{1}{2}$ particles, Dirac proposed a `square root' of the Klein-Gordon equation that would be first-order in both time and space derivatives
     \begin{equation}
         (i\gamma^{\mu} \partial_{\mu} - m) \psi(x) = 0.
     \end{equation}
     The introduction of $\gamma$-matrices was necessary to provide another Lorentz vector to contract with $\partial_{\mu}$ to make the equation Lorentz invariant.
+    More physically, Dirac proposed energy i.e. the Hamiltonian could be expressed linearly in momentum and mass
+    \begin{align}
+        H= a_i p_i + b m .
+    \end{align}
+    Enforcing the relativistic energy-momentum relation $E^2 = p^2 + m^2$ leads to
+    \begin{align}
+        E^2 = \tfrac{a_ia_j+a_ja_i}{2}p_ip_j+ (a_ib+ba_i) p_i + b^2 m^2 \implies
+        \{a_i, a_j\} = 2\delta_{ij}, \quad a_i b + b a_i = 0, \quad b^2 = 1.
+    \end{align}
+    Passing to the usual representation of energy $E = i\partial_t$ and momentum $p_i = -i\partial_i$ eventually leads to the Dirac equation above.
     The Dirac equation can indeed be derived by seeking a first-order equation whose square reproduces the Klein-Gordon equation:
     \begin{align}
         ia^\mu\partial_\mu\psi + b \psi = 0 &\Longrightarrow (ia^\mu\partial_\mu + b)^*(ia^\nu\partial_\nu + b)\psi = 0 \\

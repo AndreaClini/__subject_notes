@@ -238,6 +238,59 @@ Thus, at fixed $N$,
 \end{align}}
 so the minimum in total momentum is attained at $\mathbf{K}=0$.
 
+\subsubsection*{4.bis. Extension to interacting systems}
+More generally the argument goes through for any Hamiltonian that can be written as
+{\small\begin{align}
+\begin{aligned}
+    H=H_{\text{cm}}+H_{\text{rel}}=\frac{\mathbf{P}^2}{2M}+H_{\text{rel}},
+\end{aligned}
+\end{align}}
+with $[H_{\text{rel}},\mathbf{P}]=0$.
+This includes a large class of interacting systems, such as those with two-body interactions that depend only on the relative coordinates, e.g.
+{\small\begin{align}
+\begin{aligned}
+    H=\sum_{i=1}^N \frac{\mathbf{P}_i^2}{2m}+\sum_{i<j}V(\mathbf{X}_i-\mathbf{X}_j).
+\end{aligned}\end{align}}
+In this case, the energy still takes the form
+{\small\begin{align}
+\begin{aligned}
+    E(\mathbf{K})=E_{\text{rel}}+\frac{\mathbf{K}^2}{2M},
+\end{aligned}\end{align}}
+so the minimum is at $\mathbf{K}=0$.
+The key point is that the center-of-mass coordinate $\mathbf{X}_{\text{cm}}$ still generates momentum shifts, and the center-of-mass Hamiltonian still has the form $H_{\text{cm}}=\mathbf{P}^2/(2M)$, so the same argument applies.
+
+
+\subsubsection*{4.tris. Extension to interacting systems REMASTERED}
+Summarizing, the general Hamiltonian will receive single particle and interaction contributions, single particle contributions may also include the interaction with an external potential, and the interaction contributions may include two-body, three-body, and higher-body interactions, so the most general form of the Hamiltonian is
+\begin{align}
+   H= \sum_k \tfrac{k^2}{2m}c_k^\dagger c_k + \sum_{ab}h_{ab}c_a^\dagger c_b + \sum_{abcd}V_{abcd}c_a^\dagger c_b^\dagger c_c c_d + \sum_{abcdef}W_{abcdef}c_a^\dagger c_b^\dagger c_c^\dagger c_d c_e c_f + \cdots,
+\end{align}
+We can always split the single-particle kinetic term as
+\begin{align}
+   \sum_k \tfrac{k^2}{2m}c_k^\dagger c_k = \frac{\mathbf{P}^2}{2mN} + \sum_k \tfrac{(k-\mathbf{P}/N)^2}{2m}c_k^\dagger c_k
+\end{align}
+and the remaining single-particle and interaction terms can be rearranged into a relative Hamiltonian $H_{\text{rel}}$
+\begin{align}
+    H= \frac{\mathbf{P}^2}{2mN} + \sum_k \tfrac{(k-\mathbf{P}/N)^2}{2m}c_k^\dagger c_k + \sum_{ab}h_{ab}c_a^\dagger c_b + \sum_{abcd}V_{abcd}c_a^\dagger c_b^\dagger c_c c_d + \sum_{abcdef}W_{abcdef}c_a^\dagger c_b^\dagger c_c^\dagger c_d c_e c_f + \cdots =: \frac{\mathbf{P}^2}{2mN} + H_{\text{rel}}.
+\end{align}
+If the assumption $[H,\mathbf{P}]=0$ holds, then also $[H_{\text{rel}},\mathbf{P}]=0$.
+In particular, we can classify states by their total momentum $\mathbf{K}$, and the energy takes the form
+\begin{align}
+    E_{N,\alpha}(\mathbf{K})=E^{\text{rel}}_{N,\alpha}+\frac{\mathbf{K}^2}{2mN},
+\end{align}
+so the minimum is at $\mathbf{K}=0$.
+
+\subsubsection*{4.quater. Aside on the relativistic case}\todotag{Very not sure...}
+In a relativistic theory, the energy-momentum relation is $E^2=\mathbf{P}^2+M^2$, so the energy takes the form
+{\small\begin{align}
+\begin{aligned}
+    E(\mathbf{K})=\sqrt{\mathbf{K}^2+M^2},
+\end{aligned}\end{align}}
+and the minimum is still at $\mathbf{K}=0$.
+The key point is that the center-of-mass coordinate still generates momentum shifts, and the center-of-mass Hamiltonian still has the form $H_{\text{cm}}=\sqrt{\mathbf{P}^2+M^2}$, so the same argument applies.
+The main difference with the non-relativistic case is that the center-of-mass energy is not quadratic in $\mathbf{P}$, but the minimum is still at zero total momentum.
+
+
 \subsubsection*{5. First-quantized version}
 For $N$ identical particles,
 {\small\begin{align}

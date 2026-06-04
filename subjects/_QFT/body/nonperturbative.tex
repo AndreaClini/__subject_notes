@@ -27,8 +27,29 @@ We can have essentially three types of states, the first two being essentially t
     \item \textbf{Bound states.} These are states that correspond to a bound state of multiple particles, again typically associated with a pole in the propagator of the theory.
     These states do have a well-defined momentum and mass, which essentially corresponds to the sum of the masses of the constituent particles minus the binding energy.
 \end{itemize}
+
+We can label such states by $\lambda_p$ where $p$ is the total momentum of the state, and $\lambda$ is a label that distinguishes different states with the same momentum so that
+\begin{align}
+    |\lambda_p\rangle = U(p)|\lambda_0\rangle,
+\end{align}
+where $U(p)$ is the unitary operator implementing a boost to momentum $p$.
+A resolution of the identity can then be written with Lorentz-invariant measure as
+\begin{align}
+    \mathbb{1} = \sum_\lambda \int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_p}|\lambda_p\rangle\langle\lambda_p|\,.
+\end{align}
 \end{mytheorem}
 
+
+
+\begin{mytheorem}[Kallén-Lehmann spectral representation (Matheus 2.2)]
+Consider the 2-point Green function of a real scalar field $\phi$ in vacuum
+\begin{align}
+    G(x,y) = \langle 0|T\{\phi(x)\phi(y)\}|0\rangle\,.
+\end{align}
+Inserting a resolution of the identity in terms of the states of the theory, we can write...
+
+
+\end{mytheorem}
 
 
 %--------------------------------------------------------
