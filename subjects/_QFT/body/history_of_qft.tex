@@ -119,7 +119,26 @@ Indeed Dirac came up with his equation, first-order in time and space derivative
 The Dirac equation does avoid negative probability density $\rho = \psi^\dagger \psi\geq0$ in the continuity equation, but still predicts negative energy solutions.
 In fact, the two solutions are positive $u(k)e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ and negative-energy spinors $v(k)e^{iEt+i\mathbf{k}\cdot \mathbf{x}}$ with $E^2 = |\mathbf{k}|^2 + m^2$, which he interpreted as antiparticles.
 
-These issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. 
+Regardless of negative energies, the interpretation of the wave function as a probability amplitude for a single particle is still problematic, since it cannot account for processes where particles are created or destroyed, which are common in high-energy physics.
+In fact, even for energies lower than the rest mass energy of target particles, because of the uncertainty principle, a consistent relativistic quantum theory must allow for the creation and annihilation of virtual particle-antiparticle pairs.
+
+Moreover, any the above interpretation of the wave function as a probability amplitude for finding a single particle at a given position and time is also problematic since it violates causality.
+Indeed, for an hamiltonian $H = \sqrt{p^2 + m^2}$, the propagator $\langle \mathbf{x} | e^{-iHt} | \mathbf{y} \rangle$ is non-zero for spacelike separations $|\mathbf{x}-\mathbf{y}| > t$, thus allowing for superluminal propagation of signals.
+Indeed we find nonzero amplitude 
+\begin{align}\label{eq:nonvanishing_superluminal_propagation_apmplitude}
+    \langle \mathbf{x} | e^{-iHt} | \mathbf{y} \rangle &= \int \frac{d^3p}{(2\pi)^3} e^{i\mathbf{p}\cdot(\mathbf{x}-\mathbf{y}) - i\sqrt{|\mathbf{p}|^2 + m^2}t} \\
+    &\sim e^{-m\sqrt{|\mathbf{x}-\mathbf{y}|^2 - t^2}} \quad \text{for } |\mathbf{x}-\mathbf{y}| \gg t.
+\end{align}
+
+The above issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. 
+We can already anticipate that:
+\begin{itemize}
+    \item the problem of negative energies is resolved since the mathematical epsression for the energy will be different than the simple $i\hbar\partial_t$ operator;
+    \item the problem of particle creation and annihilation is resolved since the wave function will be promoted to an operator, thus allowing for a variable number of particles.
+    \item the problem of causality is resolved since there is no point in asking if the field is at a position $\mathbf{x}$ at a given time $t$, since the field is `everywhere' at all times, and thus the question is simply ill-posed.
+    In fact, even for fields we would find that the analogus fomula to \eqref{eq:nonvanishing_superluminal_propagation_apmplitude} for the propagator of the field would be non-zero for spacelike separations, albeit exponentially suppressed.
+    The proper question is instead whether the state of the field at a given spacetime point can influence the state of the field at another spacetime point, i.e. a question about causal correltors, which will be shown to vanish for spacelike separations.
+\end{itemize}
 \end{mytheorem}
 
 
