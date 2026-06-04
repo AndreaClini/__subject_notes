@@ -390,9 +390,9 @@ Indeed by current conservation and Gauss theorem
 More generally, for equivalent foliations $\mathcal{M}\simeq \R\times \Sigma \simeq \tilde{\R}\times \tilde{\Sigma}$ and two times $t_1$ and $\tilde{t}_2=\tilde{t}(t_2)$, the argument is the same by considering the spacetime region bounded by $\Sigma_{t_1}$ and $\tilde{\Sigma}_{\tilde{t}_2}$.
 
 The symplectic space is naturally promoted to a Poisson space by defining the Poisson bracket of two functionals $F_1, F_2: \mathcal{S}_\R \to \R$ as
-\begin{align}
-    \{F_1, F_2\} = \omega(X_{F_1}, X_{F_2}),\quad\text{with}\quad \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \quad \forall\, Y \in T_\phi \mathcal{S}_\R \simeq \mathcal{S}_\R,
-\end{align}
+{\small\begin{align}
+    \{F_1, F_2\} = \omega(X_{F_1}, X_{F_2})=\int_\Sigma\!\!\!d^n\!\mathbf{x}\, \Big( \tfrac{\delta F_1}{\delta \phi(t,\mathbf{x})}\tfrac{\delta F_2}{\delta \pi(t,\mathbf{x})} \!-\!\tfrac{\delta F_1}{\delta \pi(t,\mathbf{x})} \tfrac{\delta F_2}{\delta \phi(t,\mathbf{x})}\Big), \,\,\text{with}\,\, \omega(X_F(\phi), Y) := dF_{|\phi}(Y) \,\, \forall\, Y \in T_\phi \mathcal{S}_\R \simeq \mathcal{S}_\R,
+\end{align}}
 where the hamiltonian vector field $X_F$ associated to a functional $F$ is defined raising the index of the functional derivative $dF_{|\phi}(Y) = \int_\Sigma \frac{\delta F}{\delta \phi} Y$ with the symplectic form $\omega$.
 
 Finally we complexify the space of solutions 
@@ -409,6 +409,7 @@ This is again written in terms of a \emph{complex} \emph{conserved} current, now
     \langle \psi_1, \psi_2\rangle \equiv \int_\Sigma \star J_{12}\,,\quad\text{for}\quad
     J_{12}= -i\big(d\psi_1^* \psi_2 - \psi_1^* d\psi_2\big)\quad \text{with} \quad J_{12}^* = J_{21}, \quad \nabla_\mu J^\mu_{12} = 0.
 \end{align}
+Indeed the conserved current from the $U(1)$-symmetry for a single fiels is $J_\mu = -i\big(\psi^* \nabla_\mu \psi - \psi \nabla_\mu \psi^*\big)$.
 Beware this hermitian product has signature $(+1,-1)$ with an equal number of $\pm1$ by construction, since it arises from a symplectic (real antisymmetric) form and thus
 \begin{align}\label{eq:signature_pm_hermitian_product_phase_space}
     \langle \psi^*,\chi^*\rangle := -i\, \omega(\psi, \chi^*) = i\, \omega(\chi^*, \psi) =: -\langle \chi, \psi \rangle = -\langle \psi, \chi\rangle^*.
