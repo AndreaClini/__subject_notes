@@ -13,7 +13,7 @@
 %----------------------------------------------------------
 
 
-\begin{mytheorem}[The rise of Quantume Mechanics.\questiontag{Check \& improve.}]
+\begin{mytheorem}[The rise of Quantume Mechanics.]
 At the turn of the 20th century, several experimental observations challenged the classical understanding of physics and led to the development of Quantum Mechanics.
 Some of the key discoveries are the following.
 \begin{itemize}
@@ -21,23 +21,23 @@ Some of the key discoveries are the following.
     \item \textbf{Photoelectric Effect.} Albert Einstein's explanation of the photoelectric effect, proposing that light consists of discrete packets of energy called photons.
     \item \textbf{Atomic Spectra \& stability of matter.} Niels Bohr's model of the hydrogen atom, introducing quantized orbits for electrons, solved the problem of radiation by accelerated charges that would predict electrons to spiral down into the nucleus.
     Ultimately, the solution was found in the uncertainty principle: as $\Delta x \Delta p \gtrsim \hbar$, as the electron gets closer to the nucleus, its momentum uncertainty increases, preventing it from collapsing into the nucleus.
-    \item \textbf{Wave-Particle Duality \& double-slit experiment.} Louis de Broglie's hypothesis that particles exhibit wave-like properties, leading to the development of wave mechanics by Erwin Schrödinger.
+    \item \textbf{Wave-Particle Duality \& double-slit experiment.} Louis de Broglie's hypothesis that particles exhibit wave-like properties, leading to the development of wave mechanics by Schrödinger.
     \item \textbf{Uncertainty Principle.} Heisenberg's formulation of the uncertainty principle, which states that certain pairs of physical properties cannot be simultaneously known to arbitrary precision.
 \end{itemize}
 \end{mytheorem}
 
 
-\begin{mytheorem}[The price of noncommutativity.\notetag{Check}]
+\begin{mytheorem}[The price of noncommutativity.]
 If we demand that observables are represented by noncommuting operators, we have to pay a price: such observable must be operators acting on some vector space $\mathcal{H}$, i.e. they must be matrices, since standard numbers commute.
-Furthermore, taking the trace of the canonical commutation relations we have
+Furthermore, taking the trace of the canonical commutation relations gives
 \begin{align}
     [\hat{q}_i, \hat{p}_j] = i\hbar\delta_{ij} \Longrightarrow 0=\text{Tr}([\hat{q}_i, \hat{p}_j]) = i\hbar \,\text{Tr}(\delta_{ij}) = i \hbar \cdot \dim(\mathcal{H}).
 \end{align}
-The only way to resolve this absurdity is to have $\dim(\mathcal{H}) = \infty$ so that the trace is not well-defined and the above equality is meaningless.
+The only way to resolve this absurdity is to have $\dim(\mathcal{H}) = \infty$, so that the trace is not well-defined and the above equality is meaningless.
 The take home is that such operators must act on an \emph{infinite}-dimensional Hilbert space.
-Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\delta(x-y)$ in the above equality, which is even more ill-defined and infinite.
+Note the problem would get even worse if we had a continuum of DoFs, since then we would have to deal with $\text{Tr}\,\delta(x-y)$ in the above equality, which is even more ill-defined and infinite.
 
-Incidentally, note that this is not necessarily the case for all quantum systems: for instance, spin systems have a finite number of DoFs and can be described by finite-dimensional Hilbert spaces.
+Note that this is not necessarily the case for all quantum systems: for instance, spin systems have a finite number of DoFs and can be described by finite-dimensional Hilbert spaces.
 The primary example is the spin-$\frac{1}{2}$ system, whose Hilbert space is just $\mathbb{C}^2$ with Pauli matrices as operators obeying $[\sigma_i, \sigma_j] = 2i \epsilon_{ijk} \sigma_k$.
 \end{mytheorem}
 
@@ -46,7 +46,7 @@ The primary example is the spin-$\frac{1}{2}$ system, whose Hilbert space is jus
 Despite its successes, Quantum Mechanics soon after faced several challenges that progressively highlighted its limitations, up to making it untenable, and paved the way for the development of Quantum Field Theory.
 %
 \begin{itemize}
-    \item \textbf{Relativistic Incompatibility \& negative energies.} Quantum Mechanics, as originally formulated, was not compatible with the principles of special relativity.
+    \item \textbf{Incompatibility with special relativity \& negative energies.} Quantum Mechanics, as originally formulated, was not compatible with the principles of special relativity.
     Attempts to create a relativistic version of Quantum Mechanics, such as the Klein-Gordon and Dirac equations, led to difficulties in interpreting negative energy solutions and the need for a new framework.
     \item \textbf{Particle Creation and Annihilation.} Quantum Mechanics treated particles as fixed entities, unable to account for processes where particles are created or destroyed, which are common in high-energy physics.
     This limitation necessitated a theory that could handle variable particle numbers.
@@ -58,9 +58,9 @@ Despite its successes, Quantum Mechanics soon after faced several challenges tha
 \end{mytheorem}
 
 
-\begin{mytheorem}[A first (failed) attempt: relativistic quantum mechanics.\todotag{Finish. See Matheus 1.3}]
+\begin{mytheorem}[A first (failed) attempt: relativistic quantum mechanics.]
 %
-A first attempt to address the limitations of Quantum Mechanics was aimed to combine the principles of quantum mechanics with special relativity, namely
+A first attempt to address the limitations of Quantum Mechanics aimed to combine the principles of quantum mechanics with special relativity, summarized in the following diagram:
 \begin{center}
 \begin{tikzpicture}[
   font=\small,
@@ -95,63 +95,67 @@ A first attempt to address the limitations of Quantum Mechanics was aimed to com
 \draw[arr] (cm) -- node[lab, left] {$v \sim c\,$} (sr);
 \draw[arr] (qm) -- (rqm);
 \draw[arr] (sr) -- (rqm);
-\node[font=\scriptsize, text=red, below=2mm of rqm] {Does it work?};
+\node[font=\scriptsize, text=black, below=2mm of rqm] {Does it even work?};
 \end{tikzpicture}
 \end{center}
 The idea is simply to promote the Schr\"odinger equation to a relativistic equation, such as the Klein-Gordon or Dirac equations, without enforcing the second quantization procedure i.e. the wave function is still a c-number and not an operator, connected with the probability amplitude of finding a particle at a given position and time.
-While this approach successfully incorporated relativistic effects and predicted phenomena such as antimatter, it still faced significant challenges, including the interpretation of negative energy solutions and the inability to account for particle creation and annihilation processes.
+This approach successfully incorporated relativistic effects and predicted phenomena such as antimatter, but still faced significant problems, including the interpretation of negative energy solutions and the inability to account for particle creation and annihilation processes.
 
-For example, both the Schr\"odinger and Klein-Gordon equations imply a continuity equation $\partial_t\rho=-\nabla\cdot \mathbf{j}$, identifying a probability density $\rho$ and current $\mathbf{j}$, 
+For example, both the Schr\"odinger and Klein-Gordon equations imply a continuity equation {\small $\partial_t\rho=-\nabla\cdot \mathbf{j}$}, identifying a probability density $\rho$ and current $\mathbf{j}$, namely
 \begin{align}
     &i\hbar \partial_t \psi = -\frac{\hbar^2}{2m} \nabla^2 \psi \implies
-    \partial_t|\psi|^2 = -\nabla\cdot \Big(\tfrac{i\hbar}{2m}(\psi \nabla \psi^*- \psi^* \nabla \psi)\Big)
+    \partial_t|\psi|^2 = -\nabla\cdot \Big(\tfrac{i\hbar}{2m}(\psi \nabla \psi^*- \psi^* \nabla \psi)\Big),
     \\[3pt]
     &(\Box+m^2)\phi = 0 \implies \partial_t\Big(i(\phi^* \partial_t \phi - \phi \partial_t \phi^*)\Big) = -\nabla\cdot \Big(i(\phi \nabla \phi^* - \phi \nabla \phi)\Big).
 \end{align}
 In the Schr\"odinger case, we find the familiar positive definite probability density $\rho = |\psi|^2$.
-In the Klein-Gordon case, recalling solutions take the form $\phi=N e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ with $E^2 = |\mathbf{k}|^2 + m^2$, we find $\rho = 2E|N|^2$, which is not positive definite since $E$ can be negative.
+In the Klein-Gordon case, recalling solutions take the form {\small $\phi=N e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$} with {\small $E^2 = |\mathbf{k}|^2 + m^2$}, we find $\rho = 2E|N|^2$, which is not positive definite since $E$ can be negative.
 
-Crucially, the problem of negative energies is not due to the second-order equation, inevitably involving square roots.
-Indeed Dirac came up with his equation, first-order in time and space derivatives to avoid this problem,
+Crucially, the problem of negative energies is not due to the equation being second-order in time derivatives, which inevitably involves square roots.
+In fact, Dirac tried to solve the problem by seeking an equation that was first-order in time derivatives, and thus also in space derivatives to treat space and time on an equal footing.
+The Dirac equation still implies a continuity equation, namely
 \begin{align}
     (i\gamma^\mu \partial_\mu - m)\psi = 0\implies \partial_t(\psi^\dagger \psi) = -\nabla_j\cdot (\psi^\dagger \gamma^0 \gamma^j \psi).
 \end{align}
 The Dirac equation does avoid negative probability density $\rho = \psi^\dagger \psi\geq0$ in the continuity equation, but still predicts negative energy solutions.
-In fact, the two solutions are positive $u(k)e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ and negative-energy spinors $v(k)e^{iEt+i\mathbf{k}\cdot \mathbf{x}}$ with $E^2 = |\mathbf{k}|^2 + m^2$, which he interpreted as antiparticles.
+Indeed, the two solutions are positive $u(k)e^{-iEt+i\mathbf{k}\cdot \mathbf{x}}$ and negative-energy $v(k)e^{iEt+i\mathbf{k}\cdot \mathbf{x}}$ spinors with $E^2 = |\mathbf{k}|^2 + m^2$, which he interpreted as antiparticles.
 
-Regardless of negative energies, the interpretation of the wave function as a probability amplitude for a single particle is still problematic, since it cannot account for processes where particles are created or destroyed, which are common in high-energy physics.
+Regardless of negative energies, the interpretation of the wave function as the probability amplitude for finding a single particle at a given space-time position is still problematic, since it cannot account for processes where particles are created or destroyed, very common in high-energy physics.
 In fact, even for energies lower than the rest mass energy of target particles, because of the uncertainty principle, a consistent relativistic quantum theory must allow for the creation and annihilation of virtual particle-antiparticle pairs.
 
-Moreover, any the above interpretation of the wave function as a probability amplitude for finding a single particle at a given position and time is also problematic since it violates causality.
-Indeed, for an hamiltonian $H = \sqrt{p^2 + m^2}$, the propagator $\langle \mathbf{x} | e^{-iHt} | \mathbf{y} \rangle$ is non-zero for spacelike separations $|\mathbf{x}-\mathbf{y}| > t$, thus allowing for superluminal propagation of signals.
-Indeed we find nonzero amplitude 
+The interpretation of the wave function as the probability amplitude for a single particle is also problematic because it violates causality.
+Indeed, for a free hamiltonian $H = \sqrt{p^2 + m^2}$, the propagator $\langle \mathbf{x} | e^{-iHt} | \mathbf{y} \rangle$ is non-zero also for spacelike separations $|\mathbf{x}-\mathbf{y}| > t$, thus allowing for superluminal propagation of signals.
+Specifically we find an exponentially suppressed but non-vanishing amplitude 
 \begin{align}\label{eq:nonvanishing_superluminal_propagation_apmplitude}
+\begin{aligned}
     \langle \mathbf{x} | e^{-iHt} | \mathbf{y} \rangle &= \int \frac{d^3p}{(2\pi)^3} e^{i\mathbf{p}\cdot(\mathbf{x}-\mathbf{y}) - i\sqrt{|\mathbf{p}|^2 + m^2}t} \\
     &\sim e^{-m\sqrt{|\mathbf{x}-\mathbf{y}|^2 - t^2}} \quad \text{for } |\mathbf{x}-\mathbf{y}| \gg t.
-\end{align}
+\end{aligned}\end{align}
 
-The above issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, which treats fields as the fundamental entities and allows for the creation and annihilation of particles. 
+The above issues highlighted the need for a more comprehensive framework, ultimately leading to the development of Quantum Field Theory, treating fields as the fundamental entities and allowing for the creation and annihilation of particles, which are just reinterpreted as excitations of the underlying fields.
 We can already anticipate that:
 \begin{itemize}
     \item the problem of negative energies is resolved since the mathematical epsression for the energy will be different than the simple $i\hbar\partial_t$ operator;
-    \item the problem of particle creation and annihilation is resolved since the wave function will be promoted to an operator, thus allowing for a variable number of particles.
-    \item the problem of causality is resolved since there is no point in asking if the field is at a position $\mathbf{x}$ at a given time $t$, since the field is `everywhere' at all times, and thus the question is simply ill-posed.
-    In fact, even for fields we would find that the analogus fomula to \eqref{eq:nonvanishing_superluminal_propagation_apmplitude} for the propagator of the field would be non-zero for spacelike separations, albeit exponentially suppressed.
-    The proper question is instead whether the state of the field at a given spacetime point can influence the state of the field at another spacetime point, i.e. a question about causal correltors, which will be shown to vanish for spacelike separations.
+    \item the problem of particle creation and annihilation is resolved since the wave function will be promoted to an operator, thus allowing for a variable number of particles;
+    \item the problem of causality is resolved since there is no point in asking whether "the field is at a position $\mathbf{x}$ at a given time $t$", since the field is `everywhere' at all times, and thus the question is simply ill-posed.
+    In fact, the formula analogous to \eqref{eq:nonvanishing_superluminal_propagation_apmplitude} for the field propagator in QFT is still non-zero for spacelike separations, albeit exponentially suppressed.
+
+    The proper question is instead whether "the state of the field at a given spacetime point can influence the state of the field at another spacetime point", i.e. a question about causal correlators, which will be shown to vanish for spacelike separations.
+    We also anticipate that the role of antiparticles is crucial for this causl correlator to vanish for spacelike separations, since the contribution of antiparticles exactly cancels the contribution of particles in this case.
 \end{itemize}
 \end{mytheorem}
 
 
 
 
-\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is \emph{always} the answer. \questiontag{Polish}]
+\begin{mytheorem}[How to make the Schr\"odinger equation relativistic? Klein-Gordon is \emph{always} the answer.]
 %
-Several attempts were made to formulate a relativistic version of the Schr\"odinger equation.
+Regardless of first or second quantization, i.e. both for Relativistic Quantum Mechanics and Quantum Field Theory, a necessary step towards a relativistic quantum theory is to formulate a relativistic version of the Schr\"odinger equation.
 The Schr\"odinger equation is first-order in time and second-order in space derivatives, and enforces a non-relativistic energy-momentum relation
-\begin{equation}
+{\small\begin{equation}
     -i\partial_t\psi = -\frac{\hbar^2}{2m} \nabla^2 \psi\quad \Longrightarrow\quad E = \frac{p^2}{2m}.
-\end{equation}
-It was clear that in order to be relativistic, the equation must treat space and time on an equal footing.
+\end{equation}}
+First of all, in order to be relativistic, the equation must treat space and time on an equal footing.
 Several approaches were attempted, ultimately depending on the spin of the particle considered.
 \begin{itemize}
     \item \textbf{Klein-Gordon Equation.} For spin-0 particles, the Klein-Gordon equation was proposed:
@@ -165,7 +169,7 @@ Several approaches were attempted, ultimately depending on the spin of the parti
         (i\gamma^{\mu} \partial_{\mu} - m) \psi(x) = 0.
     \end{equation}
     The introduction of $\gamma$-matrices was necessary to provide another Lorentz vector to contract with $\partial_{\mu}$ to make the equation Lorentz invariant.
-    More physically, Dirac proposed energy i.e. the Hamiltonian could be expressed linearly in momentum and mass
+    More physically, Dirac proposed that the energy, i.e. the Hamiltonian, could be expressed as a linear combination of momentum and mass
     \begin{align}
         H= a_i p_i + b m .
     \end{align}
@@ -178,7 +182,7 @@ Several approaches were attempted, ultimately depending on the spin of the parti
     The Dirac equation can indeed be derived by seeking a first-order equation whose square reproduces the Klein-Gordon equation:
     \begin{align}
         ia^\mu\partial_\mu\psi + b \psi = 0 &\Longrightarrow (ia^\mu\partial_\mu + b)^*(ia^\nu\partial_\nu + b)\psi = 0 \\
-        &\Longrightarrow (a^\mu a^\nu \partial_\mu \partial_\nu + i(b a^\mu-a^\mu b)\partial_\mu + b^2)\psi = 0.
+        &\Longrightarrow \big[a^\mu a^\nu \partial_\mu \partial_\nu + i(b a^\mu-a^\mu b)\partial_\mu + b^2\big]\psi = 0.
     \end{align}
     Imposing this matches the Klein-Gordon equation requires
     \begin{align}
@@ -186,7 +190,7 @@ Several approaches were attempted, ultimately depending on the spin of the parti
         a^\mu b - b a^\mu = 0, \quad
         b^2= m^2\quad \Rightarrow \quad a^\mu\equiv \gamma^\mu, \quad b \equiv m\,.
     \end{align}
-    These relations cannot be satisfied by ordinary numbers, leading to the introduction of the $\gamma$-matrices.
+    These relations cannot be satisfied by ordinary numbers, leading to the introduction of $\gamma$-matrices.
     The Dirac equation successfully incorporated spin and predicted the existence of antimatter, but similarly introduced complexities related to negative energy states.
     %
     \item For spin-1 particles, the Proca and Maxwell equation was developed--or better borrowed from classical electrodynamics--to describe massive and massless vector bosons respectively:
