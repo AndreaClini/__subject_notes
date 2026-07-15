@@ -19,18 +19,39 @@ In this long chapter, we collect various random topics in differential geometry 
 The tangent space to a manifold can be defined in several equivalent ways:
 \begin{itemize}
     \item equivalence classes of (germs of) curves;
-    \item coordinate definition (i.e. a vector is what transforms as a vector under change of charts);
-    \item derivations on the algebra of functions (i.e. linear maps obeying the Leibniz rule).
+    \item coordinate definition, i.e. "a vector is what transforms as a vector under change of charts";
+    \item derivations on the algebra of (germs of) functions, i.e. linear maps obeying the Leibniz rule.
 \end{itemize}
-The latter is the most abstract and generalizes to non-commutative geometry, where the algebra of functions is replaced by a non-commutative algebra, such as the `operator space' of a quantum system (i.e. essentially functions of position $X$ and momentum $P$ operators).
+The latter is the most abstract and generalizes to non-commutative geometry, where the algebra of functions is replaced by a non-commutative algebra, such as the `operator space' of a quantum system, i.e. essentially functions of position $X$ and momentum $P$ operators.
 In this case, the underlying space is not a manifold and the former definitions lose their meaning, while the latter still makes sense and gives a well-defined notion of `tangent space' to a non-commutative space.
 \end{mytheorem}
+
+\begin{mytheorem}[Why frame bundles?]
+Given the local triviality request on a frame bundle, i.e.
+\begin{align}
+    E_F\to M_{\, \big|_{U}}\sim U\times F \to U,
+\end{align}
+one might wonder about the point of studying them at all\dots
+The point is that the local triviality request is a very weak condition, and very few bundles are actually trivial, i.e. globally of the form $E\sim M\times F$.
+The very existence of non-trivial bundles is a deep and important fact, capturing the global structure of the manifold with many physical consequences.
+\end{mytheorem}
+
+
 
 %========================================================
 \section{Smoothness \& Whitney embedding theorem} \todotag{To be written}
 %=========================================================
 
+\begin{mytheorem}[Whitney smoothness theorem]
+If a manifold is topological and admits a $C^{1}$ structure, then it admits a unique $C^{\infty}$ structure.
+That is, if a manifold is $C^{1}$-differentiable, then it is automatically smooth i.e. $C^{\infty}$-differentiable.
+In particular, if we have an atlas that is $C^{k}$-differentiable but not $C^{k-1}$-differentiable then it simply means we messed up with coordinates and we can always find a better atlas that is $C^{\infty}$-differentiable.
+\end{mytheorem}
 
+
+\begin{mytheorem}[Whitney embedding theorem]
+Any smooth $n$-dimensional manifold can be immersed in $\mathbb{R}^{2n}$ and embedded in $\mathbb{R}^{2n+1}$.
+\end{mytheorem}
 
 %-----------------------------------------------------------------------
 %========================================================
