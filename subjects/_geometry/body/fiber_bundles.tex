@@ -1,4 +1,6 @@
 % !TeX root = ../geometry_main.tex
+\documentclass[../geometry_main.tex]{subfiles}
+\begin{document}
 %=======================================================
 %=======================================================
 \chapter{Fibre bundles \&  tetrad formalism}
@@ -154,17 +156,7 @@ and the covariant derivative reurns the infinitesimal change,
 \end{align}
 This is simply a 1-parameter subgroup, which gives the commutative diagram of Lie groups and algebras
 \[
-    \begin{tikzpicture}[scale=1]
-    \node (A) at (0,1) {$\R$};
-    \node (B) at (2,1) {$\mathfrak{g}$};
-    \node (C) at (0,0) {$(\R,+)$};
-    \node (D) at (2,0) {$G\,,$};
-
-    \draw[->] (A) -- node[above] {} (B);
-    \draw[->] (A) -- node[left]  {$\exp$} (C);
-    \draw[->] (B) -- node[right] {$\exp$} (D);
-    \draw[->] (C) -- node[below] {$P_\gamma$} (D);
-    \end{tikzpicture}
+    \includegraphics{images/connection_exponential_diagram.pdf}
 \]
 Since the $\exp$ map is a local diffeomorphism, there exists $L\in\mathfrak{g}$ such that locally $P_\gamma(t) = \exp(L t)$ for $t\sim 0$.
 Comparing the two expressions we thus confirm that
@@ -781,5 +773,4 @@ It is worth noticing that the Einstein-Hilbert action is linear in the curvature
 The explanation for this is that the Einstein-Hilbert action is not the most general action we can write down in terms of $\Omega$ and $\theta$, but rather it is the unique action which leads to second order equations of motion for the tetrad fields $\theta^a$ and thus for the metric $g$.
 This is also relatd to Sakarov conditions.\todotag{check \& fix}
 
-
-
+\end{document}

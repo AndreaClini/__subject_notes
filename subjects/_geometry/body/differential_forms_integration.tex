@@ -1,16 +1,39 @@
 % !TeX root = ../geometry_main.tex
+\documentclass[../geometry_main.tex]{subfiles}
+\begin{document}
 %================================================
 %========================================================
-\chapter{Differential forms \& integration} \todotag{To be written}
+\chapter{Differential forms \& integration} 
 %=========================================================
 %===================================================================
 
 
+\begin{mytheorem}[Antisymmetrization and wedge product of differential forms]
+The wedge product of dufferential forms is defined as
+{\small\begin{align}
+\begin{aligned}
+    \alpha\wedge\beta &= A\Big(\alpha\otimes\beta\Big)
+    =
+    \tfrac{1}{\alpha!\beta!}\sum_{\sigma\in \mathcal{S}_{\alpha+\beta}}(-1)^{\sigma}(\alpha\otimes\beta)\circ \sigma
+    =
+    \tfrac{1}{\binom{\alpha+\beta}{\beta}}\sum_{\rho\in\mathcal{R}^{\alpha+\beta}_\alpha}(-1)(\alpha\otimes\beta)\circ\rho\,,
+\end{aligned}
+\end{align}}
+where $\mathcal{R}^{\alpha+\beta}_{\beta}$ denotes the \emph{ordered} splittings of indices $\{i_1,\dots,i_{\alpha+\beta}\}$ into two subsets of $\alpha$ and $\beta$ indices each, which is a subset of the set of permutations $\mathcal{S}_{\alpha+\beta}$.
+
+This definition makes the wedge product distributive and associative.
+In particular it makes the set of differential forms a \textbf{graded-commutative algebra}
+\begin{align}
+    \Lambda(M)=\bigotimes_{k=0}^n\Lambda^k(M), \qquad \alpha\wedge\beta=(-1)^{\alpha\beta}\beta\wedge\alpha\,.
+\end{align}
+\end{mytheorem}
+
+
 \begin{mytheorem}[Indices bookkeeping for differential forms]
 The canonical basis for $\Lambda^k(M)$ is written as $dx^{i_1} \wedge \cdots \wedge dx^{i_k}$ with $i_1 < i_2 < \cdots < i_k$.
-We will insetad use indices $\sigma_1, \dots, \sigma_k \subseteq \{1, \dots, n\}$ to denote unordered indices.
-A $k$-form $\omega \in \Lambda^k (M)$ can be written equivalently as
-\begin{align}\label{eq:indices_bookkeeping_differential_forms}
+We will instead use greek letters $\sigma_1, \dots, \sigma_k \subseteq \{1, \dots, n\}$ to denote unordered indices.
+A $k$-form $\omega \in \Lambda^k (M)$ can be equivalently written  as
+{\small\begin{align}\label{eq:indices_bookkeeping_differential_forms}
 \begin{aligned}
     \omega &= \sum_{i_1 < \cdots < i_k} \omega_{i_1 \dots i_k} dx^{i_1} \wedge \cdots \wedge dx^{i_k}
     \\
@@ -18,7 +41,7 @@ A $k$-form $\omega \in \Lambda^k (M)$ can be written equivalently as
     \\
     &= \sum_{\sigma_1, \dots, \sigma_k} \omega_{\sigma_1 \dots \sigma_k}\, dx^{\sigma_1} \otimes \cdots \otimes dx^{\sigma_k},
 \end{aligned}
-\end{align}
+\end{align}}
 In the first expression we do not sum over repeated indices, which are ordered $i_1 \dots i_k$.
 In the second expression we instead sum over the \emph{unordered} indices $\sigma_1, \dots, \sigma_k$, we define $\omega_{\sigma_1 \dots \sigma_k}$ to be totally antisymmetric, and divide by $k!$ to avoid overcounting.
 In the third expression we explicitate the wedge product in terms of antisymmetrized tensor product: because $\omega_{\sigma_1 \dots \sigma_k}$ is already totally antisymmetric, and we are still summing over the $\sigma$ indices, the double counting cancel $1/k!$ factor.
@@ -27,9 +50,11 @@ In the third expression we explicitate the wedge product in terms of antisymmetr
 
 %-----------------------------------------------------
 %========================================================
-\section{Derivatives on differential forms} \todotag{To be written}
+\section{Derivatives on differential forms}
 %=========================================================
 %-----------------------------------------------------
+
+\noindent
 For differential forms (anti)-derivatives of degree $k\in \mathbb{Z}$ obeys the Leibniz rule in the form
 \begin{equation}
     \delta: \Lambda^\bullet (M) \to \Lambda^{\bullet+k} (M), \qquad \delta (\alpha \wedge \beta) = (\delta \alpha) \wedge \beta + (\pm1)^{|\alpha|} \alpha \wedge (\delta \beta).
@@ -48,9 +73,9 @@ From the Leibniz rule for tensors and the linearity of the antisymmetrization ma
 \begin{mytheorem}[Inner derivative]
 The inner derivative is a \emph{anti}derivative of degree $(0,-1)$ on differential forms, defined as the contraction along a vector field $X$
 \begin{equation}
-    i_X: \Lambda^k (M) \to \Lambda^{k-1} (M)\quad  \mid\quad  i_X \omega := \omega (X, \cdot, \cdots, \cdot) 
+    i_X: \Lambda^k (M) \to \Lambda^{k-1} (M)\quad  \mid\quad  i_X \omega := \omega (X, \dots) 
 \end{equation}
-In a basis of $\Lambda^{k-1}(M)$ i.e. for \emph{ordered} indices $i_1< \dots <i_{k-1}$, but summing over \emph{any} value $\sigma\in \{1\dots n\}$, we have
+In a basis of $\Lambda^{k-1}(M)$, that is summing over \emph{ordered} indices $i_1< \dots <i_{k-1}$, but over \emph{any} value $\sigma\in \{1\dots n\}$, we have
 \begin{equation}\label{eq:interior_derivative_basis_expr}
    (i_X \omega) = X^{\sigma}\, \omega_{\sigma i_1 \dots i_{k-1}} \, dx^{i_1} \wedge \cdots \wedge dx^{i_{k-1}}
 \end{equation} 
@@ -81,6 +106,30 @@ Under this conditions, one proves the usual formula in a coordinate basis
 \end{mytheorem}
 
 
+\begin{mytheorem}[Cartan formula]
+This fundamental result links the Lie derivative $\mathcal{L}_X$, the exterior derivative $d$ and the inner derivative $i_X$, namely, for any differential form $\omega$, 
+\begin{equation}
+    \mathcal{L}_X \omega = i_X d \omega + d (i_X \omega).
+\end{equation}
+Notably that the right-hand side is defined only for differential forms, while the left-hand side makes sense for any tensor.
+Since differential forms include functions (0-forms) and differentials (1-forms), we can use this formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Curl, pseudo-vectors and Hodge duals]
+Consider a vector field $V=(V_x,V_y,V_z)$ on a 3-dimensional manifold $M^{(3)}$.
+Its curl is naively defined as the pseudo-vector field
+\begin{align}
+    \nabla \times V= (\partial_y V_z - \partial_z V_y, \partial_z V_x - \partial_x V_z, \partial_x V_y - \partial_y V_x).
+\end{align}
+However, the natural way is to define the curl as the 2-form
+{\small\begin{align}
+    V= V_x dx + V_y dy + V_z dz \,\, \mapsto \,\, dV = (\partial_y V_z - \partial_z V_y) dy\wedge dz + (\partial_z V_x - \partial_x V_z) dz\wedge dx + (\partial_x V_y - \partial_y V_x) dx\wedge dy.
+\end{align}}
+This also makes it obvious why we get a pseudo-vector: the curl is naturally a 2-form, and we get a 1-form/vector only upon taking its Hodge dual in a 3D manifold.
+\end{mytheorem}
+
+
 \begin{mytheorem}[Replacing partial with covariant derivatives]
 The exterior derivative on a form $\omega=\omega_{i_1 \dots i_k} dx^{i_1} \wedge \cdots \wedge dx^{i_k}$ can equivalently be written in terms of covariant derivatives associated to a torsion-less connection,
 \begin{align}
@@ -93,11 +142,15 @@ Since they coincide in normal coordinates where the Christoffel symbols vanish, 
 %
 \end{mytheorem}
 
+
+
 %-----------------------------------------------------
 %========================================================
-\section{Integration} \todotag{To be written}
+\section{Integration} 
 %=========================================================
 %-----------------------------------------------------
+
+
 \begin{mytheorem}[Integration of differential forms]
 Given an oriented submanifold $S^{(k)} \subseteq M^{(n)}$ of dimension $k$, we can integrate $k$-forms $\omega \in \Lambda^k (M)$ over $S$.
 Namely, given a parametrization $\phi: U \subseteq \mathbb{R}^k \to S \subseteq M$, we define
@@ -105,8 +158,9 @@ Namely, given a parametrization $\phi: U \subseteq \mathbb{R}^k \to S \subseteq 
     \int_S \omega := \int_U \phi^* (\omega).
 \end{equation}
 Note that $\phi^* (\omega) \in \Lambda^k (U)$ is a $k$-form on $\mathbb{R}^k$, which can be written as $f(x) dx^1 \wedge \cdots \wedge dx^k$ for some function $f: U \to \mathbb{R}$, and then integrated as usual.
-The orientation of $S$ is necessary to have a well-defined integral, since changing the orientation changes the sign of the integral, but orientability of $M$ is not necessary.
+Note that the orientation of $S$ is necessary to have a well-defined integral, since changing the orientation changes the sign of the integral, while orientability of $M$ is not necessary.
 \end{mytheorem}
+
 
 \begin{mytheorem}[Stokes theorem]
 This is simply the fundamental theorem of calculus for differential forms.
@@ -122,12 +176,49 @@ In particular, Stokes theorem formalizes a fundamental relation between the pure
 \subsection{Rediscovering familiar operations}
 %-----------------------------------------------------------------------------
 
+\begin{mytheorem}[Curl \& 3D Stokes theorem.]
+Given a 3D \emph{Riemannian} manifold $(M^{(3)},g)$ and a vector field $X$, define the 1-from $g(X,\cdot)$, that is lower an index $X_\mu=g_{\mu \nu} X^{\nu}$.
+Define the curl as the 2-from obained by taking the exterior derivative
+\begin{equation}
+    \mathrm{curl} (X) := d (g(X,\cdot)) = d \big(X_{\mu} dx^{\mu}\big).
+\end{equation}
+For any oriented surface $S\subset M$ with boundary $\partial S$, the general Stokes theorem then gives
+\begin{equation}
+    \int_S \mathrm{curl} (X) =\int_S d (g(X,\cdot)) = \int_{\partial S} g(X,\cdot)\,.
+\end{equation}
+The definition of curl and the integral relation reduce to the familiar notion of curl and Stokes' theorem in $\mathbb{R}^3$ with the flat Euclidean metric.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Complex integration \& Gauss--Green theorem]
+Consider the complex plane as the oriented Riemannian manifold $(\mathbb{R}^2,g)$ with the standard Euclidean metric and orientation $dx\wedge dy$.
+Let $D\subset\mathbb{C}$ be a compact domain with positively oriented boundary and let $f=u+iv$ be holomorphic on a neighborhood of $D$.
+The real and imaginary parts of the complex contour integral are ordinary integrals of real 1-forms:
+\begin{align}
+    \int_{\partial D} f(z)\,dz = \int_{\partial D} (u+iv)(dx+idy)
+    = \int_{\partial D} (u\,dx-v\,dy)
+    + i\int_{\partial D} (v\,dx+u\,dy).
+\end{align}
+Applying the Gauss--Green theorem, i.e.\ Stokes theorem in two dimensions, gives
+\begin{align}
+    \int_{\partial D} f(z)\,dz
+    &= \int_D d(f\,dz) 
+    = \int_D
+    \left[-(\partial_y u+\partial_x v)
+    +i(\partial_x u-\partial_y v)\right]dx\wedge dy
+    =0,
+\end{align}
+where the last equality follows from the Cauchy--Riemann equations
+$\partial_xu=\partial_yv$ and $\partial_yu=-\partial_xv$.
+Thus Cauchy's integral theorem is precisely the Gauss--Green theorem applied to the complex 1-form $f(z)\,dz$.
+\end{mytheorem}
+
 \begin{mytheorem}[Divergence \& Gauss theorem.]
 Given a volume form $\Omega$ and a vector field $X$ on a manifold $M^{(n)}$, define the \textbf{divergence} as the $n$-form
 \begin{equation}
     \mathrm{div}_\Omega (X) := \mathcal{L}_X \Omega = d (i_X \Omega) + i_X \graycancel{d\Omega} = d (i_X \Omega).
 \end{equation}
-Note that this definition is independent of the notion of metric once we are given a volume form $\Omega$.
+Note that this definition is independent of the notion of metric, we only need a volume form $\Omega$.
 We can compute the divergence using the expressions \eqref{eq:interior_derivative_basis_expr}-\eqref{eq:exterior_deriv_basis_expr} for $i_x$ and $d$, but it is much easier to use the Leibniz rule for $\mathcal{L}$.
 Writing $\Omega = a(x) dx^1 \wedge \cdots \wedge dx^n$ for some nowhere-vanishing function $a$
 \begin{align}
@@ -144,7 +235,7 @@ More generally, when $\Omega = \sqrt{|g|} dx^1 \wedge \cdots \wedge dx^n$ is the
 \begin{equation}
     \mathrm{div}_g (X) = \left( \frac{1}{\sqrt{|g|}} \partial_{\mu} \Big(\sqrt{|g|} X^{\mu}\Big) \right) \Omega_g = \left( \nabla_{\mu} X^{\mu} \right) \Omega_g.
 \end{equation}
-The last equality follows from the definition $\nabla_{\mu}X^\mu= \partial_\mu X^\mu + \Gamma_{\mu \nu}^\mu X^\nu$ and the well-known identity $\Gamma_{\mu \nu}^\mu = \frac{1}{\sqrt{|g|}} \partial_\nu \sqrt{|g|}$ proven in \eqref{eq:metric_christoffel_contraction_identity}.
+The last equality follows from $\nabla_{\mu}X^\mu= \partial_\mu X^\mu + \Gamma_{\mu \nu}^\mu X^\nu$ and the well-known identity $\Gamma_{\mu \nu}^\mu = \frac{1}{\sqrt{|g|}} \partial_\nu \sqrt{|g|}$ proven in \eqref{eq:metric_christoffel_contraction_identity}.
 \smallskip
 
 \textbf{Gauss theorem} is immediately proved using Cartan formula and Stokes theorem.
@@ -179,7 +270,7 @@ First note that for any \emph{arbitrary} volume form
 \end{equation}
 Then we have 
 \begin{equation}
-    \int_{\partial M} f\,\, i_X \Omega = \int_M d(f\, i_X \Omega) = \int_M df \wedge i_X \Omega + f\, d i_X\Omega = \int_M df(X) \,\Omega + \int_M f\, \mathrm{div}_\Omega (X).
+    \int_{\partial M} f\,\, i_X \Omega = \int_M d(f\, i_X \Omega) = \int_M df \wedge i_X \Omega + f\, d \,i_X\Omega = \int_M df(X) \,\Omega + \int_M f\, \mathrm{div}_\Omega (X).
 \end{equation}
 In case $\Omega = \sqrt{|g|} dx^1 \wedge \cdots \wedge dx^n$ is the metric volume form this reads
 \begin{align}
@@ -197,8 +288,7 @@ Let $\{x^\mu\}_{\mu=0\dots n}$ be coordinates adapted to the boundary i.e. local
 Let $\phi:\partial M \to M$ be any embedding of the boundary into the manifold, so that in the $x^\mu$ coordinates $\phi^0\equiv \text{const.}$.
 If $\{y^1\dots y^n\}$ are arbitrary coordinates on $\partial M$, then $\{\partial_{y^a}\phi\}_{a=1\dots n}$ span $T_p \partial M$ and $\{N, \partial_{y^a}\phi\}$ span $T_p M$.
 The metric coefficients in the two bases are related by
-{\small
-\begin{align}
+{\small\begin{align}
     &\begin{pmatrix}
     \underbrace{g(N,N)}_{=1} & \underbrace{g(N, \tfrac{\partial \phi}{\partial y^a})}_{=0} \\
     \underbrace{g(N, \tfrac{\partial \phi}{\partial y^a})}_{=0} & g(\tfrac{\partial \phi}{\partial y^a}, \tfrac{\partial \phi}{\partial y^b})
@@ -215,8 +305,7 @@ The metric coefficients in the two bases are related by
     \end{pmatrix}\\[4pt]
     &\quad 
      \Rightarrow\quad \det \big(g(\partial_{y^a} \phi, \partial_{y^b} \phi)\big) = (N^0)^2\, \det\big(\tfrac{\partial \phi^i}{\partial y^a}\big)^2\, \det(g_{\mu \nu}).
-\end{align}
-}
+\end{align}}
 Pulling back to $\partial M$ the form $i_X \Omega_g$ along $\phi$, using the above relation for determinants and noting that $g(X,N)= g_{\mu\nu}X^\mu N^\nu = X^\mu g_{\mu\nu} \tfrac{g^{0\nu}}{\sqrt{g^{00}}}= \tfrac{X^0}{N^0}$, we have
 {\small
 \begin{align}
@@ -229,28 +318,6 @@ Pulling back to $\partial M$ the form $i_X \Omega_g$ along $\phi$, using the abo
 }
 \end{proof}
 
-
-\begin{mytheorem}[Curl \& 3D Stokes theorem.]
-Given a \emph{Riemannian} manifold $(M,g)$ of dimension $3$ and a vector field $X$, define the 1-from $g(X,\cdot)$, that is lower an index $X_\mu=g_{\mu \nu} X^{\nu}$.
-Define the curl as the 2-from obained by taking the exterior derivative
-\begin{equation}
-    \mathrm{curl} (X) := d (g(X,\cdot)) = d \Big(X_{\mu} \wedge dx^{\mu}\Big).
-\end{equation}
-Note that in $\mathbb{R}^3$ with the standard Euclidean metric, this definition coincides with the usual notion of curl.
-\smallskip
-
-The general Stokes theorem immediately gives the familiar version in $\mathbb{R}^3$:
-\begin{equation}
-    \int_S \mathrm{curl} (X) =\int_S d (g(X,\cdot)) = \int_{\partial S} g(X,\cdot),
-\end{equation}
-for any oriented surface $S$ with boundary $\partial S$.
-\end{mytheorem}
-
-
-\begin{mytheorem}[Complex integration \& Gauss-Green Theorem.]
-Consider the complex plane as a Riemannian manifold $(\mathbb{R}^2, g)$ with the standard Euclidean metric.
-Given a complex homolorphic function $f: \mathbb{C} \to \mathbb{C}$, both the real and imaginary parts \todotag{Finish this}
-\end{mytheorem}
 
 
 %-----------------------------------------------------
@@ -566,7 +633,7 @@ The expectation is that the spectra \(\mathrm{spec}(\Delta_p)\) of the laplacian
 \begin{wrapfigure}[9]{r}{0.34\textwidth}
   \centering
   \vspace{-\intextsep}
-  \includegraphics[width=\linewidth]{images/seismic_wave.png}
+  \includegraphics[width=\linewidth]{images/seismic_waves.pdf}
   %\caption{Shear vs. pressure seismic wave}
   \label{fig:seismic_waves}
 \end{wrapfigure}
@@ -742,31 +809,9 @@ The above `(co-)exatcness vs (co-)closedness' properties and the commutations re
 This is suggestively shown in the following diagram, where equal colors indicate isomorphic subspaces with identical spectra of $\Delta$,
 
 \begin{samepage}
-\begin{align}
-  \begin{array}{l}
-    {\vdots}\\[0pt]
-    \Lambda_{p-1} = {\color{lightblue}d\Lambda_{p-2}}\;\oplus\;{\tikzmarknode{delp}{\color{blue}\delta\Lambda_p}}\;\oplus\;{\color{forestgreen}\Lambda_{p-1}^0}\\[12pt]
-    \Lambda_p     = {\tikzmarknode{dp}{\color{blue}d\Lambda_{p-1}}}\;\oplus\;{\tikzmarknode{delp1}{\color{violet}\delta\Lambda_{p+1}}}\;\oplus\;{\tikzmarknode{hp}{\color{yellow}\Lambda_p^0}}\\[8pt]
-    \Lambda_{p+1} = {\color{violet}d\Lambda_p}\;\oplus\;{\color{red}\delta\Lambda_{p+2}}\;\oplus\;\Lambda_{p+1}^0\\[0pt]
-    {\vdots} \\[0pt]
-    \Lambda_{n-p} = {\tikzmarknode{dnp}{\color{violet}d\Lambda_{n-p-1}}}\;\oplus\;{\tikzmarknode{delnp}{\color{blue}\delta\Lambda_{n-p+1}}}\;\oplus\;{\tikzmarknode{hnp}{\color{yellow}\Lambda_{n-p}^0}}\\[6pt]
-    \Lambda_{n-p+1} = {\color{blue}d\Lambda_{n-p}}\;\oplus\;{\color{lightblue}\delta\Lambda_{n-p+2}}\;\oplus\;{\color{forestgreen}\Lambda_{n-p+1}^0}\\[0pt]
-    {\vdots}
-  \end{array}.
-\end{align}
-%
-\begin{tikzpicture}[remember picture,overlay,>=Stealth,shorten >=2pt,shorten <=2pt]
-  %\draw[blue,<->] (delp.south) to[bend left=15] node[left=2pt] {\scriptsize $d\!-\!\delta$} (dp.north);
-  %\draw[blue,<->] (delp.south) to[bend left=13]node[left=2pt,yshift=4pt] {\scriptsize $d$ - $\delta$}(dp.north);
-  \draw[blue,<->] (delp.south) to[bend left=4] node[pos=0.0,left=2pt,yshift=-8pt] {\scriptsize $\delta$} node[pos=0.7,left=2pt,yshift=3pt] {\scriptsize $d$}(dp.north);
-  %\draw[yellow,<->]      (hp.south east) -- node[right=2pt] {$\star$} (hnp.north east);
-  %\draw[yellow,<->] (hp.south east) to[bend left=15] node[right=2pt] {$\star$} (hnp.north east);
-  \draw[yellow,<->] (hp.south east) to[bend left=15] node[right=2pt] {$\star$} ($(hnp.north east)+(-1.6em,0)$);
-  %\draw[violet,<->]      (delp1.south east) to[bend left=15] node[right=2pt] {$\star$} (dnp.north east);
-  %\draw[blue,<->]        (dp.south east) to[bend left=15] node[right=2pt] {$\star$} (delnp.north east);
-  \draw[violet,<->] (delp1.south west) to[bend right=22] node[near end,right=-1pt,yshift=-2pt] {$\star$} ($(dnp.north east)+(-2.5em,0)$);
-\draw[blue,<->]   ($(dp.south east)+(-1.9em,0)$)    to[bend left=19] node[near end,right=2pt,yshift=-3pt] {$\star$} ($(delnp.north west)+(0,0)$);
-\end{tikzpicture}
+\begin{center}
+  \includegraphics[width=0.4\textwidth]{images/hodge_spectrum_symmetries.pdf}
+\end{center}
 \end{samepage}
 
 \noindent
@@ -858,7 +903,7 @@ The idea of infinitesimal spectral geometry arises from his paper on how spaceti
 
 %-----------------------------------------------------
 %========================================================
-\section{Closed vs exact forms \& de Rham cohomology} \todotag{To be written}
+\section{Closed vs exact forms \& de Rham cohomology}
 %=========================================================
 %-----------------------------------------------------
 
@@ -876,3 +921,69 @@ Then, every closed differential form \(\omega \in \Lambda^k (U)\) is exact, i.e.
 This theorem has extensions to more general \emph{homotopically trivial} subsets.
 \end{theorem}
 
+
+\begin{mytheorem}[Cohomology theories, naturality \& $K$-theory \questioninline{finish}]
+Let $\mathbf{Man}$ denote the category whose objects are smooth manifolds and whose morphisms are smooth maps, and let $\mathbf{GrAb}$ denote the category of graded abelian groups.
+A cohomology theory is a contravariant functor
+\begin{equation}
+    H^\bullet:\mathbf{Man}^{\mathrm{op}}\longrightarrow\mathbf{GrAb},
+    \qquad
+    M\longmapsto H^\bullet(M),
+    \qquad
+    \big(f:M\to N\big)\longmapsto
+    \big(f^*:H^\bullet(N)\to H^\bullet(M)\big)\,,
+\end{equation}
+where functoriality means
+\begin{equation}
+    \operatorname{id}_M^*=\operatorname{id}_{H^\bullet(M)},
+    \qquad
+    (g\circ f)^*=f^*\circ g^*.
+\end{equation}
+In particular, a diffeomorphism induces an isomorphism of cohomology groups.
+Hence if $H^\bullet(M)\not\cong H^\bullet(N)$, then $M$ and $N$ cannot be diffeomorphic, although the converse need not hold.
+
+A \textbf{natural transformation} $\eta:H^\bullet\Rightarrow K^\bullet$ between two cohomology theories is a family of homomorphisms
+$\eta_M:H^\bullet(M)\to K^\bullet(M)$ compatible with every smooth map $f:M\to N$, namely
+\begin{equation}
+\begin{tikzcd}[
+    row sep=large,
+    column sep=large,
+    ampersand replacement=\&
+]
+    H^\bullet(N)
+        \arrow[r, "\eta_N"]
+        \arrow[d, "f_H^*"']
+    \&
+    K^\bullet(N)
+        \arrow[d, "f_K^*"]
+    \\
+    H^\bullet(M)
+        \arrow[r, "\eta_M"']
+    \&
+    K^\bullet(M)
+\end{tikzcd}
+\end{equation}
+De Rham cohomology is the basic example, with the pullback of differential forms inducing the maps $f^*$.
+
+Topological $K$-theory is another generalized cohomology theory.
+The isomorphism classes of complex vector bundles over $M$ form a commutative monoid under the Whitney sum $\oplus$.
+Its group completion defines
+\begin{equation}
+    K^0(M)
+    :=\operatorname{Gr}\!\left(\operatorname{Vect}_{\mathbb C}(M),\oplus\right),
+\end{equation}
+whose elements are formal differences $[E]-[F]$, subject for example to
+\begin{equation}
+    [E\oplus G]-[F\oplus G]=[E]-[F].
+\end{equation}
+Pullback of vector bundles makes $K^0$ contravariantly functorial:
+\begin{equation}
+    f^*\big([E]-[F]\big)=[f^*E]-[f^*F].
+\end{equation}
+On a contractible manifold every fixed-rank vector bundle is trivial; consequently
+$K^0(M)\cong\mathbb{Z}$ records only the virtual rank, while the reduced group
+$\widetilde K^0(M)$ vanishes.
+\end{mytheorem}
+
+
+\end{document}

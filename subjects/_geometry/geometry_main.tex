@@ -1,22 +1,20 @@
-% phys_notes/subjects/__geometry/geometry_main.tex
-\documentclass[../all_subjects_main.tex]{subfiles}
+% phys_notes/subjects/_geometry/geometry_main.tex
+\documentclass[a4paper,11pt]{book}
+
+\input{../../shared/other/preamble}
 
 \begin{document}
 
-% Only do these when compiling geometry alone, not inside the big book
-\IfSubfilesClassLoaded{%
-    \frontmatter
-    % You can have a geometry-only title page here if you want
-    \input{other/front.tex}
-    \input{other/originality_and_collaborating.tex}
-    \newpage
-    \input{../../shared/other/conventions}
-    \newpage
-    \input{other/introduction.tex}
-    \newpage
-    \tableofcontents
-    \mainmatter
-}{}
+\frontmatter
+\input{other/front.tex}
+\input{other/originality_and_collaborating.tex}
+\newpage
+\input{../../shared/other/conventions}
+\newpage
+\input{other/introduction.tex}
+\newpage
+\tableofcontents
+\mainmatter
 
 
 \input{body/pending.tex}
@@ -24,37 +22,37 @@
 %----------------------------------------------------------
 \part{Differential Geometry}
 
-\input{body/basics_dif_geo.tex}
+\subfile{body/basics_dif_geo}
 
-\input{body/differential_forms_integration.tex}
+\subfile{body/differential_forms_integration}
 
-\input{body/curvature_torsion.tex}
+\subfile{body/curvature_torsion}
 
-\input{body/fiber_bundles.tex}
+\subfile{body/fiber_bundles}
 
-\input{body/riemannian_geometry.tex}
+\subfile{body/riemannian_geometry}
 
 
 %----------------------------------------------------------
 \part{Differential Topology \& Applications}
 
-\input{body/decomposition.tex}
+\subfile{body/lie_groups}
 
-\input{body/intersection_theory.tex}
+\subfile{body/decomposition}
 
-\input{body/lie_groups.tex}
+\subfile{body/intersection_theory}
 
-\input{body/curves_surfaces.tex}
+\subfile{body/curves_surfaces}
 
-\input{body/elliptic_hyperbolic.tex}
+\subfile{body/elliptic_hyperbolic}
 
 
 
 %----------------------------------------------------
 \part{General Relativity}
 
-\input{body/conservation_laws_eom.tex}
+\subfile{body/conservation_laws_eom}
 
-\input{body/black_holes}
+\subfile{body/black_holes}
 
 \end{document}

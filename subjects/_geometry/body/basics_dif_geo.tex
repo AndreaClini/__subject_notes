@@ -1,4 +1,6 @@
 % !TeX root = ../geometry_main.tex
+\documentclass[../geometry_main.tex]{subfiles}
+\begin{document}
 %==========================================================
 %=========================================================
 \chapter{Fundamentals of differential Geometry}
@@ -6,12 +8,9 @@
 %=========================================================
 
 
-In this long chapter, we collect various random topics in differential geometry that I feel like writing down.
-
-
 %-----------------------------------------------------------------------
 %========================================================
-\section{Basics} \todotag{To be written}
+\section{Basics} 
 %=========================================================
 %----------------------------------------------------------------------
 
@@ -27,35 +26,35 @@ In this case, the underlying space is not a manifold and the former definitions 
 \end{mytheorem}
 
 \begin{mytheorem}[Why frame bundles?]
-Given the local triviality request on a frame bundle, i.e.
+Given the local triviality request on frame bundles, i.e. demanding
 \begin{align}
     E_F\to M_{\, |_{U}}\sim U\times F \to U,
 \end{align}
-one might wonder about the point of studying them at all\dots
-The point is that the local triviality request is a very weak condition, and very few bundles are actually trivial, i.e. globally of the form $E\sim M\times F$.
+one might ask why bothering studying them at all\dots
+The point is that the local triviality request is a very weak condition and very few bundles are actually trivial, i.e. globally of the form $E\sim M\times F$.
 The very existence of non-trivial bundles is a deep and important fact, capturing the global structure of the manifold with many physical consequences.
 \end{mytheorem}
 
 
 
 %========================================================
-\section{Smoothness \& Whitney embedding theorem} \todotag{To be written}
+\section{Smoothness \& Whitney embedding theorem} 
 %=========================================================
 
-\begin{mytheorem}[Whitney smoothness theorem]
+\begin{mytheorem}[Whitney smoothness theorem \questioninline{finish}]
 If a manifold is topological and admits a $C^{1}$ structure, then it admits a unique $C^{\infty}$ structure.
-That is, if a manifold is $C^{1}$-differentiable, then it is automatically smooth i.e. $C^{\infty}$-differentiable.
+That is to say, if a manifold is $C^{1}$-differentiable, then it is automatically smooth i.e. $C^{\infty}$-differentiable, and such a structure is unique.
 In particular, if we have an atlas that is $C^{k}$-differentiable but not $C^{k-1}$-differentiable then it simply means we messed up with coordinates and we can always find a better atlas that is $C^{\infty}$-differentiable.
 \end{mytheorem}
 
 
-\begin{mytheorem}[Whitney embedding theorem]
+\begin{mytheorem}[Whitney embedding theorem \questioninline{finish}]
 Any smooth $n$-dimensional manifold can be immersed in $\mathbb{R}^{2n}$ and embedded in $\mathbb{R}^{2n+1}$.
 \end{mytheorem}
 
 %-----------------------------------------------------------------------
 %========================================================
-\section{Sub-bundles, flows \& Frobenius theorem} \todotag{To be written}
+\section{Sub-bundles, flows \& Frobenius theorem} 
 %=========================================================
 %-----------------------------------------------------------------------
 
@@ -67,7 +66,7 @@ The offset of the flow of two vector fields $X,Y \in \mathfrak{X}(M)$ reads in a
     \phi_{X}^{\epsilon} \circ \phi_{Y}^{\delta} - \phi_{Y}^{\delta} \circ \phi_{X}^{\epsilon}= \epsilon \delta [X,Y] + \mathcal{O}(\epsilon^2, \delta^2).
 \end{aligned}
 \end{align}
-The following conditions are equivalent for the commutation of flows
+The following conditions are equivalent for the commutation of flows.
 \begin{itemize}
     \item The flows commute
         \begin{align}
@@ -84,26 +83,26 @@ The following conditions are equivalent for the commutation of flows
 \end{itemize}
 \end{mytheorem}
 \begin{proof}
-The first equation is follows from Taylor expanding the flows.
-Point 3 $\Rightarrow$ 1, 2 trivially follows from the definitions.
-Point 1 $\Rightarrow$ 2 follows from the first equation by taking the limit $\epsilon, \delta \to 0$.
-For point 2 $\Rightarrow$ 1 take a chart where $X_1 = \partial_{x^1}$, then $\phi_{X_1}^{\epsilon_1}(p)=p+\hat{e}_1\epsilon_1$ and $[X_1,X_j]=-\partial_{x^1} X_j =0$ implies that the components of $X_j$ do not depend on $x^1$.
-Then we verify
+The first equation follows from Taylor expanding the flows.
+Arrows 3 $\Rightarrow$ 1, 2 trivially follow from the properties of cartesian coordinates.
+Arrow 1 $\Rightarrow$ 2 follows from the first equation by taking the limit $\epsilon, \delta \to 0$.
+For arrow 2 $\Rightarrow$ 1 take a chart where $X_1 = \partial_{x^1}$, then $\phi_{X_1}^{\epsilon_1}(p)=p+\hat{e}_1\epsilon_1$ and $[X_1,X_j]=-\partial_{x^1} X_j =0$ implies that the components of $X_j$ do not depend on $x^1$.
+Then we explictly verify 
 \begin{equation}
     \phi_{X_1}^{\epsilon_1}\circ \phi_{X_j}^{\epsilon_j}(p) = \phi_{X_j}^{\epsilon_j}(p) + \epsilon_1\, \hat{e}_1= \phi_{X_j}^{\epsilon_j}(p+ \epsilon_1\, \hat{e}_1) = \phi_{X_j}^{\epsilon_j}\circ \phi_{X_1}^{\epsilon_1}(p).
 \end{equation}
 The rest follows by induction.
-Finally for point 1 $\Rightarrow$ 3 consider the map $ \R^k\times \underbrace{M^{(n)}}_{\simeq \R^n}$ to $ \underbrace{M^{(n)}}_{\simeq \R^n}$ defined as
+Finally for arrow 1 $\Rightarrow$ 3 consider the map $ \R^k\times \underbrace{M^{(n)}}_{\simeq \R^n} \to\underbrace{M^{(n)}}_{\simeq \R^n}$ defined by
 \begin{equation}
     F(\epsilon_1, \dots, \epsilon_k, p) := \phi_{X_1}^{\epsilon_1}\circ\dots\circ \phi_{X_k}^{\epsilon_k} (p).
 \end{equation}
-By point 1 the $(k+n)\times n$ jacobian matric of $F$ at any $\bar{\epsilon}\in \R^k$ and any $p\in M$ reads
+By assumption 1, the $(k+n)\times n$ jacobian matrice of $F$ at any $\bar{\epsilon}\in \R^k$ and any $p\in M$ reads
 \begin{equation}
-    J_{F}(\bar{\epsilon}=0, p) = \begin{pmatrix}
-    X_1(p) & X_2(p) & \cdots & X_k(p) & \mid &\mathbb{I}_n
+    J_{F}(\bar{\epsilon}, p) = \begin{pmatrix}
+    X_1\big(F(\bar{\epsilon},p)\big) \mid & X_2\big(F(\bar{\epsilon},p)\big)\mid & \cdots & X_k\big(F(\bar{\epsilon},p)\big) & \mid &\mathbb{I}_n
     \end{pmatrix}.
 \end{equation}
-By the open mapping theorem, we can locally restrict $F$ to a diffeomorphism $\R^k\times \R^{n-k} \to M^(n)$ which furnishes the desired coordinates.
+By the open mapping theorem, we can find a submanifold $\R^{n-k}\subset M^{(n)}$ and restrict $F$ to a local diffeomorphism $\R^k\times \R^{n-k} \to M^{(n)}$ which furnishes the desired coordinates.
 %
 \end{proof}
 
@@ -128,7 +127,7 @@ the flows and Lie brackets are also $f$-related, i.e.
 A disribution is a sub-bundle $S \subseteq TM$ of the tangent bundle, that is a smooth assignment of a vector subspace $S_p \subseteq T_p M$ at each point $p\in M$.
 A foliation is a decomposition of the manifold $M$ into a union of disjoint isomorphic connected submanifolds (the leaves) of the same dimension, so that locally the manifold looks like a product $M \simeq L^{(k)} \times N^{(n-k)}$ of a leaf $L^{(k)}$ and a `trunk' manifold $N^{(n-k)}$.
 In particular for each point $p\in M$ there is a unique leaf $L_p$ passing through it, and the tangent space to the leaf at $p$ defines a subspace $T_p L_p \subseteq T_p M$.
-Simple examples of foliations are
+Simple examples of foliations are:
 \begin{itemize}
     \item The foliation of $\mathbb{R}^3$ into planes of constant $z$ coordinate, with leaves $L^{(2)} = \{(x,y,z_0) \mid x,y\in \mathbb{R}\}$ for each $z_0\in \mathbb{R}$;
     \item The foliation of $\mathbb{R}^3\setminus \{0\}$ into spheres of constant radius, with leaves $L^{(2)} = \{(x,y,z) \mid x^2+y^2+z^2 = r_0^2\}$ for each $r_0>0$.
@@ -148,6 +147,7 @@ In formulas
 The proof is constructive and quite long, so we just sketch the main ideas.
 \begin{itemize}
     \item[$\Rightarrow$] If $S$ is integrable, then for any two vector fields $X,Y \in \Gamma(S)$-- i.e. tangent to the leaves-- their Lie bracket $[X,Y]$ is also tangent to the leaves, so that $[X,Y] \in \Gamma(S)$.
+    Indeed, the same vector field seen in $L_p$ or in $M$ is $i:L_p \hookrightarrow M$-related, so that by the previous theorem their Lie brackets are also $i$-related.
     \item[$\Leftarrow$] If $S$ is involutive, then for any point $p\in M$ we can find a local basis of vector fields $\{X_1, \dots, X_k\} \subseteq \Gamma(S)$ spanning $S$ in a neighborhood of $p$.
     By involutivity, their Lie brackets vanish $[X_i,X_j]=0$, so that by the previous theorem we can find local coordinates $\{x^1, \dots, x^n\}$ such that $X_i = \partial_{x^i}$ for $i=1\dots k$.
     Then the submanifolds defined by constant values of the last $n-k$ coordinates
@@ -157,31 +157,9 @@ The proof is constructive and quite long, so we just sketch the main ideas.
     define a foliation whose tangent spaces coincide with $S$.
 \end{itemize}
 \end{proof}
-\todotag{Modify pic}
 \begin{figure}[h]
     \centering
-    \begin{tikzpicture}[scale=1.0]
-        \def\R{2.1}
-        \def\r{0.55}
-        \pgfmathdeclarefunction{torusX}{2}{\pgfmathparse{(\R + \r*cos(#2)) * cos(#1) + 0.35*\r*sin(#2)}}
-        \pgfmathdeclarefunction{torusY}{2}{\pgfmathparse{0.6*(\R + \r*cos(#2)) * sin(#1) + 0.45*\r*sin(#2)}}
-
-        % Silhouette of the torus
-        \shade[ball color=gray!25, opacity=0.8] (0,0) ellipse (2.9 and 1.8);
-        \fill[white] (0,0) ellipse (1.15 and 0.6);
-        \draw[line width=1.1pt, black!65] (0,0) ellipse (2.9 and 1.8);
-        \draw[line width=1.1pt, black!45] (0,0) ellipse (1.15 and 0.6);
-
-        % Leaves wrapping around the torus with an irrational slope
-        \def\alpha{1.45}
-        \foreach \shift/\col in {0/forestgreen!80!black, 70/forestgreen!60!black, 140/forestgreen!60!black}{
-            \draw[\col, line width=1pt, samples=240, smooth, domain=0:360, variable=\u]
-                plot ({torusX(\u,\alpha*\u+\shift)}, {torusY(\u,\alpha*\u+\shift)});
-        }
-        % A meridional leaf for contrast
-        \draw[blue!70!black, line width=0.9pt, samples=200, smooth, domain=0:360, variable=\u]
-            plot ({torusX(\u,\u)}, {torusY(\u,\u)});
-    \end{tikzpicture}
+    \includegraphics{images/torus_foliation.pdf}
     \caption{Sample foliation of a $2$-torus embedded in $\mathbb{R}^3$, with leaves wrapping around both directions.}
     \label{fig:torus-foliation}
 \end{figure}
@@ -209,59 +187,59 @@ Similarly, the Lie derivative $\mathcal{L}_X$ and the covariant derivative $\nab
 
 
 \begin{mytheorem}[Uniqueness theorem for derivatives on tensors]
-An (anti)-derivative $\delta$ on tensors--i.e. a linear map and obeying Leibniz rule up to a possible minus sign-- is completely determined by its action on functions and vector fields, or equivalently on functions and 1-forms.
+An (anti)-derivative $\delta$ on tensors--i.e. a linear map and obeying Leibniz rule up to a possible minus sign--is completely determined by its action on functions and vector fields, or equivalently on functions and 1-forms.
 \end{mytheorem}
 
 
 
-\begin{mytheorem}[The variation of a tensor is a tensor.]\todotag{move it}
+\begin{mytheorem}[The variation of a tensor is a tensor.]
 Indeed the vairation of a tensor $A^\bullet_\bullet$ is simply defined as 
 \begin{equation}
     \delta A^\bullet_\bullet(x):= \frac{d A^\bullet_\bullet(x,\epsilon)}{d\epsilon}_{\mid \epsilon=0} \cdot \epsilon =\lim_{h\to0} \frac{A^\bullet_\bullet(x,h)-A^\bullet_\bullet(x,0)}{h} \cdot \epsilon,
 \end{equation}
-where $\epsilon\to A^\bullet_\bullet(x,\epsilon)$ parametrizes a family of tensors at the same point $x\in M$, so that we can take the usual Newton derivative.
-At each $|h|>0$ the ratio at the right-hand side is a tensor, being the difference and multiple of tensors, so that also the limit transforms as a tensor.
+where $\epsilon\to A^\bullet_\bullet(x,\epsilon)$ parametrizes a family of tensors at the \emph{same} point $x\in M$, and we take the usual Newton derivative.
+At each $|h|>0$ the ratio at the right-hand side is a tensor, being the difference of two tensors, so that also the limit transforms as a tensor.
 \end{mytheorem}
 
 
 %========================================================
-\subsection{Lie derivative}\todotag{Merge various definitions into bullet list}
+\subsection{Lie derivative}
 \label{sec:lie_derivative}
 %=========================================================
 
-\begin{mytheorem}[Lie derivative as commutator of vector fields]
-The Lie derivative $\mathcal{L}_X$ along a vector field $X$ is the unique derivative of degree $(0,0)$ on tensors that reduces to the usual directional derivative when acting on functions and to the usual Lie bracket $\mathcal{L}_X Y = [X,Y]$ when acting on vector fields.
-It is then extended to all tensors using linearity and the Leibniz rule
-\begin{equation}
-    \mathcal{L}_X (S \otimes T) = (\mathcal{L}_X S) \otimes T + S \otimes (\mathcal{L}_X T).
-\end{equation}
+
+\begin{mytheorem}[Equivalent definitions of the Lie derivative]
+%
+There are several equivalent ways to define the Lie derivative $\mathcal{L}_X$ along a vector field $X$, which is a derivative of degree $(0,0)$ on tensors.
+\begin{itemize}
+    \item[]\textbf{Commutator of vector fields.} The Lie derivative is the unique derivative of degree $(0,0)$ on tensors that reduces to the usual directional derivative when acting on functions and to the usual Lie bracket $\mathcal{L}_X Y = [X,Y]$ when acting on vector fields.
+    It is then extended to all tensors using linearity and the Leibniz rule
+    \begin{equation}
+        \mathcal{L}_X (S \otimes T) = (\mathcal{L}_X S) \otimes T + S \otimes (\mathcal{L}_X T).
+    \end{equation}
+
+    \item[]\textbf{Flow derivative.} The Lie derivative is equivalently defined as the differential operator that is the \emph{infinitesimal generator} of the flow induced by a vector field \(X\).
+    Namely, given a tensor field \(T\in T^{\bullet}_{\bullet} (M)\), we define the Lie derivative along \(X\) as
+    \begin{equation}
+        \mathcal{L}_X T := \lim_{\epsilon \to 0} \frac{\phi_{X,\epsilon}^* (T) - T}{ \epsilon},
+    \end{equation}
+    where \(\phi_{X,\epsilon}: M \to M\) is the flow generated by the vector field \(X\) for parameter distance \(\epsilon\) and \(\phi_{X,\epsilon}^*\) is the pullback map induced by \(\phi_{X,\epsilon}\) on tensors.
+
+    \item []\textbf{Cartan formula.} We can define the Lie derivative in terms of the exterior derivative $d$ and the inner derivative $i_X$ acting on differential forms:
+    \begin{equation}
+        \mathcal{L}_X \omega = i_X d \omega + d (i_X \omega).
+    \end{equation}
+    The right-hand side is defined only for differential forms, but the left-hand side makes sense for any tensor.
+    Since differential forms include functions (0-forms) and differentials (1-forms), we can use this formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
+\end{itemize}
+%
 \end{mytheorem}
 
-
-\begin{mytheorem}[Lie derivative as flow derivative]
-The Lie derivative is equivalently defined as the infinitesimal generator of the flow induced by a vector field \(X\).
-Namely, given a tensor field \(T\in T^{\bullet}_{\bullet} (M)\), we define the Lie derivative along \(X\) as
-\begin{equation}
-    \mathcal{L}_X T := \lim_{\epsilon \to 0} \frac{\phi_{X,\epsilon}^* (T) - T}{ \epsilon},
-\end{equation}
-where \(\phi_{X,\epsilon}: M \to M\) is the flow generated by the vector field \(X\) for parameter distance \(\epsilon\) and \(\phi_{X,\epsilon}^*\) is the pullback map induced by \(\phi_{X,\epsilon}\) on tensors.
-\end{mytheorem}
-
-
-\begin{mytheorem}[Cartan formula \& yet another way to define the Lie derivative]
-A fundamental result linking the Lie derivative $\mathcal{L}_X$, the exterior derivative $d$ and the inner derivative $i_X$.
-Namely, for any differential form $\omega$, we have
-\begin{equation}
-    \mathcal{L}_X \omega = i_X d \omega + d (i_X \omega).
-\end{equation}
-The right-hand side is defined only for differential forms, but the left-hand side makes sense for any tensor.
-Since differential forms include functions (0-forms) and differentials (1-forms), we can use this formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
-\end{mytheorem}
 
 \begin{mytheorem}[The Lie derivative is ignorant of the curvature \& the metric]
 As evident from any of its definitions, the Lie derivative does not depend on any notion of connection or metric on the manifold.
 It only depends on the smooth-- i.e. differential-- structure of the manifold, being defined in terms of commutators, or flows or exterior and inner derivatives.
-It thus cannot give any information on the curvature of the manifold beyond the constrained already encoded in the smooth structure itself.
+Thus \textbf{it does contain any information on the curvature of the manifold} beyond the constrained already encoded in the smooth structure itself.
 \end{mytheorem}
 
 
@@ -290,7 +268,7 @@ In a coordinate basis $\{\partial_\mu\}$, the Lie derivative along a vector fiel
 \end{aligned}  
 \end{align}
 Note that the above expression is a tensor, even if it contains ordinary partial derivatives.
-If we are given a metric $g$ \footnote{or equivalently whenever we have a torsion-less connection for which we can then find normal coordinates where the Christoffel symbols vanish} we can replace partial derivatives with covariant derivatives in normal coordinates, obtaining
+Given a torsion-less connection we can replace partial derivatives with covariant derivatives, obtaining
 \begin{align}
 \begin{aligned}
     \mathcal{L}_X T^{\nu_1 \dots \nu_h}_{ \rho_1 \dots \rho_k} 
@@ -299,8 +277,8 @@ If we are given a metric $g$ \footnote{or equivalently whenever we have a torsio
     + \sum_{j=1}^k \left(\nabla_{\rho_j} X^{\mu}\right) T^{\nu_1 \dots \nu_h}_{\rho_1 \dots \mu \dots \rho_k}.
 \end{aligned}
 \end{align}
-The last expression is tensorial by construction.
-Since it matches the previous one in normal coordinates, it is indeed equivalent to it in any coordinate system.
+The last expression is tensorial by construction, and since it matches the previous one in normal coordinates where the Christoffel symbols vanish, it matches it in any coordinate system.
+Note the torsion-less condition is necessary to ensure that we can find coordinates where the Christoffel symbols vanish, not only their symmetric part, so that covariant and partial derivatives coincide.
 \end{mytheorem}
 
 
@@ -413,3 +391,4 @@ See the revelant section in \ref{}
 \section{Tubular neighborhoods \& collars}
 %=========================================================
 %-----------------------------------------------------------------------
+\end{document}

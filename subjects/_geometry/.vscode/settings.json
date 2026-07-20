@@ -3,34 +3,55 @@
     {
       "name": "latexmk",
       "command": "latexmk",
+      "env": {
+        "TEXINPUTS": "%WORKSPACE_FOLDER%//:"
+      },
       "args": [
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
         "-pdf",
-        "-outdir=%DIR%/out",
+        "-outdir=%WORKSPACE_FOLDER%/out",
         "-r",
         "%WORKSPACE_FOLDER%/.latexmkrc",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "pdflatex-fast",
+      "command": "pdflatex",
+      "env": {
+        "TEXINPUTS": "%WORKSPACE_FOLDER%//:"
+      },
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-output-directory=%WORKSPACE_FOLDER%/out",
         "%DOC%"
       ]
     }
   ],
   "latex-workshop.latex.recipes": [
     {
-      "name": "latexmk -> pdf",
+      "name": "pdflatex -> pdf (fast, one pass)",
+      "tools": ["pdflatex-fast"]
+    },
+    {
+      "name": "latexmk -> pdf (full references)",
       "tools": ["latexmk"]
     }
   ],
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.autoBuild.run": "never",
-  "latex-workshop.latex.build.cwd": "%WORKSPACE_FOLDER%",
+  "latex-workshop.latex.build.cwd": "%DIR%",
   "latex-workshop.latex.rootFile.useSubFile": true,
   "latex-workshop.latex.rootFile.doNotPrompt": true,
-  "latex-workshop.latex.recipe.default": "latexmk -> pdf",
+  "latex-workshop.latex.recipe.default": "pdflatex -> pdf (fast, one pass)",
   "latex-workshop.latex.search.rootFiles.exclude": [
     "subjects/all_subjects_main.tex"
   ],
-  "latex-workshop.latex.outDir": "%DIR%/out",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/out",
   "files.watcherExclude": {
     "**/out/**": true,
     "**/build/**": true,
