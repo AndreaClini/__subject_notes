@@ -1,39 +1,38 @@
-% phys_notes/subjects/__geometry/geometry_main.tex
-\documentclass[../all_subjects_main.tex]{subfiles}
+% phys_notes/subjects/_QFT/QFT_main.tex
+\documentclass[a4paper,11pt]{book}
+
+\input{../../shared/other/preamble}
+\usepackage{needspace}
 
 \begin{document}
 
-% Only do these when compiling qft alone, not inside the big book
-\IfSubfilesClassLoaded{%
-    \frontmatter
-    % You can have a qft-only title page here if you want
-    \input{other/front.tex}
-    \input{other/originality_and_collaborating.tex}
-    \newpage
-    \input{../../shared/other/conventions}
-    \newpage
-    \input{other/introduction.tex}
-    \newpage
-    \tableofcontents
-    \mainmatter
-}{}
+\frontmatter
+\input{other/front.tex}
+\input{other/originality_and_collaborating.tex}
+\newpage
+\input{../../shared/other/conventions}
+\newpage
+\input{other/introduction.tex}
+\newpage
+\tableofcontents
+\mainmatter
 
 \input{body/pending.tex}
 
 %----------------------------------------------------------
 \part{Fundamentals of QFT}
 
-\input{body/history_of_qft.tex}
+\subfile{body/history_of_qft}
 
-\input{body/canonical_quantization_flat.tex}
+\subfile{body/canonical_quantization_flat}
 
-\input{body/path_integral_formulation.tex}
+\subfile{body/path_integral_formulation}
 
-\input{body/basic_symmetries.tex}
+\subfile{body/basic_symmetries}
 
-\input{body/renormalization_basic.tex}
+\subfile{body/renormalization_basic}
 
-\input{body/nonperturbative.tex}
+\subfile{body/nonperturbative}
 
 %----------------------------------------------------------
 \part{Thermal Field Theory}
@@ -42,7 +41,7 @@
 %--------------------------------------------------------
 \part{QFT in Curved Spacetime}
 
-\input{body/qft_in_cosmo.tex}
+\subfile{body/qft_in_cosmo}
 
 
 %---------------------------------------------------
@@ -52,13 +51,13 @@
 %--------------------------------------------------- 
 \part{Symmetries}
 
-\input{body/gauge_theories.tex}
+\subfile{body/gauge_theories}
 
 
 %---------------------------------------------------
 \part{Advanced QFT Topics}
 
-\input{body/conformal_FT.tex}
+\subfile{body/conformal_FT}
 
 %---------------------------------------------------
 \part{The Standard Model and Beyond}

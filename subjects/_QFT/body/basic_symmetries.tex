@@ -1,4 +1,6 @@
 % !TeX root = ../QFT_main.tex
+\documentclass[../QFT_main.tex]{subfiles}
+\begin{document}
 %=========================================================
 %=========================================================
 \chapter{Symmetries}\label{ch:symmetries}
@@ -19,6 +21,30 @@
 \section{Internal Symmetries}
 %=========================================================
 %----------------------------------------------------------
+
+
+
+\begin{mytheorem}[Noether's theorem \todoinline{finish}]
+Noether's theorem is a fundamental result in theoretical physics that establishes a deep connection between symmetries and conservation laws.
+It states that for every continuous symmetry of the action of a physical system, there exists a corresponding conserved quantity. In other words, if the laws of physics remain invariant under a continuous transformation (such as translations, rotations, or gauge transformations), then there is an associated physical quantity that remains constant over time.
+
+Let us first discuss the classical version.
+Consider a classical field theory described by a Lagrangian density
+{\small\begin{align}
+    \mathcal{L} = \mathcal{L}(\phi^a_b, \partial_\mu \phi^a_b,x^\mu),
+\end{align}}
+where $\phi^a_b$ is a field with arbitrary spin and internal indices labelled by $a$ and $b$, and $x^\mu$ are the spacetime coordinates.
+
+Assume we have a transformation parametrized by a continuous parameter $\epsilon$ that leaves the action invariant:
+{\small\begin{align}
+    \phi^a_b(x) \to \phi^a_b(x) + \epsilon \delta \phi^a_b(x), \quad x^\mu \to x^\mu + \epsilon \delta x^\mu.
+\end{align}}
+
+
+\end{mytheorem}
+
+
+
 
 
 %--------------------------------------------------------
@@ -485,3 +511,4 @@ The main logical points are the following.
     \item At finite temperature, the correct object is the thermal density matrix, not a single ground state.
     Still, in each fixed-$N$ sector, the energetically preferred total momentum remains zero.
 \end{itemize}
+\end{document}

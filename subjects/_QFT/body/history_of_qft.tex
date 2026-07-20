@@ -1,4 +1,6 @@
 % !TeX root = ../QFT_main.tex
+\documentclass[../QFT_main.tex]{subfiles}
+\begin{document}
 %=========================================================
 %=========================================================
 \chapter{History \& Principles of Quantum Mechanics}
@@ -8,12 +10,12 @@
 
 %---------------------------------------------------------
 %=========================================================
-\section{The rise and fall of Quantum Mechanics} 
+\section{The rise and fall of ordinary Quantum Mechanics} 
 %=========================================================
 %----------------------------------------------------------
 
 
-\begin{mytheorem}[The rise of Quantume Mechanics.]
+\begin{mytheorem}[The rise of ordinary Quantum Mechanics.]
 At the turn of the 20th century, several experimental observations challenged the classical understanding of physics and led to the development of Quantum Mechanics.
 Some of the key discoveries are the following.
 \begin{itemize}
@@ -42,8 +44,8 @@ The primary example is the spin-$\frac{1}{2}$ system, whose Hilbert space is jus
 \end{mytheorem}
 
 
-\begin{mytheorem}[The fall of Quantum Mechanics. \questiontag{Check \& improve}]
-Despite its successes, Quantum Mechanics soon after faced several challenges that progressively highlighted its limitations, up to making it untenable, and paved the way for the development of Quantum Field Theory.
+\begin{mytheorem}[The fall of ordinary Quantum Mechanics.]
+Despite its successes, Quantum Mechanics soon after faced several challenges progressively highlighting its limitations, up to making it untenable, and paving the way for the development of Quantum Field Theory.
 %
 \begin{itemize}
     \item \textbf{Incompatibility with special relativity \& negative energies.} Quantum Mechanics, as originally formulated, was not compatible with the principles of special relativity.
@@ -58,7 +60,7 @@ Despite its successes, Quantum Mechanics soon after faced several challenges tha
 \end{mytheorem}
 
 
-\begin{mytheorem}[A first (failed) attempt: relativistic quantum mechanics.]
+\begin{mytheorem}[A first (failed) attempt: Relativistic Quantum Mechanics.]
 %
 A first attempt to address the limitations of Quantum Mechanics aimed to combine the principles of quantum mechanics with special relativity, summarized in the following diagram:
 \begin{center}
@@ -202,12 +204,199 @@ All these equations ultimately obey the Klein-Gordon equation, as it should be s
 \end{mytheorem}
 
 
-\begin{mytheorem}[The idea of second quantization: from relativistic QM to quantum field theory\todotag{finish}]
-At some point people started wondering: in quantum mechanics everything is subject to fluctuations, so why not the very number of particles themselves? That is to say, why not to promote the wave function to an opertor itself?
+\begin{mytheorem}[The idea of second quantization: from relativistic QM to Quantum Field Theory]
+At some point people started wondering: in quantum mechanics everything is subject to fluctuations, why not the very number of particles themselves? 
+In a sense this amounts to allowing the wave function itself fluctuate, oscillating between the wave function of a single particle, two particles, three particles, and so on.
+More rigorously, why not to promote the wave function to an operator itself? 
+
+The name of \emph{second quantization} alludes to this idea of quantizing once again the wave function, which was already a quantum object.
+Beware this is very misleading: quantization is performed only once and the ordinary QM wave function is not replaced by the field operator.
+The pointis that we are now tracking an infinite number of DoFs, namely a field, and just as we quantized the position and momentum operator in the case of a finite number of DoFs, we now quantize the field operator and its conjugate momentum.
+The wave function of the theory still exists in the usual sense, and is not replaced by the field operator, which instead is simply the infinite-dimensional analogoue of the $q_j$ and $p_j$ operators.
 \end{mytheorem}
 
 
-\begin{mytheorem}[The Casimir effect. \todotag{TBC}]
+
+
+
+
+%-------------------------------------------------------------
+%=========================================================
+\section{The guiding theorems of Quantum Mechanics} 
+%=========================================================
+%--------------------------------------------------------------
+
+
+\begin{mytheorem}[What is a quantum (field) theory?]
+Ultimately, when developing any quantum theory to model a system, we only have 3 ingredients.
+\begin{itemize}
+    \item \textbf{The DoFs.} We need to identify the relevant DoFs of the system.
+    In particular, a quantum \emph{field} theory is just a theory where the fundamental DoFs are fields $\phi(x)$.
+    %
+    \item \textbf{The symmetries.} We need to identify the symmetries of the system, which are typically encoded in the transformation properties of the DoFs under certain symmetry groups.
+    Notable examples are invariance under the Galilean or Lorentz group, for non-relativistic and relativistic theories respectively, and gauge invariance or other internal symmetries for theories describing fundamental interactions.
+    %
+    \item \textbf{The dynamics.} We need to specify the dynamics of the system, which is typically done by writing down a Lagrangian or Hamiltonian for DoFs, consistent with the symmetries of the system.
+\end{itemize}
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Heisenberg canonical quantization procedure.]
+%
+The Heisenberg canonical quantization procedure is a systematic method for constructing a quantum theory from a classical theory, namely:
+\begin{itemize}
+    \item Promote the phase-space variables \(q_i, p_i\), i.e. the classical DoFs of the theory to operators acting on a Hilbert space;
+    %
+    \item Poisson brackets are replaced by commutators according to the rule {\small$\displaystyle \{A, B\} \mapsto \frac{1}{i\hbar} [\hat{A}, \hat{B}];$}
+    %
+    \item the equations of motion are left formally unchanged, but now refer to evolving operators.
+\end{itemize}
+In practice, we start from the classical phase-space variables \(q_i, p_i\) satisfying the relevant Equations of Motions and  Poisson brackets, possibly in the continuum limit {\small$\delta_{ij} \mapsto \delta(x-y)$} as the number of DoFs goes to infinity,
+{\small\begin{align}
+\{q_i, p_j\} = \delta_{ij}, \quad \{q_i, q_j\} = 0, \quad \{p_i, p_j\} = 0.
+\end{align}}
+We promote these variables to \emph{self-adjoint} operators \(\hat{q}_i, \hat{p}_i\) acting on a Hilbert space \(\mathcal{H}\), and replace the Poisson brackets with the canonical commutation relations, again possibly in the continuum limit,
+{\small\begin{align}
+[\hat{q}_i, \hat{p}_j] = i\hbar \delta_{ij}, \quad [\hat{q}_i, \hat{q}_j] = 0, \quad [\hat{p}_i, \hat{p}_j] = 0.
+\end{align}}
+These operators satisfy the \emph{same equations of motion as the classical counterparts}, but now in the operator form
+{\small\begin{equation}
+    \frac{d\hat{O}}{dt} = \frac{1}{i\hbar} [\hat{O},\hat{H}] + \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}}.
+\end{equation}}
+In particular, for the fundamental DoFs we have
+{\small\begin{align}
+    i\hbar\frac{d\hat{q}_i}{dt} = [\hat{q}_i, \hat{H}] \quad i\hbar\frac{d\hat{p}_i}{dt} = [\hat{p}_i, \hat{H}].
+\end{align}}
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Heisenberg vs Schr\"odinger picture \& interaction picture]
+There are 2+1 ways to describe the time evolution of a system in Quantum Mechanics.
+These are completely equivalent and related by a unitary transformation.
+\begin{itemize}
+    \item[]\textbf{Heisenberg picture}. Operators evolve in time according to the Heisenberg equation of motion, while state vectors remain constant.
+    \item[]\textbf{Schr\"odinger picture}. State vectors evolve in time according to the Schr\"odinger equation, while operators remain constant.
+    \item[]\textbf{Interaction picture}. Both operators and state vectors evolve in time, accoring to a splitting of the Hamiltonian $\hat{H} = \hat{H}_0 + \hat{H}_{\text{int}}$ into a free part and an interaction part.
+\end{itemize}
+In the Schr\"odinger picture states evolves in time as
+{\small\begin{equation}
+    i\hbar \frac{d}{dt} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle.
+\end{equation}}
+The Schr\"odinger picture provides more intuition from classical physics and is often more convenient for practical calculations, especially in time-dependent problems.
+
+On the other hand, the Heisenberg picture is particularly useful in Quantum Field Theory, and in the study of symmetries and conservation laws.
+Moreover, it makes the connection with classical mechanics transparent via the canonical quantization procedure: the EoM are left unchanged, classical DoFs are promoted to operators, and Poisson brackets become commutators.
+In particular, it makes it easier to see how classical observables correspond to quantum operators and to recover the classical limit of quantum systems when $\hbar \to 0$.
+
+Finally, the interaction picture is used in perturbation theory and in the study of time-dependent interactions, as it allows for a separation of the free evolution from the effects of interactions.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Ehrenfest theorem.]
+The Ehrenfest theorem establishes a connection between the quantum mechanical expectation values of observables and their classical counterparts.
+It states that the time evolution of the expectation value
+of an operator \(\hat O\) in a quantum state \(|\psi(t)\rangle\) is
+{\small\begin{equation}
+    \frac{d}{dt} \langle \hat{O} \rangle = \frac{1}{i\hbar} \langle [\hat{O}, \hat{H}] \rangle + \Big\langle \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}} \Big\rangle,
+\end{equation}}
+where the expectation value  is \(\langle \hat{O} \rangle = \langle \psi(t) | \hat{O} | \psi(t) \rangle\) and \(\hat{H}\) is the Hamiltonian operator.
+
+For a quadratic Hamiltonian, the time evolution of the expectation value is then exactly the same as the classical evolution of the corresponding observable \(O\).
+For non-quadratic Hamiltonians, classical motion is reproduced only approximately, for example when the wave packet is sufficiently localized.
+
+For example, for \(\hat H=\hat p^{\,2}/(2m)+V(\hat q)\), applying the Ehrenfest theorem to the position and momentum operators gives
+{\small\begin{align}
+    \frac{d}{dt}\langle\hat q_i\rangle
+    &=
+    \frac{1}{m}\langle\hat p_i\rangle,
+    &
+    \frac{d}{dt}\langle\hat p_i\rangle
+    &=
+    -\left\langle\frac{\partial V}{\partial q_i}\right\rangle.
+\end{align}}
+These equations reproduce the corresponding classical versions exactly
+for free particles and, more generally, for potentials at most
+quadratic.
+For non-quadratic potentials classical motion is only aproximately reproduced under suitable conditions, e.g. if the wave packet is sufficiently
+localized that
+{\small\begin{align}
+    \left\langle\frac{\partial V}{\partial q_i}\right\rangle
+    \simeq
+    \left.
+    \frac{\partial V}{\partial q_i}
+    \right|_{q=\langle\hat q\rangle}.
+\end{align}}
+The Ehrenfest theorem thus provides a bridge between quantum and classical mechanics, showing that the average behavior of quantum systems approximately follows classical laws under certain conditions.
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Stone-von Neumann theorem.]
+%
+By the postulates, the Hilbert space of quantum mechanics are required to be separable.
+In particular, any two spaces with the same number of DoFs, finite or countable infinite, are always unitarily isomorphic
+{\small\begin{align}
+    U:\mathcal{H}_1 \to \mathcal{H}_2, \quad U^\dagger U = \mathbb{I}_{\mathcal{H}_1}, \quad U U^\dagger = \mathbb{I}_{\mathcal{H}_2}.
+\end{align}}  
+The Stone-von Neumann theorem states that, if the number of degrees of freedom is finite, there is a unique (up to unitary isomorphisms) irreducible representation of the canonical commutation relations (CCR) for the DoFs of the system.
+That is, denoting the DoFs of the system as $\{q_i, p_i\}_{i=1}^N$, any two irreducible representations $a=1,2$ of the CCR 
+{\small\begin{align}
+    [\hat{q}^a_i, \hat{p}^a_j] = i\hbar \delta_{ij}, \quad [\hat{q}^a_i, \hat{q}^a_j] = 0, \quad [\hat{p}^a_i, \hat{p}^a_j] = 0,
+\end{align}}
+on separable Hilbert spaces $\mathcal{H}_a$ are unitarily isomorphic in the sense that the unitary operator \(U: \mathcal{H}_1 \to \mathcal{H}_2\) can be taken so that
+{\small\begin{align}
+    U \hat{q}^{(1)}_i U^\dagger = \hat{q}^{(2)}_i, \quad U \hat{p}^{(1)}_i U^\dagger = \hat{p}^{(2)}_i.
+\end{align}}
+This theorem ensures that the physical predictions of Quantum Mechanics are independent of the specific representation chosen for the operators, as long as the number of degrees of freedom is finite.
+
+The theorem \emph{does not hold} when the number of degrees of freedom is infinite, as in Quantum Field Theory.
+In typical cases, we can impose IR regularization, making the DoFs countable discrete, and UV regularization, making the DoFs finite, and thus recover the theorem.
+However, this regularization procedure might fail in particular circumstances, leading to unitarily \emph{inequivalent} representations of the CCR.
+For example:
+\begin{itemize}
+    \item if a (weird) theory does not enjoy a proper separation of scales, so that low energy physics is sensitive to the UV completion and the physical predictions depend on the UV regularization scheme;
+    \item in the context of phase transitions, where different phases of the system can be described by unitarily inequivalent representations of the CCR, reflecting the distinct physical properties of each phase. Indeed, by the Lee-Yang theorem, phase transitions can only occur in the thermodynamic limit, where the space is \emph{truly} infinite and the number of DoFs must then be \emph{uncountable} infinite (cf. the Fourier modes of $L^2([0,1]^d)$ versus $L^2(\mathbb{R}^d)$).
+\end{itemize}
+%
+\end{mytheorem}
+
+
+
+
+%-------------------------------------------------------------
+%=========================================================
+\section{Further principles and general ideas (miscellaneous)} 
+%=========================================================
+%-------------------------------------------------------------
+
+
+\begin{mytheorem}[Spontaneous symmetry breaking \& anomalies.]
+In a nutshell, spontaneous symmetry breaking occurs when the underlying laws (Lagrangian or Hamiltonian) of a system possess a certain symmetry, but the ground state (vacuum state) of the system does not exhibit that symmetry.
+This phenomenon has profound implications in various areas of physics, including condensed matter physics and particle physics.
+
+Anomalies, on the other hand, refer to situations where a symmetry that is present at the classical level of a theory is broken already when the theory is quantized, i.e. it is not even a symmetry of the quantized lagrangian/hamiltonian.
+Anomalies can have significant consequences, such as the violation of conservation laws associated with the broken symmetry or the non-renormalizability of the theory, and lead to inconsistencies in the theory if not properly accounted for.
+Indeed, avoiding anomalies is often a guiding principle to extend quantum field theories, such as BSM extentions of the Standard Model of particle physics.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Why the vacuum energy must be elevated: it is not empty/not a single point!]
+%
+In a sense, it is just natural that the energy of the vacuum is elevated when passing from classical to quantum physics, since the vacuum is not empty but rather a sea of quantum fluctuations.
+This is immediately understood in the simplest case of a quantum harmonic oscillator $H=\frac{p^2}{2m} + \frac{1}{2} m \omega^2 q^2$, where the ground state energy is shifted from the classical value of zero to the quantum value of $\hbar\omega/2$.
+In the classical case the ground state is a single point in phase space $(q,p)=(0,0)$, while in the quantum case the ground state is a Gaussian wave packet centered at $(q,p)=(0,0)$ with non-zero width $\Delta q \Delta p = \hbar/2$.
+For example, in position-space representation the ground state wave function is indeed
+\begin{equation}
+    \psi_0(q) = \left(\tfrac{m\omega}{\pi\hbar}\right)^{1/4} e^{-\frac{m\omega}{2\hbar}q^2}\,.
+\end{equation}
+The minimum of the potential is at $q=0$, but the wave function is non-zero for all $q\in\mathbb{R}$, thus exploring areas where the potential is elevated and thus increasing the energy of the ground state.
+This is a general feature of quantum systems, where the uncertainty principle prevents the system from being localized in a single point in phase space, leading to a non-zero ground state energy.
+\end{mytheorem}
+
+
+\begin{mytheorem}[The Casimir effect. \todoinline{TBC}]
 %
 The Casimir effect is a physical force which arises e.g. from the zero-point energy of the \emph{quantized} electromagnetic field in the presence of conducting boundaries and pushes them closer together.
 It arises since the zero-point energy of vacuum is reduced as the plates get closer thus diminishing the allowed modes of the electromagnetic field between them.
@@ -242,8 +431,7 @@ Using analytic regularization (e.g. zeta-function with $\zeta(-3)=\tfrac{1}{120}
 \begin{equation}
     \frac{E_{\text{Cas}}(a)}{A} = -\,\frac{\pi^2\,\hbar c}{720\,a^3} \quad \Rightarrow\quad 
      \frac{F}{A} = -\,\frac{d}{da}\!\left(\frac{E_{\text{Cas}}}{A}\right) = -\,\frac{\pi^2\,\hbar c}{240\,a^4} < 0.
-\end{equation}
-}
+\end{equation}}
 %
 This force has been measured with high precision and exemplifies how vacuum fluctuations plus boundary conditions produce macroscopic effects.
 Crucially, it is a direct proof that vacuum fluctuations do exist at least down to length scales of order $a$, typically microns or less in experiments, placing a lower bound on the UV cutoff of Qunatum Field Theories.
@@ -252,128 +440,4 @@ In particular, including zero-point energies only down to the micron scale, much
 \end{mytheorem}
 
 
-
-
-
-
-
-
-%-------------------------------------------------------------
-%=========================================================
-\section{The guiding theorems} 
-%=========================================================
-%--------------------------------------------------------------
-
-
-\begin{mytheorem}[Heisenberg canonical quantization procedure.\todotag{Expand \& mimick what done in sec 2}]
-Take the classical phase-space variables \(q_i, p_i\), that is the classical DoFs, satisfying the relevant Equations of Motions and  Poisson bracket relations (possibly passing to the continuum limit $\delta_{ij} \to \delta(x-y)$)
-\[\{q_i, p_j\} = \delta_{ij}, \quad \{q_i, q_j\} = 0, \quad \{p_i, p_j\} = 0.\]
-Then, in the quantum theory, promote these variables to operators \(\hat{q}_i, \hat{p}_i\) acting on a Hilbert space \(\mathcal{H}\), satisfying the canonical commutation relations (again possibly in the continuum limit)
-\[[\hat{q}_i, \hat{p}_j] = i\hbar \delta_{ij}, \quad [\hat{q}_i, \hat{q}_j] = 0, \quad [\hat{p}_i, \hat{p}_j] = 0.\]
-These \emph{operators are self-adjoint} and obey the \emph{same equations of motion as the classical counterparts}, but now in the operator formalism.
-Namely, they are obtained as
-\begin{equation}
-    \frac{d\hat{O}}{dt} = \frac{1}{i\hbar} [\hat{O},\hat{H}] + \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}}.
-\end{equation}
-In particular, for the fundamental DoFs we have
-\begin{align}
-    i\hbar\frac{d\hat{q}_i}{dt} = [\hat{q}_i, \hat{H}] \quad i\hbar\frac{d\hat{p}_i}{dt} = [\hat{p}_i, \hat{H}].
-\end{align}
-\end{mytheorem}
-
-
-\begin{mytheorem}[Heisenberg vs Schr\"odinger picture.\notetag{Check}]
-There are two equivalent ways to describe the time evolution of a system in Quantum Mechanics.
-They are completely equivalent and related by a unitary transformation.
-\begin{itemize}
-    \item In the \emph{Heisenberg picture}, operators evolve in time according to the Heisenberg equation of motion, while state vectors remain constant.
-    \item In the \emph{Schr\"odinger picture}, state vectors evolve in time according to the Schr\"odinger equation, while operators remain constant.
-\end{itemize}
-In the Schr\"odinger picture states evolves in time as
-\begin{equation}
-    i\hbar \frac{d}{dt} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle.
-\end{equation}
-The Schr\"odinger picture is often more convenient for practical calculations, especially in time-dependent problems.
-
-On the other hand, the Heisenberg picture is particularly useful in Quantum Field Theory and in the study of symmetries and conservation laws.
-More importantly, it makes the connection with classical mechanics transparent via the canonical quantization procedure: the EoM are left unchanged, classical DoFs are promoted to operators, and Poisson brackets become commutators.
-In particular, it makes it easier to see how classical observables correspond to quantum operators and to recover the classical limit of quantum systems when $\hbar \to 0$.
-\end{mytheorem}
-
-
-\begin{mytheorem}[Ehrenfest theorem.\todotag{Check \& finish}]
-The Ehrenfest theorem establishes a connection between the quantum mechanical expectation values of observables and their classical counterparts.
-It states that the time evolution of the expectation value of an operator \(\hat{O}\) in a quantum state \(|\psi(t)\rangle\) is the same as the classical equation of motion for the corresponding observable \(O\), provided that the operator \(\hat{O}\) does not explicitly depend on time.
-Mathematically, the Ehrenfest theorem is expressed as
-\begin{equation}
-    \frac{d}{dt} \langle \hat{O} \rangle = \frac{1}{i\hbar} \langle [\hat{O}, \hat{H}] \rangle + \Big\langle \Big(\frac{\partial \hat{O}}{\partial t}\Big)_{\text{explicit}} \Big\rangle,
-\end{equation}
-where \(\langle \hat{O} \rangle = \langle \psi(t) | \hat{O} | \psi(t) \rangle\) is the expectation value of the operator \(\hat{O}\) in the state \(|\psi(t)\rangle\), and \(\hat{H}\) is the Hamiltonian operator of the system.
-In particular, applying the Ehrenfest theorem to the position and momentum operators \(\hat{q}_i\) and \(\hat{p}_i\), we obtain
-\begin{align}
-    \frac{d}{dt} \langle \hat{q}_i \rangle = \frac{1}{m} \langle \hat{p}_i \rangle, \quad
-    \frac{d}{dt} \langle \hat{p}_i \rangle = - \langle \frac{\partial V}{\partial q_i} \rangle,
-\end{align}
-which resemble the classical equations of motion for a particle in a potential \(V(q)\).
-The Ehrenfest theorem thus provides a bridge between quantum mechanics and classical mechanics, showing that the average behavior of quantum systems follows classical laws under certain conditions.
-%
-\end{mytheorem}
-
-
-\begin{mytheorem}[Stone-von Neumann theorem.\todotag{Finish \& Check (cf. Kempf QFT 13)}]
-%
-By the postulates, the Hilbert space of quantum mechanics are required to be separable.
-In particular, any two spaces with the same number of DoFs, finite or countable infinite, are always unitarily isomorphic
-\begin{align}
-    U:\mathcal{H}_1 \to \mathcal{H}_2, \quad U^\dagger U = \mathbb{I}_{\mathcal{H}_1}, \quad U U^\dagger = \mathbb{I}_{\mathcal{H}_2}.
-\end{align}  
-The Stone-von Neumann theorem states that, if the number of degrees of freedom is finite, then up to unitary isomorphisms, there is a unique irreducible representation of the canonical commutation relations (CCR) for the DoFs of the system.
-That is, denoting the DoFs of the system as $\{q^a_i, p^a_i\}_{i=1}^N$ for $a=1,2$, any two irreducible representations of the CCR 
-\begin{align}
-    [\hat{q}^a_i, \hat{p}^a_j] = i\hbar \delta_{ij}, \quad [\hat{q}^a_i, \hat{q}^a_j] = 0, \quad [\hat{p}^a_i, \hat{p}^a_j] = 0,
-\end{align}
-acting on separable Hilbert spaces $\mathcal{H}_a$, are unitarily isomorphic.
-This means that the unitary operator above \(U: \mathcal{H}_1 \to \mathcal{H}_2\) can be taken so that
-\begin{align}
-    U \hat{q}^1_i U^\dagger = \hat{q}^2_i, \quad U \hat{p}^1_i U^\dagger = \hat{p}^2_i.
-\end{align}
-This theorem ensures that the physical predictions of Quantum Mechanics are independent of the specific representation chosen for the operators, as long as the number of degrees of freedom is finite.
-
-The theorem \emph{does not hold} when the number of degrees of freedom is infinite, as in Quantum Field Theory.
-In typical cases, we can impose IR regularization, making the DoFs countable discrete, and UV regularization, making the DoFs finite, thus recovering the theorem.
-This regularizatin procedure might however fail in particular circumstances, leading to unitarily inequivalent representations of the CCR.
-For example
-\begin{itemize}
-    \item if a (weird) theory does not enjoy a proper separation of scales, so that low energy physics is sensitive to the UV completion and the physical predictions depend on the UV regularization scheme;
-    \item in the context of phase transitions, where different phases of the system can be described by unitarily inequivalent representations of the CCR, reflecting the distinct physical properties of each phase. Indeed, by the Lee-Yang theorem, phase transitions can only occur in the thermodynamic limit where the space is \emph{truly} infinite and thus the number of DoFs is uncountable infinite.
-\end{itemize}
-%
-\end{mytheorem}
-
-
-%-------------------------------------------------------------
-%=========================================================
-\section{Further principles and general ideas (miscellaneous)} 
-%=========================================================
-%-------------------------------------------------------------
-
-
-\begin{mytheorem}[Spontaneous symmetry breaking \& anomalies.]
-In a nutshell, spontaneous symmetry breaking occurs when the underlying laws (Lagrangian or Hamiltonian) of a system possess a certain symmetry, but the ground state (vacuum state) of the system does not exhibit that symmetry.
-This phenomenon has profound implications in various areas of physics, including condensed matter physics and particle physics.
-
-Anomalies, on the other hand, refer to situations where a symmetry that is present at the classical level of a theory is broken already when the theory is quantized--i.e. it is not even a symmetry of the quantized lagrangian/hamiltonian.
-Anomalies can have significant consequences, such as the violation of conservation laws associated with the broken symmetry.
-\end{mytheorem}
-
-
-\begin{mytheorem}[What is a quantum field theory? (Matheus 2.1)]
-Ultimately a quantum field theory is a quantum theory where the fundamental DoFs are fields $\phi(x)$.
-When writing a quantum field theory to model a system we ultimately have two ingredients:
-\begin{itemize}
-    \item \textbf{The DoFs.} We need to identify the relevant DoFs of the system, which are typically fields $\phi(x)$.
-    \item \textbf{The symmetries.} We need to identify the symmetries of the system, which are typically encoded in the transformation properties of the fields under certain symmetry groups.
-    Notable examples are invariance under the Galilean or Lorentz group, for non-relativistic and relativistic theories respectively, and gauge invariance or other internal symmetries for theories describing fundamental interactions.
-    \item \textbf{The dynamics.} We need to specify the dynamics of the system, which is typically done by writing down a Lagrangian or Hamiltonian for the fields, consistent with the symmetries of the system.
-\end{itemize}
-\end{mytheorem}
+\end{document}

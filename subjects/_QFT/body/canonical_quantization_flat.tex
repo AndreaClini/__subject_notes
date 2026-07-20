@@ -1,7 +1,9 @@
 % !TeX root = ../QFT_main.tex
+\documentclass[../QFT_main.tex]{subfiles}
+\begin{document}
 %=========================================================
 %=========================================================
-\chapter{Canonical Quantization in Flat Spacetime}\todotag{Move to separate chapter `QM basics'}
+\chapter{Canonical Quantization in Flat Spacetime}
 %========================================================
 %=========================================================
 
@@ -9,91 +11,104 @@
 
 %--------------------------------------------------------
 %=========================================================
-\section{Classical \& Quantum Harmonic Oscillators}
+\section[Classical \& Quantum Harmonic Oscillators]
+{Classical \& Quantum Harmonic Oscillators
+\questioninline{Maybe move to separate chapter `QM basics'}}
 \label{sec:harmonic_oscillators}
 %=========================================================
 %------------------------------------------------------------
 
 This section fixes the notation and reviews the theory of finite dimensional classical and quantum harmonic oscillators, which are the building blocks of Quantum Field Theories.
 
-\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\questiontag{Check \& improve}]
+
+\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\questioninline{Check \& improve}]
 %
 The \emph{classical} harmonic oscillator with mass $m$ and frequency $\omega$ is described by the Hamiltonian
-\begin{equation}
+{\small\begin{align}\label{eq:classical_harmonic_oscillator_hamiltonian}
+\begin{aligned}
     H = \tfrac{1}{2m}p^2 + \tfrac{m\omega^2}{2} q^2, \quad \{q, p\} = \delta_{ij}\,,
-\end{equation}
+\end{aligned}\end{align}}
 where $q$ and $p$ are the canconical conjugate variables, obeying the Poisson brackets.
 %
 Rewrite the conjugate variables in terms of adimensional ones to match the two prefactors as
-\begin{align}
-    \tilde{q}=\ell q, \quad \tilde{p}= \frac{\hbar}{\ell} p, \quad \{\tilde{q}, \tilde{p}\} = \hbar \delta_{ij},
+{\small\begin{align}\label{eq:adimensional_harmonic_oscillator_variables}
+\begin{aligned}
+    \tilde{q}=\ell q, \quad \tilde{p}= \tfrac{\hbar}{\ell} p, \quad \{\tilde{q}, \tilde{p}\} = \hbar \delta_{ij},
      \quad \text{for}\quad \ell= \sqrt{\tfrac{\hbar}{m\omega}}.
-\end{align}
+\end{aligned}\end{align}}
 The Hamiltonian becomes
-\begin{align}
+{\small\begin{align}\label{eq:classical_harmonic_oscillator_factorization}
+\begin{aligned}
     H &= \hbar \omega \tfrac{1}{2}\left( {\tilde{p}}^2 + {\tilde{q}}^2 \right)
     \overset{!}{=}\hbar \omega \left[
         \tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right)
         \cdot \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right)
     \right],
-\end{align}
+\end{aligned}\end{align}}
 where in the second passage we used that $\tilde{p}$ and $\tilde{q}$ commute in the \emph{classical} theory.
 %
-Following Heisenberg canonical quantization procedure, promote the classical theory to a quantum one as follows.
+Following Heisenberg canonical quantization procedure, promote the classical theory to a quantum one following:
 \begin{itemize}
-    \item Promote the canonical variables to operators acting on a Hilbert space $\mathcal{F}$.
+    \item Promote the canonical variables to operators acting on a Hilbert space $\mathcal{F}$;
     %
-    \item Poisson brackets are replaced by commutators according to the rule $\displaystyle \{A, B\} \mapsto \frac{1}{i\hbar} [\hat{A}, \hat{B}]$.
+    \item Poisson brackets are replaced by commutators according to the rule $\displaystyle \{A, B\} \mapsto \tfrac{1}{i\hbar} [\hat{A}, \hat{B}]$;
     %
     \item All the equations are left formally unchanged, but now refer to evolving operators.
 \end{itemize}
 %
 The Hamiltonian operator is given by
-\begin{equation}
+{\small\begin{align}\label{eq:quantum_harmonic_oscillator_hamiltonian}
+\begin{aligned}
     \hat{H} = \tfrac{1}{2m}{p}^2 + \tfrac{m\omega^2}{2} {q}^2= \tfrac{1}{2}\hbar \omega \left( {\tilde{p}}^2 + {\tilde{q}}^2 \right).
-\end{equation}
+\end{aligned}\end{align}}
 The Poisson brackets turn into the canonical commutation relations
-\begin{align}
+{\small\begin{align}\label{eq:harmonic_oscillator_canonical_commutators}
+\begin{aligned}
     [q,p]=i\hbar \delta_{ij} ,\quad [q,q]=[p,p]=0,
     \qquad
     [\tilde{q}, \tilde{p}] = i \delta_{ij},\quad [\tilde{q}, \tilde{q}] = [\tilde{p}, \tilde{p}] = 0.
-\end{align}
+\end{aligned}\end{align}}
 We cannot use the previous factorization since $\tilde{p}$ and $\tilde{q}$ do not commute anymore.
 We have instead
-\begin{align}
-    \hat{H} &=     
+{\small\begin{align}\label{eq:harmonic_oscillator_ladder_hamiltonian}
+\begin{aligned}
+    \hat{H} &=
     \hbar \omega \bigg[
         \underbrace{\tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right)}_{a}
         \cdot
         \underbrace{\tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right)}_{a^{\dagger}}
-        + \underbrace{\tfrac{1}{2}[\tilde{p}, i\tilde{q}]}_{=\frac{1}{2} i \hbar}
+        + \underbrace{\tfrac{1}{2}[\tilde{p}, i\tilde{q}]}_{=\tfrac{1}{2} i \hbar}
     \Big] = \tfrac{1}{2}\hbar\omega \left(a^\dagger a+ a a^\dagger\right)
     = \hbar \omega \left( a^{\dagger} a + \tfrac{1}{2} \right),
-\end{align}
+\end{aligned}\end{align}}
 for the creation and annihilation operators
 {\small\begin{align}\label{eq:ordinary_QM_harmonic_oscillator}
+\begin{aligned}
     a^\dagger &= \tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left(\sqrt{m\omega} \,q - \tfrac{i}{\sqrt{m\omega}} p \right), \,\,
     a = \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right) = \tfrac{1}{\sqrt{2\hbar}} \left( \sqrt{m\omega}\, q + \tfrac{i}{\sqrt{m\omega}} p \right),\,\, [a, a^\dagger] = 1.
-\end{align}}
+\end{aligned}\end{align}}
 %
 The energy eigenvalues of the quantum harmonic oscillator are
-\begin{equation}
+{\small\begin{align}\label{eq:quantum_harmonic_oscillator_spectrum}
+\begin{aligned}
     E_n = \hbar \omega \left( n + \tfrac{1}{2} \right), \quad n = 0, 1, 2, \ldots
-\end{equation}
+\end{aligned}\end{align}}
 %
 In the familiar position representation  we have
-\begin{align}
-    q &= x, \quad p = -i \hbar \partial_x, \qquad 
-    \tilde{q}=\xi := \frac{x}{\ell}=\sqrt{\tfrac{m\omega}{\hbar}} x, \quad \tilde{p} = -i \frac{d}{d\xi},\\
+{\small\begin{align}\label{eq:harmonic_oscillator_position_representation}
+\begin{aligned}
+    q &= x, \quad p = -i \hbar \partial_x, \qquad
+    \tilde{q}=\xi := \tfrac{x}{\ell}=\sqrt{\tfrac{m\omega}{\hbar}} x, \quad \tilde{p} = -i \tfrac{d}{d\xi},\\
     a^\dagger &= \tfrac{1}{\sqrt{2}}\left(\xi-\partial_\xi\right) = \tfrac{1}{\sqrt{2}}\left(\sqrt{\tfrac{m\omega}{\hbar}} x - \sqrt{\tfrac{\hbar}{m\omega}} \partial_x\right), \quad
     \quad a = \tfrac{1}{\sqrt{2}}\left(\xi+\partial_\xi\right)= \tfrac{1}{\sqrt{2}}\left(\sqrt{\tfrac{m\omega}{\hbar}} x + \sqrt{\tfrac{\hbar}{m\omega}} \partial_x\right).
-\end{align}
+\end{aligned}\end{align}}
 
-We remark that we could have equivalently started the quantization procedure directly from the last expression of the \emph{classical} Hamiltonian
-\begin{align}
+We remark that we could have equivalently started the quantization procedure directly from the second expression of the \emph{classical} Hamiltonian, thereby obtaining
+{\small\begin{align}\label{eq:normal_ordered_harmonic_oscillator}
+\begin{aligned}
     H&\overset{!}{=}\hbar \omega \left[\tfrac{1}{\sqrt{2}}\left( \tilde{p} - i \tilde{q} \right)
         \cdot \tfrac{1}{\sqrt{2}}\left( \tilde{p} + i \tilde{q} \right)\right] = \hbar \omega \left( a^\dagger a \right).
-\end{align}
+\end{aligned}\end{align}}
 This corresponds to normal-ordering of the previous \emph{quantum} Hamiltonian, removing the zero-point energy $\hbar \omega/2$.
 As long as gravity is ignored, constant energy shifts do not affect the dynamics of the system, and we can safely normal-order the Hamiltonian.
 In general relativity, all forms of energy will instead source the energy-momentum tensors and thus the gravitational field, and we cannot simply ignore the zero-point energy anymore.
@@ -105,17 +120,16 @@ In general relativity, all forms of energy will instead source the energy-moment
   \includegraphics[width=0.4\textwidth,height=5cm]{images/harmonic_oscillator_wf.png}%\\[1pt]
   %\includegraphics[width=0.35\textwidth,height=3.5cm]{images/lake_fourier.png}
   %\includegraphics[width=0.30\textwidth,height=5cm,keepaspectratio]{images/lake_fourier.png}
-  \caption{\small Wave functions of the quantum oscillator. The classically allowed region $\xi^2=\alpha^2 x^2\leq 2n+1$ for energies $E_n=\hbar \omega (n+\frac{1}{2})$ is indicated by the dashed lines.}
+  \caption{\small Wave functions of the quantum oscillator. The classically allowed region $\xi^2=\alpha^2 x^2\leq 2n+1$ for energies $E_n=\hbar \omega (n+\tfrac{1}{2})$ is indicated by the dashed lines.}
 \end{wrapfigure}
 It is fundamental to understand how the \emph{fixed} frequency $\omega$ of the oscillator determines the likelyhood of finding the system at a given elongation from equilibrium i.e. the amplitude of oscillations.
 Indeed, all wave functions are proportional to a Gaussian factor, multiplied by suitable Hermite polynomials and normalization constants
-{\small
-\begin{align}
-    \psi_n(q) = C_n\,H_n(\xi)\, e^{-\tfrac{\xi^2}{2}} \!=\! C_n \,\, H_n\Big(\sqrt{\tfrac{m\omega}{\hbar}} q\Big) \,\, e^{-\frac{m \omega}{2 \hbar} q^2}
-     \propto\ e^{-\frac{m \omega}{2 \hbar} q^2}.
-\end{align}
-}
-Higher wave functions are more likely found at larger elongations, but the Gaussian envelope always dominates at large $|q|$.
+{\small\begin{align}\label{eq:harmonic_oscillator_wavefunctions}
+\begin{aligned}
+    \psi_n(q) = C_n H_n(\xi)\, e^{-\tfrac{\xi^2}{2}} \!=\! C_n \, H_n\Big(\!\sqrt{\tfrac{m\omega}{\hbar}} q \Big) \,\, e^{-\tfrac{m \omega}{2 \hbar} q^2}
+     \propto\ e^{-\tfrac{m \omega}{2 \hbar} q^2}.
+\end{aligned}\end{align}}
+Higher wave functions are more likely to be found at larger elongations, but the Gaussian envelope always dominates at large $|q|$.
 Crucially, the smaller is the frequency $\omega$, the wider is the Gaussian envelope and in turn the higher the probability of finding the oscillator at large elongations from equilibrium i.e. of observing large amplitudes of oscillation.
 This is already familiar from Electrodynamics: it is very unlikely to find high-frequency electromagnetic waves with large amplitudes, whereas low-frequency waves (e.g. radio waves) are easily found with large amplitudes.
 \end{mytheorem}
@@ -620,7 +634,7 @@ See Section \ref{sec:kg_field_particles_coherent_interactions} for more details.
 
 
 %=========================================================
-\subsection{Path integral formulation of the harmonic oscillator\todotag{FINISH!}}
+\subsection[Path integral formulation of the harmonic oscillator]{Path integral formulation of the harmonic oscillator\todoinline{FINISH!}}
 %=========================================================
 %
 We now consider the path integral formulation for the driven harmonic oscillator, in increasing level of accuracy:
@@ -655,33 +669,33 @@ We repeat all the step including the path integral formulation.
 %=========================================================
 %------------------------------------------------------------
 
-\begin{mytheorem}[Towards the Klein-Gordon Lagrangian\todotag{Improve}]
+\begin{mytheorem}[Towards the Klein-Gordon Lagrangian]
 %
 Consider the Lagrangian for a discrete set of classical harmonic oscillator in $d$ space dimensions with some potential $V(q_n)$,
 \begin{align}
     \mathcal{L}= \sum_{n\in \Z^d}\frac{1}{2} \mu \dot{q}_n^2 - \frac{1}{2} \mu \omega_n^2 \sum_{j=1}^d (q_n - q_{n +\hat{e}_j})^2 - V(q_n).
 \end{align}
-The density of oscillators is $\rho = \mu / a^d$ and the speed of sound is $c_s = a \omega_n$, where $a$ is the lattice spacing, are kept constant as we take the continuum limit $a \to 0$.
+The density of oscillators $\rho = \mu / a^d$ and the speed of sound $c_s = a \omega_n$, where $a$ is the lattice spacing, are kept constant as we take the continuum limit $a \to 0$.
 The Lagrangian then becomes
 \begin{align}
-    \mathcal{L} &= \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \rho \dot{q}_n^2 - \frac{1}{2} \rho (a\omega_n)^2 \sum_{j=1}^d \left(\frac{q_n - q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(q_n) \right]
+    \mathcal{L} &= \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \rho \dot{q}_n^2 - \frac{1}{2} \rho (a\omega_n)^2 \sum_{j=1}^d \left(\tfrac{q_n - q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(q_n) \right]
     \\
-    & 
-    \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \big(\rho^{1/2} \dot{q}_n\big)^2 - \frac{1}{2} (a\omega_n)^2 \sum_{j=1}^d \left(\frac{\rho^{1/2}q_n - \rho^{1/2}q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(\rho^{-1/2}\rho^{1/2}q_n) \right]
+    &=
+    \sum_{n\in \Z^d} a^d \left[ \frac{1}{2} \big(\rho^{1/2} \dot{q}_n\big)^2 - \frac{1}{2} (a\omega_n)^2 \sum_{j=1}^d \left(\tfrac{\rho^{1/2}q_n - \rho^{1/2}q_{n +\hat{e}_j}}{a}\right)^2 - \frac{1}{a^d} V(\rho^{-1/2}\rho^{1/2}q_n) \right]
     \\
     &\xrightarrow[a\to 0]{} \int d^d\!x\,\,\, \tfrac{1}{2} \left(\partial_t\phi(t,\mathbf{x})\right)^2 - \tfrac{1}{2} c_s^2 \,\left(\nabla_x\phi(t,\mathbf{x})\right)^2 - \mathcal{V}(\phi(t,\mathbf{x})),
 \end{align}
-where we redefined the field as $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= \mu^{1/2}a^{-d/2} q_n(t)$ and the potential density as $\mathcal{V}(\phi) := \lim_{a\to 0} a^{-d} V(\rho^{-1/2} \phi)$.
-Choosing a quadratic potential $V(q_n) = \tfrac{1}{2} \mu^2 q_n^2$ yields the Klein-Gordon lagrangian density for a free scalar field of mass $\mu$.
+where we defined the field as $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= \mu^{1/2}a^{-d/2} q_n(t)$ and the potential density as $\mathcal{V}(\phi) := \lim_{a\to 0} a^{-d} V(\rho^{-1/2} \phi)$.
+Choosing a quadratic potential $V(q_n) = \tfrac{1}{2} m_\phi \mu q_n^2$ yields the Klein-Gordon lagrangian density for a free scalar field of mass $m_\phi$.
 
 
-Note that we absorbed a factor $\mu^{1/2}$ in the rescaling of the field.
+Note that we absorbed a factor $\mu^{1/2}$ in the definition of the field.
 Therefore in d+1 spacetime the field $\phi(t,\mathbf{x}) := \rho^{1/2} q_n(t)= \mu^{1/2}a^{-d/2} q_n(t)$ has energy dimension $[\phi] = E^{-1/2} E^{d/2} = E^{(d-1)/2}$, and its Fourier transform $\phi_k= \int d^dx \phi_x e^{ixk}$ has dimension $[\phi_k] = E^{-1/2} E^{-d/2}$.
-Below we will identify harmonic oscillator variables constituting the field as $\phi_k\sim q_k+\tfrac{1}{\omega_k} p_k$, so that $[q_k] = E^{-1/2} E^{-d/2}$ and $[p_k] = E^{1/2} E^{-d/2}$.
-Since the mass $\mu$ has already been absorbed, \emph{adimensional} density\footnote{In the sense they are 'square-root densities' in $k$-space i.e. $[\tilde{q}_k]=[\tilde{p}_k]=E^{-d/2}$} variables will then be obtained rescaling as
+Below we will identify harmonic oscillator variables constituting the field as $\phi_k\sim q^\phi_k+\tfrac{1}{\omega_k} p^\phi_k$, so that $[q^\phi_k] = E^{-1/2} E^{-d/2}$ and $[p^\phi_k] = E^{1/2} E^{-d/2}$.
+Since the oscillators' mass $\mu$ has already been absorbed, \emph{adimensional} density\footnote{In the sense they are 'square-root densities' in $k$-space i.e. $[\tilde{q}_k]=[\tilde{p}_k]=E^{-d/2}$} variables will then be obtained rescaling as
 \begin{equation}
-    \tilde{q}_k = \sqrt{\frac{\omega_k}{\hbar}} q_k, \quad \tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{\omega_k}} p_k,\quad
-    \text{instead of the usual}\quad \tilde{q}_k = \sqrt{\frac{m\omega_k}{\hbar}} q_k,\quad \tilde{p}_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{m\omega_k}} p_k.
+    \tilde{q}^\phi_k = \sqrt{\frac{\omega_k}{\hbar}} q^\phi_k, \quad \tilde{p}^\phi_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{\omega_k}} p^\phi_k,\quad
+    \text{instead of the usual}\quad \tilde{q}^\phi_k = \sqrt{\frac{m\omega_k}{\hbar}} q^\phi_k,\quad \tilde{p}^\phi_k = \frac{1}{\hbar}\sqrt{\frac{\hbar}{m\omega_k}} p^\phi_k.
 \end{equation}
 %
 \end{mytheorem}
@@ -689,7 +703,7 @@ Since the mass $\mu$ has already been absorbed, \emph{adimensional} density\foot
 
 
 
-\begin{mytheorem}[Klein-Gordon field as a lake: (de)coupled oscillators \& probing waves with a cork\notetag{Check}]
+\begin{mytheorem}[Klein-Gordon field as a lake: (de)coupled oscillators \& probing waves with a cork]
 
 \begin{wrapfigure}[16]{r}{0.45\textwidth} % 14 = lines to wrap; adjust as needed
   \centering
@@ -705,7 +719,7 @@ The classical (free) Klein-Gordon field is completely analogous to the surface o
 It should be seen as a collection of \emph{coupled} harmonic oscillators, one at each point of space, or equivalently of \emph{decoupled} harmonic oscillators in momentum space i.e. independent Fourier modes, each oscillating with its own frequency.
 
 In the absence of dissipation mechanisms, both for the field and the lake surface, a perturbation in space spreads and deforms overtime, propagating as a superposition of waves with various frequencies and exciting neighbouring points.
-On the other hand, a wave with fixed frequency oscillates but maintains its shape (amplitude and frequency) over time, freely travelling across the lake surface without deforming.
+On the other hand, a wave with fixed frequency oscillates while maintaining its shape (amplitude and frequency) over time, freely travelling across the lake surface without deforming.
 
 \begin{figure}[h!]
   \centering
@@ -721,28 +735,24 @@ On the other hand, a wave with fixed frequency oscillates but maintains its shap
 We can probe the waves on a lake using a cork floating on the water surface.
 The cork moves up and down following the profile of the lake, thus providing a measurement of the local height of the water surface at the cork position.
 The analogous procedure for the KG field is to use an atom or another suitable (quantum) system that can be acted upon by the field, both in the classical and quantum case.
-This point-like detector interacts with the field, extracting information on its field amplitude at the given space(time) position.
+This point-like detector interacts with the field, extracting information on its field amplitude at the given spacetime position.
 The oscillations of more corks at different space points will be correlated, but oscillations with different frequencies are independent.
+Indeed, in this idealized case of perfectly frictionless water, oscillations with a given frequency will not excite oscillations with other frequencies, and the same holds for the KG field.
 
-Finally note that in the absence of interactions, say `no rocks thrown into the lake', the surface of the lake--i.e. the classical field--will stay flat or retain its initial excitation, if any.
-In the quantum case, there will be fluctuations on top of these classical profiles due to zero-point energy of each Fourier mode, even in the absence of external perturbations.
+Finally note that in the absence of \emph{external} excitations, say `no rocks thrown into the lake', the surface of the lake--i.e. the classical field--will stay flat (or retain its initial excitation, if any).
+In the quantum case, on the other hand, there will be fluctuations on top of these classical profiles due to zero-point energy of each Fourier mode, even in the absence of external perturbations.
 %
 \end{mytheorem}
 
 
-
-
-
-
-
 \begin{mytheorem}[Classical theory of the Klein-Gordon field]
 %
-A real free scalar field $\phi(x)$ obeys the Klein-Gordon equation, 
+A real free scalar field $\phi(x)$ obeys the Klein-Gordon equation
 \begin{equation}
     (\partial_{\mu} \partial^{\mu} + m^2) \phi(x) = 0.
 \end{equation}
 This is a wave equation with relativistic dispersion relation $E^2 = |\mathbf{p}|^2 + m^2$ for the field excitations.
-It is the Euler-Lagrange equation of the nonunique Lagrangian (density) and action
+It is the Euler-Lagrange equation of the (non-unique) Lagrangian density and action
 \begin{equation}
     \mathcal{L} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{1}{2} m^2 \phi^2, 
     \quad L=\int d^3 x\, \mathcal{L},\quad S = \int dx^0 L = \int d^4 x\, \mathcal{L}.
@@ -766,7 +776,7 @@ More generally, the equation of motions for any functional $\mathcal{O}[\phi, \p
     \{\mathcal{O}_1,\mathcal{O}_2\} = \int d^3 x\, \left( \frac{\delta \mathcal{O}_1}{\delta \phi(x)} \frac{\delta \mathcal{O}_2}{\delta \pi(x)} - \frac{\delta \mathcal{O}_1}{\delta \pi(x)} \frac{\delta \mathcal{O}_2}{\delta \phi(x)} \right),
 \end{equation}
 where the Hamiltonian is $H = \int d^3 x\, \mathcal{H}$. 
-In particular, the fundamental fields obey the equations of motion, which equivalently combine into the Klein-Gordon equation,
+In particular, the fundamental fields obey the following equations of motion, which are equivalent to and combine to give the Klein-Gordon equation above,
 \begin{align}
     \frac{d\phi(t, \mathbf{x})}{dt} = \{\phi(t, \mathbf{x}), H\} = \pi(t, \mathbf{x}), \quad
     \frac{d\pi(t, \mathbf{x})}{dt} = \{\pi(t, \mathbf{x}), H\} = (\nabla^2 - m^2) \phi(t, \mathbf{x}). 
@@ -775,7 +785,7 @@ In particular, the fundamental fields obey the equations of motion, which equiva
 \end{mytheorem}
 
 
-\begin{mytheorem}[Heisenberg canonical quantization of the Klein-Gordon field\notetag{Check}]
+\begin{mytheorem}[Heisenberg canonical quantization of the Klein-Gordon field]
 %
 Following Heisenberg canonical quantization procedure, we promote the classical theory to a quantum theory as follows.
 \begin{itemize}
@@ -786,28 +796,28 @@ Following Heisenberg canonical quantization procedure, we promote the classical 
     \item The equations of motion are left formally unchanged, but now refer to evolving operators.
 \end{itemize}
 %
-The equal-time Poisson backe of the field become the equal-time caonical commutation relations 
-\begin{align}
+The equal-time Poisson backe of the field become the equal-time canonical commutation relations
+{\small\begin{align}
     [\hat{\phi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] &= i\hbar\, \delta^{(3)}(\mathbf{x} - \mathbf{y}), \quad
     [\hat{\phi}(t, \mathbf{x}), \hat{\phi}(t, \mathbf{y})] = 0, \quad
     [\hat{\pi}(t, \mathbf{x}), \hat{\pi}(t, \mathbf{y})] = 0.
-\end{align}
+\end{align}}
 %
-The evolution of any operator $\mathcal{O}[\hat{\phi},\hat{\pi}]$ function of the fundamental fields is
-\begin{equation}
+The evolution of any operator $\mathcal{O}[\hat{\phi},\hat{\pi},t]$ expressed as a function of the fundamental fields is
+{\small\begin{equation}
     \frac{d\hat{\mathcal{O}}}{dt} = \frac{1}{i \hbar} [\hat{\mathcal{O}}, \hat{H}] + \frac{\partial \hat{\mathcal{O}}}{\partial t}, \quad \text{for}\quad
     \hat{H} = \int d^3x\,\, \hat{\mathcal{H}} = \int d^3 x\, \left( \frac{1}{2} \hat{\pi}^2 + \frac{1}{2} (\nabla \hat{\phi})^2 + \frac{1}{2} m^2 \hat{\phi}^2 \right).
-\end{equation}
+\end{equation}}
 %
 In particular, the fundamental fields obey the Heisenberg equations of motion
-\begin{align}\label{eq:heisenberg_equation_KG_field}
+{\small\begin{align}\label{eq:heisenberg_equation_KG_field}
     \begin{cases}\displaystyle
     \frac{d\hat{\phi}(t, \mathbf{x})}{dt} = \tfrac{1}{i \hbar} [\hat{\phi}(t, \mathbf{x}), \hat{H}] = \hat{\pi}(t, \mathbf{x}), \\[7pt]
     \displaystyle
     \frac{d\hat{\pi}(t, \mathbf{x})}{dt} = \tfrac{1}{i \hbar} [\hat{\pi}(t, \mathbf{x}), \hat{H}] = (\nabla^2 - m^2) \hat{\phi}(t, \mathbf{x}),
     \end{cases}
-    \,\Rightarrow\quad  (\partial_{\mu} \partial^{\mu} + m^2) \hat{\phi}(x) = 0.
-\end{align}
+    \,\Rightarrow\quad  (\partial_{\mu} \partial^{\mu} + m^2) \hat{\phi}(x) = 0,
+\end{align}}
 which together again imply the field operator $\hat{\phi}(x)$ satisfies the Klein-Gordon equation.
 %
 \end{mytheorem}
@@ -2388,4 +2398,4 @@ The Unruh effect can thus be reinterpreted as the fact that the vacuum state (re
 Specifically, just like we found for the detector energy levels, one would find that the occupation numbers of the modes for the accelerated observer follow a thermal distribution at the Unruh temperature $T_U$ when the field is in its inertial vacuum state.
 %
 \end{mytheorem}
-
+\end{document}
