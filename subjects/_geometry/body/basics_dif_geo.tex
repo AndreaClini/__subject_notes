@@ -233,6 +233,17 @@ There are several equivalent ways to define the Lie derivative $\mathcal{L}_X$ a
     Since differential forms include functions (0-forms) and differentials (1-forms), we can use this formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
 \end{itemize}
 %
+The map $X\mapsto \mathcal{L}_X$ is a Lie algebra homomorphism from the Lie algebra of vector fields to the Lie algebra of (0,0)-derivations on tensors, whose Lie bracket is the usual commutator of linear operators, since
+\begin{align}
+    \mathcal{L}_{[X,Y]} = [\mathcal{L}_X, \mathcal{L}_Y] = \mathcal{L}_X\mathcal{L}_Y - \mathcal{L}_Y\mathcal{L}_X, 
+    \quad \mathcal{L}_{aX + bY} = a \mathcal{L}_X + b \mathcal{L}_Y \quad \forall a,b\in \mathbb{R}, \,\, X,Y \in \mathfrak{X}(M).
+\end{align}
+It further obeys the commutation relations
+\begin{itemize}
+    \item $[\mathcal{L}_X, d] = 0$;
+    \item $[\mathcal{L}_X, i_Y] = i_{[X,Y]}$;
+    \item $[\mathcal{L}_X, \mathcal{L}_Y] = \mathcal{L}_{[X,Y]}$.
+\end{itemize}
 \end{mytheorem}
 
 

@@ -62,7 +62,7 @@ For differential forms (anti)-derivatives of degree $k\in \mathbb{Z}$ obeys the 
 Note the sign is well-defined since differential forms are graded-commutative, i.e. $\alpha \wedge \beta = (-1)^{|\alpha||\beta|} \beta \wedge \alpha$.
 
 \begin{mytheorem}[Lie derivative on differential forms]
-The Lie derivative is a well-behaved derivative of degree $(0,0)$ on differential forms, defined as the restriction of the usual Lie derivative on tensors.
+The Lie derivative is a well-behaved derivative of degree 0 on differential forms, defined as the restriction of the usual Lie derivative on tensors.
 From the Leibniz rule for tensors and the linearity of the antisymmetrization map, it immediately follows that the Lie derivative also obeys the Leibniz rule wrt the wedge product
 \begin{equation}
     \mathcal{L}_X(\alpha \wedge \beta) = (\mathcal{L}_X \alpha) \wedge \beta + \alpha \wedge (\mathcal{L}_X \beta).
@@ -71,9 +71,23 @@ From the Leibniz rule for tensors and the linearity of the antisymmetrization ma
 
 
 \begin{mytheorem}[Inner derivative]
-The inner derivative is a \emph{anti}derivative of degree $(0,-1)$ on differential forms, defined as the contraction along a vector field $X$
+The inner derivative is the unique \emph{anti}derivative of degree $-1$ on differential forms such that
+{\small\begin{align}
+\begin{aligned}
+    i_Y f = 0, \qquad    i_Y df = df(Y), \qquad \forall f\in \Lambda^0(M)\,.
+\end{aligned}
+\end{align}}
+It is extended to all differential forms by the Leibniz rule in a basis
+{\small\begin{align}\begin{aligned}
+    i_Y(f dx^{i_1} \wedge \cdots \wedge dx^{i_k}) = & (i_Y f) dx^{i_1} \wedge \cdots \wedge dx^{i_k} 
+    + f (i_Y dx^{i_1}) \wedge dx^{i_2} \wedge \cdots \wedge dx^{i_k} + \dots
+    \\
+    &+(-1)^{j-1} f \,\,dx^{i_1} \wedge \cdots \wedge (i_Y dx^{i_j}) \wedge \cdots \wedge dx^{i_k} +\dots
+\end{aligned}
+\end{align}}
+Equivalently, the inner derivative can be defined explictly as the contraction along a vector field $X$
 \begin{equation}
-    i_X: \Lambda^k (M) \to \Lambda^{k-1} (M)\quad  \mid\quad  i_X \omega := \omega (X, \dots) 
+    i_X: \Lambda^k (M) \to \Lambda^{k-1} (M)\quad  \mid\quad  i_X \omega := \omega (X, \dots)\,.
 \end{equation}
 In a basis of $\Lambda^{k-1}(M)$, that is summing over \emph{ordered} indices $i_1< \dots <i_{k-1}$, but over \emph{any} value $\sigma\in \{1\dots n\}$, we have
 \begin{equation}\label{eq:interior_derivative_basis_expr}
@@ -81,7 +95,7 @@ In a basis of $\Lambda^{k-1}(M)$, that is summing over \emph{ordered} indices $i
 \end{equation} 
 where again $\omega_{\sigma_0 \dots \sigma_k}$ is totally antisymmetric.
 Indeed, using the convention \eqref{eq:indices_bookkeeping_differential_forms}, we have
-\begin{align}
+{\small\begin{align}
 \begin{aligned}
     i_X(\omega) &= \sum_{\sigma_0 \dots \sigma_{k-1}} \omega_{\sigma_0 \dots \sigma_{k-1}}\, dx^{\sigma_0}\otimes \cdots \otimes dx^{\sigma_{k-1}}\, (X, \cdots)
     \\
@@ -89,12 +103,18 @@ Indeed, using the convention \eqref{eq:indices_bookkeeping_differential_forms}, 
     \\
     &= \sum_{\sigma_0 \in\{1\dots n\},\,\,i_1 < \cdots < i_{k-1}} X^{\sigma_0} \, \omega_{\sigma_0 i_1 \dots i_{k-1}}\,\,dx^{i_1}\wedge\cdots \wedge dx^{i_{k-1}}.
 \end{aligned}
-\end{align}
+\end{align}}
+The inner derivative enjoys
+\begin{itemize}
+    \item $i_X i_Y + i_Y i_X = 0$ for any vector fields $X,Y$;
+    \item in particular $i_X i_X = 0$ for any vector field $X$;
+\end{itemize}
+%
 \end{mytheorem}
 
 
 \begin{mytheorem}[Exterior derivative]
-The exterior derivative is an \emph{anti}derivative of degree $(0,1)$ on differential forms, defined as the unique map
+The exterior derivative is an \emph{anti}derivative of degree 1 on differential forms, defined as the unique map
 \begin{equation}
     d: \Lambda^k (M) \to \Lambda^{k+1} (M)
 \end{equation}
@@ -106,13 +126,20 @@ Under this conditions, one proves the usual formula in a coordinate basis
 \end{mytheorem}
 
 
-\begin{mytheorem}[Cartan formula]
+\begin{mytheorem}[Cartan formula \& commutators of derivatives]
 This fundamental result links the Lie derivative $\mathcal{L}_X$, the exterior derivative $d$ and the inner derivative $i_X$, namely, for any differential form $\omega$, 
 \begin{equation}
     \mathcal{L}_X \omega = i_X d \omega + d (i_X \omega).
 \end{equation}
 Notably that the right-hand side is defined only for differential forms, while the left-hand side makes sense for any tensor.
-Since differential forms include functions (0-forms) and differentials (1-forms), we can use this formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
+Since differential forms include functions (0-forms) and differentials (1-forms), we can use Cartan formula to \emph{define} the Lie derivative and then extend it to all tensors using linearity and the Leibniz rule.
+
+Moreover, we have the following commutators of derivatives on differential forms, easily proved using Cartan formula and the Jacobi identity,
+\begin{itemize}
+    \item $[L_X, d]=0$;
+    \item $[L_X, i_Y] = i_{[X,Y]}$;
+    \item $[L_X, L_Y] = L_{[X,Y]}$.
+\end{itemize}
 \end{mytheorem}
 
 
