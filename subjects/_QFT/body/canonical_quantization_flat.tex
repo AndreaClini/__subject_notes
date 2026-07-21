@@ -21,7 +21,7 @@
 This section fixes the notation and reviews the theory of finite dimensional classical and quantum harmonic oscillators, which are the building blocks of Quantum Field Theories.
 
 
-\begin{mytheorem}[Review of classical \& quantum harmonic oscillator\questioninline{Check \& improve}]
+\begin{mytheorem}[Review of classical \& quantum harmonic oscillator]
 %
 The \emph{classical} harmonic oscillator with mass $m$ and frequency $\omega$ is described by the Hamiltonian
 {\small\begin{align}\label{eq:classical_harmonic_oscillator_hamiltonian}
@@ -30,7 +30,11 @@ The \emph{classical} harmonic oscillator with mass $m$ and frequency $\omega$ is
 \end{aligned}\end{align}}
 where $q$ and $p$ are the canconical conjugate variables, obeying the Poisson brackets.
 %
-Rewrite the conjugate variables in terms of adimensional ones to match the two prefactors as
+We recale the conjugate variables so as to make kinetic and potential energy terms equal, that is imposing
+{\small\begin{align}
+    \tfrac{1}{2m}(\hbar/\ell)^2\overset{!}{=} \tfrac{1}{2} m\omega^2\ell^2\implies \ell=\sqrt{\tfrac{\hbar}{m \omega}}\,.
+\end{align}}
+gives
 {\small\begin{align}\label{eq:adimensional_harmonic_oscillator_variables}
 \begin{aligned}
     \tilde{q}=\ell q, \quad \tilde{p}= \tfrac{\hbar}{\ell} p, \quad \{\tilde{q}, \tilde{p}\} = \hbar \delta_{ij},
@@ -136,13 +140,13 @@ This is already familiar from Electrodynamics: it is very unlikely to find high-
 
 
 
-\begin{mytheorem}[Identifying ladder operators\todotag{check}]
+\begin{mytheorem}[Identifying ladder operators]
 %
 Ladder operators are a convenient way deal with harmonic oscillators: they diagonalize the Hamiltonian and yield a single \emph{complex} DoF tracking both canonical variables $q$ and $p$. 
 The definition of ladder operators can be obtained \textbf{by direct inspection of the Hamiltonian} after rescaling the canonical variables to adimensional ones as done above.
-However, this procedure somewhat hides the arbitrariness in their definition, which is source of profound physical consequences for QFT in curved spacetime.
+However, this procedure somewhat hides the arbitrariness of their definition, which is source of profound physical consequences for QFT in curved spacetime or accelerated frames.
 
-Let us proceed more generally, simply defining a complex operator $\hat{a}$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$
+Let us proceed more generally, simply defining a complex operator $\hat{a}$ tracking both canonical variables as a linear combination for arbitrary constants $\alpha,\beta\in\R$,
 {\small\begin{align}\label{eq:ladder_operator_heuristics_1D}
     a = \alpha\, q + i \,\beta \,p \quad \text{for arbitrary }\, \alpha,\, \beta \in \mathbb{R}
     \quad \Longleftrightarrow \quad \begin{cases}
@@ -151,11 +155,11 @@ Let us proceed more generally, simply defining a complex operator $\hat{a}$ trac
     \end{cases}
 \end{align}}
 We first choose $\beta=\beta(\alpha)$ to enforce convenient CCR for $a$ and $a^\dagger$, and then fix $\alpha$ to make (somebody's) Hamiltonian as simple as possible.
-Namely we choose
+Namely, using $[q,p]=i\hbar$, we choose
 \begin{align}
     [a, a^\dagger] &= [\alpha q + i \beta p, \alpha q - i \beta p] = 2 \alpha \beta \hbar \quad \Rightarrow\quad \beta = \frac{1}{2\alpha \hbar}\,.
 \end{align}
-The original Schrodringer Hamiltonian can then be expressed as\footnote{We specify Schrodringer Hamiltonian since time-dependence of $J(t),K(t)$ makes the Heinseberg $H_H(t):=U(t,t_0)^\dagger H_S(t)U(t,t_0)$ and Schrodringer Hamiltonians different in general since $[H_S(t),H_S(s)]\neq0$ so that $H_S(t')$ do not commute with $U(t,s)$. }
+The original Schrodringer Hamiltonian can then be expressed as\footnote{We specify Schrodringer Hamiltonian since time-dependence of $J(t),K(t)$ makes the Heinseberg $H_H(t):=U(t,t_0)^\dagger H_S(t)U(t,t_0)$ and Schrodringer Hamiltonians different in general since $[H_S(t),H_S(s)]\neq0$, so that $H_S(t')$ do not commute with $U(t,s)$. }
 {\small\begin{align}
     H_S(t)&= \frac{1}{2m}p^2+\frac{m\omega^2}{2}q^2 +Jq + Kp\\
     &= -\frac{\alpha^2\hbar^2}{2m}\,(a-a^\dagger)^2
@@ -171,17 +175,19 @@ The original Schrodringer Hamiltonian can then be expressed as\footnote{We speci
 The expression dramatically simplifies upon choosing
 {\small
 \begin{align}\label{eq:choosing_alpha_ladder_op}
-    \alpha = \sqrt{\frac{m\omega}{2\hbar}} \quad \Longrightarrow \quad \beta = \frac{1}{\sqrt{2 m \omega \hbar}}\,.
+    \alpha = \tfrac{1}{\sqrt{2}}\sqrt{\tfrac{m\omega}{\hbar}} \quad \Longrightarrow \quad \beta = \tfrac{1}{\sqrt{2}}\tfrac{1}{\sqrt{m \omega \hbar}}\,.
 \end{align}}
-The final expressions 
+Note that this is precisely the adimensional rescaling $\ell=\sqrt{\tfrac{\hbar}{m\omega}}$ used in \eqref{eq:adimensional_harmonic_oscillator_variables} to make kinetic and potential energy terms equal.
+The final expressions are
+{\small
 \begin{align}\label{eq:oscillator_hamiltonian_written_ladder_operators}
-    a &= \frac{1}{\sqrt{2}}\left(\sqrt{\frac{m\omega}{\hbar}}\, q + i \frac{1}{\sqrt{m \omega \hbar}}\, p\right), \quad [a, a^\dagger] = 1,\\[2.5pt]
+    a &= \frac{1}{\sqrt{2}}\Big(\sqrt{\tfrac{m\omega}{\hbar}}\, q + i \tfrac{1}{\sqrt{m \omega \hbar}}\, p\Big), \quad [a, a^\dagger] = 1,\\[2.5pt]
     H_S(t) &= \hbar \omega \left(a^\dagger a + \tfrac{1}{2}\right) + \sqrt{\frac{\hbar}{2 m \omega}} J (a + a^\dagger) - i \sqrt{\frac{m \omega \hbar}{2}} K (a - a^\dagger).
-\end{align}
+\end{align}}
 If $J$ and $K$ are independent of the canonical variables, this form yields convenient equations of motion for $a$ (we might also further shift $a$ to absorb the linear terms).
-On the other hand, if $J$ or $K$ do depend on $q,\,p$, this suggests it might be more \textbf{convenient to define ladder operators in some other way!}
+On the other hand, if $J$ or $K$ do depend on $q,\,p$, the above expression suggests it might be more \textbf{convenient to define ladder operators in some other way!}
 
-Denote the time-evolution operator $U(t,s)=\mathcal{T}\exp\left(\int_s^t\!\!dt'H_S(t')\,\right)$.
+Denote the time-evolution operator $U(t,s)=\mathcal{T}\exp\left(-\tfrac{i}{\hbar}\int_s^t\!\!dt'H_S(t')\,\right)$.
 If $J(t),K(t)$ are independent of the canonical variables, the Heisenberg equation of motion for $a(t)=U(t,t_0)^\dagger aU(t,t_0)$ reads
 \begin{align}\label{eq:1d_oscillator_ladder_operator_time_evolution}
     &i\hbar\,\partial_t a(t)= U(t,t_0)^\dagger [a, H_s(t)] U(t,t_0)= \hbar \omega a(t) + \sqrt{\frac{\hbar}{2 m \omega}} J(t) + i \sqrt{\frac{m \omega \hbar}{2}} K(t)\\
@@ -190,7 +196,7 @@ If $J(t),K(t)$ are independent of the canonical variables, the Heisenberg equati
 For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i, t_f]$, we have
 \begin{align}\label{eq:a_in_a_out_1d_oscillator}
     a(t) &= \begin{cases}
-        a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
+        a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i,\\[6pt]
         a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \left(\sqrt{\tfrac{\hbar}{2 m \omega}} J(t') + i \sqrt{\tfrac{m \omega \hbar}{2}} K(t')\right) e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
         a(t_f) e^{-i\omega (t-t_f)}=: a_{\mathrm{out}} e^{-i\omega (t-t_f)}, & t > t_f.
     \end{cases}
@@ -201,16 +207,16 @@ For example, if $J$ and $K$ are nonzero only within a finite time interval $[t_i
 
 \begin{mytheorem}[Rotated harmonic oscillators]
 %
-Consider an isotropic\footnote{\label{fn:isotropic_oscillator}for simplicity, otherwise diagonalize the frequency matrix} harmonic oscillator in dimension $n$
+Consider an isotropic\footnote{\label{fn:isotropic_oscillator}for simplicity, otherwise diagonalize the frequency matrix} harmonic oscillator in real dimension $n$
 \begin{align}
     H = \frac{1}{2m} \sum_{j=1}^n (p^j)^2 + \frac{m\omega^2}{2} \sum_{j=1}^n (q^j)^2, \quad \{q, p^T\} = \delta_{ij}.
 \end{align}
-We can rotate cohordinates with an orthogonal matrix $R \in O(n)$ as   
+We can rotate coordinates with an orthogonal matrix $R \in O(n)$ as   
 \begin{align}
-     \tilde{q}^i = R^i_{j} q_j, \quad \tilde{p}^i = R^i_{j} p_j, \quad 
+     \tilde{q}^i = R^i_{j} q^j, \quad \tilde{p}^i = R^i_{j} p^j, \quad 
      \{\tilde{q}, \tilde{p}^T\} = R\{q,p^T\} R^T = R\,R^T = \delta_{ij}\,.
 \end{align}
-Passing to the quanum case, everythin is unchanged upond replacing $\{\,,\,\}\mapsto \frac{1}{i\hbar} [\,,\,]$.
+Passing to the quantum case, everythin is unchanged upond replacing $\{\,,\,\}\mapsto \frac{1}{i\hbar} [\,,\,]$.
 In position space representation we have
 {\small
 \begin{align}
@@ -218,7 +224,7 @@ In position space representation we have
     = -i\hbar \big(R^{-1})^j_i  \frac{\partial}{\partial x^j} = - i\hbar \big(R^T)^j_i \frac{\partial}{\partial x^j} = R^i_{j}\,\Big(-i\hbar \frac{\partial}{\partial x^j} \Big) = R^i_{j}\, p^j\,.
 \end{align}
 }
-Correspondingly the ladder operators just change the same as
+Correspondingly the ladder operators just change via the same rotation matrix $R$ as
 \begin{align}
     \tilde{a}^j = \frac{1}{\sqrt{2}}\Big(\sqrt{m\omega}\tilde{q}^j+\frac{i}{\sqrt{m\omega}}\tilde{p}^j\Big)
     = R^j_k\,\Big(\sqrt{m\omega}{q}^k+\frac{i}{\sqrt{m\omega}}{p}^k\Big) = R^j_k\, a^k\,.
@@ -227,14 +233,14 @@ Correspondingly the ladder operators just change the same as
 
 
 
-\begin{mytheorem}[Complex \& rotated harmonic oscillators\questiontag{Check}]
+\begin{mytheorem}[Complex \& rotated harmonic oscillators\noteinline{Check}]
 %
 Consider a 2D real isotropic\footnotemark[\getrefnumber{fn:isotropic_oscillator}] harmonic oscillator with Hamiltonian
 \begin{equation}
-    H = \tfrac{1}{2m}(p_x^2 + p_y^2) + \tfrac{m\omega^2}{2} (q_x^2 + q_y^2), \quad \{q_x, p_x\} = \{q_y, p_y\} = 1.
+    H = \tfrac{1}{2m}(p_x^2 + p_y^2) + \tfrac{m\omega^2}{2} (q_x^2 + q_y^2), \quad \{q_x, p_x\} = \{q_y, p_y\} = 1, \,\,\, \{q_x, p_y\} = \{q_y, p_x\} = 0.
 \end{equation}
 %
-It is customary to rewrite it as a single complex harmonic oscillator by defining the complex canonical variables in 4 possible ways\footnote{\label{fn:order_sign_CCR_conjugate} the order of $\pm$ and $\mp$ signs correspond to not taking (resp. taking) the conjugate in the CCR} as
+We can rewrite it as a single complex harmonic oscillator by defining the complex canonical variables in 4 possible ways\footnote{\label{fn:order_sign_CCR_conjugate} The order of $\pm$ and $\mp$ signs correspond to not taking (resp. taking) the conjugate in the CCR. For example in the first line choosing $p_z = \frac{1}{\sqrt{2}}(p_x - i p_y)$ corresponds to $\{q_z, p_z\} = 1$, while $p_z = \frac{1}{\sqrt{2}}(p_x + i p_y)$ corresponds to $\{q_z, p_z^\dagger\} = 1$.}
 \begin{align}
     q_z = \frac{1}{\sqrt{2}}(q_x + i q_y), \quad p_z = \frac{1}{\sqrt{2}}(p_x \mp i p_y), \quad \{q_z, p_z^{(\dagger)}\} = 1\,. \label{eq:complex_oscillator_pure_decomposition}
     \\[4pt]
@@ -244,12 +250,12 @@ All choices lead to the same Hamiltonian in terms of complex variables
 \begin{align}\label{eq:complex_harmonic_oscillator}
     H = \tfrac{1}{m} p_z p_z^{\dagger} + m \omega^2 q_z q_z^{\dagger}\,\quad \text{with}\quad \{q_z, p_z^{(\dagger)}\} = 1\,.
 \end{align}
-In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation, and then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing the complex position (resp. momentum) as combination of real positions (resp. momenta) as
+In practice one often starts from a complex harmonic oscillator obeying the CCR with/out conjugation, and then identify corresponding real variables\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] either expressing the complex position (resp. momentum) as combination of real positions (resp. momenta) as in \eqref{eq:complex_oscillator_pure_decomposition}
 \begin{align}
     &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
     q_y=-i\frac{q_z - q_z^\dagger}{\sqrt{2}},\quad p_y =\pm i \frac{p_z - p_z^\dagger}{\sqrt{2}}.
 \end{align}
-or making both complex variables $q_z,p_z$ a mixture of real positions and momenta as\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
+or making both complex variables $q_z,p_z$ a mixture of real positions and momenta as in \eqref{eq:complex_oscillator_mixed_decomposition}, 
 \begin{align}
     &q_x=\frac{q_z+q_z^\dagger}{\sqrt{2}},\quad p_x =\frac{p_z+p_z^\dagger}{\sqrt{2}},\quad
     q_y=\frac{\mp i}{\sqrt{2}}\frac{(p_z-p_z^\dagger)}{m\omega},\quad p_y =\frac{-im\omega}{\sqrt{2}} (q_z - q_z^\dagger).
@@ -258,22 +264,22 @@ or making both complex variables $q_z,p_z$ a mixture of real positions and momen
 
 We now consider a \emph{complex} position representation.
 Namely, we would like to identify\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}] $q_z\sim z$ and $p_z \sim \mp i\hbar \partial_z^{(*)}$.
-Recall that in \emph{any} case derivatives transform as
+Recall that in \emph{any} case derivatives obey
 \begin{align}
     \partial_z = \frac{1}{\sqrt{2}}\left(\partial_x - i \partial_y\right),\quad
     \partial_{z^*} = \frac{1}{\sqrt{2}}\left(\partial_x + i \partial_y\right),
 \end{align}
-In the pure position/momentum case, we use the position representation for both the $x$ and $y$ variables to get\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
+In the pure position/momentum case \eqref{eq:complex_oscillator_pure_decomposition}, we use the position representation for both the $x$ and $y$ variables to get\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}
     \hat{q}_z &= \frac{\hat{q}_x + i \hat{q}_y}{\sqrt{2}}=\frac{1}{\sqrt{2}}(x + i y) = z, \\
     \hat{p}_z &= \frac{1}{\sqrt{2}}(\hat{p}_x \mp i \hat{p}_y) = \frac{-i\hbar}{\sqrt{2}}\left(\partial_x \mp i \partial_y\right) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,.
 \end{align}
-In the mixed case it is instead convenient to use the position representation for $x$ and the momentum representation for $y$, yielding\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
+In the mixed case \eqref{eq:complex_oscillator_position_rep_mixed}, it is instead convenient to use the position representation for $x$ and the momentum representation for $y$, yielding\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}\label{eq:complex_oscillator_position_rep_mixed}
     \hat{q}_z &= z = \frac{1}{\sqrt{2}}\left(\hat{q}_x + \tfrac{i}{m\omega} \hat{p}_y\right) = \frac{1}{\sqrt{2}}\left(x + iy\right) =z\,, \\
     \hat{p}_z & = \frac{1}{\sqrt{2}}\left(\hat{p}_x \pm i m \omega \hat{q}_y\right) = \frac{1}{\sqrt{2}}\left(-i\hbar \partial_x \mp i (-i\hbar)\partial_y\right) = -i\hbar \frac{1}{\sqrt{2}}(\partial_x \mp i \partial_y) = -i\hbar \frac{\partial}{\partial z^{(*)}}\,.
 \end{align}
-Crucially, note that as an operator $\big(i\partial_z)^\dagger = i \partial_{z^*}$ since the adjoint flips the sign of derivatives $\partial_{x,y}^\dagger = -\partial_{x,y}$ wrt real variables, so that indeed the CCR are obeyeed in the forms prescribed.
+Crucially, note that as an operator $\big(i\partial_z)^\dagger = i \partial_{z^*}$ since the adjoint flips the sign of derivatives $\partial_{x,y}^\dagger = -\partial_{x,y}$ wrt real variables, so that indeed the CCR are obeyeed in the forms prescribed\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}].
 
 We can also consider \textbf{oscillators with more complex variables}
 \begin{align}
@@ -285,11 +291,11 @@ Depending on \emph{not} taking or taking the conjugate in the CCR, an orthogonal
      \{\tilde{q}^i_z, \tilde{p}_z^{j\,(\dagger)}\} = U^i_k \{q_z^k, p_z^{l\,(\dagger)}\} U^{j\,(*)}_l
      = U^i_k \delta^k_l U^{j\,(*)}_l = U^i_k \big(U^{T (*)}\big)^k_j = \delta^i_j\,.
 \end{align}
-However, in the former case the Hamiltonian is invariant only provided $U$ is also \emph{real} since
+However, in the former case the Hamiltonian is invariant only provided the orthogonal matrix $U$ is also \emph{real}, so that $U^\dagger U=U^TU=1$, since
 \begin{align}
     H &= \tfrac{1}{m} \tilde{p}_z^{j\,\dagger}\, \tilde{p}_z^j+ m \omega^2 \tilde{q}_z^{j\,\dagger}\,\tilde{q}_z^j
-    = \tfrac{1}{m} (U^{j\,(*)}_l p_z^{l\,\dagger}) (U^j_k p_z^k) + m \omega^2 (U^{j\,(*)}_l q_z^{l\,\dagger}) (U^j_k q_z^k) \\
-    &= \tfrac{1}{m} p_z^{l\,\dagger} \big(U^{T (*)} U\big)^l_k p_z^k + m \omega^2 q_z^{l\,\dagger} \big(U^{T (*)} U\big)^l_k q_z^k
+    = \tfrac{1}{m} (U^{j\,*}_l p_z^{l\,\dagger}) (U^j_k p_z^k) + m \omega^2 (U^{j\,*}_l q_z^{l\,\dagger}) (U^j_k q_z^k) \\
+    &= \tfrac{1}{m} p_z^{l\,\dagger} \big(U^{\dagger} U\big)^l_k p_z^k + m \omega^2 q_z^{l\,\dagger} \big(U^{\dagger} U\big)^l_k q_z^k
     \overset{!}{=} \tfrac{1}{m} p_z^{l\,\dagger} \delta^l_k p_z^k + m \omega^2 q_z^{l\,\dagger} \delta^l_k q_z^k\,.
 \end{align}
 Complex harmonic oscillators with CCR implemented with conjugation thus have a larger symmetry group $U(n)$ than those with CCR implemented without conjugation, which only have $O(n)$ symmetry.
@@ -302,7 +308,7 @@ Define ladder operators for each real DoF $x,y$ as usual
 \end{align}
 Define $\tfrac{\pi}{4}$-rotated oscillators and corresponding ladder operators as
 \begin{align}
-    q_\pm &= \frac{1}{\sqrt{2}}(q_x \pm q_y), \quad p_\pm = \frac{1}{\sqrt{2}}(p_x \pm p_y),\quad a_+ = \frac{1}{\sqrt{2}}(a_x \pm a_y).
+    q_\pm &= \frac{1}{\sqrt{2}}(q_x \pm q_y), \quad p_\pm = \frac{1}{\sqrt{2}}(p_x \pm p_y),\quad a_\pm = \frac{1}{\sqrt{2}}(a_x \pm a_y).
 \end{align}
 In the pure case \eqref{eq:complex_oscillator_pure_decomposition} we have\footnotemark[\getrefnumber{fn:order_sign_CCR_conjugate}]
 \begin{align}
@@ -328,15 +334,15 @@ In the mixed case \eqref{eq:complex_oscillator_mixed_decomposition} we instead g
 
 
 
-\begin{mytheorem}[Ladder operator toolkit\todotag{Finish}]
+\begin{mytheorem}[Ladder operator toolkit\noteinline{Add stuff if needed}]
 %
-Ladder operators $a$ and $a^\dagger$ obeying $[a, a^\dagger] = 1$ have the following useful properties.
+Any ladder operators $a$ and $a^\dagger$ obeying the condition $[a, a^\dagger] = 1$ enjoy the following useful properties.
 \begin{itemize}
-    \item Physicists Hermite polynomials $H_n(\xi)$ are defined as
+    \item Physicists' Hermite polynomials $H_n(\xi)$ are defined as
     \begin{align}
         H_n(\xi):= e^{\frac{\xi^2}{2}}\Big(\underbrace{\xi-\partial_\xi}_{=\sqrt{2}\,a^\dagger}\big)^n e^{-\frac{\xi^2}{2}}\,.
     \end{align}
-    From the formula $\xi \mapsto H_n(\xi)$ as parity $(-1)^n$.
+    From the formula it follows immediately that $\xi \mapsto H_n(\xi)$ has parity $(-1)^n$.
     %
     \item The action of $a$ on a state $\propto \left(a^\dagger\right)^n |0\rangle$ is
     \begin{align}
@@ -344,20 +350,20 @@ Ladder operators $a$ and $a^\dagger$ obeying $[a, a^\dagger] = 1$ have the follo
     \end{align}
     More generally, the lowering operator acts as derivative wrt $a^\dagger$ on any Taylor expandable function $f(a^\dagger)$, in the sense that
     \begin{align}
-        a f(a^\dagger) |0\rangle = \frac{d f}{d a^\dagger} |0\rangle.
+        a \, f(a^\dagger) |0\rangle = \tfrac{d f(a^\dagger)}{d a^\dagger} |0\rangle.
     \end{align}
     %
     \item The Baker-Campbell-Hausdorff formula for ladder operators reads
     \begin{align}
         e^{\alpha a + \beta a^\dagger} = e^{\alpha a} e^{\beta a^\dagger} e^{-\frac{1}{2} \alpha \beta}, \quad \alpha, \beta \in \mathbb{C}.
     \end{align}
-    This is just a simpler version of the general BCH formula,
+    This is just a simpler version of the general BCH formula 
     \begin{align}
-        &e^A e^B = E^Z, \quad Z = \log(e^A e^B)= A + B + \tfrac{1}{2}[A,B] + \tfrac{1}{12}([A,[A,B]] - [B,[A,B]]) + \ldots
+        &e^A e^B = e^Z, \quad Z = \log(e^A e^B)= A + B + \tfrac{1}{2}[A,B] + \tfrac{1}{12}([A,[A,B]] - [B,[A,B]]) + \ldots
         \\[5pt]
-        &\Rightarrow \quad e^A e^B = e^{A+B} e^{+\frac{1}{2}[A,B]} \quad \text{if } [A,[A,B]] = [B,[A,B]] = 0,
+        &\Rightarrow \quad e^A e^B = e^{A+B} e^{+\frac{1}{2}[A,B]} \qquad \text{if }\quad  [A,[A,B]] = [B,[A,B]] = 0\,.
     \end{align}
-    since the commutator is a c-number  $[\alpha a, \beta a^\dagger] = \alpha \beta\in\C$. 
+    since the commutator of any ladder operators $[\alpha a, \beta a^\dagger] = \alpha \beta\in\C$ is a c-number.
 \end{itemize}
     %
 \end{mytheorem}
@@ -512,7 +518,7 @@ The equation of motion for $a(t,t_0):= U^\dagger(t,t_0) a U(t,t_0)$ in the Heise
     &\Rightarrow \quad a(t,t_0) = a(t_0) e^{-i\omega (t-t_0)} - \frac{i}{\hbar} \int_{t_0}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t')  e^{-i\omega (t-t')}.
 \end{align}
 For example, if $J$ is nonzero only within a finite time interval $[t_i, t_f]$, we have
-\begin{align}\label{eq:a_in_a_out_1d_oscillator}
+\begin{align}\label{eq:a_in_a_out_1d_oscillator_driven}
     a(t,t_0) &= \begin{cases}
         a(t_0) e^{-i\omega (t-t_0)}=: a_{\mathrm{in}}e^{-i\omega (t-t_0)}, & t < t_i\,\\[6pt]
         a(t_i) e^{-i\omega (t-t_i)} - \frac{i}{\hbar} \int_{t_i}^t dt' \sqrt{\tfrac{\hbar}{2 m \omega}} J(t') e^{-i\omega (t-t')}, & t_i \leq t \leq t_f,\\[6pt]
