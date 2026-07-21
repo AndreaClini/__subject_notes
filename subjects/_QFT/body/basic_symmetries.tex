@@ -9,6 +9,8 @@
 
 
 
+
+
 %--------------------------------------------------------
 %=========================================================
 \section{Discrtete Symmetries}
@@ -16,31 +18,329 @@
 %------------------------------------------------------------
 
 
+
 %--------------------------------------------------------
 %=========================================================
-\section{Internal Symmetries}
+\section{Continuous Symmetries}
 %=========================================================
 %----------------------------------------------------------
 
 
 
-\begin{mytheorem}[Noether's theorem \todoinline{finish}]
 Noether's theorem is a fundamental result in theoretical physics that establishes a deep connection between symmetries and conservation laws.
 It states that for every continuous symmetry of the action of a physical system, there exists a corresponding conserved quantity. In other words, if the laws of physics remain invariant under a continuous transformation (such as translations, rotations, or gauge transformations), then there is an associated physical quantity that remains constant over time.
+We first discuss the classical version.
 
-Let us first discuss the classical version.
-Consider a classical field theory described by a Lagrangian density
+\begin{mytheorem}[Classical Noether's 1st theorem \questioninline{polish}]
+Consider the action for a classical field theory in $d$ spacetime dimensions,
 {\small\begin{align}
-    \mathcal{L} = \mathcal{L}(\phi^a_b, \partial_\mu \phi^a_b,x^\mu),
+    S[\phi] = \int_\Omega \mathcal{L}(\phi^a, \partial_\mu \phi^a,x^\mu)\,\,d^d\!x\,,
 \end{align}}
-where $\phi^a_b$ is a field with arbitrary spin and internal indices labelled by $a$ and $b$, and $x^\mu$ are the spacetime coordinates.
+where $\phi^a$ is any field with arbitrary spin and internal indices labelled by $a$.
 
-Assume we have a transformation parametrized by a continuous parameter $\epsilon$ that leaves the action invariant:
+Consider a continuous transformation spacetime coordinates and fields, parametrized infinitesimally as
 {\small\begin{align}
-    \phi^a_b(x) \to \phi^a_b(x) + \epsilon \delta \phi^a_b(x), \quad x^\mu \to x^\mu + \epsilon \delta x^\mu.
+    x^\mu \mapsto \tilde{x}_\epsilon^\mu\simeq  x^\mu +\epsilon \delta x^\mu\,,
+    \qquad
+    \phi^a(x)\mapsto \tilde{\phi}_\epsilon^a(x)\simeq \phi^a(x)+\epsilon \Delta \phi^a(x)\,\,,
+\end{align}} 
+where $\epsilon \Delta \phi^a(x)\simeq \tilde{\phi}_\epsilon^a(x)-\phi^a(x)$ is the variation of the field at \emph{fixed} spacetime point $x$.
+More rigorously, it is simply the derivative wrt the parameter $\epsilon$ of the transformed function $\Delta f(x):=\lim_{\epsilon\to0}\frac{\tilde{f}_\epsilon(x)-f(x)}{\epsilon}$.
+Note that variations at fixed spacetime point and derivatives commute, simply because partial derivatives commute by Schwarz's theorem, namely
+{\small\begin{align}\label{eq:noether_derivative_vs_variation_fixed_point_bis}
+\begin{aligned}
+    \Delta(\partial_\rho\phi^a)(x)&:= \lim_{\epsilon\to0} \frac{1}{\epsilon} \left[\tfrac{\partial\tilde{\phi}_\epsilon^a(y)}{\partial y^\rho}_{\mid y=x}-\tfrac{\partial{\phi}^a(y)}{\partial y^\rho}_{\mid y=x}\right]
+    =
+    \tfrac{\partial}{\partial\epsilon}\tfrac{\partial}{\partial y^\rho}\tilde{\phi}_\epsilon^a(y)_{\mid \substack{y=x\\ \epsilon=0}}
+    =
+    \tfrac{\partial}{\partial y^\rho} \tfrac{\partial}{\partial\epsilon}\tilde{\phi}_\epsilon^a(y)_{\mid \substack{y=x\\ \epsilon=0}}
+    = \tfrac{\partial}{\partial x^\rho}(\Delta\phi^a)(x)\,.
+\end{aligned}
+\end{align}}
+We also remark this is not the case for total variations $\epsilon\delta \phi^a:=\tilde{\phi}^a(\tilde{x})-\phi^a(x)$, that is $\delta(\partial_\rho\phi^a)\neq \partial_\rho \delta \phi^a$ in general.
+
+The variations of the Lagrangian density at fixed spacetime point and under the combined transformation of spacetime coordinates and fields are given by
+{\small\begin{align}\label{eq:variations_lagrangian_bis}
+    \Delta\mathcal L
+    &= \tfrac{\partial\mathcal{L}}{\partial \phi^a}_{|\partial\phi, x} \Delta \phi^a + \tfrac{\partial\mathcal{L}}{\partial (\partial_\mu \phi^a)}_{|\phi,x} \Delta (\partial_\mu\phi^a),
+    \qquad
+    \delta \mathcal{L} = \tfrac{\partial\mathcal{L}}{\partial \phi^a}_{|\partial\phi, x} \Delta \phi^a + \tfrac{\partial\mathcal{L}}{\partial (\partial_\mu \phi^a)}_{|\phi,x} \Delta (\partial_\mu\phi^a)
+    +\tfrac{d\mathcal{L}}{dx^\mu}_{|\phi,\partial\phi}\, \delta x^\mu,
+\end{align}}
+where the subscript $|\phi$ or $|\partial\phi$ indicates that the \emph{functional} form $x\mapsto f(x)$ is kept fixed, but varying $x^\mu$ still produces terms $\propto \tfrac{\partial \mathcal{L}}{\partial f}\partial_\nu f$ due to the dependence of $f$ on $x$. 
+
+The infinitesimal action is $d S= d^d\!x\, \mathcal{L}$.
+Using \eqref{eq:variations_lagrangian_bis} and $\delta d^d\! x = (\partial_\mu \delta x^\mu) d^d\! x$, and then \eqref{eq:noether_derivative_vs_variation_fixed_point_bis}, its total variation under the combined transformation is rewritten as
+{\small\begin{align}
+\begin{aligned}
+    \delta dS &= \big(\delta \mathcal{L}\big) \,\,d^d\!x + \mathcal{L}\, \, \delta d^d\!x 
+    \\
+    &= \bigg[\tfrac{\partial\mathcal{L}}{\partial \phi^a}_{|\partial\phi, x} \Delta \phi^a + \tfrac{\partial\mathcal{L}}{\partial (\partial_\mu \phi^a)}_{|\phi,x} \Delta (\partial_\mu\phi^a)
+    +\tfrac{d\mathcal{L}}{dx^\mu}_{|\phi,\partial\phi}\, \delta x^\mu\bigg] d^d\!x + \mathcal{L} \, (\partial_\mu \delta x^\mu)\, d^d\!x
+    \\
+    &= \tfrac{d}{dx^\mu}\bigg[\tfrac{\partial\mathcal{L}}{\partial (\partial_\mu \phi^a)}_{|\phi,x}\Delta\phi^a+ \mathcal{L} \,\delta x^\mu\bigg] d^d\!x
+    + \bigg[\underbrace{\tfrac{\partial\mathcal{L}}{\partial \phi^a}_{|\partial\phi, x}-\tfrac{d}{dx^\mu}\tfrac{\partial\mathcal{L}}{\partial (\partial_\mu \phi^a)}_{|\phi,x}}_{=0\,\, \text{on shell by Euler-Lagrange}} \bigg] \Delta\phi^a\,\, d^d\!x\,.
+\end{aligned}
+\end{align}}
+Note the second term is precisely the Euler-Lagrange equations and thus vanishes on-shell.
+
+Assume the transformation is a quasi-symmetry, meaning that the infinitesimal action is left invariant up to a total derivative $\delta\, dS \overset{!}{=} \partial_\mu F^\mu\,d^d\!x$for some function $F^\mu$.
+The Noether current associated with this symmetry is then
+{\small\begin{align}
+    j^\mu = \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi^a)} \Delta \phi^a + \mathcal{L}\,  \delta x^\mu- F^\mu\,.
+\end{align}}
+Noether's current obeys the following off-shell identity, 
+{\small\begin{align}
+    \partial_\mu j^\mu =
+    \Big[\underbrace{\tfrac{d}{dx^\mu}\tfrac{\partial\mathcal{L}}{\partial (\partial_\mu \phi^a)}_{|\phi,x}-\tfrac{\partial\mathcal{L}}{\partial \phi^a}_{|\partial\phi, x}}_{=0\,\, \text{on shell}}\Big] \Delta\phi^a\,,
+\end{align}}
+and in particular is conserved on-shell i.e. when the Euler-Lagrange equations are satisfied.
+
+The associated charge is obtained by integrating the time component of the current over an arbitrary constant-time hypersurface $\Sigma_t$ and is indeed conserved in time upon assuming appropriate boundary conditions at spatial infinity:
+{\small\begin{align}
+    Q_t = \int_{\Sigma_t} d^{d-1}\!x\,\, j^0, \qquad \tfrac{dQ_t}{dt} = -\int_{\Sigma_t} d^{d-1}x\, \nabla_\ell j^\ell 
+    =-\oint_{\partial\Sigma_t}\!\!\!\!dS\, n_{\Sigma_t}^i\,j^i= 0\,.
+\end{align}}
+More generally, we can build conserved charges by integrating the current over arbitrary spacelike hypersurfaces $\Sigma$ with normal vector $n^\mu$ and metric volume element $d\Sigma$, that is by integrating the Hodge dual of the current 1-form $j=j_\nu dx^\nu$ over $\Sigma$,
+{\small\begin{align}
+    Q_\Sigma = \int_\Sigma \!\!\!d\Sigma\, n_\mu j^\mu = \int_\Sigma \star j\,.
+\end{align}}
+Charges associated to homologous spacelike hypersurfaces $\Sigma_-$ and $\Sigma_+$ coincide by Gauss's theorem, upon assuming vanishing flux through any boundary at spatial infinity,
+{\small\begin{align}
+    Q[\Sigma_+]-Q[\Sigma_-]
+    = \int_{\partial V}\star j
+    =\int_{V} d\star j
+    =0\,,
+\end{align}}
+where $V$ is the spacetime region bounded by$\Sigma_-$ and $\Sigma_+$.
+%
+\end{mytheorem}
+%
+\begin{proof}
+We remark that the current features the variation of the field at fixed spacetime point {\small$\epsilon\Delta \phi^a(x):=\tilde{\phi}^a(x)-\phi^a(x)$}, not the variation at the transformed spacetime point $\epsilon\delta \phi^a=\tilde{\phi}^a(\tilde{x})-\phi^a(x)$.
+For example, for a scalar field transforming only via pullback under spacetime transformations we have $\Delta \phi^a(x)=-\partial_\mu \phi^a(x)\delta x^\mu$, while $\delta \phi^a(x)=0$.
+
+We also make explicit the variations of coordinates and fields to fix ideas.
+Write the infinitesimal continuous transformations of spacetime coordinates and fields as
+{\small\begin{align}
+    x \mapsto \tilde{x}_\epsilon\equiv S_\epsilon(x)\simeq x+\epsilon \delta x\,,\qquad 
+    \phi^a(x)\mapsto \tilde{\phi}_\epsilon^a(x)\equiv \exp(\epsilon \delta M)^a_b\phi^b(S_\epsilon^{-1}(x))\simeq (\operatorname{I}+\epsilon \delta M)^a_b \,\phi^b(x-\epsilon \delta x)\,\,.
+\end{align}}
+In particular, from the definitions, we have
+{\small\begin{align}
+    \Delta\phi^a(x):=\tilde{\phi}^a(x)-\phi^a(x) = \delta M^a_b \phi^b(x)-\tfrac{\partial \phi^a}{\partial x^\nu} \delta x^\nu\,,
+    \qquad
+    \delta\phi^a(x):=\tilde{\phi}^a(\tilde{x})-\phi^a(x) = \delta M^a_b \phi^b(x)\,.
+\end{align}}
+Due the change in the functional form of the field, the derivative of the transformed field is not simply the transformed derivative of the field, but rather
+{\small\begin{align}
+\begin{aligned}
+   \tfrac{\partial\tilde{\phi}_\epsilon^a(y)}{\partial y^\rho}
+   &=\tfrac{d}{dy^\rho}\big[\exp(\epsilon\delta M)^a_b \phi^b(S_\epsilon^{-1}(y))\big]
+   \\
+   &=
+   \tfrac{\partial }{\partial z^\sigma}\big[\exp(\epsilon\delta M)^a_b \phi^b(z)\big]_{\mid z=S_\epsilon^{-1}(y)}\tfrac{\partial (S_{\epsilon}^{-1}(y)\big)^\sigma}{\partial y^\rho}
+   \\
+    &\simeq
+    \exp(\epsilon\delta M)^a_b \tfrac{\partial \phi^b(z)}{\partial z^\sigma}_{\mid z=S_\epsilon^{-1}(y)}\big(\delta_\rho^\sigma-\epsilon \partial_\rho\delta y^\sigma\big)
+    \\
+    &\simeq 
+    \tfrac{\partial \phi^a(y)}{\partial y^\rho}
+    +\epsilon \delta M^a_b \tfrac{\partial \phi^b(y)}{\partial y^\rho}
+    -\epsilon \tfrac{\partial \phi^a(y)}{\partial y^\sigma}\partial_\rho\delta y^\sigma
+    -\epsilon \tfrac{\partial^2 \phi^a(y)}{\partial y^\rho \partial y^\nu} \delta y^\nu\,.
+\end{aligned}
+\end{align}}
+As already shown in \eqref{eq:noether_derivative_vs_variation_fixed_point_bis} we can explictly verify that derivatives and variations at fixed spacetime point commute
+{\small\begin{align}\label{eq:noether_derivative_vs_variation_fixed_point}
+\begin{aligned}
+    \Delta(\partial_\rho\phi^a)(x)&:= \tfrac{\partial\tilde{\phi}_\epsilon^a(y)}{\partial y^\rho}_{\mid y=x}-\tfrac{\partial{\phi}^a(y)}{\partial y^\rho}_{\mid y=x}
+    = \epsilon \delta M^a_b \tfrac{\partial \phi^b(x)}{\partial x^\rho}
+    -\epsilon \tfrac{\partial \phi^a(x)}{\partial x^\sigma}\partial_\rho\delta x^\sigma
+    -\epsilon \tfrac{\partial^2 \phi^a(x)}{\partial x^\rho \partial x^\nu} \delta x^\nu
+    {\overset{!}{=}} \tfrac{\partial}{\partial x^\rho}\Delta\phi^a(x)\,.
+\end{aligned}
+\end{align}}
+Similarly we confirm that variations at the transformed spacetime point and derivatives do not commute since
+{\small\begin{align}
+\begin{aligned}
+    \delta(\partial_\rho\phi^a)(x)&:= \tfrac{\partial\tilde{\phi}_\epsilon^a(y)}{\partial y^\rho}_{\mid y=\tilde{x}}-\tfrac{\partial{\phi}^a(y)}{\partial y^\rho}_{\mid y=x}
+    = \epsilon \delta M^a_b \tfrac{\partial \phi^b(x)}{\partial x^\rho}
+    -\epsilon \tfrac{\partial \phi^a(x)}{\partial x^\sigma}\partial_\rho\delta x^\sigma
+    \neq 
+    \epsilon \delta M^a_b \tfrac{\partial \phi^b(x)}{\partial x^\rho}
+    =:\tfrac{\partial}{\partial x^\rho}\delta\phi^a(x)\,.
+\end{aligned}
+\end{align}}
+%
+\end{proof}
+
+\begin{mytheorem}[Quantum Noether's first theorem \todoinline{finish}]
+Consider a quantum field theory with a continuous global symmetry.
+If the symmetry is preserved by the quantization procedure and is
+non-anomalous, then for every generator $A$ there exists a renormalized
+current operator $\hat{j}_A^\mu$ satisfying
+{\small\begin{align}
+    \partial_\mu\hat{j}_A^\mu=0
+\end{align}}
+as an operator equation, up to equations of motion and contact terms
+in time-ordered correlation functions.
+
+Provided the flux at spatial infinity vanishes, the corresponding
+charge
+{\small\begin{align}
+    \hat{Q}_A[\Sigma]
+    :=\int_\Sigma d\Sigma_\mu\,\hat{j}_A^\mu
+\end{align}}
+is independent of the spacelike hypersurface $\Sigma$. On a
+constant-time hypersurface,
+{\small\begin{align}
+    \hat{Q}_A(t)
+    =\int_{\Sigma_t}d^{d-1}\!x\,\hat{j}_A^0(t,\mathbf{x}),
+    \qquad
+    \frac{d\hat{Q}_A}{dt}=0.
 \end{align}}
 
+The conserved charge generates the symmetry on the Hilbert space.
+With the convention
+{\small\begin{align}
+    U(\epsilon)
+    =\exp\!\left(-\frac{i}{\hbar}\epsilon^A\hat{Q}_A\right),
+    \qquad
+    \tilde{\phi}^a
+    =U(\epsilon)\hat{\phi}^aU(\epsilon)^{-1},
+\end{align}}
+the infinitesimal transformation is
+{\small\begin{align}
+    \Delta_A\hat{\phi}^a(x)
+    =-\frac{i}{\hbar}
+      [\hat{Q}_A,\hat{\phi}^a(x)].
+\end{align}}
+In the Heisenberg picture,
+{\small\begin{align}
+    \frac{d\hat{Q}_A}{dt}
+    =
+    \frac{\partial\hat{Q}_A}{\partial t}
+    +\frac{i}{\hbar}[\hat{H},\hat{Q}_A]
+    =0,
+\end{align}}
+so that, when $\hat{Q}_A$ has no explicit time dependence,
+$[\hat{H},\hat{Q}_A]=0$.
 
+At the level of correlation functions these statements are encoded
+in the Ward--Takahashi identities. If the symmetry is anomalous, the
+current instead satisfies
+$\partial_\mu\hat{j}_A^\mu=\hat{\mathcal A}_A\neq0$.
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Classical Noether's second theorem \todoinline{finish}]
+Let a classical action $S[\phi]$ possess a local gauge symmetry
+parametrized by arbitrary smooth functions $\epsilon^\alpha(x)$. For
+transformations involving at most first derivatives of the gauge
+parameters, write the fixed-point field variation as
+{\small\begin{align}
+    \Delta_\epsilon\phi^a
+    =
+    R^a{}_\alpha\,\epsilon^\alpha
+    +R^{a\mu}{}_\alpha\,\partial_\mu\epsilon^\alpha .
+\end{align}}
+Then the Euler--Lagrange expressions
+{\small\begin{align}
+    \mathcal E_a
+    :=
+    \frac{\delta S}{\delta\phi^a}
+    =
+    \frac{\partial\mathcal L}{\partial\phi^a}
+    -\partial_\mu
+     \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^a)}
+\end{align}}
+satisfy the off-shell Noether identities
+{\small\begin{align}
+    \mathcal E_a R^a{}_\alpha
+    -\partial_\mu
+     \left(\mathcal E_a R^{a\mu}{}_\alpha\right)
+    \equiv0 .
+\end{align}}
+Thus gauge invariance implies that the Euler--Lagrange equations are
+not all independent.
+
+The Noether current associated with a local gauge transformation can
+generally be written as
+{\small\begin{align}
+    j^\mu_\epsilon
+    =
+    W^\mu_\epsilon
+    +\partial_\nu k^{[\nu\mu]}_\epsilon,
+    \qquad
+    W^\mu_\epsilon\approx0 ,
+\end{align}}
+where $\approx$ denotes equality on shell. Hence its charge reduces to
+a boundary term,
+{\small\begin{align}
+    Q[\epsilon]
+    \approx
+    \int_{\partial\Sigma}
+    dS_{\mu\nu}\,k^{\mu\nu}_\epsilon .
+\end{align}}
+Gauge transformations that vanish at the boundary therefore carry no
+independent physical charge, whereas global or asymptotic gauge
+transformations may carry nonzero boundary charges.
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Quantum Noether's second theorem \todoinline{finish}]
+Consider a quantum gauge theory obtained by gauge fixing a classical
+theory with a local symmetry. If the functional measure,
+regularization, and renormalization preserve the gauge symmetry, the
+quantum theory satisfies Ward--Takahashi or Slavnov--Taylor identities.
+
+Schematically, in a gauge-invariant formulation the renormalized
+effective action $\Gamma[\Phi]$ satisfies
+{\small\begin{align}
+    \frac{\delta\Gamma}{\delta\Phi^a}R^a{}_\alpha
+    -
+    \partial_\mu\!
+    \left(
+        \frac{\delta\Gamma}{\delta\Phi^a}
+        R^{a\mu}{}_\alpha
+    \right)
+    =0 .
+\end{align}}
+In a gauge-fixed formulation the corresponding statement is encoded
+by the BRST or Slavnov--Taylor identity
+{\small\begin{align}
+    \mathcal S(\Gamma)=0 .
+\end{align}}
+
+Small gauge transformations are redundancies rather than physical
+symmetries. Their generators annihilate physical states,
+{\small\begin{align}
+    \widehat G[\epsilon]\ket{\Psi_{\mathrm{phys}}}=0 .
+\end{align}}
+Equivalently, in BRST quantization,
+{\small\begin{align}
+    \widehat Q_{\mathrm{BRST}}^{\,2}=0,
+    \qquad
+    \widehat Q_{\mathrm{BRST}}\ket{\Psi_{\mathrm{phys}}}=0,
+    \qquad
+    \ket{\Psi_{\mathrm{phys}}}
+    \sim
+    \ket{\Psi_{\mathrm{phys}}}
+    +\widehat Q_{\mathrm{BRST}}\ket{\chi}.
+\end{align}}
+Gauge transformations acting nontrivially at a boundary may instead
+generate physical boundary charges.
+
+If the gauge symmetry is anomalous, the quantum identity becomes
+{\small\begin{align}
+    \mathcal S(\Gamma)
+    =\hbar\,\mathcal A\neq0 ,
+\end{align}}
+and the gauge symmetry cannot be consistently maintained unless the
+anomaly is cancelled.
 \end{mytheorem}
 
 
@@ -49,7 +349,7 @@ Assume we have a transformation parametrized by a continuous parameter $\epsilon
 
 %--------------------------------------------------------
 %=========================================================
-\section{Energy, Momentum and Angular Momentum}
+\subsection{Energy, Momentum and Angular Momentum}
 %=========================================================
 %------------------------------------------------------------
 
@@ -64,7 +364,7 @@ The total energy often coincides with the Hamiltonian $H$ of the system, which g
 
 
 %==================================================================
-\subsection{Many-body systems, total momentum, center-of-mass splitting, and finite temperature}\todotag{Fix \& Polish}
+\subsubsection[Many-body systems, total momentum, center-of-mass splitting, and finite temperature]{Many-body systems, total momentum, center-of-mass splitting, and finite temperature\todoinline{Fix \& Polish}}
 %==================================================================
 This note summarizes the main points of the discussion about a many-body Hamiltonian $H$ commuting with the total momentum operator $\mathbf{P}$, the possibility of choosing states with zero total momentum, the explicit center-of-mass transformation, the decomposition $H=H_{\text{cm}}+H_{\text{rel}}$, and the extension to variable particle number and finite temperature.
 
