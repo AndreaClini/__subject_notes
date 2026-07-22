@@ -3,7 +3,7 @@
 \begin{document}
 %=========================================================
 %=========================================================
-\chapter{Path Integral Formulation}\label{ch:path_integral_formulation}
+\chapter{Generating Functionals \& Path Integrals}\label{ch:path_integral_formulation}
 %========================================================
 %=========================================================
 
@@ -11,7 +11,151 @@
 
 %--------------------------------------------------------
 %=========================================================
-\section{Generating functional}
+\section{Path integral formulation in ordinary quantum mechanics}
+%=========================================================
+%------------------------------------------------------------
+
+
+\begin{mytheorem}[Path integral formulation of quantum mechanics `a la Feynman \todoinline{Finish}]
+The path integral formulation of quantum mechanics is a reformulation of the standard canonical quantization approach,
+\begin{align}
+    \langle x_f, t_f | x_i, t_i \rangle = \int_{x(t_i)=x_i}^{x(t_f)=x_f} \mathcal{D}x(t)\, e^{\frac{i}{\hbar}S[x(t)]},
+\end{align}
+where the integral is over all paths $x(t)$ connecting the initial and final points, and $S[x(t)]$ is the classical action functional evaluated on the path $x(t)$. 
+    
+\end{mytheorem}
+
+
+\begin{mytheorem}[Time-ordered green functions and path integrals]
+%
+We repeat the same argument above for transition amplitued between initial and final states with insertions of operators at intermediate times.
+Assume that $t_1>t_2$ and consider the transition amplitude $\langle q_f, t_f | \hat{q}(t_1)\hat{q}(t_2) | q_i, t_i \rangle$.
+Repeating the same steps we find
+{\small\begin{align}\label{eq:first_transition}
+    \langle q_f, t_f | \hat{q}(t_1)\hat{q}(t_2) | q_i, t_i \rangle = \int_{q(t_i)=q_i}^{q(t_f)=q_f} \!\!\!\!\!\!\!\mathcal{D}q(t)\,\, q(t_1)q(t_2) e^{\frac{i}{\hbar}S[q(t)]},
+\end{align}}
+On the other hand, if $t_1< t_2$, considering the transition $\langle q_f, t_f | \hat{q}(t_2)\hat{q}(t_1) | q_i, t_i \rangle$ and repeating the same steps we find
+{\small\begin{align}\label{eq:second_transition}
+    \langle q_f, t_f | \hat{q}(t_2)\hat{q}(t_1) | q_i, t_i \rangle = \int_{q(t_i)=q_i}^{q(t_f)=q_f} \!\!\!\!\!\!\!\mathcal{D}q(t)\,\, q(t_2) q(t_1)e^{\frac{i}{\hbar}S[q(t)]}\,.
+\end{align}}
+The right-hand sides of \eqref{eq:first_transition} and \eqref{eq:second_transition} are identical, since $q(t_1),\,q(t_2)$ are just numbers and commute.
+We thus conclude that the path integral formulation of quantum mechanics naturally gives rise to time-ordered products of operators, that is
+{\small\begin{align}
+    \langle q_f, t_f | T\{ \hat{q}(t_1) \cdots \hat{q}(t_n) \} | q_i, t_i \rangle = \int_{q(t_i)=q_i}^{q(t_f)=q_f} \mathcal{D}q(t)\, q(t_1)\cdots q(t_n) e^{\frac{i}{\hbar}S[q(t)]}\,.
+\end{align}}
+More generally, repeating the same argument for any set of operators $O_j[\hat{q}(t_j)]$ functions of the fundamental fields we have
+{\small\begin{align}
+    \langle q_f, t_f | T\{ \hat{O}_1(t_1) \cdots \hat{O}_n(t_n) \} | q_i, t_i \rangle = \int_{q(t_i)=q_i}^{q(t_f)=q_f}\!\!\!\!\!\!\! \mathcal{D}q(t)\, O_1(t_1)\cdots O_n(t_n) e^{\frac{i}{\hbar}S[q(t)]}\,.
+\end{align}}
+%
+\end{mytheorem}
+
+
+\begin{mytheorem}[The partition function]
+%
+The time-ordered Green function of a quantum theory contains all the information about the theory,
+{\small\begin{align}\label{eq:green_functions_vs_path_integral_1D}
+    G_{q_i,t_i}^{q_f,t_f}(t_1,\ldots,t_n):=\langle q_f, t_f | T\{ \hat{q}(t_1) \cdots \hat{q}(t_n) \} | q_i, t_i \rangle = \int_{q(t_i)=q_i}^{q(t_f)=q_f} \mathcal{D}q(t)\, q(t_1)\cdots q(t_n) e^{\frac{i}{\hbar}S[q(t)]}\,.
+\end{align}}
+We would like to compress this information in a single object.
+To fix ideas, consider the simpler case of an infinite sequence of numbers $a_0, a_1, \ldots, a_n, \ldots$.
+We can encode all this information in a single function $f(x)$, the generating function of the sequence, defined as
+{\small\begin{align}
+    f(x) = \sum_{n=0}^{\infty} a_n x^n, \qquad \quad a_n = \frac{1}{n!} \left. \frac{d^n f}{dx^n} \right|_{x=0}.
+\end{align}}
+The generating function $f(x)$ contains all the information about the sequence, since we can recover the numbers $a_n$ by taking derivatives of $f(x)$ at $x=0$.
+In the same way, we can encode all the information about the quantum theory in a single object, the \emph{partition function} or \emph{generating functional}.
+Following the previous example we could define
+{\small\begin{align}
+    Z[J] = \sum_{n=0}^{\infty} \tfrac{i^n}{n!} \int dt_1 \cdots dt_n\, J(t_1)\cdots J(t_n) G(t_1,\ldots,t_n)\,.
+\end{align}}
+This expression is not immediately useful, since we would need to know all the Green functions to compute $Z[J]$.
+However, we can use the definition of Green functions as transition amplitudes or as path integrals to rewrite the generating functional in convenient forms.
+First, using 
+{\small\begin{align}
+    G(t_1,\ldots,t_n) = \langle q_f, t_f | T\{ \hat{q}(t_1) \cdots \hat{q}(t_n) \} | q_i, t_i \rangle_H
+    =
+    \langle q_f | T\{ e^{-\tfrac{i}{\hbar} \hat{H}(t_f-t_i)} \hat{q}(t_1) \cdots \hat{q}(t_n) \} | q_i \rangle_S,
+\end{align}}
+and since the $J(t)$ are just numbers, we can write
+{\small\begin{align}
+    Z[J] &= \sum_{n=0}^{\infty} \tfrac{i^n}{n!} \int dt_1 \cdots dt_n\, J(t_1)\cdots J(t_n) \langle q_f | T\{ e^{-\tfrac{i}{\hbar} \hat{H}(t_f-t_i)} \hat{q}(t_1) \cdots \hat{q}(t_n) \} | q_i \rangle_S
+    \\
+    &= \langle q_f | T\left\{ e^{-\tfrac{i}{\hbar} \hat{H}(t_f-t_i)+i\int dt\, J(t) \hat{q}(t)} \right\} | q_i \rangle_S.
+\end{align}}
+Similarly, using the second expression in \eqref{eq:green_functions_vs_path_integral_1D} we have
+{\small\begin{align}\begin{aligned}
+    Z[J] &= \sum_{n=0}^{\infty} \tfrac{i^n}{n!} \int dt_1 \cdots dt_n\, J(t_1)\cdots J(t_n) \int \mathcal{D}q(t)\, q(t_1)\cdots q(t_n) e^{\frac{i}{\hbar}S[q(t)]}
+    \\
+    &=\int \mathcal{D}q(t)\, e^{\frac{i}{\hbar}S[q(t)]+ i\int dt\, J(t) q(t)}.
+\end{aligned}
+\end{align}}
+%
+Note we are glossing over initial and final conditions on purpose.
+This a subtle point which we adress in the next section.
+\end{mytheorem}
+
+
+
+%============================================================
+\subsection{Path integral for harmonic oscillators \& the $\epsilon$-prescription}
+%=========================================================
+
+We now use the path integral to compute the propagator of a harmonic oscillator, and show how the $\epsilon$-prescription arises naturally in this context upon demanding natural boundary conditions and invertibility of the Gaussian operator in the action. We also show how the $\epsilon$-prescription is related to the choice of vacuum in the canonical quantization approach.
+
+\begin{mytheorem}[Naive computation of the path integral \todoinline{finish}]
+Let us start with the path integral for a free harmonic oscillator in the presence of a source $J(t)$.
+Glossing over boundary conditions for the moment, we can integrate by parts the action to get
+{\small\begin{align}
+    S[q,j]=\int\! dt\, \tfrac12 m\dot{q}^2 - \tfrac12 m\omega^2 q^2 + J(t)q(t) =
+    +\left[\tfrac12 m q\dot{q}\right]_{t_i}^{t_f}
+    +\int\! dt\, \tfrac12 q(t)\Big(\underbrace{-m\tfrac{d^2}{dt^2}-m\omega^2}_{=:\Delta}\Big)q(t) + J(t)q(t).
+\end{align}}
+The operator $\Delta$ is a Gaussian operator with spectrum bounded below, eigenvalues $\lambda_p=m(p^2-\omega^2)$ and eigenfunctions $e^{ipt}$.
+In turn the path integral formulation of the generating functional reads
+{\small\begin{align}
+    Z[J] = \int \mathcal{D}q(t)\, e^{\frac{i}{\hbar}S[q,J]} 
+    = e^{\frac{i}{\hbar}\left[\tfrac12 m q\dot{q}\right]_{t_i}^{t_f}}
+     \int \mathcal{D}q(t)\, \,  e^{\frac{i}{\hbar}  \int dt\, \tfrac12 q(t)\Delta q(t) + J(t)q(t)}.
+\end{align}}
+The boundary term drops out of the path integral since it only depends on the fixed boundary conditions.
+Moreover, assuming for the moment that the operator $\Delta$ is invertible, we can write $\tilde{q}:=q-\Delta^{-1}J$ and complete the square in the exponent to get
+{\small\begin{align}
+      \int \mathcal{D}q\, \,  e^{i \left(\tfrac12 q\cdot \Delta\cdot q + J\cdot q\right)} = \int \mathcal{D}\tilde{q}\, \,  e^{i \tfrac 12 \tilde{q}\Delta\tilde{q} - \frac{i}{2} J\cdot \Delta^{-1}\cdot J}
+      = 
+      e^{-\frac{i}{2} J\cdot \Delta^{-1}\cdot J}
+      \int \mathcal{D}\tilde{q}\, \,  e^{\frac{i}{\hbar} \tfrac12 \tilde{q}\Delta\tilde{q}}.
+\end{align}}
+Note we are free to take the linear term out of the integral and change the measure $Dq\to D\tilde{q}$ since $J$ is not integrated over and $\tilde{q}$ is just a shift of the integration variable.
+What is the operator inverse $\Delta^{-1}$?
+Arguing formally, from the requirement it is indeed the inverse of $\Delta$ we have
+{\small\begin{align}
+    \Delta \Delta^{-1} = \delta_D^{(1)}(t-t') \quad \Rightarrow\quad \Delta^{-1}(t-t') = \int \tfrac{dp}{2\pi} \tfrac{e^{ip(t-t')}}{m(p^2-\omega^2)}.
+\end{align}}
+However, the expression is ill-defined since the integrand has a badly divergent pole at $p=\pm\omega$.
+Of course we can slightly deform the contour of integration and avoid the pole with an infinitesimal complex shift $\pm i\epsilon$.
+However, there are several inequivalent choices, and we want to understand what is their physical meaning.
+
+We can already see this issue is related to the boundary conditions imposed on the path integral.
+Indeed, the operator $\Delta$ is invertible if it has no zero eigenvalues.
+The eigenfunctions of $\Delta$ are $e^{ipt}$ with eigenvalues $\lambda_p=m(p^2-\omega^2)$, and the zero eigenvalue corresponds to the eigenfunction $e^{i\omega t}$.
+This is a solution of the classical equations of motion, and thus corresponds to a classical trajectory.
+The boundary conditions are oscillations in the far past and far future, or equivalently PBC-like boundary conditions in  finite interval.
+In order to make $\Delta$ invertible we should then impose boundary conditions that rule out these functions from the domain of $\Delta$.
+
+
+\end{mytheorem}
+
+
+
+
+
+
+
+
+%--------------------------------------------------------
+%=========================================================
+\section{Generating functionals}
 %=========================================================
 %------------------------------------------------------------
 
