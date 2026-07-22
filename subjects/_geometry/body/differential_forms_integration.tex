@@ -149,11 +149,11 @@ Its curl is naively defined as the pseudo-vector field
 \begin{align}
     \nabla \times V= (\partial_y V_z - \partial_z V_y, \partial_z V_x - \partial_x V_z, \partial_x V_y - \partial_y V_x).
 \end{align}
-However, the natural way is to define the curl as the 2-form
+However, the natural way is to define the curl as the 2-form obtained by taking the exterior derivative of the 1-form associated to $V$ via the metric, i.e. $V^\flat = g(V,\cdot)= V_x dx + V_y dy + V_z dz$, that is
 {\small\begin{align}
-    V= V_x dx + V_y dy + V_z dz \,\, \mapsto \,\, dV = (\partial_y V_z - \partial_z V_y) dy\wedge dz + (\partial_z V_x - \partial_x V_z) dz\wedge dx + (\partial_x V_y - \partial_y V_x) dx\wedge dy.
+    \nabla\times V:=dV^\flat = (\partial_y V_z - \partial_z V_y) dy\wedge dz + (\partial_z V_x - \partial_x V_z) dz\wedge dx + (\partial_x V_y - \partial_y V_x) dx\wedge dy.
 \end{align}}
-This also makes it obvious why we get a pseudo-vector: the curl is naturally a 2-form, and we get a 1-form/vector only upon taking its Hodge dual in a 3D manifold.
+This definition also makes it obvious why we get a pseudo-vector: the curl is naturally a 2-form, and we get a 1-form/vector only upon taking its Hodge dual in a 3D manifold.
 \end{mytheorem}
 
 
@@ -184,8 +184,9 @@ Namely, given a parametrization $\phi: U \subseteq \mathbb{R}^k \to S \subseteq 
 \begin{equation}
     \int_S \omega := \int_U \phi^* (\omega).
 \end{equation}
-Note that $\phi^* (\omega) \in \Lambda^k (U)$ is a $k$-form on $\mathbb{R}^k$, which can be written as $f(x) dx^1 \wedge \cdots \wedge dx^k$ for some function $f: U \to \mathbb{R}$, and then integrated as usual.
-Note that the orientation of $S$ is necessary to have a well-defined integral, since changing the orientation changes the sign of the integral, while orientability of $M$ is not necessary.
+Indeed, since $\phi^* (\omega) \in \Lambda^k (U)$ is a $k$-form on $\mathbb{R}^k$, it can be written as $f(x) dx^1 \wedge \cdots \wedge dx^k$ for some function $f: U \to \mathbb{R}$ and then integrated as usual.
+
+Note that the \textbf{orientation of $S$ is necessary} to have a well-defined integral, since changing the orientation changes the sign of the integral, while \textbf{orientability of $M$ is not necessary}.
 \end{mytheorem}
 
 
@@ -196,6 +197,13 @@ Namely, for any \emph{oriented} manifold $M^{(n)}$ with boundary $\partial M$ an
     \int_M d\omega = \int_{\partial M} \omega.
 \end{equation}
 In particular, Stokes theorem formalizes a fundamental relation between the purely algebraic property $d^2 = 0$ and the purely geometric property $\partial ^2 M =0$ i.e. the `boundary of a boundary is empty'.
+Indeed, if we iterate Stokes theorem, we get
+{\small\begin{align}
+\begin{aligned}
+    \int_M \underbrace{d^2\!\omega}_{=0}=\int_{\partial M} d\omega = \int_{\underbrace{\partial^2 M}_{=0}} \omega = 0\,.
+\end{aligned}
+\end{align}}
+
 \end{mytheorem}
 
 
@@ -204,14 +212,14 @@ In particular, Stokes theorem formalizes a fundamental relation between the pure
 %-----------------------------------------------------------------------------
 
 \begin{mytheorem}[Curl \& 3D Stokes theorem.]
-Given a 3D \emph{Riemannian} manifold $(M^{(3)},g)$ and a vector field $X$, define the 1-from $g(X,\cdot)$, that is lower an index $X_\mu=g_{\mu \nu} X^{\nu}$.
+Given a 3D \emph{Riemannian} manifold $(M^{(3)},g)$ and a vector field $V$, define the 1-from $V^\flat=g(V,\cdot)= V_\mu dx^{\mu}$, that is lower an index with the metric $V_\mu=g_{\mu \nu} V^{\nu}$.
 Define the curl as the 2-from obained by taking the exterior derivative
 \begin{equation}
-    \mathrm{curl} (X) := d (g(X,\cdot)) = d \big(X_{\mu} dx^{\mu}\big).
+    \nabla\times V := d (V^\flat) = d \big(V_{\mu} dx^{\mu}\big).
 \end{equation}
 For any oriented surface $S\subset M$ with boundary $\partial S$, the general Stokes theorem then gives
 \begin{equation}
-    \int_S \mathrm{curl} (X) =\int_S d (g(X,\cdot)) = \int_{\partial S} g(X,\cdot)\,.
+    \int_S \nabla\times V =\int_S d (V^\flat) = \int_{\partial S} V^\flat\,.
 \end{equation}
 The definition of curl and the integral relation reduce to the familiar notion of curl and Stokes' theorem in $\mathbb{R}^3$ with the flat Euclidean metric.
 \end{mytheorem}

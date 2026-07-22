@@ -383,11 +383,63 @@ See the revelant section in \ref{}
 
 %-----------------------------------------------------------------------
 %========================================================
-\section{Orientation \& coverings}
+\section{Orientation}
 %=========================================================
 %-----------------------------------------------------------------------
 
+\begin{mytheorem}[Equivalent definitions of orientability]
+Let $M^{(n)}$ be a smooth $n$-manifold possibly with boundary. The following are equivalent:
+\begin{itemize}
+    \item $M$ admits an oriented atlas, i.e. an atlas whose transition
+          maps have positive Jacobian determinant;
+    \item the frame bundle of $M$ admits a reduction of structure group
+          from $\mathrm{GL}(n,\mathbb R)$ to $\mathrm{GL}^{+}(n,\mathbb R)$;
+    \item the determinant line bundle $\Lambda^n TM$ is trivial;
+    \item there exists a nowhere-vanishing $n$-form $\omega\in\Omega^n(M)$ i.e. a volume form;
+    \item the orientable double cover $\widetilde M\to M$ admits a global section, or equivalently $\widetilde{M}\simeq M\sqcup M$.
+\end{itemize}
 
+If in addition $M$ is connected and compact, with the understanding that $\partial M=\emptyset$ if the manifold has no boundary, this is also equivalent to
+\begin{itemize}
+    \item the top simplicial relative homology group $H^\Delta_n(M, \partial M;\mathbb A)\simeq \mathbb A$ is isomorphic to $\mathbb A$ for any ring with characteristic $\neq 2$;
+    \item the top simplicial relative cohomology group $H_\Delta^n(M, \partial M;\mathbb A)\simeq \mathbb A$ is isomorphic to $\mathbb A$ for any ring with characteristic $\neq 2$;
+    \item the top de Rham relative cohomology group $H^n_{\mathrm{dR}}(M,\partial M)\simeq \mathbb R$ is isomorphic to $\mathbb R$; in this case every volume form $\omega$ represents a nonzero cohomology class $[\omega]\neq 0$ and hence a generator of $\in H^n_{\mathrm{dR}}(M,\partial M)$, and conversely every generator admits a volume-form representative.
+\end{itemize}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Parallelizability vs orientability]
+%
+A manifold is parallelizable if any of these equivalent conditions hold:
+\begin{itemize}
+    \item the tangent bundle $TM$ is trivial, i.e. $TM \simeq M \times \mathbb{R}^n$;
+    \item there exists a smooth choice of basis of the tangent space $\{X_1, \dots, X_n\}$ at each point $p\in M$;
+    \item there exists a nowhere vanishing top rank antisymmetric tensor $\beta \in T^n_0(M)$.
+\end{itemize}
+Note that parallelizability implies orientability, but the converse is not true: for example the 2-sphere $S^2$ is orientable but not parallelizable (no hairy ball theorem), while the 3-sphere $S^3$ is both orientable and parallelizable. 
+\end{mytheorem}
+
+
+\begin{mytheorem}[Orientation of the boundary \& outward normal first convention]
+If a manifold $M$ is orientable, then its boundary $\partial M$ is also orientable.
+Note that the converse is not true: a non-orientable manifold can have an orientable boundary, e.g. the Möbius strip is not orientable but its boundary is a circle $S^1$, which is orientable.
+
+The convention for the orientation of the boundary is that a basis $\{X_1, \dots, X_{n-1}\}$ of $T_p \partial M$ is positively oriented if and only if the basis $\{N, X_1, \dots, X_{n-1}\}$ of $T_p M$ is positively oriented, where $N$ is the outward pointing normal vector to the boundary.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Orientable double cover]
+Given any manifold $M^{(n)}$ its orientable double cover $\tilde{M}\to M$ is a two-sheet covering of $M$ that is orientable, and such that any other orientable covering space of $M$ factors through it.
+It is defined by
+\begin{align}
+\begin{aligned}
+    \tilde{M} := \bigsqcup_{p\in M} \left\{ \text{equivalence classes of oriented bases of } T_p M \right\} \to M \,\,\, \Big|\,\,\,\big[\{X_1, \dots, X_n\}\big]\mapsto p.
+\end{aligned}
+\end{align}
+%
+The manifold $\tilde{M}$ is orientable by construction.
+The manifold $M$ is orientable if and only if the covering $\tilde{M}\to M$ is trivial, i.e. $\tilde{M} \simeq M \sqcup M$ so that there exists a global section of the covering map $\tilde{M}\to M$, which corresponds to a smooth choice of oriented basis of the tangent space at each point $p\in M$.
+\end{mytheorem}
 
 %-----------------------------------------------------------------------
 %========================================================
