@@ -361,30 +361,49 @@ Pulling back to $\partial M$ the form $i_X \Omega_g$ along $\phi$, using the abo
 %=========================================================
 %-----------------------------------------------------
 
+
+\begin{mytheorem}[Metric volume form convention]
+Given a pseudoriemannian manifold \((M^{(n)}, g)\), the metric volume form in $n$ dimension is given by 
+\begin{align}\begin{aligned}
+    \Omega_g:&=\sqrt{g}\,\,dx^1\wedge dx^2\wedge...\wedge dx^n \\
+    &= \sqrt{g} \epsilon_{\mu_1\mu_2...\mu_n}dx^{\mu_1}\otimes dx^{\mu_2}\otimes...\otimes dx^{\mu_n}
+    \\
+    &= \tfrac{1}{(n+1)!}\sqrt{g} \epsilon_{\mu_1\mu_2...\mu_n}dx^{\mu_1}\wedge dx^{\mu_2}\wedge...\wedge dx^{\mu_n},
+\end{aligned}
+\end{align}
+where repeated \emph{greek} indices are summed over, we denote {\small$\sqrt{g}:=\sqrt{|\det g|}$}, and we denote the Levi-Civita totally antisymmetric \emph{symbols}, not tensors, by
+\begin{align}
+    \epsilon_{12...n}:=1, \qquad \epsilon^{12...n}:=1\,.
+\end{align}
+The corresponding tensorial quantities/coefficients are defined as
+\begin{align}\begin{aligned}
+    &\varepsilon_{\mu_1\mu_2...\mu_n}:=\sqrt{g}\,\epsilon_{\mu_1\mu_2...\mu_n},
+        \\
+    &\varepsilon^{\mu_1\mu_2...\mu_n}:= g^{\mu_1\nu_1}g^{\mu_2\nu_2}...g^{\mu_n\nu_n}\varepsilon_{\nu_1\nu_2...\nu_n}
+    {\overset{!}{=}} \det(g^{\alpha\beta}) \sqrt{g}\,\epsilon_{\mu_1\mu_2...\mu_n}
+    =\tfrac{\operatorname{sign(\det g)}}{\sqrt{g}}\,\epsilon^{\mu_1\mu_2...\mu_n}.
+\end{aligned}
+\end{align}
+\end{mytheorem}
+
+
 \begin{mytheorem}[Hodge dual]
 %
-Given a pseudoriemannian manifold \((M^{(n)}, g)\), write the metric volume form as
-\begin{equation}
-    \Omega = \sqrt{|g|}dx^1 \wedge \cdots \wedge dx^n 
-    = \sqrt{|g|} \epsilon_{\alpha_1 \dots \alpha_n} dx^{\alpha_1} \otimes \cdots \otimes dx^{\alpha_n}
-    = \frac{1}{n!} \sqrt{|g|} \epsilon_{\alpha_1 \dots \alpha_n} dx^{\alpha_1} \wedge \cdots \wedge dx^{\alpha_n},
-\end{equation}
-where the first expression is \emph{not} summed over indices, while the latter two are, and $\epsilon_{\alpha_1 \dots \alpha_n}$ is the Levi-Civita totally antisymmetric \emph{symbol} $\epsilon_{1 2 \dots n} = +1$, not the tensor.
+The Hodge dual maps a $k$-form $\theta$ to an $(n-k)$-form by transforming $\theta$ into a antisymmetric $(k,0)$-tensor with the metric, then feeding it to the \emph{first} $k$ slots of the volume form, and finally dividing by a symmetry factor $k!$ to avoid overcounting.
+Equivalently, it contract the $k$-form with the first $k$ indices of the volume form using the metric and divide by $k!$.
+Note we adopt the \textbf{first index convention} for the volume form, that is we feed the first $k$ slots of $\Omega_g$ with $\theta^{\#}$ and leave the last $n-k$ slots free.
 
-The Hodge dual is the map
+In formulas, denoting \(\theta^{\#}\) the tensor of rank $(k,0)$ obtained by raising all indices of $\theta$ with the metric, the Hodge dual is defined as
 \begin{align}
-    \star: \Lambda^k (M) &\to \Lambda^{n-k} (M) \quad \mid \quad \theta \mapsto \tfrac{1}{k!}\Omega_g(\theta^{\#}, \cdots),
+    \star: \Lambda^k (M) &\to \Lambda^{n-k} (M) \quad \mid \quad \theta \mapsto \tfrac{1}{k!}\Omega_g(\theta^{\#}, \cdots)\,.
 \end{align}
-where \(\theta^{\#}\) is the tensor of rank $(k,0)$ obtained by raising all indices of $\theta$ with the metric.
-That is, transform a $k$-form into a $(k,0)$-tensor and then feed it to the first $k$ slots of the volume form to get a $(n-k)$ form and divide by symmetry factors.
-The factor $1/k!$ is inserted to avoid overcounting, since both $\theta$ and $\Omega$ are totally antisymmetric in all indices, so that $\star\star = (-1)^{k(n-k)}$ up to signs.
-%
+The symmetry factor $1/k!$ is inserted to avoid overcounting, since both $\theta$ and $\Omega$ are totally antisymmetric in all indices, so that  $\star\star = (-1)^{k(n-k)+s}$ where $s$ is the signature of the metric.
+
 Explicitly, with the index convention \eqref{eq:indices_bookkeeping_differential_forms} for {\small $j_1<\cdots<j_k$} ordered and {\small $\mu_1\cdots\mu_k$} arbitrary, the form $\theta$ is
 {\small
 \begin{align}
     \theta &= \theta_{j_1 \dots j_k} dx^{j_1} \wedge \cdots \wedge dx^{j_k} = \theta_{\mu_1 \dots \mu_k} dx^{\mu_1} \otimes \cdots \otimes dx^{\mu_k}\quad \Rightarrow \quad \theta^{\#} = g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} \partial_{\alpha_1}\otimes \cdots \otimes \partial_{\alpha_k}.
-\end{align}
-}
+\end{align}}
 The Hodge dual of the \(k\)-form \(\theta\) is then 
 {\small
 \begin{align}\label{eq:hodge_dual_first_exp}
@@ -393,13 +412,13 @@ The Hodge dual of the \(k\)-form \(\theta\) is then
     \\
     &= \tfrac{1}{k!}\sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \otimes \cdots \otimes dx^{\beta_n}
     \\
-    &= \frac{1}{k!(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}\,.
+    &= \tfrac{1}{k!(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{\mu_1 \ alpha_1} \cdots g^{\mu_k \alpha_k} \theta_{\mu_1 \dots \mu_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}\,.
 \end{align}}
 The factor $1/k!$ is precisely inserted since both $\theta_{\mu_1 \dots \mu_k}$ and $\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n}$ are totally antisymmetric, so that the sum over unordered indices $\mu_\ell$ and $\alpha_\ell$ gives $k!$ equal contributions, and we could equivalently enforce one set of indices is ordered $j_1 < \cdots < j_k$ and avoid the $1/k!$ factor, that is
 {\small
 \begin{align}
-    \star \theta &= \frac{1}{(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{j_1 \alpha_1} \cdots g^{j_k \alpha_k} \theta_{j_1 \dots j_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}\\
-    &= \frac{1}{(n-k)!} \sqrt{|g|}\epsilon_{j_1\dots j_k\beta_{k+1}\dots \beta_n} g^{\mu_1 j_1} \cdots g^{\mu_k j_k} \theta_{\mu_1\dots\mu_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}.
+    \star \theta &= \tfrac{1}{(n-k)!} \sqrt{|g|}\epsilon_{\alpha_1\dots \alpha_k\beta_{k+1}\dots \beta_n} g^{j_1 \alpha_1} \cdots g^{j_k \alpha_k} \theta_{j_1 \dots j_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}\\
+    &= \tfrac{1}{(n-k)!} \sqrt{|g|}\epsilon_{j_1\dots j_k\beta_{k+1}\dots \beta_n} g^{\mu_1 j_1} \cdots g^{\mu_k j_k} \theta_{\mu_1\dots\mu_k} dx^{\beta_{k+1}} \wedge \cdots \wedge dx^{\beta_n}.
 \end{align}}
 %
 \todotag{Check signs etc}
@@ -408,7 +427,7 @@ The Hodge dual obeys the following important properties.
     %
     \item \textbf{Idempotent up to a sign.} For a metric {\small \(g=(+1\dots+1,-1\dots-1)\)} of signature {\small \((n-s,s)\)}, and any form \(\alpha\) we have
     \begin{align}
-        \star \star \alpha = (-1)^{|\alpha|(n-|\alpha|) + s} \alpha
+        \star \star \alpha = (-1)^{|\alpha|(n-|\alpha|) + s} \alpha\,.
     \end{align}
     %
     \item \textbf{Symmetry wrt $\wedge$ product.} For any two \(k\)-forms \(\alpha, \beta\) of the same degree
@@ -421,10 +440,10 @@ The Hodge dual obeys the following important properties.
     For any two form $\alpha\in\Omega^p$ and $\beta\in\Omega^q$
     \begin{align}
         \star(\alpha\wedge\beta)
-        =\iota_{\beta^\sharp}(\star\alpha)
-        =(-1)^{pq}\,\iota_{\alpha^\sharp}(\star\beta).
+        =\tfrac{\alpha!}{(\alpha+\beta)!}\,\,\iota_{\beta^\sharp}(\star\alpha)
+        =(-1)^{\alpha\beta}\,\,\iota_{\alpha^\sharp}(\star\beta).
     \end{align}
-    The inner derivative $i_{\beta^{\#}}$ of a $j$-form with respect to the  $(\ell,0)$-tensor $\beta^\sharp$ means contracting the first $\ell$ slots of the form with the tensor, and gives zero if $\ell>j$. That is when $p+q>n$.
+    The inner derivative $i_{\beta^{\#}}$ of a $j$-form with respect to the  $(\ell,0)$-tensor $\beta^\sharp$ means contracting the first $\ell$ slots of the form with the tensor, and gives zero if $\ell>j$. That is when $\alpha+\beta>n$.
     %
 \end{itemize}
 \end{mytheorem}
@@ -462,6 +481,108 @@ Since both $i_a$ and $j_b$ are ordered, the sign of $\epsilon_{\gamma_1\dots \ga
 \begin{align}
 \star\star\theta &= (-1)^{k(n-k)}(-1)^s\,\cancel{\det(g_{\mu\nu})}\,\cancel{\det(g^{\mu\nu})}\,\theta_{\gamma_1\dots \gamma_k} dx^{\gamma_1} \otimes \cdots \otimes dx^{\gamma_k} = (-1)^{k(n-k)+s} \theta.
 \end{align}}
+
+
+Similarly we prove the inner product property \todoinline{finish and check}
+We have
+{\small\begin{align}
+    \star\theta &= \tfrac{1}{k!}\sqrt{g}\, \epsilon_{\beta_1\dots\beta_k\mu_{k+1}\dots\mu_n} g^{\nu_1\beta_1}\dots g^{\nu_k\beta_k} \theta_{\nu_1\dots\nu_k} dx^{\mu_{k+1}}\otimes\dots\otimes dx^{\mu_n}
+    \\
+    &= \tfrac{1}{k!}\tfrac{1}{(n-k)!} \epsilon_{\beta_1\dots\beta_k\mu_{k+1}\dots\mu_n} g^{\nu_1\beta_1}\dots g^{\nu_k\beta_k} \theta_{\nu_1\dots\nu_k} dx^{\mu_{k+1}}\wedge\dots\wedge dx^{\mu_n}
+\end{align}}
+Then 
+{\small\begin{align}
+    \eta\wedge\star\theta
+    &= \Big(\tfrac{1}{k!}\eta_{\alpha_1\dots\alpha_k} dx^{\alpha_1}\dots\wedge dx^{\alpha_k}\Big)\wedge 
+    \Big(\tfrac{1}{k!}\tfrac{1}{(n-k)!}\sqrt{g} \epsilon_{\beta_1\dots\beta_k\mu_{k+1}\dots\mu_n} g^{\nu_1\beta_1}\dots g^{\nu_k\beta_k} \theta_{\nu_1\dots\nu_k} dx^{\mu_{k+1}}\wedge\dots\wedge dx^{\mu_n}\Big)
+    \\
+    &=
+    \tfrac{1}{(k!)^2}\tfrac{1}{(n-k)!}
+    \eta_{\alpha_1\dots\alpha_k}
+    \epsilon_{\beta_1\dots\beta_k\mu_{k+1}\dots\mu_n} g^{\nu_1\beta_1}\dots g^{\nu_k\beta_k} \theta_{\nu_1\dots\nu_k} \,\,
+    dx^{\alpha_1}\dots\wedge dx^{\alpha_k}\wedge
+    dx^{\mu_{k+1}}\wedge\dots\wedge dx^{\mu_n}\,.
+\end{align}}
+The symbol $\epsilon_{\beta_1\dots\beta_k\mu_{k+1}\dots\mu_n}$ and the wedge product in the second line vanish by antisymmetry unless the set of indices obey respectively
+{\small\begin{align}
+    \{\beta_1\dots\beta_k\}\cap\{\mu_{k+1}\dots\mu_n\} = \emptyset, \qquad
+    \{\alpha_1\dots\alpha_k\}\cap\{\mu_{k+1}\dots\mu_n\} = \emptyset.
+\end{align}}
+This forces the two sets to be equal: $\{\alpha_1\dots\alpha_k\} = \{\beta_1\dots\beta_k\}$.
+Then, using
+{\small
+\begin{align}
+    dx^{\alpha_1}\wedge\cdots\wedge dx^{\alpha_k}
+    \wedge dx^{\mu_{k+1}}\wedge\cdots\wedge dx^{\mu_n}
+    &=
+    \epsilon^{\alpha_1\dots\alpha_k\mu_{k+1}\dots\mu_n}
+    \,dx^1\wedge\cdots\wedge dx^n
+\end{align}}
+and the contraction identity
+{\small
+\begin{align}
+    \epsilon_{\beta_1\dots\beta_k\mu_{k+1}\dots\mu_n}
+    \epsilon^{\alpha_1\dots\alpha_k\mu_{k+1}\dots\mu_n}
+    &=
+    (n-k)!\,
+    \delta^{\alpha_1\dots\alpha_k}_{\beta_1\dots\beta_k},
+\end{align}}
+where
+{\small\begin{align}
+    \delta^{\alpha_1\dots\alpha_k}_{\beta_1\dots\beta_k}
+    :=
+    \sum_{\sigma\in\mathcal S_k}
+    \operatorname{sgn}(\sigma)\,
+    \delta^{\alpha_1}_{\beta_{\sigma(1)}}\cdots
+    \delta^{\alpha_k}_{\beta_{\sigma(k)}}
+\end{align}}
+is the generalized Kronecker symbol, we obtain
+{\small
+\begin{align}
+    \eta\wedge\star\theta
+    &=
+    \frac{1}{(k!)^2}\,
+    \eta_{\alpha_1\dots\alpha_k}\,
+    \delta^{\alpha_1\dots\alpha_k}_{\beta_1\dots\beta_k}\,
+    g^{\nu_1\beta_1}\cdots g^{\nu_k\beta_k}
+    \theta_{\nu_1\dots\nu_k}\,\sqrt{g}\,
+    dx^1\wedge\cdots\wedge dx^n .
+\end{align}}
+Since \(\eta\) is totally antisymmetric $\eta_{\alpha_1\dots\alpha_k}
+\delta^{\alpha_1\dots\alpha_k}_{\beta_1\dots\beta_k}=
+k!\,\eta_{\beta_1\dots\beta_k}$.
+{\small
+\begin{align}
+    \eta\wedge\star\theta
+    &=
+    \frac{1}{k!}\,
+    \eta_{\beta_1\dots\beta_k}\,
+    g^{\nu_1\beta_1}\cdots g^{\nu_k\beta_k}
+    \theta_{\nu_1\dots\nu_k}\,
+    \sqrt{|g|}\,dx^1\wedge\cdots\wedge dx^n
+    \\
+    &=
+    \frac{1}{k!}\,
+    \eta_{\beta_1\dots\beta_k}\theta^{\beta_1\dots\beta_k}
+    \,\Omega_g
+    =
+    \langle\eta,\theta\rangle_g\,\Omega_g.
+\end{align}}
+Finally, the symmetry of the inverse metric gives
+{\small
+\begin{align}
+    \eta_{\beta_1\dots\beta_k}\theta^{\beta_1\dots\beta_k}
+    =
+    \theta_{\beta_1\dots\beta_k}\eta^{\beta_1\dots\beta_k},
+\end{align}}
+and hence
+\[
+    \eta\wedge\star\theta
+    =
+    \theta\wedge\star\eta .
+\]
+
+
 \end{proof}
 
 
