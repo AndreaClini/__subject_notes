@@ -15,14 +15,69 @@
 %=========================================================
 %------------------------------------------------------------
 
+\begin{mytheorem}[Gaussian bosonic integrals]
+For $\Re\alpha>0$, the elementary Gaussian integral and its square read as follows.
+{\small\begin{align}\begin{aligned}
+    I(\alpha) &:= \int_{\R}dx\,e^{-\alpha x^2} = \sqrt{\tfrac{\pi}{\alpha}}, \qquad I(1)^2 = \int_{\R^2}dx\,dy\,e^{-(x^2+y^2)} = \int_0^{2\pi}d\varphi\int_0^\infty dr\,r e^{-r^2} = \pi.
+\end{aligned}\end{align}}
+For a real symmetric positive-definite matrix $A\in\R^{n\times n}$, the multivariate generalization is the following.
+{\small\begin{align}\begin{aligned}
+    \int_{\R^n}d^nx\,e^{-\tfrac12 x^{\mathsf T}Ax} &= (2\pi)^{n/2}(\det A)^{-1/2}.
+\end{aligned}\end{align}}
+Adding a source $b$ amounts to shifting to the stationary point $x_c=-A^{-1}b$ and completing the square.
+The shift and the resulting integral are summarized by the following identities.
+{\small\begin{align}\begin{aligned}
+    S(x) &:= \tfrac12 x^{\mathsf T}Ax+b^{\mathsf T}x = \tfrac12 (x-x_c)^{\mathsf T}A(x-x_c)-\tfrac12 b^{\mathsf T}A^{-1}b, \qquad \int_{\R^n}d^nx\,e^{-S(x)} = (2\pi)^{n/2}(\det A)^{-1/2}e^{\tfrac12 b^{\mathsf T}A^{-1}b}.
+\end{aligned}\end{align}}
+Interpreting $S$ as an action, $x_c$ is its classical stationary solution, since $\nabla S(x_c)=Ax_c+b=0$.
+\end{mytheorem}
 
-\begin{mytheorem}[Path integral formulation of quantum mechanics `a la Feynman \todoinline{Finish}]
-The path integral formulation of quantum mechanics is a reformulation of the standard canonical quantization approach,
-\begin{align}
-    \langle x_f, t_f | x_i, t_i \rangle = \int_{x(t_i)=x_i}^{x(t_f)=x_f} \mathcal{D}x(t)\, e^{\frac{i}{\hbar}S[x(t)]},
-\end{align}
-where the integral is over all paths $x(t)$ connecting the initial and final points, and $S[x(t)]$ is the classical action functional evaluated on the path $x(t)$. 
-    
+
+
+\begin{mytheorem}[Path integral formulation of quantum mechanics \`a la Feynman]
+The transition amplitude between position eigenstates is the following matrix element.
+{\small\begin{align}\begin{aligned}
+    F(q_f,t_f;q_i,t_i) &:= {}_H\langle q_f,t_f|q_i,t_i\rangle_H = \langle q_f|e^{-\tfrac{i}{\hbar}\hat H(t_f-t_i)}|q_i\rangle_S.
+\end{aligned}\end{align}}
+Split $[t_i,t_f]$ into $N+1$ intervals of length $\epsilon=\tfrac{t_f-t_i}{N+1}$ and set $t_k=t_i+k\epsilon$.
+\begin{center}
+\begin{tikzpicture}[x=1.25cm,y=0.55cm,>=Stealth,font=\scriptsize]
+    \draw[->] (-0.25,0) -- (5.45,0) node[right] {$t$};
+    \draw[->] (0,-0.25) -- (0,3.1) node[above] {$q$};
+    \foreach \x in {0,1,2,3,4,5} \draw[gray!55,densely dashed] (\x,0) -- (\x,2.8);
+    \draw[blue!70!black,thick] (0,0.65) -- (1,2.25) -- (2,1.35) -- (3,2.6) -- (4,0.95) -- (5,1.85);
+    \foreach \x/\y in {0/0.65,1/2.25,2/1.35,3/2.6,4/0.95,5/1.85} \fill[blue!70!black] (\x,\y) circle (1.5pt);
+    \node[below] at (0,0) {$t_0=t_i$};
+    \node[below] at (1,0) {$t_1$};
+    \node[below] at (2,0) {$\cdots$};
+    \node[below] at (3,0) {$t_k$};
+    \node[below] at (4,0) {$\cdots$};
+    \node[below] at (5,0) {$t_{N+1}=t_f$};
+    \node[left] at (0,0.65) {$q_i$};
+    \node[right] at (5,1.85) {$q_f$};
+\end{tikzpicture}
+\end{center}
+Inserting position-space completeness relations gives the following skeleton.
+{\small\begin{align}\begin{aligned}
+    \mathbb{I} &= \int_{\R}dq_k\,|q_k,t_k\rangle_H{}_H\langle q_k,t_k|, \\
+    F(q_f,t_f;q_i,t_i) &= \lim_{N\to\infty}\int\prod_{k=1}^{N}dq_k\prod_{k=0}^{N}{}_H\langle q_{k+1},t_{k+1}|q_k,t_k\rangle_H, \qquad q_0=q_i,\quad q_{N+1}=q_f.
+\end{aligned}\end{align}}
+Inserting $\mathbb{I}=\int_{\R}\tfrac{dp}{2\pi\hbar}|p\rangle\langle p|$ in each short-time factor and ordering every $\hat p$ to the left of every $\hat q$ gives the phase-space representation below.
+{\small\begin{align}\begin{aligned}
+    F(q_f,t_f;q_i,t_i) &= \lim_{N\to\infty}\int\prod_{k=1}^{N}dq_k\prod_{k=0}^{N}\tfrac{dp_{k+1}}{2\pi\hbar}\exp\Bigg\{\tfrac{i}{\hbar}\sum_{k=0}^{N}\Big[p_{k+1}(q_{k+1}-q_k)-\epsilon H(p_{k+1},q_k)\Big]\Bigg\} \\
+    &= \int_{q(t_i)=q_i}^{q(t_f)=q_f}\mathcal{D}p\,\mathcal{D}q\,\exp\Bigg\{\tfrac{i}{\hbar}\int_{t_i}^{t_f}dt\,\big[p\dot q-H(p,q)\big]\Bigg\}.
+\end{aligned}\end{align}}
+The intermediate $q_k$ are integrated independently, so the contributing quantum paths need not be smooth.
+For $H(p,q)=\tfrac{p^2}{2m}+V(q)$, each momentum integral is the following Gaussian.
+{\small\begin{align}\begin{aligned}
+    \int_{\R}\tfrac{dp}{2\pi\hbar}\exp\Big\{\tfrac{i\epsilon}{\hbar}\big[p\dot q-\tfrac{p^2}{2m}\big]\Big\} &= \Big(\tfrac{m}{2\pi i\hbar\epsilon}\Big)^{1/2}\exp\Big\{\tfrac{i\epsilon}{\hbar}\tfrac{m\dot q^2}{2}\Big\}.
+\end{aligned}\end{align}}
+Absorbing the product of normalization factors into $\mathcal{D}q$ yields the configuration-space path integral below.
+{\small\begin{align}\begin{aligned}
+    F(q_f,t_f;q_i,t_i) &= \int_{q(t_i)=q_i}^{q(t_f)=q_f}\mathcal{D}q\,e^{\tfrac{i}{\hbar}S[q]}, \qquad S[q] = \int_{t_i}^{t_f}dt\,L(q,\dot q), \qquad L(q,\dot q) = \tfrac12m\dot q^2-V(q).
+\end{aligned}\end{align}}
+Thus every path contributes with complex amplitude $e^{\tfrac{i}{\hbar}S[q]}$ fixed by its action, while the transition probability is the modulus squared of the sum of all these amplitudes.
+This Gaussian reduction to configuration space requires a Hamiltonian quadratic in the momenta.
 \end{mytheorem}
 
 
@@ -119,7 +174,7 @@ In turn the path integral formulation of the generating functional reads
      \int \mathcal{D}q(t)\, \,  e^{\frac{i}{\hbar}  \int dt\, \tfrac12 q(t)\Delta q(t) + J(t)q(t)}.
 \end{align}}
 The boundary term drops out of the path integral since it only depends on the fixed boundary conditions.
-Moreover, assuming for the moment that the operator $\Delta$ is invertible, we can write $\tilde{q}:=q-\Delta^{-1}J$ and complete the square in the exponent to get
+Moreover, assuming for the moment that the operator $\Delta$ is invertible, we can write $q:=\tilde{q}-\Delta^{-1}J$ and complete the square in the exponent to get
 {\small\begin{align}
       \int \mathcal{D}q\, \,  e^{i \left(\tfrac12 q\cdot \Delta\cdot q + J\cdot q\right)} = \int \mathcal{D}\tilde{q}\, \,  e^{i \tfrac 12 \tilde{q}\Delta\tilde{q} - \frac{i}{2} J\cdot \Delta^{-1}\cdot J}
       = 
@@ -127,6 +182,15 @@ Moreover, assuming for the moment that the operator $\Delta$ is invertible, we c
       \int \mathcal{D}\tilde{q}\, \,  e^{\frac{i}{\hbar} \tfrac12 \tilde{q}\Delta\tilde{q}}.
 \end{align}}
 Note we are free to take the linear term out of the integral and change the measure $Dq\to D\tilde{q}$ since $J$ is not integrated over and $\tilde{q}$ is just a shift of the integration variable.
+The remaining integral is a Gaussian integral.
+We can compute it explictly
+{\small\begin{align}
+    \int \mathcal{D}\tilde{q}\, \,  e^{\frac{i}{\hbar} \tfrac12 \tilde{q}\Delta\tilde{q}} = \mathcal{N}\det \Delta^{-1/2}, \quad \mathcal{N}\simeq \lim_{N\to\infty} \left(2\pi i\right)^{N/2}.
+\end{align}}
+The normalization constant $\mathcal{N}$ and the functional determinant $\det \Delta$ are ill-defined as the number $N$ of time slices go to infinity, resulting in infinitely many Gaussian factors $\prod_{j=1}^Ndq(t_j)$.
+However, they are independent of the source $J$ and thus cancel out when computing correlation functions, which are ratios of generating functionals.
+In fact, it is customary to absorb the factor $\mathcal{N}$ in the definition of the functioal determinant, since this will cancel anyway.
+
 What is the operator inverse $\Delta^{-1}$?
 Arguing formally, from the requirement it is indeed the inverse of $\Delta$ we have
 {\small\begin{align}

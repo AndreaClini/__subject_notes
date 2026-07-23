@@ -1072,16 +1072,16 @@ For example, if we measure the field $\hat{\phi}$ at some points $x_1\dots x_n$ 
 
 In fact, since the entire collection of field operators $\{\hat{\phi}(x)\}_{x\in \mathbb{R}^3}$ commutes (it is actually a \emph{maximal} set of commuting observables), we could in principle measure the field values $f(x)\equiv\hat{\phi}(t_0,x)$ at each point in space at the same time $t_0$.
 In this case, the system will collapse onto a unique field eigenstate $|f\rangle$ for this fixed configuration $f:\mathbb{R}^3 \to \mathbb{R}$.
-Repeating the measurement immediately afterwards will yield the same configuration $f$ with probability one i.e. the probability density of finding the field with configuration between $f'$ and $f'+Df'$ after the measurement is
+Repeating the measurement immediately afterwards will yield the same configuration $f$ with probability one, i.e. the probability density of finding the field with configuration between $f'$ and $f'+Df'$ after the measurement is
 \begin{align}
     P_{\text{after}}(f') \,Df' &= |\langle f' | f \rangle|^2 \,Df' = \left(\delta_D^{(\infty)}(f' - f)\right)^2 \,Df'\,.
 \end{align}
-The probability is the abstract function space is explicitated as the probability density of finding position values between $f'(x)$ and $f'(x) + df'(x)$ or Fourier modes between $f'_k$ and $f'_k + d f'_k$ 
+The probability in the abstract function space is explicitated as the probability density of finding position values between $f'(x)$ and $f'(x) + df'(x)$ or Fourier modes between $f'_k$ and $f'_k + d f'_k$,
 \begin{align}
     P_{\text{after}}(f') \,Df' &= \prod_{x} \left(\delta_D^{(1)}(f'(x) - f(x))\right)^2 \prod_x df'(x)
     = \prod_{k} \left(\delta_D^{(2)}(f'_k - f_k)\right)^2 \prod_k d^2\!f'_k.
 \end{align}
-Obvious caveats apply on ill-defined squares of Dirac deltas, possibly infinite-dimensional in the function space of field configurations, and infinite products.
+Obvious caveats apply on ill-defined squares of Dirac deltas, possibly also infinite-dimensional in the function space of field configurations, and infinite products.
 
 Such an infinite measurement is of course purely theoretical and practically almost impossible.
 However, it is worth noticing that such a measurement has in fact been performed by gravity and matter at the end of inflation, collapsing the quantum fluctuations of the inflaton field into classical inhomogeneities and seeding structure formation. \notetag{Expand on this (cf. kemps qft L4)}
@@ -1098,7 +1098,7 @@ In a finite-dimensional QM system we have a finite number of DoFs, labelled by $
     [\hat{p}_i, \hat{p}_j] = 0.
 \end{align}
 By the spectral theorem, we find common spectral bases for the position operators $q_1\dots q_n$ or momentum operators $p_1\dots p_n$, typically denoted $|q\rangle$ and $|p\rangle$ respectively.
-Using these bases for the Hilbert space of states is called the \emph{position or momentum representation}.
+Using these two bases for the Hilbert space of states is called the \emph{position} or \emph{momentum representation} respectively.
 
 The same can be done in QFT.
 Here we have an infinite number of DoFs, often labelled by the spatial position $\mathbf{x} \in \mathbb{R}^d$, with generalized coordinates $\phi(\mathbf{x})$ and conjugate momenta $\pi(\mathbf{x})=\frac{\delta \mathcal{L}}{\delta \partial_t \phi(\mathbf{x})}$ satisfying analogous equal-time commutation relations 
@@ -1118,16 +1118,15 @@ These bases obey
 That is, the states $|f\rangle$ have eigenvalue collections $\{f(x)\}_{x}$ for the commuting operators $\{\hat{\phi}(x)\}_x$, resp. $|g\rangle$ have $\{g(x)\}_x$ for $\{\hat{\pi}(x)\}_x$, for suitable functions $f,g:\mathbb{R}^d \to \mathbb{R}$.
 %
 These bases are the field-theoretic analogue of the position $\{|x\rangle\}_{x\in \mathbb{R}^n}$ and momentum $\{|p\rangle\}_{p\in \mathbb{R}^n}$ bases in ordinary QM, since $\hat{\phi}(x)$ and $\hat{\pi}(x)$ are the counterpart of position $\hat{X}^i$ and momentum $\hat{P}^i$ operators.
-In the first case, operators are labelled by $1\dots n$ and bra-kets by $x\in \mathbb{R}^n$, whereas in QFT operators are labelled by $\mathbf{x}\in \mathbb{R}^d$ and bra-kets by functions $f:\mathbb{R}^d \to \mathbb{R}$.
+In ordinary QM, operators are labelled by $1\dots n$ and bra-kets by $x\in \mathbb{R}^n$, whereas in QFT operators are labelled by $\mathbf{x}\in \mathbb{R}^d$ and bra-kets by functions $f:\mathbb{R}^d \to \mathbb{R}$.
 
-We remark nobody really knows what is the \emph{space of field configurations.}
-That is the function spaces the functions $f$ and $g$ belong to, i.e. the possible collections $\{f(x)\}_x$ or $\{g(x)\}_x$ of $\hat{\phi}$ or $\hat{\pi}$ eigenvalues.
+We remark that nobody really knows what is the \emph{space of field configurations}, i.e. the function spaces $W_\phi$ and $W_\pi$ the functions $f$ and $g$ belong to, i.e. the possible collections $\{f(x)\}_x$ or $\{g(x)\}_x$ of $\hat{\phi}$ or $\hat{\pi}$ eigenvalues.
 A naive guess is to consider the space of square-integrable functions $f(x) \in L^2(\mathbb{R}^3)$, but this is definitely not correct since typical field configurations are actually distributions rather than functions.
 This is already evident from vacuum fluctuations of the field, which diverge at every point in space.
 Rigorous treatments of constructive QFT manage to define suitable function spaces and measures, but they are technical and beyond the scope of these notes.
 %
 
-The state $|f\rangle$ is also eigenstates of the Fourier transformed field operators $\hat{\phi}_k(t)$ with its Fourier modes $f_k$ as eigenvalues.
+The state $|f\rangle$ is also an eigenstate of the Fourier transformed field operators $\hat{\phi}_k(t)$ with its Fourier modes $f_k$ as eigenvalues.
 Indeed, for fixed $k$ the operator $\hat{\phi}_k(t)$ is a linear combination of the $\{\hat{\phi}(t,x)\}_x$ operators and returns the corresponding linear combination $f_k$ of eigenvalues when acting on the state $|f\rangle$, namely
 %
 \begin{align}
@@ -1154,7 +1153,7 @@ Correspondingly the functional measure $Df$ and Dirac delta $\delta_D^{W_{\phi}}
 \end{align}
 %
 The expressions should coincide since the Fourier transform is expected to be a measure-preserving bijection between the two formulations of $W_{\phi}$.
-The above is made rigorous by introducing suitable infrared regularization, making Fourier modes countable discrete, and ultraviolet cutoff, discarding Fourier modes above some scale $\Lambda$ and making the function space finite-dimensional.
+The above is made rigorous by introducing suitable infrared regularization, making Fourier modes countable discrete, and ultraviolet cutoff, discarding Fourier modes above some scale $\Lambda$, thereby making the function space finite-dimensional.
 %
 
 Regardless of the real or Fourier space representation, a given field configuration {\small $f\in W_\phi$} ultimately denotes the \emph{same} abstract state {\small$|f\rangle$} in the Fock space {\small $\mathcal{F}\simeq L^2(W_{\phi})$} up to a rescaling related to the above choice of basis for $W_{\phi}\simeq \oplus_x \R \simeq \oplus_k \C$.
@@ -1162,7 +1161,7 @@ Namely we have
 {\small
 \begin{align}
     |\{f_x\}_x \rangle &= \det(F)^{\frac{1}{2}}\, |\{f_k\}_k \rangle,\quad \text{with}\quad
-    \dim|\{f_x\}_x \rangle= \prod_x [f_x]^{-\nicefrac{1}{2}} = [f_x]^{-\frac{1}{2}\underset{x}{\sum}1},\, \dim|\{f_k\}_k \rangle= \prod_k [f_k]^{-1} = [f_k]^{-\underset{x}{\sum}1}.
+    \dim|\{f_x\}_x \rangle= \prod_x [f_x]^{-\nicefrac{1}{2}} = [f_x]^{-\frac{1}{2}\underset{x}{\sum}1},\, \dim|\{f_k\}_k \rangle= \prod_k [f_k]^{-1} = [f_k]^{-\underset{k}{\sum}1}.
 \end{align}
 }
 In turn we have the expected orthonormality relations
@@ -1178,13 +1177,13 @@ For convenience, we choose an arbitrary energy scale $\mu$ and define \emph{dime
     = \mu^{-\underset{k}{\sum}\frac{1+d}{2}} \det(F)^{-\frac{1}{2}} |\{f(x)\}_x \rangle\,.
 \end{aligned}
 \end{align}
-We could equivalently perform adimensional rescaling using position values $f(x)$, but Fourier modes make it more rigorously defined upon IR regularization.
+We could equivalently perform adimensional rescaling using position values $f(x)$, but Fourier modes make it more rigorous upon IR regularization.
 Regardless of the procedure, the rescaling \eqref{eq:adimensional_measure_state_fock_space} ensures all the expressions for the (infinitesimal) probability of finding the field configuration between $f$ and $f+Df$ when the system is in any given state $|\Psi\rangle \in \mathcal{F}$ coincide, as expected,
 \begin{align}\label{eq:infinitesimal_probability_field_config_coincide}
     P_{\Psi}(f) \,Df &= |\langle f | \Psi \rangle|^2 \,Df \,\,\overset{!}{=} \,\,|\langle \{f_x\}_x | \Psi \rangle|^2 \prod_x df(x)\,\, \overset{!}{=}\,\, |\langle \{f_k\}_k | \Psi \rangle|^2 \prod_k d^2\!f_k.
 \end{align}
 %
-As $f$ varies in the (unknown, ill-defined) configuration space $W_{\phi}$, the states $|f\rangle$ form an improper orthonormal basis of the Fock space $\mathcal{F}\simeq L^2(W_{\phi})$.
+As $f$ varies in the (unknown, ill-defined) configuration space $W_{\phi}$, the states $|f\rangle$ form an \emph{improper} \emph{orthonormal} basis of the Fock space $\mathcal{F}\simeq L^2(W_{\phi})$.
 We have a corresponding resolution of the identity 
 \begin{align}
     \mathbb{I}_{\mathcal{F}}= \int_{W_{\phi}} \!\!\!\!Df\, \, |f \rangle \,\langle f |
@@ -1203,15 +1202,17 @@ The two bases have overlap
 \end{align}
 where $\mathcal{N}$ is a (possibly infinite) \emph{adimensional} normalization constant. 
 The normalization is multiplied by appropriate powers of $\mu$ according to \eqref{eq:adimensional_measure_state_fock_space} when overlapping explicit dimensionful states like $|\{f_x\}_x\rangle$ or $|\{g_k\}_k\rangle$.
-We pass from one basis to the other via a resolution of the identity
+
+The $\hat{\phi}$ and $\hat{\pi}$ \textbf{representations are simply related by a functional Fourier transform}, just like position and momentum representations in ordinary QM.
+Namely, we pass from one basis to the other via a resolution of the identity
 \begin{align}
     |g\rangle &= \int_{W_{\phi}}\!\!\! Df\,\, |f\rangle\, \langle f | g \rangle
-    = \int_{W_{\phi}}\!\!\! Df\,\, |f\rangle\, \,\,\mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)},
+    = \int_{W_{\phi}}\!\!\! Df\,\, |f\rangle\, \,\,\mathcal{N} e^{\frac{i}{\hbar} \int d^3 x\, f(x) g(x)}.
 \end{align}
 %
-The above is confirmed by acting with $\hat{\pi}(t_0,x)=-i\hbar\frac{\delta\,\cdot}{\delta f(x)}$ in the $\hat{\phi}$ representation or with $\hat{\phi}(t_0,x)=i\hbar\frac{\delta\,\cdot}{\delta g(x)}$ in the $\hat{\pi}$ representation, and then possibly integrating by parts in the functional integral.
+The above is confirmed by acting with $\hat{\pi}(t_0,x)=-i\hbar\frac{\delta\,\cdot}{\delta f(x)}$ on $|g\rangle$ in the $\hat{\phi}$representation, i.e. on $\langle f | g\rangle$, or with $\hat{\phi}(t_0,x)=i\hbar\frac{\delta\,\cdot}{\delta g(x)}$ on $|f\rangle$ in the $\hat{\pi}$ representation, and possibly integrating by parts in the functional integral.
 %
-Note the $\hat{\phi}$ and $\hat{\pi}$ \textbf{representations are simply related by a functional Fourier transform}, just like position and momentum representations in ordinary QM.
+
 
 Given any state $|\Psi\rangle \in \mathcal{F}$, we express it in either basis as
 \begin{align}
@@ -1236,9 +1237,9 @@ Analogous considerations hold for $\Psi[g]$ and $P_{\Psi}(\{g(x)\}_x) \,Dg$ in t
 Just like in ordinary QM, the field operators $\hat{\phi},\,\hat{\pi}$ act as functional multiplication and differentiation in the $\hat{\phi}$ representation, and viceversa in the $\hat{\pi}$ representation, 
 \begin{align}
     \hat{\phi}(x) &\to f(x)\, \cdot, \quad
-    \hat{\pi}(x) \to -i \hbar \,\frac{\delta}{\delta f(x)}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
+    \hat{\pi}(x) \to -i \hbar \,\tfrac{\delta}{\delta f(x)}\,\quad \text{on $\hat{\phi}$ eigenstates }\, |f\rangle, \\
     \hat{\pi}(x) &\to g(x)\, \cdot, \quad
-    \hat{\phi}(x) \to i \hbar \,\frac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
+    \hat{\phi}(x) \to i \hbar \,\tfrac{\delta}{\delta g(x)}\,\quad \text{on $\hat{\pi}$ eigenstates } \,|g\rangle.
 \end{align}
 %
 The same is true for the Fourier transformed $\hat{\phi}_k(t)$ and $\hat{\pi}_k(t)$, since they are just linear combinations of the $\hat{\phi}(x)$ and $\hat{\pi}(x)$ operators, with multiplication and \emph{conjugate} differentiation wrt $f_k$ and $g_k$\footnotemark[\getrefnumber{fn:reality_implies_fk_star+minus_fk}]
@@ -1255,7 +1256,8 @@ Note the dimensions of functional derivatives in real and momentum space are, wi
     \left[\frac{\delta}{\delta f_k}\right]= \left[\frac{V}{(2\pi)^d} \frac{\partial}{\partial f_k}\right]= L^{d}\, [f_k]^{-1}\,.
 \end{align}
 %
-Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations in both real and momentum space (easy check) and thus provides two \emph{unitaryly equivalent} representations of the operator algebra on the Fock space $\mathcal{F}$.
+Implementing the $\hat{\phi}$ and $\hat{\pi}$ operators in any of the two ways indeed reproduces the canonical commutation relations in both real and momentum space (easy check) and thus provides two \emph{unitaryly equivalent} representations of the operator algebra on the Fock space $\mathcal{F}\simeq L^2(W_{\phi})\simeq L^2(W_{\pi})$.
+The unitary transformation between the two $L^2$ spaces is induced give by the funtional Fourier transform between the two spaces $W_{\phi}$ and $W_{\pi}$, as discussed above.
 
 More generally they act on any functional $\Psi[f] = \langle f | \Psi \rangle$ of the field configurations $f$ resp. $g$ as
 {\small 
