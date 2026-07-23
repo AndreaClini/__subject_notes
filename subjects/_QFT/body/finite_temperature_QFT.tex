@@ -1,0 +1,1127 @@
+% !TeX root = ../QFT_main.tex
+\documentclass[../QFT_main.tex]{subfiles}
+\begin{document}
+%=========================================================
+%=========================================================
+\chapter{Finite Temperature QFT}\label{ch:finite_temperature_QFT}
+%========================================================
+%=========================================================
+
+
+%---------------------------------------
+%================================================
+\section{Evolution in imaginary time}
+%================================================
+%---------------------------------------------
+
+
+
+\begin{mytheorem}[$\tau$-evolution \& $\tau$-ordering]
+Given a grand-canonical Hamiltonian $K=H-\mu N$, define the $\tau$-evolution of an operator and of a state by
+{\small\begin{align}\begin{aligned}
+    A_K(\tau)&:=e^{\tfrac{\tau}{\hbar}K}A e^{-\tfrac{\tau}{\hbar}K}\,,
+    &
+    |\chi\rangle_K(\tau)&:=e^{-\tfrac{\tau}{\hbar}K}|\chi\rangle\,.
+\end{aligned}\end{align}}
+Note the analogy with ordinary time evolution under the replacements
+{\small\begin{align}\begin{aligned}
+    H\longmapsto K=H-\mu N\,,
+    \qquad
+    t\longmapsto-i\tau\,,
+    \qquad
+    it\longmapsto\tau\,,
+    \qquad
+    i\hbar\partial_t=-\hbar\partial_{it}\longmapsto-\hbar\partial_\tau\,.
+\end{aligned}\end{align}}
+In other words, the time-evolution operator $e^{-\tfrac{i}{\hbar}tH}$ can be mapped to the statistical operator $e^{-\beta K}/Z$ (modulo the normalization $Z$) if we enrich the Hamiltonian with an external potential energy, namely the chemical-potential energy $-\mu N$, and identify time with imaginary inverse temperature.
+Some remarks are in order.
+\begin{itemize}
+    \item If the Hamiltonian is $\tau$-dependent, we consider $U(\tau,0)$ instead of $e^{-\tfrac{\tau}{\hbar}K}$.
+    \item We will typically consider evolution times $\tau\in[0,\beta\hbar]$ (or $\tau\in[-\beta\hbar/2,\beta\hbar/2]$ in the symmetric case) and reference time $\tau_0=0$.
+\end{itemize}
+
+The $\tau$-evolved operator satisfies the Heisenberg equation
+{\small\begin{align}\begin{aligned}
+    -\hbar\tfrac{\partial}{\partial\tau}A_K(\tau)=[A_K(\tau),K]\,.
+\end{aligned}\end{align}}
+If the basis $|a\rangle$ diagonalizes the Hamiltonian $H=\sum_a\epsilon_a c_a^\dagger c_a$ then we have
+{\small\begin{align}\begin{aligned}
+    (c_a)_K(\tau)&=e^{-\tfrac{\tau}{\hbar}(\epsilon_a-\mu)}c_a\,,
+    &
+    (c_a^\dagger)_K(\tau)&=e^{\tfrac{\tau}{\hbar}(\epsilon_a-\mu)}c_a^\dagger\,.
+\end{aligned}\end{align}}
+The $\tau$-evolution of a composition of operators is the composition of the $\tau$-evolved operators,
+{\small\begin{align}\begin{aligned}
+    (AB)_K(\tau)=A_K(\tau)B_K(\tau)\,.
+\end{aligned}\end{align}}
+%
+The $\tau$-ordering of $\tau$-evolved operators is defined by linearity, starting from a basis of field operators $\psi_a$, e.g.\ the operators $c_a,c_b^\dagger$:
+{\small\begin{align}\begin{aligned}
+    T\big\{\psi_{1,K}(\tau_1)\cdots(\psi_{n,K})(\tau_n)\big\}
+    =
+    (\pm1)^p
+    \psi_{p_1,K}(\tau_{p_1})\cdots\psi_{p_n,K}(\tau_{p_n})\,,
+    \qquad
+    \tau_{p_1}\geq\cdots\geq\tau_{p_n}\,,
+\end{aligned}\end{align}}
+where $p$ is the permutation that orders the times, with sign $\pm1$ for bosonic and fermionic operators, respectively.
+This definition is then extended by linearity to general operators $O$ that are linear combinations of compositions of field operators.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Evolution pictures]
+The thermal Hamiltonian $K=H-\mu N$ is split as $K=K_0+V$, with $K_0$ a thermal Hamiltonian that we can treat and $V$ a (hopefully small) perturbation.
+We fix a reference time $\tau_0$ at which the three evolution pictures coincide; in the thermal case we shall always take $\tau_0=0$.
+The evolution operator in the Schr\"odinger picture satisfies
+{\small\begin{align}\begin{aligned}
+    \left\{
+    \begin{aligned}
+        -\hbar\tfrac{\partial}{\partial\tau}U(\tau,\sigma)&=K(\tau)U(\tau,\sigma)\,,
+        \\
+        U(\sigma,\sigma)&=\mathrm{id}\,,
+    \end{aligned}
+    \right.
+\end{aligned}\end{align}}
+with solution
+{\small\begin{align}\begin{aligned}
+    U(\tau,s)
+    =
+    T\Big\{
+        \exp\big(-\tfrac{1}{\hbar}\int_s^\tau K(\varphi)\,d\varphi\big)
+    \Big\}\,.
+\end{aligned}\end{align}}
+If $K$ is time-independent, this becomes simply $U(\tau,s)=e^{-\tfrac{\tau-s}{\hbar}K}$.
+
+The Schr\"odinger propagator $U(\tau,s)$ and interaction-picture propagator $U_I(\tau,s)$ are related by
+{\small\begin{align}\begin{aligned}
+    U(\tau,s)
+    &=
+    e^{-\tfrac{\tau-\tau_0}{\hbar}K_0}
+    \underbrace{
+        e^{\tfrac{\tau-\tau_0}{\hbar}K_0}
+        U(\tau,s)
+        e^{-\tfrac{s-\tau_0}{\hbar}K_0}
+    }_{=:U_I(\tau,s)}
+    e^{\tfrac{s-\tau_0}{\hbar}K_0}
+    \notag\\
+    &=
+    e^{-\tfrac{\tau-\tau_0}{\hbar}K_0}
+    U_I(\tau,s)
+    e^{\tfrac{s-\tau_0}{\hbar}K_0}\,.
+\end{aligned}\end{align}}
+The evolution operator in the interaction picture satisfies the Dyson equation
+{\small\begin{align}\begin{aligned}
+    \left\{
+    \begin{aligned}
+        -\hbar\tfrac{\partial}{\partial\tau}U_I(\tau,\sigma)
+        &=V_{K_0}(\tau)U_I(\tau,\sigma)\,,
+        \\
+        U_I(\sigma,\sigma)&=\mathrm{id}\,,
+    \end{aligned}
+    \right.
+\end{aligned}\end{align}}
+with solution
+{\small\begin{align}\begin{aligned}
+    U_I(\tau,\sigma)
+    =
+    T\Big\{
+        \exp\big(-\tfrac{1}{\hbar}\int_\sigma^\tau V_{K_0}(\varphi)\,d\varphi\big)
+    \Big\}\,.
+\end{aligned}\end{align}}
+
+The evolution operators in any picture satisfy 
+{\small\begin{align}\begin{aligned}
+    U_\bullet(\tau,\sigma)^{-1}&=U_\bullet(\sigma,\tau)\,,
+    &
+    U_\bullet(\tau,\sigma)U_\bullet(\sigma,\rho)&=U_\bullet(\tau,\rho)
+    \qquad\forall\,\sigma,\tau,\rho\,,
+\end{aligned}\end{align}}
+but $U_\bullet(\tau,s)$ is no longer self-adjoint, so that $U_\bullet^\dagger\neq U_\bullet^{-1}$.
+
+In any picture, the evolution of states and operators starts from time $\tau_0$.
+Hnece, an intrinsically $\tau$-dependent operator $V(\tau)$ evolves in the different pictures as
+{\small\begin{align}\begin{aligned}
+    \text{Schr\"odinger:}\quad&
+    V(\tau)\,,
+    &
+    \text{interaction:}\quad&
+    V_{K_0}(\tau)
+    =
+    e^{\tfrac{\tau-\tau_0}{\hbar}K_0}
+    V(\tau)
+    e^{-\tfrac{\tau-\tau_0}{\hbar}K_0}\,,
+    \notag\\
+    \text{Heisenberg:}\quad&
+    V_{K(\tau)}(\tau)
+    =
+    U(\tau,\tau_0)^{-1}V(\tau)U(\tau,\tau_0)\,.
+\end{aligned}\end{align}}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Averages with $\tau$-dependent Hamiltonians \& symmetrized setting]
+Thermal averages for a generic $\tau$-dependent Hamiltonian $K(\tau)$ are defined by
+{\small\begin{align}\label{eq:thermal_avg_time_dep_hamiltonian}
+\begin{aligned}
+    \langle\widehat{O}\rangle
+    &:=
+    \tfrac{\operatorname{Tr}\big\{U(\beta\hbar,0)\widehat{O}\big\}}
+    {\operatorname{Tr}\big\{U(\beta\hbar,0)\big\}}\,,
+    &
+    \rho&:=\tfrac{1}{Z}U(\beta\hbar,0)\,,
+    &
+    Z&:=\operatorname{Tr}\big\{U(\beta\hbar,0)\big\}\,.
+\end{aligned}\end{align}}
+For $\tau$-independent Hamiltonians everything reduces to $U(\beta\hbar,0)=e^{-\beta K}$.
+
+Alternatively, we can consider a symmetrized setting, more suitable for the zero-temperature limit, so that
+{\small\begin{align}\begin{aligned}
+    U\big(\tfrac{\beta\hbar}{2},-\tfrac{\beta\hbar}{2}\big)
+    \longrightarrow U(+\infty,-\infty)\qquad \text{as}\quad \beta \to +\infty(1+\epsilon)\,.
+\end{aligned}\end{align}}
+The reference coincidence time for the three pictures is still taken to be $\tau_0=0$.
+Operators (and/or states) are now evolved between times in $[-\beta\hbar/2,\beta\hbar/2]$, always with the suitable propagator $U(\tau,s)$.
+Thermal averages are now defined symmetrically by
+{\small\begin{align}\label{eq:symmetric_thermal_avg}
+\begin{aligned}
+    \langle\widehat{O}\rangle
+    &:=
+    \tfrac{
+        \operatorname{Tr}\left\{
+            U\big(\tfrac{\beta\hbar}{2},0\big)
+            \widehat{O}
+            U\big(0,-\tfrac{\beta\hbar}{2}\big)
+        \right\}
+    }{
+        \operatorname{Tr}\left\{
+            U\big(\tfrac{\beta\hbar}{2},-\tfrac{\beta\hbar}{2}\big)
+        \right\}
+    }\,.
+\end{aligned}\end{align}}
+Correlators still depend on the time differences $s,\tau\in[-\beta\hbar/2,\beta\hbar/2]$, so that $\tau-s\in[-\beta\hbar,\beta\hbar]$.
+All the results are unchanged, with the obvious formal modifications.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Thermal averages vs.\ $\tau$-evolution]
+Thermal averages of single operators, or of products of equal-time $\tau$-evolved operators, are independent of $\tau$-evolution if the Hamiltonian $K$ is $\tau$-independent:
+{\small\begin{align}\begin{aligned}
+    \langle A_K(\tau)\rangle_K
+    &=
+    \tfrac{1}{Z}\operatorname{Tr}\left\{
+        e^{-\beta K}
+        e^{\tfrac{\tau}{\hbar}K}
+        A
+        e^{-\tfrac{\tau}{\hbar}K}
+    \right\}
+    =\langle A\rangle_K\,.
+\end{aligned}\end{align}}
+If $K$ is time-independent, correlators depend only on time differences:
+{\small\begin{align}\begin{aligned}
+    \langle A_K(\tau)B_K(\tau')\rangle_K
+    &=
+    \langle A_K(\tau-\tau')B\rangle_K\,.
+\end{aligned}\end{align}}
+Indeed, cyclicity of the trace gives
+{\small\begin{align}\begin{aligned}
+    &\operatorname{Tr}\left\{
+        \tfrac{e^{-\beta K}}{Z}
+        e^{\tfrac{\tau}{\hbar}K}A e^{-\tfrac{\tau}{\hbar}K}
+        e^{\tfrac{\tau'}{\hbar}K}B e^{-\tfrac{\tau'}{\hbar}K}
+    \right\}
+    =
+    \operatorname{Tr}\left\{
+        \tfrac{e^{-\beta K}}{Z}
+        e^{\tfrac{\tau-\tau'}{\hbar}K}
+        A e^{-\tfrac{\tau-\tau'}{\hbar}K}B
+    \right\}\,.
+\end{aligned}\end{align}}
+\end{mytheorem}
+
+
+
+\begin{mytheorem}[Thermal averages of products of creation/destruction operators \& symmetries of the Hamiltonian (Molinari 2-2020 -- 4AB)]
+Let $S$ be a one-body operator which is a symmetry, or conserved quantity, of the thermal Hamiltonian:
+{\small\begin{align}\begin{aligned}
+    [K,S]=0\,.
+\end{aligned}\end{align}}
+We can find a single-particle basis $|s\rangle$ diagonalizing $S$, so that in second quantization
+{\small\begin{align}\begin{aligned}
+    S=\sum_s\langle s|S|s\rangle c_s^\dagger c_s
+    =\sum_s s\,c_s^\dagger c_s\,.
+\end{aligned}\end{align}}
+In this basis,
+{\small\begin{align}\begin{aligned}
+    e^{\lambda S}c_s e^{-\lambda S}&=e^{-\lambda s}c_s\,,
+    &
+    e^{\lambda S}c_s^\dagger e^{-\lambda S}&=e^{\lambda s}c_s^\dagger\,.
+\end{aligned}\end{align}}
+Consider a product $\widetilde c_1\cdots\widetilde c_k$ of creation and destruction operators.
+If $\mathcal C$ and $\mathcal A$ denote the sets of creators and annihilators appearing in the product, respectively, then
+{\small\begin{align}\begin{aligned}
+    e^{\lambda S}
+    \widetilde c_1\cdots\widetilde c_k
+    e^{-\lambda S}
+    &=
+    e^{\lambda\left(\sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\right)}
+    \widetilde c_1\cdots\widetilde c_k\,,
+    \\
+    [S,\widetilde c_1\cdots\widetilde c_k]
+    &=
+    \left(\sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\right)
+    \widetilde c_1\cdots\widetilde c_k\,.
+\end{aligned}\end{align}}
+Taking the thermal average and using $[S,K]=0$ together with cyclicity of the trace gives
+{\small\begin{align}\begin{aligned}
+    \left(\sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\right)
+    \left\langle\widetilde c_1\cdots\widetilde c_k\right\rangle_K
+    &=
+    \left\langle[S,\widetilde c_1\cdots\widetilde c_k]\right\rangle_K
+    =0\,.
+\end{aligned}\end{align}}
+Therefore,
+{\small\begin{align}\begin{aligned}
+    \left\langle\widetilde c_1\cdots\widetilde c_k\right\rangle_K=0
+    \qquad\text{if}\qquad
+    \sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\neq0\,.
+\end{aligned}\end{align}}
+
+Two important examples are the following.
+\begin{itemize}
+    \item \textbf{Conservation of the total particle number.}
+    If $[K,N]=0$, where
+    {\small\begin{align}\begin{aligned}
+        N=\sum_r c_r^\dagger c_r\,,
+    \end{aligned}\end{align}}
+    then the argument works in any single-particle basis and for any product containing both creation and destruction operators.
+    Indeed,
+    {\small\begin{align}\begin{aligned}
+        e^{-\lambda N}c_r e^{\lambda N}&=e^\lambda c_r\,,
+        &
+        e^{-\lambda N}c_r^\dagger e^{\lambda N}&=e^{-\lambda}c_r^\dagger\,,
+    \end{aligned}\end{align}}
+    and hence the thermal average of a product of field operators vanishes unless the number of creators equals the number of annihilators:
+    {\small\begin{align}\begin{aligned}
+        0
+        &=
+        \operatorname{Tr}\left\{\tfrac{e^{-\beta K}}{Z}
+        [N,\widetilde c_1\cdots\widetilde c_k]\right\}
+        \\
+        &=
+        \left(\#\text{ creators}-\#\text{ annihilators}\right)
+        \left\langle\widetilde c_1\cdots\widetilde c_k\right\rangle_K\,.
+    \end{aligned}\end{align}}
+    In particular, such averages always vanish for an odd number of field operators.
+    For example, $\langle c_k^\dagger\psi(x)c_p\rangle_K=0$ after expanding $\psi(x)$ in terms of annihilation operators.
+
+    \item \textbf{Conservation of the total momentum.}
+    If $[K,P]=0$, we use the momentum basis in which
+    {\small\begin{align}\begin{aligned}
+        P=\sum_r p_r c_r^\dagger c_r\,,
+    \end{aligned}\end{align}}
+    where $p_r$ is the momentum carried by the state $|r\rangle$.
+    Then
+    {\small\begin{align}\begin{aligned}
+        [P,\widetilde c_1\cdots\widetilde c_k]
+        &=
+        \left(\sum_{j\in\mathcal C}p_j-\sum_{j\in\mathcal A}p_j\right)
+        \widetilde c_1\cdots\widetilde c_k\,,
+        \\
+        0
+        &=
+        \left(\sum_{j\in\mathcal C}p_j-\sum_{j\in\mathcal A}p_j\right)
+        \left\langle\widetilde c_1\cdots\widetilde c_k\right\rangle_K\,.
+    \end{aligned}\end{align}}
+    Thus, thermal averages of products of field operators vanish unless the total momentum of the creators equals the total momentum of the annihilators.
+\end{itemize}
+
+\emph{Why this works.}
+The argument above avoids the difficulty of finding an explicit common basis of eigenvectors of $S$ and $K$ in the Fock space built from the single-particle states $|s\rangle$.
+Such a common basis always exists because $[K,S]=0$, although it need not be manifestly of the form $|s_1,\ldots,s_n\rangle$.
+For the sake of the heuristic, suppose that we have found such a basis.
+A state
+{\small\begin{align}\begin{aligned}
+    |s_1,\ldots,s_n\rangle
+    \propto c_{s_1}^\dagger\cdots c_{s_n}^\dagger|0\rangle
+\end{aligned}\end{align}}
+is an eigenvector of $S$ with eigenvalue $s_1+\cdots+s_n$.
+Inserting this basis in the trace gives
+{\small\begin{align}\begin{aligned}
+    \left\langle\widetilde c_1\cdots\widetilde c_k\right\rangle_K
+    &=
+    \sum_\alpha
+    \langle\alpha|\tfrac{e^{-\beta K}}{Z}|\alpha\rangle
+    \langle\alpha|\widetilde c_1\cdots\widetilde c_k|\alpha\rangle\,.
+\end{aligned}\end{align}}
+When $\sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\neq0$, the product maps $|\alpha\rangle$ to an orthogonal eigenspace of $S$, and every diagonal matrix element in this sum vanishes.
+\end{mytheorem}
+
+
+
+
+
+\begin{mytheorem}[KMS property for correlators (Molinari 2-2020 -- 5A)]
+For any operators $A_1,\ldots,A_n$ and any thermal Hamiltonian $K$, the Kubo--Martin--Schwinger property reads
+{\small\begin{align}\begin{aligned}
+    \left\langle
+        (A_1)_K(\tau_1)\cdots(A_n)_K(\tau_n)
+    \right\rangle_K
+    &=
+    \left\langle
+        (A_n)_K(\tau_n+\beta\hbar)
+        (A_1)_K(\tau_1)\cdots(A_{n-1})_K(\tau_{n-1})
+    \right\rangle_K\,,
+    \\
+    &\hspace{8em}\tau_1,\ldots,\tau_n\in[0,\beta\hbar]\,.
+\end{aligned}\end{align}}
+For two operators, this follows directly from cyclicity of the trace:
+{\small\begin{align}\begin{aligned}
+    \langle A_K(\tau)B_K(\sigma)\rangle_K
+    &=
+    \operatorname{Tr}\left\{
+        \tfrac{e^{-\beta K}}{Z}A_K(\tau)B_K(\sigma)
+    \right\}
+    \\
+    &=
+    \operatorname{Tr}\left\{
+        B_K(\sigma)\tfrac{e^{-\beta K}}{Z}A_K(\tau)
+    \right\}
+    \\
+    &=
+    \operatorname{Tr}\left\{
+        \tfrac{e^{-\beta K}}{Z}
+        \underbrace{
+            e^{\beta K}B_K(\sigma)e^{-\beta K}
+        }_{=B_K(\sigma+\beta\hbar)}
+        A_K(\tau)
+    \right\}\,.
+\end{aligned}\end{align}}
+
+The KMS property also characterizes thermal Gibbs states.
+Suppose that a state $\rho$ satisfies
+{\small\begin{align}\begin{aligned}
+    \operatorname{Tr}\{\rho A(\tau)B(\tau')\}
+    &=
+    \operatorname{Tr}\{\rho B(\tau'+\beta\hbar)A(\tau)\}
+\end{aligned}\end{align}}
+for every pair of operators and every pair of parameters.
+Setting $\tau=\tau'=0$ gives
+{\small\begin{align}\begin{aligned}
+    \operatorname{Tr}\{\rho AB\}
+    &=
+    \operatorname{Tr}\{\rho B(\beta\hbar)A\}\,,
+    \\
+    \operatorname{Tr}\left\{
+        \left(B\rho-\rho B(\beta\hbar)\right)A
+    \right\}
+    &=0\,.
+\end{aligned}\end{align}}
+The non-degeneracy of the Hilbert--Schmidt inner product implies
+{\small\begin{align}\begin{aligned}
+    B\rho-\rho B(\beta\hbar)&=0\,,
+    &
+    [B,\rho e^{\beta K}]&=0
+    \qquad\text{for every }B\,.
+\end{aligned}\end{align}}
+Therefore $\rho e^{\beta K}$ is a multiple of the identity, so $\rho$ is the Gibbs thermal state.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Matsubara frequencies for $\tau$-ordered correlators (Molinari 2-2020 -- 5A)]
+Define the $\tau$-ordered correlator by
+{\small\begin{align}\begin{aligned}
+    -C_{AB}^{T}(\tau-\sigma)
+    &:=
+    \left\langle
+        T\{A_K(\tau)B_K(\sigma)\}
+    \right\rangle_K
+    \\
+    &=
+    -\sum_{n\in\mathbb Z}
+    \tfrac{1}{\beta\hbar}
+    e^{-i\omega_n(\tau-\sigma)}
+    \widetilde C_{AB}^{T}(i\omega_n)\,,
+    \qquad
+    \omega_n=\tfrac{n\pi}{\beta\hbar}\,.
+\end{aligned}\end{align}}
+Its Matsubara coefficients are
+{\small\begin{align}\begin{aligned}
+    \widetilde C_{AB}^{T}(i\omega_n)
+    &=
+    \begin{cases}
+        \displaystyle
+        \int_0^{\beta\hbar}
+        e^{i\omega_n\rho}C_{AB}^{T}(\rho)\,d\rho\,,
+        &
+        \begin{array}{l}
+            n\text{ even if }A,B\text{ commute under }\tau\text{-ordering},\\
+            n\text{ odd if }A,B\text{ anticommute under }\tau\text{-ordering},
+        \end{array}
+        \\[1.1em]
+        0\,,
+        &
+        \begin{array}{l}
+            n\text{ odd in the commuting case},\\
+            n\text{ even in the anticommuting case}.
+        \end{array}
+    \end{cases}
+\end{aligned}\end{align}}
+Thus density--density correlators, such as $\langle T\{n(x)n(y)\}\rangle_K$, carry even or bosonic Matsubara frequencies, while fermionic Green functions, such as $\langle T\{\psi(x)\psi^\dagger(y)\}\rangle_K$, carry odd or fermionic Matsubara frequencies.
+
+The relativistic symmetric convention for the Fourier transform on $[-\beta\hbar,\beta\hbar]$ is
+{\small\begin{align}\begin{aligned}
+    f(t)
+    &=
+    \sum_{n\in\mathbb Z}
+    \tfrac{1}{\beta\hbar}
+    f(i\omega_n)e^{-i\omega_n t}\,,
+    &
+    f(i\omega_n)
+    &=
+    \tfrac12\int_{-\beta\hbar}^{\beta\hbar}
+    f(t)e^{i\omega_n t}\,dt\,.
+\end{aligned}\end{align}}
+Operators can be evolved at times $\tau,s\in[0,\beta\hbar]$, or at times $\tau,s\in[-\beta\hbar/2,\beta\hbar/2]$ in the symmetric setting.
+In either convention, their correlators depend on time differences in $[-\beta\hbar,\beta\hbar]$.
+Expanding on the corresponding Fourier basis extends them $2\beta\hbar$-periodically outside this interval.
+
+\emph{Proof.}
+For $0\leq\tau,\tau'\leq\beta\hbar$, the correlator is a function of $\tau-\tau'\in[-\beta\hbar,\beta\hbar]$.
+Its Fourier coefficient on the symmetric interval is
+{\small\begin{align}\begin{aligned}
+    C_{AB}(i\omega_n)
+    &=
+    \tfrac12\int_{-\beta\hbar}^{\beta\hbar}
+    e^{i\omega_n\sigma}C_{AB}^{T}(\sigma)\,d\sigma
+    \\
+    &=
+    \tfrac12\int_0^{\beta\hbar}
+    e^{i\omega_n\sigma}
+    \left[
+        C_{AB}^{T}(\sigma)
+        +(-1)^n C_{AB}^{T}(\sigma-\beta\hbar)
+    \right]d\sigma\,.
+\end{aligned}\end{align}}
+For $0\leq\sigma\leq\beta\hbar$, the KMS rule and $\tau$-ordering imply
+{\small\begin{align}\begin{aligned}
+    -C_{AB}^{T}(\sigma-\beta\hbar)
+    &=
+    \left\langle T\{A_K(\sigma-\beta\hbar)B\}\right\rangle_K
+    \\
+    &=
+    \pm\left\langle BA_K(\sigma-\beta\hbar)\right\rangle_K
+    =
+    \pm\left\langle A_K(\sigma)B\right\rangle_K
+    =
+    \mp C_{AB}^{T}(\sigma)\,,
+\end{aligned}\end{align}}
+where the upper sign applies to commuting operators and the lower sign to anticommuting operators.
+Therefore,
+{\small\begin{align}\begin{aligned}
+    C_{AB}(i\omega_n)
+    &=
+    \tfrac12\left[1\pm(-1)^n\right]
+    \int_0^{\beta\hbar}
+    e^{i\omega_n\sigma}C_{AB}^{T}(\sigma)\,d\sigma\,.
+\end{aligned}\end{align}}
+For commuting operators only even $n$ survive; for anticommuting operators only odd $n$ survive.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Time-homogeneous systems vs.\ Matsubara frequencies]
+Matsubara frequencies are a standard Fourier transform for imaginary times in $[-\beta\hbar,\beta\hbar]$.
+For time-homogeneous systems, i.e.\ systems with a time-independent Hamiltonian, every correlator depends only on time differences.
+Passing to Matsubara frequencies therefore turns convolution integrals into ordinary products:
+{\small\begin{align}\begin{aligned}
+    \int d\tau\,f(s-\tau)g(\tau-\rho)
+    \quad\longleftrightarrow\quad
+    f(i\omega_n)g(i\omega_n)\,.
+\end{aligned}\end{align}}
+
+For example, the time-dependent part of a proper self-energy insertion contains
+{\small\begin{align}\begin{aligned}
+    I(t_1-t_2)
+    &:=
+    \int_0^{\beta\hbar}dt_3
+    \int_0^{\beta\hbar}dt_4\,
+    G(t_1-t_3)
+    \Sigma^\star(t_3-t_4)
+    G^0(t_4-t_2)
+    \\
+    &=
+    \sum_{n,m,q}
+    \tfrac{
+        \widehat G(i\omega_n)
+        \widehat\Sigma^\star(i\omega_m)
+        \widehat G^0(i\omega_q)
+    }{(\beta\hbar)^3}
+    \\
+    &\qquad\qquad\times
+    \int_0^{\beta\hbar}dt_3
+    \int_0^{\beta\hbar}dt_4\,
+    e^{i\omega_n(t_1-t_3)}
+    e^{i\omega_m(t_3-t_4)}
+    e^{i\omega_q(t_4-t_2)}
+    \\
+    &=
+    \sum_n\tfrac{1}{\beta\hbar}
+    e^{i\omega_n(t_1-t_2)}
+    \widehat G(i\omega_n)
+    \widehat\Sigma^\star(i\omega_n)
+    \widehat G^0(i\omega_n)\,.
+\end{aligned}\end{align}}
+The two time integrals collapse the three frequencies by orthogonality:
+{\small\begin{align}\begin{aligned}
+    \int_0^{\beta\hbar}
+    \tfrac{dt}{\beta\hbar}
+    e^{it(\omega_m-\omega_n)}
+    &=
+    \begin{cases}
+        1\,,&\omega_m=\omega_n\,,\\[0.4em]
+        \displaystyle
+        \tfrac{
+            e^{i(\omega_m-\omega_n)\beta\hbar}-1
+        }{
+            i(\omega_m-\omega_n)\beta\hbar
+        }
+        =0\,,&\omega_m\neq\omega_n\,.
+    \end{cases}
+\end{aligned}\end{align}}
+The last equality holds for both bosonic and fermionic Matsubara frequencies because the difference of two frequencies of the same statistics is always an even multiple of $\pi/(\beta\hbar)$.
+\end{mytheorem}
+
+
+\begin{mytheorem}[Matsubara coefficients for Dirac deltas of static interactions]
+For a static two-body potential, the perturbative expansion of the evolution operator contains
+{\small\begin{align}\begin{aligned}
+    \mathcal U(\beta\hbar,0)
+    &=
+    T\exp\left[
+        -\tfrac{1}{2\hbar}
+        \int dx\,dx'\,
+        U^0(x,x')
+        \psi^\dagger(x)
+        \psi^\dagger(x')
+        \psi(x')
+        \psi(x)
+    \right]\,,
+\end{aligned}\end{align}}
+where
+{\small\begin{align}\begin{aligned}
+    U(x,x')=v(x,x')\delta(\tau-\tau')\,.
+\end{aligned}\end{align}}
+The interaction $V_{K_0}(\tau)$ is a function on $[0,\beta\hbar]$, and the delta distribution sets equal the two times of the instantaneous interaction.
+It must therefore be expanded on the Fourier basis of $[0,\beta\hbar]$.
+The orthonormal basis is
+{\small\begin{align}\begin{aligned}
+    e_n(\tau)
+    &=
+    \tfrac{1}{\sqrt{\beta\hbar}}e^{i\nu_n\tau}\,,
+    &
+    \nu_n&=\tfrac{2\pi n}{\beta\hbar}\,,
+    \qquad n\in\mathbb Z\,.
+\end{aligned}\end{align}}
+These are precisely the bosonic frequencies, i.e.\ the even members of $\omega_n=n\pi/(\beta\hbar)$ on the symmetric interval.
+Since
+{\small\begin{align}\begin{aligned}
+    \int_0^{\beta\hbar}e_n(\tau)\delta(\tau)\,d\tau
+    &=
+    \tfrac{1}{\sqrt{\beta\hbar}}\,,
+\end{aligned}\end{align}}
+we obtain
+{\small\begin{align}\begin{aligned}
+    \delta(\tau-\tau')
+    &=
+    \sum_{n\in\mathbb Z}
+    \tfrac{1}{\sqrt{\beta\hbar}}e_n(\tau-\tau')
+    \\
+    &=
+    \tfrac{1}{\beta\hbar}
+    \sum_{\substack{n\in\mathbb Z\\ n\ \mathrm{even}}}
+    e^{i\omega_n(\tau-\tau')}\,,
+    \qquad
+    -\beta\hbar\leq\tau-\tau'\leq\beta\hbar\,.
+\end{aligned}\end{align}}
+Thus the delta distribution on $[0,\beta\hbar]$ has the same expansion as a bosonic correlator.
+This is naturally related to the fact that a static interaction can arise as the static limit of a contraction, or correlator, of two bosons mediating the interaction.
+
+There is a distinction between the delta distribution on $[0,\beta\hbar]$ and the one on the doubled interval $[-\beta\hbar,\beta\hbar]$:
+{\small\begin{align}\begin{aligned}
+    \delta_{[0,\beta\hbar]}(\tau-\tau')
+    &=
+    \tfrac{1}{\beta\hbar}
+    \sum_{\substack{n\in\mathbb Z\\ n\ \mathrm{even}}}
+    e^{i\omega_n(\tau-\tau')}\,,
+    \\
+    \delta_{[-\beta\hbar,\beta\hbar]}(\tau-\tau')
+    &=
+    \tfrac{1}{2\beta\hbar}
+    \sum_{n\in\mathbb Z}
+    e^{i\omega_n(\tau-\tau')}\,.
+\end{aligned}\end{align}}
+Testing the two distributions against functions on their respective domains reproduces the two Fourier series:
+{\small\begin{align}\begin{aligned}
+    f(\tau)
+    &=
+    \sum_{n\in\mathbb Z}
+    \tfrac{1}{\beta\hbar}
+    \left[
+        \int_0^{\beta\hbar}
+        e^{i\nu_n\varphi}f(\varphi)\,d\varphi
+    \right]
+    e^{-i\nu_n\tau}\,,
+    \\
+    g(\tau)
+    &=
+    \sum_{n\in\mathbb Z}
+    \tfrac{1}{2\beta\hbar}
+    \left[
+        \int_{-\beta\hbar}^{\beta\hbar}
+        e^{i\omega_n\varphi}g(\varphi)\,d\varphi
+    \right]
+    e^{-i\omega_n\tau}\,.
+\end{aligned}\end{align}}
+\end{mytheorem}
+
+
+\begin{mytheorem}[General method for Matsubara sums (Molinari 2-2020 -- 5B, 6B)]
+Introduce the functions related to the Bose and Fermi distributions,
+{\small\begin{align}\begin{aligned}
+    n_{\mp}(z)
+    &=
+    \tfrac{1}{e^{\beta\hbar z}\mp1}\,.
+\end{aligned}\end{align}}
+They have simple poles at $z_n=i\omega_n$, with $n$ even for $n_-$ and $n$ odd for $n_+$.
+Their residues are, respectively, $\pm1/(\beta\hbar)$.
+
+Let $f$ be a meromorphic function which decays at infinity and whose poles $\{z_p\}$ differ from those of $n_-$ or $n_+$.
+For a small convergence parameter $\eta$, consider the integral on a large circle $C$:
+{\small\begin{align}\begin{aligned}
+    \oint_C\tfrac{dz}{2\pi i}\,
+    e^{\eta z}n_{\mp}(z)f(z)
+    &=
+    \pm\tfrac{1}{\beta\hbar}
+    \sum_n f(i\omega_n)e^{i\omega_n\eta}
+    +
+    \sum_p\operatorname{Res}\left(f n_{\mp},z_p\right)\,.
+\end{aligned}\end{align}}
+The factor $e^{\eta z}$, with $\eta$ ultimately taken to zero, ensures convergence on the half-circle with $\operatorname{Re}z<0$, while $n_-$ decays for $\operatorname{Re}z>0$.
+Since the contour integral vanishes at infinite radius, the Matsubara sum is
+{\small\begin{align}\begin{aligned}
+    \tfrac{1}{\beta\hbar}
+    \sum_n f(i\omega_n)e^{i\omega_n\eta}
+    &=
+    \mp\sum_p\operatorname{Res}\left(f n_{\mp},z_p\right)\,.
+\end{aligned}\end{align}}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Matsubara sum for the density]
+Taking
+{\small\begin{align}\begin{aligned}
+    f(z)
+    &=
+    \tfrac{1}{
+        z-\tfrac{1}{\hbar}(\epsilon_r-\mu)
+    }
+\end{aligned}\end{align}}
+in the residue formula gives
+{\small\begin{align}\begin{aligned}
+    \tfrac{1}{\beta\hbar}
+    \sum_{\omega_n}
+    \tfrac{e^{i\omega_n\eta}}{
+        i\omega_n-\tfrac{1}{\hbar}(\epsilon_r-\mu)
+    }
+    &=
+    \mp\tfrac{1}{
+        e^{\beta(\epsilon_r-\mu)}\mp1
+    }
+    =\mp n_r\,.
+\end{aligned}\end{align}}
+
+There is also an alternative proof which avoids complex contour integrals.
+For a field component $\psi_\mu(x)$,
+{\small\begin{align}\begin{aligned}
+    \langle n_\mu(x)\rangle
+    &:=
+    \langle\psi_\mu^\dagger(x)\psi_\mu(x)\rangle
+    \\
+    &=
+    \pm\left\langle
+        T\{\psi_\mu(x,\tau)\psi_\mu^\dagger(x,\tau^+)\}
+    \right\rangle
+    =
+    \mp G(x,\tau;x,\tau^+)
+    \\
+    &=
+    \mp\tfrac{1}{\beta\hbar}
+    \sum_{\omega_n}
+    e^{-i\omega_n(\tau-\tau^+)}
+    G(x\mu,x\mu;i\omega_n)
+    \\
+    &=
+    \mp\sum_r|\langle x\mu|r\rangle|^2
+    \tfrac{1}{\beta\hbar}
+    \sum_{\omega_n}
+    \tfrac{e^{i\omega_n\eta}}{
+        i\omega_n-\tfrac{1}{\hbar}(\epsilon_r-\mu)
+    }\,.
+\end{aligned}\end{align}}
+On the other hand, expanding the fields in the basis $|r\rangle$ gives
+{\small\begin{align}\begin{aligned}
+    \langle n_\mu(x)\rangle
+    &=
+    \sum_{r,r'}
+    \langle r|x\mu\rangle
+    \langle x\mu|r'\rangle
+    \langle c_r^\dagger c_{r'}\rangle_K
+    \\
+    &=
+    \sum_{r,r'}
+    \langle r|x\mu\rangle
+    \langle x\mu|r'\rangle
+    \delta_{rr'}n_r
+    =
+    \sum_r|\langle x\mu|r\rangle|^2n_r\,.
+\end{aligned}\end{align}}
+Comparing the two expressions gives the result.
+More directly, in the basis diagonalizing $K$,
+{\small\begin{align}\begin{aligned}
+    n_r
+    &=
+    \langle\widehat n_r\rangle
+    =
+    \langle c_r^\dagger c_r\rangle
+    =
+    \mp G(r,\tau;r,\tau^+)
+    \\
+    &=
+    \mp\tfrac{1}{\beta\hbar}
+    \sum_n
+    \tfrac{e^{i\omega_n\eta}}{
+        i\omega_n-\tfrac{1}{\hbar}(\epsilon_r-\mu)
+    }\,.
+\end{aligned}\end{align}}
+\end{mytheorem}
+
+
+\begin{mytheorem}[Other Matsubara sums \& alternative methods]
+Useful thermal series to evaluate with the residue method include
+{\small\begin{align}\begin{aligned}
+    &\tfrac{1}{\beta\hbar}
+    \sum_n
+    \tfrac{1}{
+        i\omega_n-\tfrac{1}{\hbar}(\epsilon-\mu)
+    }
+    \tfrac{1}{
+        i(\omega_n-\nu)-\tfrac{1}{\hbar}(\epsilon'-\mu)
+    }\,,
+    \\
+    &\tfrac{1}{\beta\hbar}
+    \sum_n
+    \tfrac{1}{
+        \left(
+            i\omega_n-\tfrac{1}{\hbar}(\epsilon-\mu)
+        \right)^2
+    }\,,
+    \\
+    &\tfrac{1}{\beta\hbar}
+    \sum_n e^{i\omega_n\eta}
+    \log\left(
+        i\omega_n-\tfrac{\epsilon-\mu}{\hbar}
+    \right)\,.
+\end{aligned}\end{align}}
+The logarithmic sum requires a keyhole contour.
+
+Some series can be summed more simply by partial fractions.
+For example,
+{\small\begin{align}\begin{aligned}
+    \sum_n
+    \tfrac{1}{i\omega_n-x}
+    \tfrac{1}{i\omega_n-i\nu-y}
+    &=
+    \lim_{\eta\to0}
+    \sum_n
+    \left(
+        \tfrac{e^{i\omega_n\eta}}{i\omega_n-x}
+        -
+        \tfrac{e^{i\omega_n\eta}}{i\omega_n-i\nu-y}
+    \right)
+    \tfrac{1}{x-i\nu-y}\,.
+\end{aligned}\end{align}}
+The two sums on the right are of the density type.
+The convergence factor $e^{i\omega_n\eta}$ must be retained while evaluating them separately because each behaves as $1/\omega_n$, even though the original sum behaves as $1/\omega_n^2$ and converges.
+This does not alter the result, since the left-hand side is convergent and $\lim_{\eta\to0}e^{i\omega_n\eta}=1$.
+\end{mytheorem}
+
+
+
+
+
+
+
+%---------------------------------------
+%================================================
+\section{Perturbative approach}
+%================================================
+%---------------------------------------------
+
+\begin{mytheorem}[Reduction formula, i.e.\ finite-temperature Gell-Mann--Low formula]
+%
+Split the thermal Hamiltonian as $K=K_0+V$.
+For any operators $A_1,\ldots,A_n$, the reduction formula reads
+{\small\begin{align}\begin{aligned}
+    &\Big\langle
+        T\big\{
+            A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
+        \big\}
+    \Big\rangle_K
+=
+    \tfrac{
+        \Big\langle
+            T\big\{
+                U_I(\beta\hbar,0)
+                (A_1)_{K_0}(\tau_1)\cdots(A_n)_{K_0}(\tau_n)
+            \big\}
+        \Big\rangle_{K_0}
+    }{
+        \big\langle U_I(\beta\hbar,0)\big\rangle_{K_0}
+    }\,.
+\end{aligned}\end{align}}
+Unlike the zero-temperature formula, this result requires no further assumptions concerning energy-level crossings.
+\begin{itemize}
+    \item For a $\tau$-dependent Hamiltonian the reduction formula holds identically, with thermal averages defined by \eqref{eq:thermal_avg_time_dep_hamiltonian}.
+\item In the $\tau$-symmetric convention, including for $\tau$-dependent Hamiltonians, the obvious modification is
+{\small\begin{align}\begin{aligned}
+    &\Big\langle
+        T\big\{
+            (A_1)_K(\tau_1)\cdots(A_n)_K(\tau_n)
+        \big\}
+    \Big\rangle_K
+=
+    \tfrac{
+        \Big\langle
+            T\big\{
+                U_I\big(\tfrac{\beta\hbar}{2},-\tfrac{\beta\hbar}{2}\big)
+                (A_1)_{K_0}(\tau_1)\cdots(A_n)_{K_0}(\tau_n)
+            \big\}
+        \Big\rangle_{K_0}
+    }{
+        \Big\langle
+            U_I\big(\tfrac{\beta\hbar}{2},-\tfrac{\beta\hbar}{2}\big)
+        \Big\rangle_{K_0}
+    }\,.
+\end{aligned}\end{align}}
+The proof is unchanged after recalling that symmetric thermal averages are defind by \eqref{eq:symmetric_thermal_avg}.
+\end{itemize}
+\end{mytheorem}
+
+\begin{proof}
+Assume first that $\tau_1\geq\cdots\geq\tau_n$.
+Writing
+{\small\begin{align}\begin{aligned}
+    Q&:=\operatorname{Tr}\big\{e^{-\beta K}\big\}\,,
+    &
+    Q_0&:=\operatorname{Tr}\big\{e^{-\beta K_0}\big\}\,,
+\end{aligned}\end{align}}
+and repeatedly inserting the interaction-picture propagators gives
+{\small\begin{align}\begin{aligned}
+    \Big\langle
+        T\big\{
+            (A_1)_K(\tau_1)\cdots(A_n)_K(\tau_n)
+        \big\}
+    \Big\rangle_K
+    &=
+    \tfrac{Q_0}{Q}
+    \Big\langle
+        U_I(\beta\hbar,\tau_1)
+        (A_1)_{K_0}(\tau_1)
+        U_I(\tau_1,\tau_2)
+        (A_2)_{K_0}(\tau_2)
+        \cdots
+        U_I(\tau_n,0)
+    \Big\rangle_{K_0}
+    \\
+    &=
+    \tfrac{Q_0}{Q}
+    \Big\langle
+        T\big\{
+            U_I(\beta\hbar,0)
+            (A_1)_{K_0}(\tau_1)\cdots(A_n)_{K_0}(\tau_n)
+        \big\}
+    \Big\rangle_{K_0}\,.
+\end{aligned}\end{align}}
+The factors in the middle line follow from
+{\small\begin{align}\begin{aligned}
+    U_I(\tau,s)
+    &=
+    e^{\tfrac{\tau}{\hbar}K_0}
+    U(\tau,s)
+    e^{-\tfrac{s}{\hbar}K_0}\,,
+    &
+    (A_i)_{K_0}(\tau_i)
+    &=
+    e^{\tfrac{\tau_i}{\hbar}K_0}
+    A_i
+    e^{-\tfrac{\tau_i}{\hbar}K_0}\,.
+\end{aligned}\end{align}}
+Taking $n=0$ yields
+{\small\begin{align}\begin{aligned}
+    1
+    &=
+    \langle 1 \rangle_K
+    =\operatorname{Tr}\left\{e^{-\beta K}/Q\right\}_K
+    =
+    \tfrac{Q_0}{Q}
+    \big\langle T\big\{ U_I(\beta\hbar,0)\big\}\big\rangle_{K_0}\,,
+    \quad\text{so that}\quad
+    \tfrac{Q_0}{Q}
+    =
+    \big\langle U_I(\beta\hbar,0)\big\rangle_{K_0}^{-1}\,,
+\end{aligned}\end{align}}
+which proves the formula.
+If the times are not already ordered, both sides acquire the same factor $(\pm1)^p$ under the permutation that orders them, and these factors cancel.
+\end{proof}
+
+
+\begin{mytheorem}[Computing the full grand potential $\Omega$ in the interaction picture]
+%
+We can relate the free and interacting grand potentials in several ways, and then compute the relation perturbatively 
+{\small\begin{align}\begin{aligned}
+    \Omega&:=-\tfrac{1}{\beta}\log Q\,,
+    &
+    \Omega_0&:=-\tfrac{1}{\beta}\log Q_0\,\,.
+\end{aligned}\end{align}}
+
+\noindent
+\textbf{1. Reduction formula.}
+The $n=0$ case of the reduction formula gives
+{\small\begin{align}\begin{aligned}
+    \tfrac{Q}{Q_0}
+    &=
+    \big\langle U_I(\beta\hbar,0)\big\rangle_{K_0}\,,
+    \implies 
+    \Omega-\Omega_0= -\tfrac{1}{\beta}
+    \log\big\langle U_I(\beta\hbar,0)\big\rangle_{K_0}\,.
+\end{aligned}\end{align}}
+The right-hand side can be computed perturbatively.
+Expanding the interaction-picture propagator to second order gives
+{\small\begin{align}\begin{aligned}
+    \big\langle U_I(\beta\hbar,0)\big\rangle_{K_0}
+    &=
+    \Big\langle
+        T\Big\{
+            1
+            -\tfrac{1}{\hbar}\int_0^{\beta\hbar}
+                V_{K_0}(\sigma)\,d\sigma
+            +\tfrac{1}{2\hbar^2}
+                \int_0^{\beta\hbar}d\sigma_1
+                \int_0^{\beta\hbar}d\sigma_2\,
+                V_{K_0}(\sigma_1)V_{K_0}(\sigma_2)
+            +\mathcal O(V^3)
+        \Big\}
+    \Big\rangle_{K_0}
+    \\
+    &=
+    1-\beta\langle V\rangle_{K_0}
+    +\tfrac{1}{2\hbar^2}
+        \int_0^{\beta\hbar}d\sigma_1
+        \int_0^{\beta\hbar}d\sigma_2\,
+        \Big\langle
+            T\big\{
+                V_{K_0}(\sigma_1)V_{K_0}(\sigma_2)
+            \big\}
+        \Big\rangle_{K_0}
+    +\mathcal O(V^3)\,,
+\end{aligned}\end{align}}
+where $\langle V_{K_0}(\sigma)\rangle_{K_0}=\langle V\rangle_{K_0}$ is independent of $\sigma$.
+Using $\log(1+x)=x-\tfrac{x^2}{2}+\cdots$, we find
+{\small\begin{align}\begin{aligned}
+    \log\big\langle U_I(\beta\hbar,0)\big\rangle_{K_0}
+    &=
+    -\beta\langle V\rangle_{K_0}
+    +\tfrac{1}{2\hbar^2}
+        \int_0^{\beta\hbar}d\sigma_1
+        \int_0^{\beta\hbar}d\sigma_2\,
+        \Big\langle
+            T\big\{
+                V_{K_0}(\sigma_1)V_{K_0}(\sigma_2)
+            \big\}
+        \Big\rangle_{K_0}
+    -\tfrac12\beta^2\langle V\rangle_{K_0}^2
+    +\mathcal O(V^3)\,.
+\end{aligned}\end{align}}
+In conclusion, denoting $\delta V_{K_0}(\sigma):=V_{K_0}(\sigma)-\langle V\rangle_{K_0}$, the \textbf{grand potential offset is}
+{\small\begin{align}\begin{aligned}
+    \Omega-\Omega_0
+    &=
+    \langle V\rangle_{K_0}
+    -\tfrac{1}{2\beta\hbar^2}
+        \int_0^{\beta\hbar}d\sigma_1
+        \int_0^{\beta\hbar}d\sigma_2\,
+        \Big\langle
+            T\big\{
+                \delta V_{K_0}(\sigma_1)
+                \delta V_{K_0}(\sigma_2)
+            \big\}
+        \Big\rangle_{K_0}
+    +\mathcal O(V^3)\,.
+\end{aligned}\end{align}}
+
+
+\noindent
+\textbf{2. Adiabatic integral.}
+An alternative form is obtained through an adiabatic integral.
+Introduce
+{\small\begin{align}\begin{aligned}
+    K_\lambda:=K_0+\lambda V\,,
+    \quad 
+    Q_\lambda:=\operatorname{Tr}\big\{e^{-\beta K_\lambda}\big\}\,,
+    \quad
+    \Omega_\lambda:=-\tfrac{1}{\beta}\log Q_\lambda\,,
+    \quad 
+    \lambda&\in[0,1]\,\,.
+\end{aligned}\end{align}}
+The Lie--Trotter formula and cyclicity of the trace give
+{\small\begin{align}\begin{aligned}
+    \tfrac{\partial\Omega_\lambda}{\partial\lambda}
+    &=
+    \tfrac{\partial}{\partial\lambda}
+    \Big[
+        -\tfrac{1}{\beta}
+        \log\operatorname{Tr}\big\{e^{-\beta K_\lambda}\big\}
+    \Big]
+=
+    \tfrac{1}{Q_\lambda}
+    \operatorname{Tr}\big\{
+        V e^{-\beta K_\lambda}
+    \big\}
+    =
+    \langle V\rangle_{K_\lambda}\,.
+\end{aligned}\end{align}}
+Therefore, we find the \emph{adiabatic} representation of the \textbf{grand potential difference}:
+{\small\begin{align}\begin{aligned}
+    \Omega-\Omega_0
+    &=
+    \int_0^1
+        \tfrac{\partial\Omega_\lambda}{\partial\lambda}\,d\lambda
+    =
+    \int_0^1
+        \langle V\rangle_{K_\lambda}\,d\lambda\,.
+\end{aligned}\end{align}}
+This expression is used in superconductivity to compute the offset between the standard and superconducting phase.
+\end{mytheorem}
+
+
+%---------------------------------------
+%================================================
+\section{Functional formalism}
+%================================================
+%---------------------------------------------
+
+
+
+
+
+
+\end{document}
