@@ -159,7 +159,7 @@ Hnece, an intrinsically $\tau$-dependent operator $V(\tau)$ evolves in the diffe
 \end{mytheorem}
 
 
-\begin{mytheorem}[Averages with $\tau$-dependent Hamiltonians \& symmetrized setting]
+\begin{mytheorem}[Themral averages with $\tau$-dependent Hamiltonians \& symmetrized setting]
 Thermal averages for a generic $\tau$-dependent Hamiltonian $K(\tau)$ are defined by
 {\small\begin{align}\label{eq:thermal_avg_time_dep_hamiltonian}
 \begin{aligned}
@@ -203,11 +203,12 @@ All the results are unchanged, with the obvious formal modifications.
 \end{mytheorem}
 
 
-\begin{mytheorem}[Thermal averages vs.\ $\tau$-evolution]
+
+\begin{mytheorem}[Thermal averages vs $\tau$-evolution]
 %
 Therma averages of $\tau$-evolved operators obey several properties.
 \begin{itemize}
-    \item Thermal averages of single operators, or of products of equal-time $\tau$-evolved operators, are independent of $\tau$-evolution if the Hamiltonian $K$ is $\tau$-independent:
+    \item If the Hamiltonian $K$ is $\tau$-independent, thermal averages of single operators, or of products of equal-time $\tau$-evolved operators, are independent of $\tau$-evolution 
     {\small\begin{align}\begin{aligned}
         \langle A_K(\tau)\rangle_K
         &=
@@ -219,16 +220,38 @@ Therma averages of $\tau$-evolved operators obey several properties.
         \right\}
         =\langle A\rangle_K\,.
     \end{aligned}\end{align}}
-    \end{itemize}
     %
     \item If $K$ is time-independent, correlators depend only on time differences:
     {\small\begin{align}\begin{aligned}
-        \langle A_K(\tau)B_K(\tau')\rangle_K
+        \left\langle
+            A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
+        \right\rangle_K
         &=
-        \langle A_K(\tau-\tau')B\rangle_K\,.
+        \left\langle
+            A_{1,K}(\tau_1-\tau_n)\cdots A_{n-1,K}(\tau_{n-1}-\tau_n)A_{n,K}(0)
+        \right\rangle_K\,,
+        \quad \tau_1,\ldots,\tau_n\in[0,\beta\hbar]\,.
     \end{aligned}\end{align}}
-    Since {\small$\tau,\tau'\in[0,\hbar\beta]$}, or {\small$\tau,\tau'\in[-\tfrac{\hbar\beta}{2},\tfrac{\hbar\beta}{2}]$} in the symmetrized setting, we have {\small$\tau-\tau'\in[-\hbar\beta,\hbar\beta]$}.
-    Indeed, cyclicity of the trace gives
+    In particular, since {\small$\tau,\tau'\in[0,\hbar\beta]$}, or {\small$\tau,\tau'\in[-\tfrac{\hbar\beta}{2},\tfrac{\hbar\beta}{2}]$} in the symmetrized setting, we have {\small$\tau-\tau'\in[-\hbar\beta,\hbar\beta]$}.
+    %
+    \item \textbf{KMS property.} For any Hamiltonian $K$ and any operators $A_1,\ldots,A_n$ and, the Kubo--Martin--Schwinger property holds:
+        {\small\begin{align}\begin{aligned}
+            \left\langle
+                A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
+            \right\rangle_K
+            &=
+            \left\langle
+                A_{n,K}(\tau_n+\beta\hbar)
+                A_{1,K}(\tau_1)\cdots A_{n-1,K}(\tau_{n-1})
+            \right\rangle_K\,,
+            \quad \tau_1,\ldots,\tau_n\in[0,\beta\hbar]\,.
+        \end{aligned}\end{align}}      
+    \end{itemize}
+In particular, if the Hamiltonian is $\tau$-independent, combining the KMS property with the time-difference property shows that \textbf{correlators are \emph{periodic} function} over the interval $[-\hbar\beta,\hbar\beta]$.
+%
+\end{mytheorem}
+\begin{proof}
+Considering two operators for simplicity, cyclicity of the trace gives for the time-difference property
     {\small\begin{align}\begin{aligned}
         &\operatorname{Tr}\left\{
             \tfrac{e^{-\beta K}}{Z}
@@ -240,48 +263,37 @@ Therma averages of $\tau$-evolved operators obey several properties.
             \tfrac{e^{-\beta K}}{Z}
             e^{\tfrac{\tau-\tau'}{\hbar}K}
             A e^{-\tfrac{\tau-\tau'}{\hbar}K}B
-        \right\}\,.
+        \right\}\,,
     \end{aligned}\end{align}}
-    %
-    \item \textbf{KMS property.} For any operators $A_1,\ldots,A_n$ and any thermal Hamiltonian $K$, the Kubo--Martin--Schwinger property reads
-{\small\begin{align}\begin{aligned}
-    \left\langle
-        A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
-    \right\rangle_K
-    &=
-    \left\langle
-        A_{n,K}(\tau_n+\beta\hbar)
-        A_{1,K}(\tau_1)\cdots A_{n-1,K}(\tau_{n-1})
-    \right\rangle_K\,,
-    \quad \tau_1,\ldots,\tau_n\in[0,\beta\hbar]\,.
-\end{aligned}\end{align}}
-This follows directly from cyclicity of the trace. Indeed, considerint two operators for simplicity, we have 
-{\small\begin{align}\begin{aligned}
-    \langle A_K(\tau)B_K(\sigma)\rangle_K
-    &=
-    \operatorname{Tr}\left\{
-        \tfrac{e^{-\beta K}}{Z}A_K(\tau)B_K(\sigma)
-    \right\}
-    =
-    \operatorname{Tr}\left\{
-        B_K(\sigma)\tfrac{e^{-\beta K}}{Z}A_K(\tau)
-    \right\}
-    =
-    \operatorname{Tr}\bigg\{
-        \tfrac{e^{-\beta K}}{Z}
-        \underbrace{
-            e^{\beta K}B_K(\sigma)e^{-\beta K}
-        }_{=B_K(\sigma+\beta\hbar)}
-        A_K(\tau)
-    \bigg\}\,.
-\end{aligned}\end{align}}
-\end{mytheorem}
+and for the KMS property
+    {\small\begin{align}\begin{aligned}
+        \langle A_K(\tau)B_K(\sigma)\rangle_K
+        &\!\!=\!\!
+        \operatorname{Tr}\!\left\{
+            \tfrac{e^{-\beta K}}{Z}A_K(\tau)B_K(\sigma)
+        \right\}
+        \!\!=\!\!
+        \operatorname{Tr}\left\{
+            B_K(\sigma)\tfrac{e^{-\beta K}}{Z}A_K(\tau)
+        \right\}
+        \!\!=\!\!
+        \operatorname{Tr}\!\bigg\{
+            \tfrac{e^{-\beta K}}{Z}\!
+            \underbrace{
+                e^{\beta K}B_K(\sigma)e^{-\beta K}
+            }_{=B_K(\sigma+\beta\hbar)}\!\!
+            A_K(\tau)\!
+        \bigg\}.
+    \end{aligned}\end{align}}
+\end{proof}
 
 
 \begin{mytheorem}[KMS property iff thermal Gibbs state]
 %
-The KMS property actually fully identifies thermal Gibbs states, i.e. an operator $\rho$ satisfies the KMS property if and only if it is a Gibbs thermal state.
-Indeed, suppose that a state $\rho$ satisfies
+The KMS property actually fully identifies thermal Gibbs states: \emph{an operator $\rho$ satisfies the KMS property if and only if it is a Gibbs thermal state.}
+\end{mytheorem}
+\begin{proof}
+Suppose that a state $\rho$ satisfies
 {\small\begin{align}\begin{aligned}
     \operatorname{Tr}\{\rho A(\tau)B(\tau')\}
     &=
@@ -306,8 +318,111 @@ Taking $A=B\rho-\rho B(\beta\hbar)$, the non-degeneracy of the Hilbert--Schmidt 
     [B,\rho e^{\beta K}]&=0, \quad\forall B\,. 
 \end{aligned}\end{align}}
 Since this holds for every operator $B$, we conclude that $\rho e^{\beta K}$ is a multiple of the identity, i.e. $\rho = \lambda e^{-\beta K}$ for some $\lambda\in\mathbb{C}$.
-Enforcing self-adjointness and normalization gives $\lambda=1/Z$ with $Z=\operatorname{Tr}\{e^{-\beta K}\}$.
+Enforcing self-adjointness and normalization gives $\lambda=1/Z$ with $Z=\operatorname{Tr}\{e^{-\beta K}\}$.  
+\end{proof}
+
+
+\begin{mytheorem}[Matsubara frequencies for $\tau$-ordered correlators]
+%
+Operators can be evolved at times $\tau,s\in[0,\beta\hbar]$, or at times $\tau,s\in[-\beta\hbar/2,\beta\hbar/2]$ in the symmetric setting, either way the KMS property implies that correlators are functions over the interval $[-\hbar\beta,\hbar\beta]$.
+A Fourier basis of $L^2([-\hbar\beta,\hbar\beta])$ is given by the Matsubara frequencies
+{\small\begin{align}\begin{aligned}
+    \tfrac{1}{\sqrt{2\hbar\beta}}e^{-i\omega_n \tau}\in L^2([-\hbar\beta,\hbar\beta])\,,\qquad
+    \omega_n=\tfrac{2\pi n}{2\hbar\beta}=\tfrac{n\pi}{\beta\hbar}\,,\qquad n\in\mathbb Z\,. 
+\end{aligned}\end{align}}
+We thus expand $\tau$-ordered correlators in the basis of Matsubara frequencies as
+{\small\begin{align}\begin{aligned}
+    -C_{AB}^{T}(\tau-\sigma)
+    &:=
+    \left\langle
+        T\{A_K(\tau)B_K(\sigma)\}
+    \right\rangle_K
+    =
+    - \tfrac{1}{\beta\hbar}\sum_{n\in\mathbb Z}
+    e^{-i\omega_n(\tau-\sigma)}
+    \widetilde C_{AB}^{T}(i\omega_n)\,,
+    \qquad
+    \omega_n=\tfrac{n\pi}{\beta\hbar}\,,
+\end{aligned}\end{align}}
+and we extend them $2\beta\hbar$-periodically outside the interval $[-\beta\hbar,\beta\hbar]$.
+Its Matsubara coefficients are 
+{\small\begin{align}\begin{aligned}
+    \widetilde C_{AB}^{T}(i\omega_n)
+    &=
+    \begin{cases}
+        \displaystyle
+        \int_0^{\beta\hbar}\!\!\!d\rho\,
+        e^{i\omega_n\rho}C_{AB}^{T}(\rho)
+        &
+        \begin{cases}
+            n\text{ even if }A,B\text{ commute under }\tau\text{-ordering},\\
+            n\text{ odd if }A,B\text{ anticommute under }\tau\text{-ordering},
+        \end{cases}
+        \\[1.1em]
+        0\,,
+        &
+        \begin{cases}
+            n\text{ odd in the commuting case},\\
+            n\text{ even in the anticommuting case}.
+        \end{cases}
+    \end{cases}
+\end{aligned}\end{align}}
+For example, density--density correlators $\langle T\{n(x)n(y)\}\rangle_K$ carry even or bosonic Matsubara frequencies, while fermionic Green functions $\langle T\{\psi(x)\psi^\dagger(y)\}\rangle_K$ carry odd or fermionic Matsubara frequencies.
+Note we adopt the relativistic asymmetric convention for the Fourier transform on $[-\beta\hbar,\beta\hbar]$ namely
+{\small\begin{align}\begin{aligned}
+    f(t)
+    &=\tfrac{1}{\beta\hbar}
+    \sum_{n\in\mathbb Z}
+    f(i\omega_n)e^{-i\omega_n t}\,,
+    &
+    f(i\omega_n)
+    &=
+    \tfrac12\int_{-\beta\hbar}^{\beta\hbar}
+    f(t)e^{i\omega_n t}\,dt\,.
+\end{aligned}\end{align}}
 \end{mytheorem}
+\begin{proof}
+For $0\leq\tau,\tau'\leq\beta\hbar$, the correlator is a function of $\tau-\tau'\in[-\beta\hbar,\beta\hbar]$.
+Its Fourier coefficient on the symmetric interval is
+{\small\begin{align}\begin{aligned}
+    C_{AB}(i\omega_n)
+    &=
+    \tfrac12\int_{-\beta\hbar}^{\beta\hbar}
+    e^{i\omega_n\sigma}C_{AB}^{T}(\sigma)\,d\sigma
+    \\
+    &=
+    \tfrac12\int_0^{\beta\hbar}
+    e^{i\omega_n\sigma}
+    \left[
+        C_{AB}^{T}(\sigma)
+        +(-1)^n C_{AB}^{T}(\sigma-\beta\hbar)
+    \right]d\sigma\,.
+\end{aligned}\end{align}}
+For $0\leq\sigma\leq\beta\hbar$, the KMS rule and $\tau$-ordering imply
+{\small\begin{align}\begin{aligned}
+    -C_{AB}^{T}(\sigma-\beta\hbar)
+    &=
+    \left\langle T\{A_K(\sigma-\beta\hbar)B\}\right\rangle_K
+    \\
+    &=
+    \pm\left\langle BA_K(\sigma-\beta\hbar)\right\rangle_K
+    =
+    \pm\left\langle A_K(\sigma)B\right\rangle_K
+    =
+    \mp C_{AB}^{T}(\sigma)\,,
+\end{aligned}\end{align}}
+where the upper sign applies to commuting operators and the lower sign to anticommuting operators.
+Therefore,
+{\small\begin{align}\begin{aligned}
+    C_{AB}(i\omega_n)
+    &=
+    \tfrac12\left[1\pm(-1)^n\right]
+    \int_0^{\beta\hbar}
+    e^{i\omega_n\sigma}C_{AB}^{T}(\sigma)\,d\sigma\,.
+\end{aligned}\end{align}}
+For commuting operators only even $n$ survive; for anticommuting operators only odd $n$ survive.
+\end{proof}
+
 
 
 
@@ -430,111 +545,7 @@ When $\sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\neq0$, the product maps 
 
 
 
-
-
-
-\begin{mytheorem}[Matsubara frequencies for $\tau$-ordered correlators (Molinari 2-2020 -- 5A)]
-Define the $\tau$-ordered correlator by
-{\small\begin{align}\begin{aligned}
-    -C_{AB}^{T}(\tau-\sigma)
-    &:=
-    \left\langle
-        T\{A_K(\tau)B_K(\sigma)\}
-    \right\rangle_K
-    \\
-    &=
-    -\sum_{n\in\mathbb Z}
-    \tfrac{1}{\beta\hbar}
-    e^{-i\omega_n(\tau-\sigma)}
-    \widetilde C_{AB}^{T}(i\omega_n)\,,
-    \qquad
-    \omega_n=\tfrac{n\pi}{\beta\hbar}\,.
-\end{aligned}\end{align}}
-Its Matsubara coefficients are
-{\small\begin{align}\begin{aligned}
-    \widetilde C_{AB}^{T}(i\omega_n)
-    &=
-    \begin{cases}
-        \displaystyle
-        \int_0^{\beta\hbar}
-        e^{i\omega_n\rho}C_{AB}^{T}(\rho)\,d\rho\,,
-        &
-        \begin{array}{l}
-            n\text{ even if }A,B\text{ commute under }\tau\text{-ordering},\\
-            n\text{ odd if }A,B\text{ anticommute under }\tau\text{-ordering},
-        \end{array}
-        \\[1.1em]
-        0\,,
-        &
-        \begin{array}{l}
-            n\text{ odd in the commuting case},\\
-            n\text{ even in the anticommuting case}.
-        \end{array}
-    \end{cases}
-\end{aligned}\end{align}}
-Thus density--density correlators, such as $\langle T\{n(x)n(y)\}\rangle_K$, carry even or bosonic Matsubara frequencies, while fermionic Green functions, such as $\langle T\{\psi(x)\psi^\dagger(y)\}\rangle_K$, carry odd or fermionic Matsubara frequencies.
-
-The relativistic symmetric convention for the Fourier transform on $[-\beta\hbar,\beta\hbar]$ is
-{\small\begin{align}\begin{aligned}
-    f(t)
-    &=
-    \sum_{n\in\mathbb Z}
-    \tfrac{1}{\beta\hbar}
-    f(i\omega_n)e^{-i\omega_n t}\,,
-    &
-    f(i\omega_n)
-    &=
-    \tfrac12\int_{-\beta\hbar}^{\beta\hbar}
-    f(t)e^{i\omega_n t}\,dt\,.
-\end{aligned}\end{align}}
-Operators can be evolved at times $\tau,s\in[0,\beta\hbar]$, or at times $\tau,s\in[-\beta\hbar/2,\beta\hbar/2]$ in the symmetric setting.
-In either convention, their correlators depend on time differences in $[-\beta\hbar,\beta\hbar]$.
-Expanding on the corresponding Fourier basis extends them $2\beta\hbar$-periodically outside this interval.
-
-\emph{Proof.}
-For $0\leq\tau,\tau'\leq\beta\hbar$, the correlator is a function of $\tau-\tau'\in[-\beta\hbar,\beta\hbar]$.
-Its Fourier coefficient on the symmetric interval is
-{\small\begin{align}\begin{aligned}
-    C_{AB}(i\omega_n)
-    &=
-    \tfrac12\int_{-\beta\hbar}^{\beta\hbar}
-    e^{i\omega_n\sigma}C_{AB}^{T}(\sigma)\,d\sigma
-    \\
-    &=
-    \tfrac12\int_0^{\beta\hbar}
-    e^{i\omega_n\sigma}
-    \left[
-        C_{AB}^{T}(\sigma)
-        +(-1)^n C_{AB}^{T}(\sigma-\beta\hbar)
-    \right]d\sigma\,.
-\end{aligned}\end{align}}
-For $0\leq\sigma\leq\beta\hbar$, the KMS rule and $\tau$-ordering imply
-{\small\begin{align}\begin{aligned}
-    -C_{AB}^{T}(\sigma-\beta\hbar)
-    &=
-    \left\langle T\{A_K(\sigma-\beta\hbar)B\}\right\rangle_K
-    \\
-    &=
-    \pm\left\langle BA_K(\sigma-\beta\hbar)\right\rangle_K
-    =
-    \pm\left\langle A_K(\sigma)B\right\rangle_K
-    =
-    \mp C_{AB}^{T}(\sigma)\,,
-\end{aligned}\end{align}}
-where the upper sign applies to commuting operators and the lower sign to anticommuting operators.
-Therefore,
-{\small\begin{align}\begin{aligned}
-    C_{AB}(i\omega_n)
-    &=
-    \tfrac12\left[1\pm(-1)^n\right]
-    \int_0^{\beta\hbar}
-    e^{i\omega_n\sigma}C_{AB}^{T}(\sigma)\,d\sigma\,.
-\end{aligned}\end{align}}
-For commuting operators only even $n$ survive; for anticommuting operators only odd $n$ survive.
-\end{mytheorem}
-
-
-\begin{mytheorem}[Time-homogeneous systems vs.\ Matsubara frequencies]
+\begin{mytheorem}[Time-homogeneous systems vs.\ Matsubara frequencies  \todoinline{check}]
 Matsubara frequencies are a standard Fourier transform for imaginary times in $[-\beta\hbar,\beta\hbar]$.
 For time-homogeneous systems, i.e.\ systems with a time-independent Hamiltonian, every correlator depends only on time differences.
 Passing to Matsubara frequencies therefore turns convolution integrals into ordinary products:
@@ -597,7 +608,7 @@ The last equality holds for both bosonic and fermionic Matsubara frequencies bec
 \end{mytheorem}
 
 
-\begin{mytheorem}[Matsubara coefficients for Dirac deltas of static interactions]
+\begin{mytheorem}[Matsubara coefficients for Dirac deltas of static interactions  \todoinline{check}]
 For a static two-body potential, the perturbative expansion of the evolution operator contains
 {\small\begin{align}\begin{aligned}
     \mathcal U(\beta\hbar,0)
@@ -690,7 +701,7 @@ Testing the two distributions against functions on their respective domains repr
 \end{mytheorem}
 
 
-\begin{mytheorem}[General method for Matsubara sums (Molinari 2-2020 -- 5B, 6B)]
+\begin{mytheorem}[General method for Matsubara sums (Molinari 2-2020 -- 5B, 6B)  \todoinline{check}]
 Introduce the functions related to the Bose and Fermi distributions,
 {\small\begin{align}\begin{aligned}
     n_{\mp}(z)
@@ -722,7 +733,7 @@ Since the contour integral vanishes at infinite radius, the Matsubara sum is
 \end{mytheorem}
 
 
-\begin{mytheorem}[Matsubara sum for the density]
+\begin{mytheorem}[Matsubara sum for the density  \todoinline{check}]
 Taking
 {\small\begin{align}\begin{aligned}
     f(z)
@@ -811,7 +822,7 @@ More directly, in the basis diagonalizing $K$,
 \end{mytheorem}
 
 
-\begin{mytheorem}[Other Matsubara sums \& alternative methods]
+\begin{mytheorem}[Other Matsubara sums \& alternative methods \todoinline{check}]
 Useful thermal series to evaluate with the residue method include
 {\small\begin{align}\begin{aligned}
     &\tfrac{1}{\beta\hbar}
@@ -861,6 +872,11 @@ This does not alter the result, since the left-hand side is convergent and $\lim
 \end{mytheorem}
 
 
+%---------------------------------------
+%================================================
+\section{Thermal correlators}
+%================================================
+%---------------------------------------------
 
 
 
