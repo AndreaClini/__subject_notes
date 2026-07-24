@@ -46,9 +46,9 @@ The $\tau$-evolved operator satisfies the Heisenberg equation
 \end{aligned}\end{align}}
 If the basis $|a\rangle$ diagonalizes the Hamiltonian $H=\sum_a\epsilon_a c_a^\dagger c_a$ then we have
 {\small\begin{align}\begin{aligned}
-    (c_a)_K(\tau)&=e^{-\tfrac{\tau}{\hbar}(\epsilon_a-\mu)}c_a\,,
+    c_{a,K}(\tau)&=e^{-\tfrac{\tau}{\hbar}(\epsilon_a-\mu)}c_a\,,
     &
-    (c_a^\dagger)_K(\tau)&=e^{\tfrac{\tau}{\hbar}(\epsilon_a-\mu)}c_a^\dagger\,.
+    c_{a,K}^\dagger(\tau)&=e^{\tfrac{\tau}{\hbar}(\epsilon_a-\mu)}c_a^\dagger\,.
 \end{aligned}\end{align}}
 The $\tau$-evolution of a composition of operators is the composition of the $\tau$-evolved operators,
 {\small\begin{align}\begin{aligned}
@@ -204,38 +204,109 @@ All the results are unchanged, with the obvious formal modifications.
 
 
 \begin{mytheorem}[Thermal averages vs.\ $\tau$-evolution]
-Thermal averages of single operators, or of products of equal-time $\tau$-evolved operators, are independent of $\tau$-evolution if the Hamiltonian $K$ is $\tau$-independent:
+%
+Therma averages of $\tau$-evolved operators obey several properties.
+\begin{itemize}
+    \item Thermal averages of single operators, or of products of equal-time $\tau$-evolved operators, are independent of $\tau$-evolution if the Hamiltonian $K$ is $\tau$-independent:
+    {\small\begin{align}\begin{aligned}
+        \langle A_K(\tau)\rangle_K
+        &=
+        \tfrac{1}{Z}\operatorname{Tr}\left\{
+            e^{-\beta K}
+            e^{\tfrac{\tau}{\hbar}K}
+            A
+            e^{-\tfrac{\tau}{\hbar}K}
+        \right\}
+        =\langle A\rangle_K\,.
+    \end{aligned}\end{align}}
+    \end{itemize}
+    %
+    \item If $K$ is time-independent, correlators depend only on time differences:
+    {\small\begin{align}\begin{aligned}
+        \langle A_K(\tau)B_K(\tau')\rangle_K
+        &=
+        \langle A_K(\tau-\tau')B\rangle_K\,.
+    \end{aligned}\end{align}}
+    Since {\small$\tau,\tau'\in[0,\hbar\beta]$}, or {\small$\tau,\tau'\in[-\tfrac{\hbar\beta}{2},\tfrac{\hbar\beta}{2}]$} in the symmetrized setting, we have {\small$\tau-\tau'\in[-\hbar\beta,\hbar\beta]$}.
+    Indeed, cyclicity of the trace gives
+    {\small\begin{align}\begin{aligned}
+        &\operatorname{Tr}\left\{
+            \tfrac{e^{-\beta K}}{Z}
+            e^{\tfrac{\tau}{\hbar}K}A e^{-\tfrac{\tau}{\hbar}K}
+            e^{\tfrac{\tau'}{\hbar}K}B e^{-\tfrac{\tau'}{\hbar}K}
+        \right\}
+        =
+        \operatorname{Tr}\left\{
+            \tfrac{e^{-\beta K}}{Z}
+            e^{\tfrac{\tau-\tau'}{\hbar}K}
+            A e^{-\tfrac{\tau-\tau'}{\hbar}K}B
+        \right\}\,.
+    \end{aligned}\end{align}}
+    %
+    \item \textbf{KMS property.} For any operators $A_1,\ldots,A_n$ and any thermal Hamiltonian $K$, the Kubo--Martin--Schwinger property reads
 {\small\begin{align}\begin{aligned}
-    \langle A_K(\tau)\rangle_K
+    \left\langle
+        A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
+    \right\rangle_K
     &=
-    \tfrac{1}{Z}\operatorname{Tr}\left\{
-        e^{-\beta K}
-        e^{\tfrac{\tau}{\hbar}K}
-        A
-        e^{-\tfrac{\tau}{\hbar}K}
-    \right\}
-    =\langle A\rangle_K\,.
+    \left\langle
+        A_{n,K}(\tau_n+\beta\hbar)
+        A_{1,K}(\tau_1)\cdots A_{n-1,K}(\tau_{n-1})
+    \right\rangle_K\,,
+    \quad \tau_1,\ldots,\tau_n\in[0,\beta\hbar]\,.
 \end{aligned}\end{align}}
-If $K$ is time-independent, correlators depend only on time differences:
+This follows directly from cyclicity of the trace. Indeed, considerint two operators for simplicity, we have 
 {\small\begin{align}\begin{aligned}
-    \langle A_K(\tau)B_K(\tau')\rangle_K
+    \langle A_K(\tau)B_K(\sigma)\rangle_K
     &=
-    \langle A_K(\tau-\tau')B\rangle_K\,.
-\end{aligned}\end{align}}
-Indeed, cyclicity of the trace gives
-{\small\begin{align}\begin{aligned}
-    &\operatorname{Tr}\left\{
-        \tfrac{e^{-\beta K}}{Z}
-        e^{\tfrac{\tau}{\hbar}K}A e^{-\tfrac{\tau}{\hbar}K}
-        e^{\tfrac{\tau'}{\hbar}K}B e^{-\tfrac{\tau'}{\hbar}K}
+    \operatorname{Tr}\left\{
+        \tfrac{e^{-\beta K}}{Z}A_K(\tau)B_K(\sigma)
     \right\}
     =
     \operatorname{Tr}\left\{
+        B_K(\sigma)\tfrac{e^{-\beta K}}{Z}A_K(\tau)
+    \right\}
+    =
+    \operatorname{Tr}\bigg\{
         \tfrac{e^{-\beta K}}{Z}
-        e^{\tfrac{\tau-\tau'}{\hbar}K}
-        A e^{-\tfrac{\tau-\tau'}{\hbar}K}B
-    \right\}\,.
+        \underbrace{
+            e^{\beta K}B_K(\sigma)e^{-\beta K}
+        }_{=B_K(\sigma+\beta\hbar)}
+        A_K(\tau)
+    \bigg\}\,.
 \end{aligned}\end{align}}
+\end{mytheorem}
+
+
+\begin{mytheorem}[KMS property iff thermal Gibbs state]
+%
+The KMS property actually fully identifies thermal Gibbs states, i.e. an operator $\rho$ satisfies the KMS property if and only if it is a Gibbs thermal state.
+Indeed, suppose that a state $\rho$ satisfies
+{\small\begin{align}\begin{aligned}
+    \operatorname{Tr}\{\rho A(\tau)B(\tau')\}
+    &=
+    \operatorname{Tr}\{\rho B(\tau'+\beta\hbar)A(\tau)\}, \quad \forall A,B,\tau,\tau'\,.
+\end{aligned}\end{align}}
+for every pair of operators $A,B$ and every pair of parameters $\tau,\tau'$.
+Setting $\tau=\tau'=0$ gives
+{\small\begin{align}\begin{aligned}
+    \operatorname{Tr}\{\rho AB\}
+    &=
+    \operatorname{Tr}\{\rho B(\beta\hbar)A\}\,,
+    \implies
+    \operatorname{Tr}\left\{
+        \left(B\rho-\rho B(\beta\hbar)\right)A
+    \right\}
+    =0, \quad \forall A,B\,.
+\end{aligned}\end{align}}
+Taking $A=B\rho-\rho B(\beta\hbar)$, the non-degeneracy of the Hilbert--Schmidt inner product $\langle \mathcal{O}_1,\mathcal{O}_2\rangle_{\text{HS}}:=\operatorname{Tr}\{ \mathcal{O}_1^\dagger \mathcal{O}_2 \}$ implies 
+{\small\begin{align}\begin{aligned}
+    0=B\rho-\rho B(\beta\hbar)=\big(B\rho e^{\beta K}-\rho e^{\beta K}B\big)e^{-\beta K}
+    \quad \text{that is}\quad 
+    [B,\rho e^{\beta K}]&=0, \quad\forall B\,. 
+\end{aligned}\end{align}}
+Since this holds for every operator $B$, we conclude that $\rho e^{\beta K}$ is a multiple of the identity, i.e. $\rho = \lambda e^{-\beta K}$ for some $\lambda\in\mathbb{C}$.
+Enforcing self-adjointness and normalization gives $\lambda=1/Z$ with $Z=\operatorname{Tr}\{e^{-\beta K}\}$.
 \end{mytheorem}
 
 
@@ -360,71 +431,6 @@ When $\sum_{j\in\mathcal C}s_j-\sum_{j\in\mathcal A}s_j\neq0$, the product maps 
 
 
 
-\begin{mytheorem}[KMS property for correlators (Molinari 2-2020 -- 5A)]
-For any operators $A_1,\ldots,A_n$ and any thermal Hamiltonian $K$, the Kubo--Martin--Schwinger property reads
-{\small\begin{align}\begin{aligned}
-    \left\langle
-        (A_1)_K(\tau_1)\cdots(A_n)_K(\tau_n)
-    \right\rangle_K
-    &=
-    \left\langle
-        (A_n)_K(\tau_n+\beta\hbar)
-        (A_1)_K(\tau_1)\cdots(A_{n-1})_K(\tau_{n-1})
-    \right\rangle_K\,,
-    \\
-    &\hspace{8em}\tau_1,\ldots,\tau_n\in[0,\beta\hbar]\,.
-\end{aligned}\end{align}}
-For two operators, this follows directly from cyclicity of the trace:
-{\small\begin{align}\begin{aligned}
-    \langle A_K(\tau)B_K(\sigma)\rangle_K
-    &=
-    \operatorname{Tr}\left\{
-        \tfrac{e^{-\beta K}}{Z}A_K(\tau)B_K(\sigma)
-    \right\}
-    \\
-    &=
-    \operatorname{Tr}\left\{
-        B_K(\sigma)\tfrac{e^{-\beta K}}{Z}A_K(\tau)
-    \right\}
-    \\
-    &=
-    \operatorname{Tr}\left\{
-        \tfrac{e^{-\beta K}}{Z}
-        \underbrace{
-            e^{\beta K}B_K(\sigma)e^{-\beta K}
-        }_{=B_K(\sigma+\beta\hbar)}
-        A_K(\tau)
-    \right\}\,.
-\end{aligned}\end{align}}
-
-The KMS property also characterizes thermal Gibbs states.
-Suppose that a state $\rho$ satisfies
-{\small\begin{align}\begin{aligned}
-    \operatorname{Tr}\{\rho A(\tau)B(\tau')\}
-    &=
-    \operatorname{Tr}\{\rho B(\tau'+\beta\hbar)A(\tau)\}
-\end{aligned}\end{align}}
-for every pair of operators and every pair of parameters.
-Setting $\tau=\tau'=0$ gives
-{\small\begin{align}\begin{aligned}
-    \operatorname{Tr}\{\rho AB\}
-    &=
-    \operatorname{Tr}\{\rho B(\beta\hbar)A\}\,,
-    \\
-    \operatorname{Tr}\left\{
-        \left(B\rho-\rho B(\beta\hbar)\right)A
-    \right\}
-    &=0\,.
-\end{aligned}\end{align}}
-The non-degeneracy of the Hilbert--Schmidt inner product implies
-{\small\begin{align}\begin{aligned}
-    B\rho-\rho B(\beta\hbar)&=0\,,
-    &
-    [B,\rho e^{\beta K}]&=0
-    \qquad\text{for every }B\,.
-\end{aligned}\end{align}}
-Therefore $\rho e^{\beta K}$ is a multiple of the identity, so $\rho$ is the Gibbs thermal state.
-\end{mytheorem}
 
 
 \begin{mytheorem}[Matsubara frequencies for $\tau$-ordered correlators (Molinari 2-2020 -- 5A)]
@@ -881,7 +887,7 @@ For any operators $A_1,\ldots,A_n$, the reduction formula reads
         \Big\langle
             T\big\{
                 U_I(\beta\hbar,0)
-                (A_1)_{K_0}(\tau_1)\cdots(A_n)_{K_0}(\tau_n)
+                A_{1,K_0}(\tau_1)\cdots A_{n,K_0}(\tau_n)
             \big\}
         \Big\rangle_{K_0}
     }{
@@ -895,7 +901,7 @@ Unlike the zero-temperature formula, this result requires no further assumptions
 {\small\begin{align}\begin{aligned}
     &\Big\langle
         T\big\{
-            (A_1)_K(\tau_1)\cdots(A_n)_K(\tau_n)
+            A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
         \big\}
     \Big\rangle_K
 =
@@ -903,7 +909,7 @@ Unlike the zero-temperature formula, this result requires no further assumptions
         \Big\langle
             T\big\{
                 U_I\big(\tfrac{\beta\hbar}{2},-\tfrac{\beta\hbar}{2}\big)
-                (A_1)_{K_0}(\tau_1)\cdots(A_n)_{K_0}(\tau_n)
+                A_{1,K_0}(\tau_1)\cdots A_{n,K_0}(\tau_n)
             \big\}
         \Big\rangle_{K_0}
     }{
@@ -928,16 +934,16 @@ and repeatedly inserting the interaction-picture propagators gives
 {\small\begin{align}\begin{aligned}
     \Big\langle
         T\big\{
-            (A_1)_K(\tau_1)\cdots(A_n)_K(\tau_n)
+            A_{1,K}(\tau_1)\cdots A_{n,K}(\tau_n)
         \big\}
     \Big\rangle_K
     &=
     \tfrac{Q_0}{Q}
     \Big\langle
         U_I(\beta\hbar,\tau_1)
-        (A_1)_{K_0}(\tau_1)
+        A_{1,K_0}(\tau_1)
         U_I(\tau_1,\tau_2)
-        (A_2)_{K_0}(\tau_2)
+        A_{2,K_0}(\tau_2)
         \cdots
         U_I(\tau_n,0)
     \Big\rangle_{K_0}
@@ -947,7 +953,7 @@ and repeatedly inserting the interaction-picture propagators gives
     \Big\langle
         T\big\{
             U_I(\beta\hbar,0)
-            (A_1)_{K_0}(\tau_1)\cdots(A_n)_{K_0}(\tau_n)
+            A_{1,K_0}(\tau_1)\cdots A_{n,K_0}(\tau_n)
         \big\}
     \Big\rangle_{K_0}\,.
 \end{aligned}\end{align}}
@@ -959,7 +965,7 @@ The factors in the middle line follow from
     U(\tau,s)
     e^{-\tfrac{s}{\hbar}K_0}\,,
     &
-    (A_i)_{K_0}(\tau_i)
+    A_{i,K_0}(\tau_i)
     &=
     e^{\tfrac{\tau_i}{\hbar}K_0}
     A_i
